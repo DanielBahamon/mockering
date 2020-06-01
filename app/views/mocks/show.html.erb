@@ -1,0 +1,5 @@
+<h1><%= @mock.title %></h1>
+<p><%= @mock.description %></p>
+<%= link_to 'Back',root_path, class: 'btn' %>
+<%= link_to 'Edit', edit_mock_path %>
+<%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"} %>
