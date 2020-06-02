@@ -1,0 +1,48 @@
+class Mocker < ApplicationRecord
+
+
+	before_validation :set_uuid, on: :create
+
+	# Include default devise modules. Others available are:
+	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+	devise :database_authenticatable, :registerable,
+	     :recoverable, :rememberable, :validatable, :confirmable,
+	     :omniauthable, omniauth_providers: [:facebook]
+
+
+    has_many :mocks
+
+
+	extend FriendlyId
+	friendly_id :first_name, use: :slugged
+
+
+	validates :id, presence: true
+
+	def set_uuid
+	self.id = SecureRandom.uuid
+	end
+
+	def self.from_omniauth(auth)
+		mocker = Mocker.where(email: auth.info.email).first
+
+		if mocker
+		  return mocker
+		else
+		  where(provider: auth.provider, uid: auth.uid).first_or_create do |mocker|
+		    mocker.email = auth.info.email
+		    mocker.password = Devise.friendly_token[0,20]
+		    mocker.first_name = auth.info.first_name   # assuming the user model has a name
+		    mocker.last_name = auth.info.last_name   # assuming the user model has a name
+		    mocker.image = auth.info.image # assuming the user model has an image
+		    mocker.uid = auth.uid
+		    mocker.provider = auth.provider
+		    # If you are using confirmable and the provider(s) you use validate emails,
+		    # uncomment the line below to skip the confirmation emails.
+		    mocker.skip_confirmation!
+		  end
+		end
+	end
+
+
+end

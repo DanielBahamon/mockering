@@ -7,11 +7,11 @@ class MocksController < ApplicationController
 	end
 
 	def new
-		@mock = Mock.new
+		@mock = current_mocker.mocks.build
 	end
 
 	def create
-		@mock = Mock.new(mock_params)
+		@mock = current_mocker.mocks.build(mock_params)
 
 		if @mock.save
 			redirect_to @mock, notice: "Successfully created new Mock"
@@ -43,7 +43,7 @@ class MocksController < ApplicationController
 	private
 
 	def mock_params
-		params.require(:mock).permit(:title, :description)
+		params.require(:mock).permit(:title, :description, :first_name, :last_name)
 	end
 
 	def find_mock

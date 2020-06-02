@@ -9,6 +9,22 @@
   </head>
 
   <body>
+
+    <ul class="nav justify-content-end">
+      <% if mocker_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Salir', destroy_mocker_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Iniciar', new_mocker_session_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrarme', new_mocker_registration_path %>
+        </li>
+      <% end %>
+    </ul>
+    
   	<% flash.each do |name, msg| %>
   		<%= content_tag :div, msg, class: "alert alert-info" %>
   	<% end %>

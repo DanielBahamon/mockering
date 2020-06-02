@@ -1,4 +1,5 @@
 <h1>Mockering</h1>
+<%= link_to 'New Mock', new_mock_path %>
 <% @mocks.each do |mock| %>
 	<h2><%= link_to mock.title, mock %></h2>
 <% end %>
