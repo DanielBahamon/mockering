@@ -1,5 +1,7 @@
-<h1>Mockering</h1>
-<%= link_to 'New Mock', new_mock_path %>
-<% @mocks.each do |mock| %>
-	<h2><%= link_to mock.title, mock %></h2>
-<% end %>
+<div class="container">
+	<% @mocks.each do |mock| %>
+	<%= link_to (image_tag mock.picture.url(:medium)), mock %>
+		<h2><%= link_to mock.title, mock %></h2>
+	<% end %>
+</div>
+	

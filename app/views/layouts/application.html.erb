@@ -9,25 +9,31 @@
   </head>
 
   <body>
-
-    <ul class="nav justify-content-end">
-      <% if mocker_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Salir', destroy_mocker_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Iniciar', new_mocker_session_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Registrarme', new_mocker_registration_path %>
-        </li>
+    <div class="nav navbar navbar-default">
+      <div class="container">
+        <div class="navbar-brand">
+          <%= link_to "Mockering", root_path %>
+        </div>
+        <% if mocker_signed_in? %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "New Mock", new_mock_path %></li>
+          <li><%= link_to "Account", edit_mocker_registration_path %></li>
+          <li><%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete %></li>
+        <% else %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Login", new_mocker_session_path %></li>
+            <li><%= link_to "Sign Up", new_mocker_registration_path %></li>
+          </ul>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
       <% end %>
-    </ul>
-    
-  	<% flash.each do |name, msg| %>
-  		<%= content_tag :div, msg, class: "alert alert-info" %>
-  	<% end %>
+    </div>
+    	
     <%= yield %>
   </body>
 </html>

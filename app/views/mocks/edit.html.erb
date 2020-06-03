@@ -1,3 +1,6 @@
-<h1>Edit Mock</h1>
-<%= render 'form' %>
-<%= link_to "Cancel", mock_path %>
+<div class="container">
+	<h1>Edit Mock</h1>
+	<%= image_tag @mock.picture.url(:medium) %>
+	<%= render 'form' %>
+	<%= link_to "Cancel", mock_path %>
+</div>

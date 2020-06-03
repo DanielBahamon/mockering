@@ -1,15 +1,17 @@
-<div class="container">
-	<div class="form-group">
-		<%= form_for @mock, html: { multipart: true } do |f| %>
-			<div class="field">
-				<%= f.label :title %><br/>
-				<%= f.text_field :title, class: 'form-control' %>
-			</div>
-			<div class="field">
-				<%= f.label :description %><br/>
-				<%= f.text_field :description, class: 'form-control' %>
-			</div>
-			<%= f.submit 'Enviar', class: 'btn btn-primary' %>
-		<% end %>
-	</div>
+<div class="form-group">
+	<%= form_for @mock, html: { multipart: true } do |f| %>
+		<div class="field">
+			<%= f.label :picture %><br/>
+			<%= f.file_field :picture, class: 'form-control' %>
+		</div>
+		<div class="field">
+			<%= f.label :title %><br/>
+			<%= f.text_field :title, class: 'form-control' %>
+		</div>
+		<div class="field">
+			<%= f.label :description %><br/>
+			<%= f.text_field :description, class: 'form-control' %>
+		</div>
+		<%= f.submit 'Enviar', class: 'btn btn-primary' %>
+	<% end %>
 </div>
