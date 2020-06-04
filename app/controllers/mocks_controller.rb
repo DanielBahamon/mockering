@@ -1,7 +1,8 @@
 class MocksController < ApplicationController
-
-	before_action :find_mock, only: [:show, :edit, :update, :destroy]
-	before_action :is_authorised, only: [:edit, :update, :destroy, :update, :to_slug]
+	
+	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+	before_action :authenticate_mocker!, except: [:index, :show]
+	
 	def index
 		@mocks = Mock.all.order("created_at DESC")
 	end
@@ -24,7 +25,7 @@ class MocksController < ApplicationController
 	end
 
 	def edit
-		
+
 	end
 	
 	def update
@@ -50,8 +51,4 @@ class MocksController < ApplicationController
 	def find_mock
 		@mock = Mock.find(params[:id])
 	end
-
-    def is_authorised
-      redirect_to root_path, alert: "No tienes permiso" unless current_mocker.id == @mock.mocker_id
-    end
 end

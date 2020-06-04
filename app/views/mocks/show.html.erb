@@ -1,10 +1,27 @@
 <div class="container">
-	<%= image_tag @mock.picture.url(:large) %>
-	<h1><%= @mock.title %></h1>
-	<p><%= @mock.description %></p>
-	<p><%= @mock.mocker.email %></p>
-	<%= link_to 'Back',root_path, class: 'btn' %>
-	<%= link_to 'Edit', edit_mock_path %>
-	<%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"} %>
-</div>
+	<div class="mock_show">
+		<div class="card">
+		<%= image_tag @mock.picture.url(:large), class: "card-img-top" %>
+			<div class="card-body">
+				<h1 class="card-title"><%= @mock.title %></h1>
+				<h6 class="card-subtitle mb-2 text-muted">- <%= @mock.mocker.email %></h6>
+				<p class="card-text"><%= @mock.description %></p>
+			</div>
+			<div class="card-footer">
+				<div class="col-md-6">
+					
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group pull-right">
+						
+					</div>
+					<%= link_to 'Back',root_path, class: 'btn btn-default' %>
+				<%= link_to 'Edit', edit_mock_path,class: 'btn btn-default' %>
+				<%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-default' %>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 	
+</div>
