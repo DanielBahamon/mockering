@@ -21,10 +21,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-
           <ul class="navbar-nav navbar-right">
+              <% if mocker_signed_in? && current_mocker.admin %>
+                <li class="nav-item"><%= link_to "New Mock", new_mock_path, class: "nav-link" %></li>
+              <% end %>
             <% if mocker_signed_in? %>
-              <li class="nav-item"><%= link_to "New Mock", new_mock_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "Account", edit_mocker_registration_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %></li>
               <li class="nav-item dropdown">

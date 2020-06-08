@@ -1,4 +1,8 @@
 class Mocker < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
 
 	before_validation :set_uuid, on: :create
@@ -11,11 +15,10 @@ class Mocker < ApplicationRecord
 
 
     has_many :mocks
-
+  	acts_as_voter
 
 	extend FriendlyId
 	friendly_id :first_name, use: :slugged
-
 
 	validates :id, presence: true
 

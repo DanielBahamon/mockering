@@ -7,17 +7,30 @@
 				<h6 class="card-subtitle mb-2 text-muted">- <%= @mock.mocker.email %></h6>
 				<p class="card-text"><%= @mock.description %></p>
 			</div>
-			<div class="card-footer">
+			<div class="card-footer row">
 				<div class="col-md-6">
-					
+					<div id="like-count">
+						<%= render 'mocks/likes', mock: @mock %>
+					</div>
+					<div id="dislike-count">
+						<%= render 'mocks/dislikes', mock: @mock %>
+					</div>
 				</div>
 				<div class="col-md-6">
-					<div class="btn-group pull-right">
-						
+					<div id="like-link">
+						<%= render 'mocks/like_link', mock: @mock %>
 					</div>
+					<div id="dislike-link">
+						<%= render 'mocks/dislike_link', mock: @mock %>
+					</div>
+				</div>
+				<div class="col-md-6 pull-right">
 					<%= link_to 'Back',root_path, class: 'btn btn-default' %>
-				<%= link_to 'Edit', edit_mock_path,class: 'btn btn-default' %>
-				<%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-default' %>
+					<% if current_mocker != @mocker %>
+						<%= link_to 'Edit', edit_mock_path,class: 'btn btn-default' %>
+						<%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-default' %>
+					<% end %>
+						
 				</div>
 				
 			</div>

@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :mocks
+  resources :mocks do
+  	member do
+  		put 'like' => 'mocks#like'
+  		put 'dislike' => 'mocks#dislike'
+  		put 'vote' => 'mocks#upvote'
+  		put 'unvote' => 'mocks#downvote'
+  	end
+  	
+  end
+
   root "mocks#index"
   
   resources :mockers
@@ -15,6 +24,7 @@ Rails.application.routes.draw do
 			  	omniauth_callbacks: 'omniauth_callbacks',
 			  	registrations: 'registrations'
 			  }
+
 
 # This is just for the path for /:slug
 # resources :mockers, path: '/'

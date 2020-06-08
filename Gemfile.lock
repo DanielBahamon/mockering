@@ -38,19 +38,20 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts_as_votable (0.12.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (8.0.0)
     autoprefixer-rails (9.7.6)
       execjs
     aws-eventstream (1.1.0)
-    aws-sdk (2.11.520)
-      aws-sdk-resources (= 2.11.520)
-    aws-sdk-core (2.11.520)
+    aws-sdk (2.11.521)
+      aws-sdk-resources (= 2.11.521)
+    aws-sdk-core (2.11.521)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.520)
-      aws-sdk-core (= 2.11.520)
+    aws-sdk-resources (2.11.521)
+      aws-sdk-core (= 2.11.521)
     aws-sigv4 (1.1.4)
       aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.13)
@@ -261,6 +262,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  acts_as_votable (~> 0.12.1)
   aws-sdk (~> 2.8)
   bootstrap (~> 4.5)
   byebug

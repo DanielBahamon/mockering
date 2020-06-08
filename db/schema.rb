@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200603040854) do
+ActiveRecord::Schema.define(version: 20200607000928) do
+
+  create_table "bolds", force: :cascade do |t|
+    t.string "votable_type"
+    t.string "votable_id"
+    t.string "voter_type"
+    t.string "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_bolds_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_bolds_on_votable_type_and_votable_id"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_bolds_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_bolds_on_voter_type_and_voter_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -42,6 +58,7 @@ ActiveRecord::Schema.define(version: 20200603040854) do
     t.string "uid"
     t.datetime "birthday"
     t.string "slug"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true
@@ -61,6 +78,20 @@ ActiveRecord::Schema.define(version: 20200603040854) do
     t.datetime "picture_updated_at"
     t.index ["id"], name: "sqlite_autoindex_mocks_1", unique: true
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.string "votable_id"
+    t.string "voter_type"
+    t.string "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
 end

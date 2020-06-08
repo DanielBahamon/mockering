@@ -1,0 +1,7 @@
+<% if current_mocker %>
+	<% vote_text_2 = current_mocker&.voted_for?(mock) ? " " : "Stinks" %>
+	<%= link_to vote_text_2, dislike_mock_path(mock), method: :put, remote: :true, class: "like-post" %>
+
+<% else %>
+	<%= link_to "Stinks", new_mocker_session_path, class: 'like-post' %>
+<% end %>
