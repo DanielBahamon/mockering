@@ -1,75 +1,77 @@
-<div class="_cont _session relative">
-  <div class="d-table fullscreen">
-    <div class="d-tablecell v-middle">
-      <div class="container">
-        <section class="row _session">
-          <div class="col-12 text-center">
-            <%= link_to root_path, data: { no_turbolink: true } do %>
-              <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', class: "_logo _1", alt: 'Mockering'%>
-            <% end %>
-            <p class="_text _1 _ttcommons">By human beings for everyone.</p>
-          </div>
-          <div class="col-12">
-            <%= link_to mocker_facebook_omniauth_authorize_path, class: "_btn _session _facebook" do %>
-              <span><i class="fab fa-facebook-f"></i></span> <span>Continue with Facebook</span>
-            <% end %>
-            <%= link_to mocker_google_oauth2_omniauth_authorize_path, class: "_btn _session _google" do %>
-            <span><i class="fab fa-google"></i></span> <span>Continue with Google</span>
-            <% end %>
-          </div>
-          <div class="col-12">
-            <p class="or"><span>Or</span></p>
-          </div>
-          <div class="col-12">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              
+<div class="d-grid"> 
+  <div class="_cont _session relative">
+    <div class="d-table fullscreen">
+      <div class="d-tablecell v-middle">
+        <div class="container">
+          <section class="row _session">
+            <div class="col-12 text-center">
+              <%= link_to root_path, data: { no_turbolink: true } do %>
+                <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', class: "_logo _1", alt: 'Mockering'%>
+              <% end %>
+              <p class="_text _1 _ttcommons">By human beings for everyone.</p>
+            </div>
+            <div class="col-12">
+              <%= link_to mocker_facebook_omniauth_authorize_path, class: "_btn _session _facebook" do %>
+                <span><i class="fab fa-facebook-f"></i></span> <span>Continue with Facebook</span>
+              <% end %>
+              <%= link_to mocker_google_oauth2_omniauth_authorize_path, class: "_btn _session _google" do %>
+              <span><i class="fab fa-google"></i></span> <span>Continue with Google</span>
+              <% end %>
+            </div>
+            <div class="col-12">
+              <p class="or"><span>Or</span></p>
+            </div>
+            <div class="col-12">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                
 
-              <div class="row">
-                <div class="col-12">
-                  <%= f.email_field :email,
-                            required: true,
-                            autofocus: true,
-                            class: "_input _1 form-control m-bottom1", placeholder: "Email" %>
+                <div class="row">
+                  <div class="col-12">
+                    <%= f.email_field :email,
+                              required: true,
+                              autofocus: true,
+                              class: "_input _1 form-control m-bottom1", placeholder: "Email" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.text_field :first_name,
+                              required: true,
+                              class: "_input _1 form-control m-bottom1", placeholder: "First name" %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.text_field :last_name, 
+                              required: true,
+                              class: "_input _1 form-control m-bottom1", placeholder: "Last name" %>
+                  </div>
+                  <div class="col-12">
+                    <%= f.password_field :password,
+                              required: true,
+                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                              input_html: { autocomplete: "new-password" },
+                              class: "_input _1 form-control m-bottom1", placeholder: "Create a password" %>
+                  </div>
+                  <div class="col-12">
+                    <%= f.password_field :password_confirmation,
+                              required: true,
+                              input_html: { autocomplete: "new-password" },
+                              class: "_input _1 form-control m-bottom1", placeholder: "Confirm password" %>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <%= f.text_field :first_name,
-                            required: true,
-                            class: "_input _1 form-control m-bottom1", placeholder: "First name" %>
+                <br/>
+                <div class="form-actions">
+                  <%= f.submit "Sign up", class: "btn _btn _login" %>
                 </div>
-                <div class="col-md-6">
-                  <%= f.text_field :last_name, 
-                            required: true,
-                            class: "_input _1 form-control m-bottom1", placeholder: "Last name" %>
-                </div>
-                <div class="col-12">
-                  <%= f.password_field :password,
-                            required: true,
-                            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                            input_html: { autocomplete: "new-password" },
-                            class: "_input _1 form-control m-bottom1", placeholder: "Create a password" %>
-                </div>
-                <div class="col-12">
-                  <%= f.password_field :password_confirmation,
-                            required: true,
-                            input_html: { autocomplete: "new-password" },
-                            class: "_input _1 form-control m-bottom1", placeholder: "Confirm password" %>
-                </div>
-              </div>
+              <% end %>
               <br/>
-              <div class="form-actions">
-                <%= f.submit "Sign up", class: "btn _btn _login" %>
-              </div>
-            <% end %>
-            <br/>
-            <%= render "devise/shared/links" %>
-          </div>
-        </section>
+              <%= render "devise/shared/links" %>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
+  <%= render "shared/minifooter" %>
 </div>
 
-  <%= render "shared/minifooter" %>
 
 <style type="text/css">
   body{
