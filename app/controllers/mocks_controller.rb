@@ -1,7 +1,7 @@
 class MocksController < ApplicationController
 	
 	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :like, :dislike]
-	before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote]
+	before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	
 	def index

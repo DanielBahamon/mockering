@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
     <ul class="navbar-nav navbar-right">
-      <% if mocker_signed_in? && current_mocker.admin %>
+      <% if mocker_signed_in? # && current_mocker.admin %>
         <li class="nav-item"><%= link_to "New Mock", new_mock_path, class: "nav-link" %></li>
       <% end %>
       <% if mocker_signed_in? %>

@@ -88,4 +88,32 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  config.action_cable.url = "https://mockering.herokuapp.com/cable"
+  config.action_mailer.default_url_options = { host: 'https://mockering.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    enable_starttls_auto: true,
+    authentication: 'plain',
+    domain: 'localhost:3000',
+    user_name: 'mr.sublimen@gmail.com',
+    password: 'ArtistasDigitales10369'
+  }
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    path: ':class/:attachment/:id/:style/:filename',
+    s3_host_name: 's3-sa-east-1.amazonaws.com',
+    s3_credentials: {
+      bucket: 'mockering',
+      access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
+      secret_access_key: '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',
+      s3_region: 'sa-east-1'
+    }
+  }
 end

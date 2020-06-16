@@ -72,7 +72,7 @@ Rails.application.configure do
     path: ':class/:attachment/:id/:style/:filename',
     s3_host_name: 's3-sa-east-1.amazonaws.com',
     s3_credentials: {
-      bucket: 'mockering',
+      bucket: 'airpikachu6',
       access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
       secret_access_key: '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',
       s3_region: 'sa-east-1'
