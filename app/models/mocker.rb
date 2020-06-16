@@ -1,20 +1,16 @@
 class Mocker < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-
+ 
 	before_validation :set_uuid, on: :create
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 	devise :database_authenticatable, :registerable,
 	     :recoverable, :rememberable, :validatable, :confirmable,
-	     :omniauthable, omniauth_providers: [:facebook]
+	     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
 
     has_many :mocks
+
   	acts_as_voter
 
 	extend FriendlyId
@@ -23,7 +19,7 @@ class Mocker < ApplicationRecord
 	validates :id, presence: true
 
 	def set_uuid
-	self.id = SecureRandom.uuid
+		self.id = SecureRandom.uuid
 	end
 
 	def self.from_omniauth(auth)
@@ -35,8 +31,8 @@ class Mocker < ApplicationRecord
 		  where(provider: auth.provider, uid: auth.uid).first_or_create do |mocker|
 		    mocker.email = auth.info.email
 		    mocker.password = Devise.friendly_token[0,20]
-		    mocker.first_name = auth.info.first_name   # assuming the user model has a name
-		    mocker.last_name = auth.info.last_name   # assuming the user model has a name
+		    mocker.first_name = auth.info.first_name || auth.info.profile   # assuming the user model has a name
+		    mocker.last_name = auth.info.last_name || auth.info.profile  # assuming the user model has a name
 		    mocker.image = auth.info.image # assuming the user model has an image
 		    mocker.uid = auth.uid
 		    mocker.provider = auth.provider

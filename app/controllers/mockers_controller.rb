@@ -22,14 +22,13 @@ class MockersController < ApplicationController
 
 		#  new_params = mocker_params
 		#  new_params = mocker_params.merge(active: true)
-
+		
 		#  if @mocker.update(new_params)
 		#    flash[:notice] = "Genial! Esta guardado..."
 		#  else
 		#    flash[:alert] = "Uhm... Algo fallo."
 		#  end
-
-		# redirect_to mock_path(@mock)
+		#  redirect_to mock_path(@mock)
 		#  redirect_back(fallback_location: request.referer)
 
 	end

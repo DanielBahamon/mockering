@@ -1,6 +1,14 @@
 <div class="form-group">
 	<%= form_for @mock, html: { multipart: true } do |f| %>
 		<div class="field">
+			<%= f.label :movie %>
+			<%= f.file_field :movie, class: 'form-control' %>
+		</div>
+		<div class="field">
+			<%= f.label :music %>
+			<%= f.file_field :music, class: 'form-control' %>
+		</div>
+		<div class="field">
 			<%= f.label :picture %><br/>
 			<%= f.file_field :picture, class: 'form-control' %>
 		</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200607000928) do
+ActiveRecord::Schema.define(version: 20200611214556) do
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20200607000928) do
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string "music_file_name"
+    t.string "music_content_type"
+    t.integer "music_file_size"
+    t.datetime "music_updated_at"
+    t.string "movie_file_name"
+    t.string "movie_content_type"
+    t.integer "movie_file_size"
+    t.datetime "movie_updated_at"
     t.index ["id"], name: "sqlite_autoindex_mocks_1", unique: true
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
   end

@@ -1,7 +1,27 @@
 <div class="container">
 	<div class="mock_show">
 		<div class="card">
-		<%= image_tag @mock.picture.url(:large), class: "card-img-top" %>
+			<% if @mock.picture.present? %>
+				<%= image_tag @mock.picture.url(:large), class: "card-img-top" %>
+			<% else %>
+				<%= image_tag 'imagenotfound.png', style: "width:100%" %>
+			<% end %>
+			<% if @mock.music.present? %>
+					<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
+			<% end %>
+			<% if @mock.movie.present? %>
+			  <video
+			    id="my-video"
+			    class="video-js"
+			    controls
+			    preload="auto"
+			    data-setup="{}"
+			    style="width:100%;"
+			  >
+			    <source src="<%= video_path(@mock.movie) %>" type="video/mp4", class="video-js" />
+			  </video>
+			<% end %>
+
 			<div class="card-body">
 				<h1 class="card-title"><%= @mock.title %></h1>
 				<h6 class="card-subtitle mb-2 text-muted">- <%= @mock.mocker.email %></h6>

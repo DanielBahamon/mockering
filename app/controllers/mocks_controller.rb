@@ -77,7 +77,7 @@ class MocksController < ApplicationController
 	end
 
 	def mock_params
-		params.require(:mock).permit(:title, :description, :picture)
+		params.require(:mock).permit(:title, :description, :picture, :music, :movie)
 	end
 
 end
