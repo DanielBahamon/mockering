@@ -96,13 +96,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://mockering.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp-relay.sendinblue.com',
     port: 587,
     enable_starttls_auto: true,
-    authentication: 'plain',
-    domain: 'localhost:3000',
+    authentication: 'login',
+    domain: 'mockering.herokuapp.com',
     user_name: 'mr.sublimen@gmail.com',
-    password: 'ArtistasDigitales10369'
+    password: 'sHI3avA16LVyCfNY'
   }
 
   config.paperclip_defaults = {
