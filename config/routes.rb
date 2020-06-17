@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'pages/terms'
+
+  get 'pages/policy'
+
   # root "mocks#index"
   devise_scope :mocker do
     root to: "devise/sessions#new"
