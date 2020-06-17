@@ -29,8 +29,10 @@ Rails.application.routes.draw do
   		put 'vote' => 'mocks#upvote'
   		put 'unvote' => 'mocks#downvote'
   	end
-  	
   end
+
+  get 'terms' => 'pages#terms'
+  get 'policy' => 'pages#policy'
 
   
 
