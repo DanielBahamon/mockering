@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
-  root "mocks#index"
+  # root "mocks#index"
+  devise_scope :mocker do
+    root to: "devise/sessions#new"
+  end
 
   resources :mockers
   devise_for :mockers,
@@ -15,7 +18,6 @@ Rails.application.routes.draw do
           omniauth_callbacks: 'omniauth_callbacks',
           registrations: 'registrations'
         }
-
   resources :mocks do
   	member do
   		put 'like' => 'mocks#like'

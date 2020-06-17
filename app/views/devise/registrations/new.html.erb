@@ -27,6 +27,19 @@
 
                 <div class="row">
                   <div class="col-12">
+                    <div class="form-group" style="position: relative;">
+                      <span class="username-icon-styles position-absolute" style="right: 10px; top:10px;">
+                        <span id="valid-username" class="fa fa-check-circle"></span>
+                        <span id="invalid-username" class="fa fa-times-circle"></span>
+                      </span>
+                      <%= f.text_field :slug, placeholder: "Username", class: "form-control", id: "mocker_username"  %>
+                    </div>
+                    <%= f.email_field :slug,
+                              required: true,
+                              autofocus: true,
+                              class: "_input _1 form-control m-bottom1", placeholder: "Email" %>
+                  </div>
+                  <div class="col-12">
                     <%= f.email_field :email,
                               required: true,
                               autofocus: true,
@@ -80,10 +93,5 @@
   #_navbar1{
     display: none;
     visibility: hidden;
-  }
-  ._cont._session{
-    min-height:800px;
-    width: 100vw;
-    height:100vh;
   }
 </style>

@@ -33,7 +33,15 @@ class MockersController < ApplicationController
 
 	end
 
-
+	def username_validator
+	    if params[:slug].size <= 2
+	    	render json: { valid: false }
+	    elsif Mocker.find_by_slug(params[:slug].downcase)
+	    	render json: { valid: false }
+	    else
+	    	render json: { valid: true }
+	    end
+	end
 
 	private
 

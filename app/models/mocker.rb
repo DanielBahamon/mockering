@@ -14,9 +14,16 @@ class Mocker < ApplicationRecord
   	acts_as_voter
 
 	extend FriendlyId
-	friendly_id :first_name, use: :slugged
+	friendly_id :full_name, use: :slugged
 
+	  def full_name
+	    "#{first_name} #{last_name}"
+	  end
+	  
 	validates :id, presence: true
+
+	validates :slug, format: { without: /\s/, message: "must contain no spaces" }
+  	validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
 	def set_uuid
 		self.id = SecureRandom.uuid
