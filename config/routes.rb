@@ -41,5 +41,7 @@ Rails.application.routes.draw do
 # resources :mockers, path: '/'
 # get ':id', to: 'mockers#show', as: 'show'
 
+  # This is for username validation
+  get 'username_validator/:slug', to: 'mockers#username_validator'
 
 end
