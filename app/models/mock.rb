@@ -26,3 +26,4 @@ class Mock < ApplicationRecord
 	end
 
 end
+ 
