@@ -23,51 +23,54 @@
             </div>
             <div class="col-12">
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                
+                <% resource.errors.full_messages.each do |msg| %>
+                    <%= msg %>
+                <% end %>
 
-                <div class="row">
-                  <div class="col-12">
+                <div class="row" id="_form_register">
+                  <section class="col-12">
                     <div class="form-group" style="position: relative;">
                       <span class="username-icon-styles position-absolute" style="right: 10px; top:10px;">
-                        <span id="valid-username" class="fa fa-check-circle"></span>
-                        <span id="invalid-username" class="fa fa-times-circle"></span>
+                        <span id="valid-username" class="fa fa-check-circle valid-username"></span>
+                        <span id="invalid-username" class="fa fa-times-circle invalid-username"></span>
                       </span>
-                      <%= f.text_field :slug, placeholder: "Username", class: "form-control", id: "mocker_username"  %>
-                    </div>
-                    <%= f.email_field :slug,
+                      <%= f.text_field :slug,
+                              placeholder: "Username",
                               required: true,
-                              autofocus: true,
-                              class: "_input _1 form-control m-bottom1", placeholder: "Email" %>
-                  </div>
-                  <div class="col-12">
+                              class: "_input _1 form-control m-bottom1",
+                              id: "mocker_username",
+                              autofocus: true  %>
+                    </div>
+                  </section>
+                  <section class="col-12">
                     <%= f.email_field :email,
                               required: true,
-                              autofocus: true,
                               class: "_input _1 form-control m-bottom1", placeholder: "Email" %>
-                  </div>
-                  <div class="col-md-6">
+                  </section>
+                  <section class="col-md-6">
                     <%= f.text_field :first_name,
                               required: true,
-                              class: "_input _1 form-control m-bottom1", placeholder: "First name" %>
-                  </div>
-                  <div class="col-md-6">
+                              class: "_input _1 form-control m-bottom1", 
+                              placeholder: "First name" %>
+                  </section>
+                  <section class="col-md-6">
                     <%= f.text_field :last_name, 
                               required: true,
                               class: "_input _1 form-control m-bottom1", placeholder: "Last name" %>
-                  </div>
-                  <div class="col-12">
+                  </section>
+                  <section class="col-12">
                     <%= f.password_field :password,
                               required: true,
                               hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                               input_html: { autocomplete: "new-password" },
                               class: "_input _1 form-control m-bottom1", placeholder: "Create a password" %>
-                  </div>
-                  <div class="col-12">
+                  </section>
+                  <section class="col-12">
                     <%= f.password_field :password_confirmation,
                               required: true,
                               input_html: { autocomplete: "new-password" },
                               class: "_input _1 form-control m-bottom1", placeholder: "Confirm password" %>
-                  </div>
+                  </section>
                 </div>
                 <br/>
                 <div class="form-actions">
@@ -85,6 +88,48 @@
   <%= render "shared/minifooter" %>
 </div>
 
+              <div class="form_wrapper">
+                <fieldset class="msf_hide">
+                    <h2>The first form</h2>
+                  <div>
+                      <input type="text" name="firstname" placeholder="First Name">
+                    <input type="text" name="lastname" placeholder="Last Name">
+                  </div>
+                  <div>
+                    <input type="email" name="email" placeholder=" Your Email">
+                  </div>
+                    <input type="button" name="back" value="Back"  onclick="msf_btn_back()">
+                      <input type="button" name="next" value="Next"  onclick="msf_btn_next()">
+                  <div class="msf_bullet_o"></div>
+                  <div class="msf_line"></div>
+                </fieldset>
+
+                <fieldset class="msf_hide">
+                    <h2>This is form 2</h2>
+                    <input type="text" name="school" placeholder="School">
+                    <input type="date" name="date" placeholder="Birthdate">
+                  <div>
+                    <input type="radio" name="gender" value="male" checked> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>
+                    <input type="radio" name="gender" value="other"> Other
+                  </div>
+                  <input type="button" name="back" value="Back"  onclick="msf_btn_back()">
+                    <input type="button" name="next" value="Next"  onclick="msf_btn_next()">
+                  <div class="msf_bullet_o"></div>
+                  <div class="msf_line"></div>
+                </fieldset>
+
+                <fieldset class="msf_hide">
+                    <h2>The last form</h2>
+                    <input type="text" name="name" placeholder="Name">
+                    <input type="email" name="email" placeholder="Email">
+                  <input type="button" name="back" value="Back"  onclick="msf_btn_back()">
+                  <input type="button" name="next" value="Next"  onclick="msf_btn_next()">
+                    <input type="submit" name="submit" value="Submit Now!" onclick="">
+                  <div class="msf_bullet_o"></div>
+                  <div class="msf_line"></div>
+                </fieldset>
+              </div>
 
 <style type="text/css">
   body{

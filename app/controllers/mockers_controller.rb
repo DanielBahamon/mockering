@@ -33,6 +33,7 @@ class MockersController < ApplicationController
 
 	end
 
+
 	def username_validator
 	    if params[:slug].size <= 2
 	    	render json: { valid: false }

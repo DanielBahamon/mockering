@@ -1,6 +1,6 @@
 ready = ->
-  $('#invalid-username').hide()
-  $('#valid-username').hide()
+  $('.invalid-username').hide()
+  $('.valid-username').hide()
 
   $('#mocker_username').on 'keyup', (event) ->
     $.ajax
@@ -10,11 +10,11 @@ ready = ->
       error: (jqXHR, textStatus, errorThrown) ->
       success: (data, textStatus, jqXHR) ->
         if data.valid is true
-          $('#invalid-username').hide()
-          $('#valid-username').show()
+          $('.invalid-username').hide()
+          $('.valid-username').show()
         else if data.valid is false
-          $('#valid-username').hide()
-          $('#invalid-username').show()
+          $('.valid-username').hide()
+          $('.invalid-username').show()
     event.stopImmediatePropagation();
     return false
   return false
