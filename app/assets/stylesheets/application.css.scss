@@ -208,6 +208,7 @@
   .v-middle{
     vertical-align:middle;
   }
+  ._link{cursor:pointer;}
   ._link._1{color:#3a667b;}
   ._link._1:hover{text-decoration:none; color:#0e7b8d;}
   ._fw100{font-weight: 100;}
@@ -337,6 +338,19 @@
   }
   ._btn._session._facebook span:last-child{
     margin-left:3px;
+  }
+  ._btnround {
+    border-radius: 369px;
+    background: white;
+    border: 1px solid #010101;
+    text-align:center;
+    -webkit-transition:all .2s ease;
+    transition:all .2s ease;
+  }
+  ._btnround:hover {
+    text-decoration:none;
+    -webkit-transform:translateY(-2px);
+    transform:translateY(-2px);
   }
 /* END BUTTON */
 

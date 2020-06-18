@@ -15,6 +15,4 @@
 //= require toastr
 //= require masonry/jquery.masonry
 //= require bootstrap
-//= require cstm
-//= require jquery.steps
 //= require_tree .
