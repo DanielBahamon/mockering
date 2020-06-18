@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
   
+
   # root "mocks#index"
   devise_scope :mocker do
-    authenticated :user do
-      root 'mocks#index', as: :authenticated_root
-    end
-
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
+    root to: "devise/sessions#new"
   end
-
 
   resources :mockers
   devise_for :mockers,
