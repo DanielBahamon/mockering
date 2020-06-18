@@ -5,7 +5,8 @@ class MockersController < ApplicationController
 
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
-    	# @mocks = @mocker.mocks
+    	@mocks = @mocker.mocks
+
 	end
 
 	def index

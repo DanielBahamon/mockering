@@ -1,1 +1,5 @@
-<h1>Hola <%= current_mocker.first_name %></h1>
+<h1><%= current_mocker.first_name if current_mocker.present? %></h1>
+<p><%= current_mocker.slug if current_mocker.present? %></p>
+
+<h1><%= @mocker.first_name %></h1>
+<h1><%= @mocker.slug %></h1>

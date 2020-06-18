@@ -14,11 +14,7 @@ class Mocker < ApplicationRecord
   	acts_as_voter
 
 	extend FriendlyId
-	friendly_id :full_name, use: :slugged
-
-	  def full_name
-	    "#{first_name} #{last_name}"
-	  end
+	friendly_id :first_name, use: :slugged
 	  
 	validates :id, presence: true
 
