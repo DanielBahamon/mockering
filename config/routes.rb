@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   
-  get 'pages/terms'
-
-  get 'pages/policy'
-
   # root "mocks#index"
   devise_scope :mocker do
-    root to: "devise/sessions#new"
+    authenticated :user do
+      root 'mocks#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
   end
+
 
   resources :mockers
   devise_for :mockers,
