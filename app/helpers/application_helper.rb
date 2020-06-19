@@ -1,2 +1,10 @@
 module ApplicationHelper
+  def avatar_url(user)
+    if mocker.image
+      "https://graph.facebook.com/#{user.uid}/picture?type=large"
+    else
+      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+      "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identicon&s=150"
+    end
+  end
 end

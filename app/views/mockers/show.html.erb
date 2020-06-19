@@ -1,5 +1,11 @@
 <h1><%= current_mocker.first_name if current_mocker.present? %></h1>
 <p><%= current_mocker.slug if current_mocker.present? %></p>
-
+<% if @mocker.provider != "facebook" && !@mocker.photo? %>
+	<%= image_tag @mocker.image %>
+<% elsif @mocker.provider == "facebook" && !@mocker.photo? %>
+	<%= image_tag avatar_url(@mocker), class: "avatar-full avatar-circle avatarprofile" %>
+<% else %>
+	<%= image_tag @mocker.photo.url(:medium) %>
+<% end %>
 <h1><%= @mocker.first_name %></h1>
 <h1><%= @mocker.slug %></h1>

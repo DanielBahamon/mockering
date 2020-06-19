@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200611214556) do
+ActiveRecord::Schema.define(version: 20200618232356) do
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"
@@ -59,6 +59,11 @@ ActiveRecord::Schema.define(version: 20200611214556) do
     t.datetime "birthday"
     t.string "slug"
     t.boolean "admin", default: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true

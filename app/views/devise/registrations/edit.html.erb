@@ -28,6 +28,10 @@
                         input_html: { autocomplete: "Bio" }%>
 
 
+            <span class="btn btn-default btn-file">
+                <%= f.file_field :photo %>
+            </span>
+
             <%= f.input :password,
                         hint: "leave it blank if you don't want to change it",
                         required: false,

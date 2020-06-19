@@ -2,7 +2,6 @@ class MockersController < ApplicationController
 	before_action :authenticate_mocker!, except: [:show, :username_validator]
    	before_action :set_mocker, only: [:show, :edit, :update, :destroy]
 	
-
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
     	@mocks = @mocker.mocks
@@ -53,7 +52,7 @@ class MockersController < ApplicationController
 	end
 
 	def mocker_params
-		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday)
+		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo)
 	end
 
 

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug)
   	end
   	devise_parameter_sanitizer.permit(:account_update) do |mocker|
-  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :bio)
+  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :bio, :photo)
   	end
   end
 

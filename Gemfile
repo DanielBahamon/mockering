@@ -18,6 +18,8 @@ gem 'sassc-rails', '>= 2.1.0'
 
 gem 'jquery-rails'
 
+gem 'dragonfly', '~> 1.2' 
+gem 'avatar_magick', '~> 1.0', '>= 1.0.2'
 
 gem 'toastr-rails', '~> 1.0'
 
@@ -54,8 +56,6 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
-
-# gem 'activeuuid', '~> 0.6.1'
 
 gem 'mysql-binuuid-rails'
 

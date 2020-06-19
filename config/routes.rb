@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
 
-  
+
 
 
 # This is just for the path for /:slug
