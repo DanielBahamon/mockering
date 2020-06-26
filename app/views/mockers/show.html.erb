@@ -9,3 +9,12 @@
 <% end %>
 <h1><%= @mocker.first_name %></h1>
 <h1><%= @mocker.slug %></h1>
+<p><%= @mocker.follower_ids.count %> Followers </p>
+<p><%= @mocker.following_ids.count %> Following </p>
+<% if mocker_signed_in? && current_mocker != @mocker %>
+	<% if current_mocker.following?(@mocker) %>
+		<%= button_to "Unfollow", friendships_path(mocker_id: @mocker.id), method: :delete, class: "btn _btn _1" %>
+	<% else %>
+		<%= button_to "Follow", friendships_path(mocker_id: @mocker.id), class: "btn _btn _1" %>
+	<% end %>
+<% end %>

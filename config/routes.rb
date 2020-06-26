@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   get 'policy' => 'pages#policy'
 
 
-
+  resource :friendships, only: [:create, :destroy]
 
 # This is just for the path for /:slug
 # resources :mockers, path: '/'

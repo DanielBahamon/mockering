@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200618232356) do
+ActiveRecord::Schema.define(version: 20200625174748) do
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20200618232356) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.string "follower_id"
+    t.string "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_friendships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
+  end
+
   create_table "mockers", id: :string, limit: 36, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -63,7 +73,6 @@ ActiveRecord::Schema.define(version: 20200618232356) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string "avatar"
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true
@@ -89,6 +98,12 @@ ActiveRecord::Schema.define(version: 20200618232356) do
     t.string "movie_content_type"
     t.integer "movie_file_size"
     t.datetime "movie_updated_at"
+    t.boolean "original"
+    t.boolean "topicality"
+    t.boolean "research"
+    t.boolean "reaction"
+    t.boolean "urbanexploration"
+    t.string "category"
     t.index ["id"], name: "sqlite_autoindex_mocks_1", unique: true
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
   end

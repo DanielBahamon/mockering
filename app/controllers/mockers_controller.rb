@@ -5,7 +5,6 @@ class MockersController < ApplicationController
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
     	@mocks = @mocker.mocks
-
 	end
 
 	def index
@@ -54,6 +53,5 @@ class MockersController < ApplicationController
 	def mocker_params
 		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo)
 	end
-
 
 end

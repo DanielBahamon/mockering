@@ -1,16 +1,356 @@
-<div class="container">
-	<div id="mocks" class="transitions-enabled">
-		<% @mocks.each do |mock| %>
-			<div class="card box">
-				<%= link_to (image_tag mock.picture.url(:medium), class: "card-img-top"), mock %>
-				<div class="card-body">
-					<h2 class="card-title"><%= link_to mock.title, mock %></h2>
-				</div>
-				<div class="card-footer">
-					<p class="card-text"><%= mock.mocker.slug %></p>
+<div class="row m-0" id="_big_row_index">
+	<div class="col-12 col-md-3 col-xl-2 _sidenav" id="_sidenav">
+		<div class="row m-0" >
+			<div class="col-12">
+				<div id="_row_sidenav1">
+					<div class="d-table fullscreen ">
+						<div class="d-tablecell v-middle">
+							<%= link_to root_path, data: { no_turbolink: true } do %>
+						      <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-light.svg', width: 136, height: 67, alt: 'Mockering'%>
+						    <% end %>
+						</div>
+					</div>
 				</div>
 			</div>
-		<% end %>
+		</div>
+		<div class="row m-0">
+			<div class="col-12">
+				<div id="_row_sidenav2">
+					<div class="d-table fullscreen ">
+						<div class="d-tablecell v-middle">
+							<ul class="_listsidenav">
+								<li><%= link_to root_path, class: "_link _sidenav" do %>
+										<p>Home</p>
+										<span></span>
+									<% end %>
+								</li>
+								<li><%= link_to root_path, class: "_link _sidenav" do %>
+										<p>Discover</p>
+										<span></span>
+									<% end %>
+								</li>
+								<li><%= link_to root_path, class: "_link _sidenav" do %>
+										<p>Popular</p>
+										<span></span>
+									<% end %>
+								</li>
+								<li><%= link_to root_path, class: "_link _sidenav" do %>
+										<p>Recent</p>
+										<span></span>
+									<% end %>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="row m-0" id="_row_sidenav3">
+			<div class="col-12">
+				<div class="_dataccunt">
+					<% if mocker_signed_in? %>
+					<div class="row m-0">
+						<div class="col-3">
+							<div class="d-table fullscreen">
+								<div class="d-tablecell v-middle">
+									<% if current_mocker.provider != "facebook" && !current_mocker.photo? %>
+										<%= image_tag current_mocker.image, class: "_avatar _1" %>
+									<% elsif current_mocker.provider == "facebook" && !current_mocker.photo? %>
+										<%= image_tag avatar_url(current_mocker), class: "_avatar _1" %>
+									<% else %>
+										<%= image_tag current_mocker.photo.url(:medium), class: "_avatar _1" %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<div class="col-9 p-0">
+							<p class="_fw600 m-0"><%= current_mocker.first_name %> <%= current_mocker.last_name %></p>
+							<sup class="m-0">@<%= current_mocker.slug %></sup>
+						</div>
+					</div>
+						
+					<% else %>
+						<%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-9 col-xl-10 _content">
+		<div class="on_content" id="on_content">
+			<div class="row m-0">
+				<div class="col-12 col-md-8 col-xl-9 _board">
+					<div class="mocks_content">
+						<div id="mocks" class="transitions-enabled">
+							<% @mocks.each do |mock| %>
+								<div class="card box">
+									<%= link_to (image_tag mock.picture.url(:medium), class: "card-img-top"), mock %>
+									<div class="card-body">
+										<h2 class="card-title"><%= link_to mock.title, mock %></h2>
+									</div>
+									<div class="card-footer">
+										<p class="card-text"><%= mock.mocker.slug %></p>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-4 col-xl-3 _sideboard " id="_sideboard">
+					<ul class="navbar-nav float-right _navbar _console">
+				    	<li class="nav-item" style="padding-right: 10px;">
+				    		<div class="d-table fullscreen">
+				    			<div class="d-tablecell v-middle">
+				    				<a class="_btn _1" href="#"><i class="material-icons ">add</i> Add mock</a>
+				    			</div>
+				    		</div>
+				    	</li>
+				    	<li class="nav-item">
+				    		<div class="d-table fullscreen">
+				    			<div class="d-tablecell v-middle">
+				    				<a class="_btn_icon" href="#"><i class="material-icons" style="line-height: 2;">notifications_none</i></a>
+				    			</div>
+				    		</div>
+				    	</li>
+				    	<li class="nav-item">
+				    		<div class="d-table fullscreen">
+				    			<div class="d-tablecell v-middle">
+				    				<a class="_btnmenu collapsed" data-toggle="collapse" href="#multiCollapseNavbar" role="button" aria-expanded="false" aria-controls="multiCollapseNavbar" id="_btnmenu">
+										<div class="_iconav" id="_iconav">
+											<span></span><span></span><span></span>
+										</div>
+									</a>
+				    			</div>
+				    		</div>
+						    		
+				    	</li>
+				    </ul>
+					<div class="row fullwidth m-0">
+						<div class="multi-collapse collapse in" id="multiCollapseNavbar" aria-expanded="true" style="">
+							hola
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-12">
+							Hola
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
 	
+<style type="text/css">
+	#_big_row_index{
+		background:#ff5858;
+	}
+	#_sidenav{
+		min-height: 100vh;
+	}
+	#_row_sidenav1{
+		height:10vh;
+		min-height: 150px;
+	}
+	#_row_sidenav2{
+		height:70vh;
+		min-height: 200px;
+	}
+	#_row_sidenav3{
+		height:10vh;
+		min-height:90px;
+	}
+	#_row_sidenav3{
+
+	}
+	#on_content{
+		background: #f4f7f8;
+		height: 100%;
+		border-radius: 29px;
+	}
+	#_sideboard{
+	    background: white;
+	    min-height: 100vh;
+	    border-radius: 0 29px 29px 0;
+	}
+
+	._navbar{
+		padding-top:20px;
+    	flex-direction: inherit !important;
+	}
+	._btn._1{
+	    border: 1px solid;
+	    padding: 12px 16px;
+	    line-height: 1;
+	    text-align: center;
+	    font-weight: 600;
+	    font-size: 12pt;
+	    -webkit-transition: all .2s ease;
+	    transition: all .2s ease;
+	}
+	._btn._1:hover{
+	    color:#ff5858;
+	    border-color: #ff5858;
+	    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff5858, 0 0 0 4px rgba(255,255,255,0.5);
+	}
+	._btn._1:focus{
+		background: rgba(255, 88, 88, 0.09);
+	}
+	._btn._1 .material-icons{
+		font-size: 12pt;
+	    line-height: .9;
+	    vertical-align: bottom;
+	}
+	._btnmenu{
+		display: block;
+		height: 18px;
+		width: 35px;
+		position: relative;
+	}
+	._btnmenu:before {
+		content: '';
+		width: 38px;
+		height: 38px;
+		max-height: 38px;
+		background: rgba(255, 88, 88, 0.09);
+		position: absolute;
+		border-radius: 300px;
+		top: -10px;
+		left: -2px;
+		-webkit-transform: scale(0);
+		transform: scale(0);
+		-webkit-transition: all 0.2s ease-out;
+		transition: all 0.2s ease-out;
+	}
+
+	._btn_icon{
+		position: relative;
+		color:black;
+	}
+	._btn_icon:hover{
+		color:#ff5858;
+	}
+	._btn_icon:before {
+		content: '';
+		width: 38px;
+		height: 38px;
+		max-height: 38px;
+		background: rgba(255, 88, 88, 0.09);
+		position: absolute;
+		border-radius: 300px;
+	    top: -13px;
+	    left: -7px;
+		-webkit-transform: scale(0);
+		transform: scale(0);
+		-webkit-transition: all 0.2s ease-out;
+		transition: all 0.2s ease-out;
+	}
+	._btnmenu:hover:before,
+	._btn_icon:hover:before {
+		transform: scale(1);
+	}
+	._navbar .nav-item{
+    	padding: 0 5px;
+	}
+	._iconav {
+		display: block;
+		margin: 0 auto;
+		width: 70%;
+		height: auto;
+		cursor: pointer;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: transform 2s cubic-bezier(.23,1,.32,1);
+		transition: transform 2s cubic-bezier(.23,1,.32,1);
+	}
+	._iconav span {
+	    display: block;
+	    position: absolute;
+	    height: 2px;
+	    width: 100%;
+	    background: #010101;
+	    border-radius: 9px;
+	    opacity: 1;
+	    left: 0;
+	    -webkit-transform: rotate(0deg);
+	    -moz-transform: rotate(0deg);
+	    -o-transform: rotate(0deg);
+	    transform: rotate(0deg);
+	    -webkit-transition: all 0.2s ease-out;
+	    transition: all 0.2s ease-out;
+	}
+	._iconav span:nth-child(1) {
+	    top: 3px;
+	}
+	._iconav span:nth-child(2) {
+	    top: 8px;
+	}
+	._iconav span:nth-child(3) {
+	    top: 13px;
+	}
+	._iconav.open span,
+	._iconav:hover span{
+		background: #ff5858 ;
+	}
+	._iconav.open span:nth-child(1) {
+	    top: 8px;
+	    -webkit-transform: rotate(135deg);
+	    -moz-transform: rotate(135deg);
+	    -o-transform: rotate(135deg);
+	    transform: rotate(-135deg);
+	}
+	._iconav.open span:nth-child(2) {
+	    opacity: 0;
+	    left: 12px;
+	    width: 80%;
+	}
+	._iconav.open span:nth-child(3) {
+	    top: 8px;
+	    width: 100%;
+	    -webkit-transform: rotate(-135deg);
+	    -moz-transform: rotate(-135deg);
+	    -o-transform: rotate(-135deg);
+	    transform: rotate(135deg);
+	}
+	._content{
+		padding: 15px;
+	}
+	._avatar._1 {
+	    width: 100%;
+	    border-radius: 12px;
+	    border:0px solid white;
+	}
+	._listsidenav {
+		padding: 15px;
+    	list-style: none;
+	}
+	._listsidenav li a{
+		color:white;
+	}
+	._listsidenav._t_one li a{
+		color:white;
+	}
+	._listsidenav._t_dark li a{
+		color:white;
+	}
+	._dataccunt{
+		background: #f86565;
+		padding:15px 0;
+		border-radius: 9px;
+	}
+	._dataccunt p,
+	._dataccunt sup{
+		color:white;
+	}
+</style>
+<script type="text/javascript">
+	
+    $('._btnmenu').click(function(){
+      $('._iconav').toggleClass('open');
+    });
+</script>
