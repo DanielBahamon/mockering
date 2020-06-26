@@ -102,7 +102,9 @@
 				    	<li class="nav-item" style="padding-right: 10px;">
 				    		<div class="d-table fullscreen">
 				    			<div class="d-tablecell v-middle">
-				    				<a class="_btn _1" href="#"><i class="material-icons ">add</i> Add mock</a>
+				    				<%= link_to new_mock_path, class: "_btn _1" do %>
+				    					<i class="material-icons ">add</i> Add mock
+				    				<% end %>
 				    			</div>
 				    		</div>
 				    	</li>
@@ -123,7 +125,6 @@
 									</a>
 				    			</div>
 				    		</div>
-						    		
 				    	</li>
 				    </ul>
 					<div class="row fullwidth m-0">
@@ -134,7 +135,57 @@
 					<br/>
 					<div class="row">
 						<div class="col-12">
-							Hola
+							<p class="_title _1"><b class="fw-800">Advanced</b> Search</p>
+			                <%= search_form_for @q do |f| %><!--, remote: true-->
+			                	<%= f.search_field :title_cont, placeholder: "What you looking for?", class: "_searchfield" %>
+		                	<% end %>
+						</div>
+					</div>
+					<br/>
+					<br/>
+					<div class="row">
+						<div class="col-12">
+							<div class="_ad _1 relative" id="_ad_1">
+								<div class="absolute fullscreen">
+										<div class="top-0 absolute fullwidth p-3">
+											<div class="row m-0">
+												<div class="col-2 p-0">
+													<div class="d-table fullscreen">
+														<div class="d-tablecell v-middle">
+															<% if current_mocker.provider != "facebook" && !current_mocker.photo? %>
+																<%= image_tag current_mocker.image, class: "_avatar _1" %>
+															<% elsif current_mocker.provider == "facebook" && !current_mocker.photo? %>
+																<%= image_tag avatar_url(current_mocker), class: "_avatar _1" %>
+															<% else %>
+																<%= image_tag current_mocker.photo.url(:medium), class: "_avatar _1" %>
+															<% end %>
+														</div>
+													</div>
+												</div>
+												<div class="col-8">
+													<p class="_fw600 m-0 text-white"><%= current_mocker.first_name %> <%= current_mocker.last_name %></p>
+													<sup class="m-0 text-white">@<%= current_mocker.slug %></sup>
+												</div>
+												<div class="col-1 p-0">
+													<div class="d-table fullscreen">
+														<div class="d-tablecell v-top">
+															<p class="_chip _ad">Ad</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="bottom-0 absolute fullwidth p-3">
+											<div class="row">
+												<div class="col-12 text-white">
+													<div class="_cont_mock _1">
+														<p class="m-0">We are right here! Put your advertising just right here. What are you waiting for? I know you are great but think about it</p>
+													</div>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -176,10 +227,66 @@
 	    min-height: 100vh;
 	    border-radius: 0 29px 29px 0;
 	}
+	#_ad_1{
+		background: grey;
+	}
 
+	._cont_mock._1{
+		background:rgba(0, 0, 0, 0.23);
+		border-radius: 10px;
+		padding: 5px 10px; 
+	}
+
+	._cont_mock._1 p{
+		line-height: 1.5;
+		font-size: 9pt;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+	}
+	._chip._ad{
+    	background: #ff5858;
+	    border-radius: 369px;
+	    padding: 5px 13px;
+	    margin: 0;
+	    color:white;
+	    font-size: 10pt;
+	}
+	._ad._1{
+		width:100%;
+		height:250px;
+		border-radius: 20px;
+	}
+	._searchfield{
+	    border: 0;
+	    -webkit-box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.45);
+	    box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.45);
+	    padding: 15px;
+	    border-radius: 20px;
+	    width: 100%;
+    	outline: none !important;
+    	font-weight: 300;
+    	font-size: 12.7pt;
+    	-webkit-transition: all .2s ease;
+    	transition: all .2s ease;
+	}
+	._searchfield:active,
+	._searchfield:hover,
+	._searchfield:focus{
+		transform: translateY(-2px);
+	    -webkit-box-shadow: 0 5px 15px -6px rgba(0, 0, 0, 0.45);
+	    box-shadow: 0 5px 15px -6px rgba(0, 0, 0, 0.45);
+    	outline: none !important;
+	}
 	._navbar{
 		padding-top:20px;
     	flex-direction: inherit !important;
+	}
+	._title._1{
+		font-size: 15pt;
+		font-weight: 400;
 	}
 	._btn._1{
 	    border: 1px solid;

@@ -195,8 +195,18 @@
   textarea {
   	min-height: 250px;
   }
+  
+  .top-0{
+    top:0;
+  }
+  .bottom-0{
+    bottom:0;
+  }
   .relative{
     position: relative;
+  }
+  .absolute{
+    position:absolute;
   }
   .fullscreen{
     width:100%;
@@ -211,8 +221,14 @@
   .d-tablecell{
     display: table-cell;
   }
+  .v-top{
+    vertical-align:top;
+  }
   .v-middle{
     vertical-align:middle;
+  }
+  .v-bottom{
+    vertical-align:bottom;
   }
   ._link{cursor:pointer;}
   ._link._1{color:#3a667b;}

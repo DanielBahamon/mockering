@@ -5,7 +5,9 @@ class MocksController < ApplicationController
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	
 	def index
-		@mocks = Mock.all.order("created_at DESC")
+		# @mocks = Mock.all.order("created_at DESC")
+  		@q = Mock.ransack(params[:q])
+		@mocks = @q.result(distinct: true).order("created_at DESC")
 	end
 
 	def new
@@ -67,6 +69,8 @@ class MocksController < ApplicationController
 		@mock.destroy
 		redirect_to root_path
 	end
+
+
 
 
 
