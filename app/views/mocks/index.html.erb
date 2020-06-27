@@ -146,7 +146,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="_ad _1 relative" id="_ad_1">
-								<div class="absolute fullscreen">
+								<div class="absolute fullscreen _bg_filter">
 										<div class="top-0 absolute fullwidth p-3">
 											<div class="row m-0">
 												<div class="col-2 p-0">
@@ -228,9 +228,14 @@
 	    border-radius: 0 29px 29px 0;
 	}
 	#_ad_1{
-		background: grey;
+		background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/ashwin-vaswani-JqZ7q_S3xOE-unsplash.jpg);
+		background-size: cover;
 	}
 
+	._bg_filter{
+	    background: linear-gradient(0deg, rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.35));
+	    border-radius: 20px;
+	}
 	._cont_mock._1{
 		background:rgba(0, 0, 0, 0.23);
 		border-radius: 10px;
@@ -252,7 +257,7 @@
 	    padding: 5px 13px;
 	    margin: 0;
 	    color:white;
-	    font-size: 10pt;
+	    font-size: 7pt;
 	}
 	._ad._1{
 		width:100%;
@@ -294,6 +299,7 @@
 	    line-height: 1;
 	    text-align: center;
 	    font-weight: 600;
+    	white-space: nowrap;
 	    font-size: 12pt;
 	    -webkit-transition: all .2s ease;
 	    transition: all .2s ease;
