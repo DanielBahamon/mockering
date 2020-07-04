@@ -1,14 +1,13 @@
 class MocksController < ApplicationController
 	
 	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :like, :dislike]
-	before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new]
+	before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
-	
+	before_action :set_search
+
 	def index
-		# @mocks = Mock.all.order("created_at DESC")
-  		@q = Mock.ransack(params[:q])
-		@mocks = @q.result(distinct: true).order("created_at DESC")
 	end
+
 
 	def new
 		@mock = current_mocker.mocks.build
@@ -16,7 +15,6 @@ class MocksController < ApplicationController
 
 	def create
 		@mock = current_mocker.mocks.build(mock_params)
-
 		if @mock.save
 			redirect_to @mock, notice: "Successfully created new Mock"
 		else
@@ -25,7 +23,10 @@ class MocksController < ApplicationController
 	end
 
 	def show
+	    #Display all the host reviews to host (if this user is a guest)
+	    @reviews = @mock.reviews
 	end
+
 
 	def like
 		if current_mocker.voted_for? @mock
@@ -53,8 +54,8 @@ class MocksController < ApplicationController
 		redirect_back fallback_location: root_path
 	end
 
-	def edit
 
+	def edit
 	end
 	
 	def update
@@ -72,8 +73,6 @@ class MocksController < ApplicationController
 
 
 
-
-
 	private
 
 	def find_mock
@@ -81,7 +80,12 @@ class MocksController < ApplicationController
 	end
 
 	def mock_params
-		params.require(:mock).permit(:title, :description, :picture, :music, :movie)
+		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category)
+	end
+
+	def set_search
+		@q = Mock.ransack(params[:q])
+		@mocks = @q.result(distinct: true).order("created_at DESC")
 	end
 
 end

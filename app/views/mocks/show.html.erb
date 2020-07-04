@@ -24,7 +24,7 @@
 
 			<div class="card-body">
 				<h1 class="card-title"><%= @mock.title %></h1>
-				<h6 class="card-subtitle mb-2 text-muted">- <%= @mock.mocker.email %></h6>
+				<h6 class="card-subtitle mb-2 text-muted"><%= link_to @mock.mocker do %><%= @mock.mocker.slug %><% end %></h6>
 				<p class="card-text"><%= @mock.description %></p>
 			</div>
 			<div class="card-footer row">
@@ -44,17 +44,18 @@
 						<%= render 'mocks/dislike_link', mock: @mock %>
 					</div>
 				</div>
+				<div class="reviews">
+					<%= render 'reviews/form' %>
+					<%= render 'reviews/list' %>
+				</div>
 				<div class="col-md-6 pull-right">
 					<%= link_to 'Back',root_path, class: 'btn btn-default' %>
-					<% if current_mocker != @mocker %>
+					<% if current_mocker == @mock.mocker %>
 						<%= link_to 'Edit', edit_mock_path,class: 'btn btn-default' %>
 						<%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-default' %>
 					<% end %>
-						
 				</div>
-				
 			</div>
 		</div>
 	</div>
-	
 </div>

@@ -8,39 +8,14 @@ class Mocker < ApplicationRecord
 	     :recoverable, :rememberable, :validatable, :confirmable,
 	     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-
-    has_many :mocks
-
-    has_many :active_friendships, class_name: "Friendship", foreign_key: "follower_id", dependent: :destroy
-    has_many :passive_friendships, class_name: "Friendship", foreign_key: "followed_id", dependent: :destroy
-
-    def follow(mocker)
-    	active_friendships.create(followed_id: mocker.id)
-    end
-    def unfollow(mocker)
-    	active_friendships.find_by(followed_id: mocker.id).destroy
-    end
-
-    def following?(mocker)
-    	following.include?(mocker)
-    end
-
-    has_many :following, through: :active_friendships, source: :followed
-    has_many :followers, through: :passive_friendships, source: :follower
-
-
-
-
-
   	acts_as_voter
-
 	extend FriendlyId
 	friendly_id :first_name, use: :slugged
 	  
 	validates :id, presence: true
 
 	validates :slug, format: { without: /\s/, message: "must contain no spaces" }
-  	validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+  	# validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
 	def set_uuid
 		self.id = SecureRandom.uuid
@@ -66,6 +41,29 @@ class Mocker < ApplicationRecord
 		  end
 		end
 	end
+
+
+
+    has_many :mocks
+
+    has_many :active_friendships, class_name: "Friendship", foreign_key: "follower_id", dependent: :destroy
+    has_many :passive_friendships, class_name: "Friendship", foreign_key: "followed_id", dependent: :destroy
+
+    def follow(mocker)
+    	active_friendships.create(followed_id: mocker.id)
+    end
+    def unfollow(mocker)
+    	active_friendships.find_by(followed_id: mocker.id).destroy
+    end
+
+    def following?(mocker)
+    	following.include?(mocker)
+    end
+
+    has_many :following, through: :active_friendships, source: :followed
+    has_many :followers, through: :passive_friendships, source: :follower
+
+
 
 	# AVATAR
 

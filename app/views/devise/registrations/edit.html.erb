@@ -13,6 +13,19 @@
             <% end %>
 
 
+            <section class="col-12">
+                <div class="form-group" style="position: relative;">
+                    <span class="username-icon-styles position-absolute" style="right: 10px; top:10px;">
+                      <span id="valid-username" class="fa fa-check-circle valid-username"></span>
+                      <span id="invalid-username" class="fa fa-times-circle invalid-username"></span>
+                    </span>
+                    <%= f.text_field :slug,
+                        placeholder: "Create a username",
+                        required: true,
+                        class: "_input _1 form-control m-bottom1",
+                        id: "mocker_username" %>
+                </div>
+            </section>
             <%= f.input :first_name,
                         required: true,
                         input_html: { autocomplete: "first name" }%>

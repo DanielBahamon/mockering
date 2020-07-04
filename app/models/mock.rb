@@ -3,6 +3,16 @@ class Mock < ApplicationRecord
 	belongs_to :mocker
   	acts_as_votable
 	validates :id, presence: true
+
+	has_many :reviews
+
+	enum category: {
+		Original: 0,
+		Streaming: 1,
+		Report: 2,
+		Reaction: 3,
+		Tutorial: 4
+	}
 	
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }
 	validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
@@ -24,6 +34,8 @@ class Mock < ApplicationRecord
 	def set_uuid
 		self.id = SecureRandom.uuid
 	end
+
+
 
 end
  

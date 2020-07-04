@@ -1,0 +1,36 @@
+<!-- Trigger the modal with a button -->
+<div class="a_before_1" style="width: 28px;margin: 0 auto;">
+  <a class="display-block" data-toggle="modal" data-target="#myModal_<%= @mock.id %>">Comment</a>
+</div>
+
+<!-- Modal -->
+<div id="myModal_<%= @mock.id %>" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-left">Califica y comenta a tu huesped </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @mock.reviews.new do |f| %>
+          
+          <div class="display-grid fullwidth">
+            <%= f.text_area :comment, rows: 3, class: "form-control" %>
+          </div>
+
+          <%= f.hidden_field :mock_id, value: @mock.id %>
+          <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
+
+          <div class="text-center">
+            <br/>
+            <%= f.submit "Agregar comentario", class: "btn btn_primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+

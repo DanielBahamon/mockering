@@ -1,7 +1,7 @@
 class MockersController < ApplicationController
 	before_action :authenticate_mocker!, except: [:show, :username_validator]
    	before_action :set_mocker, only: [:show, :edit, :update, :destroy]
-	
+
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
     	@mocks = @mocker.mocks
@@ -38,6 +38,8 @@ class MockersController < ApplicationController
 	    	render json: { valid: false }
 	    elsif Mocker.find_by_slug(params[:slug].downcase)
 	    	render json: { valid: false }
+	    elsif params[:slug].match(/\s/) || !params[:slug].match(/\A[a-zA-Z0-9]+\Z/)
+	    	render json: { valid: false }
 	    else
 	    	render json: { valid: true }
 	    end
@@ -53,5 +55,4 @@ class MockersController < ApplicationController
 	def mocker_params
 		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo)
 	end
-
 end

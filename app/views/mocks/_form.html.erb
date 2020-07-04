@@ -14,12 +14,17 @@
 		</div>
 		<div class="field">
 			<%= f.label :title %><br/>
-			<%= f.text_field :title, class: 'form-control' %>
+			<%= f.text_field :title, class: 'form-control', required: true %>
 		</div>
 		<div class="field">
 			<%= f.label :description %><br/>
 			<%= f.text_field :description, class: 'form-control' %>
 		</div>
+		<div class="field">
+			<%= f.label :category %><br/>
+			<%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Selecciona...", class: "form-control" %>
+		</div>
+
 		<%= f.submit 'Enviar', class: 'btn btn-primary' %>
 	<% end %>
 </div>

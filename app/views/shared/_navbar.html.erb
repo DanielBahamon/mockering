@@ -1,41 +1,242 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="_navbar1">
-<div class="container">
-  <div class="navbar-brand">
-    <%= link_to root_path, data: { no_turbolink: true } do %>
-      <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', width: 136, height: 67, alt: 'Mockering'%>
-    <% end %>
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-    <ul class="navbar-nav navbar-right">
-      <% if mocker_signed_in? # && current_mocker.admin %>
-        <li class="nav-item"><%= link_to "New Mock", new_mock_path, class: "nav-link" %></li>
-      <% end %>
-      <% if mocker_signed_in? %>
-        <li class="nav-item"><%= link_to "Account", edit_mocker_registration_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+<div class="_nav _1">
+  <div class="_conta _1">
+    <div class="row m-0">
+      <div class="col-4 col-md-3 col-xl-2 p-0">
+        <div class="d-table fullscreen ">
+          <div class="d-tablecell v-middle">
+            <ul class="navbar-nav _navbar _console" style="padding: 0 10px;">
+              <li class="nav-item" style="margin-right: 5px;">
+                <div class="d-table fullscreen">
+                  <div class="d-tablecell v-middle">
+                    <a class="_btnmenu collapsed" data-toggle="collapse" href="#multiCollapseNavbar" role="button" aria-expanded="false" aria-controls="multiCollapseNavbar" id="_btnmenu">
+                    <div class="_iconav" id="_iconav">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <%= link_to root_path, data: { no_turbolink: true } do %>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', class: "_logonav", width: 136, height: 67, alt: 'Mockering'%>
+                <% end %>
+              </li>   
+                
+            </ul>
           </div>
-        </li>
-        <li>
-          
-        </li>
-      <% else %>
-        <li class="nav-item"><%= link_to "Login", new_mocker_session_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Sign Up", new_mocker_registration_path, class: "nav-link" %></li>
-      <% end %>
-    </ul>
+        </div>
+      </div>
+      <div class="col-8 col-md-9 col-xl-10 p-0 d-none d-md-block">
+        <div class="d-table fullscreen ">
+          <div class="d-tablecell v-middle text-center">
+            <div class="row m-0">
+              <div class="col-6 col-sm-7 col_search _1">
+                <%= search_form_for @q, class: "row m-0" do |f| %><!--, remote: true-->
+                  <%= f.search_field :title_or_description_cont, placeholder: "What are you looking for?", class: "_searchfield col-10" %>
+                  <div class="col-2">
+                    <div class="d-table fullscreen ">
+                      <div class="d-tablecell v-middle text-center">
+                        <%= f.submit 'search', class: "btn _btn _2 material-icons" %>   
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-5">
+                <div class="d-table fullscreen ">
+                  <div class="d-tablecell v-middle text-center">
+                    <ul class="navbar-nav float-right _navbar _console">
+                      <% if mocker_signed_in? %>
+                          <li class="nav-item" style="padding-right: 10px;">
+                            <div class="d-table fullscreen">
+                              <div class="d-tablecell v-middle">
+                                <%= link_to new_mock_path, class: "_btn _1" do %>
+                                  <i class="material-icons ">add</i> Add mock
+                                <% end %>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="nav-item" style="margin-right: 6px;">
+                            <div class="d-table fullscreen">
+                              <div class="d-tablecell v-middle">
+                                <a class="_btn_icon" href="#"><i class="material-icons" style="line-height: 2;">notifications_none</i></a>
+                              </div>
+                            </div>
+                          </li>
+                          <div class="navbar p-0">
+                            <li class="nav-item dropdown">
+                              <div class="d-table fullscreen">
+                                <div class="d-tablecell v-middle">
+                                  <a class="_btn_icon_avatar nav-link dropdown-toggle" href="#" id="navbarDropdownAccount2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2">
+                                    <% if mocker_signed_in? # && current_mocker.admin %>
+                                      <%= link_to "Account", edit_mocker_registration_path, class: "nav-link" %>
+                                      <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
+                                    <% else %>
+                                      <%= link_to "Login", new_mocker_session_path, class: "dropdown-item" %>
+                                      <%= link_to "Sign Up", new_mocker_registration_path, class: "dropdown-item" %>
+                                    <% end %>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </div>
+                            
+                        <% end %>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8 col-md-9 col-xl-10 p-0 d-block d-md-none">
+        <div class="d-table fullscreen ">
+          <div class="d-tablecell v-middle text-center">
+            <div class="row m-0">
+              <div class="col-12">
+                <div class="d-table fullscreen ">
+                  <div class="d-tablecell v-middle text-center">
+                    <ul class="navbar-nav float-right _navbar _console">
+                      <% if mocker_signed_in? %>
+                        <li class="nav-item" style="padding-right: 10px;">
+                          <div class="d-table fullscreen">
+                            <div class="d-tablecell v-middle">
+                              <%= link_to new_mock_path, class: "_btn _1" do %>
+                                <i class="material-icons ">add</i> Add mock
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                      <% end %>
+                      <li class="nav-item">
+                        <div class="d-table fullscreen">
+                          <div class="d-tablecell v-middle">
+                            <a class="_btn_icon collapsed"  data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch"><i class="material-icons" style="line-height: 2;">search</i></a>
+                          </div>
+                        </div>
+                      </li>
+                      <% if mocker_signed_in? %>
+                        <li class="nav-item" style="margin-right: 6px;">
+                          <div class="d-table fullscreen">
+                            <div class="d-tablecell v-middle">
+                              <a class="_btn_icon" href="#"><i class="material-icons" style="line-height: 2;">notifications_none</i></a>
+                            </div>
+                          </div>
+                        </li>
+                        <div class="navbar p-0">
+                          <li class="nav-item dropdown">
+                            <div class="d-table fullscreen">
+                              <div class="d-tablecell v-middle">
+                                <a class="_btn_icon_avatar nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
+                                  <% if mocker_signed_in? # && current_mocker.admin %>
+                                    <%= link_to "Account", edit_mocker_registration_path, class: "nav-link" %>
+                                    <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
+                                  <% else %>
+                                    <%= link_to "Login", new_mocker_session_path, class: "dropdown-item" %>
+                                    <%= link_to "Sign Up", new_mocker_registration_path, class: "dropdown-item" %>
+                                  <% end %>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                          
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+                          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row fullwidth m-0 multi-collapse collapse in " id="multiCollapseSearch" aria-expanded="true">
+      <div class="_searchabsolute col-12">
+        <%= search_form_for @q, class: "row m-0" do |f| %><!--, remote: true-->
+          <%= f.search_field :title_or_description_cont, placeholder: "What are you looking for?", class: "_searchfield col-10" %>
+          <div class="col-2">
+            <div class="d-table fullscreen ">
+              <div class="d-tablecell v-middle text-center">
+                <%= f.submit 'search', class: "btn _btn _2 material-icons float-right" %>   
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+    
 </div>
-</nav>
+
+<style type="text/css">
+  @media(max-width: 767px){
+    ._logonav{
+      width:100px;
+    }
+  }
+  ._avatar_navbar{
+    border-radius: 13px;
+    border:1px solid white;
+    min-width: 20px;
+    max-width: 35px;
+    margin: 0 auto;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  ._avatar_navbar:hover,
+  ._avatar_navbar:active,
+  ._avatar_navbar:focus{
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    -webkit-box-shadow: 0 3px 10px -3px rgba(128, 128, 128, 0.54);
+    box-shadow: 0 3px 10px -3px rgba(128, 128, 128, 0.54);
+  }
+  .dropdown-toggle::after{
+    display: none !important;
+  }
+  .navbar-nav._navbar .dropdown-menu{
+    position: fixed !important;
+    float: right !important;
+    right: 10px !important;
+    top: 65px !important;
+    width: max-content !important;
+    left: auto !important;
+    border-color:transparent;
+    padding: 0;
+    border-radius: 9px;
+    -webkit-box-shadow: 0 7px 12px -12px #7a7a7a;
+    box-shadow: 0 7px 12px -12px #7a7a7a;
+  }
+  .navbar-nav._navbar .dropdown-menu .nav-link{
+    text-align: right;
+    color:black;
+    text-decoration: none !important;
+    font-weight: 400;
+    padding: 9px;
+  }
+  .navbar-nav._navbar .dropdown-menu .nav-link:first-child{
+    border-radius: 9px 9px 0 0;
+  }
+  .navbar-nav._navbar .dropdown-menu .nav-link:last-child{
+    border-radius: 0 0 9px 9px;
+  }
+  .navbar-nav._navbar .dropdown-menu .nav-link:hover{
+    font-weight: 600;
+    background: #f4f7f8;
+  }
+</style>
+
+<script type="text/javascript">
+  /* BUTTON MENU */
+      $('._btnmenu').click(function(){
+        $('._iconav').toggleClass('open');
+      });
+  /* END BUTTON MENU */
+</script>

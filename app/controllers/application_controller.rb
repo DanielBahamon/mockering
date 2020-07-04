@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_devise_params, if: :devise_controller?
+  before_action :set_search
 
   helper_method :is_admin!
+
+
+  def set_search
+    @q = Mock.ransack(params[:q])
+    @mocks = @q.result(distinct: true).order("created_at DESC")
+  end
+
 
   protected
 
@@ -11,7 +19,7 @@ class ApplicationController < ActionController::Base
   		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug)
   	end
   	devise_parameter_sanitizer.permit(:account_update) do |mocker|
-  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :bio, :photo)
+  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :bio, :photo, :tag_list)
   	end
   end
 

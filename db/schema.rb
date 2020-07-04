@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200625174748) do
+ActiveRecord::Schema.define(version: 20200703161321) do
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"
@@ -98,14 +98,17 @@ ActiveRecord::Schema.define(version: 20200625174748) do
     t.string "movie_content_type"
     t.integer "movie_file_size"
     t.datetime "movie_updated_at"
-    t.boolean "original"
-    t.boolean "topicality"
-    t.boolean "research"
-    t.boolean "reaction"
-    t.boolean "urbanexploration"
     t.string "category"
     t.index ["id"], name: "sqlite_autoindex_mocks_1", unique: true
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.string "mock_id"
+    t.string "mocker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "votes", force: :cascade do |t|
