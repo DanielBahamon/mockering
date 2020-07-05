@@ -1,4 +1,10 @@
-<div class="container">
+<div class="_container">
+	<div class="_navbar_br"></div>
+	<div class="row m-0">
+		<div class="col-12 col-md-8 col-lg-9">empezar</div>
+		<div class="col-12 col-md-4 col-lg-3">utilizar</div>
+	</div>
+
 	<div class="mock_show">
 		<div class="card">
 			<% if @mock.picture.present? %>
@@ -7,7 +13,7 @@
 				<%= image_tag 'imagenotfound.png', style: "width:100%" %>
 			<% end %>
 			<% if @mock.music.present? %>
-					<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
+				<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
 			<% end %>
 			<% if @mock.movie.present? %>
 			  <video

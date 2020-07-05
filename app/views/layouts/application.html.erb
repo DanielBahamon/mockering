@@ -7,15 +7,25 @@
 
     <%= render 'application/favicon' %>
 
-
     <link href="https://vjs.zencdn.net/7.8.2/video-js.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+    <!-- ScrollMagic -->
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/assets/js/lib/greensock/TweenMax.min.js"></script>
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/assets/js/lib/greensock/plugins/ScrollToPlugin.min.js"></script>
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/assets/js/lib/modernizr.custom.min.js"></script>
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/assets/js/lib/iscroll-probe.js"></script>
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/scrollmagic/minified/ScrollMagic.min.js"></script>
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
+      <script type="text/javascript" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/libraries/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+    <!-- End ScrollMagic -->
+
   </head>
 
   <body>
@@ -28,6 +38,32 @@
     
     <%= yield %>
 
+
+
+
+
+
+
+
+
+
+    <div class="trigger" id="trigger1"></div>
+    <script type="text/javascript">
+      /* BUTTON MENU */
+          $('._btnmenu').click(function(){
+            $('._iconav').toggleClass('open');
+          });
+      /* END BUTTON MENU */
+    </script>
+    <script type="text/javascript">
+      // init controller
+      var controller = new ScrollMagic.Controller();
+      // build tween
+      var scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
+            .setClassToggle("._nav._1", "_shadow")
+            // .addIndicators()
+            .addTo(controller);
+    </script>
     <!-- JQUERY -->
     <script src="https://vjs.zencdn.net/7.8.2/video.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
