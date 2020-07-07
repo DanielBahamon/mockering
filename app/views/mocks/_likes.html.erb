@@ -1,1 +1,1 @@
-<%= pluralize(mock.get_upvotes.size, 'Like') %>
+<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>

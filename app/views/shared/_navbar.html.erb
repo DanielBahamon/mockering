@@ -72,10 +72,12 @@
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2">
                                     <% if mocker_signed_in? # && current_mocker.admin %>
                                       <%= link_to "Account", edit_mocker_registration_path, class: "nav-link" %>
+                                      <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link" %>
+                                      <div class="dropdown-divider"></div>
                                       <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
                                     <% else %>
-                                      <%= link_to "Login", new_mocker_session_path, class: "dropdown-item" %>
-                                      <%= link_to "Sign Up", new_mocker_registration_path, class: "dropdown-item" %>
+                                      <%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
+                                      <%= link_to "Sign Up", new_mocker_registration_path, class: "nav-link" %>
                                     <% end %>
                                   </div>
                                 </div>
@@ -171,6 +173,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-    
+  </div>    
 </div>
+<div class="_navbar_br"></div>

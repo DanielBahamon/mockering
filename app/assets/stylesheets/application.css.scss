@@ -945,6 +945,7 @@
     transition: all .2s ease;
   }
   ._nav._1._shadow{
+    transform:translateY(-1px);
     -webkit-box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.2);
     box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.2);
   }
@@ -1190,9 +1191,6 @@
 /* END STEPS */
 
 /* MOCKS */
-  .mocks_content{
-    padding-top: 66px;
-  }
   ._cont_mock._1{
     background:rgba(0, 0, 0, 0.23);
     border-radius: 10px;
@@ -1231,6 +1229,7 @@
           position: initial !important;
           height: 15vh !important;
           width: 200px !important;
+          min-height:250px;
       }
       #_sidenav {
           position: inherit !important;
