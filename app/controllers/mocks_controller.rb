@@ -4,7 +4,7 @@ class MocksController < ApplicationController
 	before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	before_action :set_search
-
+  	impressionist :actions=>[:show]
 	def index
 	end
 
@@ -23,6 +23,7 @@ class MocksController < ApplicationController
 	end
 
 	def show
+	   	# impressionist(@mock, "message...") # 2nd argument is optional
 	    #Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews
 	end

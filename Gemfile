@@ -27,6 +27,7 @@ gem 'paperclip-av-transcoder', '~> 0.6.4'
 gem 'ransack'
 gem 'activesupport'
 gem 'masonry-rails', '~> 0.2.4'
+gem 'impressionist', '~>1.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
 # Use Puma as the app server

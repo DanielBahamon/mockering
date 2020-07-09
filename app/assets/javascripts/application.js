@@ -14,6 +14,7 @@
 //= require jquery
 //= require toastr
 //= require masonry/jquery.masonry
+//= require counterPlugin.min
 //= require bootstrap
 //= require_tree .
 

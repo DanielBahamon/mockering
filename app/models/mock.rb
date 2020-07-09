@@ -4,6 +4,8 @@ class Mock < ApplicationRecord
   	acts_as_votable
 	validates :id, presence: true
 
+	is_impressionable
+
 	has_many :reviews
 
 	enum category: {

@@ -116,6 +116,8 @@ GEM
     hashie (4.1.0)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
@@ -307,6 +309,7 @@ DEPENDENCIES
   font-awesome-sass
   friendly_id (~> 5.2.4)
   haml (~> 5.1, >= 5.1.2)
+  impressionist (~> 1.6.1)
   jbuilder (~> 2.5)
   jquery-rails
   masonry-rails (~> 0.2.4)
