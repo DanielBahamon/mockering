@@ -78,12 +78,12 @@
 							
 							<div id="mocks" class="transitions-enabled">
 								<% @mocks.each do |mock| %>
-									<div class="card box _card">
-										<%= link_to (image_tag mock.picture.url(:medium), class: "card-img-top"), mock %>
+									<%= link_to mock, class: "link_card card box _card" do %>
+										<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
 										<div class="_cardbody">
 											<div class="row">
 												<div class="col-12">
-													<p class="_cardtitle"><%= link_to mock.title, mock %></p>
+													<p class="_cardtitle"><%= mock.title %></p>
 												</div>
 												<div class="row m-0 fullwidth">
 													<div class="col-6 d-flex">
@@ -95,7 +95,7 @@
 														<div class="text-ellipsis">
 															<div class="d-table fullscreen">
 																<div class="d-tablecell v-middle ">
-																	<p class="_fs10pt m-0 "><%= link_to mock.mocker, class: "text-white" do %>@<%= mock.mocker.slug %><% end %></p>
+																	<p class="_fs10pt m-0 ">@<%= mock.mocker.slug %></p>
 																</div>
 															</div>
 														</div>
@@ -113,9 +113,10 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									<% end %>
 								<% end %>
 							</div>
+							<%= will_paginate @mocks %>
 						</div>
 					</div>
 				</div>

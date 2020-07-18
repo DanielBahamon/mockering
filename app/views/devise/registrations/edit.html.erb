@@ -1,68 +1,177 @@
-<div class="container">
-    <div class="col-md-6 col-md-offset-3">
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="_conta _1">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="row m-0">
+      <div class="col-12 col-md-3">
+        <div class="nav flex-column nav-pills _navpills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= f.error_notification %>
-
-          <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
-
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-            <% end %>
-
-
-            <section class="col-12">
-                <div class="form-group" style="position: relative;">
-                    <span class="username-icon-styles position-absolute" style="right: 10px; top:10px;">
-                      <span id="valid-username" class="fa fa-check-circle valid-username"></span>
-                      <span id="invalid-username" class="fa fa-times-circle invalid-username"></span>
-                    </span>
-                    <%= f.text_field :slug,
-                        placeholder: "Create a username",
-                        required: true,
-                        class: "_input _1 form-control m-bottom1",
-                        id: "mocker_username" %>
+          <%= link_to :back, class: "_link_back"  do %>
+            <i class="material-icons">keyboard_arrow_left</i> <span style="font-size:10pt;">Back</span>
+          <% end %>
+          <div class="row m-0" style="margin-bottom: 15px !important;">
+            <div class="col-4">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle ">
+                        <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
+                    </div>
                 </div>
-            </section>
-            <%= f.input :first_name,
-                        required: true,
-                        input_html: { autocomplete: "first name" }%>
-            <%= f.input :last_name,
-                        required: true,
-                        input_html: { autocomplete: "last name" }%>
-            <%= f.label "Birthday" %>
-            <%= f.date_field :birthday,
-                        required: true,
-                        input_html: { autocomplete: "Birthday" }%>
-            <%= f.input :bio,
-                        required: true,
-                        input_html: { autocomplete: "Bio" }%>
-
-
-            <span class="btn btn-default btn-file">
-                <%= f.file_field :photo %>
-            </span>
-
-            <%= f.input :password,
-                        hint: "leave it blank if you don't want to change it",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
+            </div>
+            <div class="col-8">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle p-1">
+                        <b><%= current_mocker.first_name %> <%= current_mocker.last_name %></b>
+                    </div>
+                </div>
+            </div>
           </div>
+          <a class="nav-link active" id="v-pills-personal-data-tab" data-toggle="pill" href="#v-pills-personal-data" role="tab" aria-controls="v-pills-personal-data" aria-selected="false">Personal data</a>
+          <a class="nav-link" id="v-pills-desription-tab" data-toggle="pill" href="#v-pills-desription" role="tab" aria-controls="v-pills-desription" aria-selected="false">Description</a>
+          <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social Media</a>
+          <a class="nav-link" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-9">
+            <div class="tab-content _tabcontent" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-personal-data" role="tabpanel" aria-labelledby="v-pills-personal-data-tab">
+                <div class="cont_account row">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <div class="row">
+                                <div class="col-12 col-md-6 _col_inputsaccount">
+                                    <div class="d-grid">
+                                        <%= f.label "Firstname" %>
+                                        <%= f.text_field :first_name, class: "_input _2 form-control",
+                                            required: true,
+                                            input_html: { autocomplete: "first name" }%>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 _col_inputsaccount">
+                                    <div class="d-grid">
+                                        <%= f.label "Lastname" %>
+                                        <%= f.text_field :last_name, class: "_input _2 form-control",
+                                            required: true,
+                                            input_html: { autocomplete: "last name" }%>
+                                    </div>
+                                </div>
+                                <section class="col-12 _col_inputsaccount">
+                                    <%= f.label "Username" %>
+                                    <div class="form-group" style="position: relative;">
+                                        <span class="username-icon-styles position-absolute" style="right: 6px; top:7px;">
+                                          <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
+                                          <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
+                                        </span>
+                                        <%= f.text_field :slug, class: "_input _2 form-control", required: true,
+                                            id: "mocker_username" %>
+                                    </div>
+                                </section>
+                                <div class="col-12 _col_inputsaccount">
+                                    <div class="d-grid">
+                                        <%= f.label "Email" %>
+                                        <%= f.email_field :email, class: "_input _2 form-control", required: true %>
+                                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                                          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="col-12 _col_inputsaccount">
+                                    <div class="d-grid">
+                                        <%= f.label "Birthday" %>
+                                        <%= f.date_field :birthday, class: "_input _2 form-control",
+                                            required: true,
+                                            input_html: { autocomplete: "Birthday" }%>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 _col_inputsaccount">
+                                    <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload_coverpage" role="button" aria-expanded="false" aria-controls="collapseUpload_coverpage"><i class="far fa-image" style="float: right;line-height: 1.5;"></i>Cover page</a>
+                                    <div class="collapse" id="collapseUpload_coverpage">
+                                      <div class="card-body p-0">
+                                        <br/>
+                                        <%= f.file_field :coverpage, class: "avatar_file" %>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 _col_inputsaccount">
+                                    <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload" role="button" aria-expanded="false" aria-controls="collapseUpload"><i class="far fa-user-circle" style="float: right;line-height: 1.5;"></i> Avatar</a>
+                                    <div class="collapse" id="collapseUpload">
+                                      <div class="card-body p-0">
+                                        <br/>
+                                        <%= f.file_field :photo, class: "avatar_file" %>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center m-b-1em">
+                                    <%= f.submit "Update", class: "_btn _1 f-right" %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-desription" role="tabpanel" aria-labelledby="v-pills-desription-tab">
+                <div class="cont_account row">
+                    <div class="col-12 _col_inputsaccount">
+                        <%= f.label "Your description" %>
+                        <%= f.text_area :bio, class: "_textarea _2 form-control", required: true, input_html: { autocomplete: "Bio" },  maxlength: "600", rows: "4" %>
+                    </div>
+                    <div class="col-12 text-center m-b-1em">
+                        <%= f.submit "Update", class: "_btn _1 f-right" %>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-desription" role="tabpanel" aria-labelledby="v-pills-desription-tab">
+                <div class="cont_account row">
+                    <div class="col-12 _col_inputsaccount">
 
-          <div class="form-actions">
-            <%= f.button :submit, "Update" %>
-          </div>
-        <% end %>
+                        <%= f.label "Facebook" %>
+                        <%= f.text_field :facebook, class: "_input _2 form-control",
+                            placeholder: "https://www.facebook.com/your_profile",
+                            input_html: { autocomplete: "facebook" }%>
+                        <%= f.label "Instagram" %>
+                        <%= f.text_field :instagram, class: "_input _2 form-control",
+                            placeholder: "https://www.instagram.com/your_profile",
+                            input_html: { autocomplete: "instagram" }%>
+                        <%= f.label "Twitter" %>
+                        <%= f.text_field :instagram, class: "_input _2 form-control",
+                            placeholder: "https://twitter.com/your_profile",
+                            input_html: { autocomplete: "twitter" }%>
+                        <%= f.label "Pinterest" %>
+                        <%= f.text_field :pinterest, class: "_input _2 form-control",
+                            placeholder: "https://www.pinterest.com/your_profile",
+                            input_html: { autocomplete: "pinterest" }%>
+                        <%= f.label "Linked In" %>
+                        <%= f.text_field :linkedin, class: "_input _2 form-control",
+                            placeholder: "https://linkedin.com/your_profile",
+                            input_html: { autocomplete: "linkedin" }%>
 
-        <h3>Cancel my account</h3>
-
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-        <%= link_to "Back", :back %>
+                    </div>
+                    <div class="col-12 text-center m-b-1em">
+                        <%= f.submit "Update", class: "_btn _1 f-right" %>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+                <div class="cont_account row">
+                    <div class="col-12 _col_inputsaccount">
+                        <%= f.label "New Password" %>
+                        <%= f.password_field :password, class: "_input _2 form-control",
+                                    hint: "leave it blank if you don't want to change it",
+                                    required: false,
+                                    input_html: { autocomplete: "new-password" } %>
+                        <%= f.label "Confirm password" %>
+                        <%= f.password_field :password_confirmation, class: "_input _2 form-control",
+                                    required: false,
+                                    input_html: { autocomplete: "new-password" } %>
+                    </div>
+                    <div class="col-12 text-center m-b-1em">
+                        <%= f.submit "Update", class: "_btn _1 _update f-right" %>
+                    </div>
+                </div>
+              </div>
+            </div>
+      </div>
     </div>
+    <% end %>
+
+    <!--<h3>Cancel my account</h3>-->
+
+    <% link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 </div>

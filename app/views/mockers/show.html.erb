@@ -1,20 +1,153 @@
-<h1><%= current_mocker.first_name if current_mocker.present? %></h1>
-<p><%= current_mocker.slug if current_mocker.present? %></p>
-<% if @mocker.provider != "facebook" && !@mocker.photo? %>
-	<%= image_tag @mocker.image %>
-<% elsif @mocker.provider == "facebook" && !@mocker.photo? %>
-	<%= image_tag avatar_url(@mocker), class: "avatar-full avatar-circle avatarprofile" %>
-<% else %>
-	<%= image_tag @mocker.photo.url(:medium) %>
-<% end %>
-<h1><%= @mocker.first_name %></h1>
-<h1><%= @mocker.slug %></h1>
-<p><%= @mocker.follower_ids.count %> Followers </p>
-<p><%= @mocker.following_ids.count %> Following </p>
-<% if mocker_signed_in? && current_mocker != @mocker %>
-	<% if current_mocker.following?(@mocker) %>
-		<%= button_to "Unfollow", friendships_path(mocker_id: @mocker.id), method: :delete, class: "btn _btn _1" %>
-	<% else %>
-		<%= button_to "Follow", friendships_path(mocker_id: @mocker.id), class: "btn _btn _1" %>
-	<% end %>
-<% end %>
+<div class="_conta _1">
+	<div class="row m-0">
+		<div class="col-12 col-md-3">
+			<div class="row cont_coverpage d-sm-block d-md-none">
+				<div class="col-12 p-0">
+					<div class="gradient _1"></div>
+					<%= image_tag @mocker.coverpage, class: "_coverpage", style: "border-radius:3px;" %>
+				</div>
+			</div>
+			<div class="row cont_user">
+				<div class="col-12 text-center">
+					<br>
+					<%= image_tag avatar_url(@mocker), class: "_avatar _3" %>
+					<br>
+				</div>
+				<div class="col-12 text-center">
+					<h4 class="_name _fw400 m-0"><%= @mocker.first_name.capitalize %> <%= @mocker.last_name.capitalize %></h4>
+					<p class="_fw400">@<%= @mocker.slug %></p>
+				</div>
+				<div class="col-12 text-center">
+					<% if mocker_signed_in? && current_mocker != @mocker %>
+						<% if current_mocker.following?(@mocker) %>
+							<%= button_to "Unfollow", friendships_path(mocker_id: @mocker.id), method: :delete, class: "btn _btn _action m-0-auto unfollow" %>
+							<br/>
+						<% else %>
+							<%= button_to "Follow", friendships_path(mocker_id: @mocker.id), class: "btn _btn _action m-0-auto follow" %>
+							<br/>
+						<% end %>
+					<% else %>
+						<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _1 m-0-auto", style: "width: max-content;" %>
+						<br/>
+					<% end %>
+				</div>
+				<div class="col-4 text-center d-grid">
+					<h4 class="_fw600 text-ellipsis"><%= number_to_human(@mocker.mocks.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h4>
+					<% num_mocks = @mocker.mocks.count %>
+					<b class="_fs10pt"><%= 'Mock'.pluralize(num_mocks) %></b>
+				</div>
+				<div class="col-4 text-center d-grid">
+					<h4 class="_fw600 text-ellipsis"><%= number_to_human(@mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h4>
+					<% num_followers = @mocker.follower_ids.count %>
+					<b class="_fs10pt"><%= 'Follower'.pluralize(num_followers) %> </b>
+				</div>
+				<div class="col-4 text-center d-grid">
+					<h4 class="_fw600 text-ellipsis"><%= number_to_human(@mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h4>
+					<% num_followings = @mocker.following_ids.count %>
+					<b class="_fs10pt"><%= "Following".pluralize(num_followings) %></b>
+				</div>
+			</div>
+			<br>
+			<div class="row m-0">
+				<div class="col-12">
+					<div class="readmore _1">
+						<p class="keepspaces"><%= @mocker.bio %></p>
+					</div>
+				<br>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-9 ">
+			<div class="row m-0 d-sm-none d-md-block">
+				<div class="col-12">
+					<%= image_tag @mocker.coverpage, class: "_coverpage" %>
+				</div>
+			</div>
+			<br>
+			<div class="row m-0">
+				<div class="col-12">
+					<div class="mocks_content">
+						<div id="mocks" class="transitions-enabled">
+								<% @mocks.each do |mock| %>
+									<%= link_to mock, class: "link_card card box _card _1" do %>
+										<%= image_tag mock.picture.url(:large), class: "card-img-top _1" %>
+										<div class="_cardbody">
+											<div class="row">
+												<div class="col-12">
+													<h5 class="card-title _title _fw600"><%= mock.title %></h5>
+								        			<p class="card-text _description"><%= mock.description %></p>
+												</div>
+												<div class="row m-0 fullwidth">
+													<div class="col-6">
+														
+														<div class="text-ellipsis">
+															<div class="d-table fullscreen">
+																<div class="d-tablecell v-middle ">
+																	<small class="text-white"><%= mock.created_at.strftime("%d %b %Y").downcase  %></small>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="d-table fullscreen">
+															<div class="d-tablecell v-middle">
+																<div class="d-flex" style="width: max-content;float: right;">
+																	<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
+																	<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<% end %>
+								<% end %>
+						</div>
+						<br>
+						<%= will_paginate @mocks %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style type="text/css">
+	.keepspaces{
+		white-space: pre-wrap;
+		overflow-wrap: break-word;
+	}
+	.cont_coverpage{
+		position: absolute;
+	}
+	.cont_user{
+	    z-index: 3;
+	    position: inherit;
+	}
+	@media(max-width: 767px){
+		.cont_user{
+		    margin-top: 120px;
+		}
+	}
+	.gradient{
+		position: absolute;
+		z-index: 2;
+	}
+	.gradient._1{
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+		background:linear-gradient(0deg, white, #ffffffd9, transparent);
+	}
+</style>
+<script type="text/javascript">
+	$('.readmore').readmore({
+			speed: 75,
+			collapsedHeight: 90,
+			moreLink: '<a href="#" class="link-2">Mostrar más</a>',
+	  		lessLink: '<a href="#" class="link-2">Mostrar menos</a>'
+		}
+	);
+</script>

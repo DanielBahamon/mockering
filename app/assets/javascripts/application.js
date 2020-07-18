@@ -16,5 +16,6 @@
 //= require masonry/jquery.masonry
 //= require counterPlugin.min
 //= require bootstrap
+//= require readmore
 //= require_tree .
-
+ 

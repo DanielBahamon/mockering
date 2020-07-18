@@ -5,9 +5,10 @@ class MocksController < ApplicationController
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	before_action :set_search
   	impressionist :actions=>[:show]
-	def index
-	end
 
+	def index
+		@mocks = Mock.paginate(page: params[:page], per_page: 30)
+	end
 
 	def new
 		@mock = current_mocker.mocks.build
@@ -27,7 +28,6 @@ class MocksController < ApplicationController
 	    #Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews
 	end
-
 
 	def like
 		if current_mocker.voted_for? @mock
@@ -55,7 +55,6 @@ class MocksController < ApplicationController
 		redirect_back fallback_location: root_path
 	end
 
-
 	def edit
 	end
 	
@@ -71,7 +70,6 @@ class MocksController < ApplicationController
 		@mock.destroy
 		redirect_to root_path
 	end
-
 
 
 	private

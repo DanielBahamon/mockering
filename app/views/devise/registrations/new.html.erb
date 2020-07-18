@@ -29,9 +29,10 @@
                   <fieldset class="msf_hide">
                     <section class="col-12">
                       <div class="form-group" style="position: relative;">
-                        <span class="username-icon-styles position-absolute" style="right: 10px; top:10px;">
-                          <span id="valid-username" class="fa fa-check-circle valid-username"></span>
-                          <span id="invalid-username" class="fa fa-times-circle invalid-username"></span>
+                        <span class="username-icon-styles position-absolute" style="right: 0; top:5px;">
+
+                          <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
+                          <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
                         </span>
                         <%= f.text_field :slug,
                                 placeholder: "Create a username",
@@ -119,7 +120,8 @@
   body{
     background:white;
   }
-  #_navbar1{
+  ._nav._1,
+  ._navbar_br{
     display: none;
     visibility: hidden;
   }

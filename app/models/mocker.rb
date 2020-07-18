@@ -14,8 +14,11 @@ class Mocker < ApplicationRecord
 	  
 	validates :id, presence: true
 
-	validates :slug, format: { without: /\s/, message: "must contain no spaces" }
+	validates :slug, format: { without: /\s/ , message: "must contain no spaces" }
+  	validates :slug, :uniqueness => true
   	# validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+
+
 
 	def set_uuid
 		self.id = SecureRandom.uuid
@@ -67,9 +70,11 @@ class Mocker < ApplicationRecord
 
 	# AVATAR
 
-	  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
+	  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png"
 	  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
-	# avatar
+	# COVERPAGE
 
+	has_attached_file :coverpage, styles: {extralarge: "1200x1200>", large: "999x999>", medium: "600x600>", thumb: "300x300>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/bg_coverpage.jpg"
+	validates_attachment_content_type :coverpage, content_type: /\Aimage\/.*\z/
 end

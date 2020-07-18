@@ -1,7 +1,5 @@
 <% if current_mocker %>
 	<% vote_text = current_mocker&.voted_for?(mock) ? "Unlike" : "Like" %>
-
-
 	<%= link_to vote_text, like_mock_path(mock), method: :put, remote: :true, class: "like-post" %>
 
 <% else %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200707235331) do
+ActiveRecord::Schema.define(version: 20200718020716) do
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 20200707235331) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string "coverpage_file_name"
+    t.string "coverpage_content_type"
+    t.integer "coverpage_file_size"
+    t.datetime "coverpage_updated_at"
+    t.string "facebook"
+    t.string "twitter"
+    t.string "linkedin"
+    t.string "instagram"
+    t.string "pinterest"
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true

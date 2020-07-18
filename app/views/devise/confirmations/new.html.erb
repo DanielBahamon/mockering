@@ -1,20 +1,52 @@
-<h2>Resend confirmation instructions</h2>
+<div class="d-grid"> 
+  <div class="_cont _session relative">
+    <div class="d-table fullscreen">
+      <div class="d-tablecell v-middle">
+        <div class="container">
+          <section class="row _session">
+            <!--<div class="col-12">
+              <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, class: "alert alert-info" %>
+              <% end %>
+            </div>-->
+            <div class="col-12 text-center">
+              <h2>Resend confirmation instructions</h2>
+            </div>
+            <div class="col-12">
+              <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+                <%= f.error_notification %>
+                <%= f.full_error :confirmation_token %>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
+                <div class="form-inputs">
+                  <%= f.input :email,
+                              required: true,
+                              autofocus: true,
+                              value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                              input_html: { autocomplete: "email" } %>
+                </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
+                <div class="form-actions">
+                  <%= f.button :submit, "Resend confirmation instructions", class: "btn _btn _login" %>
+                </div>
+              <% end %>
+              <%= render "devise/shared/links" %>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
   </div>
+  <%= render "shared/minifooter" %>
+</div>
+  
 
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<style type="text/css">
+  body{
+    background:white;
+  }
+  ._nav._1,
+  ._navbar_br{
+    display: none;
+    visibility: hidden;
+  
+</style>

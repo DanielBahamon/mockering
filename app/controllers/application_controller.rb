@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin!
 
-
-
   def set_search
     @q = Mock.ransack(params[:q])
     @mocks = @q.result(distinct: true).order("created_at DESC")
@@ -17,10 +15,10 @@ class ApplicationController < ActionController::Base
 
   def configure_devise_params
   	devise_parameter_sanitizer.permit(:sign_up) do |mocker|
-  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug)
+  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :photo)
   	end
   	devise_parameter_sanitizer.permit(:account_update) do |mocker|
-  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :bio, :photo, :tag_list)
+  		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :bio, :photo, :tag_list, :coverpage, :facebook, :twitter, :instagram, :pinterest, :linkedin)
   	end
   end
 

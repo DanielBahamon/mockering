@@ -12,13 +12,7 @@
 						<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
 					<% end %>
 					<% if @mock.movie.present? %>
-					  <video
-					    id="my-video"
-					    class="video-js vjs-big-play-centered"
-					    controls
-					    preload="auto"
-					    data-setup="{}"
-					    style="width:100%; height: 66vh;"
+					  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{}" style="width:100%; height: 66vh;"
 					  >
 					    <source src="<%= video_path(@mock.movie) %>" type="video/mp4" />
 					  </video>
@@ -28,10 +22,10 @@
 			</div>
 			<div class="row">
 				<div class="col-6">
-					<%= @mock.impressionist_count(:filter=>:ip_address) %>
-				</div>
+					<%= @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %>
+				</div> 
 				<div class="col-6">
-					<div class="row float-right ">
+					<div class="row float-right ">	
 						<div class="col-auto" >
 							<% if current_mocker %>
 								<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>

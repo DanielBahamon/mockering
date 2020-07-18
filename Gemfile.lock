@@ -295,7 +295,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activesupport
+  activesupport (~> 5.1, >= 5.1.7)
   acts-as-taggable-on (~> 6.0)
   acts_as_votable (~> 0.12.1)
   avatar_magick (~> 1.0, >= 1.0.2)

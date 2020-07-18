@@ -4,7 +4,7 @@ class MockersController < ApplicationController
 
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
-    	@mocks = @mocker.mocks
+    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:page], per_page: 10)
 	end
 
 	def index
@@ -16,7 +16,8 @@ class MockersController < ApplicationController
 		if @mocker.update(mocker_params)
 			redirect_to @mocker, notice: "Mocker was successfully updated!"
 		else
-			render 'edit'
+			# render 'edit'
+			flash[:alert] = "Uhm... Algo fallo."
 		end
 
 		#  new_params = mocker_params
@@ -36,9 +37,11 @@ class MockersController < ApplicationController
 	def username_validator
 	    if params[:slug].size <= 2
 	    	render json: { valid: false }
-	    elsif Mocker.find_by_slug(params[:slug].downcase)
+	    elsif Mocker.find_by_slug(params[:slug].downcase) || Mocker.find_by_slug(params[:slug].upcase)
 	    	render json: { valid: false }
 	    elsif params[:slug].match(/\s/) || !params[:slug].match(/\A[a-zA-Z0-9]+\Z/)
+	    	render json: { valid: false }
+	    elsif !params[:slug].match(params[:slug].downcase)
 	    	render json: { valid: false }
 	    else
 	    	render json: { valid: true }
@@ -52,7 +55,10 @@ class MockersController < ApplicationController
     	@mocker = Mocker.friendly.find(params[:id])
 	end
 
+
+
 	def mocker_params
-		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo)
+		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo, :coverpage, 
+									   :facebook, :twitter, :pinterest, :instagram, :linkedin)
 	end
 end
