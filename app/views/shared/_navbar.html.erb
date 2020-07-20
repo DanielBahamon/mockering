@@ -1,11 +1,11 @@
 <div class="_nav _1">
   <div class="_conta _1">
     <div class="row m-0">
-      <div class="col-4 col-md-3 col-xl-2 p-0">
+      <div class="col-8 col-md-3 col-xl-2 p-0">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle">
             <ul class="navbar-nav _navbar _console" style="padding: 0 10px;">
-              <li class="nav-item" style="margin-right: 5px;">
+              <li class="nav-item d-block d-sm-none" style="margin-right: 5px;">
                 <div class="d-table fullscreen">
                   <div class="d-tablecell v-middle">
                     <a class="_btnmenu collapsed" data-toggle="collapse" href="#multiCollapseNavbar" role="button" aria-expanded="false" aria-controls="multiCollapseNavbar" id="_btnmenu">
@@ -16,9 +16,16 @@
                   </div>
                 </div>
               </li>
-              <li class="nav-item">
-                <%= link_to root_path, data: { no_turbolink: true } do %>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', class: "_logonav", width: 136, height: 67, alt: 'Mockering'%>
+              <li class="nav-item relative d-none d-xs-block">
+                <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_red.svg', class: "_logonav _1", alt: 'Mockering'%>
+                <% end %>
+              </li>
+              <li class="nav-item relative d-block d-xs-none fullwidth text-right">
+                <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_icon.svg', class: "_logonav _4", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_red_icon.svg', class: "_logonav _3", alt: 'Mockering'%>
                 <% end %>
               </li>   
                 
@@ -26,17 +33,17 @@
           </div>
         </div>
       </div>
-      <div class="col-8 col-md-9 col-xl-10 p-0 d-none d-md-block">
+      <div class="col-8 col-md-9 col-xl-10 d-none d-md-block">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
-              <div class="col-6 col-sm-7 col_search _1">
+              <div class="col-6 col-sm-7 col-lg-4 col_search _1 offset-lg-3">
                 <%= search_form_for @q, class: "row m-0" do |f| %><!--, remote: true-->
                   <%= f.search_field :title_or_description_cont, placeholder: "What are you looking for?", class: "_searchfield col-10" %>
-                  <div class="col-2">
+                  <div class="col-2 p-0">
                     <div class="d-table fullscreen ">
                       <div class="d-tablecell v-middle text-center">
-                        <%= f.submit 'search', class: "btn _btn _2 material-icons" %>   
+                        <%= f.submit 'search', class: "btn _btn _2 material-icons m-0-auto" %>   
                       </div>
                     </div>
                   </div>
@@ -96,7 +103,7 @@
           </div>
         </div>
       </div>
-      <div class="col-8 col-md-9 col-xl-10 p-0 d-block d-md-none">
+      <div class="col-4 col-md-9 col-xl-10 p-0 d-block d-md-none">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
@@ -104,18 +111,7 @@
                 <div class="d-table fullscreen ">
                   <div class="d-tablecell v-middle text-center">
                     <ul class="navbar-nav float-right _navbar _console">
-                      <% if mocker_signed_in? %>
-                        <li class="nav-item" style="padding-right: 10px;">
-                          <div class="d-table fullscreen">
-                            <div class="d-tablecell v-middle">
-                              <%= link_to new_mock_path, class: "_btn _1" do %>
-                                <i class="material-icons ">add</i> Add mock
-                              <% end %>
-                            </div>
-                          </div>
-                        </li>
-                      <% end %>
-                      <li class="nav-item">
+                      <li class="nav-item  d-none d-sm-block" style="margin-right: 10px;">
                         <div class="d-table fullscreen">
                           <div class="d-tablecell v-middle">
                             <a class="_btn_icon collapsed"  data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch"><i class="material-icons" style="line-height: 2;">search</i></a>
@@ -123,7 +119,7 @@
                         </div>
                       </li>
                       <% if mocker_signed_in? %>
-                        <li class="nav-item" style="margin-right: 6px;">
+                        <li class="nav-item d-none d-sm-block" style="margin-right: 6px;">
                           <div class="d-table fullscreen">
                             <div class="d-tablecell v-middle">
                               <a class="_btn_icon" href="#"><i class="material-icons" style="line-height: 2;">notifications_none</i></a>
@@ -138,12 +134,17 @@
                               <a class="_btn_icon_avatar nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
                                 <% if mocker_signed_in? # && current_mocker.admin %>
-                                  <%= link_to "Account", edit_mocker_registration_path, class: "nav-link" %>
-                                  <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
-                                <% else %>
-                                  <%= link_to "Login", new_mocker_session_path, class: "dropdown-item" %>
-                                  <%= link_to "Sign Up", new_mocker_registration_path, class: "dropdown-item" %>
-                                <% end %>
+                                      <%= link_to "+ Add mock", new_mock_path, class: "nav-link d-sm-block d-md-none" %>
+                                      <!--<h6 class="dropdown-header text-ellipsis"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h6>-->
+                                      <div class="dropdown-divider d-sm-block d-md-none"></div>
+                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
+                                      <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
+                                      <div class="dropdown-divider"></div>
+                                      <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
+                                    <% else %>
+                                      <%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
+                                      <%= link_to "Sign Up", new_mocker_registration_path, class: "nav-link" %>
+                                    <% end %>
                               </div>
                             </div>
                           </div>
@@ -179,9 +180,19 @@
 <div class="_navbar_br"></div>
 
 <style type="text/css">
-  .dropdown-header{
-    padding: 0.5rem 9px !important;
-    text-align: right;
-    max-width: 170px;
+  @media(min-width: 300px){
+    .d-xs-block{
+      display: block !important;
+    }
+    .d-xs-none{
+      display: none !important;
+    }
+
+    ._btnmenu{
+      top:0;
+    }
+  }
+  .col_search._1{
+    padding-top: 2px;
   }
 </style>

@@ -7,7 +7,6 @@ class MocksController < ApplicationController
   	impressionist :actions=>[:show]
 
 	def index
-		@mocks = Mock.paginate(page: params[:page], per_page: 30)
 	end
 
 	def new
@@ -84,7 +83,7 @@ class MocksController < ApplicationController
 
 	def set_search
 		@q = Mock.ransack(params[:q])
-		@mocks = @q.result(distinct: true).order("created_at DESC")
+		@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
 	end
 
 end

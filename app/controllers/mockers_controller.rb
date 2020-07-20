@@ -43,22 +43,32 @@ class MockersController < ApplicationController
 	    	render json: { valid: false }
 	    elsif !params[:slug].match(params[:slug].downcase)
 	    	render json: { valid: false }
+	    elsif params[:slug] == 'google' || params[:slug] == 'amazon' || params[:slug] == 'youtube' || 
+	    	  params[:slug] == 'facebook' || params[:slug] == 'twitter' || params[:slug] == 'apple' || 
+	    	  params[:slug] == 'billgates' || params[:slug] == 'stevejobs' || params[:slug] == 'fifa'|| 
+	    	  params[:slug] == 'jeffbezos' || params[:slug] == 'elonmusk' || params[:slug] == 'tesla' || 
+	    	  params[:slug] == 'nikolatesla' || params[:slug] == 'mockering' || params[:slug] == 'mocker' ||
+	    	  params[:slug] == 'mocking' || params[:slug] == 'corona' || params[:slug] == 'profile' || 
+	    	  params[:slug] == 'login' || params[:slug] == 'logout' || params[:slug] == 'sign_in' ||
+	    	  params[:slug] == 'michaeljackson' || params[:slug] == 'beats' || params[:slug] == 'messi'|| 
+	    	  params[:slug] == 'auronplay' || params[:slug] == 'rubius' || params[:slug] == 'luisitocomunica' || 
+	    	  params[:slug] == 'bahamon' || params[:slug] == 'cristiano' || params[:slug] == 'ronaldo' ||
+	    	  params[:slug] == 'intel' || params[:slug] == 'amd' || params[:slug] == 'ryzen' || params[:slug] == 'gamer'
+	    	render json: {valid:false}
 	    else
 	    	render json: { valid: true }
 	    end
 	end
 
-	private
 
+	private
 
 	def set_mocker
     	@mocker = Mocker.friendly.find(params[:id])
 	end
 
-
-
 	def mocker_params
 		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo, :coverpage, 
-									   :facebook, :twitter, :pinterest, :instagram, :linkedin)
+									   :facebook, :twitter, :pinterest, :instagram, :youtube)
 	end
 end

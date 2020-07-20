@@ -27,26 +27,24 @@
 
                 <div class="row" id="_form_register">
                   <fieldset class="msf_hide">
-                    <section class="col-12">
-                      <div class="form-group" style="position: relative;">
-                        <span class="username-icon-styles position-absolute" style="right: 0; top:5px;">
-
-                          <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
-                          <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
-                        </span>
-                        <%= f.text_field :slug,
-                                placeholder: "Create a username",
-                                required: true,
-                                class: "_input _1 form-control m-bottom1",
-                                id: "mocker_username",
-                                autofocus: true  %>
-                      </div>
+                    <section class="col-12 _col_inputsaccount p-b-0">
+                        <%= f.label "Username" %>
+                        <div class="form-group" style="position: relative;">
+                            <span class="username-icon-styles position-absolute" style="right: 6px; top:7px;">
+                              <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
+                              <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
+                            </span>
+                            <%= f.text_field :slug, class: "_input _2 form-control", required: true,
+                                id: "mocker_username", placeholder: "Create a username" %>
+                        </div>
                     </section>
-                    <section class="col-12">
-                      <%= f.email_field :email,
+                    <section class="col-12 _col_inputsaccount p-b-0">
+                        <%= f.label "Email" %>
+                        <%= f.email_field :email,
                                 required: true,
-                                class: "_input _1 form-control m-bottom1", placeholder: "Add your email" %>
+                                class: "_input _2 form-control", placeholder: "yourname@email.com" %>
                     </section>
+                    <br>
                     <div class="row m-0">
                       <div class="col-12 text-right">
                         <button class="btn _btnround valid-username" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
@@ -55,18 +53,21 @@
                   </fieldset>
                   <fieldset class="msf_hide">
                     <div class="row m-0">
-                      <section class="col-12">
+                      <section class="col-12 _col_inputsaccount p-b-0">
+                        <%= f.label "What's your first name?" %>
                         <%= f.text_field :first_name,
                                   required: true,
-                                  class: "_input _1 form-control m-bottom1", 
-                                  placeholder: "What's your first name?" %>
+                                  class: "_input _2 form-control m-bottom1", 
+                                  placeholder: "John" %>
                       </section>
-                      <section class="col-12">
+                      <section class="col-12 _col_inputsaccount p-b-0">
+                        <%= f.label "What's your last name?" %>
                         <%= f.text_field :last_name, 
                                   required: true,
-                                  class: "_input _1 form-control m-bottom1", placeholder: "What's your last name?" %>
+                                  class: "_input _2 form-control m-bottom1", placeholder: "Smith" %>
                       </section>
                     </div>
+                    <br>
                     <div class="row m-0">
                       <div class="col-12 text-right">
                           <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
@@ -76,20 +77,23 @@
                   </fieldset>
                   <fieldset class="msf_hide">
                     <div class="row m-0">
-                      <section class="col-12">
+                      <section class="col-12 _col_inputsaccount p-b-0">
+                        <%= f.label "Create a password" %>
                         <%= f.password_field :password,
                                   required: true,
                                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                                   input_html: { autocomplete: "new-password" },
-                                  class: "_input _1 form-control m-bottom1", placeholder: "Create a password" %>
+                                  class: "_input _2 form-control m-bottom1", placeholder: "yourPassword369&" %>
                       </section>
-                      <section class="col-12">
+                      <section class="col-12 _col_inputsaccount p-b-0">
+                        <%= f.label "Confirm your new password" %>
                         <%= f.password_field :password_confirmation,
                                   required: true,
                                   input_html: { autocomplete: "new-password" },
-                                  class: "_input _1 form-control m-bottom1", placeholder: "Confirm your new password" %>
+                                  class: "_input _2 form-control m-bottom1", placeholder: "yourPassword369&" %>
                       </section>
                     </div>
+                    <br>
                     <div class="row m-0">
                       <div class="col-12 text-center">
                           <a class="_link _1" onclick="msf_btn_back()" style="margin-right: 5px;">Back</a>
@@ -128,6 +132,12 @@
   fieldset.msf_show,
   fieldset.msf_showhide {
     width: 100%;
+  }
+  ._col_inputsaccount input::placeholder{
+    font-weight: 400;
+  }
+  .p-b-0{
+    padding-bottom: 0 !important;
   }
 </style>
 

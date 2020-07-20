@@ -1,4 +1,4 @@
-<div class="_conta _1">
+<div class="container">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <div class="row m-0">
       <div class="col-12 col-md-3">
@@ -8,7 +8,7 @@
             <i class="material-icons">keyboard_arrow_left</i> <span style="font-size:10pt;">Back</span>
           <% end %>
           <div class="row m-0" style="margin-bottom: 15px !important;">
-            <div class="col-4">
+            <div class="col-4 p-0">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle ">
                         <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
@@ -18,15 +18,15 @@
             <div class="col-8">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle p-1">
-                        <b><%= current_mocker.first_name %> <%= current_mocker.last_name %></b>
+                        <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
                     </div>
                 </div>
             </div>
           </div>
           <a class="nav-link active" id="v-pills-personal-data-tab" data-toggle="pill" href="#v-pills-personal-data" role="tab" aria-controls="v-pills-personal-data" aria-selected="false">Personal data</a>
           <a class="nav-link" id="v-pills-desription-tab" data-toggle="pill" href="#v-pills-desription" role="tab" aria-controls="v-pills-desription" aria-selected="false">Description</a>
-          <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social Media</a>
           <a class="nav-link" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
+          <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social Media</a>
         </div>
       </div>
       <div class="col-12 col-md-9">
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-12 _col_inputsaccount">
                                     <div class="d-grid">
-                                        <%= f.label "Birthday" %>
+                                        <%= f.label "How old are you? (Not public)" %>
                                         <%= f.date_field :birthday, class: "_input _2 form-control",
                                             required: true,
                                             input_html: { autocomplete: "Birthday" }%>
@@ -117,37 +117,6 @@
                     </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="v-pills-desription" role="tabpanel" aria-labelledby="v-pills-desription-tab">
-                <div class="cont_account row">
-                    <div class="col-12 _col_inputsaccount">
-
-                        <%= f.label "Facebook" %>
-                        <%= f.text_field :facebook, class: "_input _2 form-control",
-                            placeholder: "https://www.facebook.com/your_profile",
-                            input_html: { autocomplete: "facebook" }%>
-                        <%= f.label "Instagram" %>
-                        <%= f.text_field :instagram, class: "_input _2 form-control",
-                            placeholder: "https://www.instagram.com/your_profile",
-                            input_html: { autocomplete: "instagram" }%>
-                        <%= f.label "Twitter" %>
-                        <%= f.text_field :instagram, class: "_input _2 form-control",
-                            placeholder: "https://twitter.com/your_profile",
-                            input_html: { autocomplete: "twitter" }%>
-                        <%= f.label "Pinterest" %>
-                        <%= f.text_field :pinterest, class: "_input _2 form-control",
-                            placeholder: "https://www.pinterest.com/your_profile",
-                            input_html: { autocomplete: "pinterest" }%>
-                        <%= f.label "Linked In" %>
-                        <%= f.text_field :linkedin, class: "_input _2 form-control",
-                            placeholder: "https://linkedin.com/your_profile",
-                            input_html: { autocomplete: "linkedin" }%>
-
-                    </div>
-                    <div class="col-12 text-center m-b-1em">
-                        <%= f.submit "Update", class: "_btn _1 f-right" %>
-                    </div>
-                </div>
-              </div>
               <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
                 <div class="cont_account row">
                     <div class="col-12 _col_inputsaccount">
@@ -163,6 +132,44 @@
                     </div>
                     <div class="col-12 text-center m-b-1em">
                         <%= f.submit "Update", class: "_btn _1 _update f-right" %>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-social" role="tabpanel" aria-labelledby="v-pills-social-tab">
+                <div class="cont_account row">
+                    <div class="col-12 col-md-6 _col_inputsaccount">
+
+                        <%= f.label "Facebook username (without '@')" %>
+                        <%= f.text_field :facebook, class: "_input _2 form-control",
+                            placeholder: "Username",
+                            input_html: { autocomplete: "facebook" }%>
+                        </div>
+                        <div class="col-12 col-md-6 _col_inputsaccount">
+                        <%= f.label "Instagram username (without '@')" %>
+                        <%= f.text_field :instagram, class: "_input _2 form-control",
+                            placeholder: "Username",
+                            input_html: { autocomplete: "instagram" }%>
+                        </div>
+                        <div class="col-12 col-md-6 _col_inputsaccount">
+                        <%= f.label "Twitter username (without '@')" %>
+                        <%= f.text_field :twitter, class: "_input _2 form-control",
+                            placeholder: "Username",
+                            input_html: { autocomplete: "twitter" }%>
+                        </div>
+                        <div class="col-12 col-md-6 _col_inputsaccount">
+                        <%= f.label "Pinterest username (without '@')" %>
+                        <%= f.text_field :pinterest, class: "_input _2 form-control",
+                            placeholder: "Username",
+                            input_html: { autocomplete: "pinterest" }%>
+                        </div>
+                        <div class="col-12 _col_inputsaccount">
+                        <%= f.label "YouTube Channel" %>
+                        <%= f.text_field :youtube, class: "_input _2 form-control",
+                            placeholder: "https://www.youtube.com/...",
+                            input_html: { autocomplete: "youtube" }%>
+                        </div>
+                    <div class="col-12 text-center m-b-1em">
+                        <%= f.submit "Update", class: "_btn _1 f-right" %>
                     </div>
                 </div>
               </div>

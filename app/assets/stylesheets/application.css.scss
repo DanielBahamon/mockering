@@ -351,6 +351,9 @@
       vertical-align: middle;
       font-size: 20pt;
   }
+  ._fs9pt{
+    font-size: 9pt;
+  }
   ._fs10pt{
     font-size: 10pt;
   }
@@ -642,8 +645,8 @@
     display: block;
     height: 18px;
     width: 35px;
+    top:3px;
     position: relative;
-    top:-2px;
   }
   ._btnmenu:before {
     content: '';
@@ -1038,6 +1041,7 @@
   ._nav._1{
     background: white;
     position: fixed;
+    padding:9px 0;
     z-index: 13;
     width: 100%;
     -webkit-transition: all .2s ease;
@@ -1127,7 +1131,7 @@
       position: absolute;
       height: 2px;
       width: 100%;
-      background: #010101;
+      background: #ff5858;
       border-radius: 9px;
       opacity: 1;
       left: 0;
@@ -1148,7 +1152,7 @@
       top: 13px;
   }
   ._iconav.open span{
-    background: #ff5858 ;
+    background: #010101;
   }
   ._iconav.open span:nth-child(1) {
       top: 8px;
@@ -1172,11 +1176,11 @@
   }
   ._searchfield{
       border: 0;
-      padding: 15px;
+      padding: 10px;
       border-radius: 3px;
       width: 100%;
       outline: none !important;
-      font-weight: 500;
+      font-weight: 700;
       font-size: 12.7pt;
       -webkit-transition: all .2s ease;
       transition: all .2s ease;
@@ -1203,6 +1207,67 @@
       color: black;
       text-decoration: none;
       font-weight: 600;
+  }
+
+  .dropdown-header{
+    padding: 0.5rem 9px !important;
+    text-align: right;
+    max-width: 170px;
+  }
+  .col_search._1 form{
+    border: 1px solid #afafaf;
+    border-radius: 3px;
+  }
+  ._logonav._1{
+    position: relative;
+    z-index: 2;
+    width:111px;
+    height: auto;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  ._logonav._1:hover{
+    opacity: 0;
+  }
+  ._link_logo:hover ._logonav._2{
+    opacity: 1;
+  }
+  ._logonav._2{
+    width:111px;
+    height: auto;
+    position: absolute;
+    left: 5px;
+    z-index: 0;
+    height: 30px;
+    opacity:0;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+  }
+
+  ._logonav._3{
+    position: relative;
+    z-index: 2;
+    width:36px;
+    height: auto;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  ._logonav._3:hover{
+    opacity: 0;
+  }
+  ._link_logo:hover ._logonav._4{
+    opacity: 1;
+  }
+  ._logonav._4{
+    width:36px;
+    height: auto;
+    position: absolute;
+    left: 5px;
+    z-index: 0;
+    height: 30px;
+    opacity:0;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
   }
 /* END NAVBAR */
 
@@ -1308,7 +1373,6 @@
 /* END MOCKS */
 
 /* PROFILE */
-
   .readmore._1{
     font-size:11pt;
     color:grey;
@@ -1333,36 +1397,6 @@
     border-radius: 100%;
   }
 /* END PROFILE */
-
-/* RESPONSIVE */
-
-  /* MAX WIDTH */
-    @media(max-width: 880px){
-      ._card{
-        width:200px;
-      }
-    }
-    @media(max-width: 576px){
-      ._list._1 li{
-        padding: 0 5px;
-        float: left;
-      }
-    }
-  /* END MAX WIDTH */
-  /* MAX HEIGHT */
-    @media(max-height:600px ){
-      #_row_sidenav2{
-          position: initial !important;
-          height: 15vh !important;
-          width: 200px !important;
-          min-height:250px;
-      }
-      #_sidenav {
-          position: inherit !important;
-      }
-    }
-  /* END MAX HEIGHT */
-/* END RESPONSIVE */
 
 /* EDIT PROFILE */
   ._col_inputsaccount{
@@ -1791,4 +1825,31 @@
   }
 /* END #IDS */
 
-  
+/* RESPONSIVE */
+  /* MAX WIDTH */
+    @media(max-width: 880px){
+      ._card{
+        width:200px;
+      }
+    }
+    @media(max-width: 576px){
+      ._list._1 li{
+        padding: 0 5px;
+        float: left;
+      }
+    }
+  /* END MAX WIDTH */
+  /* MAX HEIGHT */
+    @media(max-height:600px ){
+      #_row_sidenav2{
+          position: initial !important;
+          height: 15vh !important;
+          width: 200px !important;
+          min-height:250px;
+      }
+      #_sidenav {
+          position: inherit !important;
+      }
+    }
+  /* END MAX HEIGHT */
+/* END RESPONSIVE */
