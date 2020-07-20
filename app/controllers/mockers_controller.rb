@@ -10,6 +10,10 @@ class MockersController < ApplicationController
 	def index
 	end
 
+	def create
+		
+	end
+
 	def update
 		@mocker.update(new_params)
 
