@@ -1562,6 +1562,9 @@
       padding: 5px;
       font-weight: 600;
   }
+  ._col_inputsaccount input::placeholder{
+      font-weight: 400;
+  }
   .cont_account{
       max-width: 725px;
       margin: 0 auto;
