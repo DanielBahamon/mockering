@@ -1,7 +1,7 @@
 <div class="_nav _1">
   <div class="_conta _1">
     <div class="row m-0">
-      <div class="col-8 col-md-3 col-xl-2 p-0">
+      <div class="col-8 col-md-3 col-xl-2 p-sm-0 ">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle">
             <ul class="navbar-nav _navbar _console" style="padding: 0 10px;">
@@ -37,7 +37,7 @@
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
-              <div class="col-6 col-sm-7 col-lg-4 col_search _1 offset-lg-3">
+              <div class="col-6 col-sm-7 col-xl-4 col_search _1 offset-xl-3">
                 <%= search_form_for @q, class: "row m-0" do |f| %><!--, remote: true-->
                   <%= f.search_field :title_or_description_cont, placeholder: "What are you looking for?", class: "_searchfield col-10" %>
                   <div class="col-2 p-0">
@@ -82,8 +82,8 @@
                                       <%= link_to "+ Add mock", new_mock_path, class: "nav-link d-sm-block d-md-none" %>
                                       <!--<h6 class="dropdown-header text-ellipsis"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h6>-->
                                       <div class="dropdown-divider d-sm-block d-md-none"></div>
-                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
+                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
                                       <div class="dropdown-divider"></div>
                                       <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
                                     <% else %>
@@ -137,8 +137,8 @@
                                       <%= link_to "+ Add mock", new_mock_path, class: "nav-link d-sm-block d-md-none" %>
                                       <!--<h6 class="dropdown-header text-ellipsis"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h6>-->
                                       <div class="dropdown-divider d-sm-block d-md-none"></div>
-                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
+                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
                                       <div class="dropdown-divider"></div>
                                       <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
                                     <% else %>
@@ -161,6 +161,56 @@
       </div>
 
     </div>
+    <div class="row fullwidth m-0 multi-collapse collapse in" id="multiCollapseNavbar" aria-expanded="true">
+      <div class="col-12">
+
+        <div class="navside">
+          <div class="row m-0">
+            <div class="relative fullwidth">
+              <div class="row cont_user m-0">
+                <div class="col-12 text-center">
+                  <br>
+                  <%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+                </div>
+                <div class="col-12 text-center">
+                  <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h4>
+                  <p class="_fw400">@<%= current_mocker.slug %></p>
+                </div>
+              </div>
+              <br>
+            </div>
+          </div>
+          <div class="row m-0">
+            <ul class="_list_sidenav fullwidth text-center">
+              <li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav " do %>
+                  <i class="fas fa-home"></i>
+                  <p>Home</p>
+                  <span></span>
+                <% end %>
+              </li>
+              <li class="<%= 'active' if current_page?('/popular')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+                  <i class="fas fa-fire"></i>
+                  <p>Popular</p>
+                  <span></span>
+                <% end %>
+              </li>
+              <li class="<%= 'active' if current_page?('/recent')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+                  <i class="fas fa-stopwatch"></i>
+                  <p>Recent</p>
+                  <span></span>
+                <% end %>
+              </li>
+              <li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+                  <i class="fas fa-globe-americas"></i>
+                  <p>Discover</p>
+                  <span></span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row fullwidth m-0 multi-collapse collapse in " id="multiCollapseSearch" aria-expanded="true">
       <div class="_searchabsolute col-12">
         <%= search_form_for @q, class: "row m-0" do |f| %><!--, remote: true-->
@@ -180,19 +230,6 @@
 <div class="_navbar_br"></div>
 
 <style type="text/css">
-  @media(min-width: 300px){
-    .d-xs-block{
-      display: block !important;
-    }
-    .d-xs-none{
-      display: none !important;
-    }
 
-    ._btnmenu{
-      top:0;
-    }
-  }
-  .col_search._1{
-    padding-top: 2px;
-  }
+
 </style>

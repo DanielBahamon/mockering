@@ -1,31 +1,47 @@
-<div id="_big_row_index">
+<div id="_big_row_index bg_ghoswhite">
 	<div class="row m-0">
-		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0" id="_sidenav">
+		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block" id="_sidenav">
 			<div class="fixed _css-1db _overflow-y _h-100vh" style="width: 100%;max-width: inherit;">
+				
+				<div class="row m-0">
+					<div class="relative fullwidth">
+					  <div class="row cont_user m-0">
+					    <div class="col-12 text-center">
+					      <br>
+					      <%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+					    </div>
+					    <div class="col-12 text-center">
+					      <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h4>
+					      <p class="_fw400">@<%= current_mocker.slug %></p>
+					    </div>
+					  </div>
+					  <br>
+					</div>
+				</div>
 				<div class="row m-0">
 					<div class="col-12">
 						<div id="_row_sidenav1">
 							<div class="d-table fullscreen ">
 								<div class="d-tablecell v-middle">
 									<ul class="_listsidenav">
-										<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav " do %>
-												<p>Home</p>
-												<span></span>
-											<% end %>
-										</li>
-										<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
-												<p>Discover</p>
-												<span></span>
+										<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
+												<i class="fas fa-home col-2 text-center p-0"></i>
+												<p class="col-10">Home</p>
 											<% end %>
 										</li>
 										<li class="<%= 'active' if current_page?('/popular')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
-												<p>Popular</p>
-												<span></span>
+												<i class="fas fa-fire col-2 text-center p-0"></i>
+												<p class="col-10">Popular</p>
 											<% end %>
 										</li>
 										<li class="<%= 'active' if current_page?('/recent')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
-												<p>Recent</p>
-												<span></span>
+												<i class="fas fa-stopwatch col-2 text-center p-0"></i>
+												<p class="col-10">Recent</p>
+											<% end %>
+										</li>
+										<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+                  								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
+												<p class="col-10">Discover</p>
 											<% end %>
 										</li>
 									</ul>
@@ -33,39 +49,6 @@
 							</div>
 						</div>
 
-					</div>
-				</div>
-				<div class="row m-0" id="_row_sidenav2">
-					<div class="col-12 p-0">
-						<div class="_dataccunt">
-							<% if mocker_signed_in? %>
-								<div class="row m-0 " id="_row_follows_board">
-									<div class="col-6 p-0 text-center">
-										<h3 class="_numb_follows"><%= number_to_human(current_mocker.followers.count, units: { thousand: 'K', million: 'M', billion: 'B' }) %></h3>
-										<p class="text-ellipsis _fs10pt">Followers</p>
-									</div>
-									<div class="col-6 p-0 text-center">
-										<h3 class="_numb_follows"><%= number_to_human(current_mocker.following.count, units: { thousand: 'K', million: 'M', billion: 'B' }) %></h3>
-										<p class="text-ellipsis _fs10pt">Following</p>
-									</div>
-								</div>
-								<div class="row m-0">
-									<div class="col-3">
-										<div class="d-table fullscreen">
-											<div class="d-tablecell v-middle">
-												<%= image_tag avatar_url(current_mocker), class: "_avatar _1" %>
-											</div>
-										</div>
-									</div>
-									<div class="col-9 p-0">
-										<p class="_fw600 m-0 text-ellipsis"><%= current_mocker.first_name %> <%= current_mocker.last_name %></p>
-										<p class="_username m-0 text-ellipsis">@<%= current_mocker.slug %></p>
-									</div>
-								</div>
-							<% else %>
-								<%= link_to "Login", new_mocker_session_path, class: "_link _1" %>
-							<% end %>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -124,3 +107,11 @@
 		</div>
 	</div>
 </div>
+<style type="text/css">
+	@media(max-width: 575px){
+      ._card{
+        width:43vw;
+        min-width: 200px;
+      }
+	}
+</style>

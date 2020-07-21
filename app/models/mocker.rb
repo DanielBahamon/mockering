@@ -8,6 +8,31 @@ class Mocker < ApplicationRecord
 	     :recoverable, :rememberable, :validatable, :confirmable,
 	     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+
+	attr_writer :login
+
+	def login
+		@login || self.slug || self.email
+	end
+
+	validate :validate_slug
+
+	def validate_slug
+	  if Mocker.where(email: slug).exists?
+	    errors.add(:slug, :invalid)
+	  end
+	end
+	
+
+	def self.find_for_database_authentication(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions.to_h).where(["lower(slug) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      elsif conditions.has_key?(:slug) || conditions.has_key?(:email)
+        where(conditions.to_h).first
+      end
+    end
+
   	acts_as_voter
 	extend FriendlyId
 	friendly_id :first_name, use: :slugged
@@ -17,8 +42,6 @@ class Mocker < ApplicationRecord
 	validates :slug, format: { without: /\s/ , message: "must contain no spaces" }
   	validates :slug, :uniqueness => true
   	# validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
-
-
 
 	def set_uuid
 		self.id = SecureRandom.uuid

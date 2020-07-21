@@ -30,8 +30,8 @@
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="form-group" style="margin-bottom: 15px;">
                   <section class="col-12 _col_inputsaccount p-b-0">
-                    <%= f.label "Your email" %>
-                    <%= f.text_field :email,
+                    <%= f.label "Your username or email" %>
+                    <%= f.text_field :login,
                               required: false,
                               placeholder: "Email", label: false,
                               autocomplete: "email", class: "_input _2 form-control" %>
@@ -44,10 +44,12 @@
                                 label: false,
                                 autocomplete: "current-password", class: "_input _2 form-control" %>
                   </section>
-                  <label class="pure-material-checkbox">
-                    <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %> 
-                    <span class="_ttcommons">Remember me</span>
-                  </label>
+                  <section class="col-12">
+                    <label class="pure-material-checkbox">
+                      <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %> 
+                      <span class="_ttcommons">Remember me</span>
+                    </label>
+                  </section>
                 </div>
                 <div class="form-actions">
                   <%= f.submit "Log in", class: "btn _btn _login" %>

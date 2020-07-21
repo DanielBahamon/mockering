@@ -1,5 +1,4 @@
-<div class="_conta _1">
-	<br class=" d-none d-md-block">
+<div class="_conta _1 bg_ghoswhite">
 	<div class="row m-0">
 		<div class="col-12 col-md-4 col-lg-3 _col_user">
 			<div class="relative">
@@ -57,7 +56,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-sm-6 col-md-12">
-						<div class="row">
+						<div class="row fullscreen">
 							<div class="col-auto p-0 m-0-auto">
 								<div class="d-table fullscreen">
 									<div class="d-tablecell v-middle ">
@@ -90,6 +89,7 @@
 				
 		</div>
 		<div class="col-12 col-md-8 col-lg-9 offset-md-4 offset-lg-3 _col_cont_user">
+			<br class=" d-none d-md-block">
 			<div class="row m-0 d-none d-md-block">
 				<div class="col-12">
 					<%= image_tag @mocker.coverpage, class: "_coverpage" %>
@@ -146,85 +146,11 @@
 </div>
 
 <style type="text/css">
-	@media(max-width: 767px){
-		#mocks{
-			margin-top:0;
-		}
+	@media(max-width: 575px){
+      ._card{
+        width:99%;
+      }
 	}
-	._list._social{
-		margin-bottom: 0;
-		list-style: none;
-	}
-	._list._social a{
-		color:black;
-		font-size: 14pt;
-		display: block;
-		-webkit-transition: all .2s ease;
-		transition: all .2s ease;
-	}
-	._list._social a:hover{
-		transform: translateY(-1px);
-	}
-	a.facebook._btn_icon._2 {
-	    padding-left: 3px;
-	}
-	._list._social a.facebook:hover{
-		color: #3b5998;
-	}
-	._list._social a.twitter:hover{
-		color: #00acee;
-	}
-	._list._social a.youtube:hover{
-		color: #c4302b;
-	}
-	._list._social a.pinterest:hover{
-		color: #e60023;
-	}
-	._list._social a.instagram:hover{
-		color: #d32c83;
-	}
-	._list._social li{
-		padding: 10px 20px;
-	}
-	.keepspaces{
-		white-space: pre-wrap;
-		overflow-wrap: break-word;
-	}
-	.cont_coverpage{
-		position: absolute;
-	}
-	.cont_user{
-	    z-index: 3;
-	    position: inherit;
-	}
-	.gradient{
-		position: absolute;
-		z-index: 2;
-	}
-	.gradient._1{
-	    top: 0;
-	    bottom: 0;
-	    left: 0;
-	    right: 0;
-		background:linear-gradient(0deg, white, #ffffffd9, transparent);
-	}
-	.readmore + [data-readmore-toggle]{
-		color:black !important;
-		font-weight: 700;
-		text-decoration: none !important;
-	}
-	._btn_icon._2:before{
-	    top: -5px;
-	    left: -10px;
-	}
-	@media(min-width: 767px){
-		._col_user{
-			position: fixed;
-		    overflow-y: auto;
-		    height: 88vh;
-		}
-	}
-		
 </style>
 <script type="text/javascript">
 	$('.readmore').readmore({
