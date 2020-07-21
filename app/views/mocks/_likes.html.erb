@@ -1,1 +1,5 @@
-<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+<% if current_mocker.voted_up_on? mock %>
+	<i class="fas fa-thumbs-up" style="margin-right: 2px;"></i>
+<% else %>
+	<i class="far fa-thumbs-up" style="margin-right: 2px;"></i>
+<% end %> <%= number_to_human(mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>

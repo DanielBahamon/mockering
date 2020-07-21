@@ -1,30 +1,40 @@
-<div class="_container">
+<div class="_conta">
 	<div class="row m-0">
 		<div class="col-12 col-md-8 col-xl-9">
-			<div class="row">
-				<div class="col-12">
-					<!--<% if @mock.picture.present? %>
-						<%= image_tag @mock.picture.url(:large), class: "card-img-top" %>
-					<% else %>
-						<%= image_tag 'imagenotfound.png', style: "width:100%" %>
-					<% end %>-->
-					<% if @mock.music.present? %>
-						<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
-					<% end %>
+			<div class="row m-0">
+				<div class="col-12 p-0">
 					<% if @mock.movie.present? %>
-					  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{}" style="width:100%; height: 66vh;"
-					  >
+					  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{}" style="width:100%; height: 66vh;" poster="<%= @mock.picture.url(:large) %>">
 					    <source src="<%= video_path(@mock.movie) %>" type="video/mp4" />
 					  </video>
-
+					<% end %>
+					<% if @mock.music.present? %>
+						<% audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
 					<% end %>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-6">
-					<%= @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %>
-				</div> 
-				<div class="col-6">
+			<div class="row m-0">
+				<div class="col-12 p-0">
+					<h6 class="text-muted _username_video"><%= link_to @mock.mocker do %>@<%= @mock.mocker.slug %><% end %></h6>
+					<h4 class="card-title _fw500"><%= @mock.title %></h4>
+				</div>
+			</div>
+			<div class="row m-0">
+				<div class="col-6 p-0">
+					<div class="row m-0">
+						<div class="col-auto p-0">
+							<h5 class="m-0 _video_views _fw500"><i class="far fa-eye"></i> <% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: {billion: 'B' }) %></h5> 	
+						</div>
+						<div class="col-auto">
+							<div class="d-table fullscreen">
+								<div class="d-tablecell v-middle">
+									<h5 class="_fw500">• <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 p-0">
 					<div class="row float-right ">	
 						<div class="col-auto" >
 							<% if current_mocker %>
@@ -55,14 +65,18 @@
 									</div>
 								<% end %>
 							<% end %>
-							
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="row m-0">
+				<div class="col-12 readmore p-0">
+					<p class="card-text"><%= @mock.description %></p>
+					<p>Creditos: </p>
+				</div>
+			</div>
 		</div>
 		<div class="col-12 col-md-4 col-xl-3">
-			
 		</div>
 	</div>
 
@@ -70,9 +84,7 @@
 		<div class="card">
 					
 			<div class="card-body">
-				<h1 class="card-title"><%= @mock.title %></h1>
-				<h6 class="card-subtitle mb-2 text-muted"><%= link_to @mock.mocker do %><%= @mock.mocker.slug %><% end %></h6>
-				<p class="card-text"><%= @mock.description %></p>
+				
 			</div>
 			<div class="card-footer row">
 				<div class="reviews">
@@ -92,9 +104,21 @@
 </div>
 
 <style type="text/css">
+	#my-video{
+		border-radius: 9px;
+	}
+	._username_video{
+		margin-top:10px;
+		margin-bottom: 0;
+	}
 </style>
 
 <script type="text/javascript">
-	
-
+	$('.readmore').readmore({
+			speed: 75,
+			collapsedHeight: 70,
+			moreLink: '<a href="#" class="link-2">Show more</a>',
+	  		lessLink: '<a href="#" class="link-2">Show less</a>'
+		}
+	);
 </script>

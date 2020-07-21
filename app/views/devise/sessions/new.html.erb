@@ -30,17 +30,17 @@
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="form-group" style="margin-bottom: 15px;">
                   <section class="col-12 _col_inputsaccount p-b-0">
-                    <%= f.label "Your username or email" %>
+                    <%= f.label "Username / Email" %>
                     <%= f.text_field :login,
                               required: false,
                               placeholder: "Username or email", label: false,
                               autocomplete: "email", class: "_input _2 form-control" %>
                   </section>
                   <section class="col-12 _col_inputsaccount p-b-0">
-                    <%= f.label "Your password" %>
+                    <%= f.label "Password" %>
                     <%= f.password_field :password,
                                 required: false, 
-                                placeholder: "Password", 
+                                placeholder: "Your password", 
                                 label: false,
                                 autocomplete: "current-password", class: "_input _2 form-control" %>
                   </section>
@@ -52,7 +52,9 @@
                   </section>
                 </div>
                 <div class="form-actions">
-                  <%= f.submit "Log in", class: "btn _btn _login" %>
+                  <div class="col-12">
+                    <%= f.submit "Log in", class: "btn _btn _login" %>
+                  </div>
                 </div>
                 <br/>
               <% end %>

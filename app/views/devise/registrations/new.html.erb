@@ -28,21 +28,21 @@
                 <div class="row" id="_form_register">
                   <fieldset class="msf_hide">
                     <section class="col-12 _col_inputsaccount p-b-0">
-                        <%= f.label "Username" %>
+                        <%= f.label "Create a username" %>
                         <div class="form-group" style="position: relative;">
                             <span class="username-icon-styles position-absolute" style="right: 6px; top:7px;">
                               <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
                               <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
                             </span>
                             <%= f.text_field :slug, class: "_input _2 form-control", required: true,
-                                id: "mocker_username", placeholder: "Create a username" %>
+                                id: "mocker_username", placeholder: "Username" %>
                         </div>
                     </section>
                     <section class="col-12 _col_inputsaccount p-b-0">
-                        <%= f.label "Email" %>
+                        <%= f.label "Your email" %>
                         <%= f.email_field :email,
                                 required: true,
-                                class: "_input _2 form-control", placeholder: "yourname@email.com" %>
+                                class: "_input _2 form-control", placeholder: "your@email.com" %>
                     </section>
                     <br>
                     <div class="row m-0">

@@ -499,7 +499,7 @@
   }
   ._btn._login{
     padding: 8px 15px;
-    background: #ff5858;
+    background: linear-gradient(45deg, #ff5858, #FF7043);
     color: white;
     font-weight: 600;
     width: 100%;
@@ -777,6 +777,7 @@
       font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
       font-size: 16px;
       line-height: 1.5;
+      margin-top:9px;
   }
 
   /* Input */
@@ -786,8 +787,8 @@
       -webkit-appearance: none;
       z-index: -1;
       position: absolute;
-      left: -10px;
-      top: -8px;
+      left: -5px;
+      top: -3px;
       display: block;
       margin: 0;
       border-radius: 50%;
@@ -830,8 +831,8 @@
       content: "";
       display: block;
       position: absolute;
-      top: 4px;
-      left: 2px;
+      top: 9px;
+      left: 7px;
       width: 10px;
       height: 5px;
       border: solid 2px transparent;
