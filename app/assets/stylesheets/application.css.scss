@@ -280,7 +280,11 @@
   ._fw700{font-weight: 700;}
   ._fw800{font-weight: 800;}
   ._fw900{font-weight: 900;}
-
+  
+  a.like-post {
+    color: #032535;
+    text-decoration:none !important;
+  }
   ._bg_filter{
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.35));
       border-radius: 20px;

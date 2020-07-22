@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<div class="col-6 p-0">
-					<div class="row float-right ">	
+					<div class="row float-right m-0">	
 						<div class="col-auto" >
 							<% if current_mocker %>
 								<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
@@ -71,8 +71,11 @@
 			</div>
 			<div class="row m-0">
 				<div class="col-12 readmore p-0">
-					<p class="card-text"><%= @mock.description %></p>
-					<p>Creditos: </p>
+					<p class="video_description"><%= @mock.description %></p>
+					<% if @mock.credits? %>
+						<b>Credits:</b>
+						<p><%= @mock.credits %></p>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -111,6 +114,18 @@
 		margin-top:10px;
 		margin-bottom: 0;
 	}
+	a.link-2 {
+	    margin-top: 10px;
+	    margin-bottom: 15px;
+	}
+	.video_description{
+		font-size: 11pt;
+		color:#484848;
+	}
+	.vjs-poster{
+		border-radius: 9px;
+	}
+
 </style>
 
 <script type="text/javascript">

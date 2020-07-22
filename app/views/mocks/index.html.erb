@@ -7,7 +7,9 @@
 					  <div class="row cont_user m-0">
 					    <div class="col-12 text-center">
 					      <br>
-					      <%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+					      <%= link_to @mock do %>
+					      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+					      <% end %>
 					    </div>
 					    <div class="col-12 text-center">
 					      <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h4>
