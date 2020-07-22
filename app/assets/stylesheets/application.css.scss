@@ -284,6 +284,13 @@
   a.like-post {
     color: #032535;
     text-decoration:none !important;
+    display:block;
+  }
+  a.like-post:before{
+    content:'';
+    width:50px;
+    height:50px;
+    background:grey;
   }
   ._bg_filter{
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.35));

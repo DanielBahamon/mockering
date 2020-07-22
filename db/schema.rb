@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20200721214023) do
 
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
-    t.integer "impressionable_id"
+    t.string "impressionable_id"
     t.string "user_id"
     t.string "controller_name"
     t.string "action_name"
