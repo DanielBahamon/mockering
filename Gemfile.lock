@@ -308,7 +308,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   devise (~> 4.2)
-  dragonfly (~> 1.2)
   font-awesome-sass
   friendly_id (~> 5.2.4)
   haml (~> 5.1, >= 5.1.2)

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.6.6"
+# ruby "2.6.6"
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -12,7 +12,7 @@ gem 'sassc', '~> 2.1.0'
 gem 'bootstrap', '~> 4.5'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
-gem 'dragonfly', '~> 1.2' 
+# gem 'dragonfly', '~> 1.2' 
 gem 'avatar_magick', '~> 1.0', '>= 1.0.2'
 gem 'toastr-rails', '~> 1.0'
 gem 'devise', '~> 4.2'
