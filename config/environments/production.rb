@@ -107,7 +107,7 @@ Rails.application.configure do
 
   Paperclip::Attachment.default_options.merge!({
       storage: :s3,
-      path: ':class/:attachment/:id/:style/:filename',,
+      path: ':class/:attachment/:id/:style/:filename',
       s3_host_name: 's3-sa-east-1.amazonaws.com',
       s3_credentials: {
         access_key_id: ENV['AKIAIR3RVUMFAIL2GU2A'],
