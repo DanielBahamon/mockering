@@ -25,11 +25,12 @@ gem 'font-awesome-sass'
 gem 'aws-sdk', '~> 2.8'
 # gem 'aws-sdk', '~> 3'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
+gem "paperclip-ffmpeg", "~> 1.2.0"
+# gem 'elastic_transcoder', '~> 0.0.3'
 gem 'ransack'
 gem 'activesupport', '~> 5.1', '>= 5.1.7'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'impressionist', '~>1.6.1'
-gem 'paperclip-av-transcoder', '~> 0.6.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
 # Use Puma as the app server
@@ -59,6 +60,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
@@ -76,4 +78,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-

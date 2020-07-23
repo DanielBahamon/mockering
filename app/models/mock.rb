@@ -25,13 +25,15 @@ class Mock < ApplicationRecord
 	:content_type => {:content_type => ["audio/mpeg", "audio/mp3"]},
 	:file_type => {:matches => [/mp3\Z/]}
 
+
 	# For movie
 	has_attached_file :movie, styles: {
 		medium: {geometry: "640x480", format: 'mp4'},
 		thumb: {geometry: "100x50", format: 'jpg', time: 10}
-	}, proccessor: [:ocr]
+	}, proccessor: [:transcoder]
+
 	validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/
-	
+
 	def set_uuid
 		self.id = SecureRandom.uuid
 	end
