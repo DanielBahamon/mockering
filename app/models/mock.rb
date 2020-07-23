@@ -30,7 +30,13 @@ class Mock < ApplicationRecord
 	has_attached_file :movie, styles: {
 		medium: {geometry: "640x480#", format: 'mp4'},
 		thumb: {geometry: "100x50", format: 'jpg', time: 10}
-	}, proccessor: [:transcoder]
+	}, proccessor: [:transcoder],
+        :storage => :s3,
+        :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+
+    def s3_credentials
+	    {:bucket => "mockering", :access_key_id => "AKIAIR3RVUMFAIL2GU2A", :secret_access_key => "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", :s3_region => "sa-east-1"}
+	end
 
 	validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/
 
