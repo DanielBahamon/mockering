@@ -36,7 +36,7 @@ class Mock < ApplicationRecord
       "video/mp4", 
       "video/quicktime",
       "video/3gpp",
-      "video/x-ms-wmv", 
+      "video/x-ms-wmv",
       "video/mov",
       "video/flv"
       ],
