@@ -25,7 +25,7 @@ gem 'font-awesome-sass'
 gem 'aws-sdk', '~> 2.8'
 # gem 'aws-sdk', '~> 3'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
-gem "paperclip-ffmpeg", "~> 1.2.0"
+# gem "paperclip-ffmpeg", "~> 1.2.0"
 # gem 'elastic_transcoder', '~> 0.0.3'
 gem 'ransack'
 gem 'activesupport', '~> 5.1', '>= 5.1.7'
