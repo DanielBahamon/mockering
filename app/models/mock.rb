@@ -32,7 +32,7 @@ class Mock < ApplicationRecord
 		thumb: {geometry: "100x50", format: 'jpg', time: 10}
 	}, proccessor: [:ffmpeg]
 
-	validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/
+	validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/, :content_type => ["video/mp4", "image/jpg", "image/jpeg"]
 
 	def set_uuid
 		self.id = SecureRandom.uuid
