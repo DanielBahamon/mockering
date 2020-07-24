@@ -28,7 +28,7 @@ class Mock < ApplicationRecord
 	# For movie
 	has_attached_file :movie, styles: {
 		medium: {:geometry => "640x480", :format => 'jpg'}
-		thumb: {:geometry => "100x100", :format => 'jpg', :time => 10}
+		# thumb: {:geometry => "100x100", :format => 'jpg', :time => 10}
 	}, proccessors: [:transcoder]
 
 	validates_attachment_content_type :movie,
@@ -38,16 +38,9 @@ class Mock < ApplicationRecord
       "video/3gpp",
       "video/x-ms-wmv",
       "video/mov",
-      "video/flv"
+      "video/flv",
       ],
     :message => "Sorry! We do not accept the attached file type"
-	after_post_process :save_image_dimensions
-
-	def save_image_dimensions
-	  geo = Paperclip::Geometry.from_file(movie.queued_for_write[:original])
-	  self.image_width = geo.width
-	  self.image_height = geo.height
-	end
 
 	# validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/, :content_type => ["video/mp4", "image/jpg"]
 
