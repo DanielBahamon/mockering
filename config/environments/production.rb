@@ -116,7 +116,6 @@ Rails.application.configure do
   #     bucket: ENV['mockering']
   # })
 
-  Paperclip.options[:command_path] = "/app/vender/imagemagick/bin/identify"
 
   config.paperclip_defaults = {
     storage: :s3,
