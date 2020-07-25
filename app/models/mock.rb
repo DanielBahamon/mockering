@@ -43,7 +43,7 @@ class Mock < ApplicationRecord
 
 	#validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
-	validates_presence_of :movie
+	# validates_presence_of :movie
 
 	def set_uuid
 		self.id = SecureRandom.uuid
