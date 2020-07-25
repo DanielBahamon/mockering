@@ -36,8 +36,7 @@ class Mock < ApplicationRecord
 	    processors: [:ffmpeg],
 	    :storage => :s3,
 	    :size => { :in => 0..25.megabytes },
-	    :s3_permissions => :public_read,
-	    :s3_credentials => S3_CREDENTIALS
+	    :s3_permissions => :public_read
     #	:medium => { :geometry => "640x480", :format => 'mp4' },
     #	:thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
 	# }, proccessors: [:transcoder]
@@ -49,8 +48,6 @@ class Mock < ApplicationRecord
 	def set_uuid
 		self.id = SecureRandom.uuid
 	end
-
-
 
 end
  
