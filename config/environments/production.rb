@@ -105,27 +105,27 @@ Rails.application.configure do
     password: 'sHI3avA16LVyCfNY'
   }
 
-  # config/environments/production.rb
+  # Paperclip::Attachment.default_options.merge!({
+  #     storage: :s3,
+  #     path: ':class/:attachment/:id/:style/:filename',
+  #     s3_host_name: 's3-sa-east-1.amazonaws.com',
+  #     s3_credentials: {
+  #       access_key_id: ENV['AKIAIR3RVUMFAIL2GU2A'],
+  #       secret_access_key: ENV['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']
+  #     },
+  #     bucket: ENV['mockering']
+  # })
+
+
   config.paperclip_defaults = {
     storage: :s3,
+    path: ':class/:attachment/:id/:style/:filename',
+    s3_host_name: 's3-sa-east-1.amazonaws.com',
     s3_credentials: {
-      bucket: ENV.fetch('S3_BUCKET_NAME'),
-      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-      s3_region: ENV.fetch('AWS_REGION'),
+      bucket: 'mockering',
+      access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
+      secret_access_key: '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',
+      s3_region: 'sa-east-1'
     }
   }
-
-
-  # config.paperclip_defaults = {
-  #   storage: :s3,
-  #   path: ':class/:attachment/:id/:style/:filename',
-  #   s3_host_name: 's3-sa-east-1.amazonaws.com',
-  #   s3_credentials: {
-  #     bucket: 'mockering',
-  #     access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
-  #     secret_access_key: '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',
-  #     s3_region: 'sa-east-1'
-  #   }
-  # }
 end
