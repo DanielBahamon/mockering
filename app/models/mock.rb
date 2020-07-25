@@ -33,7 +33,7 @@ class Mock < ApplicationRecord
 	          :acodec => 'libfaac', :ab => '56k', :ac => 2 } } },
 	       :preview => { :geometry => '300x300>', :format => 'jpg', :time => 5 }
 	    },
-	    processors: [:ffmpeg],
+	    processors: [:transcoder],
 	    :storage => :s3,
 	    :size => { :in => 0..25.megabytes },
 	    :s3_permissions => :public_read
