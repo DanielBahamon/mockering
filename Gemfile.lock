@@ -178,9 +178,6 @@ GEM
     paperclip-av-transcoder (0.6.4)
       av (~> 0.9.0)
       paperclip (>= 2.5.2)
-    paperclip-ffmpeg (1.2.0)
-      paperclip (>= 2.5.2)
-      rails
     pg (1.2.3-x86-mingw32)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
@@ -306,6 +303,7 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug
   capybara (>= 2.15)
+  cocaine (~> 0.5.5)
   coffee-rails (~> 4.2)
   devise (~> 4.2)
   font-awesome-sass
@@ -321,7 +319,6 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.8.0)
   paperclip (~> 5.1.0)
   paperclip-av-transcoder (~> 0.6.4)
-  paperclip-ffmpeg (~> 1.2.0)
   pg
   puma (~> 3.7)
   rails (~> 5.1.7)
