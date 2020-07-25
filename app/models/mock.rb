@@ -26,7 +26,7 @@ class Mock < ApplicationRecord
 	:file_type => {:matches => [/mp3\Z/]}
 
 	# For movie
-	has_attached_file :movie, styles: {
+	has_attached_file :movie, :styles => {
     	:medium => { :geometry => "640x480", :format => 'mp4' },
     	:thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
 	}, proccessors: [:transcoder]
