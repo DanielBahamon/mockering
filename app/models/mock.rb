@@ -27,19 +27,9 @@ class Mock < ApplicationRecord
 
 	# For movie
 	has_attached_file :movie, :styles => {
-	      :mp4video => { :geometry => '640x480', :format => 'mp4',
-	        :convert_options => { :output => { :vcodec => 'libx264',
-	          :vpre => 'ipod640', :b => '250k', :bt => '50k',
-	          :acodec => 'libfaac', :ab => '56k', :ac => 2 } } },
-	       :preview => { :geometry => '300x300>', :format => 'jpg', :time => 5 }
-	    },
-	    processors: [:transcoder],
-	    :storage => :s3,
-	    :size => { :in => 0..25.megabytes },
-	    :s3_permissions => :public_read
-    #	:medium => { :geometry => "640x480", :format => 'mp4' },
-    #	:thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
-	# }, proccessors: [:transcoder]
+    	:medium => { :geometry => "640x480", :format => 'mp4' },
+    	:thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+	 }, proccessors: [:transcoder]
 
 	#validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
