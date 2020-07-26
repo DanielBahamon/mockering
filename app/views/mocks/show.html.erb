@@ -28,7 +28,7 @@
 						<div class="col-auto">
 							<div class="d-table fullscreen">
 								<div class="d-tablecell v-middle">
-									<h5 class="_fw500">• <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
+									<h5 class="_fw500 _fs90per m-0">• <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
 								</div>
 							</div>
 						</div>
@@ -51,7 +51,7 @@
 								<% end %>
 							<% end %>
 						</div>
-						<div class="col-auto">
+						<div class="col-auto p-0">
 							<% if current_mocker %>
 								<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
 									<div id="dislike-count">

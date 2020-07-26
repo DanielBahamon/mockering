@@ -7,13 +7,15 @@
 					  <div class="row cont_user m-0">
 					    <div class="col-12 text-center">
 					      <br>
-					      <%= link_to @mock do %>
+					      <%= link_to current_mocker do %>
 					      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
 					      <% end %>
 					    </div>
 					    <div class="col-12 text-center">
-					      <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %></h4>
-					      <p class="_fw400">@<%= current_mocker.slug %></p>
+					      <h4 class="_name _fw400 m-0">
+					      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
+					      <p class="_fw400">
+					      <%= link_to current_mocker, class: "_color_black deco-none" do %>@<%= current_mocker.slug %><% end %></p>
 					    </div>
 					  </div>
 					  <br>
@@ -79,7 +81,7 @@
 														<div class="text-ellipsis">
 															<div class="d-table fullscreen">
 																<div class="d-tablecell v-middle ">
-																	<p class="_fs10pt m-0 ">@<%= mock.mocker.slug %></p>
+																	<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %></p>
 																</div>
 															</div>
 														</div>
@@ -119,5 +121,8 @@
 	._board{
 		min-height: 80vh;
 		padding:0;
+	}
+	.deco-none{
+		text-decoration: none !important;
 	}
 </style>

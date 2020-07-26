@@ -281,6 +281,10 @@
   ._fw800{font-weight: 800;}
   ._fw900{font-weight: 900;}
   
+  ._fs90per{
+    font-size: 90%;
+  }
+
   a.like-post {
     color: #032535;
     text-decoration:none !important;
@@ -322,6 +326,9 @@
     color:inherit !important;
   }
   ._color_black{
+    color:#212529;
+  }
+  ._color_black:hover{
     color:#212529;
   }
   ._list._1{
@@ -1481,6 +1488,7 @@
     margin: 0 auto;
     display: block;
     border-radius: 100%;
+    margin-bottom:20px;
   }
 
   ._col_user{
@@ -1994,7 +2002,7 @@
   /* MAX WIDTH */
     @media(max-width: 880px){
       ._card{
-        width:200px;
+        width:250px;
       }
     }
     @media(max-width: 576px){
