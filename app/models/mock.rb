@@ -31,7 +31,6 @@ class Mock < ApplicationRecord
     	:thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
 	 }, proccessors: [:transcoder]
 
-	#validates_attachment_content_type :movie, content_type: /\Avideo\/.*\z/
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
 	# validates_presence_of :movie
 
