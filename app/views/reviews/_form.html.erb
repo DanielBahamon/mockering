@@ -9,14 +9,16 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title text-left">Califica y comenta a tu huesped </h4>
+        <h5 class="modal-title _fw600 text-left">What do you think about it?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <%= form_for @mock.reviews.new do |f| %>
           
           <div class="display-grid fullwidth">
-            <%= f.text_area :comment, rows: 3, class: "form-control" %>
+            <%= f.text_area :comment, rows: 3, class: "form-control",required: true %>
           </div>
 
           <%= f.hidden_field :mock_id, value: @mock.id %>
@@ -24,7 +26,7 @@
 
           <div class="text-center">
             <br/>
-            <%= f.submit "Agregar comentario", class: "btn btn_primary" %>
+            <%= f.submit "Agregar comentario", class: "btn _btn _login" %>
           </div>
         <% end %>
       </div>
