@@ -13,7 +13,7 @@
 					    </div>
 					    <div class="col-12 text-center">
 					      <h4 class="_name _fw400 m-0">
-					      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
+					      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
 					      <p class="_fw400">
 					      <%= link_to current_mocker, class: "_color_black deco-none" do %>@<%= current_mocker.slug %><% end %></p>
 					    </div>
