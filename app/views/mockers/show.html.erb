@@ -52,7 +52,7 @@
 				<div class="row m-0">
 					<div class="col-12 col-sm-6 col-md-12 p-0">
 						<div class="readmore _1">
-							<p class="keepspaces"><%= @mocker.bio %></p>
+							<p class="keepspaces _bio"><%= @mocker.bio %></p>
 						</div>
 					</div>
 					<div class="col-12 col-sm-6 col-md-12">
@@ -97,25 +97,25 @@
 			</div>
 			<br>
 			<div class="row m-0">
-				<div class="col-12">
+				<div class="col-12 p-0">
 					<div class="mocks_content">
 						<div id="mocks" class="transitions-enabled">
 								<% @mocks.each do |mock| %>
 									<%= link_to mock, class: "link_card card box _card _1" do %>
 										<%= image_tag mock.picture.url(:large), class: "card-img-top _1" %>
 										<div class="_cardbody">
-											<div class="row">
-												<div class="col-12">
+											<div class="row m-0">
+												<div class="col-12 p-0">
 													<h5 class="card-title _title _fw600"><%= mock.title %></h5>
 								        			<p class="card-text _description"><%= mock.description %></p>
 												</div>
 												<div class="row m-0 fullwidth">
-													<div class="col-6">
+													<div class="col-6 p-0">
 														
 														<div class="text-ellipsis">
 															<div class="d-table fullscreen">
 																<div class="d-tablecell v-middle ">
-																	<small class="text-white"><%= mock.created_at.strftime("%d %b %Y").downcase  %></small>
+																	<small><%= mock.created_at.strftime("%d %b %Y").downcase  %></small>
 																</div>
 															</div>
 														</div>
@@ -148,8 +148,14 @@
 <style type="text/css">
 	@media(max-width: 575px){
       ._card{
-        width:99%;
+        width:100%;
+        margin: 0;
       }
+	._bio{
+		text-align-last: center;
+	}
+	._col_cont_user{
+		padding:0;
 	}
 </style>
 <script type="text/javascript">
