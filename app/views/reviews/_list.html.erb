@@ -6,30 +6,63 @@
   </div>
 <% else %>
   <% @reviews.order(id: :desc).each do |r| %>
-    <div class="row m-0">
+    <div class="row m-0 _rowreview">
       <div class="col-3 text-center">
-        <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %><br/><br/>
-        <strong><%= r.mocker.first_name %></strong>
+        <div class="d-table fullscreen">
+          <div class="d-table-cell v-middle">
+            <div class="d-grid text-center">
+              <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
+              <b class="_fw500">@<%= r.mocker.slug %></b>
+            </div>
+              
+          </div>
+        </div>
       </div>
       <div class="col-9">
-        <% if current_mocker && current_mocker == r.mocker %>
-          <span class="pull-right">
-            <%= link_to r, method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="fa fa-trash fa-lg"></i>
-            <% end %>
-          </span>
-        <% end %>
+        <div class="row m-0" style="margin-bottom: 10px;">
+          <div class="col-auto text-right p-0">
+            <div class="d-table fullscreen">
+              <div class="d-table-cell v-middle">
+                <small><%= r.created_at.strftime("%d %b %y").downcase  %></small>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto absolute right-0 p-0">
+
+            <% if current_mocker && current_mocker == r.mocker %>
+              <div class="navbar">
+                <div class="nav-item dropdown">
+                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none " href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownReview">
+                    <% if mocker_signed_in? # && current_mocker.admin %>
+                      <%= link_to r, class: "_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>
+                        Remove
+                      <% end %>
+                      <!--<div class="dropdown-divider"></div>
+                      <a href="#" class="_itemdropdown">Report</a>-->
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>  
+          </div>    
+        </div>
+        <div class="col-12 readmore p-0">
+          <p class="m-0 keepspaces"><%= r.comment %></p>
+        </div>
       </div>
-      <div><%= r.created_at.strftime("%v") %></div>
-      <div><%= r.comment %></div>
     </div>
+    <hr>
   <% end %>
 <% end %>
 <br>
-<style type="text/css">
-  ._avatar_comment{
-    width: 100%;
-    max-width: 36px;
-    border-radius: 300px;
-  }
-</style>
+
+<script type="text/javascript">
+  $('.readmore').readmore({
+      speed: 75,
+      collapsedHeight: 100,
+      moreLink: '<a href="#" class="link-2">Show more</a>',
+        lessLink: '<a href="#" class="link-2">Show less</a>'
+    }
+  );
+</script>

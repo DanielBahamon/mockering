@@ -284,7 +284,21 @@
   ._fs90per{
     font-size: 90%;
   }
-
+  .left-0{
+    left:0;
+  }
+  .right-0{
+    right:0;
+  }
+  .top-0{
+    top:0;
+  }
+  .bottom-0{
+    bottom:0;
+  }
+  .deco-none{
+    text-decoration:none !important;
+  }
   a.like-post {
     color: #032535;
     text-decoration:none !important;
@@ -1129,20 +1143,27 @@
     -webkit-box-shadow: 0 7px 12px -12px #7a7a7a;
     box-shadow: 0 7px 12px -12px #7a7a7a;
   }
-  .navbar-nav._navbar .dropdown-menu .nav-link{
+  .navbar-nav._navbar .dropdown-menu .nav-link,
+  ._itemdropdown{
     text-align: right;
     color:black;
     text-decoration: none !important;
     font-weight: 400;
     padding: 9px;
   }
-  .navbar-nav._navbar .dropdown-menu .nav-link:first-child{
+  ._itemdropdown{
+    width:100%;
+  }
+  .navbar-nav._navbar .dropdown-menu .nav-link:first-child,
+  ._itemdropdown:first-child{
     border-radius: 9px 9px 0 0;
   }
-  .navbar-nav._navbar .dropdown-menu .nav-link:last-child{
+  .navbar-nav._navbar .dropdown-menu .nav-link:last-child,
+  ._itemdropdown:last-child{
     border-radius: 0 0 9px 9px;
   }
-  .navbar-nav._navbar .dropdown-menu .nav-link:hover{
+  .navbar-nav._navbar .dropdown-menu .nav-link:hover,
+  ._itemdropdown:hover{
     font-weight: 600;
     background: #f4f7f8;
   }
@@ -2002,6 +2023,29 @@
     background-size: cover;
   }
 /* END #IDS */
+
+/* REVIEWS */
+
+  ._avatar_comment{
+    width: 36px;
+    max-width: 36px;
+    border-radius: 300px;
+    margin:0 auto;
+  }
+  .linkdropdown_reviews{
+    opacity: 0;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-align:center;
+  }
+  ._rowreview:hover .linkdropdown_reviews{
+    opacity: 1;
+  }
+/* END REVIEWS */
+
 
 /* RESPONSIVE */
   /* MAX WIDTH */
