@@ -12,7 +12,7 @@
 					      <% end %>
 					    </div>
 					    <div class="col-12 text-center">
-					      <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h4>
+					      <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %></h4>
 					      <p class="_fw400">@<%= current_mocker.slug %></p>
 					    </div>
 					  </div>

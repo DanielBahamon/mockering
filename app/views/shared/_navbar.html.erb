@@ -80,7 +80,6 @@
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2">
                                     <% if mocker_signed_in? # && current_mocker.admin %>
                                       <%= link_to "+ Add mock", new_mock_path, class: "nav-link d-sm-block d-md-none" %>
-                                      <!--<h6 class="dropdown-header text-ellipsis"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h6>-->
                                       <div class="dropdown-divider d-sm-block d-md-none"></div>
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
                                       <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
@@ -135,7 +134,6 @@
                               <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
                                 <% if mocker_signed_in? # && current_mocker.admin %>
                                       <%= link_to "+ Add mock", new_mock_path, class: "nav-link d-sm-block d-md-none" %>
-                                      <!--<h6 class="dropdown-header text-ellipsis"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h6>-->
                                       <div class="dropdown-divider d-sm-block d-md-none"></div>
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
                                       <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
@@ -175,7 +173,7 @@
                   <%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
                 </div>
                 <div class="col-12 text-center">
-                  <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></h4>
+                  <h4 class="_name _fw400 m-0"><%= current_mocker.first_name.capitalize  if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %></h4>
                   <p class="_fw400">@<%= current_mocker.slug %></p>
                 </div>
               </div>
