@@ -7,7 +7,7 @@
 <% else %>
   <% @reviews.order(id: :desc).each do |r| %>
     <div class="row m-0 _rowreview">
-      <div class="col-3 text-center">
+      <div class="col text-center">
         <div class="d-table fullscreen">
           <div class="d-table-cell v-middle">
             <div class="d-grid text-center">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-10">
         <div class="row m-0" style="margin-bottom: 10px;">
           <div class="col-auto text-right p-0">
             <div class="d-table fullscreen">
@@ -35,9 +35,7 @@
                   <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none " href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                   <div class="dropdown-menu" aria-labelledby="dropdownReview">
                     <% if mocker_signed_in? # && current_mocker.admin %>
-                      <%= link_to r, class: "_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>
-                        Remove
-                      <% end %>
+                      <%= link_to r, method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
                       <!--<div class="dropdown-divider"></div>
                       <a href="#" class="_itemdropdown">Report</a>-->
                     <% end %>

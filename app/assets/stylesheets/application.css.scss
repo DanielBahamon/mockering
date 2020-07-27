@@ -2041,6 +2041,13 @@
     display: block;
     text-align:center;
   }
+  .linkdropdown_reviews a{
+    color: black;
+    text-decoration: none;
+    padding: 5px 15px;
+    width: 100%;
+    display: block;
+  }
   ._rowreview:hover .linkdropdown_reviews{
     opacity: 1;
   }

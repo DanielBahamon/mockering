@@ -1,5 +1,9 @@
 <!-- Trigger the modal with a button -->
-  <a class="display-block btn _btn _1" data-toggle="modal" data-target="#myModal_<%= @mock.id %>">Comment</a>
+<div class="row m-0">
+  <div class="col-12 text-right p-0">
+    <a class="display-block btn _btn _1 _btncomment" data-toggle="modal" data-target="#myModal_<%= @mock.id %>">Comment</a>
+  </div>
+</div>
 <br>
 
 <!-- Modal -->
@@ -35,3 +39,11 @@
   </div>
 </div>
 
+<style type="text/css">
+  @media(min-width:768px){
+    ._btncomment{
+      width: max-content;
+      margin-left: auto;
+    }
+  }
+</style>
