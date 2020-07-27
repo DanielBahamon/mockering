@@ -12,7 +12,8 @@
           <div class="d-table-cell v-middle">
             <div class="d-grid text-center">
               <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
-              <b class="_fw500">@<%= r.mocker.slug %></b>
+              <small class="_fw500">@<%= r.mocker.slug %></small>
+              <small><%= r.created_at.strftime("%d %b %y").downcase  %></small>
             </div>
               
           </div>
@@ -20,19 +21,12 @@
       </div>
       <div class="col-12 col-sm-10">
         <div class="row m-0" style="margin-bottom: 10px;">
-          <div class="col-auto text-right p-0">
-            <div class="d-table fullscreen">
-              <div class="d-table-cell v-middle">
-                <small><%= r.created_at.strftime("%d %b %y").downcase  %></small>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto absolute right-0 p-0">
+          <div class="col-12 text-right p-0">
 
             <% if current_mocker && current_mocker == r.mocker %>
-              <div class="navbar">
-                <div class="nav-item dropdown">
-                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none " href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+              <div class="navbar d-block p-0">
+                <div class="nav-item dropdown text-right">
+                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                   <div class="dropdown-menu" aria-labelledby="dropdownReview">
                     <% if mocker_signed_in? # && current_mocker.admin %>
                       <%= link_to r, class:"_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
@@ -47,7 +41,7 @@
         </div>
         <div class="col-12 readmore p-0">
           <div class="comment" id="comment">
-            <p class="m-0 keepspaces"><%= r.comment %></p>
+            <small class="m-0 keepspaces"><%= r.comment %></small>
           </div>
         </div>
       </div>
@@ -60,16 +54,11 @@
 <script type="text/javascript">
   $('.readmore').readmore({
       speed: 75,
-      collapsedHeight: 100,
+      collapsedHeight: 85,
       moreLink: '<a href="#" class="link-2">Show more</a>',
         lessLink: '<a href="#" class="link-2">Show less</a>'
     }
   );
 </script>
 <style type="text/css">
-  .comment{
-    background: #f3f3f3;
-    border-radius: 4px;
-    padding: 10px;
-  }
 </style>
