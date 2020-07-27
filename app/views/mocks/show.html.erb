@@ -51,7 +51,7 @@
 								<% end %>
 							<% end %>
 						</div>
-						<div class="col-auto p-0">
+						<div class="col-auto">
 							<% if current_mocker %>
 								<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
 									<div id="dislike-count">
@@ -91,22 +91,22 @@
 			</div>
 			<hr>
 			<div class="row m-0">
-				<div class="col-1 col-sm col-md-auto p-0">
+				<div class="col-12 col-sm-1 col-md-auto p-0">
 					<div class="d-table fullscreen">
 						<div class="d-tablecell v-middle text-center">
 							<%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= image_tag avatar_url(@mock.mocker), class: "_avatar _4" %><% end %>
 						</div>
 					</div>
 				</div>
-				<div class="col-11 col-sm-7 col-md-8 col-xl-9">
+				<div class="col-12 col-sm-7 col-md-8 col-xl-9">
 					<div class="d-table fullscreen">
-						<div class="d-tablecell v-middle">
+						<div class="d-tablecell v-middle text-center-sm">
 							<h5 class="_fw500 m-0"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name.capitalize if @mock.mocker.first_name? %><% end %></h5>
 							<small class="text-muted _username_video _fw500 m-0"><%= link_to @mock.mocker, class: "_color_black deco-none" do %>@<%= @mock.mocker.slug %><% end %></small>
 						</div>
 					</div>
 				</div>
-				<div class="col _col_follow">
+				<div class="col-12 col-sm _col_follow">
 					<% if mocker_signed_in? && current_mocker != @mock.mocker %>
 						<% if current_mocker.following?(@mock.mocker) %>
 							<%= button_to "Unfollow", friendships_path(mocker_id: @mock.mocker.id), method: :delete, class: "btn _btn _action m-0-auto unfollow" %>
@@ -139,6 +139,7 @@
 	}
 	._col_follow{
 	    padding-top: 4px;
+	    padding: 0;
 	    height: auto;
 	    display: inherit;
 	    text-align: center;
@@ -149,9 +150,19 @@
 	._col_follow form {
 		width: 100%;
 	}
+	@media(max-width: 575px){
+		._col_follow{
+    		margin-top: 10px;
+    		max-width: inherit;
+		}
+		.text-center-sm{
+			text-align: center;
+		}
+	}
 	._col_follow form .btn{
 		width:100%;
 		padding: 8px 15px;
+    	max-width: 150px;
 	}
 	/*._col_follow form{
 	    display: table;

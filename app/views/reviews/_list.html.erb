@@ -7,7 +7,7 @@
 <% else %>
   <% @reviews.order(id: :desc).each do |r| %>
     <div class="row m-0 _rowreview">
-      <div class="col text-center">
+      <div class="col-12 col-sm text-center">
         <div class="d-table fullscreen">
           <div class="d-table-cell v-middle">
             <div class="d-grid text-center">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="col-10">
+      <div class="col-12 col-sm-10">
         <div class="row m-0" style="margin-bottom: 10px;">
           <div class="col-auto text-right p-0">
             <div class="d-table fullscreen">
@@ -32,10 +32,10 @@
             <% if current_mocker && current_mocker == r.mocker %>
               <div class="navbar">
                 <div class="nav-item dropdown">
-                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none " href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none " href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                   <div class="dropdown-menu" aria-labelledby="dropdownReview">
                     <% if mocker_signed_in? # && current_mocker.admin %>
-                      <%= link_to r, method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
+                      <%= link_to r, class:"_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
                       <!--<div class="dropdown-divider"></div>
                       <a href="#" class="_itemdropdown">Report</a>-->
                     <% end %>
@@ -46,7 +46,9 @@
           </div>    
         </div>
         <div class="col-12 readmore p-0">
-          <p class="m-0 keepspaces"><%= r.comment %></p>
+          <div class="comment" id="comment">
+            <p class="m-0 keepspaces"><%= r.comment %></p>
+          </div>
         </div>
       </div>
     </div>
@@ -64,3 +66,10 @@
     }
   );
 </script>
+<style type="text/css">
+  .comment{
+    background: #f3f3f3;
+    border-radius: 4px;
+    padding: 10px;
+  }
+</style>
