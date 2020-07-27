@@ -12,22 +12,20 @@
           <div class="d-table-cell v-middle">
             <div class="d-grid text-center">
               <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
-              <small class="_fw500">@<%= r.mocker.slug %></small>
+              <small class="_fw500"><%= r.mocker.slug %></small>
               <small><%= r.created_at.strftime("%d %b %y").downcase  %></small>
             </div>
-              
           </div>
         </div>
       </div>
       <div class="col-12 col-sm-10">
         <div class="row m-0" style="margin-bottom: 10px;">
-          <div class="col-12 text-right p-0">
-
+          <div class="col offset text-right p-0">
             <% if current_mocker && current_mocker == r.mocker %>
               <div class="navbar d-block p-0">
                 <div class="nav-item dropdown text-right">
                   <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownReview">
+                  <div class="dropdown-menu right-0" aria-labelledby="dropdownReview">
                     <% if mocker_signed_in? # && current_mocker.admin %>
                       <%= link_to r, class:"_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
                       <!--<div class="dropdown-divider"></div>
@@ -50,7 +48,6 @@
   <% end %>
 <% end %>
 <br>
-
 <script type="text/javascript">
   $('.readmore').readmore({
       speed: 75,
@@ -61,4 +58,8 @@
   );
 </script>
 <style type="text/css">
+  .dropdown-menu.right-0{
+    left:inherit;
+    right: 0 !important;
+  }
 </style>
