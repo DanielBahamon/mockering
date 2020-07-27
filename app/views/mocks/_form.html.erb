@@ -1,30 +1,87 @@
 <div class="form-group">
 	<%= form_for @mock, html: { multipart: true } do |f| %>
-		<div class="field">
-			<%= f.label :movie %>
-			<%= f.file_field :movie, class: 'form-control' %>
-		</div>
-		<div class="field">
-			<%= f.label :music %>
-			<%= f.file_field :music, class: 'form-control' %>
-		</div>
-		<div class="field">
-			<%= f.label :picture %><br/>
-			<%= f.file_field :picture, class: 'form-control' %>
-		</div>
-		<div class="field">
-			<%= f.label :title %><br/>
-			<%= f.text_field :title, class: 'form-control', required: true %>
-		</div>
-		<div class="field">
-			<%= f.label :description %><br/>
-			<%= f.text_field :description, class: 'form-control' %>
-		</div>
-		<div class="field">
-			<%= f.label :category %><br/>
-			<%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Selecciona...", class: "form-control" %>
-		</div>
 
-		<%= f.submit 'Enviar', class: 'btn btn-primary' %>
+<div class="accordion _1" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="far fa-file-alt"></i> Information
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+      	<div class="row">
+      		<div class="col-12 col-sm-6">
+      			<div class="field">
+					<%= f.label :title %><br/>
+					<%= f.text_field :title, class: 'form-control', required: true %>
+				</div>
+      		</div>
+      		<div class="col-12 col-sm-6">
+				<div class="field">
+					<%= f.label :category %><br/>
+					<%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Selecciona...", class: "form-control" %>
+				</div>
+      		</div>
+      		<div class="col-12">
+				<div class="field">
+					<%= f.label :description %><br/>
+					<%= f.text_area :description, class: '_textarea _2 form-control', rows: "4" %>
+				</div>
+      		</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+         <i class="far fa-file-video"></i> Video (MP4)
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+		<div class="field">
+			<%= f.label :movie %><br/>
+			<%= f.file_field :movie, class: '' %>
+		</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         <i class="far fa-file-image"></i> Picture (JPG/PNG/GIF)
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+      	<div class="row">
+      		<div class="col-12">
+      			<div class="field">
+					<%= f.label :picture %><br/>
+					<%= f.file_field :picture, class: '' %>
+				</div>
+      		</div>	
+      	</div>
+						
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+	<div class="col-12 text-right">
+		<%= f.submit 'Add mock', class: 'btn _btn _action f-right' %>
+	</div>
+</div>
 	<% end %>
 </div>
+
