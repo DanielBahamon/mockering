@@ -1,0 +1,1 @@
+<i class="far fa-eye"></i> <% number_views = mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
