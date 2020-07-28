@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require 'masonry/transitions'
+ *= require 'jquery.atwho'
  *= require_tree .
  *= require_self
  */
@@ -1987,52 +1988,6 @@
   }
 /* END UPLOAD */
 
-/* #IDS */
-  #mocks{
-      margin:0 auto;
-      margin-top:5px;
-      width: 100%;
-  }
-  #on_content{
-    background: #f4f7f8;
-    height: 100%;
-  }
-  #trigger1{
-    top:51vh;
-  }
-  #_big_row_index{
-    background:#ffffff;
-    max-width: 1700px;
-    margin: 0 auto;
-  }
-  #_row_follows_board{
-    margin-bottom: 15px;
-  }
-  #_sidenav{
-    min-height: 100vh;
-  }
-  #_row_sidenav1{
-      min-height: 250px;
-      margin-top: 65px;
-  }
-  #_row_sidenav2{ 
-      position: absolute;
-      bottom: 40px;
-  }
-  #_ad_1{
-    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/ashwin-vaswani-JqZ7q_S3xOE-unsplash.jpg);
-    background-size: cover;
-  }
-  #_ad_2{
-    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/austin-neill-403340-unsplash.jpg);
-    background-size: cover;
-  }
-  #_ad_3{
-    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/austin-distel-599272-unsplash.jpg);
-    background-size: cover;
-  }
-/* END #IDS */
-
 /* REVIEWS */
 
   .comment{
@@ -2080,6 +2035,51 @@
   }
 /* END REVIEWS */
 
+/* #IDS */
+  #mocks{
+      margin:0 auto;
+      margin-top:5px;
+      width: 100%;
+  }
+  #on_content{
+    background: #f4f7f8;
+    height: 100%;
+  }
+  #trigger1{
+    top:51vh;
+  }
+  #_big_row_index{
+    background:#ffffff;
+    max-width: 1700px;
+    margin: 0 auto;
+  }
+  #_row_follows_board{
+    margin-bottom: 15px;
+  }
+  #_sidenav{
+    min-height: 100vh;
+  }
+  #_row_sidenav1{
+      min-height: 250px;
+      margin-top: 65px;
+  }
+  #_row_sidenav2{ 
+      position: absolute;
+      bottom: 40px;
+  }
+  #_ad_1{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/ashwin-vaswani-JqZ7q_S3xOE-unsplash.jpg);
+    background-size: cover;
+  }
+  #_ad_2{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/austin-neill-403340-unsplash.jpg);
+    background-size: cover;
+  }
+  #_ad_3{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/austin-distel-599272-unsplash.jpg);
+    background-size: cover;
+  }
+/* END #IDS */
 
 /* RESPONSIVE */
   /* MAX WIDTH */

@@ -17,10 +17,5 @@
 //= require counterPlugin.min
 //= require bootstrap
 //= require readmore
+//= require jquery.atwho
 //= require_tree .
-
-
-global.toastr = require("toastr")
-
-
- 

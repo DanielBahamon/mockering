@@ -64,6 +64,12 @@ class MockersController < ApplicationController
 	    end
 	end
 
+	def mentions
+	  respond_to do |format|
+	    format.json { render :json => Mention.all(params[:q]) }
+	  end
+	end
+
 
 	private
 

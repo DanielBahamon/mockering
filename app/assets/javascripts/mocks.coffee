@@ -3,6 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
+class @Mock
+  @add_atwho = ->
+    $('#mock_description').atwho
+      at: '@'
+      displayTpl:"<li class='mention-item' data-value='(${name},${image})'>${name} ${image}</li>",
+      callbacks: remoteFilter: (query, callback) ->
+        if (query.length < 1)
+          return false
+        else
+          $.getJSON '/mentions', { q: query }, (data) ->
+            callback data
+
+jQuery ->
+  Mock.add_atwho()
+
+
 $ ->
 	$('#mocks').imagesLoaded ->
 		$('#mocks').masonry

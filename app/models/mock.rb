@@ -7,15 +7,12 @@ class Mock < ApplicationRecord
 	is_impressionable
 
 	has_many :reviews
-
-  	act_as_mentioner
   	
 	enum category: {
 		Original: 0,
-		Streaming: 1,
-		Report: 2,
-		Reaction: 3,
-		Tutorial: 4
+		Report: 1,
+		Reaction: 2,
+		Tutorial: 3
 	}
 	
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/unnamed.jpg"
@@ -38,6 +35,13 @@ class Mock < ApplicationRecord
 
 	def set_uuid
 		self.id = SecureRandom.uuid
+	end
+
+
+	after_create :add_mentions
+
+	def add_mentions
+		Mention.create_from_text(self)
 	end
 
 end

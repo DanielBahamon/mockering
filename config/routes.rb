@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
 
 
+  get 'mentions', to: 'mockers#mentions'
   
 
 end

@@ -36,8 +36,6 @@ class Mocker < ApplicationRecord
   	acts_as_voter
 	extend FriendlyId
 	friendly_id :first_name, use: :slugged
-	  
-  	act_as_mentionee
   	
 	validates :id, presence: true
 

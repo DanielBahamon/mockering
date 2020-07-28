@@ -1,0 +1,11 @@
+<li>
+  <span class="content"><%= markdown(mock.description) %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(mock.created_at) %> ago.
+  </span>
+  <% if current_mocker?(mock.mocker) %>
+    <%= link_to "delete", mock, method: :delete,
+                 data: { confirm: "You sure?" },
+                 title: mock.description %>
+  <% end %>
+</li>
