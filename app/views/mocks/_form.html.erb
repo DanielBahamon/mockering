@@ -65,7 +65,7 @@
               <div class="col-12 col-sm-6">
                 <div class="field">
                   <%= f.label :category %><br/>
-                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select" %>
+                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
                 </div>
               </div>
               <div class="col-12">
