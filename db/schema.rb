@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200721214023) do
+ActiveRecord::Schema.define(version: 20200728011600) do
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"
@@ -73,6 +73,20 @@ ActiveRecord::Schema.define(version: 20200721214023) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "mentions", force: :cascade do |t|
+    t.string "mentionee_type"
+    t.integer "mentionee_id"
+    t.string "mentioner_type"
+    t.integer "mentioner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentionee_id", "mentionee_type", "mentioner_id", "mentioner_type"], name: "mentions_mentionee_mentioner_idx", unique: true
+    t.index ["mentionee_id", "mentionee_type"], name: "mentions_mentionee_idx"
+    t.index ["mentionee_type", "mentionee_id"], name: "index_mentions_on_mentionee_type_and_mentionee_id"
+    t.index ["mentioner_id", "mentioner_type"], name: "mentions_mentioner_idx"
+    t.index ["mentioner_type", "mentioner_id"], name: "index_mentions_on_mentioner_type_and_mentioner_id"
   end
 
   create_table "mockers", id: :string, limit: 36, force: :cascade do |t|

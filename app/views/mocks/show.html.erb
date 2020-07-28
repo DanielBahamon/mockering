@@ -101,8 +101,8 @@
 				<div class="col-12 col-sm-7 col-md-8 col-xl-9">
 					<div class="d-table fullscreen">
 						<div class="d-tablecell v-middle text-center-sm">
-							<h5 class="_fw500 m-0"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name.capitalize if @mock.mocker.first_name? %><% end %></h5>
-							<small class="text-muted _username_video _fw500 m-0"><%= link_to @mock.mocker, class: "_color_black deco-none" do %>@<%= @mock.mocker.slug %><% end %></small>
+							<h4 class="_fw500 m-0"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name.capitalize if @mock.mocker.first_name? %> <%= @mock.mocker.last_name.capitalize if @mock.mocker.first_name? %><% end %></h4>
+							<p class="text-muted _username_video _fw500 m-0"><%= link_to @mock.mocker, class: "_color_black deco-none" do %>@<%= @mock.mocker.slug %><% end %></p>
 						</div>
 					</div>
 				</div>
@@ -120,7 +120,14 @@
 			</div>
 			<hr>
 			<div class="row m-0">
-				<div class="col-12 p-0" id="form_reviews">
+				<div class="col-12 col-sm-6 p-0">
+					<div class="d-table fullscreen">
+						<div class="d-table-cell v-middle">
+							<h5 class="_fw600">Reviews</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm p-0" id="form_reviews">
 					<%= render 'reviews/form' %>
 				</div>
 				<div class="col-12 p-0">

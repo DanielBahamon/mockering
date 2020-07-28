@@ -8,6 +8,8 @@ class Mock < ApplicationRecord
 
 	has_many :reviews
 
+  	act_as_mentioner
+  	
 	enum category: {
 		Original: 0,
 		Streaming: 1,

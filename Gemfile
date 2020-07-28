@@ -24,6 +24,7 @@ gem 'cocaine', '~> 0.5.5'
 gem 'paperclip', '~> 5.1.0'
 gem 'font-awesome-sass'
 gem 'aws-sdk', '~> 2.8'
+gem 'mention_system'
 # gem 'aws-sdk', '~> 3'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
 # gem "paperclip-ffmpeg", "~> 1.2.0"
