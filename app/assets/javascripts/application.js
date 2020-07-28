@@ -18,4 +18,9 @@
 //= require bootstrap
 //= require readmore
 //= require_tree .
+
+
+global.toastr = require("toastr")
+
+
  
