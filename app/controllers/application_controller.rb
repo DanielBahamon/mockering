@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin!
 
-  
-  require 'rinku'
+
 
   def set_search
     @q = Mock.ransack(params[:q])

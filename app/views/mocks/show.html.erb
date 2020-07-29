@@ -72,7 +72,7 @@
 			<br>
 			<div class="row m-0">
 				<div class="col-12 readmore">
-					<p class="video_description keepspaces"><%= Rinku.auto_link(@mock.description) %></p>
+					<p class="video_description keepspaces"><%= auto_link(@mock.description).html_safe  %></p>
 					<% if @mock.credits? %>
 						<b>Credits:</b>
 						<p><%= @mock.credits %></p>
