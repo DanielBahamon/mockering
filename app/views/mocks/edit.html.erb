@@ -1,6 +1,115 @@
 <div class="container">
-	<h1>Edit Mock</h1>
-	<%= image_tag @mock.picture.url(:medium) %>
-	<%= render 'form' %>
-	<%= link_to "Cancel", mock_path %>
+	<br>
+	<h1 class="_title _1">Edit mock</h1>
+	<br>
+	
+	<div class="form-group">
+		<%= form_for @mock, html: { multipart: true } do |f| %>
+		    <div class="accordion _1" id="accordionNewMock">
+		      <div class="card">
+		        <div class="card-header" id="headingTwo">
+		          <h2 class="mb-0">
+		            <button class="btn btn-link btn-block text-left collapsed relative" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		             <i class="far fa-file-image absolute right-0"></i> Picture (JPG/PNG/GIF)
+		            </button>
+		          </h2>
+		        </div>
+		        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionNewMock">
+		          <div class="card-body">
+		            <div class="row">
+		              <div class="col-12">
+		                <div class="field">
+		                  <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
+		                  <p id="output_2"></p>
+		                </div>
+		              </div>  
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		      <div class="card">
+		        <div class="card-header" id="headingThree">
+		          <h2 class="mb-0">
+		            <button class="btn btn-link btn-block text-left collapsed relative" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		             <i class="far fa-file-alt absolute right-0"></i> Information 
+		            </button>
+		          </h2>
+		        </div>
+		        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionNewMock">
+		          <div class="card-body">
+		          	<div class="row">
+		              <div class="col-12 col-sm-6">
+		                <div class="field">
+		                  <%= f.label :title %><br/>
+		                  <%= f.text_field :title, class: 'form-control', required: true %>
+		                </div>
+		              </div>
+		              <div class="col-12 col-sm-6">
+		                <div class="field">
+		                  <%= f.label :category %><br/>
+		                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select" %>
+		                </div>
+		              </div>
+		              <div class="col-12">
+		                <div class="field">
+		                  <%= f.label :description %><br/>
+		                  <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4" %>
+		                </div>
+		              </div>
+		          	</div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <br>
+		    <div class="row">
+		    	<div class="col-12 text-right">
+		    		<%= f.submit 'Add mock', class: 'btn _btn _action f-right' %>
+		    	</div>
+		    </div>
+		<% end %>
+	</div>
+
+	<script type="text/javascript">
+	  const output2 = document.getElementById('output_2');
+	  if (window.FileList && window.File) {
+	    document.getElementById('file-selector_2').addEventListener('change', event => {
+	      output2.innerHTML = '';
+	      for (const file of event.target.files) {
+	        const li = document.createElement('b');
+	        const name = file.name ? file.name : 'NOT SUPPORTED';
+	        const type = file.type ? file.type : 'NOT SUPPORTED';
+	        const size = file.size ? file.size : 'NOT SUPPORTED';
+	        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
+	        output2.appendChild(li);
+	      }
+	    }); 
+	  }
+	</script>
+	<script type="text/javascript">
+	  const fileSelector2 = document.getElementById('file-selector_2');
+	  const output4 = document.getElementById('output_2');
+	  if (window.FileList && window.File) {
+	    fileSelector2.addEventListener('dragover', event => {
+	      event.stopPropagation();
+	      event.preventDefault();
+	      event.dataTransfer.dropEffect = 'copy';
+	    });
+	    fileSelector2.addEventListener('drop', event => {
+	      output4.innerHTML = '';
+	      event.stopPropagation();
+	      event.preventDefault();
+	      const files = event.dataTransfer.files;
+	      for (let i = 0; i < files.length; i++) {
+	        const li = document.createElement('li');
+	        const file = files[i];
+	        const name = file.name ? file.name : 'NOT SUPPORTED';
+	        const type = file.type ? file.type : 'NOT SUPPORTED';
+	        const size = file.size ? file.size : 'NOT SUPPORTED';
+	        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
+	        output4.appendChild(li);
+	      }
+	    }); 
+	  }
+	</script>
 </div>

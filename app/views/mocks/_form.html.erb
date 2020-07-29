@@ -17,7 +17,7 @@
               <div class="col-12">
                 <div class="field">
                   <%= f.file_field :movie, required: true, class: "file-selector", id: "file-selector_1" %>
-                  <p id="output"></p>
+                  
                 </div>
               </div>
           	</div>
@@ -38,7 +38,7 @@
               <div class="col-12">
                 <div class="field">
                   <%= f.file_field :picture, required: true, class: "file-selector", id: "file-selector_2" %>
-                  <p id="output"></p>
+                  
                 </div>
               </div>  
             </div>
@@ -88,111 +88,83 @@
 	<% end %>
 </div>
 
-<style type="text/css">
-  select#mock_category{
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    border-color: #d8dde1;
-    border-radius: 3px;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
+<script type="text/javascript">
+  const output1 = document.getElementById('output_1');
+  if (window.FileList && window.File) {
+    document.getElementById('file-selector_1').addEventListener('change', event => {
+      output1.innerHTML = '';
+      for (const file of event.target.files) {
+        const li = document.createElement('li');
+        const name = file.name ? file.name : 'NOT SUPPORTED';
+        const type = file.type ? file.type : 'NOT SUPPORTED';
+        const size = file.size ? file.size : 'NOT SUPPORTED';
+        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
+        output1.appendChild(li);
+      }
+    }); 
   }
-  select#mock_category:focus{
-    border-color:black;
+  const output2 = document.getElementById('output_2');
+  if (window.FileList && window.File) {
+    document.getElementById('file-selector_2').addEventListener('change', event => {
+      output2.innerHTML = '';
+      for (const file of event.target.files) {
+        const li = document.createElement('li');
+        const name = file.name ? file.name : 'NOT SUPPORTED';
+        const type = file.type ? file.type : 'NOT SUPPORTED';
+        const size = file.size ? file.size : 'NOT SUPPORTED';
+        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
+        output2.appendChild(li);
+      }
+    }); 
   }
-  .file-selector {
-    border: 2px dashed #bacad6;
-    width: 100%;
-    height: auto;
-    border-radius: 9px;
-    padding: 15px;
-    text-align: center;
+</script>
+<script type="text/javascript">
+  const fileSelector1 = document.getElementById('file-selector_1');
+  const output3 = document.getElementById('output_1');
+  if (window.FileList && window.File) {
+    fileSelector1.addEventListener('dragover', event => {
+      event.stopPropagation();
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
+    });
+    fileSelector1.addEventListener('drop', event => {
+      output3.innerHTML = '';
+      event.stopPropagation();
+      event.preventDefault();
+      const files = event.dataTransfer.files;
+      for (let i = 0; i < files.length; i++) {
+        const li = document.createElement('li');
+        const file = files[i];
+        const name = file.name ? file.name : 'NOT SUPPORTED';
+        const type = file.type ? file.type : 'NOT SUPPORTED';
+        const size = file.size ? file.size : 'NOT SUPPORTED';
+        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
+        output3.appendChild(li);
+      }
+    }); 
   }
-
-</style>
-
-    <script>
-      const output1 = document.getElementById('output_1');
-      if (window.FileList && window.File) {
-        document.getElementById('file-selector_1').addEventListener('change', event => {
-          output1.innerHTML = '';
-          for (const file of event.target.files) {
-            const li = document.createElement('b');
-            const name = file.name ? file.name : 'NOT SUPPORTED';
-            const type = file.type ? file.type : 'NOT SUPPORTED';
-            const size = file.size ? file.size : 'NOT SUPPORTED';
-            li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-            output1.appendChild(li);
-          }
-        }); 
+  const fileSelector2 = document.getElementById('file-selector_2');
+  const output4 = document.getElementById('output_2');
+  if (window.FileList && window.File) {
+    fileSelector2.addEventListener('dragover', event => {
+      event.stopPropagation();
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
+    });
+    fileSelector2.addEventListener('drop', event => {
+      output4.innerHTML = '';
+      event.stopPropagation();
+      event.preventDefault();
+      const files = event.dataTransfer.files;
+      for (let i = 0; i < files.length; i++) {
+        const li = document.createElement('li');
+        const file = files[i];
+        const name = file.name ? file.name : 'NOT SUPPORTED';
+        const type = file.type ? file.type : 'NOT SUPPORTED';
+        const size = file.size ? file.size : 'NOT SUPPORTED';
+        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
+        output4.appendChild(li);
       }
-      const output2 = document.getElementById('output_1');
-      if (window.FileList && window.File) {
-        document.getElementById('file-selector_1').addEventListener('change', event => {
-          output2.innerHTML = '';
-          for (const file of event.target.files) {
-            const li = document.createElement('b');
-            const name = file.name ? file.name : 'NOT SUPPORTED';
-            const type = file.type ? file.type : 'NOT SUPPORTED';
-            const size = file.size ? file.size : 'NOT SUPPORTED';
-            li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-            output2.appendChild(li);
-          }
-        }); 
-      }
-    </script>
-    <script>
-      const fileSelector1 = document.getElementById('file-selector_1');
-      const output3 = document.getElementById('output_1');
-      if (window.FileList && window.File) {
-        fileSelector1.addEventListener('dragover', event => {
-          event.stopPropagation();
-          event.preventDefault();
-          event.dataTransfer.dropEffect = 'copy';
-        });
-        fileSelector1.addEventListener('drop', event => {
-          output3.innerHTML = '';
-          event.stopPropagation();
-          event.preventDefault();
-          const files = event.dataTransfer.files;
-          for (let i = 0; i < files.length; i++) {
-            const li = document.createElement('li');
-            const file = files[i];
-            const name = file.name ? file.name : 'NOT SUPPORTED';
-            const type = file.type ? file.type : 'NOT SUPPORTED';
-            const size = file.size ? file.size : 'NOT SUPPORTED';
-            li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-            output3.appendChild(li);
-          }
-        }); 
-      }
-      const fileSelector2 = document.getElementById('file-selector_1');
-      const output4 = document.getElementById('output_1');
-      if (window.FileList && window.File) {
-        fileSelector2.addEventListener('dragover', event => {
-          event.stopPropagation();
-          event.preventDefault();
-          event.dataTransfer.dropEffect = 'copy';
-        });
-        fileSelector2.addEventListener('drop', event => {
-          output4.innerHTML = '';
-          event.stopPropagation();
-          event.preventDefault();
-          const files = event.dataTransfer.files;
-          for (let i = 0; i < files.length; i++) {
-            const li = document.createElement('li');
-            const file = files[i];
-            const name = file.name ? file.name : 'NOT SUPPORTED';
-            const type = file.type ? file.type : 'NOT SUPPORTED';
-            const size = file.size ? file.size : 'NOT SUPPORTED';
-            li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-            output4.appendChild(li);
-          }
-        }); 
-      }
-    </script>
+    }); 
+  }
+</script>

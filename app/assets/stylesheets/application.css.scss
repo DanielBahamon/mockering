@@ -308,6 +308,7 @@
     color: #032535;
     text-decoration:none !important;
     display:block;
+    font-size:14pt;
   }
   a.like-post:before{
     content:'';
@@ -803,6 +804,58 @@
   .form-group{
       margin-bottom: 0;
   }
+
+
+  ._title._1 {
+      font-size: 30pt;
+      font-weight: 700;
+  }
+  .accordion._1 .card-header{
+    border-radius: 9px 9px 0 0;
+    background: white;
+  }
+  .accordion._1 .card-header button{
+    color:black;
+    font-weight: 600;
+    outline: none !important;
+    box-shadow: 0 0 0 0;
+    text-decoration: none;
+  }
+  .mention-item{
+    border-radius: 3px;
+  }
+  .mention-item img{
+    width: 25px;
+    height: 25px;
+    float: right;
+    border-radius: 300px;
+  }
+
+  select#mock_category{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #d8dde1;
+    border-radius: 3px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  select#mock_category:focus{
+    border-color:black;
+  }
+  .file-selector {
+    border: 2px dashed #bacad6;
+    width: 100%;
+    height: auto;
+    border-radius: 9px;
+    padding: 15px;
+    text-align: center;
+  }
+
 /* END FORMS */
 
 /* CHECKBOX */
@@ -1107,6 +1160,10 @@
   @media(max-width: 767px){
     ._logonav{
       width:100px;
+    }
+    .vjs-poster,
+    #my-video{
+      border-radius:0 !important;
     }
   }
   .close{
@@ -1601,6 +1658,7 @@
         overflow-y: auto;
         height: 88vh;
     }
+
   }
 /* END PROFILE */
 
