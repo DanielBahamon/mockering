@@ -1220,6 +1220,10 @@
     font-weight: 400;
     padding: 9px;
   }
+  ._itemdropdown:hover{
+    color:black !important;
+    backgropund:white !important;
+  }
   .navbar-nav._navbar .dropdown-menu .nav-link:first-child,
   ._itemdropdown:first-child{
     border-radius: 9px 9px 0 0;

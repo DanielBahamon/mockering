@@ -1,4 +1,5 @@
 module ApplicationHelper
+
 	
 	def avatar_url(mocker)
 		if mocker == nil

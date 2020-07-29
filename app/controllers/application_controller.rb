@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin!
 
+  
+  require 'rinku'
+
   def set_search
     @q = Mock.ransack(params[:q])
     @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)

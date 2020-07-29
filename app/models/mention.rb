@@ -1,10 +1,9 @@
 class Mention < ApplicationRecord
 
   attr_reader :mentionable
-  
-  ActionView::Base.send(:include, Rails.application.routes.url_helpers)
-  
-  delegate :url_helpers, :to => 'Rails.application.routes'
+
+  include Rails.application.routes.url_helpers
+
 
   def self.all(letters)
     return Mention.none unless letters.present?
@@ -48,10 +47,42 @@ class Mention < ApplicationRecord
   end
 
   class MockerMention < Mention
-    def markdown_string(text)
+    def markdown_string(text) 
+      regex =  %r{
+      \b
+        (
+          (?: [a/z][\w-]+:
+            (?: /{1,3} | [a-z0-9%] ) |
+            www\d{0,3}[.] | 
+            [a-z0-9.\-]+[.][a-z]{2,4}/
+          )
+          (?:
+           [ˆ\s()<>]+ | \(([ˆ\s()<>]+|(\([ˆ\s()<>]+\)))*\)
+          )+
+          (?:
+            \(([ˆ\s()<>]+|(\([ˆ\s()<>]+\)))*\) |
+            [ˆ\s‘!()\[\]{};:'".,<>?«»""'']
+          )
+        )
+      }ix
+
+
       host = Rails.env.development? ? 'localhost:3000' : 'mockering.herokuapp.com' # add your app's host here!
-      text.gsub(/@#{mentionable.slug}/i,
-                "@#{mentionable.slug} #{mocker_url(mentionable, host: host)}")
+
+      url_regexp = %r{
+        (?:(?:https?|ftp|file):\/\/|www\.|ftp\.)
+        (?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|
+             [-A-Z0-9+&@#\/%=~_|$?!:,.])*
+        (?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|
+              [A-Z0-9+&@#\/%=~_|$])
+      }ix
+
+      text.gsub(url_regexp, "<a href='#{mocker_url(mentionable, host: host)}' target='_blank'> @#{mentionable.slug}</a>").html_safe
+
+      # text.gsub(/@#{mentionable.slug}/i, "@#{mentionable.slug} #{mocker_url(mentionable, host: host)}")
+      # text.gsub(regex) do |url|
+      #   "<a href='#{mocker_url(mentionable, host: host)}' target='_blank'> @#{mentionable.slug}</a>"
+      # end
     end
   end
 
