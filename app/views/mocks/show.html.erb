@@ -37,31 +37,47 @@
 				<div class="col-6">
 					<div class="row float-right m-0">	
 						<div class="col-auto" >
-							<% if current_mocker %>
-								<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
-									<div id="like-count">
-										<%= render 'mocks/likes', mock: @mock %>
-									</div>
+							<% if mocker_signed_in? %>
+								<% if current_mocker %>
+									<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
+										<div id="like-count">
+											<%= render 'mocks/likes', mock: @mock %>
+										</div>
+									<% end %>
+								<% else %>
+									<%= link_to new_mocker_session_path, class: 'like-post' do %>
+										<div id="like-count">
+											<%= render 'mocks/likes', mock: @mock %>
+										</div>
+									<% end %>
 								<% end %>
 							<% else %>
-								<%= link_to new_mocker_session_path, class: 'like-post' do %>
-									<div id="like-count">
-										<%= render 'mocks/likes', mock: @mock %>
+								<%= link_to new_mocker_session_path, class: "like-post" do %>
+									<div id="dislike-count">
+									<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
 									</div>
 								<% end %>
 							<% end %>
 						</div>
 						<div class="col-auto">
-							<% if current_mocker %>
-								<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
-									<div id="dislike-count">
-										<%= render 'mocks/dislikes', mock: @mock %>
-									</div>
+							<% if mocker_signed_in? %>
+								<% if current_mocker %>
+									<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
+										<div id="dislike-count">
+											<%= render 'mocks/dislikes', mock: @mock %>
+										</div>
+									<% end %>
+								<% else %>
+									<%= link_to new_mocker_session_path, class: 'like-post' do %>
+										<div id="dislike-count">
+											<%= render 'mocks/dislikes', mock: @mock %>
+										</div>
+									<% end %>
 								<% end %>
 							<% else %>
-								<%= link_to new_mocker_session_path, class: 'like-post' do %>
+								<%= link_to new_mocker_session_path, class: "like-post" do %>
 									<div id="dislike-count">
-										<%= render 'mocks/dislikes', mock: @mock %>
+									<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
 									</div>
 								<% end %>
 							<% end %>
