@@ -1,7 +1,10 @@
 class Mention < ApplicationRecord
 
   attr_reader :mentionable
-  include Rails.application.routes.url_helpers
+  
+  ActionView::Base.send(:include, Rails.application.routes.url_helpers)
+  
+  delegate :url_helpers, :to => 'Rails.application.routes'
 
   def self.all(letters)
     return Mention.none unless letters.present?
@@ -29,7 +32,7 @@ class Mention < ApplicationRecord
     potential_matches.uniq.map do |match|
       mention = Mention.create_from_match(match)
       next unless mention
-      mock.update_attributes!(content: mention.markdown_string(mock.description))
+      mock.update_attributes!(description: mention.markdown_string(mock.description))
       # You could fire an email to the user here with ActionMailer
       mention
     end.compact
@@ -48,7 +51,7 @@ class Mention < ApplicationRecord
     def markdown_string(text)
       host = Rails.env.development? ? 'localhost:3000' : 'mockering.herokuapp.com' # add your app's host here!
       text.gsub(/@#{mentionable.slug}/i,
-                "[**@#{mentionable.slug}**](#{mocker_url(mentionable, host: host)})")
+                "@#{mentionable.slug} #{mocker_url(mentionable, host: host)}")
     end
   end
 
