@@ -128,8 +128,12 @@
 							<%= button_to "Unfollow", friendships_path(mocker_id: @mock.mocker.id), method: :delete, class: "btn _btn _action m-0-auto unfollow" %>
 							<br/>
 						<% else %>
-							<%= button_to "Follow", friendships_path(mocker_id: @mock.mocker.id), class: "btn _btn _action m-0-auto follow" %>
-							<br/>
+							<% if mocker_signed_in? %>
+								<%= button_to "Follow", friendships_path(mocker_id: @mock.mocker.id), class: "btn _btn _action m-0-auto follow" %>
+								<br/>
+							<% else %>
+								<%= link_to new_mocker_session_path, class: "btn _btn _action m-0-auto follow" do %>Follow<% end %>
+							<% end %>
 						<% end %>
 					<% end %>
 				</div>
@@ -144,7 +148,16 @@
 					</div>
 				</div>
 				<div class="col-12 col-sm" id="form_reviews">
+				<% if mocker_signed_in? %>
 					<%= render 'reviews/form' %>
+				<% else %>
+					<div class="d-table fullscreen">
+					  <div class="d-table-cell v-middle">
+					    <%= link_to new_mocker_session_path, class: "display-block btn _btn _1 _btncomment" do %>Comment<% end %>
+					  </div> 
+					</div>
+					<br>
+				<% end %>
 				</div>
 				<div class="col-12 p-0">
 					<div class="reviews" id="reviews">
