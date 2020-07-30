@@ -27,6 +27,7 @@ gem 'aws-sdk', '~> 2.8'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 gem 'jquery-atwho-rails', '~> 1.5', '>= 1.5.4'
 gem 'redcarpet', '~> 3.5'
+gem 'acts-as-taggable-on', '~> 6.0'
 # gem 'aws-sdk', '~> 3'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
 # gem "paperclip-ffmpeg", "~> 1.2.0"
