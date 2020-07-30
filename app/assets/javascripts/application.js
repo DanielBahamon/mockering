@@ -17,5 +17,6 @@
 //= require counterPlugin.min
 //= require bootstrap
 //= require readmore
+//= require jquery-ui
 //= require jquery.atwho
 //= require_tree .

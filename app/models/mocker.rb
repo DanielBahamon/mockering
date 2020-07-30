@@ -9,6 +9,9 @@ class Mocker < ApplicationRecord
 	     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
 
+	acts_as_taggable_on :tags
+	acts_as_taggable_on :skills, :interests #You can also configure multiple tag types per model
+
 	attr_writer :login
 
 	def login
