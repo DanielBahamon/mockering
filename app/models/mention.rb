@@ -77,7 +77,7 @@ class Mention < ApplicationRecord
       # text.gsub(/@#{mentionable.slug}/i, "@#{mentionable.slug} #{mocker_url(mentionable, host: host)}")
 
       host = Rails.env.development? ? 'localhost:3000' : 'mockering.herokuapp.com' # add your app's host here!
-      text.gsub(/@#{mentionable.slug}/i, "<a href='#{mocker_url(mentionable, host: host)}' target='_blank'>@#{mentionable.slug}</a>")
+      text.gsub(/@#{mentionable.slug}/i, "<a href='#{mocker_url(mentionable.id, host: host)}' target='_blank'>@#{mentionable.slug}</a>")
       # text.gsub(regex) do |url|
       #   "<a href='#{mocker_url(mentionable, host: host)}' target='_blank'> @#{mentionable.slug}</a>"
       # end
