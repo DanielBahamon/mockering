@@ -5,6 +5,8 @@ class MocksController < ApplicationController
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	before_action :set_search
   	impressionist :actions=>[:show]
+  	
+  	autocomplete :tag, :name, :full => true
 
 	def index
 	end
@@ -79,7 +81,7 @@ class MocksController < ApplicationController
 	end
 
 	def mock_params
-		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits)
+		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list)
 	end
 
 	def set_search

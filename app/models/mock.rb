@@ -5,7 +5,7 @@ class Mock < ApplicationRecord
 	validates :id, presence: true
 
 	is_impressionable
-
+    acts_as_taggable_on :tags
 	has_many :reviews
   	
 	enum category: {

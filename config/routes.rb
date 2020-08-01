@@ -11,19 +11,21 @@ Rails.application.routes.draw do
     end
   end
  
+  get '/tagged', to: "mockers#tagged", as: :tagged
+  
   resources :mockers
   devise_for :mockers,
-        path: '',
-        path_names: {
-          sign_in: 'login', 
-          sign_out: 'logout', 
-          edit: 'profile', 
-          sign_up: 'registration'
-        }, 
-        controllers: {
-          omniauth_callbacks: 'omniauth_callbacks',
-          registrations: 'registrations'
-        }
+            path: '',
+            path_names: {
+              sign_in: 'login', 
+              sign_out: 'logout', 
+              edit: 'profile', 
+              sign_up: 'registration'
+            }, 
+            controllers: {
+              omniauth_callbacks: 'omniauth_callbacks',
+              registrations: 'registrations'
+            }
   resources :mocks do
   	member do
   		put 'like' => 'mocks#like'
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   		put 'vote' => 'mocks#upvote'
   		put 'unvote' => 'mocks#downvote'
   	end
+    get :autocomplete_tag_name, :on => :collection
   end
 
   resources :reviews

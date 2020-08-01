@@ -16,7 +16,7 @@
           	<div class="row">
               <div class="col-12">
                 <div class="field">
-                  <%= f.file_field :movie, required: true, class: "file-selector", id: "file-selector_1" %>
+                  <%= f.file_field :movie, class: "file-selector", id: "file-selector_1" %>
                   
                 </div>
               </div>
@@ -37,7 +37,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="field">
-                  <%= f.file_field :picture, required: true, class: "file-selector", id: "file-selector_2" %>
+                  <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
                   
                 </div>
               </div>  
@@ -66,6 +66,12 @@
                 <div class="field">
                   <%= f.label :category %><br/>
                   <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="field">
+                  <%= f.label :tag_list %><br/>
+                  <%= f.text_field :tag_list, class: 'form-control', required: true %>
                 </div>
               </div>
               <div class="col-12">

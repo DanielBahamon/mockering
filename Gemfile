@@ -30,6 +30,7 @@ gem 'jquery-atwho-rails', '~> 1.5', '>= 1.5.4'
 gem 'redcarpet', '~> 3.5'
 # gem 'aws-sdk', '~> 3'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
+gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.5'
 # gem "paperclip-ffmpeg", "~> 1.2.0"
 # gem 'elastic_transcoder', '~> 0.0.3'
 gem 'ransack'

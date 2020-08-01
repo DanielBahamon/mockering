@@ -18,5 +18,7 @@
 //= require bootstrap
 //= require readmore
 //= require jquery-ui
+//= require jquery_ujs
+//= require autocomplete-rails
 //= require jquery.atwho
 //= require_tree .
