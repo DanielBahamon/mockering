@@ -13,18 +13,20 @@
               <h2>Forgot your password?</h2>
             </div>
             <div class="col-12">
-              <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                <%= f.error_notification %>
-                    <div class="form-inputs">
-                      <%= f.input :email,
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                    <div class="col-12 _col_inputsaccount p-b-0">
+                      <%= f.label "Email" %>
+                      <%= f.text_field :email,
                         required: true,
                         autofocus: true,
-                        input_html: { autocomplete: "email" } %>
+                        placeholder: "Email",
+                        autocomplete: "email", class: "_input _2 form-control" %>
                     </div>
-
+                    <br>
                     <div class="form-actions">
-                      <%= f.button :submit, "Send me reset password instructions", class: "btn _btn _login" %>
+                      <%= f.submit "Send me reset password instructions", class: "btn _btn _login" %>
                     </div>
+                    <br>
               <% end %>
               <%= render "devise/shared/links" %>
             </div>

@@ -9,6 +9,7 @@ class MocksController < ApplicationController
   	autocomplete :tag, :name, :full => true
 
 	def index
+    	@tags = ActsAsTaggableOn::Tag.all
 	end
 
 	def new
@@ -16,6 +17,7 @@ class MocksController < ApplicationController
 	end
 
 	def create
+		params[:mock][:tag_list] = params[:mock][:tag_list].join(',')
 		@mock = current_mocker.mocks.build(mock_params)
 		if @mock.save
 			redirect_to @mock, notice: "Successfully created new Mock"
@@ -28,6 +30,7 @@ class MocksController < ApplicationController
 	   	# impressionist(@mock, "message...") # 2nd argument is optional
 	    #Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews
+
 	end
 
 	def like
@@ -44,6 +47,18 @@ class MocksController < ApplicationController
 		else
 			@mock.downvote_from current_mocker
 		end
+	end
+
+	def tagged
+	  if params[:tag].present?
+	    @mocks = Mock.tagged_with(params[:tag])
+	  else
+	    @mocks = Mock.all
+	  end
+	end
+
+	def tag_cloud
+		@tags = Mock.tag_counts_on(:tags)
 	end
 
 	def upvote

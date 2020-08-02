@@ -60,15 +60,20 @@
 			<div class="on_content" id="on_content">
 				<div class="row m-0">
 					<div class="col-12 _board">
+
+						<% @tags.each do |tag| %>
+							<p><%= link_to tag.name %></p>
+						<% end %>
 						<div class="mocks_content">
-							
 							<div id="mocks" class="transitions-enabled">
 								<% @mocks.each do |mock| %>
+									
 									<%= link_to mock, class: "link_card card box _card" do %>
 										<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
 										<div class="_cardbody">
 											<div class="row">
 												<div class="col-12">
+													<small class="text-mutted"><%= mock.tag_list %></small>
 													<p class="_cardtitle"><%= mock.title %></p>
 												</div>
 												<div class="row m-0 fullwidth">

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     end
   end
  
-  get '/tagged', to: "mockers#tagged", as: :tagged
   
   resources :mockers
   devise_for :mockers,
@@ -33,7 +32,7 @@ Rails.application.routes.draw do
   		put 'vote' => 'mocks#upvote'
   		put 'unvote' => 'mocks#downvote'
   	end
-    get :autocomplete_tag_name, :on => :collection
+    get '/tagged', to: "mocks#tagged", as: :tagged, only: [:index, :show]
   end
 
   resources :reviews

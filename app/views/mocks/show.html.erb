@@ -60,7 +60,7 @@
 							<% end %>
 						</div>
 						<div class="col-auto">
-							<% if mocker_signed_in? %>
+							<% if mocker_signed_in? %>	
 								<% if current_mocker %>
 									<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
 										<div id="dislike-count">
