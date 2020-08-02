@@ -475,6 +475,8 @@
           // to disable other checkboxes
           $('input:checkbox:checked').length >= mvp &&
               $("input:checkbox:not(:checked)").prop('disabled',true);
+          $('input:checkbox:checked').length < mvp &&
+              $("input:checkbox:not(:checked)").prop('disabled',false);
       }).change(function () {
           if ($(this).siblings(':checked').length >= mvp) {
               this.checked = false;
