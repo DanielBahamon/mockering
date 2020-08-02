@@ -465,6 +465,25 @@
 </style>
 
 <script type="text/javascript">
+  var mvp = 5;
+  $(document).ready(function () {
+      $("input:checkbox").each(function (index) {
+          /*this.checked = (index < mvp);*/
+      }).click(function () {
+          en_dis= $("input:checkbox:checked").length < mvp
+          $('#button-id').prop('disabled', en_dis);
+          // to disable other checkboxes
+          $('input:checkbox:checked').length >= mvp &&
+              $("input:checkbox:not(:checked)").prop('disabled',true);
+      }).change(function () {
+          if ($(this).siblings(':checked').length >= mvp) {
+              this.checked = false;
+          }
+      });
+  });
+</script>
+
+<script type="text/javascript">
   const output1 = document.getElementById('output_1');
   if (window.FileList && window.File) {
     document.getElementById('file-selector_1').addEventListener('change', event => {
