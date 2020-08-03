@@ -30,10 +30,11 @@ Rails.application.routes.draw do
   		put 'like' => 'mocks#like'
   		put 'dislike' => 'mocks#dislike'
   		put 'vote' => 'mocks#upvote'
-  		put 'unvote' => 'mocks#downvote'
+      put 'unvote' => 'mocks#downvote'
   	end
     get '/tagged', to: "mocks#tagged", as: :tagged, only: [:index, :show]
   end
+
 
   resources :reviews
 
@@ -53,6 +54,7 @@ Rails.application.routes.draw do
 
 
   get 'mentions', to: 'mockers#mentions'
+  get 'popular', to: 'mocks#popular'
   
 
 end

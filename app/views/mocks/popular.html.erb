@@ -1,0 +1,173 @@
+<div id="_big_row_index bg_ghoswhite">
+	<div class="row m-0">
+		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block" id="_sidenav">
+			<div class="fixed _css-1db _overflow-y _h-100vh" style="width: 100%;max-width: inherit;">
+				<div class="row m-0">
+					<div class="relative fullwidth">
+					  <div class="row cont_user m-0">
+					    <div class="col-12 text-center">
+					      <br>
+					      <%= link_to current_mocker do %>
+					      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+					      <% end %>
+					    </div>
+					    <div class="col-12 text-center">
+					      <h4 class="_name _fw400 m-0">
+					      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
+					      <p class="_fw400">
+					      <%= link_to current_mocker, class: "_color_black deco-none" do %>@<%= current_mocker.slug %><% end %></p>
+					    </div>
+					  </div>
+					  <br>
+					</div>
+				</div>
+				<div class="row m-0">
+					<div class="col-12">
+						<div id="_row_sidenav1">
+							<div class="d-table fullscreen ">
+								<div class="d-tablecell v-middle">
+									<ul class="_listsidenav">
+										<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
+												<i class="fas fa-home col-2 text-center p-0"></i>
+												<p class="col-10">Home</p>
+											<% end %>
+										</li>
+										<li class="<%= 'active' if current_page?('/popular')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+												<i class="fas fa-fire col-2 text-center p-0"></i>
+												<p class="col-10">Popular</p>
+											<% end %>
+										</li>
+										<li class="<%= 'active' if current_page?('/recent')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+												<i class="fas fa-stopwatch col-2 text-center p-0"></i>
+												<p class="col-10">Recent</p>
+											<% end %>
+										</li>
+										<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+                  								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
+												<p class="col-10">Discover</p>
+											<% end %>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-9 col-xl-10 p-0 _content">
+			<div class="on_content" id="on_content">
+				<div class="row m-0">
+					<div class="col-12 _board">
+						<div class="d-flex overflowx_auto p-2 taglist" id="taglist">
+							<% @tags.each do |tag| %>
+								<%= link_to tag.name, mocks_path(tag: tag.name), class: "_chip _1" %>
+							<% end %>
+							<div class="div_arrow _left">
+								<a class="arrow_ arrow-left-navigation_1" ><i class="fas fa-chevron-left"></i></a>
+							</div>
+							<div class="div_arrow _right">
+								<a class="arrow_ arrow-right-navigation_1 pull-right"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+						<div class="mocks_content">
+							<div id="mocks" class="transitions-enabled">
+								<% @mocks.each do |mock| %>
+									<%= link_to mock, class: "link_card card box _card" do %>
+										<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
+										<div class="_cardbody">
+											<div class="row">
+												<div class="col-12">
+													<div class="d-flex overflowx_none"><% mock.tag_list.each do |tag| %><div class="_chip _1"><%= tag %></div><% end %></div>
+													<p class="_cardtitle"><%= mock.title %></p>
+												</div>
+												<div class="row m-0 fullwidth">
+													<div class="col d-flex">
+														<div class="d-table fullheight" style="margin-right: 5px;">
+															<div class="d-tablecell v-middle">
+																<%= image_tag avatar_url(mock.mocker), class: "_avatar _2 m-0-auto" %>
+															</div>
+														</div>
+														<div class="text-ellipsis">
+															<div class="d-table fullscreen">
+																<div class="d-tablecell v-middle ">
+																	<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %></p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col">
+														<div class="d-table fullscreen">
+															<div class="d-tablecell v-middle">
+																<div class="d-flex" style="width: max-content;float: right;">
+																	<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
+																	<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
+																	<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<% end %>
+								<% end %>
+							</div>
+							<%= will_paginate @mocks %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	@media(max-width: 575px){
+      ._card{
+        width:100vw;
+        min-width: 200px;
+        margin: 0;
+      }
+	}
+	.overflowx_auto::-webkit-scrollbar {
+	  width: 2px;
+	  height:4px;
+	  border-radius: 369px;
+	  background-color: transparent;
+	} 
+	.overflowx_none ._chip._1{
+    	font-size: 8pt;
+    	margin-top:0;
+	    margin-right: 2px !important;
+	    margin-left: 1px !important;
+	    padding-top: 3px;
+	    color: grey;
+	    padding-bottom: 3px;
+	}
+	.overflowx_none ._chip._1:hover{
+	    background: white;
+	    border-color: #eaeaea;
+	    color: black;
+	    -webkit-transform: translateY(0);
+	    transform: translateY(0);
+	}
+	.overflowx_none ._chip._1:first-child{
+		margin-left:0 !important;
+	}
+	  
+	#taglist ._chip._1:last-child {
+		margin-right:20px !important;
+	}
+</style>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	    $(".arrow-left-navigation_1").click(function(){
+	        $("#taglist").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_1").click(function(){
+	        $("#taglist").animate({scrollLeft: "+="+351});
+	    });        
+	});
+</script>

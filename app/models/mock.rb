@@ -5,6 +5,7 @@ class Mock < ApplicationRecord
 	validates :id, presence: true
 
 	is_impressionable
+	is_impressionable counter_cache: true, column_name: :impressions_count, :unique => :all
     acts_as_taggable_on :tags
 	has_many :reviews
   	

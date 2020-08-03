@@ -1,7 +1,7 @@
 class MocksController < ApplicationController
 	
 	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :like, :dislike]
-	before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
+	# before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	before_action :set_search
   	impressionist :actions=>[:show]
@@ -15,6 +15,11 @@ class MocksController < ApplicationController
 		else
 			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
 		end
+
+	end
+	def popular
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+		@mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 30)
 	end
 
 	def new
