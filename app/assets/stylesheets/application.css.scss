@@ -789,6 +789,8 @@
     transition: all .2s ease;
   }
   ._btn._action.follow{
+    text-overflow:ellipsis;
+    overflow:hidden;
     background: linear-gradient(45deg, #ff5858, #ffa058);
     -webkit-box-shadow: 0 3px 12px -5px #ff5858;
     box-shadow: 0 3px 12px -5px #ff5858;
@@ -802,6 +804,8 @@
   ._btn._action.unfollow{
     background: #cbcbcb;
     color: #575757;
+    text-overflow:ellipsis;
+    overflow:hidden;
   }
   ._btn._action.unfollow:focus{
     -webkit-box-shadow: inset 2px 2px 4px 0px #aaaaaa;
