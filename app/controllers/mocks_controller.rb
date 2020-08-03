@@ -35,6 +35,7 @@ class MocksController < ApplicationController
 	   	# impressionist(@mock, "message...") # 2nd argument is optional
 	    #Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews
+		@related_mocks = @mock.find_related_tags 
 
 	end
 

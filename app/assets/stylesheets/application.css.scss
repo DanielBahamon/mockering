@@ -917,6 +917,7 @@
     line-height: 1.9;
     height: max-content;
     white-space: nowrap;
+    width:max-content;
   }
   ._chip._1:hover{
     background: #ff5858;
@@ -1151,6 +1152,11 @@
       margin: 6px;
       min-height: 77px;
       position: relative;
+  }
+  .card-img{
+  
+    height: 100%;
+    object-fit: cover;
   }
   ._card .card-img,
   ._card .card-img-top{ 
@@ -1657,6 +1663,43 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
   }
+
+  ._board{
+    min-height: 80vh;
+    padding:0;
+  }
+  .deco-none{
+    text-decoration: none !important;
+  }
+
+  .arrow_{
+  background: white;
+  border-radius: 369px;
+  border: 1px solid #eaeaea;
+  padding: 8px 13px;
+  cursor:pointer;
+  }
+  .div_arrow._left{
+    position:absolute;
+    left:10px;
+    top: 20px;
+    opacity: 0;
+  }
+  .div_arrow._right{
+    position:absolute;
+    right:5px;
+    top: 20px;
+  }
+  @media(min-width: 768px){
+    #taglist{
+        margin-left: 35px;
+        margin-right: 35px;
+    }
+    .div_arrow._left{
+      opacity: 1;
+    }
+  }
+
 /* END MOCKS */
 
 /* PROFILE */
@@ -1749,6 +1792,7 @@
     color:black !important;
     font-weight: 700;
     text-decoration: none !important;
+    margin: 15px;
   }
   ._btn_icon._2:before{
       top: -5px;

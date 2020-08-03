@@ -60,10 +60,16 @@
 			<div class="on_content" id="on_content">
 				<div class="row m-0">
 					<div class="col-12 _board">
-						<div class="d-flex overflowx_auto p-2">
+						<div class="d-flex overflowx_auto p-2 taglist" id="taglist">
 							<% @tags.each do |tag| %>
 								<%= link_to tag.name, mocks_path(tag: tag.name), class: "_chip _1" %>
 							<% end %>
+							<div class="div_arrow _left">
+								<a class="arrow_ arrow-left-navigation_1" ><i class="fas fa-chevron-left"></i></a>
+							</div>
+							<div class="div_arrow _right">
+								<a class="arrow_ arrow-right-navigation_1 pull-right"><i class="fas fa-chevron-right"></i></a>
+							</div>
 						</div>
 						<div class="mocks_content">
 							<div id="mocks" class="transitions-enabled">
@@ -124,21 +130,22 @@
         margin: 0;
       }
 	}
-	._board{
-		min-height: 80vh;
-		padding:0;
-	}
-	.deco-none{
-		text-decoration: none !important;
-	}
-
-  .overflowx_auto::-webkit-scrollbar {
-    width: 2px;
-    height:4px;
-    border-radius: 369px;
-    background-color: transparent;
-  } 
-  .overflowx_auto::-webkit-scrollbar-thumb {
-    background-color: #d2d2d2;
-  }
+	.overflowx_auto::-webkit-scrollbar {
+	  width: 2px;
+	  height:4px;
+	  border-radius: 369px;
+	  background-color: transparent;
+	} 
+	  
 </style>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	    $(".arrow-left-navigation_1").click(function(){
+	        $("#taglist").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_1").click(function(){
+	        $("#taglist").animate({scrollLeft: "+="+351});
+	    });        
+	});
+</script>

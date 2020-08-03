@@ -75,6 +75,12 @@
                 </div>
               </div>
               <div class="col-12">
+                <div class="field">
+                  <%= f.label :credits %><br/>
+                  <%= f.text_field :credits, class: 'form-control', required: true %>
+                </div>
+              </div>
+              <div class="col-12">
                 <br>
                 <div class="field">
                   <%= f.label 'Tags' %><br/>
@@ -460,6 +466,8 @@
     </div>
 	<% end %>
 </div>
+<br>
+<br>
 
 <style type="text/css">
 </style>

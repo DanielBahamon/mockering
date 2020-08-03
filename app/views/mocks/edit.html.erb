@@ -50,6 +50,12 @@
 		                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select" %>
 		                </div>
 		              </div>
+		              <div class="col-12">
+		                <div class="field">
+		                  <%= f.label :credits %><br/>
+		                  <%= f.text_field :credits, class: 'form-control', required: true %>
+		                </div>
+		              </div>
 		          	</div>
 		          </div>
 		        </div>
