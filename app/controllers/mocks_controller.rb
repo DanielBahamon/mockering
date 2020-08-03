@@ -33,10 +33,11 @@ class MocksController < ApplicationController
 
 	def show
 	   	# impressionist(@mock, "message...") # 2nd argument is optional
-	    #Display all the host reviews to host (if this user is a guest)
+	    # Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews
-		@related_mocks = @mock.find_related_tags 
-
+		@mocker  = @mock.mocker
+		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
+		@related_mocks = @mock.find_related_tags
 	end
 
 	def like

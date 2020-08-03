@@ -178,14 +178,14 @@
 		</div>
 		<div class="col-12 col-md-4 col-xl-3">
 			<% @related_mocks.each do |mock| %>
-				<%= link_to mock, class: "card link_card mb-3" do %>
+				<%= link_to mock, class: "card link_card _2 mb-3" do %>
 				
 					  <div class="row no-gutters">
 					    <div class="col-md-4">
 					      <%= image_tag mock.picture.url(:medium), class: "card-img _1" %>
 					    </div>
 					    <div class="col-md-8">
-					      <div class="_cardbody p-2 _minheight150px">
+					      <div class="_cardbody _2 p-2 _minheight150px">
 					      	<div class="d-table fullscreen">
 					      		<div class="d-tablecell v-middle">
 					      			<h5 class="_fw600 _cardtitle"><%= mock.title %></h5>
@@ -237,14 +237,21 @@
 	._video_date{
 		color:#5e6e75;
 	}
-	._minheight150px{
-		min-height: 150px;
-	}
 	._w-maxcont{
 		width: max-content;
 	}
 	._col_follow form {
 		width: 100%;
+	}
+	.link_card._2{
+		-webkit-transition: all .2s ease;
+		transition: all .2s ease;
+	}
+	.link_card._2:hover{
+		-webkit-transform: translateY(-1px);
+		transform: translateY(-1px);
+		-webkit-box-shadow: 0 2px 12px -3px #dbe7eb;
+		box-shadow: 0 2px 12px -3px #dbe7eb;
 	}
 	@media(max-width: 575px){
 		._col_follow{
@@ -253,6 +260,12 @@
 		}
 		.text-center-sm{
 			text-align: center;
+		}
+	}
+	@media(min-width: 768px){
+		._cardbody._2{
+			height: 100%;
+			min-height: 120px;
 		}
 	}
 	._col_follow form .btn{

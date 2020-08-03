@@ -79,7 +79,7 @@
 										<div class="_cardbody">
 											<div class="row">
 												<div class="col-12">
-													<small class="text-mutted"><%= mock.tag_list %></small>
+													<div class="d-flex overflowx_none"><% mock.tag_list.each do |tag| %><div class="_chip _1"><%= tag %></div><% end %></div>
 													<p class="_cardtitle"><%= mock.title %></p>
 												</div>
 												<div class="row m-0 fullwidth">
@@ -136,7 +136,16 @@
 	  border-radius: 369px;
 	  background-color: transparent;
 	} 
+	.overflowx_none ._chip._1{
+    	font-size: 7pt;
+	}
+	.overflowx_none ._chip._1:first-child{
+		margin-left:0 !important;
+	}
 	  
+	#taglist ._chip._1:last-child {
+		margin-right:20px !important;
+	}
 </style>
 <script type="text/javascript">
 	

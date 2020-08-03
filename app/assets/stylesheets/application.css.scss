@@ -202,6 +202,10 @@
     ._container, ._container-sm, ._container-md {
         max-width: 820px;
     }
+
+    .card-img._1{
+        border-radius: 0.25rem 0 0 0.25rem;
+    }
   }
   @media (min-width: 992px){
     ._container, ._container-sm, ._container-md, ._container-lg {
@@ -929,6 +933,9 @@
   .overflowx_auto{
     overflow-x:auto;
   }
+  .overflowx_none{
+    overflow-x:hidden;
+  }
   select#mock_category{
     display: block;
     width: 100%;
@@ -1513,7 +1520,7 @@
   }
 /* END NAVBAR */
 
-/* SIDENAV */   
+/* SIDENAV */
   ._listsidenav {
     padding: 0;
       list-style: none;
@@ -1616,7 +1623,6 @@
     -webkit-transform: scale(1);
     transform: scale(1);
   }
-
 /* END SIDENAV */
 
 /* STEPS */
@@ -1690,16 +1696,17 @@
     right:5px;
     top: 20px;
   }
+  #taglist{
+      margin-right: 30px;
+  }
   @media(min-width: 768px){
     #taglist{
         margin-left: 35px;
-        margin-right: 35px;
     }
     .div_arrow._left{
       opacity: 1;
     }
   }
-
 /* END MOCKS */
 
 /* PROFILE */
