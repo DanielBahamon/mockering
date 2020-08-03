@@ -9,7 +9,12 @@ class MocksController < ApplicationController
   	autocomplete :tag, :name, :full => true
 
 	def index
-    	@tags = ActsAsTaggableOn::Tag.all
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+		if params[:tag].present?
+			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 30)
+		else
+			@mocks = Mock.all.paginate(page: params[:page], per_page: 30)
+		end
 	end
 
 	def new
@@ -50,11 +55,11 @@ class MocksController < ApplicationController
 	end
 
 	def tagged
-	  if params[:tag].present?
-	    @mocks = Mock.tagged_with(params[:tag])
-	  else
-	    @mocks = Mock.all
-	  end
+		if params[:tag].present?
+			@mocks = Mock.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
+		else
+			@mocks = Mock.all.paginate(:page => params[:page], :per_page => 10)
+		end
 	end
 
 	def tag_cloud

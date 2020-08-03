@@ -901,6 +901,31 @@
     border-radius: 300px;
   }
 
+
+  ._chip._1{
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 369px;
+    padding: 5px 15px;
+    margin: 5px;
+    color: #484848;
+    text-transform: capitalize;
+    font-size: 10pt;
+    text-decoration:none;
+    -webkit-transition:all .2s ease;
+    transition:all .2s ease;
+  }
+  ._chip._1:hover{
+    background: #ff5858;
+    border-color:transparent;
+    color: white;
+    -webkit-transform:translateY(-1px);
+    transform:translateY(-1px);
+  }
+  .overflowx_auto{
+    overflow-x:auto;
+  }
+
   select#mock_category{
     display: block;
     width: 100%;
