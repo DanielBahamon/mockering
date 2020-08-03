@@ -20,6 +20,7 @@ class MocksController < ApplicationController
 	def popular
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		@mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 30)
+		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
 
 	def new
