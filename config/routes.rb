@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 
   get 'mentions', to: 'mockers#mentions'
   get 'popular', to: 'mocks#popular'
+  get 'recent', to: 'mocks#recent'
   
 
 end

@@ -11,15 +11,21 @@ class MocksController < ApplicationController
 	def index
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		if params[:tag].present?
-			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 30)
+			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 20)
 		else
-			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+			@mocks = @q.result(distinct: true).order("RANDOM()").paginate(page: params[:page], per_page: 20)
 		end
-
 	end
+
 	def popular
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-		@mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 30)
+		@mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
+		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
+	end
+
+	def recent
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+		@mocks = Mock.all.order('created_at DESC').paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
 
