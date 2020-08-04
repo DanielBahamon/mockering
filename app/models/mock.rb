@@ -38,6 +38,10 @@ class Mock < ApplicationRecord
 		self.id = SecureRandom.uuid
 	end
 
+	def view_count_last_week
+	    impressionist_count(:start_date => 1.week.ago)
+	end
+
 
 	after_create :add_mentions
 

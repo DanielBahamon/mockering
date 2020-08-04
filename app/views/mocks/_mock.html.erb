@@ -1,11 +1,50 @@
-<li>
-  <span class="content"><%= markdown(mock.description) %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(mock.created_at) %> ago.
-  </span>
-  <% if current_mocker?(mock.mocker) %>
-    <%= link_to "delete", mock, method: :delete,
-                 data: { confirm: "You sure?" },
-                 title: mock.description %>
-  <% end %>
-</li>
+<% @mocks.each do |mock| %>
+	<%= link_to mock, class: "link_card card box _card" do %>
+		<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
+		<div class="_cardbody">
+			<div class="row">
+				<div class="col-12">
+					<p class="_cardtitle"><%= mock.title %></p>
+					<div class="d-flex overflowx_none"><% mock.tag_list.each do |tag| %><div class="_chip _1"><%= tag %></div><% end %></div>
+				</div>
+				<div class="row m-0 fullwidth">
+					<div class="col d-flex">
+						<div class="d-table fullheight" style="margin-right: 5px;">
+							<div class="d-tablecell v-middle">
+								<%= image_tag avatar_url(mock.mocker), class: "_avatar _2 m-0-auto" %>
+							</div>
+						</div>
+						<div class="text-ellipsis">
+							<div class="d-table fullscreen">
+								<div class="d-tablecell v-middle ">
+									<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="d-table fullscreen">
+							<div class="d-tablecell v-middle">
+								<div class="d-flex" style="width: max-content;float: right;">
+									<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
+									<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
+									<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+
+<style type="text/css">
+	@media(max-width: 575px){
+      ._card{
+        width:100vw;
+        min-width: 200px;
+        margin: 0;
+      }
+	}
+</style>

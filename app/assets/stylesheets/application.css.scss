@@ -503,7 +503,9 @@
   .overflowx_none ._chip._1:first-child{
     margin-left:0 !important;
   }
-    
+  #taglist{
+    padding-bottom:0;
+  }
   #taglist ._chip._1:last-child {
     margin-right:20px !important;
   }
@@ -960,9 +962,9 @@
     width:max-content;
   }
   ._chip._1:hover{
-    background: #ff5858;
-    border-color:transparent;
-    color: white;
+    background: #fdf4f2;
+    border-color: #ff5858;
+    color: #ff5858;
     -webkit-transform:translateY(-1px);
     transform:translateY(-1px);
   }
@@ -1566,18 +1568,18 @@
     position: relative;
   }
   ._listsidenav li a{
-    color:#032535;
+    color:#5f5f5f;
     text-decoration: none;
     display:flex;
-    opacity:.8;
+    padding:15px;
   }
   ._listsidenav li i{
     line-height:1.62;
   }
   ._listsidenav li a:hover,
   ._listsidenav li.active a{
-    font-weight: 700;
-    opacity:1;
+    color: #ff5858;
+    background: #fdf4f2;
   }
   ._listsidenav li a::before{
     content: '';
@@ -1585,8 +1587,8 @@
     height: 5px;
     border-radius: 369px;
     background: #032535;
-      right: 0;
-      top:10px;
+    right: 20px;
+    top: 28px;
       position: absolute;
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -1596,10 +1598,12 @@
   ._listsidenav li.active a::before{
     -webkit-transform: scale(1);
     transform: scale(1);
+    background: #ff5858;
   }
   ._listsidenav li a:hover::before{
     -webkit-transform: scale(1);
     transform: scale(1);
+    background: #ff5858;
   }
   ._listsidenav._t_one li a{
     color:white;
@@ -1726,7 +1730,6 @@
     position:absolute;
     left:10px;
     top: 20px;
-    opacity: 0;
   }
   .div_arrow._right{
     position:absolute;
@@ -1738,10 +1741,7 @@
   }
   @media(min-width: 768px){
     #taglist{
-        margin-left: 35px;
-    }
-    .div_arrow._left{
-      opacity: 1;
+        margin-left: 15px;
     }
   }
 /* END MOCKS */
@@ -1770,6 +1770,8 @@
     display: block;
     border-radius: 100%;
     margin-bottom:20px;
+    -webkit-box-shadow: 0 3px 18px -5px #d0dbe0;
+    box-shadow: 0 3px 18px -5px #d0dbe0;
   }
 
   ._col_user{
@@ -2308,7 +2310,6 @@
   }
   #_row_sidenav1{
       min-height: 250px;
-      margin-top: 65px;
   }
   #_row_sidenav2{ 
       position: absolute;

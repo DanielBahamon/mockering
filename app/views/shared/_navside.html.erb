@@ -1,54 +1,86 @@
 <div class="fixed _css-1db _overflow-y _h-100vh" style="width: 100%;max-width: inherit;">
-				<div class="row m-0">
-					<div class="relative fullwidth">
-					  <div class="row cont_user m-0">
-					    <div class="col-12 text-center">
-					      <br>
-					      <%= link_to current_mocker do %>
-					      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
-					      <% end %>
-					    </div>
-					    <div class="col-12 text-center">
-					      <h4 class="_name _fw400 m-0">
-					      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
-					      <p class="_fw400">
-					      <%= link_to current_mocker, class: "_color_black deco-none" do %>@<%= current_mocker.slug %><% end %></p>
-					    </div>
-					  </div>
-					  <br>
-					</div>
-				</div>
-				<div class="row m-0">
-					<div class="col-12">
-						<div id="_row_sidenav1">
-							<div class="d-table fullscreen ">
-								<div class="d-tablecell v-middle">
-									<ul class="_listsidenav">
-										<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
-												<i class="fas fa-home col-2 text-center p-0"></i>
-												<p class="col-10">Home</p>
-											<% end %>
-										</li>
-										<li class="<%= 'active' if current_page?('/popular')  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
-												<i class="fas fa-fire col-2 text-center p-0"></i>
-												<p class="col-10">Popular</p>
-											<% end %>
-										</li>
-										<li class="<%= 'active' if current_page?('/recent')  %>"><%= link_to recent_path, class: "_link _sidenav" do %>
-												<i class="fas fa-stopwatch col-2 text-center p-0"></i>
-												<p class="col-10">Recent</p>
-											<% end %>
-										</li>
-										<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
-                  								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
-												<p class="col-10">Discover</p>
-											<% end %>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
+    <% if mocker_signed_in? %>
+		<div class="row m-0">
+			<div class="relative fullwidth">
+			  <div class="row cont_user m-0">
+			    <div class="col-12 text-center">
+			      <br>
+			      <%= link_to current_mocker do %>
+			      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+			      <% end %>
+			    </div>
+			    <div class="col-12 text-center">
+			      <h4 class="_name _fw400 m-0">
+			      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
+			      
+			      <%= link_to current_mocker, class: "text-muted _fw400 deco-none" do %>@<%= current_mocker.slug %><% end %>
+			    </div>
+			  </div>
+			  <br>
+			</div>
+		</div>
+	<% end %>
+	<div class="row m-0">
+		<div class="col-12 p-0">
+			<div id="_row_sidenav1">
+				<div class="d-table fullscreen ">
+					<div class="d-tablecell v-middle">
+						<ul class="_listsidenav">
+							<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
+									<i class="fas fa-th-large col-2 text-center p-0" style="font-size: 10pt;line-height: 2.1;"></i>
+									<p class="col-10 m-0">Feed</p>
+								<% end %>
+							</li>
+							<!--<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+      								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
+									<p class="col-10 m-0">Discover</p>
+								<% end %>
+							</li>-->
+							<li class="<%= 'active' if current_page?('/popular')  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
+									<i class="fas fa-fire col-2 text-center p-0"></i>
+									<p class="col-10 m-0">Popular</p>
+								<% end %>
+							</li>
+							<li class="<%= 'active' if current_page?('/recent')  %>"><%= link_to recent_path, class: "_link _sidenav" do %>
+									<i class="fas fa-stopwatch col-2 text-center p-0"></i>
+									<p class="col-10 m-0">Recent</p>
+								<% end %>
+							</li>
+    						<% if mocker_signed_in? %>
+								<li class="<%= 'active' if current_page?('/notifications')  %>"><%= link_to recent_path, class: "_link _sidenav" do %>
+										<i class="fas fa-bell col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Notifications</p>
+									<% end %>
+								</li>
+								<li class="<%= 'active' if current_page?('/messages')  %>"><%= link_to recent_path, class: "_link _sidenav" do %>
+										<i class="fas fa-envelope col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Messages</p>
+									<% end %>
+								</li>
+								<li class="<%= 'active' if current_page?('/settings')  %>"><%= link_to recent_path, class: "_link _sidenav" do %>
+										<i class="fas fa-cog col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Settings</p>
+									<% end %>
+								</li>
+								<hr>
+								<li class="<%= 'active' if current_page?('/settings')  %>"><%= link_to recent_path, class: "_link _sidenav" do %>
+										<i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Logout</p>
+									<% end %>
+								</li>
+							<% else %>
+								<hr>
+								<li class="<%= 'active' if current_page?('/settings')  %>"><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
+										<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Login</p>
+									<% end %>
+								</li>
+							<% end %>
+						</ul>
 					</div>
 				</div>
 			</div>
+
+		</div>
+	</div>
+</div>

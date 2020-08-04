@@ -98,6 +98,10 @@
                         <%= f.label 'Books', class: '_checkbox _1', for: "check_books" %>
                     </li>
                     <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_conspiracy"}, 'conspiracy', nil %>
+                        <%= f.label 'Conspiracy', class: '_checkbox _1', for: "check_conspiracy" %>
+                    </li>
+                    <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_comics"}, 'comics', nil %>
                         <%= f.label 'Comics', class: '_checkbox _1', for: "check_comics" %>
                     </li>
