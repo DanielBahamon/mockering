@@ -20,7 +20,7 @@ class MocksController < ApplicationController
 	def popular
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
     	
-    	@mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'").group(:id).order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
+    	@mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}'").group(:id).order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
     	
     	# @mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}  '").group("impressions.impressionable_id").order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
