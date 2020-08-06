@@ -5,20 +5,18 @@
     </div>
   </div>
 <% else %>
-  <% @reviews.order(id: :desc).each do |r| %>
+  <% @reviews.order(created_at: :desc).each do |r| %>
     <div class="row m-0 _rowreview">
-      <div class="col-12 col-sm text-center">
+      <div class="col text-center">
         <div class="d-table fullscreen">
           <div class="d-table-cell v-middle">
             <div class="d-grid text-center">
               <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
-              <small class="_fw500"><%= r.mocker.slug %></small>
-              <small><%= r.created_at.strftime("%d %b %y").downcase  %></small>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-10">
+      <div class="col-10 col-sm-11  ">
         <div class="row m-0" style="margin-bottom: 10px;">
           <div class="col offset text-right p-0">
             <% if current_mocker && current_mocker == r.mocker %>
@@ -38,11 +36,12 @@
           </div>    
         </div>
         <div class="col-12 readmore p-0">
-          <div class="comment" id="comment">
-            <small class="m-0 keepspaces"><%= r.comment %></small>
+          <div class="comment d-grid" id="comment">
+            <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= r.mocker.slug %> • <%= r.created_at.strftime("%d %b %y").downcase  %></small>
+            <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= r.comment %></small>
           </div>
         </div>
-        <div class="row">
+        <div class="row col-12 m-0 p-0">
           <div class="col-auto">
             <% if mocker_signed_in? %>
               <%= link_to like_review_path(r), method: :put, remote: :true, class: "like-review" do %>
@@ -51,14 +50,14 @@
                 </div>
               <% end %>
             <% else %>
-              <%= link_to new_mocker_session_path, class: 'like-review' do %>
+              <%= link_to new_mocker_session_path, class: "like-review" do %>
                 <div id="like-count-review">
-                  <%= render 'reviews/likes', review: @review %>
+                <i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(r.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
                 </div>
               <% end %>
             <% end %>
           </div>
-          <div class="col-auto">
+          <div class="col-auto"  style="padding-left: 0;">
             <% if mocker_signed_in? %>
               <%= link_to dislike_review_path(r), method: :put, remote: :true, class: "like-review" do %>
                 <div id="dislike-count-review">
@@ -66,11 +65,11 @@
                 </div>
               <% end %>
             <% else %>
-              <%= link_to new_mocker_session_path, class: 'like-review' do %>
-                <div id="dislike-count-review">
-                  <%= render 'reviews/dislikes', review: @review %>
-                </div>
-              <% end %>
+                <%= link_to new_mocker_session_path, class: "like-review" do %>
+                  <div id="dislike-count-review">
+                  <i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(r.get_downvotes.size, units: { million: 'm', billion: 'b' }) %>
+                  </div>
+                <% end %>
             <% end %>
           </div>
         </div>

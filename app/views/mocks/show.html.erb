@@ -19,13 +19,13 @@
 					<h4 class="card-title _fw500"><%= @mock.title %></h4>
 				</div>
 			</div>
-			<div class="row m-0">
-				<div class="col-6">
+			<div class="row m-0" >
+				<div class="col-12 col-sm-6 text-right-sm" style="margin-bottom: 15px;">
 					<div class="row m-0">
-						<div class="col-auto p-0">
+						<div class="col col-sm-auto p-0">
 							<h5 class="m-0 _video_views _fw500"><i class="far fa-eye"></i> <% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: {billion: 'B' }) %></h5> 	
 						</div>
-						<div class="col-auto">
+						<div class="col p-sm-0">
 							<div class="d-table fullscreen">
 								<div class="d-tablecell v-middle">
 									<h5 class="_fw500 _video_date m-0">• <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
@@ -34,7 +34,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-6">
+				<div class="col col-sm-6">
 					<div class="row float-right m-0">	
 						<div class="col-auto" >
 							<% if mocker_signed_in? %>
@@ -53,13 +53,13 @@
 								<% end %>
 							<% else %>
 								<%= link_to new_mocker_session_path, class: "like-post" do %>
-									<div id="dislike-count">
+									<div id="like-count">
 									<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
 									</div>
 								<% end %>
 							<% end %>
 						</div>
-						<div class="col-auto">
+						<div class="col-auto" style="padding-right:0;">
 							<% if mocker_signed_in? %>	
 								<% if current_mocker %>
 									<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
@@ -107,7 +107,7 @@
 			</div>
 			<div class="row m-0">
 				<div class="col-12 p-0">
-					<div class="d-flex">
+					<div class="d-flex _tagsmockshow">
 						<% @mock.tag_list.each do |tag| %>
 							<%= link_to tag, mocks_path(tag: tag), class: "_chip _1" %>
 						<% end %>
@@ -223,100 +223,6 @@
 </div>
 
 <style type="text/css">
-	#my-video{
-		border-radius: 9px;
-	}
-	._col_follow{
-	    padding-top: 4px;
-	    height: auto;
-	    display: inherit;
-	    text-align: center;
-	}
-	._video_views,
-	._video_date{
-		color:#5e6e75;
-	}
-	._w-maxcont{
-		width: max-content;
-	}
-	._col_follow form {
-		width: 100%;
-	}
-	.link_card._2{
-		-webkit-transition: all .2s ease;
-		transition: all .2s ease;
-	}
-	.link_card._2:hover{
-		-webkit-transform: translateY(-1px);
-		transform: translateY(-1px);
-		-webkit-box-shadow: 0 2px 12px -3px #dbe7eb;
-		box-shadow: 0 2px 12px -3px #dbe7eb;
-	}
-	@media(max-width: 575px){
-		._col_follow{
-    		margin-top: 10px;
-    		max-width: inherit;
-		}
-		.text-center-sm{
-			text-align: center;
-		}
-	}
-	@media(min-width: 768px){
-		._cardbody._2{
-			height: 100%;
-			min-height: 120px;
-		}
-	}
-	._col_follow form .btn{
-		width:100%;
-		padding: 8px 15px;
-    	max-width: 150px;
-	}
-	/*._col_follow form{
-	    display: table;
-	    width: 100%;
-	    height: 100%;
-	}
-	._col_follow form .btn{
-	    display: table-cell;
-	    vertical-align: middle;
-	}*/
-	._avatar._4{
-	    width: 45px;
-	    height: 45px;
-	    border: 1px solid #eaeaea;
-	    border-radius: 100%;
-	    object-fit: cover;
-	}
-	._username_video{
-		margin-top:10px;
-		margin-bottom: 0;
-	}
-	a.link-2 {
-	    margin-top: 10px;
-	    margin-bottom: 15px;
-	}
-	.video_description{
-		font-size: 11pt;
-		color:#484848;
-	}
-	.vjs-poster{
-		border-radius: 9px;
-	}
-	.video-js .vjs-tech{
-		height: auto;
-		position:inherit;
-		max-height: 60vh;
-	}
-	.video-js{
-		max-height: 60vh;
-	}
-	.video-js.vjs-fullscreen{
-		max-height: inherit !important;
-	}
-	.video-js.vjs-fullscreen .vjs-tech{
-		max-height: inherit !important;
-	}
 </style>
 
 <script type="text/javascript">
