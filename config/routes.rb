@@ -36,7 +36,14 @@ Rails.application.routes.draw do
   end
 
 
-  resources :reviews
+  resources :reviews do
+    member do
+      put 'like' => 'reviews#like'
+      put 'dislike' => 'reviews#dislike'
+      put 'vote' => 'reviews#upvote'
+      put 'unvote' => 'reviews#downvote'
+    end
+  end
 
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'

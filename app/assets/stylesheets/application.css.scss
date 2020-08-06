@@ -321,6 +321,19 @@
     height:50px;
     background:grey;
   }
+
+  a.like-review {
+    color: #032535;
+    text-decoration:none !important;
+    display:block;
+    font-size:10pt;
+  }
+  a.like-review:before{
+    content:'';
+    width:30px;
+    height:30px;
+    background:grey;
+  }
   ._bg_filter{
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.35));
       border-radius: 20px;

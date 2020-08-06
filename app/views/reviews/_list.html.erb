@@ -42,6 +42,38 @@
             <small class="m-0 keepspaces"><%= r.comment %></small>
           </div>
         </div>
+        <div class="row">
+          <div class="col-auto">
+            <% if mocker_signed_in? %>
+              <%= link_to like_review_path(r), method: :put, remote: :true, class: "like-review" do %>
+                <div id="like-count-review">
+                  <%= render 'reviews/likes', review: r %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_mocker_session_path, class: 'like-review' do %>
+                <div id="like-count-review">
+                  <%= render 'reviews/likes', review: @review %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-auto">
+            <% if mocker_signed_in? %>
+              <%= link_to dislike_review_path(r), method: :put, remote: :true, class: "like-review" do %>
+                <div id="dislike-count-review">
+                  <%= render 'reviews/dislikes', review: r %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_mocker_session_path, class: 'like-review' do %>
+                <div id="dislike-count-review">
+                  <%= render 'reviews/dislikes', review: @review %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
     <hr>

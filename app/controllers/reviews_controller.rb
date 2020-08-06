@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
 
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy, :like, :dislike, :upvote, :downvote]
   before_action :set_mock, only: [:show]
 
   def show
     @review = Review.find(params[:id])
+    # Display all the host reviews to host (if this user is a guest)
+    @reviews = @review.reviews
   end
 
   def edit
@@ -49,6 +51,24 @@ class ReviewsController < ApplicationController
     @host_review = Review.find(params[:id])
     @host_review.destroy
     redirect_back(fallback_location: request.referer, notice: "Comentario eliminado!")
+  end
+
+
+
+  def like
+    if current_mocker.voted_for? @review
+      @review.unliked_by current_mocker
+    else
+      @review.liked_by current_mocker
+    end
+  end
+
+  def dislike
+    if current_mocker.voted_for? @review
+      @review.unliked_by current_mocker
+    else
+      @review.downvote_from current_mocker
+    end
   end
 
 
