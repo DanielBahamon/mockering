@@ -5,6 +5,7 @@ class Mention < ApplicationRecord
   include Rails.application.routes.url_helpers
 
 
+
   def self.all(letters)
     return Mention.none unless letters.present?
     mockers = Mocker.limit(5).where('slug like ?', "#{letters}%").compact
@@ -84,5 +85,7 @@ class Mention < ApplicationRecord
 
     end
   end
+
+
 
 end
