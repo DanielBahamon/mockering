@@ -1711,6 +1711,16 @@
       -webkit-box-orient: vertical;
   }
 
+  
+  ._col_title_index{
+    padding: 0 15px;
+  }
+  @media(min-width: 768px){
+    ._col_title_index{
+      padding: 0 35px;
+    }
+  }
+
   ._board{
     min-height: 80vh;
     padding:0;

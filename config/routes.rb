@@ -52,10 +52,9 @@ Rails.application.routes.draw do
   get 'username_validator/:slug', to: 'mockers#username_validator'
 
 
-
   get 'mentions', to: 'mockers#mentions'
   get 'popular', to: 'mocks#popular'
-  get 'recent', to: 'mocks#recent'
+  get 'latest', to: 'mocks#latest'
   
 
 end
