@@ -8,6 +8,7 @@ class Mock < ApplicationRecord
 	is_impressionable counter_cache: true, column_name: :impressions_count, :unique => [:session_hash]
     acts_as_taggable_on :tags
 	has_many :reviews
+	has_many :answers
   	
 	enum category: {
 		Original: 0,
@@ -15,7 +16,7 @@ class Mock < ApplicationRecord
 		Reaction: 2,
 		Tutorial: 3
 	}
-	
+
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/unnamed.jpg"
 	validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 

@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     # Display all the host reviews to host (if this user is a guest)
-    @reviews = @review.reviews
+    @answers = @review.answers
   end
 
   def edit

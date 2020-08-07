@@ -1,6 +1,6 @@
-class Review < ApplicationRecord
+class Answer < ApplicationRecord
   belongs_to :mock
   belongs_to :mocker
-  has_many :answers
+  belongs_to :review
   acts_as_votable
 end

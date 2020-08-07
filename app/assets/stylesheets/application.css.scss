@@ -322,13 +322,15 @@
     background:grey;
   }
 
-  a.like-review {
+  a.like-review,
+  a.like-answer {
     color: #545454;
     text-decoration:none !important;
     display:block;
     font-size:10pt;
   }
-  a.like-review:before{
+  a.like-review:before,
+  a.like-answer:before{
     content:'';
     width:30px;
     height:30px;
@@ -745,6 +747,16 @@
     text-decoration: none !important;
     background: #f3f4f4;
     color:#60686f;
+  }
+  ._btn._btnanswer{
+    width:100%;
+    text-transform:uppercase;
+    font-weight:500;
+    color:black;
+    text-align:center;
+  }
+  .answers{
+    padding-left:50px;
   }
   ._btnmenu{
     display: block;
@@ -2473,7 +2485,7 @@
         width:250px;
       }
     }
-    @media(max-width: 576px){
+    @media(max-width: 575px){
       ._list._1 li{
         padding: 0 5px;
         float: left;

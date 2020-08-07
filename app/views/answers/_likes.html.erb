@@ -1,0 +1,5 @@
+<% if current_mocker.voted_up_on? answer %>
+	<i class="fas fa-thumbs-up _color_current" style="margin-right: 2px;"></i>
+<% else %>
+	<i class="far fa-thumbs-up" style="margin-right: 2px;"></i>
+<% end %> <%= number_to_human(answer.get_upvotes.size, units: {thousand: 'k', million: 'm', billion: 'b' }) %>

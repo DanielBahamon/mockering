@@ -45,6 +45,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :answers do
+    member do
+      put 'like' => 'answers#like'
+      put 'dislike' => 'answers#dislike'
+      put 'vote' => 'answers#upvote'
+      put 'unvote' => 'answers#downvote'
+    end
+  end
+
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
 

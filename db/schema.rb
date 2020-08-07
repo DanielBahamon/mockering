@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200803195618) do
+ActiveRecord::Schema.define(version: 20200807183326) do
+
+  create_table "answers", force: :cascade do |t|
+    t.text "comment"
+    t.string "mock_id"
+    t.string "mocker_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bolds", force: :cascade do |t|
     t.string "votable_type"

@@ -73,7 +73,26 @@
             <% end %>
           </div>
         </div>
+        <div class="row m-0">
+            <% if mocker_signed_in? %>
+              <%= render 'answers/form', review: r %>
+            <% else %>
+              <div class="row m-0 fullwidth">
+                <div class="col-12">
+                  <%= link_to new_mocker_session_path, class: "display-block btn _btn _btnanswer" do %>Answer<% end %>
+                </div> 
+              </div>
+              <br>
+            <% end %>      
+        </div>
       </div>
+    </div>
+    <div class="list">
+        <div class="col-12 p-0">
+          <div class="answers" id="answers">
+            <%= render 'answers/list', review: r %>
+          </div>
+        </div>
     </div>
     <hr>
   <% end %>

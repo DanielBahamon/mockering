@@ -67,8 +67,6 @@ class Mocker < ApplicationRecord
 		end
 	end
 
-
-
     has_many :mocks
 
     has_many :active_friendships, class_name: "Friendship", foreign_key: "follower_id", dependent: :destroy
@@ -88,12 +86,10 @@ class Mocker < ApplicationRecord
     has_many :following, through: :active_friendships, source: :followed
     has_many :followers, through: :passive_friendships, source: :follower
 
-
-
 	# AVATAR
 
-	  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png"
-	  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+	has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png"
+	validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
 	# COVERPAGE
 

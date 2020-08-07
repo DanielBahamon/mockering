@@ -20,12 +20,12 @@
 				</div>
 			</div>
 			<div class="row m-0" >
-				<div class="col-12 col-sm-6 text-right-sm" style="margin-bottom: 15px;">
+				<div class="col-12 col-sm-6" style="margin-bottom: 15px;">
 					<div class="row m-0">
-						<div class="col col-sm-auto p-0">
+						<div class="col col-sm-auto p-0 ">
 							<h5 class="m-0 _video_views _fw500"><i class="far fa-eye"></i> <% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: {billion: 'B' }) %></h5> 	
 						</div>
-						<div class="col p-sm-0">
+						<div class="col p-sm-0  text-right-sm">
 							<div class="d-table fullscreen">
 								<div class="d-tablecell v-middle">
 									<h5 class="_fw500 _video_date m-0">• <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
