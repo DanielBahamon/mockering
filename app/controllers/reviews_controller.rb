@@ -6,7 +6,10 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     # Display all the host reviews to host (if this user is a guest)
-    @answers = @review.answers
+    @answers = @reviews.answers
+  end
+
+  def index
   end
 
   def edit
@@ -76,6 +79,10 @@ class ReviewsController < ApplicationController
 
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_answer
+      @answer = Answer.find(params[:id])
     end
 
     def set_mock

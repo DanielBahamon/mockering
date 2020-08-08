@@ -89,7 +89,7 @@
     </div>
     <div class="list">
         <div class="col-12 p-0">
-          <div class="answers" id="answers">
+          <div class="answers sort_paginate_ajax" id="answers">
             <%= render 'answers/list', review: r %>
           </div>
         </div>
@@ -99,6 +99,7 @@
 <% end %>
 <br>
 <script type="text/javascript">
+  
   $('.readmore').readmore({
       speed: 75,
       collapsedHeight: 85,

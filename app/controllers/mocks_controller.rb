@@ -4,7 +4,7 @@ class MocksController < ApplicationController
 	# before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
 	before_action :set_search
-  	impressionist :actions=>[:show]
+  	impressionist :actions => [:show]
   	
   	autocomplete :tag, :name, :full => true
 
@@ -51,7 +51,6 @@ class MocksController < ApplicationController
 	   	# impressionist(@mock, "message...") # 2nd argument is optional
 	    # Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews
-		@mocker  = @mock.mocker
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
 		@related_mocks = @mock.find_related_tags
 	end
@@ -114,6 +113,14 @@ class MocksController < ApplicationController
 
 	def find_mock
 		@mock = Mock.find(params[:id])
+	end
+
+	def find_review
+		@review = Review.find(params[:id])
+	end
+
+	def find_answer
+		@answer = Answer.find(params[:id])
 	end
 
 	def mock_params

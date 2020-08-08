@@ -1,5 +1,4 @@
 class AnswersController < ApplicationController
-
   before_action :set_answer, only: [:show, :edit, :update, :destroy, :like, :dislike, :upvote, :downvote]
   before_action :set_mock, only: [:show]
   before_action :set_review, only: [:show]
@@ -9,6 +8,7 @@ class AnswersController < ApplicationController
     # Display all the host answers to host (if this user is a guest)
     @review = Review.find(params[:id])
     @mock = Mock.find(params[:id])
+    @answers = review.answers.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
   end
 
   def edit
@@ -29,7 +29,7 @@ class AnswersController < ApplicationController
     # @answer = @mock.answers.build(answer_params)
 
     if @answer.save
-      flash[:notice] = 'answer was successfully created.'
+      flash[:notice] = 'Answer was successfully created.'
       redirect_back(fallback_location: request.referer)
     else
       flash[:notice] = "Error creating answer: #{@answer.errors}"

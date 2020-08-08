@@ -42,4 +42,10 @@ module ApplicationHelper
 	  end.join("\n").html_safe
 	end
 
+
+
+	def paginate(collection, params= {})
+		will_paginate collection, params.merge(:renderer => RemoteLinkPaginationHelper::LinkRenderer)
+	end
+
 end
