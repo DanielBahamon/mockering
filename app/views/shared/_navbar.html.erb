@@ -57,7 +57,7 @@
                           <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
                             <div class="d-table fullscreen">
                               <div class="d-tablecell v-middle">
-                                <%= link_to new_mock_path, class: "_btn _1" do %>
+                                <%= link_to new_mock_path, class: "_btn _1 _addmock" do %>
                                   <i class="material-icons ">add</i> Add mock
                                 <% end %>
                               </div>
@@ -261,6 +261,17 @@
 <div class="_navbar_br"></div>
 
 <style type="text/css">
-
+  ._btn._1._addmock{
+    background: linear-gradient(45deg, #ff5858, #ff9058);
+    border-color: transparent;
+    border-radius: 369px;
+    color: white !important;
+  }
+  ._btn._1._addmock:hover{
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff6758, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
+  }
+  ._btn._1:focus{
+    outline: none !important;
+  }
 
 </style>
