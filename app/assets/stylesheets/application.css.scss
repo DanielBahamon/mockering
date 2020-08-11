@@ -706,6 +706,19 @@
       line-height: .9;
       vertical-align: bottom;
   }
+  
+  ._btn._1._addmock{
+    background: linear-gradient(45deg, #ff5858, #ff9058);
+    border-color: transparent;
+    border-radius: 369px;
+    color: white !important;
+  }
+  ._btn._1._addmock:hover{
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff6758, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
+  }
+  ._btn._1:focus{
+    outline: none !important;
+  }
   ._btn._2{
       border: 1px solid transparent;
       padding: 10px;
