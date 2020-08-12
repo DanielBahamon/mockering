@@ -8,51 +8,7 @@
 				<div class="row m-0">
 					<div class="col-12 _board">
 						<%= render 'tags' %>
-						<div class="con_categories">
-							<div class="d-flex">
-								<a class="_colcategory" id="originals">
-									<div class="_bggradient _1 fullscreen">
-										<div class="d-table fullscreen">
-											<div class="d-tablecell v-bottom">
-												<h5 class="text-white _fw500 m-0">Original</h5>
-												<p class="text-white m-0">Makers</p>
-											</div>
-										</div>
-									</div>
-								</a>
-								<a class="_colcategory" id="reports">
-									<div class="_bggradient _1 fullscreen">
-										<div class="d-table fullscreen">
-											<div class="d-tablecell v-bottom">
-												<h5 class="text-white _fw500 m-0">Reports</h5>
-												<p class="text-white m-0">Investigations</p>
-											</div>
-										</div>
-									</div>
-								</a>
-								<a class="_colcategory" id="reactions">
-									<div class="_bggradient _1 fullscreen">
-										<div class="d-table fullscreen">
-											<div class="d-tablecell v-bottom">
-												<h5 class="text-white _fw500 m-0">Reactions</h5>
-												<p class="text-white m-0">Reviewing</p>
-											</div>
-										</div>
-									</div>
-								</a>
-								<a class="_colcategory" id="tutorials">
-									<div class="_bggradient _1 fullscreen">
-										<div class="d-table fullscreen">
-											<div class="d-tablecell v-bottom">
-												<h5 class="text-white _fw500 m-0">Tutorials</h5>
-												<p class="text-white m-0">Learning</p>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-							<br>
-						</div>
+						<%= render 'shared/categories' %>
 						<div class="mocks_content">
 							<div id="mocks" class="transitions-enabled">
 								<%= render 'mock' %>
