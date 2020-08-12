@@ -54,6 +54,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
 

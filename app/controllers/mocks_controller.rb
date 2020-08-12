@@ -13,7 +13,7 @@ class MocksController < ApplicationController
 		if params[:tag].present?
 			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 20)
 		else
-			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 20)
+			@mocks = @q.result(distinct: true).order("RANDOM()").paginate(page: params[:page], per_page: 20)
 		end
 	end
 
@@ -39,8 +39,13 @@ class MocksController < ApplicationController
 
 	def create
 		params[:mock][:tag_list] = params[:mock][:tag_list].join(',')
+		@mocker = current_mocker
 		@mock = current_mocker.mocks.build(mock_params)
 		if @mock.save
+			# create notification
+			@mocker.followers.each do |mocker|
+				Notification.create(recipient: mocker, actor: current_mocker, action: "mocked", notifiable: @mock)
+			end
 			redirect_to @mock, notice: "Successfully created new Mock"
 		else
 			render 'new'

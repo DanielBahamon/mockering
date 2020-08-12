@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200807183326) do
+ActiveRecord::Schema.define(version: 20200811210731) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -161,6 +161,17 @@ ActiveRecord::Schema.define(version: 20200807183326) do
     t.integer "impressions_count", default: 0
     t.index ["id"], name: "sqlite_autoindex_mocks_1", unique: true
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_id"
+    t.string "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.string "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
