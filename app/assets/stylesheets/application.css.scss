@@ -797,7 +797,7 @@
 
   ._btn_icon{
     position: relative;
-    color:black;
+    color:#5f5f5f;
   }
   ._btn_icon:focus{
     color:#ff5858;
@@ -1495,6 +1495,12 @@
       overflow-x: hidden;
       -webkit-transition: all .2s ease;
       transition: all .2s ease;
+  }
+  @media(max-width: 375px){
+    ._btn._btnavfoot{
+      padding-left:9px !important;
+      padding-right:9px !important;
+    }
   }
   ._btn._btnavfoot:hover,
   ._listnavfooter li.active ._btn._btnavfoot{
