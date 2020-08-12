@@ -35,6 +35,9 @@ class Notifications
 		if items.length < 1 
 			$("[data-behavior='unread-count']").remove()
 
+		if @notifications.length >  0
+			$("[data-behavior='unread-count']").addClass("show")
+
 
 		$("[data-behavior='unread-count']").text(itemslength)
 		$("[data-behavior='notification-items']").html(items)
