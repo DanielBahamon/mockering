@@ -1446,6 +1446,19 @@
     right: -7px;
     top: -14px;
   }
+  
+  #multiCollapseSearch{
+      position: fixed;
+      top: 0;
+      background: white;
+      z-index: 5;
+      padding: 15px 0;
+  }
+  ._span_unread_count._navside_span{
+    top: 15px;
+    right: 10px;
+    text-align: center;
+  }
   ._btn._btnavfoot{
     position:relative;
   }
@@ -1804,6 +1817,57 @@
       -webkit-box-orient: vertical;
   }
 
+
+  ._colcategory{
+    width:111px;
+    height:150px;
+    border-radius: 6px;
+    margin-left: 15px;
+    background-size: cover !important;
+    cursor: pointer;
+    display: block;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  ._colcategory:hover{
+    transform: translateY(-2px);
+  }
+  ._colcategory#originals{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/original.jpg);
+    background-position-x: center; 
+  }
+  ._colcategory#reports{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/reports.jpg);
+    background-position-x: center; 
+  }
+  ._colcategory#reactions{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/reactions.jpg);
+    background-position-x: center; 
+  }
+  ._colcategory#tutorials{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/tutorials.jpg);
+    background-position-x: center;
+    margin-right: 15px;
+  }
+  ._colcategory ._bggradient{
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  ._colcategory p{
+    font-size: 9pt;
+  }
+  
+  @media(min-width: 530px){
+    .con_categories{
+        width: max-content;
+        margin: 0 auto;
+    }
+  }
+  .con_categories .d-flex{
+    overflow-x: auto;
+    padding-top: 15px;
+  }
 
   #my-video{
     border-radius: 9px;
