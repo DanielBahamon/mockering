@@ -21,7 +21,8 @@
 					<% end %>
 				</li>
 				<li class="col-3">
-					<%= link_to root_path, class: "_btn _btnavfoot" do %>
+					<%= link_to notifications_path, class: "_btn _btnavfoot", "data-behavior": "notifications-link" do %>
+						<span class="_span_unread_count" data-behavior="unread-count"></span>
 						<i class="fas fa-bell text-center p-0"></i>
 						<p class="m-0">Yours</p>
 					<% end %>

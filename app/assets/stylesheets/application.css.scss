@@ -1446,6 +1446,13 @@
     right: -7px;
     top: -14px;
   }
+  ._btn._btnavfoot{
+    position:relative;
+  }
+  ._btn._btnavfoot span._span_unread_count{
+    right: auto !important;
+    top: -2px !important;
+  }
   ._itemdropdown{
     width:100%;
     display:block;

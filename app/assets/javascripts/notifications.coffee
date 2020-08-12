@@ -32,6 +32,10 @@ class Notifications
 		else
 			itemslength = items.length
 
+		if items.length < 1 
+			$("[data-behavior='unread-count']").remove()
+
+
 		$("[data-behavior='unread-count']").text(itemslength)
 		$("[data-behavior='notification-items']").html(items)
 jQuery ->
