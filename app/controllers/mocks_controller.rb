@@ -13,7 +13,7 @@ class MocksController < ApplicationController
 		if params[:tag].present?
 			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 20)
 		else
-			@mocks = @q.result(distinct: true).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 20)
 		end
 	end
 
