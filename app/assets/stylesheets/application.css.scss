@@ -1450,8 +1450,8 @@
     position:relative;
   }
   ._btn._btnavfoot span._span_unread_count{
-    right: auto !important;
-    top: -2px !important;
+    right: calc(50% + -21px) !important;
+    top: 3px !important;
   }
   ._itemdropdown{
     width:100%;
