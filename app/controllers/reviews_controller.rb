@@ -25,10 +25,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.mocker_id = current_mocker.id
+    @mock = @review.mock
+    @mocker = @review.mock.mocker
     # @review = @mock.reviews.build(review_params)
-
     if @review.save
       flash[:notice] = 'Review was successfully created.'
+      Notification.create(recipient: @mocker, actor: current_mocker, action: "reviewed", notifiable: @mock)
       redirect_back(fallback_location: request.referer)
     else
       flash[:notice] = "Error creating review: #{@review.errors}"

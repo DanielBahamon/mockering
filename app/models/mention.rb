@@ -5,7 +5,6 @@ class Mention < ApplicationRecord
   include Rails.application.routes.url_helpers
 
 
-
   def self.all(letters)
     return Mention.none unless letters.present?
     mockers = Mocker.limit(5).where('slug like ?', "#{letters}%").compact
@@ -34,6 +33,8 @@ class Mention < ApplicationRecord
       next unless mention
       mock.update_attributes!(description: mention.markdown_string(mock.description))
       # You could fire an email to the user here with ActionMailer
+      mocker = Mocker.find_by(slug: match.delete('@'))
+      Notification.create(recipient: mocker, actor: mocker, action: "mentioned", notifiable: mock)
       mention
     end.compact
   end
@@ -85,7 +86,5 @@ class Mention < ApplicationRecord
 
     end
   end
-
-
 
 end

@@ -197,12 +197,6 @@
                 <% end %>
               </li>
                 <% if mocker_signed_in? %>
-                <li class="<%= 'active' if current_page?('/notifications')  %>"><%= link_to notifications_path, class: "_link _sidenav", "data-behavior": "notifications-link" do %>
-                    <i class="fas fa-bell col-2 text-center p-0"></i>
-                    <p class="col-10 m-0">Notifications</p>
-                    <span class="_span_unread_count _navside_span" data-behavior="unread-count"></span>
-                  <% end %>
-                </li>
                 <li class="<%= 'active' if current_page?('/messages')  %>"><%= link_to latest_path, class: "_link _sidenav" do %>
                     <i class="fas fa-envelope col-2 text-center p-0"></i>
                     <p class="col-10 m-0">Messages</p>
@@ -259,30 +253,3 @@
   </div>    
 </div>
 <div class="_navbar_br"></div>
-<style type="text/css">
-  ._span_unread_count,
-  .space-no-notify{
-    display: none;
-  }
-  ._span_unread_count.show,
-  .space-no-notify.show{
-    display: block;
-  }
-  #navbarNotificationsItems .dropdown-item{
-    padding: 15px 25px;
-    font-size: 10pt;
-    color: #5f5f5f;
-    font-weight: 600;
-  }
-  .dropdown-item.active, .dropdown-item:active{
-    background-color: #fdf4f2 !important;
-    color:#ff5858 !important;
-  }
-  .dropdown-item.space-no-notify{
-    cursor: pointer;
-  }
-  .dropdown-item.space-no-notify.active, .dropdown-item.space-no-notify:active{
-    background-color: white !important;
-    color:#5f5f5f !important;
-  }
-</style>
