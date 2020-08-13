@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
 

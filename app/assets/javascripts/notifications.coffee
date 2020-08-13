@@ -27,6 +27,8 @@ class Notifications
 	handleSuccess: (data) =>
 		items = $.map data, (notification) ->
 			"<a class='dropdown-item' href='#{notification.url}'>@#{notification.actor} #{notification.notifiable.type}</a>"
+
+
 		if items.length > 9 
 			itemslength = "+9"
 		else
@@ -38,11 +40,18 @@ class Notifications
 		if @notifications.length >  0
 			$("[data-behavior='unread-count']").addClass("show")
 
-		if items.length < 1
-			$("[data-behavior='update-notify']").addClass("show")
-
-
 		$("[data-behavior='unread-count']").text(itemslength)
-		$("[data-behavior='notification-items']").html(items)
+
+		if items.length < 1
+			$("[data-behavior='notification-items']").html("
+				<div class='no-notification fullscreen'>
+					<div class='d-table fullscreen'>
+						<div class='d-tablecell v-middle'>
+							<p class=' _text-none-notification'>Everything is okay!</p>
+						</div>
+					</div>
+				</div>")
+		else 
+			$("[data-behavior='notification-items']").html(items)
 jQuery ->
 	new Notifications

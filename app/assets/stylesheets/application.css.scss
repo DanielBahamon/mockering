@@ -1422,6 +1422,36 @@
     overflow-y: auto;
     max-height: 320px;
   }
+  .dropdown-menu#navbarNotificationsItems2{
+    position: fixed !important;
+    float: right !important;
+    right: 0 !important;
+    bottom: 65px !important;
+    width: -webkit-max-content !important;
+    width: -moz-max-content !important;
+    width: max-content !important;
+    height: 70vh;
+    width: 100vw !important;
+    left: auto !important;
+    border-color: #e9ecef;
+    padding: 0;
+    border-radius: 9px;
+    box-shadow: 0 7px 12px -12px #7a7a7a;
+    overflow-y: auto;
+  }
+  .navbar-nav._navbar .dropdown-menu#navbarNotificationsItems ._text-none-notification{
+    text-align:center;
+    font-weight:600;
+    padding:5px;
+    margin:0;
+  }
+  .dropdown-menu#navbarNotificationsItems2 ._text-none-notification{
+    text-align:center;
+    font-weight:600;
+    padding:5px;
+    margin:0;
+    font-size:18pt;
+  }
   .navbar-nav._navbar .dropdown-menu .nav-link{
     text-align: right;
     color:black;
