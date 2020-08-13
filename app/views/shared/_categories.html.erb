@@ -1,6 +1,7 @@
 <div class="con_categories">
-	<div class="d-flex">
-		<a class="_colcategory" id="originals">
+	<%= %>
+	<div class="d-flex overflowx_auto" id="flex_categories">
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=0&commit=search" class="_colcategory" id="originals">
 			<div class="_bggradient _1 fullscreen">
 				<div class="d-table fullscreen">
 					<div class="d-tablecell v-bottom">
@@ -10,7 +11,7 @@
 				</div>
 			</div>
 		</a>
-		<a class="_colcategory" id="reports">
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=1&commit=search" class="_colcategory" id="reports">
 			<div class="_bggradient _1 fullscreen">
 				<div class="d-table fullscreen">
 					<div class="d-tablecell v-bottom">
@@ -20,7 +21,7 @@
 				</div>
 			</div>
 		</a>
-		<a class="_colcategory" id="reactions">
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=2&commit=search" class="_colcategory" id="reactions">
 			<div class="_bggradient _1 fullscreen">
 				<div class="d-table fullscreen">
 					<div class="d-tablecell v-bottom">
@@ -30,7 +31,7 @@
 				</div>
 			</div>
 		</a>
-		<a class="_colcategory" id="tutorials">
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=3&commit=search" class="_colcategory" id="tutorials">
 			<div class="_bggradient _1 fullscreen">
 				<div class="d-table fullscreen">
 					<div class="d-tablecell v-bottom">
@@ -40,6 +41,109 @@
 				</div>
 			</div>
 		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=4&commit=search" class="_colcategory" id="gameplays">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Gameplays</h5>
+						<p class="text-white m-0">Playing</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=5&commit=search" class="_colcategory" id="podcasts">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Podcasts</h5>
+						<p class="text-white m-0">Talking</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=6&commit=search" class="_colcategory" id="videoclip">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Videoclip</h5>
+						<p class="text-white m-0">Filming</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=7&commit=search" class="_colcategory" id="humor">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Humor</h5>
+						<p class="text-white m-0">Laughing</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=8&commit=search" class="_colcategory" id="training">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Training</h5>
+						<p class="text-white m-0">Working out</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=9&commit=search" class="_colcategory" id="growth">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Growth</h5>
+						<p class="text-white m-0">Yourself</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/mocks?utf8=✓&q%5Bcategory_matches_all%5D=10&commit=search" class="_colcategory" id="tribute">
+			<div class="_bggradient _1 fullscreen">
+				<div class="d-table fullscreen">
+					<div class="d-tablecell v-bottom">
+						<h5 class="text-white _fw500 m-0">Tribute</h5>
+						<p class="text-white m-0">Praising</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		<div class="space_categories">
+			<p>de</p>
+		</div>
+	</div>
+	<div class="div_arrow _left_2">
+		<a class="arrow_ arrow-left-navigation_2" ><i class="fas fa-chevron-left"></i></a>
+	</div>
+	<div class="div_arrow _right_2">
+		<a class="arrow_ arrow-right-navigation_2 pull-right"><i class="fas fa-chevron-right"></i></a>
 	</div>
 	<br>
 </div>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	    $(".arrow-left-navigation_2").click(function(){
+	        $("#flex_categories").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_2").click(function(){
+	        $("#flex_categories").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#flex_categories').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_2').hide();
+		    }
+		    else if($('.arrow-left-navigation_1').css('display') != 'block') {
+		        $('.arrow-left-navigation_2').show();
+		    }
+		}).scroll();
+
+	});
+
+</script>

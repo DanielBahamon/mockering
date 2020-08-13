@@ -1905,28 +1905,53 @@
   ._colcategory#tutorials{
     background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/tutorials.jpg);
     background-position-x: center;
-    margin-right: 15px;
+  }
+  .space_categories p{
+    opacity: 0;
+  }
+  ._colcategory#gameplays{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/gameplay.jpg);
+    background-position-x: center;
+  }
+  ._colcategory#podcasts{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/podcast.jpg);
+    background-position-x: center;
+  }
+  ._colcategory#videoclip{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/videoclip.jpg);
+    background-position-x: center;
+  }
+  ._colcategory#humor{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/jokey.jpg);
+    background-position-x: center;
+  }
+  ._colcategory#training{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/training.jpg);
+    background-position-x: center;
+  }
+  ._colcategory#growth{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/growth.jpg);
+    background-position-x: center;
+  }
+  ._colcategory#tribute{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/tribute.jpg);
+    background-position-x: center;
   }
   ._colcategory ._bggradient{
+    width:120px;
     border-radius: 6px;
     padding: 10px;
   }
-
   ._colcategory p{
     font-size: 9pt;
   }
-  
-  @media(min-width: 530px){
-    .con_categories{
-        width: max-content;
-        margin: 0 auto;
-    }
+  .con_categories{
+    position:relative;
   }
   .con_categories .d-flex{
     overflow-x: auto;
     padding-top: 15px;
   }
-
   #my-video{
     border-radius: 9px;
   }
@@ -2039,6 +2064,8 @@
   ._board{
     min-height: 80vh;
     padding:0;
+    max-width: 1500px;
+    margin: 0 auto;
   }
   .deco-none{
     text-decoration: none !important;
@@ -2060,6 +2087,16 @@
     position:absolute;
     right:5px;
     top: 20px;
+  }
+  .div_arrow._left_2{
+    position:absolute;
+    left:10px;
+    top: 42%;
+  }
+  .div_arrow._right_2{
+    position:absolute;
+    right:5px;
+    top: 42%;
   }
   #taglist{
       margin-right: 30px;

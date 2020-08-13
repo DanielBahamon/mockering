@@ -11,13 +11,17 @@ class Mock < ApplicationRecord
 	has_many :answers
   	
 	enum category: {
-		Original: 0,
-		Report: 1,
-		Reaction: 2,
-		Tutorial: 3,
-		Gameplay: 4,
-		Podcast: 5,
-		Videoclip: 6
+		 Original: 0,
+		 Report: 1,
+		 Reaction: 2,
+		 Tutorial: 3,
+		 Gameplay: 4,
+		 Podcast: 5,
+		 Videoclip: 6,
+		 Humor: 7,
+		 Training: 8,
+		 Growth: 9,
+		 Tribute: 10
 	}
 
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/unnamed.jpg"
