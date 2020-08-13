@@ -41,6 +41,7 @@ class Notifications
 		if items.length < 1
 			$("[data-behavior='update-notify']").addClass("show")
 
+
 		$("[data-behavior='unread-count']").text(itemslength)
 		$("[data-behavior='notification-items']").html(items)
 jQuery ->
