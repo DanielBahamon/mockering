@@ -1886,6 +1886,7 @@
     display: block;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
+    text-decoration:none !important;
   }
   ._colcategory:hover{
     transform: translateY(-2px);
