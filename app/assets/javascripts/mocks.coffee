@@ -14,6 +14,16 @@ class @Mock
         else
           $.getJSON '/mentions', { q: query }, (data) ->
             callback data
+            
+    $('#mock_credits').atwho
+      at: '@'
+      displayTpl:"<li class='mention-item' data-value='(${name},${image})'>${name} ${image}</li>",
+      callbacks: remoteFilter: (query, callback) ->
+        if (query.length < 1)
+          return false
+        else
+          $.getJSON '/mentions', { q: query }, (data) ->
+            callback data
 
 jQuery ->
   Mock.add_atwho()

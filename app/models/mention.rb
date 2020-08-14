@@ -39,6 +39,34 @@ class Mention < ApplicationRecord
     end.compact
   end
 
+
+  def self.create_to_review(mock)
+    potential_matches = mock.comment.scan(/@\w+/i)
+    potential_matches.uniq.map do |match|
+      mention = Mention.create_from_match(match)
+      next unless mention
+      mock.update_attributes!(comment: mention.markdown_string(mock.comment))
+      # You could fire an email to the user here with ActionMailer
+      mocker = Mocker.find_by(slug: match.delete('@'))
+      Notification.create(recipient: mocker, actor: mocker, action: "mentioned", notifiable: mock)
+      mention
+    end.compact
+  end
+
+  def self.create_to_answer(mock)
+    potential_matches = mock.comment.scan(/@\w+/i)
+    potential_matches.uniq.map do |match|
+      mention = Mention.create_from_match(match)
+      next unless mention
+      mock.update_attributes!(comment: mention.markdown_string(mock.comment))
+      # You could fire an email to the user here with ActionMailer
+      mocker = Mocker.find_by(slug: match.delete('@'))
+      Notification.create(recipient: mocker, actor: mocker, action: "mentioned", notifiable: mock)
+      mention
+    end.compact
+  end
+
+
   def self.create_from_match(match)
     mocker = Mocker.find_by(slug: match.delete('@'))
     MockerMention.new(mocker) if mocker.present?
