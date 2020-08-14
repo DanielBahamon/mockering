@@ -11,9 +11,9 @@ class MocksController < ApplicationController
 	def index
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		if params[:tag].present?
-			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 20)
+			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 30)
 		else
-			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 20)
+			@mocks = @q.result(distinct: true).order("RANDOM()").limit(30).paginate(page: params[:page], per_page: 30)
 		end
 	end
 
