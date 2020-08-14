@@ -336,6 +336,9 @@
     height:30px;
     background:grey;
   }
+  a.link-2 {
+    width: max-content !important;
+  }
   ._bg_filter{
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.35));
       border-radius: 20px;

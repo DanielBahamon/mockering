@@ -33,7 +33,7 @@
           <div class="col-12 readmore p-0">
             <div class="comment d-grid" id="comment">
               <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= a.mocker.slug %> • <%= a.created_at.strftime("%d %b %y").downcase %></small>
-              <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= a.comment %></small>
+              <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(a.comment, html: { target: '_blank' }) %></small>
             </div>
           </div>
           <div class="row col-12 m-0 p-0">
@@ -74,8 +74,6 @@
     <% end %>
   </div>
   <%= will_paginate @answers %>
-  
-<br>
 <script type="text/javascript">
 
   $('.readmore').readmore({

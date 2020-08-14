@@ -40,7 +40,7 @@
         <div class="col-12 readmore p-0">
           <div class="comment d-grid" id="comment">
             <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= r.mocker.slug %> • <%= r.created_at.strftime("%d %b %y").downcase  %></small>
-            <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= r.comment %></small>
+            <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(r.comment, html: { target: '_blank' }) %></small>
           </div>
         </div>
         <div class="row col-12 m-0 p-0">

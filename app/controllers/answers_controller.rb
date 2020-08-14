@@ -27,8 +27,13 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.mocker_id = current_mocker.id
     # @answer = @mock.answers.build(answer_params)
+    @mock = @answer.mock
+    @mocker = @answer.review.mocker
 
     if @answer.save
+      if @mocker != current_mocker
+        Notification.create(recipient: @mocker, actor: current_mocker, action: "answered", notifiable: @mock)
+      end
       flash[:notice] = 'Answer was successfully created.'
       redirect_back(fallback_location: request.referer)
     else
@@ -54,7 +59,7 @@ class AnswersController < ApplicationController
   def destroy
     @host_answer = Answer.find(params[:id])
     @host_answer.destroy
-    redirect_back(fallback_location: request.referer, notice: "Comentario eliminado!")
+    redirect_back(fallback_location: request.referer, notice: "Answer deleted!")
   end
 
   def like
