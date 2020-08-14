@@ -63,6 +63,7 @@ Rails.application.routes.draw do
 
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
+  get 'search' => 'pages#search'
 
 
   resource :friendships, only: [:create, :destroy]
