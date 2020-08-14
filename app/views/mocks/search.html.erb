@@ -1,0 +1,29 @@
+<div id="_big_row_index bg_ghoswhite">
+	<div class="row m-0">
+		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block" id="_sidenav">
+			<%= render 'shared/navside' %>
+		</div>
+		<div class="col-12 col-md-9 col-xl-10 p-0 _content">
+			<div class="on_content" id="on_content">
+				<div class="row m-0">
+					<div class="col-12 _board">
+						<%= render 'tags' %>
+						<%= render 'shared/categories' %>
+						<div class="mocks_content">
+							<div id="mocks" class="transitions-enabled">
+								<%= render 'mock' %>
+							</div>
+							<%= will_paginate @mocks %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style type="text/css">
+	._bggradient._1{
+		background: linear-gradient(0deg, rgb(0 0 0 / 58%), transparent);
+	}
+</style>
