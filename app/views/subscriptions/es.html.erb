@@ -7,27 +7,27 @@
 						<div class="d-block">
 							<div class="cont_csmt_1 ">
 			                    <br/>
-			                    <br/>
 			                    <a id="icondefault_2" href="/">
 			                      <div class="display-initial">
 			                        <img border="0" class="logo hide-less-200px" src="https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_red.svg" alt="Apposento">
 			                      </div>
 			                    </a>
 			                    <br/>
-			                    <br/>
-								<h3 class="_fw300" id="pre_title">Libertad, pensamiento crítico y burla al poder.</h3>
-								<h1 class="title_1 m-0 _fw700" id="title_subs">Investiga, crea y publica los videos que los que están en el poder no quieren que el mundo vea...</h1>
+								<h3 class="_fw300" id="pre_title">Libertad, pensamiento crítico y mofa al poder</h3>
+								<h1 class="title_1 m-0 _fw700" id="title_subs">Investiga, crea y publica los videos que a los de arriba no les conviene</h1>
 								<hr>
-								<h4 class="fontweight-2" id="info_subs">Obten tu insignia de usuario honorario por acceso anticipado, guarda tu nombre de usuario y se de los primeros en saber cuándo se lance oficialmente Mockering.</h4>
+								<h4 class="_fw200" id="info_subs">Obten tu insignia honoraria por acceso anticipado junto a tu nombre de usuario y se de los primeros en saber cuándo se lance oficialmente Mockering.</h4>
 		                  		<%= form_for @subscription do |f| %>
 									<%= f.email_field :email, class: "form-group", id: "subs_email", placeholder: 'tunombre@email.com', required: true %>
 									<%= f.submit "Entrar", class: "submit-subs" %>
 								<% end %>
 								<br>
-								<p>“Para saber quien gobierna sobre ti, simplemente encuentra a quien no estas autorizado a criticar” <small class="text-muted">— Voltaire</small></p>
-			                    <br/>
-			                    <br/>
-			                    <br/>
+								<p class="m-0">“Para saber quien gobierna sobre ti, simplemente encuentra a quien no estas autorizado a criticar” </p>
+								<small class="text-muted">— Voltaire</small>
+								<br>
+								<br>
+								<br>
+								<br>
 							</div>
 						</div>
 					</div>
@@ -41,9 +41,18 @@
 	._nav._1{
 		display:none !important;
 	}
+  ._navfooter{
+    display: none !important;
+  }
 	
 	#navbar_cstm2{
 		display: none !important;
+	}
+	#pre_title{
+    	font-size: 15pt;
+	}
+	#info_subs{
+		font-size: 13pt;
 	}
 	body{
 		background:white !important;
@@ -157,7 +166,6 @@
 		width:auto;
 		height: 50px;
 		margin-top:8px;
-		margin-left: 6px;
 	}
 	.cont_csmt_1{
     	background: white;
@@ -189,7 +197,6 @@
     		width: 24px;
 		}
 		#new_subscription{
-			margin-bottom: 25vh;
 		}
 		.links_i18n{
 			right: 15px;
