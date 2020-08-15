@@ -19,5 +19,9 @@ module Mockering
     config.assets.enabled = true
     config.assets.paths << Rails.root.join('/app/assets/fonts')
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+
+    #I18N
+    config.i18n.available_locales = [:en, :es]
+    config.i18n.default_locale = :en
   end
 end

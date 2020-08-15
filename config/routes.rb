@@ -60,7 +60,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :subscriptions
 
+  get 'subscriptions' => 'subscriptions#index'
+  get 'suscripciones' => 'subscriptions#es'
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
   get 'search' => 'pages#search'

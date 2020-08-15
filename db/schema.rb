@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200811210731) do
+ActiveRecord::Schema.define(version: 20200815162225) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -180,6 +180,13 @@ ActiveRecord::Schema.define(version: 20200811210731) do
     t.string "mocker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_subscriptions_on_email", unique: true
   end
 
   create_table "taggings", force: :cascade do |t|

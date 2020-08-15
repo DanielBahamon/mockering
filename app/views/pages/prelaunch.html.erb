@@ -1,0 +1,241 @@
+<div class="container subs">
+	<div class="row">
+		<div class="col-12 col-md-7">
+			<div class="prelaunch">
+				<div class="d-table fullwidth fullheight">
+					<div class="d-table-cell verticalmiddle">
+						<div class="d-block">
+							<div class="cont_csmt_1 ">
+			                    <br/>
+			                    <br/>
+			                    <a id="icondefault_2" href="/">
+			                      <div class="display-initial">
+			                        <img border="0" class="icon icon35-sm" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/images/brand/apposento-icon.svg"> <img border="0" class="logo hide-less-200px" src="https://apposento.s3-sa-east-1.amazonaws.com/assets/images/brand/apposento.svg" alt="Apposento">
+			                      </div>
+			                    </a>
+			                    <br/>
+			                    <br/>
+								<h3 class="fontweight-3" id="pre_title"><%= t :pre_title %></h3>
+								<h1 class="title_1 m-0 fontweight-7" id="title_subs"><%= t :title_subs %></h1>
+								<hr>
+								<h4 class="fontweight-2" id="info_subs"><%= t :cont_subs %></h4>
+		                  		<%= form_for @subscriber do |f| %>
+									<%= f.email_field :email, class: "form-group", id: "subs_email", placeholder: 'yourname@email.com' %>
+									<%= f.submit "Join", class: "submit-subs",required: true %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-5 hide-less-md">
+	        <div id="carousel_subs" class="carousel slide carousel_home_slider" data-ride="carousel" data-pause="false" data-touch="true" data-interval="9000">
+	          <div class="carousel-inner">
+	            <div class="item active">
+	              <div class="home_slider_bg" data-slide-to="0" id="item_subs_1-2">
+	              </div>
+	            </div>
+	            <div class="item ">
+	              <div class="home_slider_bg" data-slide-to="4" id="item_subs_1-1">
+	              </div>
+	            </div>
+	            <div class="item ">
+	              <div class="home_slider_bg" data-slide-to="4" id="item_home_1-5">
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+		</div>
+	</div>
+	<ul class="links_i18n p-0">
+		<li>
+			<i class="fas fa-globe"></i>
+		</li>
+		<%= content_tag :li do %>
+			<%= link_to 'ES', locale: :es %>
+		<% end unless current_page?(locale: :es) %>
+		<%= content_tag :li do %>
+			<%= link_to 'EN', locale: :en %>
+		<% end unless current_page?(locale: :en) %>
+	</ul>
+</div>
+		
+<style type="text/css">
+	.navbar.dashhide,
+	#navbar_cstm1,
+	#heightnavbar.active{
+		display:none !important;
+	}
+	
+	#navbar_cstm2{
+		display: none !important;
+	}
+	body{
+		background:white !important;
+	}
+	.prelaunch{
+		height:100vh;
+		width:100%;
+	}
+	.links_i18n{
+		position: absolute;
+		display: flex;
+		top: 15px;
+		list-style: none;
+	}
+	.links_i18n li a{
+		opacity: 0.5;
+		padding:9px;
+		padding-right:0;
+	    font-family: 'Rubik','SofiaPro','TT Commons', 'Lato', 'Circe', 'Open Sans', 'Montserrat', 'Helvetica', 'Raleway',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Open Sans","Helvetica Neue",Arial,sans-serif;
+	    font-weight: 200;
+	    letter-spacing: 2px;
+	    border-radius: 6px;
+	    -webkit-transition: all .2s ease-in;
+	    transition: all .2s ease-in;
+	}
+	.links_i18n li a:hover,
+	.links_i18n li a:focus{
+		color:#5dcbdc;
+		opacity: 1;
+	}
+	#info_subs{
+		background: white;
+	}
+	#icondefault_2 .icon{
+	    width: auto;
+	    height: 60px;
+    	margin-left: -9px;
+	}
+	#new_subscriber{
+	    width: max-content;
+	    border: 1px solid #cecece;
+	    border-radius: 9px;
+	    padding: 0 15px;
+	    margin-top: 30px;
+    	display: flex;
+	}
+	#subs_email{
+		border:0;
+	    background: transparent;
+	    margin: 0;
+	    margin-right: 50px;
+    	line-height: 3.5;
+    	outline: none !important;
+    	font-weight: 700;
+	}
+	#subs_email::placeholder{
+		color:grey;
+		opacity: 0.6;
+		font-weight: 200;
+	}
+	.submit-subs{
+	    background: linear-gradient(45deg, #5dcbdc, #82f7e2);
+	    border: 1px solid transparent;
+	    border-radius: 9px;
+	    padding: 10px 15px;
+	    font-family: 'Raleway';
+	    font-weight: 800;
+	    color: white;
+	    margin-bottom: 9px;
+	    margin-top: 9px;
+	    outline: none !important;
+	    -webkit-transition: all .2s ease-in;
+	    transition: all .2s ease-in;
+	}
+	.submit-subs:hover{
+		-webkit-transform: translateY(-2px);
+		transform: translateY(-2px);
+	}
+	.submit-subs:focus,
+	.submit-subs:active{
+	    background: linear-gradient(45deg, #5dcbdc, #5dcbdc);
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	#item_subs_1-1{
+		background: url(https://apposento.s3-sa-east-1.amazonaws.com/assets/images/bg/austin-neill.jpg);
+	}
+	#item_subs_1-2{
+		background: url(https://apposento.s3-sa-east-1.amazonaws.com/assets/images/bg/gades-photography.jpg);
+	}
+	#item_home_1-1{
+		background-position-x:25% !important;
+	}
+	.container.subs .col-md-5{
+		position:absolute;
+		top:0;
+		right: 0;
+		bottom:0;
+		padding: 0;
+	}
+	.carousel-inner{
+		border-radius: 0 0 0 15px;
+	}
+	#carousel_subs .home_slider_bg{
+		height:100vh;
+		width: 100%;
+    	background-size: cover;
+    	background-position-x: center;
+	}
+	#icondefault_2 .logo{
+		width:auto;
+		height: 50px;
+		margin-top:8px;
+		margin-left: 6px;
+	}
+	.cont_csmt_1{
+    	background: white;
+	    /*-webkit-box-shadow: 0 7px 20px 0px rgba(213, 229, 241, 0.8);
+	    box-shadow:0 7px 20px 0px rgba(213, 229, 241, 0.8);*/
+	}
+	.card_cont{
+		padding:30px;
+	}
+	@media(max-height: 700px){
+		.prelaunch{
+		    height: auto;
+		    min-height: 602px;
+		}
+		.cont_csmt_1 {
+			margin-top: 50px;
+		}
+		footer{
+			display: none;
+		}
+	}
+	@media(max-width: 575px){
+		#icondefault_2 .logo{
+			height:30px;
+    		margin-top: 7px;
+		}
+		#icondefault_2 .icon{
+			height:auto;
+    		width: 24px;
+		}
+		#new_subscriber{
+			margin-bottom: 25vh;
+		}
+		.links_i18n{
+			right: 15px;
+		}
+		.prelaunch{
+			height:110vh;
+		}
+	}
+	@media(max-width: 400px){
+		#subs_email{
+			margin:0;
+		}
+	}
+
+	@media(max-width: 300px){
+		#new_subscriber{
+    		display: grid;
+		}
+		#icondefault_2 .logo{
+			width: 150px;
+		}
+	}
+</style>

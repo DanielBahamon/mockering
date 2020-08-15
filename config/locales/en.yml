@@ -30,4 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  pre_title: "Freedom, Critical thinking and Mockery"
+  title_subs: "Research, create and publish the videos that those in power don't want the world to see..."
+  cont_subs: "Get your early access honorary user badge, save your username, and be the first to know when Mockering officially launches."
