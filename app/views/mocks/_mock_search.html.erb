@@ -1,6 +1,6 @@
 <div class="container_search">
 	<% @mocks.each do |mock| %>
-		<%= link_to mock, class: "card link_card _2 mb-3" do %>
+		<%= link_to mock, class: "card link_card _2 mb-3 box" do %>
 		
 			  <div class="row no-gutters">
 			    <div class="col-4">
@@ -56,9 +56,14 @@
 	}
 	.card.link_card._2{
 		height: 150px;
-		margin-bottom: 0 !important;
+		margin: 5px !important;
 	}
 	.card.link_card._2 img{
 		height: 148px;
+	}
+	@media(min-width: 768px){
+		.card.link_card._2{
+			width:600px;
+		}
 	}
 </style>

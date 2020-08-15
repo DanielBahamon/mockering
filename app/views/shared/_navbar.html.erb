@@ -16,6 +16,17 @@
                   </div>
                 </div>
               </li>
+              <li class="nav-item d-none d-md-block" style="margin-right: 5px;">
+                <div class="d-table fullscreen">
+                  <div class="d-tablecell v-middle">
+                    <a class="_btnmenu _btn_out_sidebar" id="_btnmenu_2">
+                    <div class="_iconav_2" id="_iconav_2">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+              </li>
               <li class="nav-item relative d-none d-xs-block">
                 <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2", alt: 'Mockering'%>
@@ -38,15 +49,15 @@
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
               <div class="col-6 col-sm-7 col-xl-4 col_search _1 offset-xl-3">
-                  <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
-                    <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-10" %>
-                    <div class="col-2 p-0">
-                      <div class="d-table fullscreen ">
-                        <div class="d-tablecell v-middle text-center">
-                          <%= submit_tag 'search', class: "btn _btn _2 material-icons m-0-auto" %>   
-                        </div>
+                <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
+                  <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-10" %>
+                  <div class="col-2 p-0">
+                    <div class="d-table fullscreen ">
+                      <div class="d-tablecell v-middle text-center">
+                        <%= submit_tag 'search', class: "btn _btn _2 material-icons m-0-auto" %>   
                       </div>
                     </div>
+                  </div>
                 <% end %>
               </div>
               <div class="col-5">
@@ -227,7 +238,7 @@
     </div>
     <div class="row fullwidth m-0 multi-collapse collapse in " id="multiCollapseSearch" aria-expanded="true">
       <div class="_searchabsolute col-12">
-        <%= search_form_for @q, class: "row m-0" do |f| %>
+        <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
         <div class="col-2">
           <div class="d-table fullscreen">
             <div class="d-tablecell v-middle">
@@ -235,11 +246,11 @@
             </div>
           </div>
         </div> 
-          <%= f.search_field :title_or_description_cont, placeholder: "What are you looking for?", class: "_searchfield col-8" %>
+          <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-8" %>
           <div class="col-2">
             <div class="d-table fullscreen ">
               <div class="d-tablecell v-middle text-center">
-                <%= f.submit 'search', class: "btn _btn _2 material-icons float-right" %>   
+                <%= submit_tag 'search', class: "btn _btn _2 material-icons float-right" %>   
               </div>
             </div>
           </div>
@@ -249,3 +260,15 @@
   </div>    
 </div>
 <div class="_navbar_br"></div>
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+      $("._btn_out_sidebar").click(function(){
+          $("#_sidenav").toggleClass("out");
+      });
+      $("._btn_out_sidebar").click(function(){
+          $("._content_principal").toggleClass("full");
+      });
+  });
+</script>

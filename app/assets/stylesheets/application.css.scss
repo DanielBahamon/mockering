@@ -1542,12 +1542,13 @@
   }
   ._navfooter{
     position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: auto;
-      border-top:1px solid #eaeaea;
-      background: white;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    border-top:1px solid #eaeaea;
+    background: white;
+    z-index:13;
   }
   .cont_navfooter{
     margin:0 auto;
@@ -1699,6 +1700,44 @@
       -moz-transform: rotate(-135deg);
       -o-transform: rotate(-135deg);
       transform: rotate(135deg);
+  }
+  ._iconav_2 {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    height: auto;
+    cursor: pointer;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: transform 2s cubic-bezier(.23,1,.32,1);
+    transition: transform 2s cubic-bezier(.23,1,.32,1);
+  }
+  ._iconav_2 span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: #ff5858;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: transform 0.2s ease-out;
+      transition: transform 0.2s ease-out;
+  }
+  ._iconav_2 span:nth-child(1) {
+      top: 3px;
+  }
+  ._iconav_2 span:nth-child(2) {
+      top: 8px;
+  }
+  ._iconav_2 span:nth-child(3) {
+      top: 13px;
   }
   ._searchfield{
       border: 0;
@@ -1965,7 +2004,7 @@
     text-transform:capitalize;
   }
   ._colcategory{
-    width:120px;
+    width:130px;
     height:150px;
     border-radius: 6px;
     margin-left: 15px;
@@ -2027,7 +2066,7 @@
     background-position-x: center;
   }
   ._colcategory ._bggradient{
-    width:120px;
+    width:130px;
     border-radius: 6px;
     padding: 10px;
   }
@@ -2795,6 +2834,23 @@
   }
   #_sidenav{
     min-height: 100vh;
+    -webkit-transition:all .25s ease;
+    transition:all .25s ease;
+  }
+  #_sidenav.out{
+    margin-left:-25%;
+    position:fixed !important;
+  }
+  ._cont_sidenav{
+    width: 100%;
+    max-width: inherit;
+  }
+  ._content_principal{
+  }
+  ._content_principal.full{
+    width:100% !important;
+    max-width:100% !important;
+    flex: 0 0 99.9999999% !important;
   }
   #_row_sidenav1{
       min-height: 250px;
