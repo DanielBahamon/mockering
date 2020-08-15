@@ -9,7 +9,7 @@ class Answer < ApplicationRecord
 	after_create :add_mentions
 
 	def add_mentions
-		Mention.create_to_answer(self)
+		Mention.create_to_review(self)
 	end
 
 end

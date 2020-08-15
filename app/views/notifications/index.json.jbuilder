@@ -15,7 +15,7 @@ json.array! @notifications do |notification|
 		end
 	elsif notification.action == "mentioned"
 		json.notifiable do # notification.notifiable
-			json.type " <p class='m-0 _text_notification'> has been mentioned in some mock.</p> <i class='fas fa-at _icon_notification'></i>"
+			json.type " <p class='m-0 _text_notification'> has been mentioned in some mock.</p> <i class='fas fa-at _icon_notification _2'></i>"
 			"Mocks"
 		end
 	elsif notification.action == "answered"

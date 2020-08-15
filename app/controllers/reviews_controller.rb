@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
 
   before_action :set_review, only: [:show, :edit, :update, :destroy, :like, :dislike, :upvote, :downvote]
-  before_action :set_mock, only: [:show]
+  # before_action :set_mock, only: [:show]
 
   def show
     @review = Review.find(params[:id])
     # Display all the host reviews to host (if this user is a guest)
-    @answers = @reviews.answers
+    # @answers = @reviews.answers
+    @mock = @review.mock
   end
 
   def index
@@ -57,7 +58,7 @@ class ReviewsController < ApplicationController
   def destroy
     @host_review = Review.find(params[:id])
     @host_review.destroy
-    redirect_back(fallback_location: request.referer, notice: "Comentario eliminado!")
+    redirect_back(fallback_location: request.referer, notice: "Review deleted!")
   end
 
 

@@ -1,14 +1,14 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy, :like, :dislike, :upvote, :downvote]
-  before_action :set_mock, only: [:show]
-  before_action :set_review, only: [:show]
+  # before_action :set_mock, only: [:show]
+  # before_action :set_review, only: [:show]
 
   def show
     @answer = Answer.find(params[:id])
     # Display all the host answers to host (if this user is a guest)
-    @review = Review.find(params[:id])
-    @mock = Mock.find(params[:id])
-    @answers = review.answers.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
+    # @review = Review.find(params[:id])
+    # @mock = Mock.find(params[:id])
+    # @answers = @reviews.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
   end
 
   def edit

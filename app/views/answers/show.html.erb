@@ -1,0 +1,93 @@
+  <div class="container">
+    <h2 class="_title _fw600">Answer</h2>
+    <div class="row m-0 _rowreview">
+      <div class="col text-center">
+        <div class="d-table fullscreen">
+          <div class="d-table-cell v-middle">
+            <div class="d-grid text-center">
+              <%= link_to(@answer.mocker) do  %>
+                <%= image_tag avatar_url(@answer.mocker), class: "img-circle _avatar_comment" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-11  ">
+        <div class="row m-0" style="margin-bottom: 10px;">
+          <div class="col offset text-right p-0">
+            <% if current_mocker && current_mocker == @answer.mocker %>
+              <div class="navbar d-block p-0">
+                <div class="nav-item dropdown text-right">
+                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+                  <div class="dropdown-menu right-0" aria-labelledby="dropdownReview">
+                    <% if mocker_signed_in? # && current_mocker.admin %>
+                      <%= link_to @answer, class:"_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
+                      <!--<div class="dropdown-divider"></div>
+                      <a href="#" class="_itemdropdown">Report</a>-->
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>  
+          </div>    
+        </div>
+        <div class="col-12 readmore p-0">
+          <div class="comment d-grid" id="comment">
+            <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= @answer.mocker.slug %> • <%= @answer.created_at.strftime("%d %b %y").downcase  %></small>
+            <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(@answer.comment, html: { target: '_blank' }) %></small>
+          </div>
+        </div>
+        <div class="row col-12 m-0 p-0">
+          <div class="col-auto">
+            <% if mocker_signed_in? %>
+              <%= link_to like_review_path(@answer), method: :put, remote: :true, class: "like-review" do %>
+                <div id="like-count-review">
+                  <%= render 'answers/likes_show', review: @answer %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_mocker_session_path, class: "like-review" do %>
+                <div id="like-count-review">
+                <i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@answer.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-auto"  style="padding-left: 0;">
+            <% if mocker_signed_in? %>
+              <%= link_to dislike_review_path(@answer), method: :put, remote: :true, class: "like-review" do %>
+                <div id="dislike-count-review">
+                  <%= render 'answers/dislikes_show', review: @answer %>
+                </div>
+              <% end %>
+            <% else %>
+                <%= link_to new_mocker_session_path, class: "like-review" do %>
+                  <div id="dislike-count-review">
+                  <i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@answer.get_downvotes.size, units: { million: 'm', billion: 'b' }) %>
+                  </div>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+    
+<br>
+<script type="text/javascript">
+  
+  $('.readmore').readmore({
+      speed: 75,
+      collapsedHeight: 85,
+      moreLink: '<a href="#" class="link-2">Show more</a>',
+        lessLink: '<a href="#" class="link-2">Show less</a>'
+    }
+  );
+</script>
+<style type="text/css">
+  .dropdown-menu.right-0{
+    left:inherit;
+    right: 0 !important;
+  }
+</style>
