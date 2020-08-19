@@ -16,14 +16,22 @@
 					<%= render @messages %>
 				</div>
 				<br>
-				<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
-				<%= form_for [@conversation, @conversation.messages.new], class: "input-group mb-3", remote: true do |f| %>
-					<div class="input-group-prepend">
-						<%= f.text_field :body, placeholder: "Your message...", class: "form-control _input_group _1", "aria-describedby": "basic-addon1", required: true %>
-						<%= f.submit "Send message", class: "input-group-text _1" %>
+				<br>
+				<div class="_cont_form_chat">
+					<div class="container p-0">
+						<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
+						<%= form_for [@conversation, @conversation.messages.new], class: "input-group mb-3 _1", remote: true do |f| %>
+							<div class="input-group-prepend">
+								<%= f.text_field :body, placeholder: "Your message...", class: "form-control _input_group _1", "aria-describedby": "basic-addon1", required: true, maxlength: "200" %>
+								<%= f.submit "Send message", class: "input-group-text _1" %>
+							</div>
+							<%= f.hidden_field :mocker_id, value: current_mocker.id %>
+							<br>
+							<br>
+							<br>
+						<% end %>
 					</div>
-					<%= f.hidden_field :mocker_id, value: current_mocker.id %>
-				<% end %>
+				</div>
 				<br>
 				<br>
 				<br>
@@ -53,5 +61,15 @@
 	    z-index: 2;
 	    border-bottom: 1px solid #eaeaea;
 	    padding: 5px;
+	}
+	._cont_form_chat{
+	    left: 0;
+	    position: fixed;
+	    bottom: 0;
+	    padding: 15px;
+	    background: white;
+	    border-top: 1px solid #eaeaea;
+	    margin: 0 auto;
+	    width: 100%;
 	}
 </style>

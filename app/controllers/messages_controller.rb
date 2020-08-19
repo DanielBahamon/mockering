@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = @conversation.messages.new(message_params)
-		@messages = @conversation.messages.order("create_at DESC")	
+		@messages = @conversation.messages.order("create_at DESC")
 		# @message.save
 		if @message.save
 			ActionCable.server.broadcast "conversation_#{@conversation.id}", message: render_message(@message)
