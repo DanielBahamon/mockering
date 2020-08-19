@@ -1,30 +1,63 @@
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel">
-			<div class="panel-heading">Your Conversations</div>
-			<div class="panel-body">
-				<div class="container">
-					<% @conversations.each do |conversation| %>
-						<% other = current_mocker == conversation.sender ? conversation.recipient : conversation.sender %>
-						<%= link_to conversation_messages_path(conversation) do %>
-							<div class="row conversation">
-								<% if conversation.messages.any? %>
-									<div class="col-md-2">
-										<%= image_tag avatar_url(other), class: "img-circle avatar-medium" %>
-									</div>
-									<div class="col-md-2">
-										<%= other.fullname %>
-										<%= conversation.messages.last.message_time %>
-									</div>
-									<div class="col-md-8">
-										<%= conversation.messages.last.body %>
-									</div>
-								<% end %>
-							</div>
-						<% end %>
-					<% end %>
+<div class="container">
+	<% if @conversations.count == 0 %>
+	<div class="d-table fullscreen" style="height: 100vh; text-align: center;">
+		<div class="d-table-cell v-middle">
+			<div class="row">
+				<div class="col-md-12">
+					<br>
+					<h2 class="_title _3">There are no conversations!</h2>
+					<br>
 				</div>
 			</div>
 		</div>
 	</div>
+	<% else %>
+	<div class="row">
+		<div class="col-md-12">
+			<br>
+			<h2 class="_title _3">Conversations</h2>
+			<br>
+			<div class="cont_conversations">
+				<% @conversations.each do |conversation| %>
+					<% other = current_mocker == conversation.sender ? conversation.recipient : conversation.sender %>
+					<%= link_to conversation_messages_path(conversation) do %>
+						<div class="row conversation">
+							<% if conversation.messages.any? %>
+								<div class="col-1 col-sm-auto _avatar d-none-xs">
+									<%= image_tag avatar_url(other), class: "img-circle avatar-medium" %>
+								</div>
+								<div class="col-4 col-sm text-ellipsis">
+									<div class="d-table fullscreen">
+										<div class="d-table-cell v-middle">
+											<h2 class="_slug m-0"><%= other.slug %></h2>
+										</div>
+									</div>
+									
+								</div>
+								<div class="col text-ellipsis _message">
+									<div class="d-table fullscreen">
+										<div class="d-table-cell v-middle">
+											<p class=" m-0 text-ellipsis"><%= conversation.messages.last.body %></p> 
+										</div>
+									</div>
+								</div>
+								<div class="col text-ellipsis">
+									<div class="d-table fullscreen">
+										<div class="d-table-cell v-middle">
+											<p class="_date m-0 text-right"><%= conversation.messages.last.created_at.strftime("%I:%M %p") %></p> 
+										</div>
+									</div>
+								</div>
+								
+							<% end %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<br>
+			<br>
+			<br>
+		</div>
+	</div>
+	<% end %>
 </div>

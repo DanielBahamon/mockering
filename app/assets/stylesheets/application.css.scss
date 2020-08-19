@@ -384,6 +384,24 @@
   .trigger{
     position: absolute;
   }
+
+  
+  .img-circle.avatar-medium {
+      width: 30px;
+      height: 30px;
+      border:3px solid white;
+      border-radius: 369px;
+  }
+  .input-group-text._1{
+      border-radius: 0 3px 3px 0 !important;
+      background: #ff5858;
+      color: white;
+      border: 0;
+      font-weight: 600;
+  }
+  ._input_group._1{
+      border-radius: 3px 0 0 3px;
+  }
   ._chip._ad{
       background: #ff5858;
       border-radius: 369px;
@@ -541,6 +559,10 @@
   }
   ._title._2{
     margin-bottom:20px;
+  }
+  ._title._3 {
+      font-weight: 600;
+      font-size: 18pt;
   }
   ._username{
       white-space: nowrap;
@@ -1351,6 +1373,7 @@
     padding:9px 0;
     z-index: 13;
     width: 100%;
+    border-bottom: 1px solid #eaeaea;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
   }
@@ -1361,6 +1384,22 @@
   }
   ._navbar_br{
     margin-top:70px;
+  }
+  .navside_2 ._cont_sidenav{
+    width:max-content !important;
+    background:white;
+    border-right: 1px solid #eaeaea;
+  }
+  #_sidenav_2{
+    z-index: 8;
+    background: white;
+    position: fixed;
+    display: block;
+   -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  #_sidenav_2.out{
+    margin-left:-200vw;
   }
   @media(max-width: 767px){
     ._logonav{
@@ -2810,6 +2849,57 @@
     opacity: 1;
   }
 /* END REVIEWS */
+
+/* CONVERSATIONS */
+
+  .cont_conversations a{
+    text-decoration: none !important;
+  }
+  .cont_conversations .conversation{
+    padding:15px 10px;
+    border: 1px solid #eaeaea;
+    background:white;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  .cont_conversations .conversation:hover{
+    background:ghostwhite;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+  }
+  .cont_conversations .conversation:first-child{
+    border-radius: 6px 6px 0 0;
+  }
+  .cont_conversations .conversation:last-child{
+    border-radius: 0px 0px 6px 6px;
+  }
+  .cont_conversations ._slug{
+    font-weight: 700;
+    color:black !important;
+    font-size: 85%;
+  }
+  .cont_conversations ._message p{
+    color:grey;
+  }
+  .cont_conversations ._date{
+    color:grey;
+    font-weight: 400;
+    font-size: 9pt;
+  }
+  @media(max-width: 575px){
+    .col-auto._avatar{
+      padding:0;
+    }
+    .cont_conversations ._message{
+      height: 30px;
+    }
+  }
+  @media(max-width: 300px){
+    .d-none-xs{
+      display: none !important;
+    }
+  }
+/* END CONVERSATIONS */
 
 /* #IDS */
   #mocks{

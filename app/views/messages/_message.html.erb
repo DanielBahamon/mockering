@@ -1,16 +1,20 @@
-<div class="panel">
-	<div class="panel-body">
-		<div class="row message">
-			<div class="col-1 d-grid">
+<div class="row message ">
+	<div class="col-1 p-0 d-grid">
+		<div class="d-table fullscreen">
+			<div class="d-table-cell v-middle">
 				<%= image_tag avatar_url(message.mocker), class: "img-circle avatar-medium" %>
 			</div>
-			<div class="col">
+		</div>
+	</div>
+	<div class="col">
+		<div class="d-table fullscreen">
+			<div class="d-table-cell v-middle">
 				<%= message.body %>
 			</div>
-			<div class="col-3 pull-right">
-				<small class=" time-message"><%= message.created_at.strftime("%I:%M %p") %></small>
-			</div>
 		</div>
+	</div>
+	<div class="col-2 pull-right p-0">
+		<small class=" time-message"><%= message.created_at.strftime("%I:%M %p") %></small>
 	</div>
 </div>
 
@@ -18,5 +22,9 @@
 	.message{
 		border-bottom: 1px solid #eaeaea;
 		padding: 15px;
+	}
+	.time-message{
+		font-size: 8pt;
+    	white-space: nowrap;
 	}
 </style>
