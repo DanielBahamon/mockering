@@ -23,6 +23,11 @@ json.array! @notifications do |notification|
 			json.type " <p class='m-0 _text_notification'> has answered your comment.</p> <i class='fas fa-comments _icon_notification'></i>"
 			"Mocks"
 		end
+	elsif notification.action == "chated"
+		json.notifiable do # notification.notifiable
+			json.type " <p class='m-0 _text_notification'> has send you a message.</p> <i class='fas fa-comment-alt _icon_notification _2'></i>"
+			"Mocks"
+		end
 	else
 		json.notifiable do # notification.notifiable
 			json.type " <p class='m-0 _text_notification'> has been posted a new mock.</p> <i class='fas fa-video _icon_notification'></i>"
@@ -30,5 +35,9 @@ json.array! @notifications do |notification|
 		end
 	end
 		
-	json.url polymorphic_path(notification.notifiable, anchor: dom_id(notification.notifiable))
+	if notification.action == "chated"
+		json.url conversation_messages_path(notification.notifiable, anchor: dom_id(notification.notifiable))
+	else
+		json.url polymorphic_path(notification.notifiable, anchor: dom_id(notification.notifiable))
+	end
 end 
