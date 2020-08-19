@@ -31,4 +31,4 @@ json.array! @notifications do |notification|
 	end
 		
 	json.url polymorphic_path(notification.notifiable, anchor: dom_id(notification.notifiable))
-end
+end 

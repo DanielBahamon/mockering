@@ -1,14 +1,17 @@
 <br>
 <div class="container _1">
 	<div class="dashboard-chats">
+		
 		<div class="row">
-			<div class="col-md-3 text-center">
+			<div class="_conversation_other text-center">
 				<%= link_to @other, class: "btn btn-default" do %>
 					<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
 					<strong>@<%= @other.slug %></strong>
 				<% end %>
 			</div>
-			<div class="col-md-9">
+			<div class="col"><br>
+		<br>
+		<br>
 				<div id="chatbox">
 					<%= render @messages %>
 				</div>
@@ -16,15 +19,39 @@
 				<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
 				<%= form_for [@conversation, @conversation.messages.new], class: "input-group mb-3", remote: true do |f| %>
 					<div class="input-group-prepend">
-						<%= f.text_field :body, placeholder: "Your message...", class: "form-control _input_group _1", "aria-describedby": "basic-addon1" %>
+						<%= f.text_field :body, placeholder: "Your message...", class: "form-control _input_group _1", "aria-describedby": "basic-addon1", required: true %>
 						<%= f.submit "Send message", class: "input-group-text _1" %>
 					</div>
 					<%= f.hidden_field :mocker_id, value: current_mocker.id %>
 				<% end %>
+				<br>
+				<br>
+				<br>
 			</div>
 		</div>
 	</div>
 </div>
-<br>
-<br>
-<br>
+
+<style type="text/css">
+	.dashboard-chats{
+	    height: 80vh;
+	    overflow-y: auto;
+	    overflow-x: hidden;
+	    display: flex;
+	    flex-direction: column-reverse;
+	}
+	.dashboard-chats > .row{
+		position: relative;
+	}
+	.dashboard-chats > .row > ._conversation_other{
+	    position: fixed;
+	    top: 70px;
+	    width: 100%;
+	    left: 0;
+	    background: white;
+	    display: block;
+	    z-index: 2;
+	    border-bottom: 1px solid #eaeaea;
+	    padding: 5px;
+	}
+</style>
