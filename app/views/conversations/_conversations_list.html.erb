@@ -1,0 +1,51 @@
+<% @conversations.each do |conversation| %>
+	<% other = current_mocker == conversation.sender ? conversation.recipient : conversation.sender %>
+	<%= link_to conversation_messages_path(conversation) do %>
+
+		<div class="row conversation border-bottom">
+			<% if conversation.messages.any? %>
+				<div class="row" id="row_in_chat">
+					<div class="col-2">
+						<%= image_tag avatar_url(other), class: "img-circle avatar-small" %>
+					</div>
+					<div class="col-10 no-padding">
+						<div class="row">
+							<div class="col-8 nowrap-ellipsis">
+								<b><%= other.fullname %></b>
+							</div>
+							<div class="col-4 nowrap-ellipsis no-padding"><sup><%= conversation.messages.last.message_time %></sup></div>
+							<div class="col-12">
+								<p class="nowrap-ellipsis"><%= conversation.messages.last.context %></p> 
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+				<div class="row">		
+				</div>
+			<% end %>
+		</div>
+
+	<% end %>
+
+<% end %>
+<style type="text/css">
+	#row_in_chat{
+		color: #484848;
+	}
+	#row_in_chat p{
+		color: grey !important;
+	}
+	#row_in_chat img{
+		margin-top: 5px;
+	}
+	.nowrap-ellipsis{
+		white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow-x: hidden;
+	}
+	.no-padding{
+		padding:0 !important;
+	}
+</style>

@@ -1,0 +1,15 @@
+<div class="panel">
+	<div class="panel-body">
+		<div class="row message">
+			<div class="col-auto d-grid col-lg-2">
+				<%= image_tag avatar_url(message.mocker), class: "img-circle avatar-medium" %>
+			</div>
+			<div class="col-8">
+				<%= message.body %>
+			</div>
+			<div class="col-auto pull-right">
+				<span class=" time-message"><%= message.created_at.strftime("%I:%M %p") %></span>
+			</div>
+		</div>
+	</div>
+</div>

@@ -84,6 +84,20 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="row m-0">
+	              <h2 class="margin-sm-0">
+	                <% if current_mocker && current_mocker != @mocker %>
+	                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "btn btn_clear") do %>
+	                    <i class="far fa-envelope"></i> Enviar mensaje
+	                  <% end %>
+	                <% elsif (mocker_signed_in?) %>
+	                  <%= link_to(edit_mocker_registration_path, class: "btn btn_clear") do %>
+	                    <i class="far fa-edit text-grey"></i> Editar perfil
+	                  <% end %>
+	                <% end %>
+	              </h2>
+				</div>
 				<br>
 			</div>
 				

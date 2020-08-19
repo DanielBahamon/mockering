@@ -23,5 +23,10 @@ module Mockering
     #I18N
     config.i18n.available_locales = [:en, :es]
     config.i18n.default_locale = :en
+
+
+    #TimeZone
+    config.time_zone = "America/Bogota"
+    config.active_record.default_timezone = :utc
   end
 end

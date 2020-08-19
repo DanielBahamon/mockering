@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # root "mocks#index"
   devise_scope :mocker do
     authenticated  do
@@ -10,8 +10,7 @@ Rails.application.routes.draw do
       root to: 'devise/sessions#new', as: 'unauthenticated_root'
     end
   end
- 
-  
+
   resources :mockers
   devise_for :mockers,
             path: '',
@@ -58,6 +57,12 @@ Rails.application.routes.draw do
     collection do
       post :mark_as_read
     end
+  end
+
+
+  resources :conversations, only: [:index, :create] do 
+    resources :messages, only: [:index, :create]
+    # post 'messages', to: 'messages#create'
   end
 
   resources :subscriptions

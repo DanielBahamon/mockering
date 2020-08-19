@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  mocker: one
+  conversation: one
+
+two:
+  body: MyText
+  mocker: two
+  conversation: two

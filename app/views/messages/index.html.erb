@@ -1,0 +1,35 @@
+<div class="dashboard-chats">
+	<div class="row">
+		<div class="col-md-3 text-center">
+			<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
+			<strong><%= @other.slug %></strong>
+			<%= link_to "View Profile", @other, class: "btn btn-default" %>
+		</div>
+		<div class="col-md-9">
+			<div class="panel">
+				<div class="panel-heading">Conversation with <%= @other.slug %>
+					<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
+				</div>
+				<div class="panel-body">
+					<div class="container text-center">
+						<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+							<div class="form-group">
+								<%= f.text_field :body, placeholder: "Add a personal message", class: "form-control" %>
+							</div>
+							<%= f.hidden_field :mocker_id, value: current_mocker.id %>
+							<div>
+								<%= f.submit "Send message", class: "btn btn-normal" %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+			<div id="chatbox">
+				<%= render @messages %>
+			</div>
+
+		</div>
+	</div>
+</div>
+	

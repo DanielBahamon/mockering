@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200815162225) do
+ActiveRecord::Schema.define(version: 20200818235308) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20200815162225) do
     t.index ["votable_type", "votable_id"], name: "index_bolds_on_votable_type_and_votable_id"
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_bolds_on_voter_id_and_voter_type_and_vote_scope"
     t.index ["voter_type", "voter_id"], name: "index_bolds_on_voter_type_and_voter_id"
+  end
+
+  create_table "conversations", id: :string, limit: 36, force: :cascade do |t|
+    t.string "sender_id"
+    t.string "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "sqlite_autoindex_conversations_1", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -96,6 +104,16 @@ ActiveRecord::Schema.define(version: 20200815162225) do
     t.index ["mentionee_type", "mentionee_id"], name: "index_mentions_on_mentionee_type_and_mentionee_id"
     t.index ["mentioner_id", "mentioner_type"], name: "mentions_mentioner_idx"
     t.index ["mentioner_type", "mentioner_id"], name: "index_mentions_on_mentioner_type_and_mentioner_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.string "mocker_id"
+    t.string "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["mocker_id"], name: "index_messages_on_mocker_id"
   end
 
   create_table "mockers", id: :string, limit: 36, force: :cascade do |t|
