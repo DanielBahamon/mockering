@@ -30,7 +30,7 @@
 						<% end %>
 
 		                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
-		                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %>
+		                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
 		                <% end %>
 						<hr/>
 					</div>
