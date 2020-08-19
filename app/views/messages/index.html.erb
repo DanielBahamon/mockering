@@ -1,35 +1,45 @@
-<div class="dashboard-chats">
-	<div class="row">
-		<div class="col-md-3 text-center">
-			<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
-			<strong><%= @other.slug %></strong>
-			<%= link_to "View Profile", @other, class: "btn btn-default" %>
-		</div>
-		<div class="col-md-9">
-			<div class="panel">
-				<div class="panel-heading">Conversation with <%= @other.slug %>
-					<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
+<div class="container _1">
+	<div class="dashboard-chats">
+		<div class="row">
+			<div class="col-md-3 text-center">
+				<%= link_to @other, class: "btn btn-default" do %>
+					<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
+					<strong>@<%= @other.slug %></strong>
+				<% end %>
+			</div>
+			<div class="col-md-9">
+				<div id="chatbox">
+					<%= render @messages %>
 				</div>
-				<div class="panel-body">
-					<div class="container text-center">
-						<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
-							<div class="form-group">
-								<%= f.text_field :body, placeholder: "Add a personal message", class: "form-control" %>
-							</div>
-							<%= f.hidden_field :mocker_id, value: current_mocker.id %>
-							<div>
-								<%= f.submit "Send message", class: "btn btn-normal" %>
-							</div>
-						<% end %>
+				<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
+				<%= form_for [@conversation, @conversation.messages.new], class: "input-group mb-3", remote: true do |f| %>
+					<div class="input-group-prepend">
+						<%= f.text_field :body, placeholder: "Add a personal message", class: "form-control _input_group _1", "aria-describedby": "basic-addon1" %>
+						<%= f.submit "Send message", class: "input-group-text _1" %>
 					</div>
-				</div>
+					<%= f.hidden_field :mocker_id, value: current_mocker.id %>
+				<% end %>
 			</div>
-
-			<div id="chatbox">
-				<%= render @messages %>
-			</div>
-
 		</div>
 	</div>
 </div>
 	
+	
+<style type="text/css">
+	.img-circle.avatar-medium {
+	    width: 30px;
+	    height: 30px;
+	    border:3px solid white;
+	    border-radius: 369px;
+	}
+	.input-group-text._1{
+	    border-radius: 0 3px 3px 0 !important;
+	    background: #ff5858;
+	    color: white;
+	    border: 0;
+	    font-weight: 600;
+	}
+	._input_group._1{
+    	border-radius: 3px 0 0 3px;
+	}
+</style>
