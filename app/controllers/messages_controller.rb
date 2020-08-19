@@ -26,7 +26,6 @@ class MessagesController < ApplicationController
 		end
 	end
 
-
 	private
 
 	def render_message(message)
@@ -38,6 +37,6 @@ class MessagesController < ApplicationController
 	end
 
 	def message_params
-		params.require(:message).permit(:body, :mocker_id, :conversation_id)
+		params.require(:message).permit(:body, :mocker_id)
 	end
 end
