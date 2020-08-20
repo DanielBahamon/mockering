@@ -1069,7 +1069,6 @@
     padding: 15px;
     text-align: center;
   }
-
 /* END FORMS */
 
 /* CHECKBOX */
@@ -2276,6 +2275,31 @@
 /* END MOCKS */
 
 /* PROFILE */
+
+  ._badge_verification{
+    width: 14px;
+    height: 14px;
+    margin-left: 5px;
+    margin-top: -3px;
+  }
+  ._bio{
+    text-align-last: center;
+  }
+  ._col_cont_user{
+    padding:0;
+  }
+  ._btn._btn_sendmessage{
+      background: white;
+      width: max-content;
+      padding: 10px 15px;
+      border-radius: 369px;
+      margin: 10px auto;
+      color:black !important;
+  }
+  ._btn._btn_sendmessage:hover{
+    color:black !important;
+    background:ghostwhite;
+  }
   .readmore._1{
     font-size:11pt;
     color:grey;

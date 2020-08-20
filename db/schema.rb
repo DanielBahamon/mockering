@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200818234936) do
+ActiveRecord::Schema.define(version: 20200820013358) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20200818234936) do
     t.string "instagram"
     t.string "pinterest"
     t.string "youtube"
+    t.string "verification"
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true

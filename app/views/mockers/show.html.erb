@@ -16,7 +16,16 @@
 					</div>
 					<div class="col-12 text-center">
 						<h4 class="_name _fw400 m-0"><%= (@mocker.first_name).capitalize if @mocker.first_name? %> <%= (@mocker.last_name).capitalize if @mocker.last_name? %></h4>
-						<p class="_fw400">@<%= @mocker.slug %></p>
+						<p class="_fw400">@<%= @mocker.slug %> 
+							<% if @mocker.verification == "0"  %>
+								<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-verification.svg" , class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Verificated" %>
+							<% elsif @mocker.verification == "1" %>
+								<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg" , class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor" %>
+							<% elsif @mocker.verification == "2" %>
+								<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-pro.svg" , class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor Pro" %>
+							<% elsif @mocker.verification == "3" %>
+								<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg" , class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor Master" %>
+							<% end %></p>
 					</div>
 					<div class="col-12 text-center">
 						<% if mocker_signed_in? && current_mocker != @mocker %>
@@ -153,24 +162,6 @@
         margin: 0;
       }
   	}
-	._bio{
-		text-align-last: center;
-	}
-	._col_cont_user{
-		padding:0;
-	}
-	._btn._btn_sendmessage{
-	    background: white;
-	    width: max-content;
-	    padding: 10px 15px;
-	    border-radius: 369px;
-	    margin: 10px auto;
-	    color:black !important;
-	}
-	._btn._btn_sendmessage:hover{
-		color:black !important;
-		background:ghostwhite;
-	}
 </style>
 <script type="text/javascript">
 	$('.readmore').readmore({
