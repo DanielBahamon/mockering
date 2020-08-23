@@ -1279,6 +1279,24 @@
     height: 100%;
     object-fit: cover;
   }
+
+  ._card .icon_play { 
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      font-size: 25pt;
+      width: 100%;
+      color: white;
+      opacity:0.75;
+      -webkit-transition: all .2s ease;
+      transition: all .2s ease;
+  }
+  ._card:hover .icon_play { 
+      display:none;
+  }
+  .cont_img{
+    position:relative;
+  }
   ._card .card-img,
   ._card .card-img-top{ 
       border-radius: 5px;

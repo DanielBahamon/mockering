@@ -1,6 +1,16 @@
 <% @mocks.each do |mock| %>
 	<%= link_to mock, class: "link_card card box _card" do %>
-		<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
+		<div class="cont_img">
+			<div class="icon_play">
+				<div class="d-table fullscreen">
+					<div class="d-table-cell v-middle text-center">
+						<i class="fas fa-play"></i>
+					</div>		
+				</div>
+			</div>
+			<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
+		</div>
+		
 		<div class="_cardbody">
 			<div class="row">
 				<div class="col-12">

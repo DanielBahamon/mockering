@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
 	before_action  :authenticate_mocker!
 
 	def index
-		@conversations = Conversation.involving(current_mocker)
+		@conversations = Conversation.involving(current_mocker).order("created_at ASC")
 	end
 
 	def create
