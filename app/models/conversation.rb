@@ -5,7 +5,7 @@ class Conversation < ApplicationRecord
 	before_validation :set_uuid, on: :create
 
 	has_many :messages, dependent: :destroy
-	validates_uniqueness_of :sender_id, :recipient_id
+	# validates_uniqueness_of :sender_id, :recipient_id
 
 	scope :involving, -> (mocker) {
 		where("conversations.sender_id = ? OR conversations.recipient_id = ?", mocker.id, mocker.id)
