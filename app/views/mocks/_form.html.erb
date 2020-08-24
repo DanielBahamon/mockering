@@ -17,7 +17,6 @@
               <div class="col-12">
                 <div class="field">
                   <%= f.file_field :movie, class: "file-selector", id: "file-selector_1", required: true %>
-                  
                 </div>
               </div>
           	</div>
@@ -170,8 +169,8 @@
                         <%= f.label 'Design', class: '_checkbox _1', for: "check_design" %>
                     </li>
                     <li>
-                        <%= f.check_box :tag_list, { multiple: true, id: "check_datascience"}, 'digital life', nil %>
-                        <%= f.label 'Digital Life', class: '_checkbox _1', for: "check_datascience" %>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_digitallife"}, 'digital life', nil %>
+                        <%= f.label 'Digital Life', class: '_checkbox _1', for: "check_digitallife" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_economy"}, 'economy', nil %>

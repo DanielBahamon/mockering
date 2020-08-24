@@ -13,17 +13,7 @@
 			      <h4 class="_name _fw400 m-0">
 			      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
 			      
-			      <%= link_to current_mocker, class: "text-muted _fw400 deco-none" do %>@<%= current_mocker.slug %> 
-
-						<% if current_mocker.verification == "0" %>
-							<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-verification.svg", class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Verificated" %>
-						<% elsif current_mocker.verification == "1" %>
-							<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg", class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor" %>
-						<% elsif current_mocker.verification == "2" %>
-							<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-pro.svg" , class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor Pro" %>
-						<% elsif current_mocker.verification == "3" %>
-							<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg", class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor Master" %>
-						<% end %>
+			      <%= link_to current_mocker, class: "text-muted _fw400 deco-none" do %>@<%= current_mocker.slug %> <%= image_tag badge_icon(current_mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(current_mocker) if current_mocker.verification? %>
 			      <% end %>
 			    </div>
 			  </div>

@@ -42,6 +42,29 @@ module ApplicationHelper
 	  end.join("\n").html_safe
 	end
 
+	def badge_icon(mocker)
+		if mocker.verification == '0'
+			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-verification.svg"
+		elsif mocker.verification == '1'
+			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg"
+		elsif mocker.verification == '2'
+			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-pro.svg"
+		elsif mocker.verification == '3'
+			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg"
+		end
+	end
+
+	def tooltip_badge(mocker)
+		if mocker.verification == '0'
+			'Verificated'
+		elsif mocker.verification == '1' 
+			'Contributor'
+		elsif mocker.verification == '2'
+			'Contributor Pro'
+		elsif mocker.verification == '3'
+			'Contributor Master'
+		end
+	end
 
 
 	def paginate(collection, params= {})

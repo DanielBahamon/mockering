@@ -130,16 +130,7 @@
 							<h4 class="_fw500 m-0 text-capitalize"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name if @mock.mocker.first_name? %> <%= @mock.mocker.last_name if @mock.mocker.first_name? %><% end %></h4>
 							<p class="text-muted _username_video _fw500 m-0">
 								<%= link_to @mock.mocker, class: "_color_black deco-none" do %>
-									@<%= @mock.mocker.slug %> 
-									<% if @mock.mocker.verification == "0" %>
-										<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-verification.svg", class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Verificated" %>
-									<% elsif @mock.mocker.verification == "1" %>
-										<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg", class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor" %>
-									<% elsif @mock.mocker.verification == "2" %>
-										<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-pro.svg" , class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor Pro" %>
-									<% elsif @mock.mocker.verification == "3" %>
-										<%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg", class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: "Contributor Master" %>
-									<% end %>
+									@<%= @mock.mocker.slug %> <%= image_tag badge_icon(@mock.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(@mock.mocker) if @mock.mocker.verification? %>
 								<% end %></p>
 						</div>
 					</div>
