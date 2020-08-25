@@ -9,6 +9,7 @@ class Mock < ApplicationRecord
     acts_as_taggable_on :tags
 	has_many :reviews
 	has_many :answers
+  	groupify :group_member
   	
 	enum category: {
 		 Original: 0,

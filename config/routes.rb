@@ -65,9 +65,7 @@ Rails.application.routes.draw do
     # post 'messages', to: 'messages#create'
   end
 
-  resources :groups do 
-    resources :mockergroups
-  end
+  # resources :groups
 
   resources :subscriptions
 
