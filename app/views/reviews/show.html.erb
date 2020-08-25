@@ -85,7 +85,7 @@
     </div>
     <div class="list">
         <div class="col-12 p-0">
-          <div class="answers sort_paginate_ajax" id="answers">
+          <div class="answers" id="answers">
             <%= render 'answers/list', review: @review %>
           </div>
         </div>
@@ -103,6 +103,7 @@
         lessLink: '<a href="#" class="link-2">Show less</a>'
     }
   );
+
 </script>
 <style type="text/css">
   .dropdown-menu.right-0{

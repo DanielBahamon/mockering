@@ -98,15 +98,20 @@
     </div>
     <hr>
   <% end %>
+
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+      <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
 <% end %>
 <br>
 <script type="text/javascript">
-  
   $('.readmore').readmore({
       speed: 75,
       collapsedHeight: 85,
       moreLink: '<a href="#" class="link-2">Show more</a>',
-        lessLink: '<a href="#" class="link-2">Show less</a>'
+      lessLink: '<a href="#" class="link-2">Show less</a>'
     }
   );
 </script>

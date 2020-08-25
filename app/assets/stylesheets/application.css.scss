@@ -2012,6 +2012,37 @@
 /* END SIDENAV */
 
 /* STEPS */
+
+    ._btn._data{
+      cursor: pointer;
+    }
+    .list-group-item._1:first-child{
+      border-radius: 0 !important;
+    }
+    .list-group-item._1:last-child{
+      border-radius: 0 !important;
+    }
+    .small_avatar{
+      width: 35px;
+      height: 35px;
+      border-radius: 369px;
+    }
+    .pagination{
+      margin: 0;
+    }
+    .pagination li{
+      padding: 10px;
+    }
+    .pagination li a{
+      color:black !important;
+      text-decoration: none;
+    }
+    .pagination li.active{
+      font-weight: 800;
+    }
+    .pagination li.disabled{
+      display: none;
+    }
   .msf_hide{
     display: none;
   }

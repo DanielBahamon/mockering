@@ -8,7 +8,7 @@
 					</div>		
 				</div>
 			</div>
-			<%= image_tag mock.picture.url(:medium), class: "card-img-top" %>
+			<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
 		</div>
 		
 		<div class="_cardbody">
@@ -27,7 +27,7 @@
 						<div class="text-ellipsis">
 							<div class="d-table fullscreen">
 								<div class="d-tablecell v-middle ">
-									<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %></p>
+									<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
 								</div>
 							</div>
 						</div>

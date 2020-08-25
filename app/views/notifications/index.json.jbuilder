@@ -38,6 +38,6 @@ json.array! @notifications do |notification|
 	if notification.action == "chated"
 		json.url conversation_messages_path(notification.notifiable, anchor: dom_id(notification.notifiable))
 	else
-		json.url polymorphic_path(notification.notifiable, anchor: dom_id(notification.notifiable))
+		json.url polymorphic_path(notification.notifiable , anchor: dom_id(notification.notifiable))
 	end
 end 

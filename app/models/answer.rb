@@ -4,8 +4,6 @@ class Answer < ApplicationRecord
 	belongs_to :review
 	acts_as_votable
 
-
-
 	after_create :add_mentions
 
 	def add_mentions

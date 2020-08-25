@@ -55,7 +55,7 @@ class MocksController < ApplicationController
 	def show
 	   	# impressionist(@mock, "message...") # 2nd argument is optional
 	    # Display all the host reviews to host (if this user is a guest)
-	    @reviews = @mock.reviews
+	    @reviews = @mock.reviews.paginate(page: params[:page], per_page: 20)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
 		@related_mocks = @mock.find_related_tags
 	end

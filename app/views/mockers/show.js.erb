@@ -1,0 +1,3 @@
+$("#followers").html('<%=  escape_javascript(render :partial => 'mockers/followers') %>');
+$("#following").html('<%=  escape_javascript(render :partial => 'mockers/following') %>');
+$('.pagination a').attr('data-remote', 'true');

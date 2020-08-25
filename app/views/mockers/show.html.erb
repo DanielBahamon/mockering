@@ -39,15 +39,24 @@
 						<% num_mocks = @mocker.mocks.count %>
 						<p class="_fs9pt text-muted text-ellipsis"><%= 'Mock'.pluralize(num_mocks) %></p>
 					</div>
-					<div class="col-4 text-center d-grid">
-						<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
-						<% num_followers = @mocker.follower_ids.count %>
-						<p class="_fs9pt text-muted text-ellipsis"><%= 'Follower'.pluralize(num_followers) %> </p>
+					<div class="col-4">
+						<a class="_btn _data" data-toggle="modal" data-target="#followersModal">
+							<div class="text-center d-grid">
+								<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
+								<% num_followers = @mocker.follower_ids.count %>
+								<p class="_fs9pt text-muted text-ellipsis"><%= 'Follower'.pluralize(num_followers) %> </p>
+							</div>
+						</a>
 					</div>
 					<div class="col-4 text-center d-grid">
-						<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
-						<% num_followings = @mocker.following_ids.count %>
-						<p class="_fs9pt text-muted text-ellipsis"><%= "Following".pluralize(num_followings) %></p>
+						<a class="_btn _data" data-toggle="modal" data-target="#followingModal">
+							<div class="text-center d-grid">
+								<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
+								<% num_followings = @mocker.following_ids.count %>
+								<p class="_fs9pt text-muted text-ellipsis"><%= "Following".pluralize(num_followings) %></p>
+							</div>
+						</a>
+								
 					</div>
 				</div>
 				<br>
@@ -104,7 +113,16 @@
 						<div id="mocks" class="transitions-enabled">
 								<% @mocks.each do |mock| %>
 									<%= link_to mock, class: "link_card card box _card _1" do %>
-										<%= image_tag mock.picture.url(:large), class: "card-img-top _1" %>
+										<div class="cont_img">
+											<div class="icon_play">
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle text-center">
+														<i class="fas fa-play"></i>
+													</div>		
+												</div>
+											</div>
+											<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+										</div>
 										<div class="_cardbody">
 											<div class="row m-0">
 												<div class="col-12 p-0">
@@ -138,6 +156,45 @@
 								<% end %>
 						</div>
 						<br>
+						<br>
+						<br>
+
+						<!-- Modal Followers -->
+						<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title _fw700" id="followersModalLabel">Followers</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body p-0">
+						      	<div class="list-group" id="followers">
+						      		<%= render 'followers' %> 
+								</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- Modal Following -->
+						<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModal" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title _fw700" id="followingModalLabel">Following</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body p-0">
+						      	<div class="list-group" id="following">
+						      		<%= render 'following' %> 
+								</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 						<%= will_paginate @mocks %>
 					</div>
 				</div>
@@ -162,4 +219,8 @@
 	  		lessLink: '<a href="#" class="link-2">Show less</a>'
 		}
 	);
+
+	$(function(){
+	 	$('.pagination a').attr('data-remote', 'true')
+	});
 </script>
