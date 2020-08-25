@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200820013358) do
+ActiveRecord::Schema.define(version: 20200825180640) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -64,6 +64,26 @@ ActiveRecord::Schema.define(version: 20200820013358) do
     t.index ["followed_id"], name: "index_friendships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_friendships_on_follower_id"
+  end
+
+  create_table "group_memberships", force: :cascade do |t|
+    t.string "member_type", null: false
+    t.integer "member_id", null: false
+    t.string "group_type"
+    t.integer "group_id"
+    t.string "group_name"
+    t.string "membership_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_name"], name: "index_group_memberships_on_group_name"
+    t.index ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
+    t.index ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "impressions", force: :cascade do |t|

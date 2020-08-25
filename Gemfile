@@ -31,6 +31,7 @@ gem 'jquery-atwho-rails', '~> 1.5', '>= 1.5.4'
 gem 'redcarpet', '~> 3.5'
 gem 'videotime'
 # gem 'aws-sdk', '~> 3'
+gem 'groupify', '~> 0.9.0'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
 gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.5'
 # gem "paperclip-ffmpeg", "~> 1.2.0"
