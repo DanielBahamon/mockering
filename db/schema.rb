@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200825181730) do
+ActiveRecord::Schema.define(version: 20200825202802) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -64,28 +64,6 @@ ActiveRecord::Schema.define(version: 20200825181730) do
     t.index ["followed_id"], name: "index_friendships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_friendships_on_follower_id"
-  end
-
-  create_table "group_memberships", id: :string, limit: 36, force: :cascade do |t|
-    t.string "member_type", null: false
-    t.string "member_id", null: false
-    t.string "group_type"
-    t.string "group_id"
-    t.string "group_name"
-    t.string "membership_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_name"], name: "index_group_memberships_on_group_name"
-    t.index ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
-    t.index ["id"], name: "sqlite_autoindex_group_memberships_1", unique: true
-    t.index ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
-  end
-
-  create_table "groups", id: :string, limit: 36, force: :cascade do |t|
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["id"], name: "sqlite_autoindex_groups_1", unique: true
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -200,6 +178,7 @@ ActiveRecord::Schema.define(version: 20200825181730) do
     t.string "category"
     t.string "credits"
     t.integer "impressions_count", default: 0
+    t.boolean "privated", default: false
     t.index ["id"], name: "sqlite_autoindex_mocks_1", unique: true
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
   end

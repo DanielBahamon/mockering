@@ -8,14 +8,12 @@
   <% @reviews.order(created_at: :desc).each do |r| %>
     <div class="row m-0 _rowreview">
       <div class="col text-center">
-        <div class="d-table fullscreen">
-          <div class="d-table-cell v-middle">
+        <div class="p-t-15px">
             <div class="d-grid text-center">
               <%= link_to(r.mocker) do  %>
                 <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
               <% end %>
             </div>
-          </div>
         </div>
       </div>
       <div class="col-10 col-sm-11  ">
@@ -76,36 +74,45 @@
           </div>
         </div>
         <div class="row m-0">
+            <div class="col-12 col-sm-6 text-center">
+              <%= render 'answers/link_collapse', review: r %>
+            </div>
             <% if mocker_signed_in? %>
               <%= render 'answers/form', review: r %>
             <% else %>
-              <div class="row m-0 fullwidth">
-                <div class="col-12">
-                  <%= link_to new_mocker_session_path, class: "display-block btn _btn _btnanswer" do %>Answer<% end %>
-                </div> 
+              <div class="col-12 col-sm-6 text-center">
+                <%= link_to new_mocker_session_path, class: "display-block btn _btn _btnanswer" do %>Answer<% end %>
               </div>
               <br>
             <% end %>      
         </div>
       </div>
-    </div>
-    <div class="list">
-        <div class="col-12 p-0">
-          <div class="answers sort_paginate_ajax" id="answers">
-            <%= render 'answers/list', review: r %>
+      <div class="row m-0 answers_row">
+        <div class="col-12">
+          <div class="collapse show" id="collapse_<%= r.id %>">
+            <div class="card-body p-0">
+              <%= render 'answers/list', review: r %>
+            </div>
           </div>
         </div>
+      </div>
     </div>
-    <hr>
+    <hr>  
   <% end %>
 
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-      <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+      <%= will_paginate @reviews, renderer: BootstrapPagination::Rails, param_name: 'reviews_page' %>
     </div>
   </div>
 <% end %>
 <br>
+<style type="text/css">
+  .dropdown-menu.right-0{
+    left:inherit;
+    right: 0 !important;
+  }
+</style>
 <script type="text/javascript">
   $('.readmore').readmore({
       speed: 75,
@@ -114,10 +121,5 @@
       lessLink: '<a href="#" class="link-2">Show less</a>'
     }
   );
+$('.pagination a').attr('data-remote', 'true');
 </script>
-<style type="text/css">
-  .dropdown-menu.right-0{
-    left:inherit;
-    right: 0 !important;
-  }
-</style>

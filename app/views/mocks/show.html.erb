@@ -156,7 +156,7 @@
 				<div class="col-12 col-sm-6">
 					<div class="d-table fullscreen">
 						<div class="d-table-cell v-middle">
-							<h5 class="_fw600">Reviews</h5>
+							<h5 class="_fw600"> <%= number_to_human(@mock.reviews.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %> reviews</h5>
 						</div>
 					</div>
 				</div>
@@ -172,6 +172,7 @@
 					<br>
 				<% end %>
 				</div>
+				
 				<div class="col-12 p-0">
 					<div class="reviews" id="reviews">
 						<%= render 'reviews/list' %>
@@ -241,8 +242,5 @@
 	  		lessLink: '<a href="#" class="link-2">Show less</a>'
 		}
 	);
-	$(function(){
-	 	$('.pagination a').attr('data-remote', 'true')
-	});
 </script>
 

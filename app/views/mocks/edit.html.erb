@@ -50,10 +50,15 @@
 		                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
 		                </div>
 		              </div>
-		              <div class="col-12">
-		                <div class="field">
-		                  <%= f.label :credits %><br/>
-		                  <%= f.text_field :credits, class: 'form-control', required: true %>
+		              <div class="col-12 col-sm-6">
+		                <div class="d-table fullscreen">
+		                    <div class="d-table-cell v-middle">
+		                        <div class="field"  style="padding:15px;">
+		                            <label class="_fw600">
+		                                <%= f.check_box :privated %> Private
+		                            </label>
+		                        </div>
+		                    </div>
 		                </div>
 		              </div>
 		          	</div>

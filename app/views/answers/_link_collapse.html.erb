@@ -1,0 +1,3 @@
+<% if review.answers.count != 0 %>
+	<a class="display-block btn _btn _btnanswer" data-toggle="collapse" href="#collapse_<%= review.id %>" aria-expanded="false" aria-controls="#collapse_<%= review.id %>">Answers (<%= number_to_human(review.answers.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %>)</a>
+<% end %>

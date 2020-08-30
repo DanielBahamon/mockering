@@ -4,7 +4,7 @@ class MockersController < ApplicationController
 
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
-    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:page], per_page: 10).where(privated: false)
     	@followers = @mocker.followers.order("created_at DESC").paginate(page: params[:page], per_page: 10)
 		@following = @mocker.following.order("created_at DESC").paginate(page: params[:page], per_page: 10)
 	end

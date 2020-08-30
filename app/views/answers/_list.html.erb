@@ -1,77 +1,81 @@
-  <% @answers = review.answers.order(created_at: :desc).paginate(page: params[:page], per_page: 3) %>
-  <div id="collection_answers">
-    <% @answers.each do |a| %>
-      <div class="row m-0 _rowanswer">
-        <div class="col text-center">
-          <div class="d-table fullscreen">
-            <div class="d-table-cell v-middle">
-              <div class="d-grid text-center">
-                <%= image_tag avatar_url(a.mocker), class: "img-circle _avatar_comment" %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-10 col-sm-11  ">
-          <div class="row m-0" style="margin-bottom: 10px;">
-            <div class="col offset text-right p-0">
-              <% if current_mocker && current_mocker == a.mocker %>
-                <div class="navbar d-block p-0">
-                  <div class="nav-item dropdown text-right">
-                    <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" href="#" id="dropdownAnswer" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                    <div class="dropdown-menu right-0" aria-labelledby="dropdownAnswer">
-                      <% if mocker_signed_in? # && current_mocker.admin %>
-                        <%= link_to a, class: "_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
-                        <!--<div class="dropdown-divider"></div>
-                        <a href="#" class="_itemdropdown">Report</a>-->
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>  
-            </div>    
-          </div>
-          <div class="col-12 readmore p-0">
-            <div class="comment d-grid" id="comment">
-              <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= a.mocker.slug %> <%= image_tag badge_icon(a.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(a.mocker) if a.mocker.verification? %> • <%= a.created_at.strftime("%d %b %y").downcase %></small>
-              <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(a.comment, html: { target: '_blank' }) %></small>
-            </div>
-          </div>
-          <div class="row col-12 m-0 p-0">
-            <div class="col-auto">
-              <% if mocker_signed_in? %>
-                <%= link_to like_answer_path(a), method: :put, remote: :true, class: "like-answer" do %>
-                  <div id="like-count-answer-<%= a.id %>">
-                    <%= render 'answers/likes', answer: a %>
-                  </div>
-                <% end %>
-              <% else %>
-                <%= link_to new_mocker_session_path, class: "like-answer" do %>
-                  <div id="like-count-answer">
-                  <i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(a.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="col-auto"  style="padding-left: 0;">
-              <% if mocker_signed_in? %>
-                <%= link_to dislike_answer_path(a), method: :put, remote: :true, class: "like-answer" do %>
-                  <div id="dislike-count-answer-<%= a.id %>">
-                    <%= render 'answers/dislikes', answer: a %>
-                  </div>
-                <% end %>
-              <% else %>
-                  <%= link_to new_mocker_session_path, class: "like-answer" do %>
-                    <div id="dislike-count-answer">
-                    <i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(a.get_downvotes.size, units: { million: 'm', billion: 'b' }) %>
-                    </div>
-                  <% end %>
-              <% end %>
+  <% @answers = review.answers.order(created_at: :desc).paginate(page: params[:answers_page], per_page: 3) %>
+  <% @answers.each do |a| %>
+    <div class="row m-0 _rowanswer">
+      <div class="col text-center">
+        <div class="d-table fullscreen">
+          <div class="d-table-cell v-middle">
+            <div class="d-grid text-center">
+              <%= image_tag avatar_url(a.mocker), class: "img-circle _avatar_comment" %>
             </div>
           </div>
         </div>
       </div>
-      <hr>
-    <% end %>
+      <div class="col-10 col-sm-11  ">
+        <div class="row m-0" style="margin-bottom: 10px;">
+          <div class="col offset text-right p-0">
+            <% if current_mocker && current_mocker == a.mocker %>
+              <div class="navbar d-block p-0">
+                <div class="nav-item dropdown text-right">
+                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" href="#" id="dropdownAnswer" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+                  <div class="dropdown-menu right-0" aria-labelledby="dropdownAnswer">
+                    <% if mocker_signed_in? # && current_mocker.admin %>
+                      <%= link_to a, class: "_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
+                      <!--<div class="dropdown-divider"></div>
+                      <a href="#" class="_itemdropdown">Report</a>-->
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>  
+          </div>    
+        </div>
+        <div class="col-12 readmore p-0">
+          <div class="comment d-grid" id="comment">
+            <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= a.mocker.slug %> <%= image_tag badge_icon(a.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(a.mocker) if a.mocker.verification? %> • <%= a.created_at.strftime("%d %b %y").downcase %></small>
+            <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(a.comment, html: { target: '_blank' }) %></small>
+          </div>
+        </div>
+        <div class="row col-12 m-0 p-0">
+          <div class="col-auto">
+            <% if mocker_signed_in? %>
+              <%= link_to like_answer_path(a), method: :put, remote: :true, class: "like-answer" do %>
+                <div id="like-count-answer-<%= a.id %>">
+                  <%= render 'answers/likes', answer: a %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_mocker_session_path, class: "like-answer" do %>
+                <div id="like-count-answer">
+                <i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(a.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-auto"  style="padding-left: 0;">
+            <% if mocker_signed_in? %>
+              <%= link_to dislike_answer_path(a), method: :put, remote: :true, class: "like-answer" do %>
+                <div id="dislike-count-answer-<%= a.id %>">
+                  <%= render 'answers/dislikes', answer: a %>
+                </div>
+              <% end %>
+            <% else %>
+                <%= link_to new_mocker_session_path, class: "like-answer" do %>
+                  <div id="dislike-count-answer">
+                  <i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(a.get_downvotes.size, units: { million: 'm', billion: 'b' }) %>
+                  </div>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+      <%= will_paginate @answers, renderer: BootstrapPagination::Rails, param_name: 'answers_page' %>
+    </div>
   </div>
 <script type="text/javascript">
 

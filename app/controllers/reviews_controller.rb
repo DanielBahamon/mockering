@@ -8,10 +8,10 @@ class ReviewsController < ApplicationController
     # Display all the host reviews to host (if this user is a guest)
     # @answers = @reviews.answers
     @mock = @review.mock
-    
   end
 
   def index
+    
   end
 
   def edit

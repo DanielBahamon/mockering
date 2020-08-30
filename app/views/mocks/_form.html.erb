@@ -73,7 +73,18 @@
                   <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4" %>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 col-sm-6">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle">
+                        <div class="field"  style="padding:15px;">
+                            <label class="_fw600">
+                                <%= f.check_box :privated %> Private
+                            </label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
                 <div class="field">
                   <%= f.label :credits %><br/>
                   <%= f.text_field :credits, class: 'form-control', required: true %>

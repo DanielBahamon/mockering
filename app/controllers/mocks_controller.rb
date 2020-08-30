@@ -11,16 +11,22 @@ class MocksController < ApplicationController
 	def index
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		if params[:tag].present?
-			@mocks = Mock.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 20)
+			@mocks = Mock.tagged_with(params[:tag])
+			.paginate(page: params[:page], per_page: 20)
+			.where(privated: false)
 		else
-			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 20)
+			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 20).where(privated: false)
 		end
 	end
 
 	def popular
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
     	
-    	@mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'").group(:id).order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false)
     	# @mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}  '").group("impressions.impressionable_id").order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
@@ -28,7 +34,10 @@ class MocksController < ApplicationController
 
 	def latest
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-    	@mocks = Mock.all.where("mocks.created_at >= '#{1.week.ago}'").order("created_at DESC").paginate(page: params[:page], per_page: 20)
+    	@mocks = Mock.all.where("mocks.created_at >= '#{1.week.ago}'")
+    	.order("created_at DESC")
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false)
 		# @mocks = Mock.all.order('created_at DESC').paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
@@ -55,9 +64,9 @@ class MocksController < ApplicationController
 	def show
 	   	# impressionist(@mock, "message...") # 2nd argument is optional
 	    # Display all the host reviews to host (if this user is a guest)
-	    @reviews = @mock.reviews.paginate(page: params[:page], per_page: 20)
+	    @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
-		@related_mocks = @mock.find_related_tags
+		@related_mocks = @mock.find_related_tags.where(privated: true)
 	end
 
 	def like
@@ -124,12 +133,8 @@ class MocksController < ApplicationController
 		@review = Review.find(params[:id])
 	end
 
-	def find_answer
-		@answer = Answer.find(params[:id])
-	end
-
 	def mock_params
-		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list)
+		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated)
 	end
 
 	def set_search
