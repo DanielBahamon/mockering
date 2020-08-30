@@ -91,7 +91,6 @@
 
                                           <%= f.label "Phone Number" %>
                                           <% if !current_mocker.phone_number.blank? %>
-                                            <%= f.label "Phone Number" %>
                                             <a class="btn _btn _3" data-toggle="modal" data-target="#update-phone">Update Phone Number</a>
                                             <% if !current_mocker.phone_verified == true %>
                                                 <a class="btn btn_clear" data-toggle="modal" data-target="#verify-phone">Verificar</a>
