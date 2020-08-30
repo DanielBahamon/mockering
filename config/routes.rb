@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :mockers
+  resources :mockers do
+    member do
+      post '/verify_phone_number' => 'mockers#verify_phone_number'
+      patch 'update_phone_number' => 'mockers#update_phone_number'
+    end
+  end
   devise_for :mockers,
             path: '',
             path_names: {

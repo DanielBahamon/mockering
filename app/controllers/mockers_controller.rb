@@ -38,6 +38,34 @@ class MockersController < ApplicationController
 	end
 
 
+	def update_phone_number
+		current_mocker.update_attributes(mocker_params)
+		current_mocker.generate_pin
+		current_mocker.send_pin
+
+		redirect_to edit_mocker_registration_path, notice: "Great. It's saved"
+		rescue Exception => e
+		redirect_to edit_mocker_registration_path, alert: "#{e.message}"
+	end
+
+
+
+	def verify_phone_number
+		current_mocker.verify_pin(params[:mocker][:pin])
+
+		if current_mocker.phone_verified
+		  flash[:notice] = "Your phone number has been verified."
+		else
+		  flash[:alert] = "Something goes wrong."
+		end
+
+		redirect_to edit_mocker_registration_path
+
+		rescue Exception => e
+		redirect_to edit_mocker_registration_path, alert: "#{e.message}"
+	end
+
+
 	def username_validator
 	    if params[:slug].size <= 2
 	    	render json: { valid: false }

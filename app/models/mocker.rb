@@ -86,7 +86,13 @@ class Mocker < ApplicationRecord
     has_many :following, through: :active_friendships, source: :followed
     has_many :followers, through: :passive_friendships, source: :follower
   	has_one :setting
+  	after_create :add_setting
   	
+
+	  def add_setting
+	    Setting.create(mocker: self, enable_sms: true, enable_email: true)
+	  end
+
 	# AVATAR
 
 	has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png"
@@ -96,4 +102,28 @@ class Mocker < ApplicationRecord
 
 	has_attached_file :coverpage, styles: {extralarge: "1200x1200>", large: "999x999>", medium: "600x600>", thumb: "300x300>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/bg_coverpage.jpg"
 	validates_attachment_content_type :coverpage, content_type: /\Aimage\/.*\z/
+
+
+
+
+	  def generate_pin
+	    self.pin = SecureRandom.hex(2)
+	    self.phone_verified = false
+	    save
+	  end
+
+	  def send_pin
+	    @client = Twilio::REST::Client.new
+	    @client.messages.create(
+	      from: '+12058916654',
+	      to: self.phone_number,
+	      body: "Your pin is #{self.pin}"
+	      )
+	  end
+
+	  def verify_pin(entered_pin)
+	    update(phone_verified: true) if self.pin == entered_pin
+	  end
+
+
 end
