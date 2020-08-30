@@ -59,6 +59,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/notification_settings' => 'settings#edit'
+  post '/notification_settings' => 'settings#update'
 
   resources :conversations, only: [:index, :create] do 
     resources :messages, only: [:index, :create]

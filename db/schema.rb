@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200825202802) do
+ActiveRecord::Schema.define(version: 20200830201613) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -150,6 +150,9 @@ ActiveRecord::Schema.define(version: 20200825202802) do
     t.string "pinterest"
     t.string "youtube"
     t.string "verification"
+    t.string "phone_number"
+    t.string "pin"
+    t.boolean "phone_verified"
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true
@@ -197,6 +200,14 @@ ActiveRecord::Schema.define(version: 20200825202802) do
   create_table "reviews", force: :cascade do |t|
     t.text "comment"
     t.string "mock_id"
+    t.string "mocker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.boolean "enable_sms", default: true
+    t.boolean "enable_email", default: true
     t.string "mocker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

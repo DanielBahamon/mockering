@@ -1,5 +1,5 @@
 <div class="container">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <div class="row m-0">
       <div class="col-12 col-md-3">
         <div class="nav flex-column nav-pills _navpills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -24,7 +24,6 @@
             </div>
           </div>
           <a class="nav-link active" id="v-pills-personal-data-tab" data-toggle="pill" href="#v-pills-personal-data" role="tab" aria-controls="v-pills-personal-data" aria-selected="false">Personal data</a>
-          <a class="nav-link" id="v-pills-desription-tab" data-toggle="pill" href="#v-pills-desription" role="tab" aria-controls="v-pills-desription" aria-selected="false">Description</a>
           <a class="nav-link" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
           <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social Media</a>
         </div>
@@ -58,16 +57,13 @@
                                     <div class="d-grid">
                                         <%= f.label "Firstname" %>
                                         <%= f.text_field :first_name, class: "_input _2 form-control",
-                                            required: true,
-                                            input_html: { autocomplete: "first name" }%>
+                                            required: true %>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 _col_inputsaccount">
                                     <div class="d-grid">
                                         <%= f.label "Lastname" %>
-                                        <%= f.text_field :last_name, class: "_input _2 form-control",
-                                            required: true,
-                                            input_html: { autocomplete: "last name" }%>
+                                        <%= f.text_field :last_name, class: "_input _2 form-control" %>
                                     </div>
                                 </div>
                                 <section class="col-12 _col_inputsaccount">
@@ -83,6 +79,13 @@
                                 </section>
                                 <div class="col-12 _col_inputsaccount">
                                     <div class="d-grid">
+                                        <%= f.label "Phone Number" %>
+                                        <%= f.telephone_field :phone_number, class: "_input _2 form-control", required: true,
+                                        minlength: 10, placeholder: "+1 123456789" %>
+                                    </div>
+                                </div>
+                                <div class="col-12 _col_inputsaccount">
+                                    <div class="d-grid">
                                         <%= f.label "Email" %>
                                         <%= f.email_field :email, class: "_input _2 form-control", required: true %>
                                         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -94,26 +97,18 @@
                                     <div class="d-grid">
                                         <%= f.label "How old are you? (Not public)" %>
                                         <%= f.date_field :birthday, class: "_input _2 form-control",
-                                            required: true,
-                                            input_html: { autocomplete: "Birthday" }%>
+                                            required: true%>
                                     </div>
+                                </div>
+                                <div class="col-12 _col_inputsaccount">
+                                    <%= f.label "Your description" %>
+                                    <%= f.text_area :bio, class: "_textarea _2 form-control",  maxlength: "600", rows: "4" %>
                                 </div>
                                 <div class="col-12 text-center m-b-1em">
                                     <%= f.submit "Update", class: "_btn _1 f-right" %>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="v-pills-desription" role="tabpanel" aria-labelledby="v-pills-desription-tab">
-                <div class="cont_account row">
-                    <div class="col-12 _col_inputsaccount">
-                        <%= f.label "Your description" %>
-                        <%= f.text_area :bio, class: "_textarea _2 form-control", required: true, input_html: { autocomplete: "Bio" },  maxlength: "600", rows: "4" %>
-                    </div>
-                    <div class="col-12 text-center m-b-1em">
-                        <%= f.submit "Update", class: "_btn _1 f-right" %>
                     </div>
                 </div>
               </div>
