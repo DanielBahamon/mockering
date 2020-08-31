@@ -188,6 +188,7 @@ GEM
       av (~> 0.9.0)
       paperclip (>= 2.5.2)
     pg (1.2.3-x86-mingw32)
+    phonelib (0.6.44)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     popper_js (1.16.0)
@@ -349,6 +350,7 @@ DEPENDENCIES
   paperclip (~> 5.1.0)
   paperclip-av-transcoder (~> 0.6.4)
   pg
+  phonelib
   puma (~> 3.7)
   rails (~> 5.1.7)
   rails-jquery-autocomplete (~> 1.0, >= 1.0.5)

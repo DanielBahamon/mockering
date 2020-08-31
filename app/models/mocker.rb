@@ -40,6 +40,7 @@ class Mocker < ApplicationRecord
 
 	validates :slug, format: { without: /\s/ , message: "must contain no spaces" }
   	validates :slug, :uniqueness => true
+  	validates :phone_number, phone: true
   	# validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
 	def set_uuid
@@ -113,18 +114,14 @@ class Mocker < ApplicationRecord
 	  end
 
 	  def send_pin
-
 		account_sid = 'AC03ba4b2efd6622957cb2c00afe617013'
 		auth_token = '84418e2903e8237fda5e62b32355fc33'
 		client = Twilio::REST::Client.new(account_sid, auth_token)
-
 		from = '+12058916654' # Your Twilio number
-		to = '+15555555555' # Your mobile phone number
-
 		client.messages.create(
-		from: from,
-		to: self.phone_number,
-		body: "Hey! This is your pin: #{self.pin}"
+			from: from,
+			to: self.phone_number,
+			body: "Hey! This is your pin: #{self.pin}"
 		)
 	  end
 
