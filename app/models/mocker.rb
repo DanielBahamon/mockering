@@ -124,10 +124,9 @@ class Mocker < ApplicationRecord
 			body: "Hey! This is your pin: #{self.pin}"
 		)
 	  end
-
+	  
 	  def verify_pin(entered_pin)
 	    update(phone_verified: true) if self.pin == entered_pin
 	  end
-
 
 end

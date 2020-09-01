@@ -77,28 +77,13 @@
                                             id: "mocker_username" %>
                                     </div>
                                 </section>
-                                <div class="col-12 col-md-6 _col_inputsaccount">
+                                <div class="col-12 _col_inputsaccount">
                                     <div class="d-grid">
                                         <%= f.label "Email" %>
                                         <%= f.email_field :email, class: "_input _2 form-control", required: true %>
                                         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                                           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                                         <% end %>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 _col_inputsaccount">
-                                    <div class="d-grid">
-
-                                          <%= f.label "Phone Number" %>
-                                          <% if !current_mocker.phone_number.blank? %>
-                                            <a class="btn _btn _3" data-toggle="modal" data-target="#update-phone">Update Phone Number</a>
-                                            <% if !current_mocker.phone_verified == true %>
-                                                <a class="btn btn_clear" data-toggle="modal" data-target="#verify-phone">Verificar</a>
-                                            <% end %>
-                                          <% else %>
-                                            <a class="btn _btn _3" data-toggle="modal" data-target="#update-phone">Add Phone Number</a>
-                                          <% end %>
-                                        
                                     </div>
                                 </div>
                                 <div class="col-12 _col_inputsaccount">
@@ -180,60 +165,6 @@
       </div>
     </div>
     <% end %>
-
-
-    <!-- MODAL FOR PHONE NUMBER -->
-    <div class="modal fade" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true" id="update-phone">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="update-phoneLabel">Phone number</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <%= form_for current_mocker, url: update_phone_number_mocker_path(current_mocker) do |f| %>
-              <div class="row">
-                <div class="col-9">
-                  <div class="form-group m-0">
-                    <%= f.phone_field :phone_number, class: "form-control", placeholder: "+1 0001234567", required: true %>
-                    <i class="bar"></i>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <%= f.submit "Save", class: "btn _btn _1 fullwidth" %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- MODAL FOR VERIFICATION PHONE NUMBER -->
-    <div class="modal fade" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true" id="verify-phone">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="verify-phoneLabel">Verify your phone number</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-            <%= form_for current_mocker, url: verify_phone_number_mocker_path(current_mocker), method: :post do |f| %>
-              <div class="form-group">
-                <%= f.phone_field :pin, class: "form-control", placeholder: "Your PIN", value: "" %>
-              </div>
-              <div class="text-center">
-                <%= f.submit "Verificate", class: "btn _btn _1 fullwidth" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!--<h3>Cancel my account</h3>-->
 
