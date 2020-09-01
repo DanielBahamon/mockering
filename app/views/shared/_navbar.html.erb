@@ -93,7 +93,7 @@
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2" id="navbarDropdown2">
                                     <% if mocker_signed_in? # && current_mocker.admin %>
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
-                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
+                                      <%= link_to "Settings", edit_mocker_registration_path, class: "nav-link" %>
                                       <div class="dropdown-divider"></div>
                                       <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
                                     <% else %>
@@ -204,7 +204,7 @@
                     <p class="col-10 m-0">Messages</p>
                   <% end %>
                 </li>
-                <li class="<%= 'active' if current_page?(notification_settings_path)  %>"><%= link_to notification_settings_path, class: "_link _sidenav" do %>
+                <li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
                     <i class="fas fa-cog col-2 text-center p-0"></i>
                     <p class="col-10 m-0">Settings</p>
                   <% end %>

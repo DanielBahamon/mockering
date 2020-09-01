@@ -102,13 +102,13 @@
 							<div class="d-table fullscreen ">
 								<div class="d-tablecell v-middle">
 									<ul class="_listsidenav">
-			    						<% if mocker_signed_in? %>
+			    						<% if mocker_signed_in? && current_mocker == @mocker %>
 											<li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
 													<i class="fas fa-envelope col-2 text-center p-0"></i>
 													<p class="col-10 m-0">Messages</p>
 												<% end %>
 											</li>
-											<li class="<%= 'active' if current_page?(notification_settings_path)  %>"><%= link_to notification_settings_path, class: "_link _sidenav" do %>
+											<li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
 													<i class="fas fa-cog col-2 text-center p-0"></i>
 													<p class="col-10 m-0">Settings</p>
 												<% end %>
@@ -146,93 +146,44 @@
 			<br>
 			<div class="row m-0">
 				<div class="col-12 p-0">
-					<div class="mocks_content">
-						<div id="mocks" class="transitions-enabled">
-								<% @mocks.each do |mock| %>
-									<%= link_to mock, class: "link_card card box _card _1" do %>
-										<div class="cont_img">
-											<div class="icon_play">
-												<div class="d-table fullscreen">
-													<div class="d-table-cell v-middle text-center">
-														<i class="fas fa-play"></i>
-													</div>		
-												</div>
-											</div>
-											<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-										</div>
-										<div class="_cardbody">
-											<div class="row m-0">
-												<div class="col-12 p-0">
-													<h5 class="card-title _title _fw600"><%= mock.title %></h5>
-												</div>
-												<div class="row m-0 fullwidth">
-													<div class="col-6 p-0">
-														
-														<div class="text-ellipsis">
-															<div class="d-table fullscreen">
-																<div class="d-tablecell v-middle ">
-																	<small><%= mock.created_at.strftime("%d %b %Y").downcase  %></small>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="col-6">
-														<div class="d-table fullscreen">
-															<div class="d-tablecell v-middle">
-																<div class="d-flex" style="width: max-content;float: right;">
-																	<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
-																	<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									<% end %>
-								<% end %>
-						</div>
-						<br>
-						<br>
-						<br>
-
-						<!-- Modal Followers -->
-						<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
-						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title _fw700" id="followersModalLabel">Followers</h5>
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						          <span aria-hidden="true">&times;</span>
-						        </button>
-						      </div>
-						      <div class="modal-body p-0">
-						      	<div class="list-group" id="followers">
-						      		<%= render 'followers' %> 
-								</div>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						<!-- Modal Following -->
-						<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModal" aria-hidden="true">
-						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title _fw700" id="followingModalLabel">Following</h5>
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						          <span aria-hidden="true">&times;</span>
-						        </button>
-						      </div>
-						      <div class="modal-body p-0">
-						      	<div class="list-group" id="following">
-						      		<%= render 'following' %> 
-								</div>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						<%= will_paginate @mocks %>
+					<div class="mocks_content" id="mocks_content">
+							<%= render 'mocks' %>
+					</div>
+					<!-- Modal Followers -->
+					<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title _fw700" id="followersModalLabel">Followers</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body p-0">
+					      	<div class="list-group" id="followers">
+					      		<%= render 'followers' %> 
+							</div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<!-- Modal Following -->
+					<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModal" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title _fw700" id="followingModalLabel">Following</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body p-0">
+					      	<div class="list-group" id="following">
+					      		<%= render 'following' %> 
+							</div>
+					      </div>
+					    </div>
+					  </div>
 					</div>
 				</div>
 			</div>

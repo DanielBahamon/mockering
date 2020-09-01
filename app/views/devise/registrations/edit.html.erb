@@ -25,81 +25,82 @@
           </div>
           <a class="nav-link active" id="v-pills-personal-data-tab" data-toggle="pill" href="#v-pills-personal-data" role="tab" aria-controls="v-pills-personal-data" aria-selected="false">Personal data</a>
           <a class="nav-link" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
-          <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social Media</a>
+          <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false">Social media</a>
+          <a class="nav-link" id="v-pills-privacy-tab" data-toggle="pill" href="#v-pills-privacy" role="tab" aria-controls="v-pills-privacy" aria-selected="false">Privacy</a>
+          <%= link_to 'Notifications', notification_settings_path,  class: "nav-link" %>
         </div>
       </div>
       <div class="col-12 col-md-9">
             <div class="tab-content _tabcontent" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-personal-data" role="tabpanel" aria-labelledby="v-pills-personal-data-tab">
                 <div class="cont_account row">
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="row">
-                                <div class="col-12 col-md-6 _col_inputsaccount">
-                                    <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload_coverpage" role="button" aria-expanded="false" aria-controls="collapseUpload_coverpage"><i class="far fa-image" style="float: right;line-height: 1.5;"></i>Cover page</a>
-                                    <div class="collapse" id="collapseUpload_coverpage">
-                                      <div class="card-body p-0">
-                                        <br/>
-                                        <%= f.file_field :coverpage, class: "avatar_file" %>
-                                      </div>
-                                    </div>
+                    <h4 class="_title _3 m-t-10px col-12">Personal data</h4>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 col-md-6 _col_inputsaccount">
+                                <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload_coverpage" role="button" aria-expanded="false" aria-controls="collapseUpload_coverpage"><i class="far fa-image" style="float: right;line-height: 1.5;"></i>Cover page</a>
+                                <div class="collapse" id="collapseUpload_coverpage">
+                                  <div class="card-body p-0">
+                                    <br/>
+                                    <%= f.file_field :coverpage, class: "avatar_file" %>
+                                  </div>
                                 </div>
-                                <div class="col-12 col-md-6 _col_inputsaccount">
-                                    <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload" role="button" aria-expanded="false" aria-controls="collapseUpload"><i class="far fa-user-circle" style="float: right;line-height: 1.5;"></i> Avatar</a>
-                                    <div class="collapse" id="collapseUpload">
-                                      <div class="card-body p-0">
-                                        <br/>
-                                        <%= f.file_field :photo, class: "avatar_file" %>
-                                      </div>
-                                    </div>
+                            </div>
+                            <div class="col-12 col-md-6 _col_inputsaccount">
+                                <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload" role="button" aria-expanded="false" aria-controls="collapseUpload"><i class="far fa-user-circle" style="float: right;line-height: 1.5;"></i> Avatar</a>
+                                <div class="collapse" id="collapseUpload">
+                                  <div class="card-body p-0">
+                                    <br/>
+                                    <%= f.file_field :photo, class: "avatar_file" %>
+                                  </div>
                                 </div>
-                                <div class="col-12 col-md-6 _col_inputsaccount">
-                                    <div class="d-grid">
-                                        <%= f.label "Firstname" %>
-                                        <%= f.text_field :first_name, class: "_input _2 form-control",
-                                            required: true %>
-                                    </div>
+                            </div>
+                            <div class="col-12 col-md-6 _col_inputsaccount">
+                                <div class="d-grid">
+                                    <%= f.label "Firstname" %>
+                                    <%= f.text_field :first_name, class: "_input _2 form-control",
+                                        required: true %>
                                 </div>
-                                <div class="col-12 col-md-6 _col_inputsaccount">
-                                    <div class="d-grid">
-                                        <%= f.label "Lastname" %>
-                                        <%= f.text_field :last_name, class: "_input _2 form-control" %>
-                                    </div>
+                            </div>
+                            <div class="col-12 col-md-6 _col_inputsaccount">
+                                <div class="d-grid">
+                                    <%= f.label "Lastname" %>
+                                    <%= f.text_field :last_name, class: "_input _2 form-control" %>
                                 </div>
-                                <section class="col-12 _col_inputsaccount">
-                                    <%= f.label "Username" %>
-                                    <div class="form-group" style="position: relative;">
-                                        <span class="username-icon-styles position-absolute" style="right: 6px; top:7px;">
-                                          <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
-                                          <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
-                                        </span>
-                                        <%= f.text_field :slug, class: "_input _2 form-control", required: true,
-                                            id: "mocker_username" %>
-                                    </div>
-                                </section>
-                                <div class="col-12 _col_inputsaccount">
-                                    <div class="d-grid">
-                                        <%= f.label "Email" %>
-                                        <%= f.email_field :email, class: "_input _2 form-control", required: true %>
-                                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                                          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-                                        <% end %>
-                                    </div>
+                            </div>
+                            <section class="col-12 _col_inputsaccount">
+                                <%= f.label "Username" %>
+                                <div class="form-group" style="position: relative;">
+                                    <span class="username-icon-styles position-absolute" style="right: 6px; top:7px;">
+                                      <span id="valid-username" class="valid-username"><i class="material-icons" style="color: #4abf53;">done</i></span>
+                                      <span id="invalid-username" class="invalid-username"><i class="material-icons" style="color: #ff5858;">close</i></span>
+                                    </span>
+                                    <%= f.text_field :slug, class: "_input _2 form-control", required: true,
+                                        id: "mocker_username" %>
                                 </div>
-                                <div class="col-12 _col_inputsaccount">
-                                    <div class="d-grid">
-                                        <%= f.label "How old are you? (Not public)" %>
-                                        <%= f.date_field :birthday, class: "_input _2 form-control",
-                                            required: true%>
-                                    </div>
+                            </section>
+                            <div class="col-12 _col_inputsaccount">
+                                <div class="d-grid">
+                                    <%= f.label "Email" %>
+                                    <%= f.email_field :email, class: "_input _2 form-control", required: true %>
+                                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                                      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                                    <% end %>
                                 </div>
-                                <div class="col-12 _col_inputsaccount">
-                                    <%= f.label "Your description" %>
-                                    <%= f.text_area :bio, class: "_textarea _2 form-control",  maxlength: "600", rows: "4" %>
+                            </div>
+                            <div class="col-12 _col_inputsaccount">
+                                <div class="d-grid">
+                                    <%= f.label "How old are you? (Not public)" %>
+                                    <%= f.date_field :birthday, class: "_input _2 form-control",
+                                        required: true%>
                                 </div>
-                                <div class="col-12 text-center m-b-1em">
-                                    <%= f.submit "Update", class: "_btn _1 f-right" %>
-                                </div>
+                            </div>
+                            <div class="col-12 _col_inputsaccount">
+                                <%= f.label "Your description" %>
+                                <%= f.text_area :bio, class: "_textarea _2 form-control",  maxlength: "600", rows: "4" %>
+                            </div>
+                            <div class="col-12 text-center m-b-1em">
+                                <%= f.submit "Update", class: "_btn _1 f-right" %>
                             </div>
                         </div>
                     </div>
@@ -107,55 +108,78 @@
               </div>
               <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
                 <div class="cont_account row">
+                    <h4 class="_title _3 m-t-10px col-12">Password</h4>
                     <div class="col-12 _col_inputsaccount">
                         <%= f.label "New Password" %>
                         <%= f.password_field :password, class: "_input _2 form-control",
                                     hint: "leave it blank if you don't want to change it",
                                     required: false,
                                     input_html: { autocomplete: "new-password" } %>
+                    </div>
+                    <div class="col-12 _col_inputsaccount">
                         <%= f.label "Confirm password" %>
                         <%= f.password_field :password_confirmation, class: "_input _2 form-control",
                                     required: false,
                                     input_html: { autocomplete: "new-password" } %>
                     </div>
-                    <div class="col-12 text-center m-b-1em">
-                        <%= f.submit "Update", class: "_btn _1 _update f-right" %>
+                    <div class="col-12 text-center m-b-1e">
+                        <%= f.submit "Update", class: "_btn _1 f-right" %>
                     </div>
                 </div>
               </div>
               <div class="tab-pane fade" id="v-pills-social" role="tabpanel" aria-labelledby="v-pills-social-tab">
                 <div class="cont_account row">
+                    <h4 class="_title _3 m-t-10px col-12">Social media</h4>
                     <div class="col-12 col-md-6 _col_inputsaccount">
-
-                        <%= f.label "Facebook username (without '@')" %>
-                        <%= f.text_field :facebook, class: "_input _2 form-control",
-                            placeholder: "Username",
-                            input_html: { autocomplete: "facebook" }%>
-                        </div>
-                        <div class="col-12 col-md-6 _col_inputsaccount">
-                        <%= f.label "Instagram username (without '@')" %>
-                        <%= f.text_field :instagram, class: "_input _2 form-control",
-                            placeholder: "Username",
-                            input_html: { autocomplete: "instagram" }%>
-                        </div>
-                        <div class="col-12 col-md-6 _col_inputsaccount">
-                        <%= f.label "Twitter username (without '@')" %>
-                        <%= f.text_field :twitter, class: "_input _2 form-control",
-                            placeholder: "Username",
-                            input_html: { autocomplete: "twitter" }%>
-                        </div>
-                        <div class="col-12 col-md-6 _col_inputsaccount">
-                        <%= f.label "Pinterest username (without '@')" %>
-                        <%= f.text_field :pinterest, class: "_input _2 form-control",
-                            placeholder: "Username",
-                            input_html: { autocomplete: "pinterest" }%>
-                        </div>
-                        <div class="col-12 _col_inputsaccount">
-                        <%= f.label "YouTube Channel" %>
-                        <%= f.text_field :youtube, class: "_input _2 form-control",
-                            placeholder: "https://www.youtube.com/...",
-                            input_html: { autocomplete: "youtube" }%>
-                        </div>
+                    <%= f.label "Facebook username (without '@')" %>
+                    <%= f.text_field :facebook, class: "_input _2 form-control",
+                        placeholder: "Username",
+                        input_html: { autocomplete: "facebook" }%>
+                    </div>
+                    <div class="col-12 col-md-6 _col_inputsaccount">
+                    <%= f.label "Instagram username (without '@')" %>
+                    <%= f.text_field :instagram, class: "_input _2 form-control",
+                        placeholder: "Username",
+                        input_html: { autocomplete: "instagram" }%>
+                    </div>
+                    <div class="col-12 col-md-6 _col_inputsaccount">
+                    <%= f.label "Twitter username (without '@')" %>
+                    <%= f.text_field :twitter, class: "_input _2 form-control",
+                        placeholder: "Username",
+                        input_html: { autocomplete: "twitter" }%>
+                    </div>
+                    <div class="col-12 col-md-6 _col_inputsaccount">
+                    <%= f.label "Pinterest username (without '@')" %>
+                    <%= f.text_field :pinterest, class: "_input _2 form-control",
+                        placeholder: "Username",
+                        input_html: { autocomplete: "pinterest" }%>
+                    </div>
+                    <div class="col-12 _col_inputsaccount">
+                    <%= f.label "YouTube Channel" %>
+                    <%= f.text_field :youtube, class: "_input _2 form-control",
+                        placeholder: "https://www.youtube.com/...",
+                        input_html: { autocomplete: "youtube" }%>
+                    </div>
+                    <div class="col-12 text-center m-b-1em">
+                        <%= f.submit "Update", class: "_btn _1 f-right" %>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-privacy" role="tabpanel" aria-labelledby="v-pills-privacy-tab">
+                <div class="cont_account row">
+                    <h4 class="_title _3 m-t-10px col-12">Privacy</h4>
+                    <div class="col-12 _col_inputsaccount">
+                        <label class="label _1">
+                          <%= f.check_box :privated %> 
+                          <span class="_span_label">Private account</span>
+                        </label>
+                    </div>
+                    <div class="col-12 _col_inputsaccount">
+                        <label class="label _1">
+                          <%= f.check_box :show_mocks_privated %> 
+                          <span class="_span_label">Show mocks privated to your followers</span>
+                        </label>
+                    </div>
                     <div class="col-12 text-center m-b-1em">
                         <%= f.submit "Update", class: "_btn _1 f-right" %>
                     </div>
@@ -165,6 +189,17 @@
       </div>
     </div>
     <% end %>
+
+    <style type="text/css">
+        ._span_label{
+            font-size: 12pt;
+            font-weight: 600;
+        }
+        .label._1{
+            width:auto !important;
+            margin-right: 15px;
+        }
+    </style>
 
     <!--<h3>Cancel my account</h3>-->
 

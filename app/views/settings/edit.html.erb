@@ -1,19 +1,51 @@
-<div class="container">
-  <h2 class="_title _1">Notification Settings</h2>
-  <%= form_for :setting do |f| %>
+  <div class="container">
+    <%= form_for :setting do |f| %>
     <div class="row m-0">
-      <div class="col-auto p-0">
-        <label style="margin-right: 15px;">
-          <%= f.check_box :enable_email %> 
-          <span>Email</span>
-        </label>
+      <div class="col-12 col-md-3">
+        <div class="nav flex-column nav-pills _navpills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+          <%= link_to :back, class: "_link_back"  do %>
+            <i class="material-icons">keyboard_arrow_left</i> <span style="font-size:10pt;">Back</span>
+          <% end %>
+          <div class="row m-0" style="margin-bottom: 15px !important;">
+            <div class="col-4 p-0">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle ">
+                        <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle p-1">
+                        <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <%= link_to 'Account', edit_mocker_registration_path,  class: "nav-link" %>
+          <a class="nav-link active" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
+        </div>
       </div>
-      <% f.check_box :enable_sms %>
+      <div class="col-12 col-md-9">
+            <div class="tab-content _tabcontent" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">
+                <div class="cont_account row">
+                  <h4 class="_title _3 m-t-10px col-12">Notifications</h4>
+                  <div class="col-12 col-md-6 _col_inputsaccount">
+                    <label style="margin-right: 15px;">
+                      <%= f.check_box :enable_email %> 
+                      <span>Send notifications to your e-mail</span>
+                    </label>
+                  </div>
+                  <div class="col-12 text-center m-b-1em">
+                      <%= f.submit "Update", class: "_btn _1 f-right" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-auto pull-right">
-        <%= f.submit "Save", class: "btn btn_primary", style: "width:max-content;" %>
-      </div>  
-    </div>
-  <% end %>
+    <% end %>
+
 </div>

@@ -104,6 +104,10 @@
                         <%= f.label 'Art', class: '_checkbox _1', for: "check_art" %>
                     </li>
                     <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_aliens"}, 'aliens', nil %>
+                        <%= f.label 'Aliens', class: '_checkbox _1', for: "check_aliens" %>
+                    </li>
+                    <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_addiction"}, 'addiction', nil %>
                         <%= f.label 'Addiction', class: '_checkbox _1', for: "check_addiction" %>
                     </li>
@@ -250,6 +254,10 @@
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_humor"}, 'humor', nil %>
                         <%= f.label 'Humor', class: '_checkbox _1', for: "check_humor" %>
+                    </li>
+                    <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_illuminati"}, 'illuminati', nil %>
+                        <%= f.label 'Illuminati', class: '_checkbox _1', for: "check_illuminati" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_justice"}, 'justice', nil %>
@@ -450,6 +458,10 @@
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_tv"}, 'tv', nil %>
                         <%= f.label 'TV', class: '_checkbox _1', for: "check_tv" %>
+                    </li>
+                    <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_ufo"}, 'ufo', nil %>
+                        <%= f.label 'UFO', class: '_checkbox _1', for: "check_ufo" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_ux"}, 'ux', nil %>

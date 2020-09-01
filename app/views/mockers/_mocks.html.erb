@@ -1,0 +1,53 @@
+<div id="mocks" class="transitions-enabled">
+	<% @mocks.each do |mock| %>
+		<%= link_to mock, class: "link_card card box _card _1" do %>
+			<div class="cont_img">
+				<div class="icon_play">
+					<div class="d-table fullscreen">
+						<div class="d-table-cell v-middle text-center">
+							<i class="fas fa-play"></i>
+						</div>		
+					</div>
+				</div>
+				<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+			</div>
+			<div class="_cardbody">
+				<div class="row m-0">
+					<div class="col-12 p-0">
+						<h5 class="card-title _title _fw600"><%= mock.title %></h5>
+					</div>
+					<div class="row m-0 fullwidth">
+						<div class="col-6 p-0">
+							
+							<div class="text-ellipsis">
+								<div class="d-table fullscreen">
+									<div class="d-tablecell v-middle ">
+										<small><%= mock.created_at.strftime("%d %b %Y").downcase  %></small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="d-table fullscreen">
+								<div class="d-tablecell v-middle">
+									<div class="d-flex" style="width: max-content;float: right;">
+										<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
+										<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+<br>
+<br>
+<br>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+	<div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+	  <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'mocks_page' %>
+	</div>
+</div>
