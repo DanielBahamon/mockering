@@ -11,14 +11,18 @@
             <div class="col-4 p-0">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle ">
-                        <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
+                        <%= link_to mocker_path(current_mocker) do %>
+                            <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
+                        <% end %>
                     </div>
                 </div>
             </div>
             <div class="col-8">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle p-1">
-                        <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
+                        <%= link_to mocker_path(current_mocker), class: "text-black" do %>
+                            <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -38,7 +42,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 col-md-6 _col_inputsaccount">
-                                <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload_coverpage" role="button" aria-expanded="false" aria-controls="collapseUpload_coverpage"><i class="far fa-image" style="float: right;line-height: 1.5;"></i>Cover page</a>
+                                <a class="btn _btn _3 text-left" data-toggle="collapse" href="#collapseUpload_coverpage" role="button" aria-expanded="false" aria-controls="collapseUpload_coverpage"><i class="far fa-image" style="float: right;line-height: 1.5;"></i>Cover page</a>
                                 <div class="collapse" id="collapseUpload_coverpage">
                                   <div class="card-body p-0">
                                     <br/>
@@ -47,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 _col_inputsaccount">
-                                <a class="btn _btn _3" data-toggle="collapse" href="#collapseUpload" role="button" aria-expanded="false" aria-controls="collapseUpload"><i class="far fa-user-circle" style="float: right;line-height: 1.5;"></i> Avatar</a>
+                                <a class="btn _btn _3 text-left" data-toggle="collapse" href="#collapseUpload" role="button" aria-expanded="false" aria-controls="collapseUpload"><i class="far fa-user-circle" style="float: right;line-height: 1.5;"></i> Avatar</a>
                                 <div class="collapse" id="collapseUpload">
                                   <div class="card-body p-0">
                                     <br/>

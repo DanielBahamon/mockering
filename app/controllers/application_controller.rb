@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Mock.ransack(params[:q])
     @q = Mock.ransack(params[:q])
-    @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+    @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
   end
 
 

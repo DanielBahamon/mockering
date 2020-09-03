@@ -4,12 +4,12 @@ class MockersController < ApplicationController
 
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
-    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 1).where(privated: false)
+    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 10).where(privated: false)
     	@followers = @mocker.followers.order("created_at DESC").paginate(page: params[:followers_page], per_page: 10)
 		@following = @mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
-		@mocks_privated = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_privated_page], per_page: 10).where(privated: true)
+		@privated_mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:privated_mocks_page], per_page: 10).where(privated: true)
+		@liked_mocks = @mocker.find_up_voted_items
 	end
-
 
 	def create
 		

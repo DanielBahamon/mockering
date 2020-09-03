@@ -1,47 +1,42 @@
-<div id="mocks" class="transitions-enabled">
-	<% @mocks.each do |mock| %>
-		<%= link_to mock, class: "link_card card box _card _1" do %>
-			<div class="cont_img">
-				<div class="icon_play">
-					<div class="d-table fullscreen">
-						<div class="d-table-cell v-middle text-center">
-							<i class="fas fa-play"></i>
-						</div>		
-					</div>
-				</div>
-				<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-			</div>
-			<div class="_cardbody">
-				<div class="row m-0">
-					<div class="col-12 p-0">
-						<h5 class="card-title _title _fw600"><%= mock.title %></h5>
-					</div>
-					<div class="row m-0 fullwidth">
-						<div class="col-6 p-0">
-							
-							<div class="text-ellipsis">
+<div class="_mocks_mocker row m-0">
+	<div class="col">
+		<div class="row">
+			<% @mocks.each do |mock| %>
+				<div class="col-12 col-md-6 p-3 p-t-0">
+					<%= link_to mock, class: "_mock_mocker" do %>
+						<div class="row m-0">
+							<div class="col-4 _col_img text-center">
 								<div class="d-table fullscreen">
-									<div class="d-tablecell v-middle ">
-										<small><%= mock.created_at.strftime("%d %b %Y").downcase  %></small>
+									<div class="d-table-cell v-middle">
+										<%= image_tag mock.picture.url(:medium), class: "img_card_mock_mocker" %>
+									</div>
+								</div>
+							</div>
+							<div class="col-8 _cont_mock">
+								<div class="d-table fullscreen">
+									<div class="d-table-cell v-middle">
+										<div class="row">
+											<h5 class="card-title _title _fw600"><%= mock.title %></h5>
+										</div>
+										<div class="row">
+											<small><%= mock.created_at.strftime("%d %b %Y").downcase %></small>
+										</div>
+										<div class="row">
+											<div class="d-flex" style="width: max-content;float: right;">
+												<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
+												<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
+												<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+											</div>
+										</div>	
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-6">
-							<div class="d-table fullscreen">
-								<div class="d-tablecell v-middle">
-									<div class="d-flex" style="width: max-content;float: right;">
-										<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
-										<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<% end %>
 				</div>
-			</div>
-		<% end %>
-	<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
 <br>
 <br>

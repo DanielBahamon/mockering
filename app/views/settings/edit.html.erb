@@ -11,14 +11,18 @@
             <div class="col-4 p-0">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle ">
-                        <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
+                        <%= link_to mocker_path(current_mocker) do %>
+                            <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
+                        <% end %>
                     </div>
                 </div>
             </div>
             <div class="col-8">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle p-1">
-                        <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
+                        <%= link_to mocker_path(current_mocker), class: "text-black" do %>
+                            <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
+                        <% end %>
                     </div>
                 </div>
             </div>

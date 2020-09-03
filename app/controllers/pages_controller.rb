@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 		@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 
 	    @q = Mock.ransack(params[:q])
-    	@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+    	@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
 		# @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 20)
 	end
 
@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 
 	def set_search
 		@q = Mock.ransack(params[:q])
-		@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+		@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
 	end
 
 end

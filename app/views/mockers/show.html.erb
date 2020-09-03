@@ -1,4 +1,4 @@
-<div class="_conta _1 bg_ghoswhite">
+<div class="_conta _1">
 	<div class="row m-0">
 		<div class="col-12 col-md-4 col-lg-3 _col_user">
 			<div class="relative">
@@ -59,44 +59,48 @@
 								
 					</div>
 				</div>
-				<br>
+				<%= '<br>' if @mocker.bio? %>
 				<div class="row m-0">
+					<% if @mocker.bio? %>
 					<div class="col-12 col-sm-6 col-md-12 p-0">
 						<div class="readmore _1">
 							<p class="keepspaces _bio"><%= @mocker.bio %></p>
 						</div>
 					</div>
-					<div class="col-12 col-sm-6 col-md-12">
-						<div class="row fullscreen m-0">
-							<div class="col-auto p-0 m-0-auto">
-								<div class="d-table fullscreen">
-									<div class="d-tablecell v-middle ">
-										<ul class="row _list _social p-0">
-											<% if @mocker.facebook? %>
-												<li class="col-auto"><a class="facebook _btn_icon _2" href="https://www.facebook.com/<%= @mocker.facebook %>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-											<% end %>
-											<% if @mocker.twitter? %>
-												<li class="col-auto"><a class="twitter _btn_icon _2" href="https://twitter.com/<%= @mocker.twitter %>" target="_blank"><i class="fab fa-twitter"></i></a></li>
-											<% end %>
-											<% if @mocker.pinterest? %>
-												<li class="col-auto"><a class="pinterest _btn_icon _2" href="https://www.pinterest.com/<%= @mocker.pinterest %>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-											<% end %>
-											<% if @mocker.instagram? %>
-												<li class="col-auto"><a class="instagram _btn_icon _2" href="https://www.instagram.com/<%= @mocker.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a></li>
-											<% end %>
-											<% if @mocker.youtube? %>
-												<li class="col-auto"><a class="youtube _btn_icon _2" href="<%= @mocker.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a></li>
-											<% end %>
-										</ul>
+					<% end %>
+					<% if @mocker.facebook? || @mocker.twitter? || @mocker.pinterest? || @mocker.instagram? || @mocker.youtube? %>
+						<div class="col-12 col-sm-6 col-md-12">
+							<div class="row fullscreen m-0">
+								<div class="col-auto p-0 m-0-auto">
+									<div class="d-table fullscreen">
+										<div class="d-tablecell v-middle ">
+											<ul class="row _list _social p-0">
+												<% if @mocker.facebook? %>
+													<li class="col-auto"><a class="facebook _btn_icon _2" href="https://www.facebook.com/<%= @mocker.facebook %>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+												<% end %>
+												<% if @mocker.twitter? %>
+													<li class="col-auto"><a class="twitter _btn_icon _2" href="https://twitter.com/<%= @mocker.twitter %>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+												<% end %>
+												<% if @mocker.pinterest? %>
+													<li class="col-auto"><a class="pinterest _btn_icon _2" href="https://www.pinterest.com/<%= @mocker.pinterest %>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+												<% end %>
+												<% if @mocker.instagram? %>
+													<li class="col-auto"><a class="instagram _btn_icon _2" href="https://www.instagram.com/<%= @mocker.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+												<% end %>
+												<% if @mocker.youtube? %>
+													<li class="col-auto"><a class="youtube _btn_icon _2" href="<%= @mocker.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+												<% end %>
+											</ul>
+										</div>
 									</div>
+									<br>
 								</div>
-								<br>
 							</div>
 						</div>
-					</div>
+					<% end %>
 				</div>
-				<br>
-				<div class="row">
+				<br class="d-none d-md-block">
+				<div class="row d-none d-md-block">
 					<div class="col-12 p-0">
 						<div id="_row_sidenav1">
 							<div class="d-table fullscreen ">
@@ -146,9 +150,31 @@
 			<br>
 			<div class="row m-0">
 				<div class="col-12 p-0">
-					<div class="mocks_content" id="mocks_content">
+					<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
+					  <li class="nav-item" role="presentation">
+					    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-video"></i></a>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-heart"></i></a>
+					  </li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+					  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					  	<div class="mocks_content" id="mocks_content">
 							<%= render 'mocks' %>
+						</div>
+					  </div>
+					  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					  		<%= render 'privated_mocks' %>
+					  </div>
+					  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+					  		<%= render 'liked_mocks' %>
+					  </div>
 					</div>
+						
 					<!-- Modal Followers -->
 					<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
 					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -197,6 +223,35 @@
         width:100%;
         margin: 0;
       }
+  	}
+  	.nav-tabs._1{
+	    border-color: transparent;
+	    padding: 15px;
+	    width: max-content;
+	    margin: 0 auto;
+  	}
+  	.nav-tabs._1 .nav-link.active, .nav-tabs._1 .nav-item.show .nav-link{
+  		border-color:transparent;
+  		font-weight: 800;
+  		border-bottom: 2px solid #ff5858;
+  	}
+  	.nav-tabs._1 .nav-item a{
+  		color:#495057 !important;
+  	}
+  	._mock_mocker{
+	    border: 1px solid #eaeaea;
+	    border-radius: 6px;
+	    color: #484848;
+	    margin:0 auto;
+	    text-decoration: none !important;
+	    display: block;
+	    -webkit-transition: all .2s ease;
+	    transition: all .2s ease;
+  	}
+  	._mock_mocker:hover{
+	    color: #484848 !important;
+	    -webkit-transform: translateY(-2px);
+	    transform: translateY(-2px);
   	}
 </style>
 <script type="text/javascript">
