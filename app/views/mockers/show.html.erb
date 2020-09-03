@@ -157,9 +157,6 @@
 					  <li class="nav-item" role="presentation">
 					    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
 					  </li>
-					  <li class="nav-item" role="presentation">
-					    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-heart"></i></a>
-					  </li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
 					  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -169,9 +166,6 @@
 					  </div>
 					  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					  		<%= render 'privated_mocks' %>
-					  </div>
-					  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					  		<%= render 'liked_mocks', mock: @mock %>
 					  </div>
 					</div>
 						
