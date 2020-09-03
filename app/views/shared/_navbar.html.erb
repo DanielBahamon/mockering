@@ -136,7 +136,7 @@
                               <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount" id="navbarDropdown2">
                                 <% if mocker_signed_in? # && current_mocker.admin %>
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
-                                      <%= link_to "Edit profile", edit_mocker_registration_path, class: "nav-link" %>
+                                      <%= link_to "Settings", edit_mocker_registration_path, class: "nav-link" %>
                                       <div class="dropdown-divider"></div>
                                       <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
                                     <% else %>

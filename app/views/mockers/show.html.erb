@@ -148,71 +148,86 @@
 				</div>
 			</div>
 			<br>
-			<div class="row m-0">
-				<div class="col-12 p-0">
-					<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
-					  <li class="nav-item" role="presentation">
-					    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-video"></i></a>
-					  </li>
-					  <li class="nav-item" role="presentation">
-					    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
-					  </li>
-					  <li class="nav-item" role="presentation">
-					    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-heart"></i></a>
-					  </li>
-					</ul>
-					<div class="tab-content" id="myTabContent">
-					  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-					  	<div class="mocks_content" id="mocks_content">
-							<%= render 'mocks' %>
+
+			<% if @mocker.privated == false || @mocker.following?(current_mocker) || current_mocker == @mocker  %>
+				<div class="row m-0">
+					<div class="col-12 p-0">
+						<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
+						  <li class="nav-item" role="presentation">
+						    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-video"></i></a>
+						  </li>
+						  <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) %>
+							  <li class="nav-item" role="presentation">
+							    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
+							  </li>
+						  <% end %>
+						  <li class="nav-item" role="presentation">
+						    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-heart"></i></a>
+						  </li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+						  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						  	<div class="mocks_content" id="mocks_content">
+								<%= render 'mocks' %>
+							</div>
+						  </div>
+						  	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) %>
+							  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							  		<%= render 'privated_mocks' %>
+							  </div>
+							<% end %>
+						  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+						  		<%= render 'liked_mocks' %>
+						  </div>
 						</div>
-					  </div>
-					  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					  		<%= render 'privated_mocks' %>
-					  </div>
-					  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					  		<%= render 'liked_mocks' %>
-					  </div>
-					</div>
-						
-					<!-- Modal Followers -->
-					<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title _fw700" id="followersModalLabel">Followers</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body p-0">
-					      	<div class="list-group" id="followers">
-					      		<%= render 'followers' %> 
-							</div>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					<!-- Modal Following -->
-					<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModal" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title _fw700" id="followingModalLabel">Following</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body p-0">
-					      	<div class="list-group" id="following">
-					      		<%= render 'following' %> 
-							</div>
-					      </div>
-					    </div>
-					  </div>
+							
+						<!-- Modal Followers -->
+						<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title _fw700" id="followersModalLabel">Followers</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body p-0">
+						      	<div class="list-group" id="followers">
+						      		<%= render 'followers' %> 
+								</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- Modal Following -->
+						<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModal" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title _fw700" id="followingModalLabel">Following</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body p-0">
+						      	<div class="list-group" id="following">
+						      		<%= render 'following' %> 
+								</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 					</div>
 				</div>
-			</div>
+			<% else %>
+				<div class="row m-0">
+					<div class="col">
+						<div class="jumbotron text-center bg_white">
+							<h3 class="_fw600">This content is privated.</h3>
+						</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
@@ -223,6 +238,9 @@
         width:100%;
         margin: 0;
       }
+  	}
+  	.bg_white{
+  		background:white !important;
   	}
 </style>
 <script type="text/javascript">
