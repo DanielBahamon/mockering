@@ -1,4 +1,4 @@
-<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) %>
+<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 	<div class="_mocks_mocker row m-0">
 		<div class="col">
 			<div class="row">

@@ -59,7 +59,7 @@
 								
 					</div>
 				</div>
-				<%= '<br>' if @mocker.bio? %>
+				<br>
 				<div class="row m-0">
 					<% if @mocker.bio? %>
 					<div class="col-12 col-sm-6 col-md-12 p-0">
@@ -123,7 +123,7 @@
 													<p class="col-10 m-0">Logout</p>
 												<% end %>
 											</li>
-										<% else %>
+										<% elsif !mocker_signed_in? %>
 											<hr>
 											<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
 													<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
@@ -154,31 +154,45 @@
 					<div class="col-12 p-0">
 						<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
 						  <li class="nav-item" role="presentation">
-						    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-video"></i></a>
+						    <a class="nav-link active" id="mocks-tab" data-toggle="tab" href="#mocks" role="tab" aria-controls="mocks" aria-selected="true"><i class="fas fa-video"></i></a>
 						  </li>
-						  <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) %>
+						  <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 							  <li class="nav-item" role="presentation">
-							    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
+							    <a class="nav-link" id="privated-tab" data-toggle="tab" href="#privated" role="tab" aria-controls="privated" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
 							  </li>
 						  <% end %>
+						  <% if current_mocker == @mocker %>
 						  <li class="nav-item" role="presentation">
-						    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-heart"></i></a>
+						    <a class="nav-link" id="liked-tab" data-toggle="tab" href="#liked" role="tab" aria-controls="liked" aria-selected="false"><i class="fas fa-heart"></i></a>
 						  </li>
+						  <% end %>
 						</ul>
 						<div class="tab-content" id="myTabContent">
-						  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						  <div class="tab-pane fade show active" id="mocks" role="tabpanel" aria-labelledby="mocks-tab">
 						  	<div class="mocks_content" id="mocks_content">
-								<%= render 'mocks' %>
+						  		<% if !@mocker.mocks.count == 0 %>
+									<%= render 'mocks' %>
+								<% else %>
+									<div class="row m-0">
+										<div class="col">
+											<div class="jumbotron text-center bg_white">
+												<h3 class="_fw600">There is no mocks yet.</h3>
+											</div>
+										</div>
+									</div>
+								<% end %>
 							</div>
 						  </div>
-						  	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) %>
-							  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+						  	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
+							  <div class="tab-pane fade" id="privated" role="tabpanel" aria-labelledby="privated-tab">
 							  		<%= render 'privated_mocks' %>
 							  </div>
 							<% end %>
-						  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-						  		<%= render 'liked_mocks' %>
-						  </div>
+							<% if current_mocker == @mocker %>
+							  <div class="tab-pane fade" id="liked" role="tabpanel" aria-labelledby="liked-tab">
+							  		<%= render 'liked_mocks' %>
+							  </div>
+						  	<% end %>
 						</div>
 							
 						<!-- Modal Followers -->
