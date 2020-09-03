@@ -170,7 +170,7 @@
 						<div class="tab-content" id="myTabContent">
 						  <div class="tab-pane fade show active" id="mocks" role="tabpanel" aria-labelledby="mocks-tab">
 						  	<div class="mocks_content" id="mocks_content">
-						  		<% if !@mocker.mocks.count == 0 %>
+						  		<% if @mocker.mocks.count > 0 %>
 									<%= render 'mocks' %>
 								<% else %>
 									<div class="row m-0">
