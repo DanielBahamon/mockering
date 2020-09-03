@@ -9,8 +9,8 @@ class MockersController < ApplicationController
 		@following = @mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
 		@privated_mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:privated_mocks_page], per_page: 10).where(privated: true)
 		# @fav_mocks = @mocker.find_up_voted_items
-		@fav_mocks = @mocker.find_liked_items
-		@all_mocks = Mock.all.paginate(page: params[:following_page], per_page: 10).where(privated: false)
+		@fav_mocks = @mocker.get_up_voted Mock
+		
 	end
 
 	def create
