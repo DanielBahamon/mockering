@@ -354,6 +354,9 @@
   .p-t-0{
     padding-top: 0 !important;
   }
+  .p-t-15px{
+    padding-top: 15px !important;
+  }
   .p-t-30px{
     padding-top: 30px !important;
   }
@@ -391,7 +394,75 @@
     position: absolute;
   }
 
+  ._bgwhite{
+    background: white;
+  }
+  ._content_howmockeringworks p{
+    line-height: 2;
+    font-size: 15pt;
+  }
   
+  .listsidenav{
+    list-style:none ;
+    padding-top: 15px;
+    padding:0;
+  }
+  .listsidenav li a{
+    color:black;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 15pt;
+    position: relative;
+      padding-bottom: 9px;
+      -webkit-transition: all .2s ease;
+      transition: all .2s ease;
+  }
+  .listsidenav li a::before{
+    content:'';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background:black;
+      -webkit-transition: all .5s ease;
+      transition: all .5s ease;
+  }
+  .listsidenav li{
+    padding-top: 33pt;
+  }
+  .listsidenav li a:hover::before,
+  .listsidenav li.active a::before{
+    width: 100%;
+  }
+  .list_guidelines{
+    padding: 0;
+    list-style: none;
+  }
+  .list_guidelines li{
+    padding:15px;
+  }
+  .list_guidelines li a{
+    font-size: 15pt;
+    padding-top:15px;
+    padding-bottom: 15px; 
+  }
+  .list_guidelines li a i{
+    font-size: 10pt;
+  }
+  @media(max-width: 767px){
+    .listsidenav{
+      display: flex;
+      padding: 0;
+      padding-bottom: 15px;
+      overflow-x: auto;
+      width: 100%;
+    }
+    .listsidenav li{
+      padding: 0;
+      padding-right: 15px;
+      white-space: nowrap;
+    }
+  }
   .img-circle.avatar-medium {
       width: 30px;
       height: 30px;

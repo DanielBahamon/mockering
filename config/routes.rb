@@ -64,6 +64,27 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :howmockeringworks do
+    collection do
+      get '/fake_engagement', to: 'howmockeringworks#fake_engagement'
+      get '/impersonation', to: 'howmockeringworks#impersonation'
+      get '/infringements', to: 'howmockeringworks#infringements'
+      get '/links_content', to: 'howmockeringworks#links_content'
+      get '/spam_delusive_practices', to: 'howmockeringworks#spam_delusive_practices'
+      get '/child_safety', to: 'howmockeringworks#child_safety'
+      get '/custom_thumbnails', to: 'howmockeringworks#custom_thumbnails'
+      get '/nudity_sexual_content', to: 'howmockeringworks#nudity_sexual_content'
+      get '/suicide_self_injury', to: 'howmockeringworks#suicide_self_injury'
+      get '/harassment_cyberbullying', to: 'howmockeringworks#harassment_cyberbullying'
+      get '/dangerous_content', to: 'howmockeringworks#dangerous_content'
+      get '/hate_speech', to: 'howmockeringworks#hate_speech'
+      get '/criminal_organizations', to: 'howmockeringworks#criminal_organizations'
+      get '/violent_content', to: 'howmockeringworks#violent_content'
+      get '/featuring_firearms', to: 'howmockeringworks#featuring_firearms'
+      get '/sale_illegal_good', to: 'howmockeringworks#sale_illegal_good'
+    end
+  end
+  
   get '/notification_settings' => 'settings#edit'
   post '/notification_settings' => 'settings#update'
 
