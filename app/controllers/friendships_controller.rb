@@ -12,10 +12,9 @@ class FriendshipsController < ApplicationController
 		redirect_back fallback_location: root_path
 	end
 
-
 	private
 
-	def find_mocker
-		@mocker = Mocker.find(params[:mocker_id])
-	end
+		def find_mocker
+			@mocker = Mocker.find(params[:mocker_id])
+		end
 end

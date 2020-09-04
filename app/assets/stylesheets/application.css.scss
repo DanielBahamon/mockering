@@ -2106,9 +2106,10 @@
     color:#495057 !important;
   }
   ._mock_mocker{
-    border: 1px solid #eaeaea;
+    border: 1px solid #d6d6d6;
     border-radius: 6px;
     color: #484848;
+    background: white;
     margin:0 auto;
     text-decoration: none !important;
     display: block;
@@ -2116,10 +2117,12 @@
     transition: all .2s ease;
   }
   ._mock_mocker:hover{
-    color: #484848 !important;
+    color: #ff5858 !important;
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
-    background: ghostwhite;
+    background: #fff3f3;
+    border-color: #ff5858;
+
   }
   .answers_row{
     width: 100%;
@@ -2396,6 +2399,10 @@
   ._badge_verification{
     width: 14px;
     height: 14px;
+  }
+  ._badge_verification._2{
+    width:11px;
+    height:11px;
   }
   ._bio{
     text-align-last: center;

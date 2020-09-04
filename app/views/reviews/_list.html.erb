@@ -37,7 +37,7 @@
         </div>
         <div class="col-12 readmore p-0">
           <div class="comment d-grid" id="comment">
-            <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= r.mocker.slug %> <%= image_tag badge_icon(r.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(r.mocker) if r.mocker.verification? %> • <%= r.created_at.strftime("%d %b %y").downcase  %></small>
+            <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= r.mocker.slug %> <%= image_tag badge_icon(r.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(r.mocker) if r.mocker.verification? %> • <%= r.created_at.strftime("%d %b %y").downcase  %></small>
             <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(r.comment, html: { target: '_blank' }) %></small>
           </div>
         </div>
