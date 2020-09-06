@@ -5,9 +5,41 @@
 			<%= render 'sidenav' %>
 		</div>
 		<div class="col-12 col-md-8 _content_howmockeringworks">
+			<%= link_to :back, class: "_link_back p-0"  do %>
+      	<i class="material-icons">keyboard_arrow_left</i> <span style="font-size:10pt;">Back</span>
+      <% end %>
+      <br>
+      <br>
 			<h2 class="_fw600">Custom thumbnails</h2>
-			<p>The Community Guidelines of Mockering are designed to ensure that our community remains protected without affecting the right to free expression. They establish what is allowed and what is not allowed in Mockering, applying to all types of content on our platform, which includes videos, comments, links and thumbnails.</p>
-			<p>Check a full list of our Community Guidelines below:</p>
+			<p>Custom thumbnails that violate our community guidelines are not allowed on Mockering.</p>
+			<p>If you see thumbnails that violate this policy, please report them. For instructions on reporting violations of our Community Guidelines, please click here. If you find multiple videos or comments to report, you can report the account.</p>
+			<br>
+			<h3 class="_fw600">What this policy means to you</h3>
+			<p>If the content meets any of the descriptions below, please do not post on Mockering.</p>
+			<ul>
+				<li>Contains thumbnails of pornographic images that depict sexual acts, genitals, or fetishes for sexual gratification</li>
+				<li>Violent images with the intent of shocking or offensive</li>
+				<li>Thumbnails can mislead viewers into thinking that they are about to watch content not in the video</li>
+			</ul>
+			<p>Please note that this is not a complete list.</p>
+
+			<a class="btn _btn_collapse_examples" data-toggle="collapse" href="#collapseThumbnails" role="button" aria-expanded="false" aria-controls="collapseThumbnails">Thumbnails that aren’t appropriate for all audiences</a>
+			<div class="collapse" id="collapseThumbnails">
+			  <div class="card-body">
+			    <p>Sometimes, thumbnails may not be suitable for all audiences, but they do not violate our Community Guidelines. When this happens, we will delete the thumbnail, but will not issue a warning on your account. We will notify you that we have deleted it and you will be able to upload additional thumbnails.</p>
+			    <p>When deleting these thumbnails, please note the following:</p>
+			    <ul>
+			    	<li>The focus of the thumbnail is breasts, buttocks or genitals (clothed or unclothed)</li>
+			    	<li>Whether to portray the object in a pose or clothing intended to cause sex</li>
+			    	<li>Is the focus of the thumbnail image violent or bloody</li>
+			    	<li>Does the title, description, label or other data indicate the intention to shock or disgust the audience</li>
+			    	
+			    </ul>
+			  </div>
+			</div>
+			<br>
+			<br>
+			<%= render 'whathappen' %>
 			<br>
 			<br>
 			<br>

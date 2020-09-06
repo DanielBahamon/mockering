@@ -401,7 +401,13 @@
     line-height: 2;
     font-size: 15pt;
   }
-  
+  ._content_howmockeringworks li{
+    line-height: 2;
+    font-size: 13pt;
+  }
+  ._content_howmockeringworks ._link_back {
+    margin-left: -10px;
+  }
   .listsidenav{
     list-style:none ;
     padding-top: 15px;
@@ -462,6 +468,16 @@
       padding-right: 15px;
       white-space: nowrap;
     }
+  }
+  ._btn_collapse_examples{
+      width: 100%;
+      text-align: left;
+      padding: 15px;
+      background: white;
+      border: 1px solid #353535;
+      color: #353535;
+      font-weight: 600;
+      margin-top:6px;
   }
   .img-circle.avatar-medium {
       width: 30px;
