@@ -1,0 +1,50 @@
+<div class="container p-t-15px">
+	<%= render 'header' %>
+	<div class="row m-0">
+		<div class="col-12 col-md-4 _col_sidemenu">
+			<%= render 'sidenav' %>
+		</div>
+		<div class="col-12 col-md-8 _content_howmockeringworks">
+			<h2 class="_fw600">What is Mockering doing about content that violates our Community Guidelines?</h2>
+			<br>
+			<p>After review by our trained reviewers, Mockering will take action on the flagged videos. They evaluate whether the content actually violates our policies and protect content with educational, documentary, scientific or artistic purposes. Our team of reviewers removed content that violated our policies and restricted ages, which may not be suitable for all audiences. Our automatic reporting system can also help us automatically identify and delete spam, and re-upload content that has been reviewed and determined to violate our policies.</p>
+			<br>
+			<h3 class="_fw600">Strikes</h3>
+			<p>If our reviewers determine that content violates our Community Guidelines, we will remove the content and send a notification to the creator. Creators will receive a warning when they violate our Community Guidelines for the first time, but they will not cause any damage to the account. After receiving the warning, we will post a Community Guidelines strike to the account, and the account will be temporarily restricted. accounts that received three strikes within 90 days will be terminated. accounts that specifically violate our policies or seriously abuse the platform will bypass our alert system and be terminated. If the creator believes there is a mistake, they can appeal all strikes and dismissals, and our team will review the decision.</p>
+			<br>
+			<b>Resources</b>
+			<ul class="_list_no_style">
+				<li><%= link_to strikes_howmockeringworks_path, target: "_blank", class: "_fs15pt" do %>
+						Learn more about Strikes on Mockering <i class="fas fa-external-link-alt" style="font-size: 10pt;"></i>
+					<% end %>
+				</li>
+				<li><%= link_to appeal_howmockeringworks_path, target: "_blank", class: "_fs15pt" do %>
+						Appeal a strike <i class="fas fa-external-link-alt" style="font-size: 10pt;"></i>
+					<% end %></li>
+			</ul>
+			<br>
+			<h3 class="_fw600">Age restricting Content</h3>
+			<p>Sometimes the content does not violate our community guidelines, but may not be suitable for audiences under the age of 18. In this case, our review team will set an age restriction on the video so that viewers under the age of 18, logged out users, or users who have enabled restricted mode cannot see the video. If the creator thinks it is not suitable for young audiences, they can also choose to limit the age of the content they upload.</p>
+			<br>
+			<b>Resources</b>
+			<ul class="_list_no_style">
+				<li><%= link_to age_restricted_howmockeringworks_path, target: "_blank", class: "_fs15pt" do %>
+						Learn more about Strikes on Mockering <i class="fas fa-external-link-alt" style="font-size: 10pt;"></i>
+					<% end %>
+				</li>
+			</ul>
+			<br>
+			<br>
+			<br>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	._fs15pt{
+		font-size:15pt;
+	}
+	._list_no_style{
+		list-style: none;
+		padding:0;
+	}
+</style>

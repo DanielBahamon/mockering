@@ -66,9 +66,10 @@ Rails.application.routes.draw do
 
   resources :howmockeringworks do
     collection do
+      get '/detecting_infringements', to: 'howmockeringworks#detecting_infringements'
+      get '/enforcing', to: 'howmockeringworks#enforcing'
       get '/fake_engagement', to: 'howmockeringworks#fake_engagement'
       get '/impersonation', to: 'howmockeringworks#impersonation'
-      get '/infringements', to: 'howmockeringworks#infringements'
       get '/links_content', to: 'howmockeringworks#links_content'
       get '/spam_delusive_practices', to: 'howmockeringworks#spam_delusive_practices'
       get '/child_safety', to: 'howmockeringworks#child_safety'
@@ -82,6 +83,9 @@ Rails.application.routes.draw do
       get '/violent_content', to: 'howmockeringworks#violent_content'
       get '/featuring_firearms', to: 'howmockeringworks#featuring_firearms'
       get '/sale_illegal_good', to: 'howmockeringworks#sale_illegal_good'
+      get '/strikes', to: 'howmockeringworks#strikes'
+      get '/appeal', to: 'howmockeringworks#appeal'
+      get '/age_restricted', to: 'howmockeringworks#age_restricted'
     end
   end
   
