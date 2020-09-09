@@ -91,6 +91,7 @@ Rails.application.routes.draw do
       get '/safetypolicies', to: 'safetypolicies#index'
       get '/safetypolicies/parent', to: 'safetypolicies#parent'
       get '/copyrights', to: 'copyrights#index'
+      get '/copyrights/form_notice', to: 'copyrights#form_notice'
     end
   end
   
