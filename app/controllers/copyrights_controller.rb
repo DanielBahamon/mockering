@@ -1,0 +1,2 @@
+class CopyrightsController < ApplicationController
+end

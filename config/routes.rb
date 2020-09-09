@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
   resources :howmockeringworks do
     collection do
+      get '/policy_safety_copyright', to: 'howmockeringworks#policy_safety_copyright'
       get '/detecting_infringements', to: 'howmockeringworks#detecting_infringements'
       get '/enforcing', to: 'howmockeringworks#enforcing'
       get '/fake_engagement', to: 'howmockeringworks#fake_engagement'
@@ -86,6 +87,9 @@ Rails.application.routes.draw do
       get '/strikes', to: 'howmockeringworks#strikes'
       get '/appeal', to: 'howmockeringworks#appeal'
       get '/age_restricted', to: 'howmockeringworks#age_restricted'
+      get '/safetypolicies', to: 'safetypolicies#index'
+      get '/safetypolicies/parent', to: 'safetypolicies#parent'
+      get '/copyrights', to: 'copyrights#index'
     end
   end
   
@@ -105,6 +109,7 @@ Rails.application.routes.draw do
   get 'suscripciones' => 'subscriptions#es'
   get 'terms' => 'pages#terms'
   get 'policy' => 'pages#policy'
+  get 'copyright' => 'pages#copyright'
   get 'search' => 'pages#search'
 
 
