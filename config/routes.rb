@@ -87,6 +87,7 @@ Rails.application.routes.draw do
       get '/strikes', to: 'howmockeringworks#strikes'
       get '/appeal', to: 'howmockeringworks#appeal'
       get '/age_restricted', to: 'howmockeringworks#age_restricted'
+      get '/data_processing_terms', to: 'howmockeringworks#data_processing_terms'
       get '/safetypolicies', to: 'safetypolicies#index'
       get '/safetypolicies/parent', to: 'safetypolicies#parent'
       get '/copyrights', to: 'copyrights#index'
@@ -108,7 +109,7 @@ Rails.application.routes.draw do
   get 'subscriptions' => 'subscriptions#index'
   get 'suscripciones' => 'subscriptions#es'
   get 'terms' => 'pages#terms'
-  get 'policy' => 'pages#policy'
+  get 'privacy' => 'pages#privacy'
   get 'copyright' => 'pages#copyright'
   get 'search' => 'pages#search'
 
