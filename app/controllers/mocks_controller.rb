@@ -66,6 +66,10 @@ class MocksController < ApplicationController
 	    @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
 		@related_mocks = @mock.find_related_tags.where(privated: false)
+		@reported = MockReport.where(mock_id: @mock.id).count
+		if @reported > 5
+			@mock.update(reported: true)
+		end
 	end
 
 	def like
