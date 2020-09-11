@@ -2,6 +2,9 @@ class Answer < ApplicationRecord
 	belongs_to :mock
 	belongs_to :mocker
 	belongs_to :review
+
+	has_many :reports
+	
 	acts_as_votable
 
 	after_create :add_mentions
@@ -9,5 +12,4 @@ class Answer < ApplicationRecord
 	def add_mentions
 		Mention.create_to_review(self)
 	end
-
 end

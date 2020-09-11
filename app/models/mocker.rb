@@ -86,6 +86,7 @@ class Mocker < ApplicationRecord
     has_many :passive_friendships, class_name: "Friendship", foreign_key: "followed_id", dependent: :destroy
     has_many :following, through: :active_friendships, source: :followed
     has_many :followers, through: :passive_friendships, source: :follower
+    has_many :mock_reports
   	has_one :setting
   	after_create :add_setting
   	

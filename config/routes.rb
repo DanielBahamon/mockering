@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   # root "mocks#index"
   devise_scope :mocker do
+
     authenticated  do
       root to: 'mocks#index'
     end
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
     unauthenticated do
       root to: 'devise/sessions#new', as: 'unauthenticated_root'
     end
+
   end
 
   resources :mockers do
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
       patch 'update_phone_number' => 'mockers#update_phone_number'
     end
   end
+
   devise_for :mockers,
             path: '',
             path_names: {
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
               omniauth_callbacks: 'omniauth_callbacks',
               registrations: 'registrations'
             }
+
   resources :mocks do
   	member do
   		put 'like' => 'mocks#like'
@@ -39,6 +43,7 @@ Rails.application.routes.draw do
     get '/tagged', to: "mocks#tagged", as: :tagged, only: [:index, :show]
   end
 
+  resources :mock_reports
 
   resources :reviews do
     member do
@@ -94,6 +99,8 @@ Rails.application.routes.draw do
       get '/copyrights/form_notice', to: 'copyrights#form_notice'
     end
   end
+
+  
   
   get '/notification_settings' => 'settings#edit'
   post '/notification_settings' => 'settings#update'
@@ -123,11 +130,8 @@ Rails.application.routes.draw do
 
   # This is for username validation
   get 'username_validator/:slug', to: 'mockers#username_validator'
-
-
   get 'mentions', to: 'mockers#mentions'
   get 'popular', to: 'mocks#popular'
   get 'latest', to: 'mocks#latest'
   
-
 end

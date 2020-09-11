@@ -1,4 +1,5 @@
 class MockersController < ApplicationController
+
 	before_action :authenticate_mocker!, except: [:show, :username_validator]
    	before_action :set_mocker, only: [:show, :edit, :update, :destroy]
 

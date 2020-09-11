@@ -1,0 +1,12 @@
+<% @report = current_mocker.mock_reports.new %>
+<%= form_for @report do |f| %>
+  <div class="col-12">
+    <div class="field">
+      <%= f.label :classification %><br/>
+      <%= f.select :classification, MockReport.classifications.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
+    </div>
+  </div>
+  <%= f.hidden_field :mocker_id, value: current_mocker.id %>
+  <%= f.hidden_field :mock_id, value: mock.id %>
+  <%= f.submit 'submit' %>
+<% end %>

@@ -21,7 +21,6 @@ class MocksController < ApplicationController
 
 	def popular
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-    	
     	@mocks = Mock.joins(:impressions)
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'")
     	.group(:id).order(impressions_count: :desc)

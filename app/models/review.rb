@@ -1,10 +1,11 @@
 class Review < ApplicationRecord
 	belongs_to :mock
 	belongs_to :mocker
+	
 	has_many :answers
+	has_many :reports
+
 	acts_as_votable
-
-
 
 	after_create :add_mentions
 

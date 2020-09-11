@@ -9,6 +9,7 @@ class Mock < ApplicationRecord
     acts_as_taggable_on :tags
 	has_many :reviews
 	has_many :answers
+	has_many :mock_reports
   	
 	enum category: {
 		 Original: 0,
