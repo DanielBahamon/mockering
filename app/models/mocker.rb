@@ -88,6 +88,7 @@ class Mocker < ApplicationRecord
     has_many :followers, through: :passive_friendships, source: :follower
     has_many :mock_appeals
     has_many :mock_reports
+    has_many :mocker_appeals
     has_many :mocker_reports
   	has_one :setting
   	after_create :add_setting

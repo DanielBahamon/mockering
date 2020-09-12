@@ -1,0 +1,2 @@
+module MockerAppealsHelper
+end

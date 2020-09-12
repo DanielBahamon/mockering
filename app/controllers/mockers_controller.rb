@@ -11,16 +11,42 @@ class MockersController < ApplicationController
 		@privated_mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:privated_mocks_page], per_page: 10).where(privated: true)
 		# @fav_mocks = @mocker.find_up_voted_items
 		@fav_mocks = @mocker.get_up_voted Mock
+
 		@reported = MockerReport.where(reported_id: @mocker.id).count
-		if @mocker.verification == nil
-			if @reported > 10
-				@mocker.update(reported: true)
+		@reported_0 = MockerReport.where(reported_id: @mocker.id, classification: 0).count
+		@reported_1 = MockerReport.where(reported_id: @mocker.id, classification: 1).count
+		@reported_2 = MockerReport.where(reported_id: @mocker.id, classification: 2).count
+		@reported_3 = MockerReport.where(reported_id: @mocker.id, classification: 3).count
+		@reported_4 = MockerReport.where(reported_id: @mocker.id, classification: 4).count
+		@reported_5 = MockerReport.where(reported_id: @mocker.id, classification: 5).count
+		@reported_6 = MockerReport.where(reported_id: @mocker.id, classification: 6).count
+
+		@appealed_reason_0 = MockerAppeal.where(reported_id: @mocker.id, reason: 0).count
+		@appealed_reason_1 = MockerAppeal.where(reported_id: @mocker.id, reason: 1).count
+		@appealed_reason_2 = MockerAppeal.where(reported_id: @mocker.id, reason: 2).count
+		@appealed_reason_3 = MockerAppeal.where(reported_id: @mocker.id, reason: 3).count
+
+		if @reported > 10
+			@mocker.update(reported: true)
+		elsif @reported_0 > 5 || @reported_1 > 2 || @reported_2 > 2 || @reported_3 > 2 || @reported_4 > 2 || @reported_5 > 2 || @reported_6 > 2 
+			@mocker.update(reported: true)
+		end
+
+		unless @reported_0 > 10 || @reported_1 > 2 || @reported_2 > 5 || @reported_3 > 2 || @reported_4 > 2 || @reported_5 > 20 || @reported_6 > 10
+			if @appealed_reason_0 > 10
+				@mocker.update(reported: false)
 			end
-		else
-			if @reported > 50
-				@mocker.update(reported: true)
+			if @appealed_reason_1 > 10
+				@mocker.update(reported: false)
+			end
+			if @appealed_reason_2 > 10
+				@mocker.update(reported: false)
+			end
+			if @appealed_reason_3 > 50
+				@mocker.update(reported: false)
 			end
 		end
+
 	end
 
 	def create

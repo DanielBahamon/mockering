@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200912011147) do
+ActiveRecord::Schema.define(version: 20200912024553) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -130,6 +130,15 @@ ActiveRecord::Schema.define(version: 20200912011147) do
     t.string "mocker_id"
     t.string "mock_id"
     t.integer "classification"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mocker_appeals", force: :cascade do |t|
+    t.string "mocker_id"
+    t.string "reported_id"
+    t.integer "reason"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

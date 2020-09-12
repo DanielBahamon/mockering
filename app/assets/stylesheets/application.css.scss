@@ -352,9 +352,11 @@
     float: right !important;
     color: #9c9c9c !important;
   }
-  ._select._1 {
-      width: 100%;
-      height: 40px;
+  ._form._1 select {
+    width: 100%;
+    height: 40px;
+    border-color: #ced4da;
+    border-radius: 3px;
   }
   .p-b-0{
     padding-bottom: 0 !important;

@@ -1,9 +1,9 @@
-<%= form_for current_mocker.mocker_reports.new do |f| %>
+<%= form_for current_mocker.mocker_appeals.new do |f| %>
 <div class="_form _1">
   <div class="col-12">
     <div class="field">
-      <%= f.label :classification %> <br>
-      <%= f.select :classification, MockerReport.classifications.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select _1", required: true %>
+      <%= f.label :reason %> <br>
+      <%= f.select :reason, MockerAppeal.reasons.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select _1", required: true %>
 	  <%= f.hidden_field :mocker_id, value: current_mocker.id %>
 	  <%= f.hidden_field :reported_id, value: mocker.id %>
     </div>
@@ -12,7 +12,7 @@
   	<br>
     <div class="field">
     	<%= f.label :comment %> <br>
-    	<%= f.text_area :comment, class: '_textarea _2 form-control', placeholder: "Comment your report", rows: "3" %>
+    	<%= f.text_area :comment, class: '_textarea _2 form-control', placeholder: "Comment your appeal", rows: "3" %>
     </div>
   </div>
   <div class="col-12">

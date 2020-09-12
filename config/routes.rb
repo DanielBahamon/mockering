@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   resources :mock_appeals
   resources :mock_reports
+  resources :mocker_appeals
   resources :mocker_reports
 
   resources :reviews do
