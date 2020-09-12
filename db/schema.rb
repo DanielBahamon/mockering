@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200911153139) do
+ActiveRecord::Schema.define(version: 20200912011147) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -117,9 +117,27 @@ ActiveRecord::Schema.define(version: 20200911153139) do
     t.index ["mocker_id"], name: "index_messages_on_mocker_id"
   end
 
+  create_table "mock_appeals", force: :cascade do |t|
+    t.string "mocker_id"
+    t.string "mock_id"
+    t.integer "reason"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mock_reports", force: :cascade do |t|
     t.string "mocker_id"
     t.string "mock_id"
+    t.integer "classification"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mocker_reports", force: :cascade do |t|
+    t.string "mocker_id"
+    t.string "reported_id"
     t.integer "classification"
     t.string "comment"
     t.datetime "created_at", null: false
@@ -165,6 +183,7 @@ ActiveRecord::Schema.define(version: 20200911153139) do
     t.boolean "phone_verified"
     t.boolean "privated", default: false
     t.boolean "show_mocks_privated", default: false
+    t.boolean "reported", default: false
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true

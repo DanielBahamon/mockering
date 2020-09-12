@@ -15,7 +15,7 @@ class MocksController < ApplicationController
 			.paginate(page: params[:page], per_page: 20)
 			.where(privated: false)
 		else
-			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 20).where(privated: false)
+			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 20).where(privated: false, reported: false)
 		end
 	end
 
@@ -25,7 +25,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false)
+    	.where(privated: false, reported: false)
     	# @mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}  '").group("impressions.impressionable_id").order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
@@ -36,7 +36,7 @@ class MocksController < ApplicationController
     	@mocks = Mock.all.where("mocks.created_at >= '#{1.week.ago}'")
     	.order("created_at DESC")
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false)
+    	.where(privated: false, reported: false)
 		# @mocks = Mock.all.order('created_at DESC').paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
@@ -65,11 +65,44 @@ class MocksController < ApplicationController
 	    # Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
-		@related_mocks = @mock.find_related_tags.where(privated: false)
+		@related_mocks = @mock.find_related_tags.where(privated: false, reported: false)
+
 		@reported = MockReport.where(mock_id: @mock.id).count
-		if @reported > 5
+		@reported_0 = MockReport.where(mock_id: @mock.id, classification: 0).count
+		@reported_1 = MockReport.where(mock_id: @mock.id, classification: 1).count
+		@reported_2 = MockReport.where(mock_id: @mock.id, classification: 2).count
+		@reported_3 = MockReport.where(mock_id: @mock.id, classification: 3).count
+		@reported_4 = MockReport.where(mock_id: @mock.id, classification: 4).count
+		@reported_5 = MockReport.where(mock_id: @mock.id, classification: 5).count
+		@reported_6 = MockReport.where(mock_id: @mock.id, classification: 6).count
+
+		@appealed_reason_0 = MockAppeal.where(mock_id: @mock.id, reason: 0).count
+		@appealed_reason_1 = MockAppeal.where(mock_id: @mock.id, reason: 1).count
+		@appealed_reason_2 = MockAppeal.where(mock_id: @mock.id, reason: 2).count
+		@appealed_reason_3 = MockAppeal.where(mock_id: @mock.id, reason: 3).count
+
+		if @reported > 10
+			@mock.update(reported: true)
+		elsif @reported_0 > 5 || @reported_1 > 2 || @reported_2 > 2 || @reported_3 > 2 || @reported_4 > 2 || @reported_5 > 2 || @reported_6 > 2 
 			@mock.update(reported: true)
 		end
+
+		unless @reported_0 > 10 || @reported_1 > 2 || @reported_2 > 5 || @reported_3 > 2 || @reported_4 > 2 || @reported_5 > 20 || @reported_6 > 10
+			if @appealed_reason_0 > 10
+				@mock.update(reported: false)
+			end
+			if @appealed_reason_1 > 10
+				@mock.update(reported: false)
+			end
+			if @appealed_reason_2 > 10
+				@mock.update(reported: false)
+			end
+			if @appealed_reason_3 > 50
+				@mock.update(reported: false)
+			end
+		end
+
+			
 	end
 
 	def like

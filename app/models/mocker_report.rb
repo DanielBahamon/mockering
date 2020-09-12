@@ -1,8 +1,6 @@
-class MockReport < ApplicationRecord
+class MockerReport < ApplicationRecord
 	belongs_to :mocker
-	belongs_to :mock
-
-	validates_uniqueness_of :mocker_id, scope: [:mock_id]
+	validates_uniqueness_of :mocker_id, scope: [:reported_id]
 
 	enum classification: {
 		Copyright: 0,

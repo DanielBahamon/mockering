@@ -11,7 +11,16 @@ class MockersController < ApplicationController
 		@privated_mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:privated_mocks_page], per_page: 10).where(privated: true)
 		# @fav_mocks = @mocker.find_up_voted_items
 		@fav_mocks = @mocker.get_up_voted Mock
-		
+		@reported = MockerReport.where(reported_id: @mocker.id).count
+		if @mocker.verification == nil
+			if @reported > 10
+				@mocker.update(reported: true)
+			end
+		else
+			if @reported > 50
+				@mocker.update(reported: true)
+			end
+		end
 	end
 
 	def create

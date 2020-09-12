@@ -43,7 +43,9 @@ Rails.application.routes.draw do
     get '/tagged', to: "mocks#tagged", as: :tagged, only: [:index, :show]
   end
 
+  resources :mock_appeals
   resources :mock_reports
+  resources :mocker_reports
 
   resources :reviews do
     member do

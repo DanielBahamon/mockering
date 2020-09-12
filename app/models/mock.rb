@@ -10,6 +10,7 @@ class Mock < ApplicationRecord
 	has_many :reviews
 	has_many :answers
 	has_many :mock_reports
+	has_many :mock_appeals
   	
 	enum category: {
 		 Original: 0,
@@ -22,7 +23,8 @@ class Mock < ApplicationRecord
 		 Humor: 7,
 		 Training: 8,
 		 Growth: 9,
-		 Tribute: 10
+		 Tribute: 10,
+		 Protest: 11
 	}
 
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/unnamed.jpg"
