@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   resources :mock_reports
   resources :mocker_appeals
   resources :mocker_reports
+  resources :conversation_reports
 
   resources :reviews do
     member do

@@ -2,7 +2,6 @@ class Message < ApplicationRecord
   belongs_to :mocker
   belongs_to :conversation
 
-  has_many :reports
   
   after_create_commit {
   	MessageBroadcastJob.perform_later(self)

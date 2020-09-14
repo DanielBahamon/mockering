@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
 		else
 			redirect_to conversations_path, alert: "Opps! It's not your conversation."
 		end
+
 	end
 
 	def new

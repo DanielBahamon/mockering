@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200912024553) do
+ActiveRecord::Schema.define(version: 20200914160216) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -37,11 +37,22 @@ ActiveRecord::Schema.define(version: 20200912024553) do
     t.index ["voter_type", "voter_id"], name: "index_bolds_on_voter_type_and_voter_id"
   end
 
+  create_table "conversation_reports", force: :cascade do |t|
+    t.string "mocker_id"
+    t.string "conversation_id"
+    t.integer "classification"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "other_id"
+  end
+
   create_table "conversations", id: :string, limit: 36, force: :cascade do |t|
     t.string "sender_id"
     t.string "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "reported", default: false
     t.index ["id"], name: "sqlite_autoindex_conversations_1", unique: true
   end
 

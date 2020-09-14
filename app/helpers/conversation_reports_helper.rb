@@ -1,0 +1,2 @@
+module ConversationReportsHelper
+end

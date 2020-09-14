@@ -5,12 +5,13 @@ class MockReport < ApplicationRecord
 	validates_uniqueness_of :mocker_id, scope: [:mock_id]
 
 	enum classification: {
-		Copyright: 0,
-		Obscene: 1,
-		Violence: 2,
-		Suicide: 3,
-		"Self-injury": 4,
-		Inappropriate: 5,
-		Bullying: 6
+		Spam: 0,
+		Copyright: 1,
+		Obscene: 2,
+		Violence: 3,
+		Suicide: 4,
+		"Self-injury": 5,
+		Inappropriate: 6,
+		Bullying: 7
 	}
 end

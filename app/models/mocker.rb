@@ -79,6 +79,7 @@ class Mocker < ApplicationRecord
     def following?(mocker)
     	following.include?(mocker)
     end
+    
     has_many :mocks
     has_many :messages, foreign_key: :conversation_id
     has_many :notifications, foreign_key: :recipient_id
@@ -90,6 +91,8 @@ class Mocker < ApplicationRecord
     has_many :mock_reports
     has_many :mocker_appeals
     has_many :mocker_reports
+    has_many :conversation_reports
+
   	has_one :setting
   	after_create :add_setting
   	
