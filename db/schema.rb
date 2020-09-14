@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200914160216) do
+ActiveRecord::Schema.define(version: 20200914170959) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
     t.string "mock_id"
     t.string "mocker_id"
     t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blocks", force: :cascade do |t|
+    t.string "mocker_id"
+    t.string "blocked_id"
+    t.integer "reason"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

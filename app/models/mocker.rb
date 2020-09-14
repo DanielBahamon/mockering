@@ -92,6 +92,7 @@ class Mocker < ApplicationRecord
     has_many :mocker_appeals
     has_many :mocker_reports
     has_many :conversation_reports
+    has_many :blocks
 
   	has_one :setting
   	after_create :add_setting

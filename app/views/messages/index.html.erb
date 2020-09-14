@@ -1,50 +1,60 @@
 <% content_for :title, ": Messages to @#{@other.slug}" %>
 <br>
-<% if @conversation.reported == false %>
-	<div class="container _1">
-		<div class="dashboard-chats">
-			
-			<div class="row">
-				<div class="_conversation_other text-center">
-					<%= link_to @other, class: "btn btn-default" do %>
-						<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
-						<strong>@<%= @other.slug %></strong>
-					<% end %>
-				</div>
-				<div class="col"><br>
-			<br>
-			<br>
-					<div id="chatbox">
-						<%= render @messages %>
+<% @blocked = Block.where(mocker_id: current_mocker, blocked_id: @other, status: true).present?
+   @blocked_loop = Block.where(mocker_id: @other, blocked_id: current_mocker, status: true).present? %>
+<% unless @blocked == true || @blocked_loop == true %>
+	<% if @conversation.reported == false %>
+		<div class="container _1">
+			<div class="dashboard-chats">
+				
+				<div class="row">
+					<div class="_conversation_other text-center">
+						<%= link_to @other, class: "btn btn-default" do %>
+							<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
+							<strong>@<%= @other.slug %></strong>
+						<% end %>
 					</div>
-					<br>
-					<br>
-					<div class="_cont_form_chat">
-						<div class="container p-0">
-							<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
-							<%= form_for [@conversation, @conversation.messages.new], class: "input-group mb-3 _1", remote: true do |f| %>
-								<div class="input-group-prepend">
-									<%= f.text_field :body, placeholder: "Your message...", class: "form-control _input_group _1", "aria-describedby": "basic-addon1", required: true, maxlength: "200" %>
-									<%= f.submit "Send message", class: "input-group-text _1" %>
-								</div>
-								<%= f.hidden_field :mocker_id, value: current_mocker.id %>
-								<br>
-								<br>
-								<br>
-							<% end %>
+					<div class="col"><br>
+				<br>
+				<br>
+						<div id="chatbox">
+							<%= render @messages %>
 						</div>
+						<br>
+						<br>
+						<div class="_cont_form_chat">
+							<div class="container p-0">
+								<input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
+								<%= form_for [@conversation, @conversation.messages.new], class: "input-group mb-3 _1", remote: true do |f| %>
+									<div class="input-group-prepend">
+										<%= f.text_field :body, placeholder: "Your message...", class: "form-control _input_group _1", "aria-describedby": "basic-addon1", required: true, maxlength: "200" %>
+										<%= f.submit "Send message", class: "input-group-text _1" %>
+									</div>
+									<%= f.hidden_field :mocker_id, value: current_mocker.id %>
+									<br>
+									<br>
+									<br>
+								<% end %>
+							</div>
+						</div>
+						<br>
+						<br>
+						<br>
 					</div>
-					<br>
-					<br>
-					<br>
 				</div>
 			</div>
 		</div>
-	</div>
+	<% else %>
+		<div class="container">
+			<div class="jumbotron text-center">
+				<h3 class="_fw600">This conversation has been reported.</h3>
+			</div>
+		</div>
+	<% end %>
 <% else %>
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h3 class="_fw600">This conversation has been reported.</h3>
+			<h3 class="_fw600">This conversations isn't permitted.</h3>
 		</div>
 	</div>
 <% end %>
