@@ -145,7 +145,8 @@ class MockersController < ApplicationController
 	end
 
 	def mocker_params
-		params.require(:mocker).permit(:first_name, :last_name, :slug, :bio, :birthday, :photo, :coverpage, 
-									   :facebook, :twitter, :pinterest, :instagram, :youtube, :tag_list, :phone_number, :pin)
+		params.require(:mocker).permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, 
+                    :bio, :photo, :tag_list, :coverpage, :facebook, :twitter, :instagram, :pinterest, :youtube,
+                    :phone_number, :privated, :show_mocks_privated)
 	end
 end

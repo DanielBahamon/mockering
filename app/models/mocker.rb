@@ -40,7 +40,7 @@ class Mocker < ApplicationRecord
 
 	validates :slug, format: { without: /\s/ , message: "must contain no spaces" }
   	validates :slug, :uniqueness => true
-  	validates :phone_number, phone: true
+  	# validates :phone_number, phone: true
   	# validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
 	def set_uuid
