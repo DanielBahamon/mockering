@@ -1,23 +1,28 @@
 <div class="container">
+	<br>
 	<h3 class="_fw600">Policy, Safety and Copyright</h3>
 	<br>
 	<div class="row">
 		<div class="col-12 col-sm-6 col-lg-4">
 			<b>Mockering policies</b>
 			<ul>
-				<li></li>
+				<li><%= link_to delusive_policy_howmockeringworks_path do %>Delusive practices<% end %></li>
+				<li><%= link_to sensitive_policy_howmockeringworks_path do %>Sensitive content<% end %></li>
+				<li><%= link_to dangerous_policy_howmockeringworks_path do %>Dangerous content<% end %></li>
+				<li><%= link_to regulated_policy_howmockeringworks_path do %>Regulated goods<% end %></li>
 			</ul>
 		</div>
 		<div class="col-12 col-sm-6 col-lg-4">
 			<b>Privacy and safety center</b>
 			<ul>
-				<li></li>
+				<li><%= link_to privacy_resources_howmockeringworks_path do %>Privacy resources<% end %></li>
+				<li><%= link_to suicide_self_injury_howmockeringworks_path do %>Safety resources<% end %></li>
 			</ul>
 		</div>
 		<div class="col-12 col-sm-6 col-lg-4">
 			<b>Reporting and enforcing</b>
 			<ul>
-				<li></li>
+				<li><%= link_to reporting_howmockeringworks_path do %>Reporting<% end %></li>
 			</ul>
 		</div>
 		<div class="col-12 col-sm-6 col-lg-4">
@@ -34,3 +39,15 @@
 		</div>
 	</div>
 </div>
+<style type="text/css">
+	ul{
+		list-style: none;
+		padding-left: 0;
+	}
+	ul li{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		line-height: 1.5;
+		font-size: 14pt;
+	}
+</style>

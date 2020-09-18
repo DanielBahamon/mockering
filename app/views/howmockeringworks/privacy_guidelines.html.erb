@@ -1,0 +1,22 @@
+<div class="container p-t-15px">
+	<%= render 'header' %>
+	<div class="row m-0">
+		<div class="col-12 col-md-4 _col_sidemenu">
+			<%= render 'sidenav' %>
+		</div>
+		<div class="col-12 col-md-8 _content_howmockeringworks">
+			<%= link_to :back, class: "_link_back p-0"  do %>
+	    	<i class="material-icons">keyboard_arrow_left</i> <span style="font-size:10pt;">Back</span>
+	    <% end %>
+	    <br>
+	    <br>
+			<h2 class="_fw600">Privacy Guidelines</h2>
+			<br>
+			<br>
+			<%= render 'whathappen' %>
+			<br>
+			<br>
+			<br>
+		</div>
+	</div>
+</div>

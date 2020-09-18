@@ -98,8 +98,20 @@ Rails.application.routes.draw do
       get '/appeal', to: 'howmockeringworks#appeal'
       get '/age_restricted', to: 'howmockeringworks#age_restricted'
       get '/data_processing_terms', to: 'howmockeringworks#data_processing_terms'
+
+      get '/sensitive_policy', to: 'howmockeringworks#sensitive_policy'
+      get '/delusive_policy', to: 'howmockeringworks#delusive_policy'
+      get '/dangerous_policy', to: 'howmockeringworks#dangerous_policy'
+      get '/regulated_policy', to: 'howmockeringworks#regulated_policy'
+      get '/privacy_resources', to: 'howmockeringworks#privacy_resources'
+      get '/protecting_identity', to: 'howmockeringworks#protecting_identity'
+      get '/video_private', to: 'howmockeringworks#video_private'
+      get '/privacy_guidelines', to: 'howmockeringworks#privacy_guidelines'
+      get '/reporting', to: 'howmockeringworks#reporting'
+
       get '/safetypolicies', to: 'safetypolicies#index'
       get '/safetypolicies/parent', to: 'safetypolicies#parent'
+
       get '/copyrights', to: 'copyrights#index'
       get '/copyrights/form_notice', to: 'copyrights#form_notice'
     end
