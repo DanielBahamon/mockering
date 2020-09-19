@@ -22,14 +22,17 @@
             <div class="col-12">
               <p class="or"><span>Or</span></p>
             </div>
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <%= devise_error_messages! %>
                 <% flash.each do |key, value| %>
                    <div class="flash <%= key %>"><%= value %></div>
                 <% end %>
             </div>
             <div class="col-12 _col_inputsaccount p-0">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                <%= f.error_notification %>
+                <%= f.full_error :confirmation_token %>
                 <div class="form-group" style="margin-bottom: 15px;">
                   <section class="col-12 _col_inputsaccount p-b-0">
                     <%= f.label "Username / Email" %>
