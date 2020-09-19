@@ -170,7 +170,7 @@ class MocksController < ApplicationController
 	end
 
 	def mock_params
-		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated)
+		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted)
 	end
 
 	def set_search

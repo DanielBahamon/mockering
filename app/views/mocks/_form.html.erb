@@ -64,7 +64,19 @@
               <div class="col-12 col-sm-6">
                 <div class="field">
                   <%= f.label :category %><br/>
-                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
+                  <%= select_tag(:category, options_for_select([
+                                                    ['Original', 0], 
+                                                    ['Report', 1], 
+                                                    ['Reaction', 2], 
+                                                    ['Tutorial', 3], 
+                                                    ['Gameplay', 4], 
+                                                    ['Podcast', 5], 
+                                                    ['Videoclip', 6], 
+                                                    ['Humor', 7], 
+                                                    ['Training', 8], 
+                                                    ['Growth', 9], 
+                                                    ['Tribute', 10], 
+                                                    ['Protest', 11]], 0), class: "form-control _select", required: true) %>
                 </div>
               </div>
               <div class="col-12">
@@ -85,6 +97,17 @@
                 </div>
               </div>
               <div class="col-12 col-sm-6">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle">
+                        <div class="field"  style="padding:15px;">
+                            <label class="_fw600">
+                                <%= f.check_box :age_restricted %> Age restriction
+                            </label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
                 <div class="field">
                   <%= f.label :credits %><br/>
                   <%= f.text_field :credits, class: 'form-control', required: true %>
@@ -92,7 +115,7 @@
               </div>
               <div class="col-12">
                 <br>
-                <div class="field">
+                <div class="field _tags_form">
                   <%= f.label 'Tags' %><br/>
                   <ul class="ks-cboxtags">
                     <li>
@@ -524,16 +547,16 @@
 <script type="text/javascript">
   var mvp = 5;
   $(document).ready(function () {
-      $("input:checkbox").each(function (index) {
+      $("._tags_form input:checkbox").each(function (index) {
           /*this.checked = (index < mvp);*/
       }).click(function () {
-          en_dis= $("input:checkbox:checked").length < mvp
+          en_dis= $("._tags_form input:checkbox:checked").length < mvp
           $('#button-id').prop('disabled', en_dis);
           // to disable other checkboxes
-          $('input:checkbox:checked').length >= mvp &&
-              $("input:checkbox:not(:checked)").prop('disabled',true);
-          $('input:checkbox:checked').length < mvp &&
-              $("input:checkbox:not(:checked)").prop('disabled',false);
+          $('._tags_form input:checkbox:checked').length >= mvp &&
+              $("._tags_form input:checkbox:not(:checked)").prop('disabled',true);
+          $('._tags_form input:checkbox:checked').length < mvp &&
+              $("._tags_form input:checkbox:not(:checked)").prop('disabled',false);
       }).change(function () {
           if ($(this).siblings(':checked').length >= mvp) {
               this.checked = false;

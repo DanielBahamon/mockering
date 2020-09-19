@@ -5,30 +5,6 @@
 		<% if @mocker.reported == false %>
 			<div class="row m-0">
 				<div class="col-12 col-md-4 col-lg-3 _col_user">
-					<style type="text/css">
-						._col_user ._navbar_report{
-							-webkit-transition: all .2s ease;
-							transition: all .2s ease;
-						}
-						._col_user ._navbar_report button{
-							border-radius: 369px;
-							background: rgb(255, 255, 255, 0.35);
-							width: 50px;
-							height: 50px;
-						}
-						@media(min-width: 993px){
-							._col_user ._navbar_report{
-								opacity: 0;
-							}
-						}
-
-						._col_user:hover ._navbar_report{
-							opacity: 1;
-						}
-						.dropleft .dropdown-toggle::before{
-							display: none;
-						}
-					</style>
 					<div class="relative">
 						<div class="row cont_coverpage d-sm-block d-md-none">
 							<div class="col-12 p-0">
@@ -47,38 +23,6 @@
 										    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Block</a>
 										  </div>
 										</div>
-									</div>
-									<!-- Modal -->
-									<div class="modal fade" id="reportMocker" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <h5 class="modal-title _fw600" id="reportModalLabel">Report mocker</h5>
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									          <span aria-hidden="true">&times;</span>
-									        </button>
-									      </div>
-									      <div class="modal-body">
-									        <%= render 'mocker_reports/form', mocker: @mocker %>
-									      </div>
-									    </div>
-									  </div>
-									</div>	
-									<!-- Modal -->
-									<div class="modal fade" id="blockMocker" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									          <span aria-hidden="true">&times;</span>
-									        </button>
-									      </div>
-									      <div class="modal-body">
-									        <%= render 'blocks/form', blocked: @mocker %>
-									      </div>
-									    </div>
-									  </div>
 									</div>
 								<% end %>
 							</div>
@@ -362,6 +306,46 @@
 				<p>If you want to appeal to this report. Please <a href="#" data-toggle="modal" data-target="#appealMocker">contact us</a>.</p>
 			</div>
 		<% end %>
+
+
+	<% if mocker_signed_in? && current_mocker != @mocker %>
+		<!-- Modal -->
+		<div class="modal fade" id="reportMocker" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title _fw600" id="reportModalLabel">Report mocker</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <%= render 'mocker_reports/form', mocker: @mocker %>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+			<!-- Modal -->
+			<div class="modal fade" id="blockMocker" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+					<% if @blocked == false %>
+			        	<%= render 'blocks/form', blocked: @mocker %>
+					<% else %>
+			        	<%= render 'blocks/form', blocked: @mocker %>
+					<% end %>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	<% end %>
 </div>
 
 <style type="text/css">
