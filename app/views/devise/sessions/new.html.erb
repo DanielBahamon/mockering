@@ -5,11 +5,6 @@
       <div class="d-tablecell v-middle">
         <div class="container">
           <section class="row _session">
-            <div class="col-12">
-              <% flash.each do |name, msg| %>
-                <%= content_tag :div, msg, class: "alert alert-info" %>
-              <% end %>
-            </div>
             <div class="col-12 text-center">
               <%= link_to root_path, data: { no_turbolink: true } do %>
               <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', class: "_logo _1", alt: 'Mockering'%>
@@ -26,6 +21,12 @@
             </div>
             <div class="col-12">
               <p class="or"><span>Or</span></p>
+            </div>
+            <div class="col-12">
+                <%= devise_error_messages! %>
+                <% flash.each do |key, value| %>
+                   <div class="flash <%= key %>"><%= value %></div>
+                <% end %>
             </div>
             <div class="col-12 _col_inputsaccount p-0">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
