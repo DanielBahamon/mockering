@@ -1,15 +1,39 @@
-
-  <div class="row m-0">
-    <div class="col-12 col-md-6 text-center">
-      <ul class="_list _1 m-0">
-        <li><%= link_to 'Policies & Safety', howmockeringworks_path, class: "_link _1" %></li>
-        <li><a href="#" class="_link _1">About </a></li>
-        <li><a href="#" class="_link _1">Help </a></li>
-        <li><a href="#" class="_link _1">Privacy </a></li>
-        <li><a href="#" class="_link _1">Terms </a></li>
-      </ul>
-    </div>
-    <div class="col-12 col-md-6 text-md-right text-center" style="margin-top:13px;margin-bottom:13px;">
-      <a class="_ttcommons _color_black" href="#"><b>© 2020 Mockering.com</b></a>
-    </div>
+<div class="row m-0">
+  <div class="col-12 col-md text-center-md _list_minifooter">
+    <%= link_to 'Policies & Safety', howmockeringworks_path, class: "_link _1" %></li>
+    <!--<li><a href="#" class="_link _1">Help </a></li>-->
+    <%= link_to 'Copyright', copyrights_howmockeringworks_path, class: "_link _1" %>
+    <%= link_to 'Privacy', privacy_path, class: "_link _1" %>
+    <%= link_to 'Terms', terms_path, class: "_link _1" %>
   </div>
+  <div class="col-12 col-md text-md-right text-center copyright_minifooter">
+    <a class="_ttcommons _color_black" href="#"><b>© 2020 Mockering.com</b></a>
+  </div>
+</div>
+<style type="text/css">
+  ._list_minifooter a{
+    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  ._list_minifooter{
+    padding-left: 10px;
+    padding-top:13px;
+    padding-bottom:13px;
+  }
+  .copyright_minifooter{
+    padding-right: 10px;
+    padding-top:13px;
+    padding-bottom:13px;
+  }
+  @media(max-width: 767px){
+    .copyright_minifooter{
+      padding-right: 0;
+      padding-left: 0;
+    }
+    ._list_minifooter{
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+</style>

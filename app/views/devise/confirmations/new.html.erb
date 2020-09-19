@@ -10,7 +10,7 @@
               <% end %>
             </div>-->
             <div class="col-12 text-center">
-              <h2>Resend confirmation instructions</h2>
+              <h2 class="_fw600">Resend confirmation instructions</h2>
             </div>
             <div class="col-12">
               <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
@@ -29,6 +29,7 @@
                   <%= f.button :submit, "Resend confirmation instructions", class: "btn _btn _login" %>
                 </div>
               <% end %>
+              <br>
               <%= render "devise/shared/links" %>
             </div>
           </section>
@@ -48,5 +49,10 @@
   ._navbar_br{
     display: none;
     visibility: hidden;
-  
+  }
+
+  ._navfooter,
+  .space_navfooter{
+    display: none !important;
+  }
 </style>

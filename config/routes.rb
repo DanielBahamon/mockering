@@ -117,6 +117,7 @@ Rails.application.routes.draw do
       get '/copyrights', to: 'copyrights#index'
       get '/copyrights/form_notice', to: 'copyrights#form_notice'
       get '/copyrights/fair_use', to: 'copyrights#fair_use'
+      get '/copyrights/making_claims', to: 'copyrights#making_claims'
     end
   end
 
