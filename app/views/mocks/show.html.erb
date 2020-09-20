@@ -1,4 +1,4 @@
-<% content_for :title, ": #{@mock.title}" %>
+<% content_for :title, "#{@mock.title} • Mockering" %>
 <div class="_conta">
 	<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
 

@@ -1,4 +1,4 @@
-<% content_for :title, ": Messages to @#{@other.slug}" %>
+<% content_for :title, "Messages to @#{@other.slug} • Mockering" %>
 <br>
 <% @blocked = Block.where(mocker_id: current_mocker, blocked_id: @other, status: true).present?
    @blocked_loop = Block.where(mocker_id: @other, blocked_id: current_mocker, status: true).present? %>

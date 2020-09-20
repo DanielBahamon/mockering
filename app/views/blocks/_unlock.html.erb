@@ -1,0 +1,17 @@
+<% @block = Block.find_by(mocker_id: current_mocker, blocked_id: blocked) 
+%>
+<%= form_for @block, url: block_path(@block), method: :put do |f| %>
+  <div class="_form _1">
+    <div class="col-12">
+      <div class="field">
+      <%= f.hidden_field :status, value: false %>
+      </div>
+    </div>
+    <div class="col-12">
+    	<br>
+      <div class="field text-right">
+      	<%= f.submit 'Unlock', class: "btn _btn _1 fullwidth" %>
+      </div>
+    </div>
+  </div>
+<% end %>

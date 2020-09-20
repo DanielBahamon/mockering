@@ -1,6 +1,7 @@
-<% content_for :title, " - #{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (@#{@mocker.slug})" %>
+<% content_for :title, "#{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (@#{@mocker.slug}) • Mockering" %>
 <div class="_conta _1">
 	<% @blocked = Block.where(mocker_id: @mocker, blocked_id: current_mocker, status: true).present? %>
+	<% @blocked_loop = Block.where(mocker_id: current_mocker, blocked_id: @mocker, status: true).present? %>
 	
 		<% if @mocker.reported == false %>
 			<div class="row m-0">
@@ -20,7 +21,11 @@
 										  <button class="text-center btn _btn _btn_report dropdown-toggle" type="button" id="dropdownOptions_alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
 										  <div class="dropdown-menu" aria-labelledby="dropdownOptions_alert">
 										    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reportMocker">Report </a>
-										    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Block</a>
+										    <% unless @blocked_loop == true %>
+										    	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Block</a>
+										    <% else %>
+										    	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Unlock</a>
+										    <% end %>
 										  </div>
 										</div>
 									</div>
@@ -28,7 +33,7 @@
 							</div>
 							<div class="col-12 text-center">
 								<br>
-								<% unless @blocked == true %>
+								<% unless @blocked == true || @blocked_loop == true %>
 									<%= image_tag avatar_url(@mocker), class: "_avatar _3" %>
 								<% else %>
 									<%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png', class: "_avatar _3" %>
@@ -42,18 +47,18 @@
 								<div class="col-12 text-center">
 									<% if mocker_signed_in? && current_mocker != @mocker %>
 										<% if current_mocker.following?(@mocker) %>
-											<% unless @blocked == true %>
+											<% unless @blocked == true || @blocked_loop == true %>
 												<%= button_to "Unfollow", friendships_path(mocker_id: @mocker.id), method: :delete, class: "btn _btn _action m-0-auto unfollow" %>
 											<% end %>
 										<% else %>
-											<% unless @blocked == true %>
+											<% unless @blocked == true || @blocked_loop == true %>
 												<%= button_to "Follow", friendships_path(mocker_id: @mocker.id), class: "btn _btn _action m-0-auto follow" %>
 											<% end %>
 										<% end %>
 									<% elsif mocker_signed_in? %>
 										<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _1 m-0-auto", style: "width: max-content;" %>
 									<% end %>
-									<% unless @blocked == true %>
+									<% unless @blocked == true || @blocked_loop == true %>
 						                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
 						                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
 						                <% end %>
@@ -87,7 +92,7 @@
 						</div>
 						<br>
 
-						<% unless @blocked == true %>
+						<% unless @blocked == true || @blocked_loop == true %>
 							<div class="row m-0">
 								<% if @mocker.bio? %>
 								<div class="col-12 col-sm-6 col-md-12 p-0">
@@ -178,7 +183,7 @@
 					<br class=" d-none d-md-block">
 					<div class="row m-0 d-none d-md-block">
 						<div class="col-12">
-							<% unless @blocked == true %>
+							<% unless @blocked == true || @blocked_loop == true %>
 								<%= image_tag @mocker.coverpage, class: "_coverpage" %>
 							<% else %>
 								<%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/bg_coverpage.jpg', class: '_coverpage' %>
@@ -187,7 +192,7 @@
 					</div>
 					<br>
 
-					<% unless @blocked == true %>
+					<% unless @blocked == true || @blocked_loop == true %>
 						<% if @mocker.privated == false || @mocker.following?(current_mocker) || current_mocker == @mocker  %>
 							<div class="row m-0">
 								<div class="col-12 p-0">
@@ -330,16 +335,21 @@
 			  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
+
+					<% unless @blocked_loop == true %>
+			        	<h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
+			        <% else %>
+			        	<h5 class="modal-title _fw600" id="reportModalLabel">Unlock mocker</h5>
+			        <% end %>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
-					<% if @blocked == false %>
+					<% if @blocked_loop == false %>
 			        	<%= render 'blocks/form', blocked: @mocker %>
 					<% else %>
-			        	<%= render 'blocks/form', blocked: @mocker %>
+			        	<%= render 'blocks/unlock', blocked: @mocker %>
 					<% end %>
 			      </div>
 			    </div>

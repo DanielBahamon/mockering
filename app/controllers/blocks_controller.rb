@@ -20,6 +20,18 @@ class BlocksController < ApplicationController
 	end
 
 
+	def edit
+	end
+
+	def update
+		if @block.update(report_params)
+			redirect_back fallback_location: root_path, notice: "It's done!"
+		else
+			redirect_back fallback_location: root_path, alert: "Ops! Something goes wrong"
+		end
+	end
+
+
 	private
 
 	  def set_report
