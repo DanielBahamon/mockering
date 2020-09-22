@@ -2354,6 +2354,10 @@
     background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/tribute.jpg);
     background-position-x: center;
   }
+  ._colcategory#protest{
+    background: url(https://mockering.s3-sa-east-1.amazonaws.com/assets/images/protest.jpg);
+    background-position-x: center;
+  }
   ._colcategory ._bggradient{
     width:130px;
     border-radius: 6px;
@@ -2477,11 +2481,12 @@
       padding: 0 35px;
     }
   }
+  @media(min-width: 1500px){
+  }
 
   ._board{
     min-height: 80vh;
     padding:0;
-    max-width: 1500px;
     margin: 0 auto;
   }
   .deco-none{
@@ -2518,6 +2523,11 @@
   #taglist{
       margin-right: 30px;
   }
+
+  #taglist, #flex_categories{
+    scrollbar-width: none;
+  }
+
   @media(min-width: 768px){
     #taglist{
         margin-left: 15px;
