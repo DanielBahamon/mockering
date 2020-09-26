@@ -1,0 +1,22 @@
+<% content_for :title, "Trademark contact • Mockering" %>
+<div class="container">
+	<h2 class="_fw600">Say hello</h2>
+	<%= form_for @contact do |f| %>
+    <%= f.label :name %></br>
+    <%= f.text_field  :name, required: true, class: "contact-form-text-area" %></br>
+
+    <%= f.label :email %></br>
+    <%= f.email_field :email, required: true, class: "contact-form-text-area" %></br>
+
+  	<%= f.label :message %></br>
+  	<%= f.text_area :message, rows: 8, cols: 40, required: true, class: "contact-form-text-area",
+                    placeholder: "Send me a message", as: :text %></br>
+
+  	<%= f.submit 'Send Message', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<style type="text/css">
+	.hidden{
+		display: none;
+	}
+</style>

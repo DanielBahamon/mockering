@@ -44,13 +44,22 @@ Rails.application.routes.draw do
   end
 
   resources :mock_appeals
-  resources :mock_reports
-  resources :mocker_appeals
-  resources :mocker_reports
-  resources :conversation_reports
-  resources :blocks
-  
 
+  resources :mock_reports
+
+  resources :mocker_appeals
+
+  resources :mocker_reports
+
+  resources :conversation_reports
+
+  resources :blocks
+
+  resources :subscriptions
+  
+  resource :friendships, only: [:create, :destroy]
+
+  resources :trademarkcontacts, only: [:new, :create]
 
   resources :reviews do
     member do
@@ -113,6 +122,7 @@ Rails.application.routes.draw do
       get '/forgery', to: 'howmockeringworks#forgery'
       get '/defamation', to: 'howmockeringworks#defamation'
 
+
       get '/safetypolicies', to: 'safetypolicies#index'
       get '/safetypolicies/parent', to: 'safetypolicies#parent'
 
@@ -126,6 +136,7 @@ Rails.application.routes.draw do
   
   
   get '/notification_settings' => 'settings#edit'
+
   post '/notification_settings' => 'settings#update'
 
   resources :conversations, only: [:index, :create] do 
@@ -135,17 +146,19 @@ Rails.application.routes.draw do
 
   # resources :groups
 
-  resources :subscriptions
 
   get 'subscriptions' => 'subscriptions#index'
+
   get 'suscripciones' => 'subscriptions#es'
+
   get 'terms' => 'pages#terms'
+
   get 'privacy' => 'pages#privacy'
+
   get 'copyright' => 'pages#copyright'
+
   get 'search' => 'pages#search'
 
-
-  resource :friendships, only: [:create, :destroy]
 
   # This is just for the path for /:slug
   # resources :mockers, path: '/'
@@ -153,8 +166,12 @@ Rails.application.routes.draw do
 
   # This is for username validation
   get 'username_validator/:slug', to: 'mockers#username_validator'
+
   get 'mentions', to: 'mockers#mentions'
+
   get 'popular', to: 'mocks#popular'
+
   get 'latest', to: 'mocks#latest'
+
   
 end

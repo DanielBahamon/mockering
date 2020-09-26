@@ -1,0 +1,2 @@
+module TrademarkcontactsHelper
+end
