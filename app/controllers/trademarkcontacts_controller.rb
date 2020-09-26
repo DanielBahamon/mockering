@@ -1,7 +1,7 @@
 class TrademarkcontactsController < ApplicationController
 
 	def new
-		@contact = Trademarkcontact.new(params[:trademarkcontact])
+		@contact = Trademarkcontact.new
 	end
 
 	def create

@@ -105,6 +105,16 @@ Rails.application.configure do
     password: 'sHI3avA16LVyCfNY'
   }
 
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp-relay.sendinblue.com',
+    port: 587,
+    enable_starttls_auto: true,
+    authentication: 'login',
+    domain: 'mockering.herokuapp.com',
+    user_name: 'mr.sublimen@gmail.com',
+    password: 'sHI3avA16LVyCfNY'
+  }
+
   # Paperclip::Attachment.default_options.merge!({
   #     storage: :s3,
   #     path: ':class/:attachment/:id/:style/:filename',

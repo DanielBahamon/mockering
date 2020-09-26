@@ -64,7 +64,19 @@ Rails.application.configure do
     authentication: 'plain',
     domain: 'localhost:3000',
     user_name: 'mr.sublimen@gmail.com',
-    password: 'ElArteDeVivir69$&'
+    password: 'ElArteDeVivir69$&',
+    enable_starttls_auto: true
+  }
+
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    enable_starttls_auto: true,
+    authentication: 'plain',
+    domain: 'localhost:3000',
+    user_name: 'mr.sublimen@gmail.com',
+    password: 'ElArteDeVivir69$&',
+    enable_starttls_auto: true
   }
 
   config.paperclip_defaults = {
