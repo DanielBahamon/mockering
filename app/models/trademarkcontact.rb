@@ -1,8 +1,8 @@
 class Trademarkcontact < MailForm::Base
-  attribute :name, validate: true
-  attribute :email, validate: /\A[^@\s]+@[^@\s]+\z/i
-  attribute :type, validate: ["General", "Interface bug"]
-  attribute :message, validate: true
+  attributes :name,  :validate => true
+  attributes :email, :validate => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
+  attributes :message
+  attribute :nickname,  :captcha  => true
 
   def headers 
   	{

@@ -106,15 +106,15 @@ Rails.application.configure do
   }
 
 
-  ActionMailer::Base.smtp_settings = {
-      :user_name => ENV['apikey'],
-      :password => ENV['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'],
-      :domain => 'localhost:3000',
-      :address => 'smtp.sendgrid.net',
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
-  }
+  # ActionMailer::Base.smtp_settings = {
+  #     :user_name => ENV['apikey'],
+  #     :password => ENV['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'],
+  #     :domain => 'mockering.herokuapp.com',
+  #     :address => 'smtp.sendgrid.net',
+  #     :port => 587,
+  #     :authentication => :plain,
+  #     :enable_starttls_auto => true
+  # }
 
   # Paperclip::Attachment.default_options.merge!({
   #     storage: :s3,

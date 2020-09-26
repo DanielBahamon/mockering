@@ -3,7 +3,7 @@ class TrademarkcontactsController < ApplicationController
   	before_action :trademarkcontact, only: [:create]
 
 	def new
-		@contact = Trademarkcontact.new
+		@contact = Trademarkcontact.new(params[:trademarkcontact])
 	end
 
 	def create
