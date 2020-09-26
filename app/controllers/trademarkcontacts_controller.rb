@@ -11,7 +11,7 @@ class TrademarkcontactsController < ApplicationController
 		@contact.request = request
 	    if @contact.deliver
 	      flash.now[:notice] = 'Thank you for your message!'
-	      render :new
+	      render :create
 	    else
 	      flash.now[:error] = 'Cannot send message.'
 	      render :new
@@ -19,7 +19,7 @@ class TrademarkcontactsController < ApplicationController
 	end
 
 	private
-	
+
 	def trademarkcontact
 		params.require(:trademarkcontact).permit(:name, :email, :message, :nickname, :captcha)
 	end
