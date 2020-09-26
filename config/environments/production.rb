@@ -105,14 +105,15 @@ Rails.application.configure do
     password: 'sHI3avA16LVyCfNY'
   }
 
+
   ActionMailer::Base.smtp_settings = {
-    address: 'smtp-relay.sendinblue.com',
-    port: 587,
-    enable_starttls_auto: true,
-    authentication: 'login',
-    domain: 'mockering.herokuapp.com',
-    user_name: 'mr.sublimen@gmail.com',
-    password: 'sHI3avA16LVyCfNY'
+      :user_name => ENV['apikey'],
+      :password => ENV['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'],
+      :domain => 'localhost:3000',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
   }
 
   # Paperclip::Attachment.default_options.merge!({
