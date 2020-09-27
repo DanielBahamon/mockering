@@ -59,7 +59,6 @@ Rails.application.routes.draw do
   
   resource :friendships, only: [:create, :destroy]
 
-  resources :trademarkcontacts, only: [:new, :create]
 
   resources :reviews do
     member do
@@ -130,6 +129,11 @@ Rails.application.routes.draw do
       get '/copyrights/form_notice', to: 'copyrights#form_notice'
       get '/copyrights/fair_use', to: 'copyrights#fair_use'
       get '/copyrights/making_claims', to: 'copyrights#making_claims'
+
+
+      resources :trademarkcontacts, only: [:new, :create]
+
+      
     end
   end
 

@@ -7,6 +7,10 @@ class Trademarkcontact < MailForm::Base
   attributes :kind_company
   attributes :url
   attributes :specification
+  attributes :i_believe
+  attributes :i_declare
+  attributes :i_agree
+  attributes :fullname
   attributes :nickname,  :captcha  => true
 
   def headers 
