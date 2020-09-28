@@ -8,10 +8,10 @@ class SuggestionsController < ApplicationController
 		@contact = Suggestion.new(params[:suggestion])
 		@contact.request = request
 	    if @contact.deliver
-	      flash.now[:notice] = 'Thank you for your message!'
+	      flash.now[:notice] = 'Thank you for your suggestion!'
 	      render :create
 	    else
-	      flash.now[:error] = 'Cannot send message.'
+	      flash.now[:error] = 'Cannot send suggestion.'
 	      render :new
 	    end
 	end
