@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200916232358) do
+ActiveRecord::Schema.define(version: 20200928031447) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 20200916232358) do
     t.boolean "privated", default: false
     t.boolean "show_mocks_privated", default: false
     t.boolean "reported", default: false
+    t.integer "strikes", default: 0
     t.index ["confirmation_token"], name: "index_mockers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_mockers_on_email", unique: true
     t.index ["id"], name: "sqlite_autoindex_mockers_1", unique: true
