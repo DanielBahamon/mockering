@@ -1,0 +1,23 @@
+class Copyrightcontact < MailForm::Base
+  attributes :name,  :validate => true
+  attributes :email, :validate => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
+  attributes :title
+  attributes :company_name
+  attributes :relationship_owner
+  attributes :kind_company
+  attributes :url
+  attributes :specification
+  attributes :i_believe
+  attributes :i_declare
+  attributes :i_agree
+  attributes :fullname
+  attributes :nickname,  :captcha  => true
+
+  def headers 
+  	{
+	  	:subject => "Copyright Complaint",
+	  	:to => "mockering.com@gmail.com",
+	  	:from => %("#{name}" <#{email}>)
+  	}
+  end
+end

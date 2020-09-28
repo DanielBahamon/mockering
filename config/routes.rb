@@ -129,15 +129,17 @@ Rails.application.routes.draw do
       get '/copyrights/form_notice', to: 'copyrights#form_notice'
       get '/copyrights/fair_use', to: 'copyrights#fair_use'
       get '/copyrights/making_claims', to: 'copyrights#making_claims'
-      
+
       resources :trademarkcontacts, only: [:new, :create]
 
       resources :forgerycontacts, only: [:new, :create]
 
+      resources :copyrightcontacts, only: [:new, :create]
+
     end
   end
 
-  
+  resources :suggestions, only: [:new, :create]
   
   get '/notification_settings' => 'settings#edit'
 

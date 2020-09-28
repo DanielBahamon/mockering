@@ -1,0 +1,67 @@
+<% content_for :title, "Suggestions • Mockering" %>
+<div class="container">
+	<%= form_for @contact, url: suggestions_path do |f| %>
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <br>
+        <h2 class="_fw600">Suggestions</h2>
+        <br>
+        <p>Feel free to tell us what do you want to see in this community. Remember this platform was built it for you.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <br>
+        <div class="field">
+          <label>Your name *</label><br>
+          <%= f.text_field :name, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <br>
+        <div class="field">
+          <label>Type of suggestion *</label><br>
+          <%= f.select(:kind_suggestions, options_for_select([
+                                            ['New service', 0], 
+                                            ['Something to improve', 1]], 0), class: "form-control _select _1", required: true) %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <br>
+          <label>What is your suggestion? *</label><br>
+          <%= text_area :message, rows: 8, cols: 40, class: 'form-control fullwidth _1', required: true, style: 'width: 100%;' %>
+        </div>
+      </div>
+      <br>
+      <div class="col-12 col-md-8 offset-md-2">
+        <br>
+        <div class="field">
+          <br>
+          <label>Agree to the following statement: *</label><br>
+          <%= f.check_box :i_agree %> I agree to receive messages to my email from Mockering team.
+        </div>
+      </div>
+      <div class= "hidden d-none">
+        <%= f.text_field :nickname %>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2 text-right">
+        <br>
+        <%= f.submit 'Send suggestion', class: 'btn _btn _1 f-right fullwidth' %>
+      </div>
+    </div> 
+    <br>
+    <br>
+    <br>
+
+  <% end %>
+</div>
+<style type="text/css">
+  textarea{
+    width:100% !important;
+  }
+  #suggestion_kind_suggestions{
+    width:100%;
+    height:40px;
+  }
+</style>
