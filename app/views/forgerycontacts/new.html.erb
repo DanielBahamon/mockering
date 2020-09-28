@@ -1,4 +1,4 @@
-<% content_for :title, "Trademark Complaint • Mockering" %>
+<% content_for :title, "Forgery Complaint • Mockering" %>
 <div class="container">
 	<%= form_for @contact, url: trademarkcontacts_path do |f| %>
 
@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
         <br>
-        <h2 class="_fw600">Trademark Complaint</h2>
+        <h2 class="_fw600">Forgery Complaint</h2>
         <br>
         <p>Please understand that Mockering cannot mediate trademark disputes between users and trademark owners. Mockering is willing to conduct a limited investigation of reasonable complaints and will delete its content if it is clearly infringing. Please note that abuse of our legal forms may result in the termination of your Mockering account.</p>
       </div>
@@ -15,20 +15,44 @@
       <div class="col-12 col-md-8 offset-md-2">
         <br>
         <div class="field">
-          <label>Full legal name <sub>(Aliases, usernames, or initials are not accepted)</sub> *</label><br>
+          <label>Your full legal name <sub>(Aliases, usernames, or initials are not accepted)</sub> *</label><br>
           <%= f.text_field :name, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <div class="field">
-          <label>Title *</label><br>
+          <label>Your title *</label><br>
           <%= f.text_field :title, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <div class="field">
-          <label>Company name </label><br>
-          <%= f.text_field :company_name, class: 'form-control' %>
+          <label>Company name *</label><br>
+          <%= f.text_field :company_name, class: 'form-control' , required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <label>Country *</label><br>
+          <%= f.text_field :country, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <label>Trademark name *</label><br>
+          <%= f.text_field :trademark_name, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <label>Business Address *</label><br>
+          <%= f.text_field :business_address, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <label>Business Website </label><br>
+          <%= f.text_field :business_website, class: 'form-control' %>
         </div>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
@@ -39,25 +63,26 @@
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <div class="field">
-          <label>Relationship with trademark owner <sub>(What is your authority to make this complaint?)</sub> *</label><br>
-          <%= f.text_field :relationship_owner, class: 'form-control', required: true %>
+          <label>Trademark *</label><br>
+          <%= f.text_field :trademark, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <label>Application or registration number *</label><br>
+          <%= f.text_field :registration_number, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="field">
+          <label>Please identify the product at issue </label><br>
+          <%= f.text_field :product_issue, class: 'form-control' %>
         </div>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <br>
-        <h3 class="_fw600">Trademark Details</h3>
         <div class="field">
-          <label>Type of content</label><br>
-          <%= f.select(:kind_company, options_for_select([
-                                            ['Video', 0], 
-                                            ['Account', 1], 
-                                            ['Video and account', 2]], 0), class: "form-control _select _1", required: true) %>
-        </div>
-      </div>
-      <div class="col-12 col-md-8 offset-md-2">
-        <br>
-        <div class="field">
-          <label>URL <sub>(https://mockering.com/mocks/01234-56789/</sub> *</label><br>
+          <label>Video URL <sub>(https://mockering.com/mocks/01234-56789/</sub> *</label><br>
           <%= f.text_field :url, class: 'form-control', required: true %>
         </div>
       </div>
@@ -66,7 +91,7 @@
         <h3 class="_fw600">Clarifications</h3>
         <div class="field">
           <label>Specify the method of alleged trademark infringement *</label><br>
-          <%= text_area :specification, rows: 8, cols: 40, class: 'form-control fullwidth _1', required: true, style: 'width: 100%;' %>
+          <%= text_area :clarify, rows: 8, cols: 40, class: 'form-control fullwidth _1', required: true, style: 'width: 100%;' %>
         </div>
       </div>
       <br>
@@ -83,20 +108,7 @@
         <br>
         <div class="field">
           <label>Agree to the following statement: *</label><br>
-          <%= f.check_box :i_declare, required: true %> I declare that the information in this notice is true and correct, and that I have been authorized to act on behalf of the trademark owner.
-        </div>
-      </div>
-      <div class="col-12 col-md-8 offset-md-2">
-        <br>
-        <div class="field">
-          <label>Agree to the following statement: *</label><br>
-          <%= f.check_box :i_agree, required: true %> I agree to forward my complaint to the user who posted the allegedly infringing content.
-        </div>
-      </div>
-      <div class="col-12 col-md-8 offset-md-2">
-        <br>
-        <div class="field">
-          <p>We encourage all parties to directly resolve trademark disputes.</p>
+          <%= f.check_box :i_agree, required: true %> I agree to allow Mockering to provide my contact information to uploaders upon request.
         </div>
       </div>
       <div class="col-12 col-md-8 offset-md-2">

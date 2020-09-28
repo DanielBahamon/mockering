@@ -1,7 +1,5 @@
 class TrademarkcontactsController < ApplicationController
-
   	before_action :trademarkcontact, only: [:create]
-
 	def new
 		@contact = Trademarkcontact.new(params[:trademarkcontact])
 	end
@@ -21,6 +19,7 @@ class TrademarkcontactsController < ApplicationController
 	private
 
 	def trademarkcontact
-		params.require(:trademarkcontact).permit(:name, :email, :message, :nickname, :captcha)
+		params.require(:trademarkcontact).permit(:name, :email, :message, :nickname, :captcha, :title,  :company_name, :relationship_owner,
+												 :kind_company, :url, :specification, :i_believe, :i_declare, :i_agree, :fullname)
 	end
 end
