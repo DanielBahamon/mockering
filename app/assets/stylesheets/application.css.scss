@@ -1634,6 +1634,7 @@
     font-weight: 300 !important;
   }
   ._avatar_navbar{
+    object-fit: cover;
     border-radius: 13px;
     border:1px solid white;
     width: 35px;
@@ -2597,6 +2598,7 @@
     margin: 0 auto;
     display: block;
     border-radius: 100%;
+    object-fit: cover;
     margin-bottom:20px;
     -webkit-box-shadow: 0 3px 18px -5px #d0dbe0;
     box-shadow: 0 3px 18px -5px #d0dbe0;
