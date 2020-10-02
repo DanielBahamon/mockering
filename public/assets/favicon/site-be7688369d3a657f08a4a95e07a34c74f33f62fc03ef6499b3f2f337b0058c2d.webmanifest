@@ -3,12 +3,12 @@
     "short_name": "Mockering",
     "icons": [
         {
-            "src": "<%= asset_path 'favicon/android-chrome-192x192.png' %>",
+            "src": "/assets/favicon/android-chrome-192x192-0987b28e3b2ac48d191eda3a0a6d3238dd8b461bdda2193706ca8f1bcf094e92.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "<%= asset_path 'favicon/android-chrome-512x512.png' %>",
+            "src": "/assets/favicon/android-chrome-512x512-a1b07c06b9c6b52ab53e836251133e2eab0c658ab953db1cf537b104c82acdd9.png",
             "sizes": "512x512",
             "type": "image/png"
         }

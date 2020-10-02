@@ -2,20 +2,23 @@
     "master_picture": "app/assets/images/icon.png",
     "favicon_design": {
         "ios": {
-            "picture_aspect": "no_change",
+            "picture_aspect": "background_and_margin",
+            "background_color": "#53e08f",
+            "margin": "0%",
             "assets": {
                 "ios6_and_prior_icons": false,
                 "ios7_and_later_icons": false,
-                "precomposed_icons": false,
+                "precomposed_icons": true,
                 "declare_only_default_icon": true
-            }
+            },
+            "app_name": "Mockering"
         },
         "desktop_browser": {
             "design": "raw"
         },
         "windows": {
             "picture_aspect": "no_change",
-            "background_color": "#da532c",
+            "background_color": "#53e08f",
             "on_conflict": "override",
             "assets": {
                 "windows_80_ie_10_tile": false,
@@ -25,12 +28,14 @@
                     "big": false,
                     "rectangle": false
                 }
-            }
+            },
+            "app_name": "Mockering"
         },
         "android_chrome": {
             "picture_aspect": "no_change",
-            "theme_color": "#ffffff",
+            "theme_color": "#53e08f",
             "manifest": {
+                "name": "Mockering",
                 "display": "standalone",
                 "orientation": "not_set",
                 "on_conflict": "override",
@@ -43,8 +48,8 @@
         },
         "safari_pinned_tab": {
             "picture_aspect": "black_and_white",
-            "threshold": 67.96875,
-            "theme_color": "#ff5858"
+            "threshold": 85.9375,
+            "theme_color": "#53e08f"
         }
     },
     "settings": {
