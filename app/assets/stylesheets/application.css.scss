@@ -13,6 +13,7 @@
  *= require 'masonry/transitions'
  *= require 'jquery.atwho'
  *= require jquery-ui
+ *= require social-share-button
  *= require_tree .
  *= require_self
  */
@@ -311,7 +312,7 @@
     text-decoration:none !important;
   }
   a.like-post {
-    color: #032535;
+    color: #5e6e75;
     text-decoration:none !important;
     display:block;
     font-size:14pt;
@@ -770,27 +771,27 @@
   }
   ._btn._login{
     padding: 8px 15px;
-    background: linear-gradient(45deg, #ff5858, #FF7043);
+    background: linear-gradient(45deg, #e50068, #e50068, #e728be);
     color: white;
     font-weight: 600;
     width: 100%;
     border-radius: 369px;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    -webkit-box-shadow: 0 0 15px -5px #ff5858;
-    box-shadow: 0 0 15px -5px #ff5858;
+    -webkit-box-shadow: 0 0 15px -5px #e50068;
+    box-shadow: 0 0 15px -5px #e50068;
   }
   ._btn._login:hover{
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
-    -webkit-box-shadow: 0 3px 21px -5px #ff5858;
-    box-shadow: 0 3px 21px -5px #ff5858;
+    -webkit-box-shadow: 0 3px 21px -5px #e50068;
+    box-shadow: 0 3px 21px -5px #e50068;
   }
   ._btn._login:focus{
     -webkit-transform: translateY(0);
     transform: translateY(0);
-    -webkit-box-shadow: 0 0 -6px 9px #ff5858;
-    box-shadow: 0 0 -6px 9px #ff5858;
+    -webkit-box-shadow: 0 0 -6px 9px #e50068;
+    box-shadow: 0 0 -6px 9px #e50068;
   }
   ._btn._session{
     width: 100%;
@@ -879,13 +880,13 @@
   }
 
   ._btn._1._addmock{
-    background: linear-gradient(45deg, #ff5858, #ff9058);
+    background: linear-gradient(45deg, #e50068, #FF7043);
     border-color: transparent;
     border-radius: 369px;
     color: white !important;
   }
   ._btn._1._addmock:hover{
-    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff6758, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #e50068, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
   }
   ._btn._1:focus{
     outline: none !important;
@@ -1003,7 +1004,7 @@
   }
 
   ._btn._action {
-    background: linear-gradient(45deg, #ff5858, #ffa058);
+    background: linear-gradient(45deg, #e50068, #FF7043);
     border: 1px solid transparent;
     border-radius: 369px;
     padding: 8px 30px;
@@ -1015,15 +1016,15 @@
   ._btn._action.follow{
     text-overflow:ellipsis;
     overflow:hidden;
-    background: linear-gradient(45deg, #ff5858, #ffa058);
-    -webkit-box-shadow: 0 3px 12px -5px #ff5858;
-    box-shadow: 0 3px 12px -5px #ff5858;
+    background: linear-gradient(45deg, #e50068, #FF7043);
+    -webkit-box-shadow: 0 3px 12px -5px #e50068;
+    box-shadow: 0 3px 12px -5px #e50068;
   }
   ._btn._action.follow:hover{
     transform: translateY(-2px);
-    background: linear-gradient(45deg, #ff5858, #ffa058);
-    -webkit-box-shadow: 0 8px 15px -8px #ff5858;
-    box-shadow: 0 8px 15px -8px #ff5858;
+    background: linear-gradient(45deg, #e50068, #FF7043);
+    -webkit-box-shadow: 0 8px 15px -8px #e50068;
+    box-shadow: 0 8px 15px -8px #e50068;
   }
   ._btn._action.unfollow{
     background: #cbcbcb;
@@ -1185,8 +1186,8 @@
   }
   ._chip._1:hover{
     background: #fdf4f2;
-    border-color: #ff5858;
-    color: #ff5858;
+    border-color: #e50068;
+    color: #e50068;
     -webkit-transform:translateY(-1px);
     transform:translateY(-1px);
   }
@@ -1799,7 +1800,7 @@
   }
   ._btn._btnavfoot:hover,
   ._listnavfooter li.active ._btn._btnavfoot{
-    color:#ff5858;
+    color:#fe318e;
   }
   ._btn._btnavfoot:hover{
     background:#ffebeb;
@@ -1866,7 +1867,7 @@
       position: absolute;
       height: 2px;
       width: 100%;
-      background: #ff5858;
+      background: #e50068;
       border-radius: 9px;
       opacity: 1;
       left: 0;
@@ -1927,7 +1928,7 @@
       position: absolute;
       height: 2px;
       width: 100%;
-      background: #ff5858;
+      background: #df0059;
       border-radius: 9px;
       opacity: 1;
       left: 0;
@@ -2021,7 +2022,7 @@
     position: absolute;
     left:0;
     z-index: 2;
-    width:36px;
+    width:33px;
     height: auto;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
@@ -2035,11 +2036,10 @@
   ._logonav._4{
     position: absolute;
     left:0;
-    width:36px;
+    width:33px;
     height: auto;
     position: absolute;
     z-index: 0;
-    height: 30px;
     opacity:0;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
@@ -2075,7 +2075,7 @@
   }
   ._listsidenav li a:hover,
   ._listsidenav li.active a{
-    color: #ff5858;
+    color: #e50068;
     background: #fdf4f2;
   }
   ._listsidenav li a::before{
@@ -2095,7 +2095,7 @@
   ._listsidenav li.active a::before{
     -webkit-transform: scale(1);
     transform: scale(1);
-    background: #ff5858;
+    background: #e50068;
   }
   ._listsidenav li a:hover::before{
     -webkit-transform: scale(1);
@@ -3079,7 +3079,7 @@
   }
   ._btn_add_mock_navfooter {
       display: block;
-      background: linear-gradient(45deg, #ff5858, #ff9058);
+      background: radial-gradient(#e50068, #e50068, #FF7043);
       border-radius: 369px;
       height: 45px;
       width: 45px;
@@ -3093,9 +3093,9 @@
   }
   ._btn_add_mock_navfooter:hover{
     -webkit-transform: translateY(-1px) scale(1.07);
-    -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff6758, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
+    -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 3px #e50068, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
     transform: translateY(-1px) scale(1.07);
-    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff6758, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #e50068, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
   }
   ._btn_add_mock_navfooter:focus{
     outline: none !important;

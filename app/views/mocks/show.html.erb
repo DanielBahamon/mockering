@@ -43,53 +43,112 @@
 											</div>
 										</div>
 									</div>
-									<div class="col col-sm-6">
-										<div class="row float-right m-0">	
-											<div class="col-auto" >
+									<div class="col col-lg-6">
+										<div class="row float-lg-right m-0">	
+											<div class="col-4 col-lg-auto text-center _col_btn_action_mock" >
 												<% if mocker_signed_in? %>
 													<% if current_mocker %>
 														<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
-															<div id="like-count">
-																<%= render 'mocks/likes', mock: @mock %>
+															<div class="d-table fullscreen">
+																<div class="d-table-cell v-middle">
+																	<div class="d-md-grid" id="like-count">
+																		<%= render 'mocks/likes', mock: @mock %>
+																	</div>
+																</div>
 															</div>
 														<% end %>
 													<% else %>
 														<%= link_to new_mocker_session_path, class: 'like-post' do %>
-															<div id="like-count">
-																<%= render 'mocks/likes', mock: @mock %>
+															<div class="d-table fullscreen">
+																<div class="d-table-cell v-middle">
+																	<div class="d-md-grid" id="like-count">
+																		<%= render 'mocks/likes', mock: @mock %>
+																	</div>
+																</div>
 															</div>
 														<% end %>
 													<% end %>
 												<% else %>
 													<%= link_to new_mocker_session_path, class: "like-post" do %>
-														<div id="like-count">
-														<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+														<div class="d-table fullscreen">
+															<div class="d-table-cell v-middle">
+																<div class="d-md-grid" id="like-count">
+																	<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+																</div>
+															</div>
 														</div>
 													<% end %>
 												<% end %>
 											</div>
-											<div class="col-auto" style="padding-right:0;">
+											<div class="col-4 col-lg-auto text-center _col_btn_action_mock">
 												<% if mocker_signed_in? %>	
 													<% if current_mocker %>
 														<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
-															<div id="dislike-count">
-																<%= render 'mocks/dislikes', mock: @mock %>
+															<div class="d-table fullscreen">
+																<div class="d-table-cell v-middle">
+																	<div class="d-md-grid" id="dislike-count">
+																		<%= render 'mocks/dislikes', mock: @mock %>
+																	</div>
+																</div>
 															</div>
 														<% end %>
 													<% else %>
 														<%= link_to new_mocker_session_path, class: 'like-post' do %>
-															<div id="dislike-count">
-																<%= render 'mocks/dislikes', mock: @mock %>
+															<div class="d-table fullscreen">
+																<div class="d-table-cell v-middle">
+																	<div class="d-md-grid" id="dislike-count">
+																		<%= render 'mocks/dislikes', mock: @mock %>
+																	</div>
+																</div>
 															</div>
 														<% end %>
 													<% end %>
 												<% else %>
 													<%= link_to new_mocker_session_path, class: "like-post" do %>
-														<div id="dislike-count">
-														<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+														<div class="d-table fullscreen">
+															<div class="d-table-cell v-middle">
+																<div class="d-md-grid" id="dislike-count">
+																	<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+																</div>
+															</div>
 														</div>
 													<% end %>
 												<% end %>
+											</div>
+											<div class="col-4 col-lg-auto text-center _col_btn_action_mock" style="padding-right:0;">
+												<a class="_btn _share_link" data-toggle="modal" data-target="#shareModal">
+													<div class="d-table fullscreen">
+														<div class="d-table-cell v-middle">
+															<div class="d-md-grid">
+																<i class="fas fa-share" style="margin-right: 2px;"></i>
+																<span class="d-block d-md-none">Share</span>
+															</div>
+														</div>
+													</div>
+												</a>
+
+												<!-- Modal -->
+												<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <h5 class="modal-title _fw600" id="exampleModalLabel">Share video</h5>
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												          <span aria-hidden="true">&times;</span>
+												        </button>
+												      </div>
+												      <div class="modal-body">
+														<div class="input-group mb-2 mr-sm-2">
+															<input type="text" class="form-control" id="share_link_mock" placeholder="Username" value="<%= request.original_url %>" readonly>
+															<div class="input-group-prepend">
+															  <button class="input-group-text clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#share_link_mock">Copy</button>
+															</div>
+														</div>
+												      	<h2><%= social_share_button_tag(@mock.title, url: request.original_url, image: @mock.picture.url(:large)) %></h2>
+												      </div>
+												    </div>
+												  </div>
+												</div>	
 											</div>
 										</div>
 									</div>
@@ -156,7 +215,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-7 col-md-8 col-xl-9">
+									<div class="col-12 col-sm-7 col-xl-9">
 										<div class="d-table fullscreen">
 											<div class="d-tablecell v-middle text-center-sm">
 												<h4 class="_fw500 m-0 text-capitalize"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name if @mock.mocker.first_name? %> <%= @mock.mocker.last_name if @mock.mocker.first_name? %><% end %></h4>
@@ -328,10 +387,11 @@
 						<div class="row m-0">
 							<div class="col-12">
 								<h4 class="card-title _fw500"><%= @mock.title %></h4>
+								
 							</div>
 						</div>
 						<div class="row m-0" >
-							<div class="col-12 col-sm-6" style="margin-bottom: 15px;">
+							<div class="col-12 col-sm-6" style="margin-top: 10px;margin-bottom: 40px;">
 								<div class="row m-0">
 									<div class="col col-sm-auto p-0 ">
 										<h5 class="m-0 _video_views _fw500"><i class="far fa-eye"></i> <% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: {billion: 'B' }) %></h5> 	
@@ -339,59 +399,118 @@
 									<div class="col p-sm-0  text-right-sm">
 										<div class="d-table fullscreen">
 											<div class="d-tablecell v-middle">
-												<h5 class="_fw500 _video_date m-0">• <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
+												<h5 class="_fw500 _video_date m-0"> • <%= @mock.created_at.strftime("%d %b %Y").downcase  %></h5>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col col-sm-6">
-								<div class="row float-right m-0">	
-									<div class="col-auto" >
+							<div class="col-12 col-lg-6">
+								<div class="row float-lg-right m-0">	
+									<div class="col-4 col-lg-auto text-center _col_btn_action_mock" >
 										<% if mocker_signed_in? %>
 											<% if current_mocker %>
 												<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
-													<div id="like-count">
-														<%= render 'mocks/likes', mock: @mock %>
+													<div class="d-table fullscreen">
+														<div class="d-table-cell v-middle">
+															<div class="d-md-grid" id="like-count">
+																<%= render 'mocks/likes', mock: @mock %>
+															</div>
+														</div>
 													</div>
 												<% end %>
 											<% else %>
 												<%= link_to new_mocker_session_path, class: 'like-post' do %>
-													<div id="like-count">
-														<%= render 'mocks/likes', mock: @mock %>
+													<div class="d-table fullscreen">
+														<div class="d-table-cell v-middle">
+															<div class="d-md-grid" id="like-count">
+																<%= render 'mocks/likes', mock: @mock %>
+															</div>
+														</div>
 													</div>
 												<% end %>
 											<% end %>
 										<% else %>
 											<%= link_to new_mocker_session_path, class: "like-post" do %>
-												<div id="like-count">
-												<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle">
+														<div class="d-md-grid" id="like-count">
+															<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+														</div>
+													</div>
 												</div>
 											<% end %>
 										<% end %>
 									</div>
-									<div class="col-auto" style="padding-right:0;">
+									<div class="col-4 col-lg-auto text-center _col_btn_action_mock">
 										<% if mocker_signed_in? %>	
 											<% if current_mocker %>
 												<%= link_to dislike_mock_path(@mock), method: :put, remote: :true, class: "like-post" do %>
-													<div id="dislike-count">
-														<%= render 'mocks/dislikes', mock: @mock %>
+													<div class="d-table fullscreen">
+														<div class="d-table-cell v-middle">
+															<div class="d-md-grid" id="dislike-count">
+																<%= render 'mocks/dislikes', mock: @mock %>
+															</div>
+														</div>
 													</div>
 												<% end %>
 											<% else %>
 												<%= link_to new_mocker_session_path, class: 'like-post' do %>
-													<div id="dislike-count">
-														<%= render 'mocks/dislikes', mock: @mock %>
+													<div class="d-table fullscreen">
+														<div class="d-table-cell v-middle">
+															<div class="d-md-grid" id="dislike-count">
+																<%= render 'mocks/dislikes', mock: @mock %>
+															</div>
+														</div>
 													</div>
 												<% end %>
 											<% end %>
 										<% else %>
 											<%= link_to new_mocker_session_path, class: "like-post" do %>
-												<div id="dislike-count">
-												<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle">
+														<div class="d-md-grid" id="dislike-count">
+															<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+														</div>
+													</div>
 												</div>
 											<% end %>
 										<% end %>
+									</div>
+									<div class="col-4 col-lg-auto text-center _col_btn_action_mock" style="padding-right:0;">
+										<a class="_btn _share_link" data-toggle="modal" data-target="#shareModal">
+											<div class="d-table fullscreen">
+												<div class="d-table-cell v-middle">
+													<div class="d-md-grid">
+														<i class="fas fa-share" style="margin-right: 2px;"></i>
+														<span class="d-block d-md-none">Share</span>
+													</div>
+												</div>
+											</div>
+										</a>
+
+										<!-- Modal -->
+										<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title _fw600" id="exampleModalLabel">Share video</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+												<div class="input-group mb-2 mr-sm-2">
+													<input type="text" class="form-control" id="share_link_mock" placeholder="Username" value="<%= request.original_url %>" readonly>
+													<div class="input-group-prepend">
+													  <button class="input-group-text clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#share_link_mock">Copy</button>
+													</div>
+												</div>
+										      	<h2><%= social_share_button_tag(@mock.title, url: request.original_url, image: @mock.picture.url(:large)) %></h2>
+										      </div>
+										    </div>
+										  </div>
+										</div>	
 									</div>
 								</div>
 							</div>
@@ -409,7 +528,7 @@
 							</div>
 							<% if mocker_signed_in? && current_mocker != @mock.mocker %>
 								<div class="col-2">
-									<button type="button" class="btn _btn _btn_report" data-toggle="modal" data-target="#reportMock"><i class="fas fa-exclamation-triangle"></i></button>
+									<button type="button" class="btn _btn _btn_report" data-toggle="modal" data-target="#reportMock"><i class="fas fa-bullhorn"></i></button>
 									<!-- Modal -->
 									<div class="modal fade" id="reportMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -458,7 +577,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-12 col-sm-7 col-md-8 col-xl-9">
+							<div class="col-12 col-sm-7 col-xl-9">
 								<div class="d-table fullscreen">
 									<div class="d-tablecell v-middle text-center-sm">
 										<h4 class="_fw500 m-0 text-capitalize"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name if @mock.mocker.first_name? %> <%= @mock.mocker.last_name if @mock.mocker.first_name? %><% end %></h4>
@@ -536,27 +655,22 @@
 													<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><div class="_chip _1"><%= tag %></div><% end %></div>
 												</div>
 												<div class="row m-0 fullwidth">
-													<div class="col d-flex">
-														<div class="d-table fullheight" style="margin-right: 5px;">
-															<div class="d-tablecell v-middle">
-																<%= image_tag avatar_url(mock.mocker), class: "_avatar _2 m-0-auto" %>
-															</div>
-														</div>
-														<div class="text-ellipsis">
-															<div class="d-table fullscreen">
-																<div class="d-tablecell v-middle ">
-																	<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="col-auto">
+													<div class="col-auto m-0-auto"  style="margin-bottom: 5px;">
 														<div class="d-table fullscreen">
 															<div class="d-tablecell v-middle">
 																<div class="d-flex" style="width: max-content;float: right;">
 																	<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
 																	<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
 																	<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-12 col-lg d-flex text-center text-lg-right">
+														<div class="text-ellipsis">
+															<div class="d-table fullscreen">
+																<div class="d-tablecell v-middle ">
+																	<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
 																</div>
 															</div>
 														</div>
@@ -611,6 +725,39 @@
 	}
 	._col_mock_related{
 		padding-top: 15px;
+	}
+	._col_btn_action_mock a{
+		width: 50px;
+		height: 50px;
+		margin:0 auto;
+	}
+	._color_current{
+		color: #e50068;
+	}
+	._share_link{
+		color:#5e6e75 !important;
+		font-size: 16pt;
+		cursor: pointer;
+	}
+	._video_date{
+		margin-left: 8px !important;
+	}
+	._col_btn_action_mock i {
+	    font-size: 13pt !important;
+	    margin-bottom: 5px;
+	    margin-right:5px;
+	}
+	._col_btn_action_mock div {
+	    font-size: 10.5pt;
+	}
+	@media(max-width: 991px){
+		.d-md-grid{
+			display:grid;
+		}
+
+		._col_btn_action_mock i {
+		    font-size: 17pt !important;
+		}
 	}
 </style>
 

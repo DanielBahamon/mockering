@@ -1,11 +1,19 @@
 <div class="space_navfooter d-block d-md-none" style="height:52px;"></div>
 <div class="_navfooter d-block d-md-none">
 	<div class="cont_navfooter">
-		<div class="_contbtn_add_navfooter">
-			<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
-				<i class="fas fa-plus"></i>
-			<% end %>
-		</div>
+        <% if mocker_signed_in? %>
+			<div class="_contbtn_add_navfooter">
+				<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
+					<i class="fas fa-plus"></i>
+				<% end %>
+			</div>
+		<% else %>
+			<div class="_contbtn_add_navfooter">
+				<%= link_to new_mocker_session_path, class: "_btn_add_mock_navfooter" do %>
+					<i class="fas fa-plus"></i>
+				<% end %>
+			</div>
+		<% end %>
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">
 				<li class="col-3 <%= 'active' if current_page?(root_path)  %>">

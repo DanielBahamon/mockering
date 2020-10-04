@@ -21,6 +21,14 @@
 //= require jquery_ujs
 //= require autocomplete-rails
 //= require jquery.atwho
+//= require social-share-button
+//= require clipboard
 //= require_tree .
 
 
+$(document).ready(function(){  
+  
+  var clipboard = new Clipboard('.clipboard-btn');
+  console.log(clipboard);
+	
+});
