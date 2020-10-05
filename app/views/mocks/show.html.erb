@@ -73,7 +73,7 @@
 														<div class="d-table fullscreen">
 															<div class="d-table-cell v-middle">
 																<div class="d-md-grid" id="like-count">
-																	<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+																	<i class="fas fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
 																</div>
 															</div>
 														</div>
@@ -108,7 +108,7 @@
 														<div class="d-table fullscreen">
 															<div class="d-table-cell v-middle">
 																<div class="d-md-grid" id="dislike-count">
-																	<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+																	<i class="fas fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
 																</div>
 															</div>
 														</div>
@@ -435,7 +435,7 @@
 												<div class="d-table fullscreen">
 													<div class="d-table-cell v-middle">
 														<div class="d-md-grid" id="like-count">
-															<i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+															<i class="fas fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
 														</div>
 													</div>
 												</div>
@@ -470,7 +470,7 @@
 												<div class="d-table fullscreen">
 													<div class="d-table-cell v-middle">
 														<div class="d-md-grid" id="dislike-count">
-															<i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+															<i class="fas fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
 														</div>
 													</div>
 												</div>
@@ -725,39 +725,6 @@
 	}
 	._col_mock_related{
 		padding-top: 15px;
-	}
-	._col_btn_action_mock a{
-		width: 50px;
-		height: 50px;
-		margin:0 auto;
-	}
-	._color_current{
-		color: #e50068;
-	}
-	._share_link{
-		color:#5e6e75 !important;
-		font-size: 16pt;
-		cursor: pointer;
-	}
-	._video_date{
-		margin-left: 8px !important;
-	}
-	._col_btn_action_mock i {
-	    font-size: 13pt !important;
-	    margin-bottom: 5px;
-	    margin-right:5px;
-	}
-	._col_btn_action_mock div {
-	    font-size: 10.5pt;
-	}
-	@media(max-width: 991px){
-		.d-md-grid{
-			display:grid;
-		}
-
-		._col_btn_action_mock i {
-		    font-size: 17pt !important;
-		}
 	}
 </style>
 
