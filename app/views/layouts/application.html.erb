@@ -56,6 +56,7 @@
     <%= render 'shared/navfooter' %>
 
     <div class="trigger" id="trigger1"></div>
+    <div class="trigger" id="trigger2"></div>
 
     <script type="text/javascript">
       /* BUTTON MENU */
@@ -68,10 +69,50 @@
       // init controller
       var controller = new ScrollMagic.Controller();
       // build tween
-      var scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
+      var scene_1 = new ScrollMagic.Scene({triggerElement: "#trigger1"})
             .setClassToggle("._nav._1", "_shadow")
             // .addIndicators()
             .addTo(controller);
+      var scene_2 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
+            .setClassToggle("._nav._1", "active-semi")
+            //.addIndicators()
+            .addTo(controller);
+      var scene_3 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
+            .setClassToggle("._navbar_br", "active-semi")
+            //.addIndicators()
+            .addTo(controller);
+      var scene_4 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
+            .setClassToggle("._navfooter", "active-semi")
+            //.addIndicators()
+            .addTo(controller);
+      var scene_5 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
+            .setClassToggle("._contbtn_add_navfooter", "active-semi")
+            //.addIndicators()
+            .addTo(controller);
+
+      var position = $(window).scrollTop(); 
+
+      // should start at 0
+
+      $(window).scroll(function() {
+          var scroll = $(window).scrollTop();
+          if(scroll > position) {
+              // console.log('scrollDown');
+              $('._nav._1').removeClass('active');
+              $('._navfooter').removeClass('active');
+              $('._contbtn_add_navfooter').removeClass('active');
+          } else {
+              $('._nav._1').addClass('active');
+              $('._navfooter').addClass('active');
+              $('._contbtn_add_navfooter').addClass('active');
+          }
+          position = scroll;
+      });
+      //========================================
+      // END SCROLL UP
+      //========================================
+
+
     </script>
     <!-- JQUERY -->
     <script src="https://vjs.zencdn.net/7.8.2/video.js"></script>

@@ -1494,6 +1494,31 @@
     object-fit: cover;
   }
 
+  #_row_activity{
+      font-weight: 300;
+      font-size: 10pt;
+      color: black;
+  }
+  .card-title._title{
+    margin-bottom: 30px;
+  }
+  .container_search{
+    width:100%;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .card.link_card._2{
+    height: 150px;
+    margin: 5px !important;
+  }
+  .card.link_card._2 img{
+    height: 148px;
+  }
+  @media(min-width: 768px){
+    .card.link_card._2{
+      width:600px;
+    }
+  }
   ._card .icon_play { 
       position: absolute;
       z-index: 1;
@@ -1513,7 +1538,7 @@
   }
   ._card .card-img,
   ._card .card-img-top{ 
-      border-radius: 5px;
+      border-radius: 3px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       filter: brightness(0.8);
@@ -1601,7 +1626,6 @@
   }
   ._nav._1{
     background: white;
-    position: fixed;
     padding:9px 0;
     z-index: 13;
     width: 100%;
@@ -1614,8 +1638,34 @@
     -webkit-box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.2);
     box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.2);
   }
+  ._nav._1.active{
+    top:0 !important;
+  }
+  ._nav._1.active-semi{
+    position: fixed;
+    top: -90px;
+  }
   ._navbar_br{
-    margin-top:70px;
+    position:absolute;
+    height:60px;
+  }
+  ._navbar_br.active-semi{
+    position:static;
+    display:block;
+  }
+  ._navfooter.active{
+    bottom:0 !important;
+  }
+  ._navfooter.active-semi{
+    position: fixed;
+    bottom: -60px;
+  }
+  ._contbtn_add_navfooter.active{
+    bottom:30px !important;
+  }
+  ._contbtn_add_navfooter.active-semi{
+    position: fixed;
+    bottom: -90px;
   }
   .navside_2 ._cont_sidenav{
     width:max-content !important;
@@ -1821,6 +1871,8 @@
     border-top:1px solid #eaeaea;
     background: white;
     z-index:13;
+    -webkit-transition:all .2s ease;
+    transition:all .2s ease;
   }
   .cont_navfooter{
     margin:0 auto;
@@ -3202,6 +3254,10 @@
     bottom: 30px;
     z-index: 1;
     width: 100%;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
   }
   ._btn_add_mock_navfooter {
       display: block;
@@ -3342,6 +3398,9 @@
   }
   #trigger1{
     top:51vh;
+  }
+  #trigger2{
+    top:60vh;
   }
   #_big_row_index{
     background:#ffffff;
