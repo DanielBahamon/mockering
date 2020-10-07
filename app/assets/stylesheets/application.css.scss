@@ -185,7 +185,7 @@
 
 /* GENERAL */
   *{
-    font-family:'Sofia Pro', 'Josefin Sans', 'TT Commons', sans-serif;
+    font-family:'Josefin Sans', 'Sofia Pro', 'TT Commons', sans-serif;
   }
   html, body {overflow-x:hidden}
   body {
@@ -1552,10 +1552,10 @@
       filter: brightness(1);
   }
   ._card ._cardtitle{
-    font-size: 13pt;
+    font-size: 16pt;
     line-height: 1.5;
     font-weight: 600;
-    margin-bottom: 9px;
+    margin-bottom: 0;
     text-decoration: none !important;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -1775,14 +1775,14 @@
     position: fixed !important;
     float: right !important;
     right: 10px !important;
-    top: 65px !important;
+    top: 80px !important;
     width: max-content !important;
     left: auto !important;
     border-color:#e9ecef;
     padding: 0;
     border-radius: 9px;
-    -webkit-box-shadow: 0 7px 12px -12px #7a7a7a;
-    box-shadow: 0 7px 12px -12px #7a7a7a;
+    -webkit-box-shadow: 0 7px 12px -2px #00000073;
+    box-shadow: 0 7px 12px -2px #00000073;
   }
   .navbar-nav._navbar .dropdown-menu#navbarNotificationsItems{
     position: fixed !important;
@@ -2473,6 +2473,9 @@
   }
   .text-black{
     color:black !important;
+  }
+  .text-grey{
+    color:grey !important;
   }
   .img_card_mock_mocker{
       width: 100%;

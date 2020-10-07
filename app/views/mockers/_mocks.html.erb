@@ -3,31 +3,71 @@
 		<div class="row">
 			<% @mocks.each do |mock| %>
 				<div class="col-12 col-md-6 p-3 p-t-0 m-0-auto">
-					<%= link_to mock, class: "_mock_mocker" do %>
-						<div class="row m-0">
-							<div class="col-4 _col_img text-center">
+					<%= link_to mock, class: "link_card card box _card" do %>
+						<div class="cont_img">
+							<div class="icon_play">
 								<div class="d-table fullscreen">
-									<div class="d-table-cell v-middle">
-										<%= image_tag mock.picture.url(:large), class: "img_card_mock_mocker" %>
-									</div>
+									<div class="d-table-cell v-middle text-center">
+										<i class="fas fa-play"></i>
+									</div>		
 								</div>
 							</div>
-							<div class="col-8 _cont_mock">
-								<div class="d-table fullscreen">
-									<div class="d-table-cell v-middle">
-										<div class="row">
-											<h5 class="card-title _title _fw600"><%= mock.title %></h5>
-										</div>
-										<div class="row">
-											<small><%= mock.created_at.strftime("%d %b %Y").downcase %></small>
-										</div>
-										<div class="row">
-											<div class="d-flex" style="width: max-content;float: right;">
-												<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
-												<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
-												<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+							<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+						</div>
+						
+						<div class="_cardbody">
+							<div class="row">
+								<div class="col-12">
+									<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+									<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
+								</div>
+								<div class="col-12">
+									<div class="row m-0 fullwidth">
+										<div class="col-auto p-0">
+											<div class="d-table fullheight" style="margin-right: 5px;">
+												<div class="d-tablecell v-middle">
+													<%= image_tag avatar_url(mock.mocker), class: "_avatar _2 m-0-auto" %>
+												</div>
 											</div>
-										</div>	
+										</div>
+										<div class="col p-1">
+											<div class="d-table fullscreen">
+												<div class="d-tablecell v-middle ">
+													<div class="text-ellipsis">
+														<p class="_fw600 _fs10pt m-0 _fs90per">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row m-0 fullwidth pt-3 _fw600">
+									<div class="col-4">
+										<div class="d-table fullscreen">
+											<div class="d-tablecell v-middle">
+												<div class="text-center">
+													<p class="_fs10pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="d-table fullscreen">
+											<div class="d-tablecell v-middle">
+												<div class="text-center">
+													<p class="_fs10pt m-0"><%= render 'mocks/likesimple', mock: mock %></p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="d-table fullscreen">
+											<div class="d-tablecell v-middle">
+												<div class="text-center">
+													<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
