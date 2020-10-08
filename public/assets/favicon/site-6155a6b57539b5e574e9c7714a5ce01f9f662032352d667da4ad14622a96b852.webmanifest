@@ -1,0 +1,19 @@
+{
+    "name": "Mockering",
+    "short_name": "Mockering",
+    "icons": [
+        {
+            "src": "/assets/favicon/android-chrome-192x192-d3e56442368ee7343eafb9df995ce1b53efec908dea151db82da08d4e9bde3b3.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicon/android-chrome-512x512-af5355e98ce619fd74cb294c665138f3b59e8f0437bcbafa2d9d156f8f6b1a6b.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
