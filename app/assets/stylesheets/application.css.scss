@@ -1084,9 +1084,9 @@
   }
   ._btn._action.follow:hover{
     transform: translateY(-2px);
-    background: linear-gradient(45deg, #810eff, #e509d4);
-    -webkit-box-shadow: 0 8px 15px -8px #c70be2;
-    box-shadow: 0 8px 15px -8px #c70be2;
+    background: linear-gradient(45deg, #310eff, #b20ca5);
+    -webkit-box-shadow: 0 8px 15px -8px #2e0bff;
+    box-shadow: 0 8px 15px -8px #2e0bff;
   }
   ._btn._action.unfollow{
     background: #cbcbcb;
@@ -1508,10 +1508,9 @@
     margin: 0 auto;
   }
   .card.link_card._2{
-    height: 150px;
     margin: 5px !important;
   }
-  .card.link_card._2 img{
+  .card.link_card._2 .card-img-top{
     height: 148px;
   }
   @media(min-width: 768px){
@@ -1526,7 +1525,7 @@
       font-size: 25pt;
       width: 100%;
       color: white;
-      opacity:0.75;
+      opacity:0.475;
       -webkit-transition: all .2s ease;
       transition: all .2s ease;
   }
@@ -1538,7 +1537,7 @@
   }
   ._card .card-img,
   ._card .card-img-top{ 
-      border-radius: 3px;
+      border-radius: 0;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       filter: brightness(0.8);
@@ -1596,8 +1595,23 @@
       margin: 0;
   }
 
+  ._username{
+      filter: grayscale(1);
+  }
+  ._username:hover{
+      filter: grayscale(0);
+  }
+
+  @media(max-width: 575px){
+      ._card{
+        width:100vw;
+        min-width: 200px;
+        margin: 0;
+      }
+  }
   ._card{
     width:310px;
+    border-radius: 0;
   }
   ._card._1 .card-img-top._1{
     min-height: 250px;
@@ -3269,7 +3283,7 @@
       height: 45px;
       width: 45px;
       text-align: center;
-      line-height: 2.5;
+      line-height: 2.45;
       margin: 0 auto;
       font-size: 14pt;
       -webkit-transition: all .2s ease;

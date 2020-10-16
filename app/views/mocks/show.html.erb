@@ -290,7 +290,6 @@
 													<div class="row">
 														<div class="col-12">
 															<p class="_cardtitle"><%= mock.title %></p>
-															<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
 														</div>
 														<div class="row m-0 fullwidth">
 															<div class="col d-flex">
@@ -649,10 +648,10 @@
 											<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
 										</div>
 										<div class="_cardbody">
-											<div class="row">
-												<div class="col-12">
-													<p class="_cardtitle"><%= mock.title %></p>
-													<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
+												<div class="row">
+													<div class="col-12">
+														<p class="_cardtitle"><%= mock.title %></p>
+													</div>
 												</div>
 												<div class="row m-0 fullwidth">
 													<div class="col-auto m-0-auto"  style="margin-bottom: 5px;">
@@ -676,7 +675,6 @@
 														</div>
 													</div>
 												</div>
-											</div>
 										</div>
 									<% end %>
 								</div>
@@ -719,6 +717,7 @@
 		width:100% !important;
     	margin: 0;
     	margin-bottom: 15px;
+    	height:auto;
 	}
 	.cont_img img{
 		max-height:200px !important;
@@ -735,6 +734,7 @@
 	#_col_1_show_mock{
 	    margin-bottom: 0;
 	}
+
 </style>
 
 <script type="text/javascript">
