@@ -13,18 +13,22 @@ class Mock < ApplicationRecord
 	has_many :mock_appeals
   	
 	enum category: {
-		 Original: 0,
-		 Report: 1,
-		 Reaction: 2,
-		 Tutorial: 3,
-		 Gameplay: 4,
-		 Podcast: 5,
-		 Videoclip: 6,
-		 Humor: 7,
-		 Training: 8,
-		 Growth: 9,
-		 Tribute: 10,
-		 Protest: 11
+		Whatever: 0,
+		Knowledge: 1,
+		Short: 2,
+		Event: 3,
+		Animation: 4,
+		Videoclip: 5,
+		Podcast: 6,
+		Reaction: 7,
+		"Social justice": 8,
+		Health: 9,
+		History: 10,
+		Tutorial: 11,
+		"Physical training": 12,
+		Tribute: 13,
+		Reports: 14,
+		Music: 15
 	}
 
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/unnamed.jpg"

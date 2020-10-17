@@ -15,8 +15,25 @@ class MocksController < ApplicationController
 			.paginate(page: params[:page], per_page: 20)
 			.where(privated: false)
 		else
-			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 20).where(privated: false, reported: false)
+			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 9).where(privated: false, reported: false)
 		end
+		@mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 0).limit(8)
+		@mocks_knowledge = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 1).limit(8)
+		@mocks_short = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 2).limit(8)
+		@mocks_event = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 3).limit(8)
+
+		@mocks_animation = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 4).limit(8)
+		@mocks_videoclip = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 5).limit(8)
+		@mocks_podcast = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 6).limit(8)
+		@mocks_reaction = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 7).limit(8)
+		@mocks_protest = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 8).limit(8)
+		@mocks_health = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 9).limit(8)
+		@mocks_history = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 10).limit(8)
+		@mocks_tutorial = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 11).limit(8)
+		@mocks_training = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 12).limit(8)
+		@mocks_tribute = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 13).limit(8)
+		@mocks_report = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 14).limit(8)
+		@mocks_music = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 15).limit(8)
 	end
 
 	def popular
