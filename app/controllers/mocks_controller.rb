@@ -22,7 +22,6 @@ class MocksController < ApplicationController
 		@mocks_paranormal = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 2).limit(8)
 		@mocks_short = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 3).limit(8)
 		@mocks_event = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 4).limit(8)
-
 		@mocks_aliens = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 5).limit(8)
 		@mocks_animation = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 6).limit(8)
 		@mocks_videoclip = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 7).limit(8)
