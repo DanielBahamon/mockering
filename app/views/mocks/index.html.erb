@@ -284,12 +284,13 @@
 											<%= render 'mock_category', mock: mock %>
 										<% end %>
 									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_4">
+									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_19">
 									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_4 pull-right">
+									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_19 pull-right">
 									</a>
 								</div>
-							</					<% end %>
+							</div>
+						<% end %>
 						<% if @mocks_protest.present? %>
 							<hr>
 							<div class="mocks_category">
@@ -556,13 +557,13 @@
 
 
 	    $(".arrow-left-navigation_4").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "-="+351});
+	        $("#mocks_report").animate({scrollLeft: "-="+351});
 	    });
 	    $(".arrow-right-navigation_4").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "+="+351});
+	        $("#mocks_report").animate({scrollLeft: "+="+351});
 	    });
 
-		$('#mocks_health').scroll(function() {
+		$('#mocks_report').scroll(function() {
 		    if($(this).scrollLeft() == 0) {
 		        $('.arrow-left-navigation_4').hide();
 		    }
@@ -574,13 +575,13 @@
 
 
 	    $(".arrow-left-navigation_5").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "-="+351});
+	        $("#mocks_paranormal").animate({scrollLeft: "-="+351});
 	    });
 	    $(".arrow-right-navigation_5").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "+="+351});
+	        $("#mocks_paranormal").animate({scrollLeft: "+="+351});
 	    });
 
-		$('#mocks_health').scroll(function() {
+		$('#mocks_paranormal').scroll(function() {
 		    if($(this).scrollLeft() == 0) {
 		        $('.arrow-left-navigation_5').hide();
 		    }
@@ -592,13 +593,13 @@
 
 
 	    $(".arrow-left-navigation_6").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "-="+351});
+	        $("#mocks_animation").animate({scrollLeft: "-="+351});
 	    });
 	    $(".arrow-right-navigation_6").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "+="+351});
+	        $("#mocks_animation").animate({scrollLeft: "+="+351});
 	    });
 
-		$('#mocks_health').scroll(function() {
+		$('#mocks_animation').scroll(function() {
 		    if($(this).scrollLeft() == 0) {
 		        $('.arrow-left-navigation_6').hide();
 		    }
@@ -610,13 +611,13 @@
 
 
 	    $(".arrow-left-navigation_7").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "-="+351});
+	        $("#mocks_aliens").animate({scrollLeft: "-="+351});
 	    });
 	    $(".arrow-right-navigation_7").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "+="+351});
+	        $("#mocks_aliens").animate({scrollLeft: "+="+351});
 	    });
 
-		$('#mocks_health').scroll(function() {
+		$('#mocks_aliens').scroll(function() {
 		    if($(this).scrollLeft() == 0) {
 		        $('.arrow-left-navigation_7').hide();
 		    }
@@ -625,5 +626,256 @@
 		    }
 		}).scroll();
 
+
+	    $(".arrow-left-navigation_8").click(function(){
+	        $("#mocks_short").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_8").click(function(){
+	        $("#mocks_short").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_short').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_8').hide();
+		    }
+		    else if($('.arrow-left-navigation_8').css('display') != 'block') {
+		        $('.arrow-left-navigation_8').show();
+		    }
+		}).scroll();
+
+
+
+	    $(".arrow-left-navigation_9").click(function(){
+	        $("#mocks_podcast").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_9").click(function(){
+	        $("#mocks_podcast").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_podcast').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_9').hide();
+		    }
+		    else if($('.arrow-left-navigation_9').css('display') != 'block') {
+		        $('.arrow-left-navigation_9').show();
+		    }
+		}).scroll();
+
+
+
+	    $(".arrow-left-navigation_19").click(function(){
+	        $("#mocks_reaction").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_19").click(function(){
+	        $("#mocks_reaction").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_reaction').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_19').hide();
+		    }
+		    else if($('.arrow-left-navigation_19').css('display') != 'block') {
+		        $('.arrow-left-navigation_19').show();
+		    }
+		}).scroll();
+
+
+
+	    $(".arrow-left-navigation_10").click(function(){
+	        $("#mocks_protest").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_10").click(function(){
+	        $("#mocks_protest").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_protest').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_10').hide();
+		    }
+		    else if($('.arrow-left-navigation_10').css('display') != 'block') {
+		        $('.arrow-left-navigation_10').show();
+		    }
+		}).scroll();
+
+
+
+	    $(".arrow-left-navigation_11").click(function(){
+	        $("#mocks_tribute").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_11").click(function(){
+	        $("#mocks_tribute").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_tribute').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_11').hide();
+		    }
+		    else if($('.arrow-left-navigation_11').css('display') != 'block') {
+		        $('.arrow-left-navigation_11').show();
+		    }
+		}).scroll();
+
+
+	    $(".arrow-left-navigation_12").click(function(){
+	        $("#mocks_health").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_12").click(function(){
+	        $("#mocks_health").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_health').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_12').hide();
+		    }
+		    else if($('.arrow-left-navigation_12').css('display') != 'block') {
+		        $('.arrow-left-navigation_12').show();
+		    }
+		}).scroll();
+
+
+
+
+	    $(".arrow-left-navigation_12").click(function(){
+	        $("#mocks_health").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_12").click(function(){
+	        $("#mocks_health").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_health').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_12').hide();
+		    }
+		    else if($('.arrow-left-navigation_12').css('display') != 'block') {
+		        $('.arrow-left-navigation_12').show();
+		    }
+		}).scroll();
+
+		
+
+	    $(".arrow-left-navigation_13").click(function(){
+	        $("#mocks_event").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_13").click(function(){
+	        $("#mocks_event").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_event').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_13').hide();
+		    }
+		    else if($('.arrow-left-navigation_13').css('display') != 'block') {
+		        $('.arrow-left-navigation_13').show();
+		    }
+		}).scroll();
+
+		
+
+	    $(".arrow-left-navigation_14").click(function(){
+	        $("#mocks_event").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_14").click(function(){
+	        $("#mocks_event").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_event').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_14').hide();
+		    }
+		    else if($('.arrow-left-navigation_14').css('display') != 'block') {
+		        $('.arrow-left-navigation_14').show();
+		    }
+		}).scroll();
+
+		
+
+	    $(".arrow-left-navigation_14").click(function(){
+	        $("#mocks_tutorial").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_14").click(function(){
+	        $("#mocks_tutorial").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_tutorial').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_14').hide();
+		    }
+		    else if($('.arrow-left-navigation_14').css('display') != 'block') {
+		        $('.arrow-left-navigation_14').show();
+		    }
+		}).scroll();
+
+		
+
+	    $(".arrow-left-navigation_15").click(function(){
+	        $("#mocks_history").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_15").click(function(){
+	        $("#mocks_history").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_history').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_15').hide();
+		    }
+		    else if($('.arrow-left-navigation_15').css('display') != 'block') {
+		        $('.arrow-left-navigation_15').show();
+		    }
+		}).scroll();
+
+
+
+	    $(".arrow-left-navigation_16").click(function(){
+	        $("#mocks_videoclip").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_16").click(function(){
+	        $("#mocks_videoclip").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_videoclip').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_16').hide();
+		    }
+		    else if($('.arrow-left-navigation_16').css('display') != 'block') {
+		        $('.arrow-left-navigation_16').show();
+		    }
+		}).scroll();
+
+
+
+
+	    $(".arrow-left-navigation_17").click(function(){
+	        $("#mocks_training").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_17").click(function(){
+	        $("#mocks_training").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_training').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_17').hide();
+		    }
+		    else if($('.arrow-left-navigation_17').css('display') != 'block') {
+		        $('.arrow-left-navigation_17').show();
+		    }
+		}).scroll();
+
+
+
+	    $(".arrow-left-navigation_18").click(function(){
+	        $("#mocks_music").animate({scrollLeft: "-="+351});
+	    });
+	    $(".arrow-right-navigation_18").click(function(){
+	        $("#mocks_music").animate({scrollLeft: "+="+351});
+	    });
+
+		$('#mocks_music').scroll(function() {
+		    if($(this).scrollLeft() == 0) {
+		        $('.arrow-left-navigation_18').hide();
+		    }
+		    else if($('.arrow-left-navigation_18').css('display') != 'block') {
+		        $('.arrow-left-navigation_18').show();
+		    }
+		}).scroll();
 	});
 </script>

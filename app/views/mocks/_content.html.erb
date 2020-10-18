@@ -33,7 +33,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col col-lg-6">
+			<div class="col-12 col-lg-6 pt-4 pt-lg-0">
 				<div class="row float-lg-right m-0">	
 					<div class="col-4 col-lg-auto text-center _col_btn_action_mock" >
 						<% if mocker_signed_in? %>
@@ -261,10 +261,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-12 col-md-4 col-xl-3 _col_mock_related">
+	<div class="col-12 col-md-4 col-xl-3 _col_mock_related pl-0">
 		<div class="row m-0">
 			<% @related_mocks.each do |mock| %>
-				<div class="co-6 col-sm-6 col-md-12 m-0-auto">
+				<div class="co-6 col-sm-6 col-md-12 m-0-auto p-0">
 					<%= link_to mock, class: "link_card card box _card _2" do %>
 						<div class="cont_img">
 							<div class="icon_play">
@@ -282,12 +282,7 @@
 									<p class="_cardtitle"><%= mock.title %></p>
 								</div>
 								<div class="row m-0 fullwidth">
-									<div class="col d-flex">
-										<div class="d-table fullheight" style="margin-right: 5px;">
-											<div class="d-tablecell v-middle">
-												<%= image_tag avatar_url(mock.mocker), class: "_avatar _2 m-0-auto" %>
-											</div>
-										</div>
+									<div class="col-12 col-md-auto">
 										<div class="text-ellipsis">
 											<div class="d-table fullscreen">
 												<div class="d-tablecell v-middle ">
@@ -296,7 +291,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-auto">
+									<div class="col-12 col-md-auto">
 										<div class="d-table fullscreen">
 											<div class="d-tablecell v-middle">
 												<div class="d-flex" style="width: max-content;float: right;">

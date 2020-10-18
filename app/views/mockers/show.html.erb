@@ -213,7 +213,6 @@
 									</ul>
 									<div class="tab-content" id="myTabContent">
 									  <div class="tab-pane fade show active" id="mocks" role="tabpanel" aria-labelledby="mocks-tab">
-									  	<div class="mocks_content" id="mocks_content">
 									  		<% if @mocker.mocks.count > 0 %>
 												<%= render 'mocks' %>
 											<% else %>
@@ -225,7 +224,6 @@
 													</div>
 												</div>
 											<% end %>
-										</div>
 									  </div>
 									  	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 										  <div class="tab-pane fade" id="privated" role="tabpanel" aria-labelledby="privated-tab">
@@ -359,12 +357,10 @@
 </div>
 
 <style type="text/css">
-	@media(max-width: 575px){
       ._card{
         width:100%;
         margin: 0;
       }
-  	}
   	.bg_white{
   		background:white !important;
   	}

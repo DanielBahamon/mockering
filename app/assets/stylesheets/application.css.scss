@@ -436,7 +436,7 @@
   .link_card{
     text-decoration: none !important;
     color:inherit !important;
-    border:1px solid #c5c5c5;
+    border:1px solid #ffffff;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
   }
@@ -1514,7 +1514,7 @@
     height: 148px;
   }
   .card.link_card._3 ._cardbody{
-    height:150px;
+    height:155px;
   }
   .card.link_card._3 .card-img-top{
     max-height: 350px;
@@ -2679,8 +2679,9 @@
       margin-bottom: 15px;
   }
   .video_description{
-    font-size: 15pt;
-    color:#484848;
+    font-size: 13pt;
+    color: #484848;
+    line-height: 2.05;
   }
   .vjs-poster{
     border-radius: 9px;
@@ -3449,6 +3450,7 @@
   }
   #on_content{
     background: #f4f7f8;
+    background: #ffffff;
     height: 100%;
   }
   #trigger1{

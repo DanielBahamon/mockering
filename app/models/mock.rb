@@ -29,7 +29,7 @@ class Mock < ApplicationRecord
 		Tutorial: 13,
 		"Physical training": 14,
 		Tribute: 15,
-		Reports: 16,
+		Report: 16,
 		Music: 17
 	}
 
