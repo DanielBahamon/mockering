@@ -15,7 +15,7 @@ class MocksController < ApplicationController
 			.paginate(page: params[:page], per_page: 20)
 			.where(privated: false)
 		else
-			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 9).where(privated: false, reported: false)
+			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 12).where(privated: false, reported: false)
 		end
 		@mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 0).limit(8)
 		@mocks_knowledge = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 1).limit(8)
