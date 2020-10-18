@@ -19,18 +19,18 @@ class Mock < ApplicationRecord
 		Short: 3,
 		Event: 4,
 		Aliens: 5,
-		Animation: 5,
-		Videoclip: 6,
-		Podcast: 7,
-		Reaction: 8,
-		"Social justice": 9,
-		Health: 10,
-		History: 11,
-		Tutorial: 12,
-		"Physical training": 13,
-		Tribute: 14,
-		Reports: 15,
-		Music: 16
+		Animation: 6,
+		Videoclip: 7,
+		Podcast: 8,
+		Reaction: 9,
+		"Social justice": 10,
+		Health: 11,
+		History: 12,
+		Tutorial: 13,
+		"Physical training": 14,
+		Tribute: 15,
+		Reports: 16,
+		Music: 17
 	}
 
 	has_attached_file :picture, styles: {extralarge: "999x999>", large: "600x600>", medium: "300x300>", thumb: "150x150>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/unnamed.jpg"
