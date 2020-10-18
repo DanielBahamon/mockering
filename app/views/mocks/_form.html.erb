@@ -64,25 +64,7 @@
               <div class="col-12 col-sm-6">
                 <div class="field">
                   <%= f.label :category %><br/>
-                  <%= select_tag(:category, options_for_select([
-                                                    ['Whatever', 0], 
-                                                    ['Knowledge', 1], 
-                                                    ['Paranormal', 2], 
-                                                    ['Short', 3], 
-                                                    ['Event', 4], 
-                                                    ['Aliens', 5], 
-                                                    ['Animation', 6], 
-                                                    ['Videoclip', 7], 
-                                                    ['Podcast', 8], 
-                                                    ['Reaction', 9], 
-                                                    ['Social justice', 10], 
-                                                    ['Health', 11], 
-                                                    ['History', 12], 
-                                                    ['Physical training', 13], 
-                                                    ['Tutorial', 14], 
-                                                    ['Tribute', 15], 
-                                                    ['Report', 16], 
-                                                    ['Music', 17]], 0), class: "form-control _select", required: true) %>
+                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
                 </div>
               </div>
               <div class="col-12">
@@ -127,6 +109,10 @@
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_accessibility"}, 'accessibility', nil %>
                         <%= f.label 'Accessibility', class: '_checkbox _1', for: "check_accessibility" %>
+                    </li>
+                    <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_animation"}, 'animation', nil %>
+                        <%= f.label 'Animation', class: '_checkbox _1', for: "check_animation" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_art"}, 'art', nil %>
@@ -570,84 +556,44 @@
       });
   });
 </script>
+<script type="text/javascript">
+    
+  $(document).ready(function () {
+    var course_id = $('#js-data').data('course');
+    var controller_name = $('body').data('controller');
+    var model_instance_path = '/' + controller_name + '/' + course_id;
+    var resume_path = model_instance_path + '/resume_upload';
+    var update_status_path = model_instance_path + '/update_status';
 
-<script type="text/javascript">
-  const output1 = document.getElementById('output_1');
-  if (window.FileList && window.File) {
-    document.getElementById('file-selector_1').addEventListener('change', event => {
-      output1.innerHTML = '';
-      for (const file of event.target.files) {
-        const li = document.createElement('li');
-        const name = file.name ? file.name : 'NOT SUPPORTED';
-        const type = file.type ? file.type : 'NOT SUPPORTED';
-        const size = file.size ? file.size : 'NOT SUPPORTED';
-        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-        output1.appendChild(li);
+    $('#fileupload').fileupload({
+      maxNumberOfFiles: 3,
+      maxChunkSize: 10000000, // 10 MB
+      type: 'PATCH',
+      add: function (e, data) {
+        var that = this;
+        $.getJSON(resume_path, { file: data.files[0].name }, function (result) {
+            var file = result.file;
+            data.uploadedBytes = file && file.size;
+            $.blueimp.fileupload.prototype
+                .options.add.call(that, e, data);
+        });
       }
-    }); 
-  }
-  const output2 = document.getElementById('output_2');
-  if (window.FileList && window.File) {
-    document.getElementById('file-selector_2').addEventListener('change', event => {
-      output2.innerHTML = '';
-      for (const file of event.target.files) {
-        const li = document.createElement('li');
-        const name = file.name ? file.name : 'NOT SUPPORTED';
-        const type = file.type ? file.type : 'NOT SUPPORTED';
-        const size = file.size ? file.size : 'NOT SUPPORTED';
-        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-        output2.appendChild(li);
-      }
-    }); 
-  }
-</script>
-<script type="text/javascript">
-  const fileSelector1 = document.getElementById('file-selector_1');
-  const output3 = document.getElementById('output_1');
-  if (window.FileList && window.File) {
-    fileSelector1.addEventListener('dragover', event => {
-      event.stopPropagation();
-      event.preventDefault();
-      event.dataTransfer.dropEffect = 'copy';
     });
-    fileSelector1.addEventListener('drop', event => {
-      output3.innerHTML = '';
-      event.stopPropagation();
-      event.preventDefault();
-      const files = event.dataTransfer.files;
-      for (let i = 0; i < files.length; i++) {
-        const li = document.createElement('li');
-        const file = files[i];
-        const name = file.name ? file.name : 'NOT SUPPORTED';
-        const type = file.type ? file.type : 'NOT SUPPORTED';
-        const size = file.size ? file.size : 'NOT SUPPORTED';
-        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-        output3.appendChild(li);
-      }
-    }); 
-  }
-  const fileSelector2 = document.getElementById('file-selector_2');
-  const output4 = document.getElementById('output_2');
-  if (window.FileList && window.File) {
-    fileSelector2.addEventListener('dragover', event => {
-      event.stopPropagation();
-      event.preventDefault();
-      event.dataTransfer.dropEffect = 'copy';
+
+    $('#fileupload')
+      .bind('fileuploadchunkdone', function (e, data) {
+        var perc = parseInt(data.loaded / data.total * 100, 10);
+        $('#js-completed').html(perc + "%");
+      })
+      .bind('fileuploaddone', function (e, data) {
+        $.ajax({
+          url: update_status_path,
+          type: "PATCH",
+          data: { status: 'uploaded'},
+          success: function(data) {
+            window.location.replace(model_instance_path);
+          } 
+        });
+      });
     });
-    fileSelector2.addEventListener('drop', event => {
-      output4.innerHTML = '';
-      event.stopPropagation();
-      event.preventDefault();
-      const files = event.dataTransfer.files;
-      for (let i = 0; i < files.length; i++) {
-        const li = document.createElement('li');
-        const file = files[i];
-        const name = file.name ? file.name : 'NOT SUPPORTED';
-        const type = file.type ? file.type : 'NOT SUPPORTED';
-        const size = file.size ? file.size : 'NOT SUPPORTED';
-        li.textContent = `name: ${name}, type: ${type}, size: ${size}`;
-        output4.appendChild(li);
-      }
-    }); 
-  }
 </script>

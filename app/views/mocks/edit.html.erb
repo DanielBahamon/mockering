@@ -39,19 +39,19 @@
 		        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionNewMock">
 		          <div class="card-body">
 		          	<div class="row">
-		              <div class="col-12 col-sm-6">
+		              <div class="col-12 ">
 		                <div class="field">
 		                  <%= f.label :title %><br/>
 		                  <%= f.text_field :title, class: 'form-control', required: true %>
 		                </div>
 		              </div>
-		              <div class="col-12 col-sm-6">
+		              <div class="col-12 ">
 		                <div class="field">
 		                  <%= f.label :category %><br/>
 		                  <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
 		                </div>
 		              </div>
-		              <div class="col-12 col-sm-6">
+		              <div class="col-12">
 		                <div class="d-table fullscreen">
 		                    <div class="d-table-cell v-middle">
 		                        <div class="field"  style="padding:15px;">
@@ -62,7 +62,7 @@
 		                    </div>
 		                </div>
 		              </div>
-		              <div class="col-12 col-sm-6">
+		              <div class="col-12">
 		                <div class="d-table fullscreen">
 		                    <div class="d-table-cell v-middle">
 		                        <div class="field"  style="padding:15px;">

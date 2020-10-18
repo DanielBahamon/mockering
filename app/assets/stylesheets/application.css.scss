@@ -14,6 +14,8 @@
  *= require 'jquery.atwho'
  *= require jquery-ui
  *= require social-share-button
+ *= require jquery.fileupload-noscript
+ *= require jquery.fileupload-ui-noscript
  *= require_tree .
  *= require_self
  */
