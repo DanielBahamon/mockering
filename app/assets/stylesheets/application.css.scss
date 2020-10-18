@@ -2505,6 +2505,9 @@
   .text-grey{
     color:grey !important;
   }
+  .text-shadow{
+    text-shadow: 0 2px 4px #00000057;
+  }
   .img_card_mock_mocker{
       width: 100%;
       object-fit: cover;
@@ -2755,7 +2758,7 @@
   }
   .div_arrow._right._2{
       height: 319px;
-      top: 14px;
+      top: 0;
       right: 0;
       background: linear-gradient(90deg, transparent, #ffffff40, #f4f7f8ab, #f4f7f8);
   }
