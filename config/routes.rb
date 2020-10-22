@@ -165,6 +165,8 @@ Rails.application.routes.draw do
 
   get 'search' => 'pages#search'
 
+  get 'donate' => 'pages#donate'
+
 
   # This is just for the path for /:slug
   # resources :mockers, path: '/'
