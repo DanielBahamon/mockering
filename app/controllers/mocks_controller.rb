@@ -12,7 +12,7 @@ class MocksController < ApplicationController
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		if params[:tag].present?
 			@mocks = Mock.tagged_with(params[:tag])
-			.paginate(page: params[:page], per_page: 20)
+			.paginate(page: params[:page], per_page: 4)
 			.where(privated: false)
 		else
 			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)

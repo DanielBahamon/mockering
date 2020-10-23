@@ -1,7 +1,7 @@
 <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 	<div class="_mocks_mocker row m-0">
 		<div class="col-12 p-0">
-			<div class="row">
+			<div class="row m-0">
 
 				<% if @privated_mocks.count > 0 %>
 					<% @privated_mocks.each do |mock| %>

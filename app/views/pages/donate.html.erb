@@ -1,26 +1,56 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div id="paypal-button-container"></div>
-      <script src="https://www.paypal.com/sdk/js?client-id=AcNbS28FdXfl1gGgOxLF07b0UijOAlzEEP-BQn7p99WGBUEwlN-jYB-MT2Pl4bdZ1k-kXAUdYzrBLQ5v&vault=true" data-sdk-integration-source="button-factory"></script>
-      <script>
-        paypal.Buttons({
-            style: {
-                shape: 'rect',
-                color: 'silver',
-                layout: 'horizontal',
-                label: 'paypal'
-            },
-            createSubscription: function(data, actions) {
-              return actions.subscription.create({
-                'plan_id': 'P-6LR21963DB655810HL6I27FA'
-              });
-            },
-            onApprove: function(data, actions) {
-              alert(data.subscriptionID);
-            }
-        }).render('#paypal-button-container');
-      </script>
+      <br>
+      <div class="jumbotron">
+        <h1 class="display-4">Become a Contributor <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg", class: "_badge_verification _2" %> <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-pro.svg", class: "_badge_verification _2" %> <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg", class: "_badge_verification _2" %></h1>
+        <br>
+        <p class="lead">Hi there!</p>
+        <p class="lead">Here Daniel. I am a web developer based on Colombia that opposes censoring the truth.</p>
+        <hr class="my-4">
+        <p class="text-center">Each donation will be used to pay for the servers and to improve your experience on our website.</p>
+        <br>
+        <br>
+        <div id="paypal-button-container"></div>
+        <script src="https://www.paypal.com/sdk/js?client-id=AcNbS28FdXfl1gGgOxLF07b0UijOAlzEEP-BQn7p99WGBUEwlN-jYB-MT2Pl4bdZ1k-kXAUdYzrBLQ5v&vault=true" data-sdk-integration-source="button-factory"></script>
+        <script>
+          paypal.Buttons({
+              style: {
+                  shape: 'rect',
+                  color: 'silver',
+                  layout: 'horizontal',
+                  label: 'paypal'
+              },
+              createSubscription: function(data, actions) {
+                return actions.subscription.create({
+                  'plan_id': 'P-6LR21963DB655810HL6I27FA'
+                });
+              },
+              onApprove: function(data, actions) {
+                alert(data.subscriptionID);
+              }
+          }).render('#paypal-button-container');
+        </script>
+      </div>
+        
     </div>
   </div>
 </div>
+<style type="text/css">
+  ._badge_verification._2{
+    width: 30px;
+    height: 30px;
+  }
+  .paypal-button.paypal-button-number-0.paypal-button-layout-horizontal.paypal-button-shape-rect.paypal-button-number-single.paypal-button-env-production.paypal-button-color-silver.paypal-button-text-color-black.paypal-logo-color-blue{
+    background: azure;
+  }
+  #paypal-button-container{
+    text-align:center;
+  }
+  @media(min-width: 500px){
+    .paypal-button-container{
+      max-width: 100% !important;
+    }
+  }
+    
+</style>

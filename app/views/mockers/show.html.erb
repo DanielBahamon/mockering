@@ -56,14 +56,14 @@
 											<% end %>
 										<% end %>
 									<% elsif mocker_signed_in? %>
-										<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _1 m-0-auto", style: "width: max-content;" %>
+										<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _3 m-0-auto", style: "width: max-content;" %>
 									<% end %>
 									<% unless @blocked == true || @blocked_loop == true %>
 						                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
 						                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
 						                <% end %>
 						            <% end %>
-									<hr/>
+									<br/>
 								</div>
 							<div class="col-4 text-center d-grid">
 								<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.mocks.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
@@ -93,79 +93,13 @@
 						<br>
 
 						<% unless @blocked == true || @blocked_loop == true %>
-							<div class="row m-0">
-								<% if @mocker.bio? %>
-								<div class="col-12 col-sm-6 col-md-12 p-0">
-									<div class="readmore _1">
-										<p class="keepspaces _bio"><%= @mocker.bio %></p>
-									</div>
-								</div>
-								<% end %>
-								<% if @mocker.facebook? || @mocker.twitter? || @mocker.pinterest? || @mocker.instagram? || @mocker.youtube? %>
-									<div class="col-12 col-sm-6 col-md-12">
-										<div class="row fullscreen m-0">
-											<div class="col-auto p-0 m-0-auto">
-												<div class="d-table fullscreen">
-													<div class="d-tablecell v-middle ">
-														<ul class="row _list _social p-0">
-															<% if @mocker.facebook? %>
-																<li class="col-auto"><a class="facebook _btn_icon _2" href="https://www.facebook.com/<%= @mocker.facebook %>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-															<% end %>
-															<% if @mocker.twitter? %>
-																<li class="col-auto"><a class="twitter _btn_icon _2" href="https://twitter.com/<%= @mocker.twitter %>" target="_blank"><i class="fab fa-twitter"></i></a></li>
-															<% end %>
-															<% if @mocker.pinterest? %>
-																<li class="col-auto"><a class="pinterest _btn_icon _2" href="https://www.pinterest.com/<%= @mocker.pinterest %>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-															<% end %>
-															<% if @mocker.instagram? %>
-																<li class="col-auto"><a class="instagram _btn_icon _2" href="https://www.instagram.com/<%= @mocker.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a></li>
-															<% end %>
-															<% if @mocker.youtube? %>
-																<li class="col-auto"><a class="youtube _btn_icon _2" href="<%= @mocker.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a></li>
-															<% end %>
-														</ul>
-													</div>
-												</div>
-												<br>
-											</div>
-										</div>
-									</div>
-								<% end %>
-							</div>
 						<% end %>
-						<br class="d-none d-md-block">
-						<div class="row d-none d-md-block">
+						<br class="d-none">
+						<div class="row d-none">
 							<div class="col-12 p-0">
 								<div id="_row_sidenav1">
 									<div class="d-table fullscreen ">
 										<div class="d-tablecell v-middle">
-											<ul class="_listsidenav">
-					    						<% if mocker_signed_in? && current_mocker == @mocker %>
-													<li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
-															<i class="fas fa-envelope col-2 text-center p-0"></i>
-															<p class="col-10 m-0">Messages</p>
-														<% end %>
-													</li>
-													<li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
-															<i class="fas fa-cog col-2 text-center p-0"></i>
-															<p class="col-10 m-0">Settings</p>
-														<% end %>
-													</li>
-													<hr>
-													<li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
-															<i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
-															<p class="col-10 m-0">Logout</p>
-														<% end %>
-													</li>
-												<% elsif !mocker_signed_in? %>
-													<hr>
-													<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
-															<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
-															<p class="col-10 m-0">Login</p>
-														<% end %>
-													</li>
-												<% end %>
-											</ul>
 								              <div class="row m-0">
 								                <div class="col">
 								                  <%= render 'pages/links_terms' %>
@@ -195,7 +129,7 @@
 					<% unless @blocked == true || @blocked_loop == true %>
 						<% if @mocker.privated == false || @mocker.following?(current_mocker) || current_mocker == @mocker  %>
 							<div class="row m-0">
-								<div class="col-12 p-0">
+								<div class="col-12">
 									<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
 									  <li class="nav-item" role="presentation">
 									    <a class="nav-link active" id="mocks-tab" data-toggle="tab" href="#mocks" role="tab" aria-controls="mocks" aria-selected="true"><i class="fas fa-video"></i></a>
@@ -210,6 +144,9 @@
 									    <a class="nav-link" id="liked-tab" data-toggle="tab" href="#liked" role="tab" aria-controls="liked" aria-selected="false"><i class="fas fa-heart"></i></a>
 									  </li>
 									  <% end %>
+									  <li class="nav-item" role="presentation">
+									    <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false"><i class="fas fa-user-tie"></i></a>
+									  </li>
 									</ul>
 									<div class="tab-content" id="myTabContent">
 									  <div class="tab-pane fade show active" id="mocks" role="tabpanel" aria-labelledby="mocks-tab">
@@ -235,6 +172,48 @@
 										  		<%= render 'liked_mocks' %>
 										  </div>
 									  	<% end %>
+										<% if @mocker.bio? %>
+										  <div class="tab-pane fade" id="bio" role="tabpanel" aria-labelledby="bio-tab">
+											<div class="row m-0">
+										  		<div class="col-12 col-sm-6 col-md-12">
+													<div class="readmore _1">
+														<p class="keepspaces _bio"><%= @mocker.bio %></p>
+													</div>
+												</div>
+
+												<% if @mocker.facebook? || @mocker.twitter? || @mocker.pinterest? || @mocker.instagram? || @mocker.youtube? %>
+													<div class="col-12 col-sm-6 col-md-12">
+														<div class="row fullscreen m-0">
+															<div class="col-auto p-0 m-0-auto">
+																<div class="d-table fullscreen">
+																	<div class="d-tablecell v-middle ">
+																		<ul class="row _list _social p-0">
+																			<% if @mocker.facebook? %>
+																				<li class="col-auto"><a class="facebook _btn_icon _2" href="https://www.facebook.com/<%= @mocker.facebook %>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+																			<% end %>
+																			<% if @mocker.twitter? %>
+																				<li class="col-auto"><a class="twitter _btn_icon _2" href="https://twitter.com/<%= @mocker.twitter %>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+																			<% end %>
+																			<% if @mocker.pinterest? %>
+																				<li class="col-auto"><a class="pinterest _btn_icon _2" href="https://www.pinterest.com/<%= @mocker.pinterest %>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+																			<% end %>
+																			<% if @mocker.instagram? %>
+																				<li class="col-auto"><a class="instagram _btn_icon _2" href="https://www.instagram.com/<%= @mocker.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+																			<% end %>
+																			<% if @mocker.youtube? %>
+																				<li class="col-auto"><a class="youtube _btn_icon _2" href="<%= @mocker.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+																			<% end %>
+																		</ul>
+																	</div>
+																</div>
+																<br>
+															</div>
+														</div>
+													</div>
+												<% end %>
+											</div>
+										  </div>
+										<% end %>
 									</div>
 										
 									<!-- Modal Followers -->
