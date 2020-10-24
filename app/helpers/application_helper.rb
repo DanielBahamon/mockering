@@ -48,9 +48,9 @@ module ApplicationHelper
 		elsif mocker.verification == '1'
 			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg"
 		elsif mocker.verification == '2'
-			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-pro.svg"
-		elsif mocker.verification == '3'
 			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg"
+		elsif mocker.verification == '3'
+			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-legend.svg"
 		end
 	end
 
@@ -58,11 +58,11 @@ module ApplicationHelper
 		if mocker.verification == '0'
 			'Verificated'
 		elsif mocker.verification == '1' 
-			'Contributor'
+			'Contributor Learner'
 		elsif mocker.verification == '2'
-			'Contributor Pro'
-		elsif mocker.verification == '3'
 			'Contributor Master'
+		elsif mocker.verification == '3'
+			'Contributor Legend'
 		end
 	end
 

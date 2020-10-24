@@ -165,7 +165,7 @@ Rails.application.routes.draw do
 
   get 'search' => 'pages#search'
 
-  get 'donate' => 'pages#donate'
+  get 'contribute' => 'pages#contribute'
 
 
   # This is just for the path for /:slug

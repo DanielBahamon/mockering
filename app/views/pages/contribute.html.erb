@@ -1,0 +1,103 @@
+<% content_for :title, "Become a Mockering Contributor • Mockering" %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <br>
+      <div class="jumbotron">
+        <br>
+        <h1 class="display-4  text-md-center">Mockering Contributor</h1>
+        <br>
+        <br>
+        <p class="lead  text-md-center">Hi! Welcome to the site that opposes censoring the truth.</p>
+        <hr class="my-4  text-md-center">
+        <p class=" text-md-center">Each donation will be used to pay for the servers and to improve your experience on our website.</p>
+        <br>
+        <br>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseLearner" aria-expanded="true" aria-controls="collapseLearner">
+                  <div class="d-flex">
+                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg", class: "_badge_verification _3" %> <h3>Learner </h3> <h3 class="price_contributor">($5/month)</h3>
+                  </div>
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseLearner" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <p class="text-md-center">Your comments are highlighted.</p>
+                <%= render 'pages/paypal_learner' %>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="false" aria-controls="collapseMaster">
+                  <div class="d-flex">
+                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg", class: "_badge_verification _3" %> <h3>Master</h3> <h3 class="price_contributor">($10/month)</h3>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div id="collapseMaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <p class="text-md-center">Your comments are highlighted and you can send direct messages to all users.</p>
+                <%= render 'pages/paypal_master' %>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend">
+                  <div class="d-flex">
+                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-legend.svg", class: "_badge_verification _3" %> <h3>Legend</h3> <h3 class="price_contributor">($25/month)</h3>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div id="collapseLegend" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                <p class="text-md-center">Your videos and comments are highlighted and you can send direct messages to all users.</p>
+                <%= render 'pages/paypal_legend' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+        
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  ._badge_verification._2{
+    width: 60px;
+    height: 60px;
+  }
+  ._badge_verification._3{
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  .price_contributor{
+    right: 15px;
+    font-size: 15pt;
+    line-height: 2;
+    margin-left: 7px;
+    font-weight: 800;
+  }
+  #paypal-button-container{
+    text-align:center;
+  }
+  @media(min-width: 500px){
+    .paypal-button-container{
+      max-width: 100% !important;
+    }
+  }
+    
+</style>
