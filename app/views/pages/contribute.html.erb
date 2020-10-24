@@ -19,7 +19,7 @@
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseLearner" aria-expanded="true" aria-controls="collapseLearner">
                   <div class="d-flex">
-                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg", class: "_badge_verification _3" %> <h3>Learner </h3> <h3 class="price_contributor">($5/month)</h3>
+                     <h3>Donate </h3>
                   </div>
                 </button>
               </h2>
@@ -27,8 +27,11 @@
 
             <div id="collapseLearner" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
-                <p class="text-md-center">Your comments are highlighted.</p>
-                <%= render 'pages/paypal_learner' %>
+                <form action="https://www.paypal.com/donate" method="post" target="_top" style="text-align:center;">
+                  <input type="hidden" name="hosted_button_id" value="UHWEWZ8P9HTNS" />
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                  <img alt="" border="0" src="https://www.paypal.com/en_CO/i/scr/pixel.gif" width="1" height="1" />
+                  </form>
               </div>
             </div>
           </div>
@@ -37,32 +40,15 @@
               <h2 class="mb-0">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="false" aria-controls="collapseMaster">
                   <div class="d-flex">
-                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg", class: "_badge_verification _3" %> <h3>Master</h3> <h3 class="price_contributor">($10/month)</h3>
+                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg", class: "_badge_verification _3" %> <h3>Learner</h3> <h3 class="price_contributor">($5/month)</h3>
                   </div>
                 </button>
               </h2>
             </div>
             <div id="collapseMaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                <p class="text-md-center">Your comments are highlighted and you can send direct messages to all users.</p>
-                <%= render 'pages/paypal_master' %>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend">
-                  <div class="d-flex">
-                    <%= image_tag "https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-legend.svg", class: "_badge_verification _3" %> <h3>Legend</h3> <h3 class="price_contributor">($25/month)</h3>
-                  </div>
-                </button>
-              </h2>
-            </div>
-            <div id="collapseLegend" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-              <div class="card-body">
-                <p class="text-md-center">Your videos and comments are highlighted and you can send direct messages to all users.</p>
-                <%= render 'pages/paypal_legend' %>
+                <p class="text-md-center">Your comments are highlighted.</p>
+                <%= render 'pages/paypal_learner' %>
               </div>
             </div>
           </div>
