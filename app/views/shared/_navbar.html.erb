@@ -68,6 +68,15 @@
                           <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
                             <div class="d-table fullscreen">
                               <div class="d-tablecell v-middle">
+                                <%= link_to contribute_path, class: "_btn _2 _contribute" do %>
+                                  <i class="fas fa-hand-holding-usd"></i>
+                                <% end %>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
+                            <div class="d-table fullscreen">
+                              <div class="d-tablecell v-middle">
                                 <%= link_to new_mock_path, class: "_btn _1 _addmock" do %>
                                   <i class="material-icons ">add</i> Add video
                                 <% end %>
@@ -131,6 +140,15 @@
                         <div class="d-table fullscreen">
                           <div class="d-tablecell v-middle">
                             <a class="_btn_icon collapsed"  data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch"><i class="material-icons" style="line-height: 2;">search</i></a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
+                        <div class="d-table fullscreen">
+                          <div class="d-tablecell v-middle">
+                            <%= link_to contribute_path, class: "_btn _2 _contribute" do %>
+                              <i class="fas fa-hand-holding-usd"></i>
+                            <% end %>
                           </div>
                         </div>
                       </li>
@@ -298,7 +316,9 @@
       position:static;
     }
   }
-    
+  #paypal-button-container_1{
+    text-align:center;
+  }
 </style>
 <script type="text/javascript">
   

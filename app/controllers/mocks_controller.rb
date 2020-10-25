@@ -59,6 +59,7 @@ class MocksController < ApplicationController
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
 
+
 	def new
 		@mock = current_mocker.mocks.build
 	end
@@ -177,23 +178,168 @@ class MocksController < ApplicationController
 		redirect_to root_path
 	end
 
+	def whatever
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 0)
+	end
+	def knowledge
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def paranormal
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def shorts
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def events
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def aliens
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def animation
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def videoclips
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def podcasts
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def reactions
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def protests
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def health
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def history
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def tutorials
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def training
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def tributes
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def reports
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+	def music
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 1)
+	end
+
 	private
 
-	def find_mock
-		@mock = Mock.find(params[:id])
-	end
+		def find_mock
+			@mock = Mock.find(params[:id])
+		end
 
-	def find_review
-		@review = Review.find(params[:id])
-	end
+		def find_review
+			@review = Review.find(params[:id])
+		end
 
-	def mock_params
-		params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted)
-	end
+		def mock_params
+			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted)
+		end
 
-	def set_search
-		@q = Mock.ransack(params[:q])
-		@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
-	end
+		def set_search
+			@q = Mock.ransack(params[:q])
+			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+		end
 	
 end

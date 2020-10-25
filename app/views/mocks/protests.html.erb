@@ -1,0 +1,28 @@
+<% content_for :title, "Protests • Mockering" %>
+<div id="_big_row_index bg_ghoswhite">
+	<div class="row m-0">
+		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block out" id="_sidenav">
+			<%= render 'shared/navside' %>
+		</div>
+		<div class="col-12 col-md-9 col-xl-10 p-0 _content _content_principal full">
+			<div class="on_content" id="on_content">
+				<div class="row m-0">
+					<div class="col-12 _board">
+						<%= render 'tags' %>
+						<div class="row m-0">
+							<div class="col-12 _col_title_index">
+								<h2 class="_title _2 _fw700">Protests</h2>
+							</div>
+						</div>
+						<div class="mocks_content">
+							<div id="mocks" class="transitions-enabled">
+								<%= render 'mock' %>
+							</div>
+							<%= will_paginate @mocks %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

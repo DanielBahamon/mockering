@@ -179,6 +179,42 @@ Rails.application.routes.draw do
 
   get 'popular', to: 'mocks#popular'
 
+  get 'whatever', to: 'mocks#whatever'
+
+  get 'knowledge', to: 'mocks#knowledge'
+
+  get 'paranormal', to: 'mocks#paranormal'
+
+  get 'shorts', to: 'mocks#shorts'
+
+  get 'events', to: 'mocks#events'
+
+  get 'aliens', to: 'mocks#aliens'
+
+  get 'animation', to: 'mocks#animation'
+  
+  get 'videclips', to: 'mocks#videclips'
+  
+  get 'podcasts', to: 'mocks#podcasts'
+  
+  get 'reactions', to: 'mocks#reactions'
+
+  get 'protests', to: 'mocks#protests'
+
+  get 'health', to: 'mocks#health'
+
+  get 'history', to: 'mocks#history'
+
+  get 'tutorials', to: 'mocks#tutorials'
+
+  get 'training', to: 'mocks#training'
+
+  get 'tributes', to: 'mocks#tributes'
+
+  get 'reports', to: 'mocks#reports'
+
+  get 'music', to: 'mocks#music'
+  
   get 'latest', to: 'mocks#latest'
 
   get "/404", :to => "errors#not_found"
