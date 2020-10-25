@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 	before_action :authenticate_mocker!
 	def index
-		@notifications = Notification.where(recipient: current_mocker).unread
+		@notifications = Notification.where(recipient: current_mocker)
 	end
 
 
