@@ -193,7 +193,7 @@ Rails.application.routes.draw do
 
   get 'animation', to: 'mocks#animation'
   
-  get 'videclips', to: 'mocks#videclips'
+  get 'videoclips', to: 'mocks#videoclips'
   
   get 'podcasts', to: 'mocks#podcasts'
   
