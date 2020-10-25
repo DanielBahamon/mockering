@@ -200,7 +200,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 2)
 	end
 	def shorts
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -208,7 +208,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 3)
 	end
 	def events
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -216,7 +216,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 4)
 	end
 	def aliens
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -224,7 +224,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 5)
 	end
 	def animation
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -232,7 +232,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 6)
 	end
 	def videoclips
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -240,7 +240,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 7)
 	end
 	def podcasts
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -248,7 +248,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 8)
 	end
 	def reactions
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -256,7 +256,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 9)
 	end
 	def protests
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -264,7 +264,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 10)
 	end
 	def health
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -272,7 +272,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 11)
 	end
 	def history
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -280,7 +280,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 12)
 	end
 	def tutorials
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -288,7 +288,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 13)
 	end
 	def training
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -296,7 +296,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 14)
 	end
 	def tributes
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -304,7 +304,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 15)
 	end
 	def reports
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -312,7 +312,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 16)
 	end
 	def music
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -320,7 +320,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, category: 17)
 	end
 
 	private
