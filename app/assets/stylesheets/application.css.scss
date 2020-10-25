@@ -343,7 +343,8 @@
     height:30px;
     background:grey;
   }
-  a.link-2 {
+  ._cont_subtitle_index a{
+    text-decoration:none !important;
   }
   h4._name._fw400.m-0 {
     font-weight: 900;
@@ -1213,12 +1214,15 @@
   }
 
   ul.ks-cboxtags li input[type="checkbox"]:checked + label {
-      border: 1px solid #ff8358;
-      background-color: #ff6658;
+      border: 1px solid #261afe;
+      background: linear-gradient(45deg, #736de5, #6fb9f4);
       color: #fff;
       transition: all .2s;
   }
 
+  .cont_user ._name{
+    margin-top: 15px !important;
+  }
   ul.ks-cboxtags li input[type="checkbox"] {
     display: absolute;
   }

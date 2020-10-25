@@ -1,79 +1,124 @@
 <div class="form-group">
 	<%= form_for @mock, html: { multipart: true } do |f| %>
-    <div class="accordion _1" id="accordionNewMock">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left relative" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <i class="far fa-file-video absolute right-0"></i> Video (MP4)
-            </button>
-          </h2>
-        </div>
-
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionNewMock">
-          <div class="card-body">
-
-          	<div class="row">
-              <div class="col-12">
-                <div class="field">
-                  <%= f.file_field :movie, class: "file-selector", id: "file-selector_1", required: true %>
-                </div>
-              </div>
-          	</div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left collapsed relative" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-             <i class="far fa-file-image absolute right-0"></i> Thumbail (JPG/PNG/GIF)
-            </button>
-          </h2>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionNewMock">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <div class="field">
-                  <%= f.file_field :picture, class: "file-selector", id: "file-selector_2", required: true %>
-                  
-                </div>
-              </div>  
+        <div class="row" id="_form_register">
+          <fieldset class="msf_hide">
+            <div class="col-12">
+              <h1 class="display-4">Add a new video!</h1>
+              <p class="lead">Share your video with the most real critical thinking community on the internet.</p>
+              <hr class="my-4">
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingThree">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left collapsed relative" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-             <i class="far fa-file-alt absolute right-0"></i> Information 
-            </button>
-          </h2>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionNewMock">
-          <div class="card-body">
-          	<div class="row">
-              <div class="col-12 col-sm-6">
+              
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h4 class="_fw600">Title of your video</h4>
+                <br>
+              </div>
+            </div>
+            <div class="row m-0">
+              <div class="col-12 col-md-8 offset-md-2">
                 <div class="field">
-                  <%= f.label :title %><br/>
-                  <%= f.text_field :title, class: 'form-control', required: true %>
+                  <%= f.text_field :title, class: 'form-control', required: true, placeholder: "The Title For Your Video" %>
                 </div>
               </div>
-              <div class="col-12 col-sm-6">
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h4 class="_fw600">Upload your video (MP4)</h4>
+                <br>
+              </div>
+            </div>
+            <section class="col-12 _col_inputsaccount p-b-0">
+                <%= f.file_field :movie, class: "file-selector", id: "file-selector_1", required: true %>
+            </section>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h4 class="_fw600">Upload the thumbanail of your video (JPG/PNG/GIF)</h4>
+                <br>
+              </div>
+            </div>
+            <div class="row m-0 text-md-center">
+              <section class="col-12 _col_inputsaccount p-b-0">
+                <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
+              </section>
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12  text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h3 class="_fw600">Which category does your video belong to?</h3>
+              </div>
+            </div>
+            <div class="row m-0">
+              <div class="col-12">
                 <div class="field">
                   <%= f.label :category %><br/>
                   <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, prompt: "Choose one", class: "form-control _select", required: true %>
                 </div>
               </div>
+            </div> 
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+            <br>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h3 class="_fw600">Do you want to add a description to your video?</h3>
+              </div>
+            </div>
+            <div class="row m-0">
               <div class="col-12">
                 <div class="field">
                   <%= f.label :description %><br/>
                   <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4" %>
                 </div>
               </div>
-              <div class="col-12 col-sm-6">
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h3 class="_fw600">Has your video some restriction?</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle">
                         <div class="field"  style="padding:15px;">
@@ -84,7 +129,7 @@
                     </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-6">
+              <div class="col-12">
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle">
                         <div class="field"  style="padding:15px;">
@@ -95,21 +140,48 @@
                     </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-6">
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h3 class="_fw600">Whose credits are the video?</h3>
+              </div>
+            </div>
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
                 <div class="field">
                   <%= f.label :credits %><br/>
                   <%= f.text_field :credits, class: 'form-control', required: true %>
                 </div>
               </div>
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <div class="row m-0 text-md-center">
               <div class="col-12">
-                <br>
+                <h3 class="_fw600">To finish add some tags that relate your video to the rest</h3>
+              </div>
+            </div>
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
                 <div class="field _tags_form">
                   <%= f.label 'Tags' %><br/>
                   <ul class="ks-cboxtags">
-                    <li>
-                        <%= f.check_box :tag_list, { multiple: true, id: "check_accessibility"}, 'accessibility', nil %>
-                        <%= f.label 'Accessibility', class: '_checkbox _1', for: "check_accessibility" %>
-                    </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_animation"}, 'animation', nil %>
                         <%= f.label 'Animation', class: '_checkbox _1', for: "check_animation" %>
@@ -151,16 +223,12 @@
                         <%= f.label 'Business', class: '_checkbox _1', for: "check_business" %>
                     </li>
                     <li>
-                        <%= f.check_box :tag_list, { multiple: true, id: "check_cities"}, 'cities', nil %>
-                        <%= f.label 'cities', class: '_checkbox _1', for: "check_cities" %>
-                    </li>
-                    <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_cannabis"}, 'cannabis', nil %>
-                        <%= f.label 'cannabis', class: '_checkbox _1', for: "check_cannabis" %>
+                        <%= f.label 'Cannabis', class: '_checkbox _1', for: "check_cannabis" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_coronavirus"}, 'coronavirus', nil %>
-                        <%= f.label 'coronavirus', class: '_checkbox _1', for: "check_coronavirus" %>
+                        <%= f.label 'Coronavirus', class: '_checkbox _1', for: "check_coronavirus" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_cryptocurrency"}, 'cryptocurrency', nil %>
@@ -184,15 +252,11 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_creativity"}, 'creativity', nil %>
-                        <%= f.label 'creativity', class: '_checkbox _1', for: "check_creativity" %>
+                        <%= f.label 'Creativity', class: '_checkbox _1', for: "check_creativity" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_datascience"}, 'data science', nil %>
                         <%= f.label 'Data Science', class: '_checkbox _1', for: "check_datascience" %>
-                    </li>
-                    <li>
-                        <%= f.check_box :tag_list, { multiple: true, id: "check_disability"}, 'disability', nil %>
-                        <%= f.label 'disability', class: '_checkbox _1', for: "check_disability" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_design"}, 'design', nil %>
@@ -208,19 +272,19 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_education"}, 'education', nil %>
-                        <%= f.label 'education', class: '_checkbox _1', for: "check_education" %>
+                        <%= f.label 'Education', class: '_checkbox _1', for: "check_education" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_environment"}, 'environment', nil %>
-                        <%= f.label 'environment', class: '_checkbox _1', for: "check_environment" %>
+                        <%= f.label 'Environment', class: '_checkbox _1', for: "check_environment" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_equality"}, 'equality', nil %>
-                        <%= f.label 'equality', class: '_checkbox _1', for: "check_equality" %>
+                        <%= f.label 'Equality', class: '_checkbox _1', for: "check_equality" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_family"}, 'family', nil %>
-                        <%= f.label 'family', class: '_checkbox _1', for: "check_family" %>
+                        <%= f.label 'Family', class: '_checkbox _1', for: "check_family" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_freelancing"}, 'freelancing', nil %>
@@ -236,7 +300,7 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_fitness"}, 'fitness', nil %>
-                        <%= f.label 'fitness', class: '_checkbox _1', for: "check_fitness" %>
+                        <%= f.label 'Fitness', class: '_checkbox _1', for: "check_fitness" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_food"}, 'food', nil %>
@@ -244,7 +308,11 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_future"}, 'future', nil %>
-                        <%= f.label 'future', class: '_checkbox _1', for: "check_future" %>
+                        <%= f.label 'Future', class: '_checkbox _1', for: "check_future" %>
+                    </li>
+                    <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_flaws"}, 'Flaws in reality', nil %>
+                        <%= f.label 'Flaws in reality', class: '_checkbox _1', for: "check_flaws" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_gadgets"}, 'gadgets', nil %>
@@ -260,7 +328,7 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_history"}, 'history', nil %>
-                        <%= f.label 'history', class: '_checkbox _1', for: "check_history" %>
+                        <%= f.label 'History', class: '_checkbox _1', for: "check_history" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_human"}, 'human', nil %>
@@ -276,11 +344,11 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_justice"}, 'justice', nil %>
-                        <%= f.label 'justice', class: '_checkbox _1', for: "check_justice" %>
+                        <%= f.label 'Justice', class: '_checkbox _1', for: "check_justice" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_language"}, 'language', nil %>
-                        <%= f.label 'language', class: '_checkbox _1', for: "check_language" %>
+                        <%= f.label 'Language', class: '_checkbox _1', for: "check_language" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_leadership"}, 'leadership', nil %>
@@ -296,7 +364,7 @@
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_lgbtqia"}, 'lgbtqia', nil %>
-                        <%= f.label 'lgbtqia', class: '_checkbox _1', for: "check_lgbtqia" %>
+                        <%= f.label 'Lgbtqia', class: '_checkbox _1', for: "check_lgbtqia" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_makers"}, 'makers', nil %>
@@ -349,6 +417,10 @@
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_outdoors"}, 'outdoors', nil %>
                         <%= f.label 'outdoors', class: '_checkbox _1', for: "check_outdoors" %>
+                    </li>
+                    <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_paranormal"}, 'paranormal', nil %>
+                        <%= f.label 'Paranormal', class: '_checkbox _1', for: "check_paranormal" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_parenting"}, 'parenting', nil %>
@@ -409,6 +481,10 @@
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_race"}, 'race', nil %>
                         <%= f.label 'race', class: '_checkbox _1', for: "check_race" %>
+                    </li>
+                    <li>
+                        <%= f.check_box :tag_list, { multiple: true, id: "check_reality"}, 'reality', nil %>
+                        <%= f.label 'Reality', class: '_checkbox _1', for: "check_reality" %>
                     </li>
                     <li>
                         <%= f.check_box :tag_list, { multiple: true, id: "check_religion"}, 'religion', nil %>
@@ -510,34 +586,43 @@
                         <%= f.check_box :tag_list, { multiple: true, id: "check_writing"}, 'writing', nil %>
                         <%= f.label 'Writing', class: '_checkbox _1', for: "check_writing" %>
                     </li>
-                  </ul>
-                    
+                  </ul>   
                 </div>
               </div>
-          	</div>
-          </div>
+                
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 text-lg-center text-right">
+                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-12 text-right">
+                <%= f.submit 'Add mock', class: 'btn _btn _action f-right' %>
+                    <br>
+                    <br>
+                    <br>
+              </div>
+            </div>
+          </fieldset>
+
         </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-    	<div class="col-12 text-right">
-    		<%= f.submit 'Add mock', class: 'btn _btn _action f-right' %>
-            <br>
-            <br>
-            <br>
-    	</div>
-    </div>
+
 	<% end %>
 </div>
 <br>
 <br>
 
 <style type="text/css">
+  fieldset{
+    width:100%;
+  }
 </style>
 
 <script type="text/javascript">
-  var mvp = 5;
+  var mvp = 9;
   $(document).ready(function () {
       $("._tags_form input:checkbox").each(function (index) {
           /*this.checked = (index < mvp);*/
@@ -596,4 +681,81 @@
         });
       });
     });
+</script>
+<script type="text/javascript">
+  console.log("Reloaded");
+
+  // dom variables
+  var msf_getFsTag = document.getElementsByTagName("fieldset");
+
+  // declaring the active fieldset & the total fieldset count
+  var msf_form_nr = 0;
+  var fieldset = msf_getFsTag[msf_form_nr];
+  fieldset.className = "msf_show";
+
+  // creates and stores a number of bullets
+  var msf_bullet_nr = "<div class='msf_bullet'></div>";
+  var msf_length = msf_getFsTag.length;
+  for (var i = 1; i < msf_length; ++i) {
+      msf_bullet_nr += "<div class='msf_bullet'></div>";
+  };
+  // injects bullets
+  var msf_bullet_o = document.getElementsByClassName("msf_bullet_o");
+  for (var i = 0; i < msf_bullet_o.length; ++i) {
+      var msf_b_item = msf_bullet_o[i];
+      msf_b_item.innerHTML = msf_bullet_nr;
+  };
+
+  // removes the first back button & the last next button
+  document.getElementsByName("back")[0].className = "msf_hide";
+  document.getElementsByName("next")[msf_bullet_o.length - 1].className = "msf_hide";
+
+  // Makes the first dot active
+  var msf_bullets = document.getElementsByClassName("msf_bullet");
+  msf_bullets[msf_form_nr].className += " msf_bullet_active";
+
+  // Validation loop & goes to the next step
+  function msf_btn_next() {
+      var msf_val = true;
+
+      var msf_fs = document.querySelectorAll("fieldset")[msf_form_nr];
+      var msf_fs_i_count = msf_fs.querySelectorAll("input").length;
+
+      for (i = 0; i < msf_fs_i_count; ++i) {
+          var msf_input_s = msf_fs.querySelectorAll("input")[i];
+          if (msf_input_s.getAttribute("type") === "button") {
+              // nothing happens
+          } else {
+              if (msf_input_s.value === "") {
+                  msf_input_s.style.backgroundColor = "#e6e6e6";
+                  msf_val = false;
+              } else {
+                  if (msf_val === false) {} else {
+                      msf_val = true;
+                      msf_input_s.style.backgroundColor = "#f7fff7";
+                  }
+              }
+          };
+      };
+      if (msf_val === true) {
+          // goes to the next step
+          var selection = msf_getFsTag[msf_form_nr];
+          selection.className = "msf_hide";
+          msf_form_nr = msf_form_nr + 1;
+          var selection = msf_getFsTag[msf_form_nr];
+          selection.className = "msf_show";
+          // refreshes the bullet
+          var msf_bullets_a = msf_form_nr * msf_length + msf_form_nr;
+          msf_bullets[msf_bullets_a].className += " msf_bullet_active";
+      }
+  };
+
+  // goes one step back
+  function msf_btn_back() {
+      msf_getFsTag[msf_form_nr].className = "msf_hide";
+      msf_form_nr = msf_form_nr - 1;
+      msf_getFsTag[msf_form_nr].className = "msf_showhide";
+  };
+
+  console.log("loaded");
 </script>
