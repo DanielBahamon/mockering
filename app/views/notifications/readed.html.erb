@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row m-0">
+		<div class="col-12">
+			<ul>
+				<% @notifications.each do |notification| %>
+					<% if notification.action == "followed" %>  
+						<%= link_to notification, class: "_li_navbar" do %>
+							<li><p class='m-0 _text_notification'> started following you.</p> <i class='fas fa-user-plus _icon_notification'></i></li>
+						<% end %>
+						<p class='m-0 _text_notification'> started following you.</p> <i class='fas fa-user-plus _icon_notification'></i> %>
+					<% end %>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
