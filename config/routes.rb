@@ -167,6 +167,9 @@ Rails.application.routes.draw do
 
   get 'contribute' => 'pages#contribute'
 
+  get '/moon', to: 'application#moon', as: 'moon'
+  
+  get '/sun', to: 'application#sun', as: 'sun'
 
   # This is just for the path for /:slug
   # resources :mockers, path: '/'
