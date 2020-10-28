@@ -15,8 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/efeb454d96.js" crossorigin="anonymous"></script>
 
-      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     
@@ -56,8 +55,10 @@
     <%= render 'shared/navbar' %>
 
     <%= toastr_flash %>
+    <div class="bg-white">
+      <%= yield %>
+    </div>
     
-    <%= yield %>
 
 
     <%= render 'shared/navfooter' %>
@@ -71,6 +72,36 @@
             $('._iconav').toggleClass('open');
           });
       /* END BUTTON MENU */
+    </script>
+    <script type="text/javascript">
+      
+      (function() {
+        var darkSwitch = document.getElementById("darkSwitch");
+        if (darkSwitch) {
+          initTheme();
+          darkSwitch.addEventListener("change", function(event) {
+            resetTheme();
+          });
+          function initTheme() {
+            var darkThemeSelected =
+              localStorage.getItem("darkSwitch") !== null &&
+              localStorage.getItem("darkSwitch") === "dark";
+            darkSwitch.checked = darkThemeSelected;
+            darkThemeSelected
+              ? document.body.setAttribute("data-theme", "dark")
+              : document.body.removeAttribute("data-theme");
+          }
+          function resetTheme() {
+            if (darkSwitch.checked) {
+              document.body.setAttribute("data-theme", "dark");
+              localStorage.setItem("darkSwitch", "dark");
+            } else {
+              document.body.removeAttribute("data-theme");
+              localStorage.removeItem("darkSwitch");
+            }
+          }
+        }
+      })();
     </script>
     <script type="text/javascript">
       // init controller

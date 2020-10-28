@@ -5,23 +5,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin!
 
+
+
   def set_search
     @search = Mock.ransack(params[:q])
     @q = Mock.ransack(params[:q])
     @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
   end
 
-  def sun
-    cookies.delete(:moon)
-      redirect_back fallback_location: root_path, notice: "It's done!"
-  end
-
-  def moon
-    cookies[:moon] = {
-      value: 'dark mode on'
-    }
-      redirect_back fallback_location: root_path, notice: "It's done!"
-  end
 
   protected
 

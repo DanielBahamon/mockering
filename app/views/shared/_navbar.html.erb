@@ -29,14 +29,19 @@
               </li>
               <li class="nav-item relative d-none d-xs-block">
                 <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_black.svg', class: "_logonav _2", alt: 'Mockering'%>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_black.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
+
                 <% end %>
               </li>
               <li class="nav-item relative d-block d-xs-none fullwidth text-right">
                 <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_black.svg', class: "_logonav _4", alt: 'Mockering'%>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon.svg', class: "_logonav _3", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_black.svg', class: "_logonav _4 d-none-moon", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_dark_mode.svg', class: "_logonav _3 d-none-sun", alt: 'Mockering'%>
                 <% end %>
               </li>   
                 
@@ -258,20 +263,18 @@
                       <p class="col-10 m-0">Contributor</p>
                     <% end %>
                   </li>
-                  <% if cookies[:moon] %>
-                    <li><%= link_to moon_path, method: :get, class: "_link _sidenav" do %>
-                      <i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
-                        <p class="col-10 m-0">Dark mode</p>
-                      <% end %>
-                    </li>
-                  <% else %>
-                    <li><%= link_to sun_path, method: :get, class: "_link _sidenav" do %>
-                      <i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
-                        <p class="col-10 m-0">Light mode</p>
-                      <% end %>
-                    </li>
+                  <li>
+                    <label class="_link _sidenav" for="darkSwitch">
+                      <div class="col-2 text-center p-0 custom-control custom-switch">
+                        <i class="fas fa-moon d-none-moon"></i>
+                        <i class="fas fa-sun d-none-sun"></i>
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                      </div>
+                      <p class="col-10 m-0 d-none-sun">Sun mode</p>
+                      <p class="col-10 m-0 d-none-moon">Moon mode</p>
+                    </label>
+                  </li>
                     
-                  <% end %>
                   <div class="row m-0">
                     <div class="col">
                       <%= render 'pages/links_terms' %>
@@ -333,8 +336,51 @@
   #paypal-button-container_1{
     text-align:center;
   }
-  ._nav._1._dark{
-
+  .d-none-sun{
+    display: none;
+  }
+  .d-none-moon{
+    display: block;
+  }
+  [data-theme="dark"] .d-none-moon{
+    display: none !important;
+  }
+  [data-theme="dark"] .d-none-sun{
+    display: block !important;
+  }
+  [data-theme="dark"] {
+    background:#0c0b12 ;
+  }
+  [data-theme="dark"] ._nav._1.active{
+    background:#0c0b12 ;
+  }
+  [data-theme="dark"] ._iconav span{
+    background: #ffffff;
+  }
+  [data-theme="dark"] ._listsidenav li a:hover,
+  [data-theme="dark"] ._listsidenav li.active a{
+    color: #ffffff;
+    background: #1a1824;
+  }
+  [data-theme="dark"] ._listsidenav li a,
+  [data-theme="dark"] ._listsidenav li label{
+    color: #c0bbe4;
+  }
+  [data-theme="dark"] ._listsidenav li.active a::before,
+  [data-theme="dark"] ._listsidenav li:hover a::before{
+    background: #ffffff;
+  }
+  [data-theme="dark"] ._btn_icon{
+    color: #ffffff;
+  }
+  [data-theme="dark"] ._avatar_navbar{
+    border: 1px solid #0c0b12;
+  }
+  [data-theme="dark"] ._link._2{
+    color: #ffffff;
+  }
+  [data-theme="dark"] ._btn._2{
+    color: #ffffff;
   }
 </style>
 <script type="text/javascript">
