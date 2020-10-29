@@ -329,7 +329,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 17)
+    	.where(privated: false, reported: false, category: 18)
 	end
 
 	private

@@ -58,14 +58,12 @@
 										<p class="col-10 m-0">Settings</p>
 									<% end %>
 								</li>
-								<hr>
 								<li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
 										<i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
 										<p class="col-10 m-0">Logout</p>
 									<% end %>
 								</li>
 							<% else %>
-								<hr>
 								<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
 										<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
 										<p class="col-10 m-0">Login</p>
@@ -76,7 +74,24 @@
 		                    	<i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
 		                        <p class="col-10 m-0">Contribute</p>
 		                      <% end %>
-		                    </li>
+		                    </li> 
+			                  <hr>
+			                  <li><%= link_to contribute_path, class: "_link _sidenav" do %>
+			                    <i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
+			                      <p class="col-10 m-0">Contributor</p>
+			                    <% end %>
+			                  </li>
+			                  <li>
+			                    <label class="_link _sidenav" for="darkSwitch">
+			                      <div class="col-2 text-center p-0 custom-control custom-switch">
+			                        <i class="fas fa-moon d-none-moon"></i>
+			                        <i class="fas fa-sun d-none-sun"></i>
+			                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
+			                      </div>
+			                      <p class="col-10 m-0 d-none-sun">Sun mode</p>
+			                      <p class="col-10 m-0 d-none-moon">Moon mode</p>
+			                    </label>
+			                  </li>
 
 							<div class="row m-0">
 								<div class="col">

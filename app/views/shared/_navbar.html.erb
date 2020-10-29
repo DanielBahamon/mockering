@@ -69,15 +69,6 @@
                 <div class="d-table fullscreen ">
                   <div class="d-tablecell v-middle text-center">
                     <ul class="navbar-nav float-right _navbar _console">
-                        <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
-                          <div class="d-table fullscreen">
-                            <div class="d-tablecell v-middle">
-                              <%= link_to contribute_path, class: "_btn _2 _contribute" do %>
-                                <i class="fas fa-hand-holding-usd"></i>
-                              <% end %>
-                            </div>
-                          </div>
-                        </li>
                       <% if mocker_signed_in? %>
                           <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
                             <div class="d-table fullscreen">
@@ -99,6 +90,16 @@
                             </li>
                           </div>
                         <% end %>
+
+                          <li class="nav-item d-sm-none d-md-block" style="padding-right: 10px;">
+                            <div class="d-table fullscreen">
+                              <div class="d-tablecell v-middle">
+                                <%= link_to contribute_path, class: "_btn _2 _contribute" do %>
+                                  <i class="fas fa-hand-holding-usd"></i>
+                                <% end %>
+                              </div>
+                            </div>
+                          </li>
                           <div class="navbar p-0">
                             <li class="nav-item dropdown">
                               <div class="d-table fullscreen">
@@ -244,20 +245,19 @@
                         <p class="col-10 m-0">Settings</p>
                       <% end %>
                     </li>
-                    <hr>
                     <li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
                         <i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
                         <p class="col-10 m-0">Logout</p>
                       <% end %>
                     </li>
                   <% else %>
-                    <hr>
                     <li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
                         <i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
                         <p class="col-10 m-0">Login</p>
                       <% end %>
                     </li>
                   <% end %>  
+                  <hr>
                   <li><%= link_to contribute_path, class: "_link _sidenav" do %>
                     <i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
                       <p class="col-10 m-0">Contributor</p>
