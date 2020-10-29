@@ -214,6 +214,8 @@ Rails.application.routes.draw do
   get 'reports', to: 'mocks#reports'
 
   get 'music', to: 'mocks#music'
+
+  get 'nature', to: 'mocks#nature'
   
   get 'latest', to: 'mocks#latest'
 

@@ -35,6 +35,7 @@ class MocksController < ApplicationController
 		@mocks_tribute = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 15).limit(8)
 		@mocks_report = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 16).limit(8)
 		@mocks_music = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 17).limit(8)
+		@mocks_nature = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 18).limit(8)
 	end
 
 	def popular
@@ -315,6 +316,14 @@ class MocksController < ApplicationController
     	.where(privated: false, reported: false, category: 16)
 	end
 	def music
+    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+    	@mocks = Mock.joins(:impressions)
+    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
+    	.group(:id).order(impressions_count: :desc)
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, category: 17)
+	end
+	def nature
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
     	@mocks = Mock.joins(:impressions)
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
