@@ -3786,7 +3786,7 @@
     background:transparent;
   }
   [data-theme="dark"] ._btn._1{
-    background:transparent;
+    background: linear-gradient(45deg, #4c31ee, #4b01ff, #744fff);
   }
   [data-theme="dark"] ._btn._1:hover{
     border-color: white;
@@ -3886,7 +3886,8 @@
   [data-theme="dark"] small,
   [data-theme="dark"] ul,
   [data-theme="dark"] li,
-  [data-theme="dark"] strong{
+  [data-theme="dark"] strong,
+  [data-theme="dark"] label{
     color:white !important;
   }
   [data-theme="dark"] ._avatar._4{
@@ -4006,5 +4007,46 @@
     color: #ffffff !important;
   }
   [data-theme="dark"] .nav-pills._navpills .nav-link{
+    color:white;
+  }
+  [data-theme="dark"] .cont_conversations .conversation{
+    border: 1px solid #15131b;
+    background: #0c0b12;
+    opacity:0.8;
+  }
+  [data-theme="dark"] .cont_conversations .conversation:hover{
+    border: 1px solid #15131b;
+    background: #0c0b12;
+    opacity:1;
+  }
+  [data-theme="dark"] .cont_conversations ._slug{
+    color:white;
+  }
+  [data-theme="dark"] .dashboard-chats > .row > ._conversation_other{
+    background:#0c0b12;
+    border-bottom: 1px solid #1e1c2c;
+  }
+  [data-theme="dark"] .message{
+    border-bottom: 1px solid #1e1c2c;
+    color: white;
+  }
+  [data-theme="dark"] ._cont_form_chat{
+    background: #0c0b12;
+    border-top: 1px solid #1e1c2c;
+  }
+  [data-theme="dark"] .form-control{
+    background-color: #0c0b12;
+    color:white;
+  }
+  [data-theme="dark"] .form-control::placeholder{
+    color:white;
+  }
+  [data-theme="dark"] ._btn._2:hover:before{
+    border: 1px solid #ffffff;
+    border-color: #ffffff;
+  }
+  [data-theme="dark"] .navbar-nav._navbar .dropdown-menu .nav-link:hover,
+  [data-theme="dark"] ._itemdropdown:hover{
+    background: #0c0b12;
     color:white;
   }
