@@ -3923,3 +3923,20 @@
   [data-theme="dark"] ._listsidenav li label:hover::before{
     background: #ffffff;
   }
+  [data-theme="dark"] .jumbotron{
+    background-color: #0c0b12;
+  }
+  [data-theme="dark"] .card{
+    background-color: #0c0b12;
+  }
+  [data-theme="dark"] .navside_2 ._cont_sidenav{
+    background:#0c0b11;
+    border-right: 1px solid #1e1a2e;
+  }
+  [data-theme="dark"] .navbar-nav._navbar .dropdown-menu#navbarNotificationsItems{
+    background: #0c0b12;
+    border-color: #0c0b12;
+  }
+  [data-theme="dark"] ._btn._btnavfoot{
+    background: #0c0b12;
+  }
