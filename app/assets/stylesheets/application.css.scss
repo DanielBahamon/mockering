@@ -284,7 +284,7 @@
   }
   ._link{cursor:pointer;}
   ._link._1{color:#4c31ee;}
-  ._link._1:hover{text-decoration:none; color:#0e7b8d;}
+  ._link._1:hover{text-decoration:none; color:#7d01ff;}
   ._fw100{font-weight: 100;}
   ._fw200{font-weight: 200;}
   ._fw300{font-weight: 300;}
@@ -804,7 +804,7 @@
   }
   ._btn._login{
     padding: 8px 15px;
-    background: linear-gradient(21deg, #2c048e, #4b01ff, #b501ff);
+    background: linear-gradient(21deg, #2c048e, #4b01ff, #b501ff) !important;
     color: white;
     font-weight: 600;
     width: 100%;
@@ -1506,6 +1506,7 @@
   ._logo._1{
     width:140px;
     height:auto;
+    margin:0 auto;
   }
 /* END LOGOS */
 
@@ -2191,7 +2192,6 @@
   ._logonav._2{
     width:111px;
     height: auto;
-    top:2px;
     position: absolute;
     left: 5px;
     z-index: 0;
@@ -3868,7 +3868,10 @@
   [data-theme="dark"] h3,
   [data-theme="dark"] h4,
   [data-theme="dark"] h5,
-  [data-theme="dark"] small{
+  [data-theme="dark"] small,
+  [data-theme="dark"] ul,
+  [data-theme="dark"] li,
+  [data-theme="dark"] strong{
     color:white !important;
   }
   [data-theme="dark"] ._avatar._4{
@@ -3940,4 +3943,41 @@
   [data-theme="dark"] ._btn._btnavfoot{
     background: #0c0b12;
     border-color:transparent;
+  }
+  [data-theme="dark"] ._btn._session._facebook{
+    background: #3b5998;
+    color: white;
+  }
+  [data-theme="dark"] ._btn._session._google{
+    background: #3369e8;
+    color: white;
+  }
+  [data-theme="dark"] .row._session .or span{
+    background: #0c0b12;
+  }
+  [data-theme="dark"] ._col_inputsaccount label{
+    background:#0c0b12;
+    color:white;
+  }
+  [data-theme="dark"] ._col_inputsaccount input {
+    background: #0c0b12 !important;
+    color: white !important;
+    border-color: #2a2643 !important;
+  }
+  [data-theme="dark"] ._col_inputsaccount input::placeholder{
+    color:white !important;
+  }
+  [data-theme="dark"] .pure-material-checkbox > span::before{
+    border-color:#2a2643;
+  }
+  [data-theme="dark"] ._col_inputsaccount ._btn._login{
+    background: linear-gradient(21deg, #2c048e, #4b01ff, #b501ff) !important;
+  }
+  [data-theme="dark"] ._btnround{
+    background: #0c0b12;
+    color: white;
+    border: 1px solid #ffffff;
+  }
+  [data-theme="dark"] .btn{
+    color:white;
   }
