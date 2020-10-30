@@ -343,6 +343,11 @@
     height:30px;
     background:grey;
   }
+  @media(max-width: 992px){
+    ._cont_subtitle_index{
+      text-align:right;
+    }
+  }
   ._cont_subtitle_index{
     text-align:right;
   }
@@ -4048,5 +4053,8 @@
   [data-theme="dark"] .navbar-nav._navbar .dropdown-menu .nav-link:hover,
   [data-theme="dark"] ._itemdropdown:hover{
     background: #0c0b12;
+    color:white;
+  }
+  [data-theme="dark"] .field{
     color:white;
   }

@@ -144,9 +144,11 @@
 									    <a class="nav-link" id="liked-tab" data-toggle="tab" href="#liked" role="tab" aria-controls="liked" aria-selected="false"><i class="fas fa-heart"></i></a>
 									  </li>
 									  <% end %>
-									  <li class="nav-item" role="presentation">
-									    <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false"><i class="fas fa-user-tie"></i></a>
-									  </li>
+									  <% if @mocker.bio? %>
+										  <li class="nav-item" role="presentation">
+										    <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false"><i class="fas fa-user-tie"></i></a>
+										  </li>
+									  <% end %>
 									</ul>
 									<div class="tab-content" id="myTabContent">
 									  <div class="tab-pane fade show active" id="mocks" role="tabpanel" aria-labelledby="mocks-tab">
