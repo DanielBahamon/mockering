@@ -22,7 +22,7 @@
                 <div class="d-table fullscreen">
                     <div class="d-table-cell v-middle p-1">
                         <%= link_to mocker_path(current_mocker), class: "text-black" do %>
-                            <b><%= current_mocker.first_name.capitalize %> <%= current_mocker.last_name.capitalize %></b>
+                            <b><%= current_mocker.first_name.capitalize if @mocker.first_name? %> <%= current_mocker.last_name.capitalize if @mocker.last_name? %></b>
                         <% end %>
                     </div>
                 </div>

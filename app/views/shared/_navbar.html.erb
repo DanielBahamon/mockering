@@ -339,6 +339,19 @@
   ._content_principal .mocks_content #mocks ._card{
     width:300px;
   }
+  ._card{
+    transition: all .3s ease-in;
+  }
+  ._card:hover {
+    box-shadow: 0 9px 19px -3px #0000005e;
+    transform: translateY(-5px);
+  }
+  @media(max-width: 611px){
+    ._content_principal .mocks_content #mocks ._card{
+      width:95vw;
+      margin-bottom: 15px;
+    }
+  }
 </style>
 <script type="text/javascript">
   
