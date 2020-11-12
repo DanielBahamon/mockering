@@ -2,12 +2,13 @@
 	<%= form_for @mock, html: { multipart: true } do |f| %>
         <div class="row" id="_form_register">
           <fieldset class="msf_hide">
-            <div class="col-12">
-              <h1 class="display-4">Add a new video!</h1>
-              <p class="lead">Share your video with the most real critical thinking community on the internet.</p>
-              <hr class="my-4">
+            <div class="row m-0 text-md-center">
+              <div class="col-12">
+                <h4 class="_fw600">Add video</h4>
+                <p class="lead">Share your video with the most real critical thinking community on the internet.</p>
+                <br>
+              </div>
             </div>
-              
             <div class="row m-0 text-md-center">
               <div class="col-12">
                 <h4 class="_fw600">Title of your video</h4>
@@ -22,46 +23,25 @@
               </div>
             </div>
             <br>
-            <div class="row m-0">
-              <div class="col-12 text-lg-center text-right">
-                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="msf_hide">
-            <div class="row m-0 text-md-center">
-              <div class="col-12">
-                <h4 class="_fw600">Upload your video (MP4)</h4>
-                <br>
-              </div>
-            </div>
-            <section class="col-12 _col_inputsaccount p-b-0">
-                <%= f.file_field :movie, class: "file-selector", id: "file-selector_1", required: true %>
+            <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
+                <div class="progress" id="progress-bar" style="display: none;">
+                  <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                    <span class="sr-only" id="progress-bar-text"></span>
+                  </div>
+                </div>
+                <div class="fullscreen p-5">
+                  <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle text-center">
+                      <img src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
+                      <h6 class="_fw600" style="opacity: 0.6">Upload your video (MP4)</h6>
+                    </div>
+                  </div>
+                </div>
+                <%= f.file_field :movie, class: "file-selector absolute ", id: "file-selector_1 ", required: true %>
             </section>
             <br>
             <div class="row m-0">
               <div class="col-12 text-lg-center text-right">
-                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
-                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="msf_hide">
-            <div class="row m-0 text-md-center">
-              <div class="col-12">
-                <h4 class="_fw600">Upload the thumbanail of your video (JPG/PNG/GIF)</h4>
-                <br>
-              </div>
-            </div>
-            <div class="row m-0 text-md-center">
-              <section class="col-12 _col_inputsaccount p-b-0">
-                <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
-              </section>
-            </div>
-            <br>
-            <div class="row m-0">
-              <div class="col-12  text-lg-center text-right">
-                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
                   <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
               </div>
             </div>
@@ -589,7 +569,7 @@
             <br>
             <div class="row">
               <div class="col-12 text-lg-center text-right">
-                <%= f.submit 'Add mock', class: 'btn _btn _action f-right' %>
+                <%= f.submit 'Add mock', class: 'btn _btn _action f-right', id: 'fileUpload_1', data: { disable_with: 'Uploading' } %>
                     <br>
                     <br>
                     <br>
@@ -608,7 +588,80 @@
   fieldset{
     width:100%;
   }
+  ._upload_big{
+    border: 2px dashed #bacad6;
+    padding: 0;
+    filter: grayscale(1);
+  }
+  ._upload_big:hover{
+    border: 2px dashed #5b6d7b;
+    cursor: pointer;
+    filter: grayscale(0.7);
+  }
+  ._upload_big .file-selector{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  ._upload_big img{
+    filter: grayscale(1);
+    width: 128px;
+    opacity: 0.5;
+    text-align: center;
+    margin: 0 auto;
+  }
+
 </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+   var uploadObj = $("#file-selector_1").uploadFile({
+      url: "<%= new_mock_path %>",
+      multiple: false,
+      fileName: "movie[video]",
+      autoSubmit: false,
+      formData: {
+        "movie[title]": $('#movie_title').text(),
+        "movie[description]": $('#movie_description').text()
+      },
+      onSuccess:function(files,data,xhr)
+      {
+        window.location.href = data.to;
+      }
+    });
+
+    $("#fileUpload").click(function(e) {
+      e.preventDefault();
+      $.rails.disableFormElements($($.rails.formSubmitSelector));
+      uploadObj.startUpload();
+    });
+  });
+  $(document).ready(function() {
+   var uploadObj = $("#file-selector_1").uploadFile({
+      url: "<%= new_mock_path %>",
+      multiple: false,
+      fileName: "movie[video]",
+      autoSubmit: false,
+      formData: {
+        "movie[title]": $('#movie_title').text(),
+        "movie[description]": $('#movie_description').text()
+      },
+      onSuccess:function(files,data,xhr)
+      {
+        window.location.href = data.to;
+      }
+    });
+   
+    $("#fileUpload").click(function(e) {
+      e.preventDefault();
+      $.rails.disableFormElements($($.rails.formSubmitSelector));
+      uploadObj.startUpload();
+    });
+  });
+</script>
 
 <script type="text/javascript">
   var mvp = 9;
@@ -629,47 +682,6 @@
           }
       });
   });
-</script>
-<script type="text/javascript">
-    
-  $(document).ready(function () {
-    var course_id = $('#js-data').data('course');
-    var controller_name = $('body').data('controller');
-    var model_instance_path = '/' + controller_name + '/' + course_id;
-    var resume_path = model_instance_path + '/resume_upload';
-    var update_status_path = model_instance_path + '/update_status';
-
-    $('#fileupload').fileupload({
-      maxNumberOfFiles: 3,
-      maxChunkSize: 10000000, // 10 MB
-      type: 'PATCH',
-      add: function (e, data) {
-        var that = this;
-        $.getJSON(resume_path, { file: data.files[0].name }, function (result) {
-            var file = result.file;
-            data.uploadedBytes = file && file.size;
-            $.blueimp.fileupload.prototype
-                .options.add.call(that, e, data);
-        });
-      }
-    });
-
-    $('#fileupload')
-      .bind('fileuploadchunkdone', function (e, data) {
-        var perc = parseInt(data.loaded / data.total * 100, 10);
-        $('#js-completed').html(perc + "%");
-      })
-      .bind('fileuploaddone', function (e, data) {
-        $.ajax({
-          url: update_status_path,
-          type: "PATCH",
-          data: { status: 'uploaded'},
-          success: function(data) {
-            window.location.replace(model_instance_path);
-          } 
-        });
-      });
-    });
 </script>
 <script type="text/javascript">
   console.log("Reloaded");

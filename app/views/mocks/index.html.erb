@@ -23,7 +23,11 @@
 														</div>		
 													</div>
 												</div>
-												<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+												<% if mock.picture.present? %>
+												  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+											  	<% else %> 
+											  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+											  	<% end %>
 											</div>
 											
 											<div class="_cardbody">

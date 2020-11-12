@@ -3,7 +3,12 @@
 		<div class="row m-0">
 			<div class="col-12 p-0">
 				<% if @mock.movie.present? %>
-				  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{'loop': true}" style="width:100%; height:auto;" poster="<%= @mock.picture.url(:large) %>" autoplay >
+				  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{'loop': true}" style="width:100%; height:auto;" poster="
+				  	<% if @mock.picture.present? %>
+				  		<%= @mock.picture.url(:large) %>
+			  		<% else %> 
+			  			<%= @mock.movie.url(:thumb) %>
+			  		<% end %>" autoplay >
 				    <source src="<%= video_path(@mock.movie) %>" type="video/mp4" />
 				  </video>
 				<% end %>

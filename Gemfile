@@ -57,7 +57,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'haml', '~> 5.1', '>= 5.1.2'
+gem 'jquery-file-upload', '~> 0.0.6'
+# gem 'haml', '~> 5.1', '>= 5.1.2'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook', '~> 4.0'
@@ -75,7 +76,6 @@ gem 'redis', '~> 4.0', group: :production
 # gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
