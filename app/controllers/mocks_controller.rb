@@ -17,25 +17,25 @@ class MocksController < ApplicationController
 		else
 			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)
 		end
-		@mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 0).limit(8)
-		@mocks_knowledge = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 1).limit(8)
-		@mocks_paranormal = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 2).limit(8)
-		@mocks_short = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 3).limit(8)
-		@mocks_event = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 4).limit(8)
-		@mocks_aliens = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 5).limit(8)
-		@mocks_animation = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 6).limit(8)
-		@mocks_videoclip = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 7).limit(8)
-		@mocks_podcast = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 8).limit(8)
-		@mocks_reaction = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 9).limit(8)
-		@mocks_protest = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 10).limit(8)
-		@mocks_health = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 11).limit(8)
-		@mocks_history = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 12).limit(8)
-		@mocks_tutorial = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 13).limit(8)
-		@mocks_training = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 14).limit(8)
-		@mocks_tribute = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 15).limit(8)
-		@mocks_report = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 16).limit(8)
-		@mocks_music = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 17).limit(8)
-		@mocks_nature = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 18).limit(8)
+		@mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 0, unlist: false).limit(8)
+		@mocks_knowledge = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 1).limit(8)
+		@mocks_paranormal = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 2).limit(8)
+		@mocks_short = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 3).limit(8)
+		@mocks_event = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 4).limit(8)
+		@mocks_aliens = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 5).limit(8)
+		@mocks_animation = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 6).limit(8)
+		@mocks_videoclip = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 7).limit(8)
+		@mocks_podcast = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 8).limit(8)
+		@mocks_reaction = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 9).limit(8)
+		@mocks_protest = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 10).limit(8)
+		@mocks_health = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 11).limit(8)
+		@mocks_history = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 12).limit(8)
+		@mocks_tutorial = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 13).limit(8)
+		@mocks_training = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 14).limit(8)
+		@mocks_tribute = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 15).limit(8)
+		@mocks_report = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 16).limit(8)
+		@mocks_music = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 17).limit(8)
+		@mocks_nature = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 18).limit(8)
 	end
 
 	def popular
@@ -44,7 +44,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false)
+    	.where(privated: false, reported: false, unlist: false)
     	# @mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}  '").group("impressions.impressionable_id").order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
@@ -55,7 +55,7 @@ class MocksController < ApplicationController
     	@mocks = Mock.all.where("mocks.created_at >= '#{6.month.ago}'")
     	.order("created_at DESC")
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false)
+    	.where(privated: false, reported: false, unlist: false)
 		# @mocks = Mock.all.order('created_at DESC').paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
@@ -85,7 +85,7 @@ class MocksController < ApplicationController
 	    # Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
-		@related_mocks = @mock.find_related_tags.where(privated: false, reported: false)
+		@related_mocks = @mock.find_related_tags.where(privated: false, reported: false, unlist: false)
 
 		@reported = MockReport.where(mock_id: @mock.id).count
 		@reported_0 = MockReport.where(mock_id: @mock.id, classification: 0).count
@@ -185,7 +185,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 0)
+    	.where(privated: false, reported: false, unlist: false, category: 0)
 	end
 	def knowledge
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -193,7 +193,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 1)
+    	.where(privated: false, reported: false, unlist: false, category: 1)
 	end
 	def paranormal
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -201,7 +201,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 2)
+    	.where(privated: false, reported: false, unlist: false, category: 2)
 	end
 	def shorts
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -209,7 +209,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 3)
+    	.where(privated: false, reported: false, unlist: false, category: 3)
 	end
 	def events
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -217,7 +217,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 4)
+    	.where(privated: false, reported: false, unlist: false, category: 4)
 	end
 	def aliens
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -225,7 +225,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 5)
+    	.where(privated: false, reported: false, unlist: false, category: 5)
 	end
 	def animation
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -233,7 +233,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 6)
+    	.where(privated: false, reported: false, unlist: false, category: 6)
 	end
 	def videoclips
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -241,7 +241,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 7)
+    	.where(privated: false, reported: false, unlist: false, category: 7)
 	end
 	def podcasts
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -249,7 +249,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 8)
+    	.where(privated: false, reported: false, unlist: false, category: 8)
 	end
 	def reactions
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -257,7 +257,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 9)
+    	.where(privated: false, reported: false, unlist: false, category: 9)
 	end
 	def protests
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -265,7 +265,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 10)
+    	.where(privated: false, reported: false, unlist: false, category: 10)
 	end
 	def health
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -273,7 +273,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 11)
+    	.where(privated: false, reported: false, unlist: false, category: 11)
 	end
 	def history
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -281,7 +281,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 12)
+    	.where(privated: false, reported: false, unlist: false, category: 12)
 	end
 	def tutorials
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -289,7 +289,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 13)
+    	.where(privated: false, reported: false, unlist: false, category: 13)
 	end
 	def training
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -297,7 +297,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 14)
+    	.where(privated: false, reported: false, unlist: false, category: 14)
 	end
 	def tributes
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -305,7 +305,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 15)
+    	.where(privated: false, reported: false, unlist: false, category: 15)
 	end
 	def reports
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -313,7 +313,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 16)
+    	.where(privated: false, reported: false, unlist: false, category: 16)
 	end
 	def music
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -321,7 +321,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 17)
+    	.where(privated: false, reported: false, unlist: false, category: 17)
 	end
 	def nature
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -329,7 +329,7 @@ class MocksController < ApplicationController
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{6.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, category: 18)
+    	.where(privated: false, reported: false, unlist: false, category: 18)
 	end
 
 	private
@@ -343,7 +343,7 @@ class MocksController < ApplicationController
 		end
 
 		def mock_params
-			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted)
+			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist)
 		end
 
 		def set_search
