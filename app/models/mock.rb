@@ -46,7 +46,7 @@ class Mock < ApplicationRecord
 	# For movie
 	has_attached_file :movie, :styles => {
     	:medium => { :geometry => "640x480", :format => 'mp4' },
-    	:thumb => { :geometry => "300x300#", :format => 'jpg', :time => 10 }
+    	:thumb => { :geometry => "300x300#", :format => 'jpg', :time => 90 }
 	 }, proccessors: [:transcoder]
 
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
