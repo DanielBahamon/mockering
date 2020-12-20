@@ -44,6 +44,12 @@ Rails.application.configure do
   config.web_socket_server_url = 'wss://mockering.herokuapp.com/cable'
   config.action_cable.allowed_request_origins = ['https://mockering.herokuapp.com', 'http://mockering.herokuapp.com']
 
+
+  Recaptcha.configure do |config|
+    config.site_key  = '6Le7Ig4aAAAAAE34nhzhZZK1AySTj_5sP9dnJHV1'
+    config.secret_key = '6Le7Ig4aAAAAABLbijiHKtZpTMGij3s386t5ZrO9'
+  end
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 

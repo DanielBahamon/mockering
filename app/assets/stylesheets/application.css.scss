@@ -341,14 +341,6 @@
     height:30px;
     background:grey;
   }
-  @media(max-width: 992px){
-    ._cont_subtitle_index{
-      text-align:right;
-    }
-  }
-  ._cont_subtitle_index{
-    text-align:right;
-  }
   ._cont_subtitle_index a{
     text-decoration:none !important;
   }
@@ -2784,11 +2776,12 @@
   }
 
   .arrow_{
-  background: white;
-  border-radius: 369px;
-  border: 1px solid #eaeaea;
-  padding: 8px 13px;
-  cursor:pointer;
+    background: white;
+    border-radius: 369px;
+    border: 1px solid #eaeaea;
+    padding: 8px 13px;
+    cursor:pointer;
+    color: black !important;
   }
   .div_arrow._left{
     position:absolute;

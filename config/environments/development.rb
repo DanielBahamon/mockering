@@ -26,6 +26,13 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+
+
+  Recaptcha.configure do |config|
+    config.site_key  = '6Le7Ig4aAAAAAE34nhzhZZK1AySTj_5sP9dnJHV1'
+    config.secret_key = '6Le7Ig4aAAAAABLbijiHKtZpTMGij3s386t5ZrO9'
+  end
+
   config.action_cable.url = "ws://localhost:3000/cable"
 
   # Don't care if the mailer can't send.
