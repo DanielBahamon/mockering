@@ -62,7 +62,7 @@ class MocksController < ApplicationController
 
 	def random
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-    	@mocks = Mock.all.order("RANDOM()").where(privated: false, reported: false, category: 0, unlist: false)
+    	@mocks = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false)
     	.paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.all.order('created_at DESC').paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
