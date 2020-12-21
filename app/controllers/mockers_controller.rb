@@ -52,6 +52,7 @@ class MockersController < ApplicationController
 	def create
 	end
 
+
 	def update
 		@mocker.update(new_params)
 
@@ -59,9 +60,18 @@ class MockersController < ApplicationController
 			redirect_to @mocker, notice: "Mocker was successfully updated!"
 		else
 			# render 'edit'
-			flash[:alert] = "Uhm... Algo fallo."
+			flash[:alert] = "Uhm... Something goes wrong."
 		end
 
+
+		
+		if verify_recaptcha(model: @mocker) && @mocker.save
+		  redirect_to @mocker
+		else
+			flash[:alert] = "Uhm... Something goes wrong."
+		end
+
+		
 		#  new_params = mocker_params
 		#  new_params = mocker_params.merge(active: true)
 		
