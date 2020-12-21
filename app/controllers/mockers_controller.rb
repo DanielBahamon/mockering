@@ -62,13 +62,6 @@ class MockersController < ApplicationController
 			# render 'edit'
 			flash[:alert] = "Uhm... Something goes wrong."
 		end
-		
-		@mocker = Mocker.find(params[:id])
-		if verify_recaptcha(model: @mocker) && @mocker.save
-		  redirect_to @mocker
-		else
-			flash[:alert] = "Uhm... Something goes wrong."
-		end
 
 
 		#  new_params = mocker_params

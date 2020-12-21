@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_devise_params
-    
+
   	devise_parameter_sanitizer.permit(:sign_up) do |mocker|
   		mocker.permit(:first_name, :last_name, :email, :birthday, :password, :password_confirmation, :slug, :remember_me)
   	end
