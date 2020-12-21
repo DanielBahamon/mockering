@@ -224,9 +224,9 @@
                       <p class="col-10 m-0">Feed</p>
                     <% end %>
                   </li>
-                  <li class="<%= 'active' if current_page?(latest_path)  %>"><%= link_to latest_path, class: "_link _sidenav" do %>
-                      <i class="fas fa-stopwatch col-2 text-center p-0"></i>
-                      <p class="col-10 m-0">Latest</p>
+                  <li class="<%= 'active' if current_page?(random_path)  %>"><%= link_to random_path, class: "_link _sidenav" do %>
+                      <i class="fas fa-random col-2 text-center p-0"></i>
+                      <p class="col-10 m-0">Random</p>
                     <% end %>
                   </li>
                   <li class="<%= 'active' if current_page?(popular_path)  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
@@ -315,7 +315,7 @@
   </div>    
 </div>
 <div class="_navbar_br"></div>
-<% unless current_page?(root_path) || current_page?(latest_path) || current_page?(popular_path) %>
+<% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
   <div class="navside_2 out" id="_sidenav_2">
     <%= render 'shared/navside' %>
   </div>
