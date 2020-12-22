@@ -46,11 +46,14 @@
           <br>
           <label>Agree to the following statement: *</label><br>
           <%= f.check_box :i_agree %> I agree to receive messages to my email from Mockering team.
+          <br>
+          <%= recaptcha_tags %>
         </div>
       </div>
       <div class= "hidden d-none">
         <%= f.text_field :nickname %>
       </div>
+      
       <div class="col-12 col-md-8 offset-md-2 text-right">
         <br>
         <%= f.submit 'Send suggestion', class: 'btn _btn _1 f-right fullwidth' %>
