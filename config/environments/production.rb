@@ -99,7 +99,7 @@ Rails.application.configure do
 
   #config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
   #config.action_cable.url = "https://mockering.herokuapp.com/cable"
-  config.action_mailer.default_url_options = { host: 'https://mockering.com' }
+  config.action_mailer.default_url_options = { host: 'https://www.mockering.com' }
 
   config.action_mailer.smtp_settings = {
     address: 'smtp-relay.sendinblue.com',
@@ -108,7 +108,7 @@ Rails.application.configure do
     authentication: 'login',
     domain: 'mockering.com',
     user_name: 'mr.sublimen@gmail.com',
-    password: 'xsmtpsib-f59cd15bb895fe3d745e05459284e0535d34f99cb571c625b059e43c42dac4bb-WFfp3ZTckmyhHPzC'
+    password: 'sHI3avA16LVyCfNY'
   }
 
 
