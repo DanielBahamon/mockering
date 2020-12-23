@@ -445,8 +445,6 @@
     transition: all .2s ease;
   }
   .link_card:hover{
-    border-color:#4c31ee;
-    color:#4c31ee !important;
     -webkit-transform:translateY(-1px);
     transform:translateY(-1px);
   }
@@ -1071,7 +1069,7 @@
     max-height: 38px;
     background: transparent;
     position: absolute;
-    border:1px solid rgba(1, 1, 1, 0.11);
+    border: 1px solid #4c31ee;
     border-radius: 300px;
       top: -13px;
       left: -7px;
@@ -1910,11 +1908,12 @@
   }
   
   #multiCollapseSearch{
-      position: fixed;
-      top: 0;
-      background: white;
-      z-index: 5;
-      padding: 15px 0;
+    position: fixed;
+    top: 0;
+    background: white;
+    z-index: 5;
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
   }
   ._navfooter{
     position: fixed;
@@ -3711,12 +3710,15 @@
     color: #bb86fc;
   }
   [data-theme="dark"] ._navfooter{
-    border-top: 1px solid #1b192a;
+    border-top: 1px solid #121212;
   }
   [data-theme="dark"] ._btn._btnavfoot:hover, 
   [data-theme="dark"] ._listnavfooter li.active ._btn._btnavfoot{
     color:white;
     background:#1a1824;
+  }
+  [data-theme="dark"] ._listnavfooter{
+    box-shadow: 0 0 12px -8px #000000;
   }
   [data-theme="dark"] #on_content{
     background:#121212;
@@ -3777,7 +3779,7 @@
   [data-theme="dark"] ._btn_add_mock_navfooter{
   }
   [data-theme="dark"] ._btn_add_mock_navfooter:hover{
-    box-shadow: 0 0 0 2px #121212, 0 0 0 3px #4c31ee, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 0 2px #121212, 0 0 0 3px #bb86fc, 0 0 0 4px rgba(255, 255, 255, 0.5) !important;
   }
   [data-theme="dark"] ._col_user, 
   [data-theme="dark"] ._col_cont_user{
@@ -4062,6 +4064,18 @@
   }
   [data-theme="dark"] .field{
     color:white;
+  }
+  [data-theme="dark"] ._btn_icon:before{
+    border: 1px solid #ffffff;
+  }
+  [data-theme="dark"] ._btn_add_mock_navfooter{
+    background: radial-gradient(#bb86fc, #bb86fc, #744fff);
+  }
+  [data-theme="dark"] .listsidenav li a{
+    color:white;
+  }
+  [data-theme="dark"] .listsidenav li a::before{
+    background:white;
   }
 /* END DARK MODE */
 

@@ -290,26 +290,31 @@
       </div>
     </div>
     <div class="row fullwidth m-0 multi-collapse collapse in " id="multiCollapseSearch" aria-expanded="true">
-      <div class="_searchabsolute card-body col-12">
-        <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
-        <div class="col-2">
-          <div class="d-table fullscreen">
-            <div class="d-tablecell v-middle">
-              <a class="_btn_icon collapsed"  data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch"><i class="fas fa-arrow-left"></i></a>
+      <div class="_searchabsolute card-body col-12 p-0">
+        <div class="row m-0"> 
+          <div class="col-2">
+            <div class="d-table fullscreen">
+              <div class="d-tablecell v-middle">
+                <a class="_btn_icon collapsed"  data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch"><i class="fas fa-arrow-left"></i></a>
+              </div>
             </div>
           </div>
-        </div> 
-        <div class="col-8">
-          <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-12" %>
-        </div>
-        <div class="col-2 p-0">
-          <div class="d-table fullscreen ">
-            <div class="d-tablecell v-middle text-center">
-              <%= submit_tag 'search', class: "btn _btn _transparent material-icons m-0-auto" %>   
-            </div>
+          <div class="col-10 _col_search_mobile">
+            <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
+              <div class="col-10 ">
+                <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-12" %>
+              </div>
+              <div class="col-2 p-0">
+                <div class="d-table fullscreen ">
+                  <div class="d-tablecell v-middle text-center">
+                    <%= submit_tag 'search', class: "btn _btn _transparent material-icons m-0-auto" %>   
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
-        <% end %>
+        
       </div>
     </div>
   </div>    
@@ -322,6 +327,21 @@
 <% end %>
 
 <style type="text/css">
+  ._col_search_mobile{
+    border-radius: 6px;
+    padding: 0;
+    box-shadow: 0 1px 5px 2px #eaeaea;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+  }
+  ._searchabsolute ._btn_icon{
+    top:6px;
+  }
+  ._searchabsolute ._btn_icon i{
+    top: -6px;
+    position: inherit;
+    left: 5px;
+  }
   @media(min-width: 768px){
     ._nav._1.active,
     ._nav._1.active-semi,
