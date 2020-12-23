@@ -227,6 +227,8 @@ Rails.application.routes.draw do
 
   get "/500", :to => "errors#internal_error"
 
+  get "/3c6ad7401db9aba74543c3f50e10d35a.html", :to => "pages#3c6ad7401db9aba74543c3f50e10d35a"
+
   # %w( 404 422 500 ).each do |code|
   #   get code, :to => "errors#show", :code => code
   # end
