@@ -37,6 +37,8 @@ class MocksController < ApplicationController
 		@mocks_nature = Mock.all.order("created_at DESC").where(privated: false, reported: false, unlist: false, category: 17).limit(8).where("mocks.created_at >= '#{1.week.ago}'")
 	end
 
+
+
 	def popular
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
     	@mocks = Mock.joins(:impressions)

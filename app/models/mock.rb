@@ -1,6 +1,7 @@
 class Mock < ApplicationRecord
 	before_validation :set_uuid, on: :create
 	belongs_to :mocker
+	before_post_process :get_video_duration
   	acts_as_votable
 	validates :id, presence: true
 
@@ -57,6 +58,15 @@ class Mock < ApplicationRecord
 
 	def view_count_last_week
 	    impressionist_count(:start_date => 1.week.ago)
+	end
+
+	
+	def get_video_duration
+		result = 'ffmpeg -i #{self.movie.to_file.path} 2>&1'
+		r = result.match("Duration: ([0-9]+):([0-9]+):([0-9]+).([0-9]+)")
+		if r
+		  self.duration = r[1].to_i*3600+r[2].to_i*60+r[3].to_i
+		end
 	end
 
 
