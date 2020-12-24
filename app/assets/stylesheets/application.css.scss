@@ -3809,6 +3809,15 @@
     color: white;
     box-shadow: 0 0 0 2px #121212, 0 0 0 3px #121212, 0 0 0 4px rgba(255, 255, 255, 0.5);
   }
+  [data-theme="dark"] ._btn{
+    background:#121212;
+  }
+  [data-theme="dark"] ._list._social a{
+    color:white !important;
+  }
+  [data-theme="dark"] .list-group-item{
+    background-color:#121212;
+  }
   [data-theme="dark"] ._col_search_mobile{
     box-shadow: 0 1px 5px 2px #000000;
     -webkit-box-shadow: 0 1px 5px 2px #000000;

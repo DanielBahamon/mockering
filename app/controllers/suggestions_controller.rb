@@ -7,7 +7,8 @@ class SuggestionsController < ApplicationController
 	def create
 		@contact = Suggestion.new(params[:suggestion])
 		@contact.request = request
-	    if @contact.deliver
+
+	    if @contact.deliver && verify_recaptcha 
 	      flash.now[:notice] = 'Thank you for your suggestion!'
 	      render :create
 	    else
