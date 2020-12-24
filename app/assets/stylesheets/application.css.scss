@@ -3805,9 +3805,9 @@
     background: linear-gradient(45deg, #4c31ee, #4b01ff, #744fff);
   }
   [data-theme="dark"] ._btn._1:hover{
-    border-color: white;
+    border-color: #121212;
     color: white;
-    box-shadow: 0 0 0 2px #121212, 0 0 0 3px white, 0 0 0 4px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 2px #121212, 0 0 0 3px #121212, 0 0 0 4px rgba(255, 255, 255, 0.5);
   }
   [data-theme="dark"] ._col_search_mobile{
     box-shadow: 0 1px 5px 2px #000000;
@@ -3855,6 +3855,27 @@
   } 
   [data-theme="dark"] .no-notification {
     background: #121212;
+  }
+  [data-theme="dark"] ._btn._action:hover{
+    box-shadow: 0 0 0 2px #121212, 0 0 0 3px #4b01ff, 0 0 0 4px rgba(255, 255, 255, 0.5);
+  }
+  [data-theme="dark"] .cont_conversations ._slug{
+    color: white !important;
+  }
+  [data-theme="dark"] .dropleft .dropdown-menu{
+    background: #121212;
+  }
+  [data-theme="dark"] #multiCollapseNavbar{
+    background: #121212;
+    z-index: 123;
+    position: fixed;
+  }
+  [data-theme="dark"] .dropdown-item{
+    color: white !important;
+  }
+  [data-theme="dark"] ._input_group._1{
+    border-color:transparent !important;
+    box-shadow: 0 2px 6px -3px black !important;
   }
   [data-theme="dark"] .dropdown-menu#navbarNotificationsItems2{
     border:0 !important;
