@@ -115,6 +115,30 @@
 								</div>
 							</div>
 						<% end %>
+						<% if @mocks_health.present? %>
+							<div class="mocks_category">
+								<div class="row m-0 _header_subtitle_index">
+									<div class="col-auto">
+										<div class="_cont_subtitle_index">
+											<%= link_to health_path do %>
+												<h4 class=" pt-3"><i class="fas fa-heartbeat"></i> <i class="material-icons">arrow_forward</i></h4>
+											<% end %>
+										</div>
+									</div>
+								</div>
+								<div class="row m-0 relative">
+									<div class="d-flex overflowx_auto p-md-2 fullwidth scrollbar_none" id="mocks_health">
+										<% @mocks_health.each do |mock| %>
+											<%= render 'mock_category', mock: mock %>
+										<% end %>
+									</div>
+									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_12">
+									</a>
+									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_12 pull-right">
+									</a>
+								</div>
+							</div>
+						<% end %>
 						<% if @mocks_paranormal.present? %>
 							<div class="mocks_category">
 								<div class="row m-0 _header_subtitle_index">
@@ -380,30 +404,6 @@
 									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_4">
 									</a>
 									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_4 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_health.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to health_path do %>
-												<h4 class=" pt-3"><i class="fas fa-heartbeat"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
-										</div>
-									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="d-flex overflowx_auto p-md-2 fullwidth scrollbar_none" id="mocks_health">
-										<% @mocks_health.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_12">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_12 pull-right">
 									</a>
 								</div>
 							</div>
