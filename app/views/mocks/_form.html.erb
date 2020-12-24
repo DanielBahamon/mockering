@@ -70,34 +70,6 @@
           <fieldset class="msf_hide">
             <div class="row m-0">
               <div class="col-12 col-md-4">
-                <h4 class="_fw600">Has your video some restriction?</h4>
-                <br>
-              </div>
-              <div class="col-12 col-md-8">
-                <div class="d-table fullscreen">
-                    <div class="d-table-cell v-middle">
-                        <div class="field"  style="padding:15px;">
-                            <label class="_fw600">
-                                <%= f.check_box :privated %> Private
-                            </label>
-                        </div>
-                        <div class="field"  style="padding:15px;">
-                            <label class="_fw600">
-                                <%= f.check_box :age_restricted %> Age restriction
-                            </label>
-                        </div>
-                        <div class="field"  style="padding:15px;">
-                            <label class="_fw600">
-                                <%= f.check_box :unlist %> Unlist
-                            </label>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="row m-0">
-              <div class="col-12 col-md-4">
                 <h4 class="_fw600">Add some tags (max 9)</h4>
                 <br>
               </div>
@@ -508,6 +480,35 @@
                 </div>
               </div>
             </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 col-md-4">
+                <h4 class="_fw600">Has your video some restriction?</h4>
+                <br>
+              </div>
+              <div class="col-12 col-md-8">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle">
+                        <div class="field"  style="padding:15px;">
+                            <label class="_fw600">
+                                <%= f.check_box :privated %> Private
+                            </label>
+                        </div>
+                        <div class="field"  style="padding:15px;">
+                            <label class="_fw600">
+                                <%= f.check_box :age_restricted %> Age restriction
+                            </label>
+                        </div>
+                        <div class="field"  style="padding:15px;">
+                            <label class="_fw600">
+                                <%= f.check_box :unlist %> Unlist
+                            </label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <br>
             <div class="row m-0">
               <div class="col-12 text-right">
                   <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
@@ -516,7 +517,7 @@
             </div>
           </fieldset>
           <fieldset class="msf_hide">
-            <div class="row">
+            <div class="row m-0">
               <div class="col-12 col-md-4">
                 <h4 class="_fw600">Whose credits are the video?</h4>
                 <br>
@@ -552,9 +553,9 @@
               </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row m-0">
               <div class="col-12 ">
-                <%= f.submit 'Add mock', class: 'btn _btn _action f-right', id: 'fileUpload_1', data: { disable_with: 'Uploading...' } %>
+                <%= f.submit 'Ready', class: 'btn _btn _action f-right', id: 'fileUpload', data: { disable_with: 'Uploading...' } %>
                 <br>
                 <br>
               </div>
@@ -600,6 +601,12 @@
   ._upload_big img._on{
     filter: grayscale(0.5);
   }
+  @media(max-width: 767px){
+    ._btn._action{
+        width:100%;
+      }
+  }
+      
 
 </style>
 
@@ -707,10 +714,6 @@
       multiple: false,
       fileName: "movie[video]",
       autoSubmit: false,
-      formData: {
-        "movie[title]": $('#movie_title').text(),
-        "movie[description]": $('#movie_description').text()
-      },
       onSuccess:function(files,data,xhr)
       {
         window.location.href = data.to;
@@ -723,7 +726,7 @@
       uploadObj.startUpload();
     });
   });
-  $(document).ready(function() {
+  /*$(document).ready(function() {
    var uploadObj = $("#file-selector_1").uploadFile({
       url: "<%= new_mock_path %>",
       multiple: false,
@@ -743,5 +746,5 @@
       $.rails.disableFormElements($($.rails.formSubmitSelector));
       uploadObj.startUpload();
     });
-  });
+  });*/
 </script>

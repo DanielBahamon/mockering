@@ -22,10 +22,10 @@
 						<p class="text-ellipsis m-0">Feed</p>
 					<% end %>
 				</li>
-				<li class="col-3 <%= 'active' if current_page?(latest_path)  %>">
-					<%= link_to latest_path, class: "_btn _btnavfoot " do %>
-						<i class="fas fa-stopwatch text-center p-0"></i>
-						<p class="text-ellipsis m-0">Latest</p>
+				<li class="col-3 <%= 'active' if current_page?(random_path)  %>">
+					<%= link_to random_path, class: "_btn _btnavfoot " do %>
+						<i class="fas fa-random text-center p-0"></i>
+						<p class="text-ellipsis m-0">Random</p>
 					<% end %>
 				</li>
 				<li class="col-3 <%= 'active' if current_page?(popular_path)  %>">

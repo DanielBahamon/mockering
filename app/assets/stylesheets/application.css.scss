@@ -3688,7 +3688,11 @@
     border: 1px solid #121212;
   }
   [data-theme="dark"] ._link._2{
-    color: #bb86fc;
+    color: #ffffff;
+  }
+  [data-theme="dark"] #suggestion_kind_suggestions{
+    background: #121212;
+    color: white;
   }
   [data-theme="dark"] ._btn._2{
     color: #ffffff;
@@ -3704,18 +3708,21 @@
     color: #dadde0 !important;
   }
   [data-theme="dark"] ._btn._btnavfoot{
-    color: #bb86fc;
+    color: #ffffff;
   }
   [data-theme="dark"] ._btn{
     color: #bb86fc;
   }
   [data-theme="dark"] ._navfooter{
-    border-top: 1px solid #121212;
+    border-top: 1px solid #121212 !important;
+  }
+  [data-theme="dark"] .comment::before{
+    border-top: 15px solid #121212;
   }
   [data-theme="dark"] ._btn._btnavfoot:hover, 
   [data-theme="dark"] ._listnavfooter li.active ._btn._btnavfoot{
     color:white;
-    background:#1a1824;
+    background:#212121;
   }
   [data-theme="dark"] ._listnavfooter{
     box-shadow: 0 0 12px -8px #000000;
@@ -3794,12 +3801,17 @@
     background:transparent;
   }
   [data-theme="dark"] ._btn._1{
+    border-color: transparent;
     background: linear-gradient(45deg, #4c31ee, #4b01ff, #744fff);
   }
   [data-theme="dark"] ._btn._1:hover{
     border-color: white;
     color: white;
     box-shadow: 0 0 0 2px #121212, 0 0 0 3px white, 0 0 0 4px rgba(255, 255, 255, 0.5);
+  }
+  [data-theme="dark"] ._col_search_mobile{
+    box-shadow: 0 1px 5px 2px #000000;
+    -webkit-box-shadow: 0 1px 5px 2px #000000;
   }
   [data-theme="dark"] .nav-tabs._1 .nav-link, 
   [data-theme="dark"] .nav-tabs._1 .nav-item .nav-link{
@@ -3839,8 +3851,15 @@
     background: #121212;
   }
   [data-theme="dark"] .navbar-nav._navbar .dropdown-menu .nav-link{
-    color:#c0bbe4;
+    color:#ffffff;
   } 
+  [data-theme="dark"] .no-notification {
+    background: #121212;
+  }
+  [data-theme="dark"] .dropdown-menu#navbarNotificationsItems2{
+    border:0 !important;
+    box-shadow: 0 7px 12px -12px #000000;
+  }
   [data-theme="dark"] .dropdown-divider{
     border-top: 1px solid #1e1c2c;
   }
@@ -4048,10 +4067,14 @@
   }
   [data-theme="dark"] .form-control{
     background-color: #121212;
-    color:white;
+    color:white !important;
   }
   [data-theme="dark"] .form-control::placeholder{
     color:white;
+  }
+  [data-theme="dark"] .input-group-text{
+    backgroudn-color:#121212;
+    border: 1px solid #121212;
   }
   [data-theme="dark"] ._btn._2:hover:before{
     border: 1px solid #ffffff;
@@ -4068,14 +4091,14 @@
   [data-theme="dark"] ._btn_icon:before{
     border: 1px solid #ffffff;
   }
-  [data-theme="dark"] ._btn_add_mock_navfooter{
-    background: radial-gradient(#bb86fc, #bb86fc, #744fff);
-  }
   [data-theme="dark"] .listsidenav li a{
     color:white;
   }
   [data-theme="dark"] .listsidenav li a::before{
     background:white;
+  }
+  [data-theme="dark"] .btn._btn._btn_report{
+    background:#121212;
   }
 /* END DARK MODE */
 
