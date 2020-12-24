@@ -78,6 +78,7 @@ class MocksController < ApplicationController
 		params[:mock][:tag_list] = params[:mock][:tag_list].join(',')
 		@mocker = current_mocker
 		@mock = current_mocker.mocks.build(mock_params)
+
 		if @mock.save
 			# create notification
 			@mocker.followers.each do |mocker|

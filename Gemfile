@@ -41,6 +41,7 @@ gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.5'
 gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
 # gem 'elastic_transcoder', '~> 0.0.3'
 gem "jquery-fileupload-rails"
+gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
 gem 'mail_form', '~> 1.7', '>= 1.7.1'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'ransack'

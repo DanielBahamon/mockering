@@ -11,6 +11,7 @@ class Mock < ApplicationRecord
 	has_many :answers
 	has_many :mock_reports
 	has_many :mock_appeals
+
   	
 	enum category: {
 		Whatever: 0,
@@ -48,17 +49,19 @@ class Mock < ApplicationRecord
     	:thumb => { :geometry => "300x300#", :format => 'jpg', :time => 10 }
 	 }, proccessors: [:transcoder]
 
-	 validate :get_video_duration
-
-	def get_video_duration
-		vid = self.vid_meta[:length].split(/[:.]/)
-		count = vid[0].to_i*3600+vid[1].to_i*60+vid[2].to_i
-
-		self.duration = count
-	end
-
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
 	# validates_presence_of :movie
+
+	before_post_process do
+	  file = movie.queued_for_write[:original].path
+	  # movi = FFMPEG::Movie.new(movie.queued_for_write[:original].path)
+	  # self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
+	  # result = 'ffmpeg -i #{self.movie.path} 2 > & 1'
+	  # r = result.match("Duration: ([0-9]+):([0-9]+):([0-9]+).([0-9]+)")
+	  self.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
+	  # self.duration = file.duration
+	end
+
 
 	def set_uuid
 		self.id = SecureRandom.uuid
