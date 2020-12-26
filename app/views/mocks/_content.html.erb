@@ -269,49 +269,58 @@
 	<div class="col-12 col-md-4 col-xl-3 _col_mock_related pl-0">
 		<div class="row m-0">
 			<% @related_mocks.each do |mock| %>
-				<div class="co-6 col-sm-6 col-md-12 m-0-auto p-0">
-					<%= link_to mock, class: "link_card card box _card _2" do %>
-						<div class="cont_img">
-							<div class="icon_play">
-								<div class="d-table fullscreen">
-									<div class="d-table-cell v-middle text-center">
-										<i class="fas fa-play"></i>
+				<div class="m-0-auto p-0">
+					<%= link_to mock, class: "link_card box _card _2 row m-0" do %>
+						<div class="col-4 p-0">
+							<div class="cont_img fullheight">
+								<div class="icon_play">
+									<div class="d-table fullscreen">
+										<div class="d-table-cell v-middle text-center">
+											<i class="fas fa-play"></i>
+										</div>
 									</div>
 								</div>
+								<% if mock.picture.present? %>
+								  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+							  	<% else %> 
+							  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+							  	<% end %>
 							</div>
-							<% if mock.picture.present? %>
-							  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-						  	<% else %> 
-						  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-						  	<% end %>
 						</div>
-						<div class="_cardbody">
-							<div class="row">
-								<div class="col-12">
-									<p class="_cardtitle"><%= mock.title %></p>
-								</div>
-								<div class="row m-0 fullwidth">
-									<div class="col-12 col-md-auto">
-										<div class="text-ellipsis">
-											<div class="d-table fullscreen">
-												<div class="d-tablecell v-middle ">
-													<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+						<div class="col-8 p-0">
+							<div class="_cardbody fullheight">
+								<div class="d-table fullscreen">
+									<div class="d-tablecell v-middle">
+										<div class="row">
+											<div class="col-12">
+												<p class="_cardtitle"><%= mock.title %></p>
+											</div>
+											<div class="row m-0 fullwidth">
+												<div class="col-6 col-md-auto">
+													<div class="text-ellipsis">
+														<div class="d-table fullscreen">
+															<div class="d-tablecell v-middle ">
+																<p class="_fs10pt m-0 _fs90per">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-6 col-md-auto">
+													<div class="d-table fullscreen">
+														<div class="d-tablecell v-middle">
+															<div class="d-flex" style="width: max-content;float: right;">
+																<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
+																<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
+																<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-md-auto">
-										<div class="d-table fullscreen">
-											<div class="d-tablecell v-middle">
-												<div class="d-flex" style="width: max-content;float: right;">
-													<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/impressions', mock: mock %></p>
-													<p class="_fs10pt m-0" style="padding-right: 9px"><%= render 'mocks/likesimple', mock: mock %></p>
-													<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
+										
 							</div>
 						</div>
 					<% end %>

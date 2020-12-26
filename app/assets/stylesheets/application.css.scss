@@ -1216,6 +1216,9 @@
       color: #fff;
       transition: all .2s;
   }
+  .cont_img img{
+    height: 100%;
+  }
 
   .cont_user ._name{
     margin-top: 15px !important;
@@ -1565,6 +1568,7 @@
       z-index: 1;
       height: 100%;
       font-size: 25pt;
+      display:none;
       width: 100%;
       color: white;
       opacity:0.475;
@@ -1572,7 +1576,7 @@
       transition: all .2s ease;
   }
   ._card:hover .icon_play { 
-      display:none;
+      display:block;
   }
   .cont_img{
     position:relative;
@@ -2480,7 +2484,7 @@
     opacit: 1;
   }
   .icon_play i{
-    font-size:33pt;
+    font-size:25pt;
     color:white;
   }
   .card-img{
@@ -4012,6 +4016,9 @@
   [data-theme="dark"] .navside_2 ._cont_sidenav{
     background:#121212;
     border-right: 1px solid #121212;
+  }
+  [data-theme="dark"] .ks-cboxtags li label{
+    background: #121212;
   }
   [data-theme="dark"] .navbar-nav._navbar .dropdown-menu#navbarNotificationsItems{
     background: #121212;
