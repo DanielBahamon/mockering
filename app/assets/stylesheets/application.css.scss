@@ -3912,6 +3912,15 @@
   [data-theme="dark"] ._color_black{
     color: #ffffff;
   }
+  [data-theme="dark"] ._btn._btnavfoot span._span_unread_count{
+    border: 2px solid #121212;
+  }
+  [data-theme="dark"] .dropdown-menu#navbarNotificationsItems2{
+    background:#121212 !important;
+  }
+  [data-theme="dark"] .dropdown-menu._1 .dropdown-item{
+    border-bottom: 1px solid #000000;
+  }
   [data-theme="dark"] ._iconav_2 span{
     background: #ffffff;
   }
