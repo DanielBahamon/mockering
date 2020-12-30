@@ -302,7 +302,7 @@
           <div class="col-10 _col_search_mobile">
             <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
               <div class="col-10 ">
-                <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-12" %>
+                <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-12", value: "#{params[:q][:title_or_description_or_credits_cont] if params[:q].present?}"  %>
               </div>
               <div class="col-2 p-0">
                 <div class="d-table fullscreen ">
