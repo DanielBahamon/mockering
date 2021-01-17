@@ -52,15 +52,15 @@ class Mock < ApplicationRecord
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
 	# validates_presence_of :movie
 
-	before_post_process do
-	  file = movie.queued_for_write[:original].path
+	# before_post_process do
+	  #file = movie.queued_for_write[:original].path
 	  # movi = FFMPEG::Movie.new(movie.queued_for_write[:original].path)
 	  # self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
 	  # result = 'ffmpeg -i #{self.movie.path} 2 > & 1'
 	  # r = result.match("Duration: ([0-9]+):([0-9]+):([0-9]+).([0-9]+)")
-	  self.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
+	  #self.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
 	  # self.duration = file.duration
-	end
+	# end
 
 
 	def set_uuid

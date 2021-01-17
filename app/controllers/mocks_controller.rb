@@ -79,6 +79,9 @@ class MocksController < ApplicationController
 		params[:mock][:tag_list] = params[:mock][:tag_list].join(',')
 		@mocker = current_mocker
 		@mock = current_mocker.mocks.build(mock_params)
+		
+		file = @mock.movie.queued_for_write[:original].path
+		@mock.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
 
 		if @mock.save
 			# create notification
