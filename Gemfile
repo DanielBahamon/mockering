@@ -39,9 +39,9 @@ gem 'paperclip-av-transcoder', '~> 0.6.4'
 gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.5'
 # gem "paperclip-ffmpeg", "~> 1.2.0"
 gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
+gem 'ffmpeg', '~> 0.2.5'
 # gem 'elastic_transcoder', '~> 0.0.3'
 gem "jquery-fileupload-rails"
-gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
 gem 'mail_form', '~> 1.7', '>= 1.7.1'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'ransack'
@@ -53,6 +53,7 @@ gem 'activity_notification', '~> 2.1', '>= 2.1.2'
 gem 'rails', '~> 5.1.7'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+gem 'rvideo', '~> 0.9.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
