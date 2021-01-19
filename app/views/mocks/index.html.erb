@@ -1,4 +1,4 @@
-<% content_for :title, "Mockering" %>
+<% content_for :title, "Mockering - Videos you deserve to watch." %>
 <div id="_big_row_index bg_ghoswhite">
 	<div class="row m-0">
 		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block" id="_sidenav">
@@ -90,6 +90,7 @@
 								  </div>
 							</div>
 						<% else %>
+							<% if @new_mocks.present? %>
 							<div class="row m-0 _header_subtitle_index">
 								<div class="col-auto">
 									<div class="_cont_subtitle_index">
@@ -97,6 +98,7 @@
 									</div>
 								</div>
 							</div>
+							<% end %>
 							<div class="mocks_content">
 								<div id="mocks" class="transitions-enabled">
 									<% @new_mocks.each do |mock| %>

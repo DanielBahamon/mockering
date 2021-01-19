@@ -51,9 +51,9 @@ class Mock < ApplicationRecord
 
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
 	# validates_presence_of :movie
-	# before_post_process do
-		#video_attributes = RVideo::Inspector.new(:file => self.movie.path)
-		#self.duration = video_attributes.duration # duration in milliseconds
+	before_post_process :movie? do
+		video_attributes = RVideo::Inspector.new(:file => self.movie.path)
+		self.duration = video_attributes.duration # duration in milliseconds
 	  #file = movie.queued_for_write[:original].path
 	  # file =  FFMPEG::Movie.new("#{self.movie.path}", FFMPEG.ffmpeg_binary = '/usr/local/bin/ffmpeg')
 	  #movi = FFMPEG::Movie.new(movie.queued_for_write[:original].path)
@@ -62,7 +62,7 @@ class Mock < ApplicationRecord
 	  # r = result.match("Duration: ([0-9]+):([0-9]+):([0-9]+).([0-9]+)")
 	  #self.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
 	  # self.duration = file.duration
-	# end
+	end
 
 
 	def set_uuid
