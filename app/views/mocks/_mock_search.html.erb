@@ -11,6 +11,11 @@
 							</div>		
 						</div>
 					</div>
+					<div class="_time">
+						<section class="cont_time_mock">
+							<%= mock_time(mock) %>
+						</section>
+					</div>
 					<% if mock.picture.present? %>
 					  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
 				  	<% else %> 

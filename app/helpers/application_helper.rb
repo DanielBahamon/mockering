@@ -66,6 +66,16 @@ module ApplicationHelper
 		end
 	end
 
+	def mock_time(mock)
+		if mock.duration.present?
+			if Time.at(mock.duration.to_i).utc.hour == 0
+				Time.at(mock.duration.to_i).utc.strftime "%M:%S"
+			else
+				Time.at(mock.duration.to_i).utc.strftime "%H:%M:%S"
+			end
+		end
+	end
+
 
 	def paginate(collection, params= {})
 		will_paginate collection, params.merge(:renderer => RemoteLinkPaginationHelper::LinkRenderer)

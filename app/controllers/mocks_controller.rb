@@ -80,8 +80,8 @@ class MocksController < ApplicationController
 		@mocker = current_mocker
 		@mock = current_mocker.mocks.build(mock_params)
 		
-		file = @mock.movie.queued_for_write[:original].path
-		@mock.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
+		# file = @mock.movie.queued_for_write[:original].path
+		# @mock.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
 
 		if @mock.save
 			# create notification
@@ -349,7 +349,7 @@ class MocksController < ApplicationController
 		end
 
 		def mock_params
-			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist)
+			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist, :duration)
 		end
 
 		def set_search
