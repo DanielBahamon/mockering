@@ -312,7 +312,7 @@
     bottom:0;
   }
   ._time{
-    right: 5px;
+    right: 20px;
     bottom: 5px;
     position: absolute;
     z-index: 1;
@@ -1525,15 +1525,14 @@
 
 /* CARDS */
   ._card{
-      margin: 3px;
-      min-height: 77px;
-      position: relative;
-    box-shadow: 0 0px 13px -9px #545f63;
+    margin: 3px;
+    min-height: 77px;
+    position: relative;
     border-radius: 12px;
     border: 1px solid #eaeaea;
   }
   ._card .cont_img img {
-    border-radius: 12px 12px 0 0;
+    border-radius: 12px;
   }
 
   ._tagsmock ._chip{
@@ -1566,18 +1565,16 @@
   .card.link_card._2 .card-img-top{
     height: 250px;
   }
-  .card.link_card._3 ._cardbody{
-    height:153px;
-  }
   .card.link_card._3 .card-img-top{
-    height: 250px;
+    height: 150px;
   }
   .cont_img{
+    padding:15px;
+    padding-bottom: 0px;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
   .card.link_card:hover .card-img-top{
-    transform:scale(1.05);
   }
   @media(min-width: 768px){
     .card.link_card._2{
@@ -1603,9 +1600,9 @@
     position:relative;
   }
   ._card:hover {
-    box-shadow: -8px 8px 0px -2px #c9dbe087;
-    transform: translate(10px, -10px);
-}
+    box-shadow: -6px 6px 0px 0px #9eb4b65e;
+    transform: translate(9px, -9px);
+  }
   ._card .card-img,
   ._card .card-img-top{ 
       border-radius: 0;
@@ -1622,7 +1619,7 @@
       filter: brightness(1);
   }
   ._card ._cardtitle{
-    font-size: 14pt;
+    font-size: 10pt;
     line-height: 1.5;
     font-weight: 600;
     margin-bottom: 0;
@@ -1655,6 +1652,7 @@
       padding: 15px;
       padding-bottom:18px;
       margin: 0;
+      height:120px;
   }
   ._card ._cardbody,
   ._card ._cardbody a{
@@ -1675,7 +1673,6 @@
 
   @media(max-width: 575px){
       ._card{
-        width:100vw;
         min-width: 200px;
         margin: 0;
       }
@@ -3550,7 +3547,6 @@
   }
   #on_content{
     background: #f4f7f8;
-    background: #ffffff;
     height: 100%;
   }
   #trigger1{
@@ -3626,9 +3622,6 @@
       }
     }
     @media(max-width: 500px){
-      ._card{
-        width:100vw;
-      }
       ._card._3{
         width:60vw;
       }

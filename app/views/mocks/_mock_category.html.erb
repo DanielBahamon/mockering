@@ -1,4 +1,4 @@
-<div class="col-12 col-md-12 col-lg-auto p-2">
+<div class="col-12 col-sm-6 col-lg-3 p-2">
 	<%= link_to mock, class: "link_card card _card _3" do %>
 		<div class="cont_img">
 			<div class="icon_play">
@@ -22,7 +22,7 @@
 		
 		<div class="_cardbody">
 			<div class="d-table fullscreen">
-				<div class="d-table-cell v-bottom">
+				<div class="d-table-cell">
 					<div class="row">
 						<div class="col-12">
 							<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
@@ -35,36 +35,8 @@
 										<div class="d-tablecell v-middle ">
 											<div class="text-ellipsis">
 												<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+												<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
 											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row m-0 fullwidth pt-3 _fw600">
-							<div class="col-4">
-								<div class="d-table fullscreen">
-									<div class="d-tablecell v-middle">
-										<div class="text-center">
-											<p class="_fs10pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="d-table fullscreen">
-									<div class="d-tablecell v-middle">
-										<div class="text-center">
-											<p class="_fs10pt m-0"><%= render 'mocks/likesimple', mock: mock %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="d-table fullscreen">
-									<div class="d-tablecell v-middle">
-										<div class="text-center">
-											<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
 										</div>
 									</div>
 								</div>
