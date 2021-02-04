@@ -10,546 +10,523 @@
 					<div class="col-12 _board">
 						<%= render 'tags' %>
 						<% render 'shared/categories' %>
-						<% if params[:tag].present? %>
-							<div class="mocks_content">
-								<div id="mocks" class="transitions-enabled">
+						<div class="container">
+							<% if params[:tag].present? %>
+								<div class="mocks_content">
 									<% @mocks.each do |mock| %>
-										<%= link_to mock, class: "link_card card box _card" do %>
-											<div class="cont_img">
-												<div class="icon_play">
+											<%= link_to mock, class: "link_card card _card _3" do %>
+												<div class="cont_img">
+													<div class="icon_play">
+														<div class="d-table fullscreen">
+															<div class="d-table-cell v-middle text-center">
+																<i class="fas fa-play"></i>
+															</div>		
+														</div>
+													</div>
+													<div class="_time">
+														<section class="cont_time_mock">
+															<%= mock_time(mock) %>
+														</section>
+													</div>
+													<% if mock.picture.present? %>
+													  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+												  	<% else %> 
+												  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+												  	<% end %>
+												</div>
+												
+												<div class="_cardbody">
 													<div class="d-table fullscreen">
-														<div class="d-table-cell v-middle text-center">
-															<i class="fas fa-play"></i>
-														</div>		
-													</div>
-												</div>
-												<div class="_time">
-													<section class="cont_time_mock">
-														<%= mock_time(mock) %>
-													</section>
-												</div>
-												<% if mock.picture.present? %>
-												  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-											  	<% else %> 
-											  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-											  	<% end %>
-											</div>
-											
-											<div class="_cardbody">
-												<div class="row">
-													<div class="col-12">
-														<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
-														<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
-													</div>
-													<div class="col-12">
-														<div class="row m-0 fullwidth">
-															<div class="col p-0">
-																<div class="d-table fullscreen">
-																	<div class="d-tablecell v-middle ">
-																		<div class="text-ellipsis">
-																			<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+														<div class="d-table-cell">
+															<div class="row">
+																<div class="col-12">
+																	<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+																	<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
+																</div>
+																<div class="col-12">
+																	<div class="row m-0 fullwidth">
+																		<div class="col p-0">
+																			<div class="d-table fullscreen">
+																				<div class="d-tablecell v-middle ">
+																					<div class="text-ellipsis">
+																						<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+																						<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
+																					</div>
+																				</div>
+																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
-													<div class="row m-0 fullwidth pt-3 _fw600">
-														<div class="col-4">
-															<div class="d-table fullscreen">
-																<div class="d-tablecell v-middle">
-																	<div class="text-center">
-																		<p class="_fs10pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="col-4">
-															<div class="d-table fullscreen">
-																<div class="d-tablecell v-middle">
-																	<div class="text-center">
-																		<p class="_fs10pt m-0"><%= render 'mocks/likesimple', mock: mock %></p>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="col-4">
-															<div class="d-table fullscreen">
-																<div class="d-tablecell v-middle">
-																	<div class="text-center">
-																		<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
+															
 												</div>
-											</div>
-										<% end %>
+											<% end %>
 									<% end %>
-								</div>
 								  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 								    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
 								      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
 								    </div>
 								  </div>
-							</div>
-						<% else %>
-							<% if @new_mocks.present? %>
-							<div class="row m-0 _header_subtitle_index">
-								<div class="col-auto">
-									<div class="_cont_subtitle_index">
-										<h4 class=" pt-3"><i class="fas fa-history"></i> Added Recently</h4>
+								</div>
+							<% else %>
+								<% if @new_mocks.present? %>
+									<div class="row m-2 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<h4><i class="fas fa-history"></i> Added Recently</h4>
+											</div>
+										</div>
+									</div>
+								<% end %>
+								<div class="mocks_content">
+									<div class="row m-2">
+										<% @new_mocks.each do |mock| %>
+											<%= render 'mock_category', mock: mock %>
+										<% end %>
 									</div>
 								</div>
-							</div>
 							<% end %>
-							<div class="mocks_content">
-								<div class="row">
-									<% @new_mocks.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-									<% end %>
-								</div>
-							</div>
-						<% end %>
-						
-						<% if @mocks_health.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to health_path do %>
-												<h4 class=" pt-3"><i class="fas fa-heartbeat"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
+							<% if @mocks_health.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to health_path do %>
+													<h4 class=" pt-3"><i class="fas fa-heartbeat"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_health">
-										<% @mocks_health.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_12">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_12 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_knowledge.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to knowledge_path do %>
-												<h4 class=" pt-3"><i class="fas fa-chalkboard-teacher"></i> <i class="material-icons">arrow_forward</i></h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 fullwidth scrollbar_none" id="mocks_health">
+											<% @mocks_health.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_12">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_12 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_knowledge">
-										<% @mocks_knowledge.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_3">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_3 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_paranormal.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to paranormal_path do %>
-												<h4 class=" pt-3"><i class="fas fa-ghost"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
+							<% end %>
+							<% if @mocks_knowledge.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to knowledge_path do %>
+													<h4 class=" pt-3"><i class="fas fa-chalkboard-teacher"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_paranormal">
-										<% @mocks_paranormal.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_5">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_5 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_aliens.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to aliens_path do %>
-												<h4 class=" pt-3"><i class="fas fa-user-astronaut"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
-											
-										</div>
-									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_aliens">
-										<% @mocks_aliens.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_7">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_7 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_history.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to history_path do %>
-												<h4 class=" pt-3"><i class="fas fa-monument"></i> <i class="material-icons">arrow_forward</i></h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_knowledge">
+											<% @mocks_knowledge.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_3">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_3 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_history">
-										<% @mocks_history.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_15">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_15 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_whatever.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to whatever_path do %>
-												<h4 class="_fw600"><i class="fas fa-drumstick-bite mr-2"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
-											
+							<% end %>
+							<% if @mocks_paranormal.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to paranormal_path do %>
+													<h4 class=" pt-3"><i class="fas fa-ghost"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_whatever">
-										<% @mocks_whatever.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_2">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_2 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_short.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to shorts_path do %>
-												<h4 class=" pt-3"><i class="fas fa-film"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
-											
-										</div>
-									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_short">
-										<% @mocks_short.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_8">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_8 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_podcast.present? %>
-							<div class="mocks_category, mock: 'mock'">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to podcasts_path do %>
-												<h4 class=" pt-3"><i class="fas fa-podcast"></i> <i class="material-icons">arrow_forward</i></h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_paranormal">
+											<% @mocks_paranormal.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_5">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_5 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_podcast">
-										<% @mocks_podcast.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_9">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_9 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_reaction.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to reactions_path do %>
-												<h4 class="_fw600 pt-3"><i class="fas fa-greater-than-equal"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
+							<% end %>
+							<% if @mocks_aliens.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to aliens_path do %>
+													<h4 class=" pt-3"><i class="fas fa-user-astronaut"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+												
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_reaction">
-										<% @mocks_reaction.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_19">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_19 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_animation.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to animation_path do %>
-												<h4 class=" pt-3"><i class="fas fa-dice-d20"></i> <i class="material-icons">arrow_forward</i></h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_aliens">
+											<% @mocks_aliens.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_7">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_7 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_animation">
-										<% @mocks_animation.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_6">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_6 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_protest.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to protests_path do %>
-												<h4 class=" pt-3"><i class="fas fa-balance-scale"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
-											
+							<% end %>
+							<% if @mocks_history.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to history_path do %>
+													<h4 class=" pt-3"><i class="fas fa-monument"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_protest">
-										<% @mocks_protest.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_10">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_10 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_tribute.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to tributes_path do %>
-												<h4 class=" pt-3"><i class="fas fa-medal"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
-											
-										</div>
-									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_tribute">
-										<% @mocks_tribute.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_11">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_11 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_report.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to reports_path do %>
-												<h4 class=" pt-3"><i class="fas fa-search"></i> <i class="material-icons">arrow_forward</i></h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_history">
+											<% @mocks_history.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_15">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_15 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_report">
-										<% @mocks_report.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_4">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_4 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_nature.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to nature_path do %>
-												<h4 class=" pt-3"><i class="fas fa-frog"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
+							<% end %>
+							<% if @mocks_whatever.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to whatever_path do %>
+													<h4 class="_fw600"><i class="fas fa-drumstick-bite mr-2"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+												
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_music">
-										<% @mocks_nature.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_18">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_18 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_tutorial.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to tutorials_path do %>
-												<h4 class=" pt-3"><i class="fas fa-graduation-cap"></i> <i class="material-icons">arrow_forward</i></h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_whatever">
+											<% @mocks_whatever.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_2">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_2 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_tutorial">
-										<% @mocks_tutorial.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_14">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_14 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_videoclip.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to videoclips_path do %>
-												<h4 class=" pt-3"><i class="fas fa-video"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
+							<% end %>
+							<% if @mocks_short.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to shorts_path do %>
+													<h4 class=" pt-3"><i class="fas fa-film"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+												
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_videoclip">
-										<% @mocks_videoclip.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_16">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_16 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_training.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to training_path do %>
-												<h4 class=" pt-3"><i class="fas fa-dumbbell"></i> <i class="material-icons">arrow_forward</i>Physical training</h4>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_short">
+											<% @mocks_short.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_8">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_8 pull-right">
+										</a>
 									</div>
 								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_training">
-										<% @mocks_training.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
-									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_17">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_17 pull-right">
-									</a>
-								</div>
-							</div>
-						<% end %>
-						<% if @mocks_music.present? %>
-							<div class="mocks_category">
-								<div class="row m-0 _header_subtitle_index">
-									<div class="col-auto">
-										<div class="_cont_subtitle_index">
-											<%= link_to music_path do %>
-												<h4 class=" pt-3"><i class="fas fa-music"></i> <i class="material-icons">arrow_forward</i></h4>
-											<% end %>
+							<% end %>
+							<% if @mocks_podcast.present? %>
+								<div class="mocks_category, mock: 'mock'">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to podcasts_path do %>
+													<h4 class=" pt-3"><i class="fas fa-podcast"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="row m-0 relative">
-									<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_music">
-										<% @mocks_music.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_podcast">
+											<% @mocks_podcast.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_9">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_9 pull-right">
+										</a>
 									</div>
-									<a class="div_arrow _left _2 arrow_ arrow-left-navigation_18">
-									</a>
-									<a class="div_arrow _right _2 arrow_ arrow-right-navigation_18 pull-right">
-									</a>
 								</div>
-							</div>
-						<% end %>
+							<% end %>
+							<% if @mocks_reaction.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to reactions_path do %>
+													<h4 class="_fw600 pt-3"><i class="fas fa-greater-than-equal"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_reaction">
+											<% @mocks_reaction.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_19">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_19 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_animation.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to animation_path do %>
+													<h4 class=" pt-3"><i class="fas fa-dice-d20"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_animation">
+											<% @mocks_animation.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_6">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_6 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_protest.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to protests_path do %>
+													<h4 class=" pt-3"><i class="fas fa-balance-scale"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+												
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_protest">
+											<% @mocks_protest.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_10">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_10 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_tribute.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to tributes_path do %>
+													<h4 class=" pt-3"><i class="fas fa-medal"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+												
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_tribute">
+											<% @mocks_tribute.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_11">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_11 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_report.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to reports_path do %>
+													<h4 class=" pt-3"><i class="fas fa-search"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_report">
+											<% @mocks_report.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_4">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_4 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_nature.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to nature_path do %>
+													<h4 class=" pt-3"><i class="fas fa-frog"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_music">
+											<% @mocks_nature.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_18">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_18 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_tutorial.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to tutorials_path do %>
+													<h4 class=" pt-3"><i class="fas fa-graduation-cap"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_tutorial">
+											<% @mocks_tutorial.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_14">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_14 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_videoclip.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to videoclips_path do %>
+													<h4 class=" pt-3"><i class="fas fa-video"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_videoclip">
+											<% @mocks_videoclip.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_16">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_16 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_training.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to training_path do %>
+													<h4 class=" pt-3"><i class="fas fa-dumbbell"></i> <i class="material-icons">arrow_forward</i>Physical training</h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_training">
+											<% @mocks_training.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_17">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_17 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+							<% if @mocks_music.present? %>
+								<div class="mocks_category">
+									<div class="row m-0 _header_subtitle_index">
+										<div class="col-auto">
+											<div class="_cont_subtitle_index">
+												<%= link_to music_path do %>
+													<h4 class=" pt-3"><i class="fas fa-music"></i> <i class="material-icons">arrow_forward</i></h4>
+												<% end %>
+											</div>
+										</div>
+									</div>
+									<div class="row m-0 relative">
+										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_music">
+											<% @mocks_music.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_18">
+										</a>
+										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_18 pull-right">
+										</a>
+									</div>
+								</div>
+							<% end %>
+						</div>
+							
 					</div>
 				</div>
 			</div>
@@ -558,10 +535,11 @@
 </div>
 <style type="text/css">
 	.row._header_subtitle_index h4 {
-	    color: #7e7d84;
-	    margin-bottom: 10px;
-	    font-size: 16pt;
-	    font-weight: 400;
+    color: #7e7d84;
+    margin: 15px;
+    font-size: 12pt;
+    font-weight: 100;
+    margin-bottom: 5px;
 	}
 	._cont_subtitle_index h4 i{
 		margin-right: 5px;

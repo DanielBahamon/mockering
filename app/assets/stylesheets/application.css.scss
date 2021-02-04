@@ -325,10 +325,13 @@
     border-radius: 5px;
     color: white;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 11px;
   }
   .deco-none{
     text-decoration:none !important;
+  }
+  a.link_card.card._card._3 {
+    max-width: 320px;
   }
   a.like-post {
     color: #5e6e75;
@@ -1525,7 +1528,6 @@
 
 /* CARDS */
   ._card{
-    margin: 3px;
     min-height: 77px;
     position: relative;
     border-radius: 12px;
@@ -1582,16 +1584,17 @@
     }
   }
   ._card .icon_play { 
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-      font-size: 25pt;
-      display:none;
-      width: 100%;
-      color: white;
-      opacity:0.475;
-      -webkit-transition: all .2s ease;
-      transition: all .2s ease;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    margin: -12px;
+    font-size: 25pt;
+    display: none;
+    width: 100%;
+    color: white;
+    opacity: 0.475;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
   }
   ._card:hover .icon_play { 
       display:block;
