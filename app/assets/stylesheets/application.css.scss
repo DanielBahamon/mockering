@@ -324,8 +324,8 @@
     background: rgba(30, 25, 49, 0.56);
     border-radius: 5px;
     color: white;
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 100;
+    font-size: 14px;
   }
   .deco-none{
     text-decoration:none !important;
@@ -1529,6 +1529,11 @@
       min-height: 77px;
       position: relative;
     box-shadow: 0 0px 13px -9px #545f63;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+  }
+  ._card .cont_img img {
+    border-radius: 12px 12px 0 0;
   }
 
   ._tagsmock ._chip{
@@ -1597,6 +1602,10 @@
   .cont_img{
     position:relative;
   }
+  ._card:hover {
+    box-shadow: -8px 8px 0px -2px #c9dbe087;
+    transform: translate(10px, -10px);
+}
   ._card .card-img,
   ._card .card-img-top{ 
       border-radius: 0;
@@ -3603,9 +3612,6 @@
 /* RESPONSIVE */
   /* MAX WIDTH */
     @media(max-width: 880px){
-      ._card{
-        width:250px;
-      }
     }
     @media(max-width: 575px){
       ._list._1 li{
@@ -3622,7 +3628,6 @@
     @media(max-width: 500px){
       ._card{
         width:100vw;
-        
       }
       ._card._3{
         width:60vw;
