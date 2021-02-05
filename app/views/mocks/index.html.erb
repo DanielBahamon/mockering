@@ -13,57 +13,11 @@
 						<div class="container p-md-2 p-0">
 							<% if params[:tag].present? %>
 								<div class="mocks_content">
-									<% @mocks.each do |mock| %>
-											<%= link_to mock, class: "link_card card _card _3" do %>
-												<div class="cont_img">
-													<div class="icon_play">
-														<div class="d-table fullscreen">
-															<div class="d-table-cell v-middle text-center">
-																<i class="fas fa-play"></i>
-															</div>		
-														</div>
-													</div>
-													<div class="_time">
-														<section class="cont_time_mock">
-															<%= mock_time(mock) %>
-														</section>
-													</div>
-													<% if mock.picture.present? %>
-													  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-												  	<% else %> 
-												  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-												  	<% end %>
-												</div>
-												
-												<div class="_cardbody">
-													<div class="d-table fullscreen">
-														<div class="d-table-cell">
-															<div class="row">
-																<div class="col-12">
-																	<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
-																	<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
-																</div>
-																<div class="col-12">
-																	<div class="row m-0 fullwidth">
-																		<div class="col p-0">
-																			<div class="d-table fullscreen">
-																				<div class="d-tablecell v-middle ">
-																					<div class="text-ellipsis">
-																						<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
-																						<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-															
-												</div>
-											<% end %>
-									<% end %>
+									<div class="row m-0 m-sm-2">
+										<% @mocks.each do |mock| %>
+											<%= render 'mock_category', mock: mock %>
+										<% end %>
+									</div>
 								  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 								    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
 								      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
@@ -72,21 +26,26 @@
 								</div>
 							<% else %>
 								<% if @new_mocks.present? %>
-									<div class="row m-2 _header_subtitle_index">
+									<div class="row m-0 _header_subtitle_index">
 										<div class="col-auto">
 											<div class="_cont_subtitle_index">
-												<h4><i class="fas fa-history"></i> Added Recently</h4>
+												<h4><i class="fas fa-history"></i> Recently</h4>
 											</div>
 										</div>
 									</div>
-								<% end %>
-								<div class="mocks_content">
-									<div class="row m-2">
-										<% @new_mocks.each do |mock| %>
-											<%= render 'mock_category', mock: mock %>
-										<% end %>
+									<div class="mocks_content">
+										<div class="row m-0 m-sm-2">
+											<% @new_mocks.each do |mock| %>
+												<%= render 'mock_category', mock: mock %>
+											<% end %>
+										</div>
+									  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+									    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+									      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
+									    </div>
+									  </div>
 									</div>
-								</div>
+								<% end %>
 							<% end %>
 							<% if @mocks_health.present? %>
 								<div class="mocks_category">
@@ -94,7 +53,7 @@
 										<div class="col-auto">
 											<div class="_cont_subtitle_index">
 												<%= link_to health_path do %>
-													<h4 class=" pt-3"><i class="fas fa-heartbeat"></i> <i class="material-icons">arrow_forward</i></h4>
+													<h4><i class="fas fa-heartbeat"></i> <i class="material-icons">arrow_forward</i></h4>
 												<% end %>
 											</div>
 										</div>
@@ -118,7 +77,7 @@
 										<div class="col-auto">
 											<div class="_cont_subtitle_index">
 												<%= link_to knowledge_path do %>
-													<h4 class=" pt-3"><i class="fas fa-chalkboard-teacher"></i> <i class="material-icons">arrow_forward</i></h4>
+													<h4><i class="fas fa-chalkboard-teacher"></i> <i class="material-icons">arrow_forward</i></h4>
 												<% end %>
 											</div>
 										</div>
@@ -535,11 +494,11 @@
 </div>
 <style type="text/css">
 	.row._header_subtitle_index h4 {
-    color: #7e7d84;
+    color: #424243;
     margin: 15px;
+    margin-left: 0;
     font-size: 12pt;
     font-weight: 100;
-    margin-bottom: 5px;
 	}
 	._cont_subtitle_index h4 i{
 		margin-right: 5px;

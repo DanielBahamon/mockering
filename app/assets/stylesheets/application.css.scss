@@ -759,15 +759,16 @@
       font-size: 9pt;
   }
   ._avatar._1 {
-      max-height: 100px;
-      max-width: 100px;
-      min-width: 20px;
-      width: 100%;
-      margin: 0 auto;
-      display: block;
-      border-radius: 12px;
-      border: 0px solid white;
-      object-fit:cover;
+    height: 40px;
+    width: 40px;
+    display: block;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-top: -36px;
+    margin-left: -5px;
+    margin-bottom: 5px;
   }
   ._avatar._2 {
       height: 30px;
@@ -1279,7 +1280,7 @@
   ._chip._1{
     background: white;
     border: 1px solid #eaeaea;
-    border-radius: 369px;
+    border-radius: 13px;
     padding: 5px 15px;
     margin: 5px;
     color: #484848;
@@ -1529,9 +1530,6 @@
     position: relative;
     border: 1px solid #eaeaea;
   }
-  ._card .cont_img img {
-    border-radius: 12px;
-  }
 
   ._tagsmock ._chip{
     margin-bottom: 0;
@@ -1563,17 +1561,22 @@
   .card.link_card._2 .card-img-top{
     height: 250px;
   }
-  @media(min-width: 768px){
+  @media(min-width: 575px){
     .card.link_card._3 .card-img-top{
       height: 150px;
     }
     ._card{
-      border-radius:12px;
+      border-radius:30px;
+    }
+    .cont_img{
+      padding:15px;
+      padding-bottom: 0px;
+    }
+    ._card .cont_img img {
+      border-radius: 20px;
     }
   }
   .cont_img{
-    padding:15px;
-    padding-bottom: 0px;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
@@ -1623,7 +1626,7 @@
       filter: brightness(1);
   }
   ._card ._cardtitle{
-    font-size: 10pt;
+    font-size: 11pt;
     line-height: 1.5;
     font-weight: 600;
     margin-bottom: 0;
@@ -1649,14 +1652,14 @@
   }
   ._card ._cardbody{
       background: white;
-      border-radius: 0 0 9px 9px;
+      border-radius: 0 0 30px 30px;
       bottom: 0;
       display: block;
       width: 100%;
       padding: 15px;
       padding-bottom:18px;
       margin: 0;
-      height:120px;
+      height:140px;
   }
   ._card ._cardbody,
   ._card ._cardbody a{

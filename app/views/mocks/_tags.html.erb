@@ -1,4 +1,4 @@
-<div class="d-flex overflowx_auto p-2 taglist" id="taglist">
+<div class="d-flex overflowx_auto pt-2 taglist" id="taglist">
 	<% @tags.each do |tag| %>
 		<%= link_to tag.name, mocks_path(tag: tag.name), class: "_chip _1" %>
 	<% end %>
