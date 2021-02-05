@@ -330,9 +330,6 @@
   .deco-none{
     text-decoration:none !important;
   }
-  a.link_card.card._card._3 {
-    max-width: 320px;
-  }
   a.like-post {
     color: #5e6e75;
     text-decoration:none !important;
@@ -1530,7 +1527,6 @@
   ._card{
     min-height: 77px;
     position: relative;
-    border-radius: 12px;
     border: 1px solid #eaeaea;
   }
   ._card .cont_img img {
@@ -1567,8 +1563,13 @@
   .card.link_card._2 .card-img-top{
     height: 250px;
   }
-  .card.link_card._3 .card-img-top{
-    height: 150px;
+  @media(min-width: 768px){
+    .card.link_card._3 .card-img-top{
+      height: 150px;
+    }
+    ._card{
+      border-radius:12px;
+    }
   }
   .cont_img{
     padding:15px;
@@ -3625,9 +3626,6 @@
       }
     }
     @media(max-width: 500px){
-      ._card._3{
-        width:60vw;
-      }
     }
 
   /* END MAX WIDTH */
