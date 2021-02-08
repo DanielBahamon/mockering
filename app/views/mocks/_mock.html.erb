@@ -1,69 +1,55 @@
-	<% @mocks.each do |mock| %>
-		<%= link_to mock, class: "link_card card box _card" do %>
-			<div class="cont_img">
-				<div class="icon_play">
-					<div class="d-table fullscreen">
-						<div class="d-table-cell v-middle text-center">
-							<i class="fas fa-play"></i>
-						</div>		
-					</div>
+<% @mocks.each do |mock| %>
+	<%= link_to mock, class: "link_card card _card _3 box" do %>
+		<div class="cont_img">
+			<div class="icon_play">
+				<div class="d-table fullscreen">
+					<div class="d-table-cell v-middle text-center">
+						<i class="fas fa-play"></i>
+					</div>		
 				</div>
-				<% if mock.picture.present? %>
-				  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-			  	<% else %> 
-			  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-			  	<% end %>
 			</div>
-			
-			<div class="_cardbody">
-				<div class="row">
-					<div class="col-12">
-						<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
-						<div class="d-flex overflowx_none _tagsmock"><% mock.tag_list.each do |tag| %><!--<div class="_chip _1">--><% tag %><!--</div>--><% end %></div>
-					</div>
-					<div class="col-12">
-						<div class="row m-0 fullwidth">
-							<div class="col p-0">
-								<div class="d-table fullscreen">
-									<div class="d-tablecell v-middle ">
-										<div class="text-ellipsis">
-											<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row m-0 fullwidth pt-3 _fw600">
-						<div class="col-4">
-							<div class="d-table fullscreen">
-								<div class="d-tablecell v-middle">
-									<div class="text-center">
-										<p class="_fs10pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="d-table fullscreen">
-								<div class="d-tablecell v-middle">
-									<div class="text-center">
-										<p class="_fs10pt m-0"><%= render 'mocks/likesimple', mock: mock %></p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="d-table fullscreen">
-								<div class="d-tablecell v-middle">
-									<div class="text-center">
-										<p class="_fs10pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
-									</div>
-								</div>
+			<div class="_time">
+				<section class="cont_time_mock">
+					<%= mock_time(mock) %>
+				</section>
+			</div>
+			<% if mock.picture.present? %>
+		  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+	  	<% else %> 
+	  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+	  	<% end %>
+		</div>
+		<div class="_cardbody">
+			<div class="row m-0">
+				<div class="col-12">
+					<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
+					<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+				</div>
+				<div class="col-12">
+					<div class="row m-0 fullwidth">
+						<div class="col p-0">
+							<div class="text-ellipsis">
+								<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+								<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		<% end %>
+		</div>
 	<% end %>
+<% end %>
+
+<style type="text/css">
+	@media(max-width: 575px){
+      ._card{
+        width:100vw;
+        min-width: 200px;
+        margin: 0;
+      }
+	}
+	._card{
+		max-width: 200px;
+		margin: 5px;
+	}
+</style>

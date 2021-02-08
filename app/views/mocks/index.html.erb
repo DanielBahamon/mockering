@@ -1,16 +1,11 @@
 <% content_for :title, "Mockering - Videos you deserve to watch." %>
-<div id="_big_row_index bg_ghoswhite">
+<div id="_big_row_index" class="container-lg">
 	<div class="row m-0">
-		<div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block" id="_sidenav">
-			<%= render 'shared/navside' %>
-		</div>
-		<div class="col-12 col-md-9 col-xl-10 p-0 _content _content_principal _1">
+		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
-				<div class="row m-0">
-					<div class="col-12 _board">
+					<div class="_board">
 						<%= render 'tags' %>
 						<% render 'shared/categories' %>
-						<div class="container p-md-2 p-0">
 							<% if params[:tag].present? %>
 								<div class="mocks_content">
 									<div class="row m-0 m-sm-2">
@@ -64,10 +59,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_12">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_12 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -88,10 +79,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_3">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_3 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -112,10 +99,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_5">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_5 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -137,10 +120,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_7">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_7 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -161,10 +140,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_15">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_15 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -186,10 +161,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_2">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_2 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -211,10 +182,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_8">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_8 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -235,10 +202,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_9">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_9 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -259,10 +222,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_19">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_19 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -283,10 +242,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_6">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_6 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -308,10 +263,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_10">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_10 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -333,10 +284,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_11">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_11 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -357,10 +304,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_4">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_4 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -381,10 +324,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_18">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_18 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -405,10 +344,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_14">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_14 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -429,10 +364,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_16">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_16 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -453,10 +384,6 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_17">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_17 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
@@ -477,15 +404,9 @@
 												<%= render 'mock_category', mock: mock %>
 											<% end %>
 										</div>
-										<a class="div_arrow _left _2 arrow_ arrow-left-navigation_18">
-										</a>
-										<a class="div_arrow _right _2 arrow_ arrow-right-navigation_18 pull-right">
-										</a>
 									</div>
 								</div>
 							<% end %>
-						</div>
-							
 					</div>
 				</div>
 			</div>
@@ -511,7 +432,7 @@
 	}
 </style>
 <script type="text/javascript">
-	
+	/*
 	$(document).ready(function(){
 
 	    $(".arrow-left-navigation_2").click(function(){
@@ -523,353 +444,12 @@
 
 		$('#mocks_whatever').scroll(function() {
 		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_2').hide();
+		        $('.arrow-left-navigation_1').hide();
 		    }
 		    else if($('.arrow-left-navigation_2').css('display') != 'block') {
 		        $('.arrow-left-navigation_2').show();
 		    }
 		}).scroll();
 
-
-
-	    $(".arrow-left-navigation_3").click(function(){
-	        $("#mocks_knowledge").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_3").click(function(){
-	        $("#mocks_knowledge").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_knowledge').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_3').hide();
-		    }
-		    else if($('.arrow-left-navigation_3').css('display') != 'block') {
-		        $('.arrow-left-navigation_3').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_4").click(function(){
-	        $("#mocks_report").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_4").click(function(){
-	        $("#mocks_report").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_report').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_4').hide();
-		    }
-		    else if($('.arrow-left-navigation_4').css('display') != 'block') {
-		        $('.arrow-left-navigation_4').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_5").click(function(){
-	        $("#mocks_paranormal").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_5").click(function(){
-	        $("#mocks_paranormal").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_paranormal').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_5').hide();
-		    }
-		    else if($('.arrow-left-navigation_5').css('display') != 'block') {
-		        $('.arrow-left-navigation_5').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_6").click(function(){
-	        $("#mocks_animation").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_6").click(function(){
-	        $("#mocks_animation").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_animation').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_6').hide();
-		    }
-		    else if($('.arrow-left-navigation_6').css('display') != 'block') {
-		        $('.arrow-left-navigation_6').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_7").click(function(){
-	        $("#mocks_aliens").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_7").click(function(){
-	        $("#mocks_aliens").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_aliens').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_7').hide();
-		    }
-		    else if($('.arrow-left-navigation_7').css('display') != 'block') {
-		        $('.arrow-left-navigation_7').show();
-		    }
-		}).scroll();
-
-
-	    $(".arrow-left-navigation_8").click(function(){
-	        $("#mocks_short").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_8").click(function(){
-	        $("#mocks_short").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_short').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_8').hide();
-		    }
-		    else if($('.arrow-left-navigation_8').css('display') != 'block') {
-		        $('.arrow-left-navigation_8').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_9").click(function(){
-	        $("#mocks_podcast").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_9").click(function(){
-	        $("#mocks_podcast").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_podcast').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_9').hide();
-		    }
-		    else if($('.arrow-left-navigation_9').css('display') != 'block') {
-		        $('.arrow-left-navigation_9').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_19").click(function(){
-	        $("#mocks_reaction").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_19").click(function(){
-	        $("#mocks_reaction").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_reaction').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_19').hide();
-		    }
-		    else if($('.arrow-left-navigation_19').css('display') != 'block') {
-		        $('.arrow-left-navigation_19').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_10").click(function(){
-	        $("#mocks_protest").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_10").click(function(){
-	        $("#mocks_protest").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_protest').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_10').hide();
-		    }
-		    else if($('.arrow-left-navigation_10').css('display') != 'block') {
-		        $('.arrow-left-navigation_10').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_11").click(function(){
-	        $("#mocks_tribute").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_11").click(function(){
-	        $("#mocks_tribute").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_tribute').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_11').hide();
-		    }
-		    else if($('.arrow-left-navigation_11').css('display') != 'block') {
-		        $('.arrow-left-navigation_11').show();
-		    }
-		}).scroll();
-
-
-	    $(".arrow-left-navigation_12").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_12").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_health').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_12').hide();
-		    }
-		    else if($('.arrow-left-navigation_12').css('display') != 'block') {
-		        $('.arrow-left-navigation_12').show();
-		    }
-		}).scroll();
-
-
-
-
-	    $(".arrow-left-navigation_12").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_12").click(function(){
-	        $("#mocks_health").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_health').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_12').hide();
-		    }
-		    else if($('.arrow-left-navigation_12').css('display') != 'block') {
-		        $('.arrow-left-navigation_12').show();
-		    }
-		}).scroll();
-
-		
-
-	    $(".arrow-left-navigation_13").click(function(){
-	        $("#mocks_event").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_13").click(function(){
-	        $("#mocks_event").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_event').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_13').hide();
-		    }
-		    else if($('.arrow-left-navigation_13').css('display') != 'block') {
-		        $('.arrow-left-navigation_13').show();
-		    }
-		}).scroll();
-
-		
-
-	    $(".arrow-left-navigation_14").click(function(){
-	        $("#mocks_event").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_14").click(function(){
-	        $("#mocks_event").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_event').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_14').hide();
-		    }
-		    else if($('.arrow-left-navigation_14').css('display') != 'block') {
-		        $('.arrow-left-navigation_14').show();
-		    }
-		}).scroll();
-
-		
-
-	    $(".arrow-left-navigation_14").click(function(){
-	        $("#mocks_tutorial").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_14").click(function(){
-	        $("#mocks_tutorial").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_tutorial').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_14').hide();
-		    }
-		    else if($('.arrow-left-navigation_14').css('display') != 'block') {
-		        $('.arrow-left-navigation_14').show();
-		    }
-		}).scroll();
-
-		
-
-	    $(".arrow-left-navigation_15").click(function(){
-	        $("#mocks_history").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_15").click(function(){
-	        $("#mocks_history").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_history').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_15').hide();
-		    }
-		    else if($('.arrow-left-navigation_15').css('display') != 'block') {
-		        $('.arrow-left-navigation_15').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_16").click(function(){
-	        $("#mocks_videoclip").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_16").click(function(){
-	        $("#mocks_videoclip").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_videoclip').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_16').hide();
-		    }
-		    else if($('.arrow-left-navigation_16').css('display') != 'block') {
-		        $('.arrow-left-navigation_16').show();
-		    }
-		}).scroll();
-
-
-
-
-	    $(".arrow-left-navigation_17").click(function(){
-	        $("#mocks_training").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_17").click(function(){
-	        $("#mocks_training").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_training').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_17').hide();
-		    }
-		    else if($('.arrow-left-navigation_17').css('display') != 'block') {
-		        $('.arrow-left-navigation_17').show();
-		    }
-		}).scroll();
-
-
-
-	    $(".arrow-left-navigation_18").click(function(){
-	        $("#mocks_music").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_18").click(function(){
-	        $("#mocks_music").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_music').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_18').hide();
-		    }
-		    else if($('.arrow-left-navigation_18').css('display') != 'block') {
-		        $('.arrow-left-navigation_18').show();
-		    }
-		}).scroll();
-	});
+	}); */
 </script>

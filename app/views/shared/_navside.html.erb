@@ -1,104 +1,111 @@
-<div class="fixed _css-1db _overflow-y _h-100vh _cont_sidenav">
-    <% if mocker_signed_in? %>
-		<div class="row m-0">
-			<div class="relative fullwidth">
-			  <div class="row cont_user m-0">
-			    <div class="col-12 text-center">
-			      <br>
-			      <%= link_to current_mocker do %>
-			      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
-			      <% end %>
-			    </div>
-			    <div class="col-12 text-center">
-			      <h4 class="_name _fw400 m-0">
-			      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
-			      
-			      <%= link_to current_mocker, class: "text-muted _fw400 deco-none" do %>@<%= current_mocker.slug %> <%= image_tag badge_icon(current_mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(current_mocker) if current_mocker.verification? %>
-			      <% end %>
-			    </div>
-			  </div>
-			  <br>
-			</div>
-		</div>
-	<% end %>
-	<div class="row m-0">
-		<div class="col-12 p-0">
-			<div id="_row_sidenav1">
-				<div class="d-table fullscreen ">
-					<div class="d-tablecell v-middle">
-						<ul class="_listsidenav">
-							<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
-									<i class="fas fa-th-large col-2 text-center p-0" style="font-size: 10pt;line-height: 2.1;"></i>
-									<p class="col-10 m-0">Feed</p>
-								<% end %>
-							</li>
-							<!--<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
-      								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
-									<p class="col-10 m-0">Discover</p>
-								<% end %>
-							</li>-->
-							<li class="<%= 'active' if current_page?(random_path)  %>"><%= link_to random_path, class: "_link _sidenav" do %>
-									<i class="fas fa-random col-2 text-center p-0"></i>
-									<p class="col-10 m-0">Random</p>
-								<% end %>
-							</li>
-							<li class="<%= 'active' if current_page?(popular_path)  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
-									<i class="fas fa-fire col-2 text-center p-0"></i>
-									<p class="col-10 m-0">Popular</p>
-								<% end %>
-							</li>
-    						<% if mocker_signed_in? %>
-								<li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
-										<i class="fas fa-envelope col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Messages</p>
-									<% end %>
-								</li>
-								<li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
-										<i class="fas fa-cog col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Settings</p>
-									<% end %>
-								</li>
-								<li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
-										<i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Logout</p>
-									<% end %>
-								</li>
-							<% else %>
-								<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
-										<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Login</p>
-									<% end %>
-								</li>
-							<% end %>
-			                  <hr>
-			                  <li><%= link_to contribute_path, class: "_link _sidenav" do %>
-			                    <i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
-			                      <p class="col-10 m-0">Contributor</p>
-			                    <% end %>
-			                  </li>
-			                  <li>
-			                    <label class="_link _sidenav" for="darkSwitch">
-			                      <div class="col-2 text-center p-0 custom-control custom-switch">
-			                        <i class="fas fa-moon d-none-moon"></i>
-			                        <i class="fas fa-sun d-none-sun"></i>
-			                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
-			                      </div>
-			                      <p class="col-10 m-0 d-none-sun">Sun mode</p>
-			                      <p class="col-10 m-0 d-none-moon">Moon mode</p>
-			                    </label>
-			                  </li>
+<section>
+	<div class="_css-1db _overflow-y _h-100vh _cont_sidenav">
+	  <% if mocker_signed_in? %>
+			<div class="row m-0">
+	      <div class="_logo_navside">
+	        <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
+	          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
+	          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
+	          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
+	          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
 
-							<div class="row m-0">
-								<div class="col">
-									<%= render 'pages/links_terms' %>
+	        <% end %>
+	      </div>   
+				<!--<div class="relative fullwidth">
+				  <div class="row cont_user m-0">
+				    <div class="col-12 text-center">
+				      <br>
+				      <%= link_to current_mocker do %>
+				      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
+				      <% end %>
+				    </div>
+				    <div class="col-12 text-center">
+				      <h4 class="_name _fw400 m-0">
+				      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
+				      
+				      <%= link_to current_mocker, class: "text-muted _fw400 deco-none" do %>@<%= current_mocker.slug %> <%= image_tag badge_icon(current_mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(current_mocker) if current_mocker.verification? %>
+				      <% end %>
+				    </div>
+				  </div>
+				  <br>
+				</div>-->
+			</div>
+		<% end %>
+		<div class="row m-0">
+			<div class="col-12 p-0">
+				<div id="_row_sidenav1">
+					<div class="d-table fullscreen ">
+						<div class="d-tablecell v-middle">
+							<ul class="_listsidenav">
+								<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
+										<i class="fas fa-th-large col-2 text-center p-0" style="font-size: 10pt;line-height: 2.1;"></i>
+										<p class="col-10 m-0">Feed</p>
+									<% end %>
+								</li>
+								<!--<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
+	      								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Discover</p>
+									<% end %>
+								</li>-->
+								<li class="<%= 'active' if current_page?(random_path)  %>"><%= link_to random_path, class: "_link _sidenav" do %>
+										<i class="fas fa-random col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Random</p>
+									<% end %>
+								</li>
+								<li class="<%= 'active' if current_page?(popular_path)  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
+										<i class="fas fa-fire col-2 text-center p-0"></i>
+										<p class="col-10 m-0">Popular</p>
+									<% end %>
+								</li>
+	    						<% if mocker_signed_in? %>
+									<li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
+											<i class="fas fa-envelope col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Messages</p>
+										<% end %>
+									</li>
+									<li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
+											<i class="fas fa-cog col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Settings</p>
+										<% end %>
+									</li>
+									<li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
+											<i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Logout</p>
+										<% end %>
+									</li>
+								<% else %>
+									<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
+											<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Login</p>
+										<% end %>
+									</li>
+								<% end %>
+				                  <hr>
+				                  <li>
+				                    <label class="_link _sidenav" for="darkSwitch">
+				                      <div class="col-2 text-center p-0 custom-control custom-switch">
+				                        <i class="fas fa-moon d-none-moon"></i>
+				                        <i class="fas fa-sun d-none-sun"></i>
+				                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
+				                      </div>
+				                      <p class="col-10 m-0 d-none-sun">Sun mode</p>
+				                      <p class="col-10 m-0 d-none-moon">Moon mode</p>
+				                    </label>
+				                  </li>
+
+								<div class="row m-0">
+									<div class="col">
+										<%= render 'pages/links_terms' %>
+									</div>
 								</div>
-							</div>
-						</ul>
-							
+							</ul>
+								
+						</div>
 					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
 	</div>
-</div>
+</section>
+	
