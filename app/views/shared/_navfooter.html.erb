@@ -16,26 +16,30 @@
 		<% end %>
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">
-				<li class="col-3 <%= 'active' if current_page?(root_path)  %>">
+				<li class="col_navfooter col-3 <%= 'active' if current_page?(root_path)  %>">
 					<%= link_to root_path, class: "_btn _btnavfoot " do %>
-						<i class="fas fa-th-large text-center p-0"></i>
-						<p class="text-ellipsis m-0">Feed</p>
+						<div class="d-table fullheight fullwidth">
+							<div class="d-tablecell v-middle">
+								<i class="fas fa-th-large text-center p-0"></i>
+								<p class="text-ellipsis m-0">Feed</p>
+							</div>
+						</div>
 					<% end %>
 				</li>
-				<li class="col-3 <%= 'active' if current_page?(random_path)  %>">
+				<li class="col_navfooter col-3 <%= 'active' if current_page?(random_path)  %>">
 					<%= link_to random_path, class: "_btn _btnavfoot " do %>
 						<i class="fas fa-random text-center p-0"></i>
 						<p class="text-ellipsis m-0">Random</p>
 					<% end %>
 				</li>
-				<li class="col-3 <%= 'active' if current_page?(popular_path)  %>">
+				<li class="col_navfooter col-3 <%= 'active' if current_page?(popular_path)  %>">
 					<%= link_to popular_path, class: "_btn _btnavfoot" do %>
 						<i class="fas fa-fire text-center p-0"></i>
 						<p class="text-ellipsis m-0">Popular</p>
-					<% end %>
+					<% end %> 
 				</li>
                 <% if mocker_signed_in? %>
-                	<div class="col-3 navbar p-0">
+                	<div class="col_navfooter col-3 navbar p-0">
                 		<li class="nav-item fullwidth  dropup <%= 'active' if current_page?(notifications_path)  %>" data-behavior="notifications">
 	                      <a class="_btn _btnavfoot dropdown-toggle " data-behavior="notifications-link" href="#" id="navbarNotifications_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="_span_unread_count" data-behavior="unread-count"></span>
@@ -47,8 +51,8 @@
 	                    </li>
                 	</div>
 				<% else %>
-					<li class="col-3 <%= 'active' if current_page?(new_mocker_session_path)  %>">
-						<%= link_to notifications_path, class: "_btn _btnavfoot" do %>
+					<li class="col_navfooter col-3 <%= 'active' if current_page?(new_mocker_session_path)  %>">
+						<%= link_to new_mocker_session_path, class: "_btn _btnavfoot" do %>
 							<i class="fas fa-user text-center p-0"></i>
 							<p class="text-ellipsis m-0">Account</p>
 						<% end %>
@@ -58,3 +62,23 @@
 		</ul>
 	</div>
 </div>
+<style type="text/css">
+	.col_navfooter a i{
+	    font-size: 1.36rem;
+	    line-height: 2.5rem;
+	    vertical-align: middle;
+	}
+	.col_navfooter a p{
+		display: none;
+	    position: absolute;
+	    bottom: 9px;
+	    left: 0px;
+	}
+	.col_navfooter.active a i{
+    	font-size: 1rem;
+    	margin-top: -14px;
+	}
+	.col_navfooter.active a p{
+		display: block;
+	}
+</style>

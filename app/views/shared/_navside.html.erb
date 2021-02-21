@@ -2,15 +2,6 @@
 	<div class="_css-1db _overflow-y _h-100vh _cont_sidenav">
 	  <% if mocker_signed_in? %>
 			<div class="row m-0">
-		      <div class="_logo_navside">
-		        <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
-
-		        <% end %>
-		      </div>   
 				<!--<div class="relative fullwidth">
 				  <div class="row cont_user m-0">
 				    <div class="col-12 text-center">
@@ -33,14 +24,14 @@
 		<% end %>
 		<div class="row m-0">
 			<div class="_logo_navside">
-		        <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-		          <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
+				<%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
+				  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
+				  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
+				  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
+				  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
 
-		        <% end %>
-		      </div> 
+				<% end %>
+			</div>   
 			<div class="col-12 p-0">
 				<div id="_row_sidenav1">
 					<div class="d-table fullscreen ">

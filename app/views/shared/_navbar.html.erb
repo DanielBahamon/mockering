@@ -5,7 +5,7 @@
   ">
   <div class="_1">
     <div class="row m-0">
-      <div class="col col-md-3 col-xl-2 p-sm-0 ">
+      <div class="col-4 p-sm-0 ">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle">
             <ul class="navbar-nav _navbar _console" style="padding: 0 10px;">
@@ -32,32 +32,37 @@
                 </div>
               </li>
               <li class="nav-item relative d-none d-xs-block _logo_navbar 
-                    <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
-                     _on
-                    <% end %>
-                    ">
-                <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
-
-                <% end %>
+                  <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
+                   _on
+                  <% end %>
+                  ">
+                  <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
+                    <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
+                    <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
+                    <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
+                    <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
+                  <% end %>
               </li>
-              <li class="nav-item relative d-block d-xs-none fullwidth text-right _logo_navbar_mini">
+              <li class="nav-item relative d-block d-xs-none fullwidth text-right _logo_navbar_mini" >
                 <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_black.svg', class: "_logonav _4 d-none-moon", alt: 'Mockering'%>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_dark_mode.svg', class: "_logonav _3 d-none-sun", alt: 'Mockering'%>
                 <% end %>
-              </li>   
-                
+              </li>
+              <li class="nav-item btn-mini d-md-none">
+                <div class="d-table fullsize">
+                  <div class="d-tablecell v-middle">
+                    <a class="_btn_icon"><i class="fas fa-home"></i></a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div> 
       </div>
-      <div class="col-8 col-md-9 col-xl-10 d-none d-md-block pl-0">
+      <div class="col-8 d-none d-md-block pl-0">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
@@ -129,7 +134,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4 col-md-9 col-xl-10 p-0 d-block d-md-none">
+      <div class="col col-md-9 col-xl-10 p-0 d-block d-md-none">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
@@ -253,11 +258,6 @@
                     </li>
                   <% end %>  
                   <hr>
-                  <li><%= link_to contribute_path, class: "_link _sidenav" do %>
-                    <i class="fas fa-hand-holding-usd col-2 text-center p-0"></i>
-                      <p class="col-10 m-0">Contributor</p>
-                    <% end %>
-                  </li>
                   <li>
                     <label class="_link _sidenav" for="darkSwitch">
                       <div class="col-2 text-center p-0 custom-control custom-switch">
@@ -451,7 +451,7 @@
   }
 
   <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
-    @media(min-width: 767px){
+    @media(min-width: 768px){
       ._content_principal._1{
         padding-left: 0;
       }

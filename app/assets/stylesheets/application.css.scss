@@ -1561,7 +1561,7 @@
   .card.link_card._2 .card-img-top{
     height: 250px;
   }
-  @media(min-width: 575px){
+  @media(min-width: 768px){
     .card.link_card._3 .card-img-top{
       height: 150px;
     }
@@ -1722,9 +1722,12 @@
       left: 25% !important;
     }
   }
-  @media(max-width:768px){
+  @media(max-width:767px){
     ._nav._1._on{
       left: 25% !important;
+    }
+    ._nav._1.active-semi{
+      border-radius:0 !important;
     }
   }
   ._nav._1{
@@ -1757,7 +1760,7 @@
     bottom: -60px;
   }
   ._contbtn_add_navfooter.active{
-    bottom:30px !important;
+    bottom:69px !important;
   }
   ._contbtn_add_navfooter.active-semi{
     position: fixed;
@@ -1962,7 +1965,7 @@
     left: 15px;
     border-radius: 15px;
     background: white;
-    z-index: 5;
+    z-index: 123;
     padding: 20px;
     border-bottom: 1px solid #eaeaea;
   }
@@ -2001,9 +2004,10 @@
   }
   ._btn._btnavfoot{
       width: 100%;
-    text-align: center;
+      height:100%;
+      text-align: center;
       padding: 7px 12px;
-      color: #5d5e5f;
+      color: #6d638a;
       border-radius: 0;
       font-size: 10pt;
       text-overflow: ellipsis;
@@ -2247,7 +2251,7 @@
     transform: translateY(-3px);
   }
   ._link_logo:hover ._logonav._2{
-    transform: translateY(0);
+    transform: translateY(-2px);
   }
   ._logonav._2{
     width:111px;
@@ -2261,8 +2265,8 @@
     position: absolute;
     left:0;
     z-index: 2;
-    width: 37px;
-    top: 5px;
+    width: 25px;
+    top: 11px;
     height: auto;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
@@ -2276,8 +2280,8 @@
   ._logonav._4{
     position: absolute;
     left:0;
-    width: 37px;
-    top: 5px;
+    width: 25px;
+    top: 11px;
     height: auto;
     position: absolute;
     z-index: 0;
@@ -2285,14 +2289,23 @@
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
   }
-  ._btn_icon i.material-icons {
+  ._btn_icon i.material-icons{
+    z-index: 1;
+    display: block;
+    position: absolute;
+    top: 9px;
+    line-height: normal !important;
+    left: 9px;
+    font-size: 23px;
+  }
+  ._btn_icon i {
     z-index: 1;
     display: block;
     position: absolute;
     top: 8px;
     line-height: normal !important;
-    left: 8px;
-    font-size: 23px;
+    left: 9px;
+    font-size: 18px;
   }
 
   .navside{
@@ -2606,6 +2619,9 @@
 
     ._col_btn_action_mock i {
         font-size: 17pt !important;
+    }
+    .d-md-none{
+      display:none;
     }
   }
   @media(min-width: 270px){
@@ -3451,7 +3467,7 @@
 
   ._contbtn_add_navfooter{
     position: fixed;
-    bottom: 30px;
+    bottom: 69px;
     z-index: 1;
     width: 100%;
     -webkit-transition: all .3s ease;
@@ -3461,17 +3477,20 @@
   }
   ._btn_add_mock_navfooter {
       display: block;
-      background: radial-gradient(#3f0ef6, #3f0ef6, #744fff);
+      background: radial-gradient( #4f00cd, #2300fe);
+      background-size: 147%;
       border-radius: 369px;
-      height: 45px;
-      width: 45px;
+      height: 60px;
+      width: 60px;
       text-align: center;
       line-height: 2.45;
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: 15px;
       font-size: 14pt;
       -webkit-transition: all .2s ease;
       transition: all .2s ease;
-    text-decoration: none !important;
+      text-decoration: none !important;
+      box-shadow: 0px 14px 35px -6px rgba(63, 14, 24, 66%);
   }
   ._btn_add_mock_navfooter:hover{
     -webkit-transform: translateY(-1px) scale(1.07);
@@ -3485,6 +3504,8 @@
   ._btn_add_mock_navfooter i{
     color: white;
     text-decoration: none !important;
+    font-size: 1.25rem;
+    line-height: 3;
   }
 /* END NAVFOOTER*/
 
@@ -3818,11 +3839,25 @@
     background: #3c3c3c !important;
   }
   [data-theme="dark"] ._col_search_mobile ._btn{
-  background:#3c3c3c;
+  background:#3c3c3c !important;
+  }
+  [data-theme="dark"] .col_search._1 form:hover ._searchfield{
+  background:#3c3c3c !important;
   }
   [data-theme="dark"] ._btn_icon:before{
     background: #3c3c3c !important;
     border: 1px solid #3c3c3c !important;
+  }
+  [data-theme="dark"] .pagination li a{
+    color:white !important;
+    opacity:0.7;
+  }
+  [data-theme="dark"] .pagination li.active a{
+    color:white !important;
+    opacity:1;
+  }
+  [data-theme="dark"] ._avatar._1{
+    border: 2px solid #121212 !important;
   }
   [data-theme="dark"] ._cont_sidenav{
     background:#121212;
