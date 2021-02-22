@@ -1,138 +1,138 @@
-<% content_for :title, "Your conversations • Mockering" %>
+<% content_for :title, "Inbox • Mockering" %>
 <div class="container">
 	<% if @conversations.count == 0 %>
-	<div class="d-table fullscreen" style="height: 100vh; text-align: center;">
-		<div class="d-table-cell v-middle">
-			<div class="row">
-				<div class="col-md-12">
-					<br>
-					<h2 class="_title _3">There are no conversations!</h2>
-					<br>
+		<div class="d-table fullscreen" style="height: 100vh; text-align: center;">
+			<div class="d-table-cell v-middle">
+				<div class="row">
+					<div class="col-md-12">
+						<br>
+						<h2 class="_title _3">There are no conversations!</h2>
+						<br>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	<% else %>
-	<div class="row">
-		<div class="col-md-12">
-			<br>
-			<h2 class="_title _3">Conversations</h2>
-			<br>
-			<div class="cont_conversations">
-				<% @conversations.each do |conversation| %>
-					<% other = current_mocker == conversation.sender ? conversation.recipient : conversation.sender %>
-					<% 
-							@reported 	= ConversationReport.where(other_id: other.id).count
-							@reported_0	= ConversationReport.where(other_id: other.id, classification: 0 ).count
-							@reported_1	= ConversationReport.where(other_id: other.id, classification: 1 ).count
-							@reported_2	= ConversationReport.where(other_id: other.id, classification: 2 ).count
-							@reported_3	= ConversationReport.where(other_id: other.id, classification: 3 ).count
-							@reported_4	= ConversationReport.where(other_id: other.id, classification: 4 ).count
+		<div class="row">
+			<div class="col-md-12">
+				<br>
+				<h2 class="_title _3">Inbox</h2>
+				<br>
+				<div class="cont_conversations">
+					<% @conversations.each do |conversation| %>
+						<% other = current_mocker == conversation.sender ? conversation.recipient : conversation.sender %>
+						<% 
+								@reported 	= ConversationReport.where(other_id: other.id).count
+								@reported_0	= ConversationReport.where(other_id: other.id, classification: 0 ).count
+								@reported_1	= ConversationReport.where(other_id: other.id, classification: 1 ).count
+								@reported_2	= ConversationReport.where(other_id: other.id, classification: 2 ).count
+								@reported_3	= ConversationReport.where(other_id: other.id, classification: 3 ).count
+								@reported_4	= ConversationReport.where(other_id: other.id, classification: 4 ).count
 
-							if @reported > 4
-								conversation.update(reported: true)
-							elsif @reported_0 > 1 || @reported_1 > 1 || @reported_2 > 2 || @reported_3 > 2 || @reported_4 > 1
-								conversation.update(reported: true)
-							end
-							@blocked = Block.where(mocker_id: current_mocker, blocked_id: other, status: true).present?
-							@blocked_loop = Block.where(mocker_id: other, blocked_id: current_mocker, status: true).present?
-					 %>
+								if @reported > 4
+									conversation.update(reported: true)
+								elsif @reported_0 > 1 || @reported_1 > 1 || @reported_2 > 2 || @reported_3 > 2 || @reported_4 > 1
+									conversation.update(reported: true)
+								end
+								@blocked = Block.where(mocker_id: current_mocker, blocked_id: other, status: true).present?
+								@blocked_loop = Block.where(mocker_id: other, blocked_id: current_mocker, status: true).present?
+						 %>
 
-						<div class="modal fade" id="conversation_<%= conversation.id %>" tabindex="-1" aria-labelledby="conversationModal" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title _fw600" id="conversationModal">Report conversation</h5>
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						          <span aria-hidden="true">&times;</span>
-						        </button>
-						      </div>
-						      <div class="modal-body">
-						        <%= render 'conversation_reports/form', conversation: conversation, other: other %>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						<div class="modal fade" id="block_<%= conversation.id %>" tabindex="-1" aria-labelledby="conversationModal" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title _fw600" id="conversationModal">Block mocker</h5>
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						          <span aria-hidden="true">&times;</span>
-						        </button>
-						      </div>
-						      <div class="modal-body">
-						        <%= render 'blocks/form', blocked: other %>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						 <% unless @blocked == true || @blocked_loop == true %>
-							<% if conversation.reported == false %>
-								<div class="row conversation">
-									<% if conversation.messages.any?  %>
-										<div class="col-1 col-sm-auto _avatar d-none-xs">
-											<%= link_to conversation_messages_path(conversation) do %>
-												<%= image_tag avatar_url(other), class: "img-circle avatar-medium" %>
-											<% end %>
-										</div>
-										<div class="col-4 col-sm text-ellipsis">
-											<div class="d-table fullscreen">
-												<div class="d-table-cell v-middle">
-													<%= link_to conversation_messages_path(conversation) do %>
-														<h2 class="_slug m-0"><%= other.slug %></h2>
-													<% end %>
+							<div class="modal fade" id="conversation_<%= conversation.id %>" tabindex="-1" aria-labelledby="conversationModal" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title _fw600" id="conversationModal">Report conversation</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							        <%= render 'conversation_reports/form', conversation: conversation, other: other %>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<div class="modal fade" id="block_<%= conversation.id %>" tabindex="-1" aria-labelledby="conversationModal" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title _fw600" id="conversationModal">Block mocker</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							        <%= render 'blocks/form', blocked: other %>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							 <% unless @blocked == true || @blocked_loop == true %>
+								<% if conversation.reported == false %>
+									<div class="row conversation">
+										<% if conversation.messages.any?  %>
+											<div class="col-1 col-sm-auto _avatar d-none-xs">
+												<%= link_to conversation_messages_path(conversation) do %>
+													<%= image_tag avatar_url(other), class: "img-circle avatar-medium" %>
+												<% end %>
+											</div>
+											<div class="col-4 col-sm text-ellipsis">
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle">
+														<%= link_to conversation_messages_path(conversation) do %>
+															<h2 class="_slug m-0"><%= other.slug %></h2>
+														<% end %>
+													</div>
+												</div>
+												
+											</div>
+											<div class="col text-ellipsis _message">
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle">
+														<%= link_to conversation_messages_path(conversation) do %>
+															<p class=" m-0 text-ellipsis"><%= conversation.messages.last.body %></p>
+														<% end %>
+													</div>
+												</div>
+											</div>
+											<div class="col text-ellipsis">
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle">
+														<%= link_to conversation_messages_path(conversation) do %>
+														<p class="_date m-0 text-right"><%= conversation.messages.last.created_at.strftime("%I:%M %p") %></p>
+														<% end %> 
+													</div>
+												</div>
+											</div>
+											<div class="col-auto text-center">
+												<div class="d-table fullscreen">
+													<div class="d-table-cell v-middle">
+														<div class="navbar p-0">
+															<div class="nav-item dropleft">
+															  <button class="text-center btn _btn _btn_conversation_report dropdown-toggle" type="button" id="dropdownOptions_<%= conversation.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-exclamation-triangle"></i></button>
+															  <div class="dropdown-menu" aria-labelledby="dropdownOptions_<%= conversation.id %>">
+															    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#conversation_<%= conversation.id %>">Report </a>
+															    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#block_<%= conversation.id %>">Block</a>
+															  </div>
+															</div>
+														</div>
+															
+													</div>
 												</div>
 											</div>
 											
-										</div>
-										<div class="col text-ellipsis _message">
-											<div class="d-table fullscreen">
-												<div class="d-table-cell v-middle">
-													<%= link_to conversation_messages_path(conversation) do %>
-														<p class=" m-0 text-ellipsis"><%= conversation.messages.last.body %></p>
-													<% end %>
-												</div>
-											</div>
-										</div>
-										<div class="col text-ellipsis">
-											<div class="d-table fullscreen">
-												<div class="d-table-cell v-middle">
-													<%= link_to conversation_messages_path(conversation) do %>
-													<p class="_date m-0 text-right"><%= conversation.messages.last.created_at.strftime("%I:%M %p") %></p>
-													<% end %> 
-												</div>
-											</div>
-										</div>
-										<div class="col-auto text-center">
-											<div class="d-table fullscreen">
-												<div class="d-table-cell v-middle">
-													<div class="navbar p-0">
-														<div class="nav-item dropleft">
-														  <button class="text-center btn _btn _btn_conversation_report dropdown-toggle" type="button" id="dropdownOptions_<%= conversation.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-exclamation-triangle"></i></button>
-														  <div class="dropdown-menu" aria-labelledby="dropdownOptions_<%= conversation.id %>">
-														    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#conversation_<%= conversation.id %>">Report </a>
-														    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#block_<%= conversation.id %>">Block</a>
-														  </div>
-														</div>
-													</div>
-														
-												</div>
-											</div>
-										</div>
-										
-									<% end %>
-								</div>
-							<% end %>
-						 <% end %>
-				<% end %>
+										<% end %>
+									</div>
+								<% end %>
+							 <% end %>
+					<% end %>
+				</div>
+				<br>
+				<br>
+				<br>
 			</div>
-			<br>
-			<br>
-			<br>
 		</div>
-	</div>
 	<% end %>
 </div>
 

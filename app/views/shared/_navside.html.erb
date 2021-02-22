@@ -37,46 +37,46 @@
 					<div class="d-table fullscreen ">
 						<div class="d-tablecell v-middle">
 							<ul class="_listsidenav">
-								<li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
-										<i class="fas fa-th-large col-2 text-center p-0" style="font-size: 10pt;line-height: 2.1;"></i>
-										<p class="col-10 m-0">Feed</p>
-									<% end %>
-								</li>
-								<!--<li class="<%= 'active' if current_page?('/discover')  %>"><%= link_to root_path, class: "_link _sidenav" do %>
-	      								<i class="fas fa-globe-americas col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Discover</p>
-									<% end %>
-								</li>-->
-								<li class="<%= 'active' if current_page?(random_path)  %>"><%= link_to random_path, class: "_link _sidenav" do %>
-										<i class="fas fa-random col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Random</p>
-									<% end %>
-								</li>
-								<li class="<%= 'active' if current_page?(popular_path)  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
-										<i class="fas fa-fire col-2 text-center p-0"></i>
-										<p class="col-10 m-0">Popular</p>
-									<% end %>
-								</li>
 	    						<% if mocker_signed_in? %>
+									<li class="<%= 'active' if current_page?(your_mocks_path)  %>"><%= link_to your_mocks_path, class: "_link _sidenav" do %>
+											<i class="bi-collection col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Your mocks</p>
+										<% end %>
+									</li>
+									<li class="<%= 'active' if current_page?(liked_path)  %>"><%= link_to liked_path, class: "_link _sidenav" do %>
+											<i class="bi-heart col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Liked mocks</p>
+										<% end %>
+									</li>
 									<li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
-											<i class="fas fa-envelope col-2 text-center p-0"></i>
+											<i class="bi-inbox col-2 text-center p-0"></i>
 											<p class="col-10 m-0">Messages</p>
 										<% end %>
 									</li>
+									<li class="<%= 'active' if current_page?(mocker_path(current_mocker))  %>"><%= link_to mocker_path(current_mocker), class: "_link _sidenav" do %>
+											<i class="bi-person col-2 text-center p-0"></i>
+											<p class="col-10 m-0">Account</p>
+										<% end %>
+									</li>
 									<li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
-											<i class="fas fa-cog col-2 text-center p-0"></i>
+											<i class="bi-wrench col-2 text-center p-0"></i>
 											<p class="col-10 m-0">Settings</p>
 										<% end %>
 									</li>
 									<li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
-											<i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
+											<i class="bi-door-open col-2 text-center p-0"></i>
 											<p class="col-10 m-0">Logout</p>
 										<% end %>
 									</li>
 								<% else %>
 									<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
-											<i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
+											<i class="bi-door-open col-2 text-center p-0"></i>
 											<p class="col-10 m-0">Login</p>
+										<% end %>
+									</li>
+									<li><%= link_to new_mocker_registration_path, class: "_link _sidenav" do %>
+											<i class="bi-person-plus col-2 text-center p-0"></i>
+											<p class="col-10 m-0">New account</p>
 										<% end %>
 									</li>
 								<% end %>
@@ -84,8 +84,8 @@
 				                  <li>
 				                    <label class="_link _sidenav" for="darkSwitch">
 				                      <div class="col-2 text-center p-0 custom-control custom-switch">
-				                        <i class="fas fa-moon d-none-moon"></i>
-				                        <i class="fas fa-sun d-none-sun"></i>
+				                        <i class="bi-moon d-none-moon"></i>
+				                        <i class="bi-sun d-none-sun"></i>
 				                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
 				                      </div>
 				                      <p class="col-10 m-0 d-none-sun">Sun mode</p>

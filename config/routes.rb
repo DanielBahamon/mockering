@@ -177,7 +177,7 @@ Rails.application.routes.draw do
 
   get 'mentions', to: 'mockers#mentions'
 
-  get 'popular', to: 'mocks#popular'
+  get 'trends', to: 'mocks#trends'
 
   get 'whatever', to: 'mocks#whatever'
 
@@ -220,6 +220,10 @@ Rails.application.routes.draw do
   get 'latest', to: 'mocks#latest'
 
   get 'random', to: 'mocks#random'
+
+  get 'liked', to: 'mocks#liked'
+
+  get 'your_mocks', to: 'mocks#your_mocks'
 
   get "/404", :to => "errors#not_found"
 

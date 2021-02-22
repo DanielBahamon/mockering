@@ -2,17 +2,11 @@
 <div class="_navfooter d-block d-md-none">
 	<div class="cont_navfooter">
         <% if mocker_signed_in? %>
-			<!--<div class="_contbtn_add_navfooter">
+			<div class="_contbtn_add_navfooter">
 				<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
-					<i class="fas fa-plus"></i>
+					<i class="bi-plus"></i>
 				<% end %>
-			</div>-->
-		<% else %>
-			<!--<div class="_contbtn_add_navfooter">
-				<%= link_to new_mocker_session_path, class: "_btn_add_mock_navfooter" do %>
-					<i class="fas fa-plus"></i>
-				<% end %>
-			</div>-->
+			</div>
 		<% end %>
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">
@@ -20,7 +14,7 @@
 					<%= link_to root_path, class: "_btn _btnavfoot " do %>
 						<div class="d-table fullheight fullwidth">
 							<div class="d-tablecell v-middle">
-								<i class="fas fa-th-large text-center p-0"></i>
+								<i class="bi-house-door text-center p-0"></i>
 								<p class="text-ellipsis m-0">Feed</p>
 							</div>
 						</div>
@@ -28,32 +22,28 @@
 				</li>
 				<li class="col_navfooter col-3 <%= 'active' if current_page?(random_path)  %>">
 					<%= link_to random_path, class: "_btn _btnavfoot " do %>
-						<i class="fas fa-random text-center p-0"></i>
+						<i class="bi-shuffle text-center p-0"></i>
 						<p class="text-ellipsis m-0">Random</p>
 					<% end %>
 				</li>
-				<li class="col_navfooter col-3 <%= 'active' if current_page?(popular_path)  %>">
-					<%= link_to popular_path, class: "_btn _btnavfoot" do %>
-						<i class="fas fa-fire text-center p-0"></i>
-						<p class="text-ellipsis m-0">Popular</p>
+				<li class="col_navfooter col-3 <%= 'active' if current_page?(trends_path)  %>">
+					<%= link_to trends_path, class: "_btn _btnavfoot" do %>
+						<i class="bi-thermometer-half text-center p-0"></i>
+						<p class="text-ellipsis m-0">Trends</p>
 					<% end %> 
 				</li>
                 <% if mocker_signed_in? %>
-                	<div class="col_navfooter col-3 navbar p-0">
-                		<li class="nav-item fullwidth  dropup <%= 'active' if current_page?(notifications_path)  %>" data-behavior="notifications">
-	                      <a class="_btn _btnavfoot dropdown-toggle " data-behavior="notifications-link" href="#" id="navbarNotifications_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="_span_unread_count" data-behavior="unread-count"></span>
-							<i class="fas fa-bell text-center p-0"></i>
-							<p class="text-ellipsis m-0">Yours</p>
-	                      </a>
-	                      <div class="dropdown-menu _1" aria-labelledby="navbarNotifications_2" data-behavior="notification-items" id="navbarNotificationsItems2">
-	                      </div>
-	                    </li>
-                	</div>
+
+					<li class="col_navfooter col-3 <%= 'active' if current_page?(mocker_path(current_mocker))  %>">
+						<%= link_to mocker_path(current_mocker), class: "_btn _btnavfoot" do %>
+							<i class="bi-person text-center p-0"></i>
+							<p class="text-ellipsis m-0">Account</p>
+						<% end %> 
+					</li>
 				<% else %>
 					<li class="col_navfooter col-3 <%= 'active' if current_page?(new_mocker_session_path)  %>">
 						<%= link_to new_mocker_session_path, class: "_btn _btnavfoot" do %>
-							<i class="fas fa-user text-center p-0"></i>
+							<i class="bi-person text-center p-0"></i>
 							<p class="text-ellipsis m-0">Account</p>
 						<% end %>
 					</li>
@@ -75,8 +65,12 @@
 	    left: 0px;
 	}
 	.col_navfooter.active a i{
-    	font-size: 1rem;
-    	margin-top: -14px;
+	    font-size: 1.5rem;
+	    top: -6px;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    width: 100%;
 	}
 	.col_navfooter.active a p{
 		display: block;

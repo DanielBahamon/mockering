@@ -1,5 +1,5 @@
 <div class="_nav _1 
-    <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
+    <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(mocker_path(current_mocker)) || current_page?(edit_mocker_registration_path) %>
       _on
     <% end %>
   ">
@@ -32,7 +32,7 @@
                 </div>
               </li>
               <li class="nav-item relative d-none d-xs-block _logo_navbar pr-3 
-                  <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
+                  <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(mocker_path(current_mocker)) || current_page?(edit_mocker_registration_path) %>
                    _on
                   <% end %>
                   ">
@@ -72,7 +72,7 @@
               <li class="nav-item btn-mini icon_navbar d-none d-md-block">
                 <div class="d-table fullsize">
                   <div class="d-tablecell v-middle">
-                    <%= link_to popular_path, class: "_btn_icon #{'active' if current_page?(popular_path)}" do %>
+                    <%= link_to trends_path, class: "_btn_icon #{'active' if current_page?(trends_path)}" do %>
                       <i class="bi-thermometer-half"></i>
                     <% end %>
                   </div>
@@ -86,7 +86,7 @@
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle text-center">
             <div class="row m-0">
-              <div class="col-6 col-sm-6 col-xl-4 col_search _1 offset-xl-3 p-0">
+              <div class="col col_search _1 p-0">
                 <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
                   <%= text_field_tag :"q[title_or_description_or_credits_cont]", params[:title_or_description_or_credits_cont], placeholder: "What are you looking for?", class: "_searchfield col-10", value: "#{params[:q][:title_or_description_or_credits_cont] if params[:q].present?}" %>
                   <div class="col-2 p-0 d-none d-xs-block">
@@ -98,13 +98,13 @@
                   </div>
                 <% end %>
               </div>
-              <div class="col-5 col-md-6 col-xl-5 p-0">
+              <div class="col p-0">
                 <div class="d-table fullscreen ">
                   <div class="d-tablecell v-middle text-center">
                     <ul class="navbar-nav float-right _navbar _console">
                       <% if mocker_signed_in? %>
                           <div class="navbar p-0" style="margin-right:6px;">
-                            <li class="nav-item btn-mini icon_navbar">
+                            <li class="nav-item btn-mini icon_navbar" style="height: 40px;">
                               <div class="d-table fullsize">
                                 <div class="d-tablecell v-middle">
                                   <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
@@ -126,7 +126,6 @@
                                   </div>
                                 </div>
                               </div>
-                                    
                             </li>
                           </div>
                         <% end %>
@@ -180,15 +179,20 @@
                           </div>
                         </div>
                       </li>
-                      <!-- <li class="nav-item" style="padding-right: 10px;">
-                        <div class="d-table fullscreen">
-                          <div class="d-tablecell v-middle">
-                            <%= link_to contribute_path, class: "_btn _2 _contribute" do %>
-                              <i class="fas fa-hand-holding-usd"></i>
-                            <% end %>
+                      <div class="navbar p-0">
+                        <li class="nav-item dropup <%= 'active' if current_page?(notifications_path)  %>" data-behavior="notifications">
+                          <div class="d-table fullscreen">
+                            <div class="d-tablecell v-middle">
+                              <a class="_btn_icon collapsed dropdown-toggle " data-behavior="notifications-link" href="#" id="navbarNotifications_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi-bell"></i>
+                                <span class="_span_unread_count" data-behavior="unread-count"></span>
+                              </a>
+                              <div class="dropdown-menu _1" aria-labelledby="navbarNotifications_2" data-behavior="notification-items" id="navbarNotificationsItems2">
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </li>-->
+                          </li>
+                      </div>
                       <div class="navbar p-0 d-none d-sm-block">
                         <li class="nav-item dropdown">
                           <div class="d-table fullscreen">
@@ -225,13 +229,13 @@
         </div>
       </div>
 
-      <div class="col offset-md-3 fullwidth m-0 multi-collapse collapse in " id="multiCollapseSearch" aria-expanded="true">
+      <div class="col offset-md-3 m-0 multi-collapse collapse in " id="multiCollapseSearch" aria-expanded="true">
         <div class="_searchabsolute card-body col-12 p-0">
           <div class="row m-0"> 
             <div >
               <div class="d-table fullscreen">
                 <div class="d-tablecell v-middle">
-                  <a class="_btn_icon collapsed" data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch" style="padding-top: 3px;"><i class="bi-arrow-left-short"></i></a>
+                  <a class="_btn_icon collapsed" data-toggle="collapse" href="#multiCollapseSearch" role="button" aria-expanded="false" aria-controls="multiCollapseSearch" style="margin-left: -5px;margin-right: 5px;"><i class="bi-arrow-left"></i></a>
                 </div>
               </div>
             </div>
@@ -279,41 +283,46 @@
               <% end %>
               <div class="row m-0">
                 <ul class="_listsidenav fullwidth">
-                  <li class="<%= 'active' if current_page?(root_path)  %>"><%= link_to root_path, class: "_link _sidenav row m-0" do %>
-                      <i class="fas fa-th-large col-2 text-center p-0" style="font-size: 10pt;line-height: 2.1;"></i>
-                      <p class="col-10 m-0">Feed</p>
-                    <% end %>
-                  </li>
-                  <li class="<%= 'active' if current_page?(random_path)  %>"><%= link_to random_path, class: "_link _sidenav" do %>
-                      <i class="fas fa-random col-2 text-center p-0"></i>
-                      <p class="col-10 m-0">Random</p>
-                    <% end %>
-                  </li>
-                  <li class="<%= 'active' if current_page?(popular_path)  %>"><%= link_to popular_path, class: "_link _sidenav" do %>
-                      <i class="fas fa-fire col-2 text-center p-0"></i>
-                      <p class="col-10 m-0">Popular</p>
-                    <% end %>
-                  </li>
-                    <% if mocker_signed_in? %>
+                  <% if mocker_signed_in? %>
+                    <li class="<%= 'active' if current_page?(your_mocks_path)  %>"><%= link_to your_mocks_path, class: "_link _sidenav" do %>
+                        <i class="bi-collection col-2 text-center p-0"></i>
+                        <p class="col-10 m-0">Your mocks</p>
+                      <% end %>
+                    </li>
+                    <li class="<%= 'active' if current_page?(liked_path)  %>"><%= link_to liked_path, class: "_link _sidenav" do %>
+                        <i class="bi-heart col-2 text-center p-0"></i>
+                        <p class="col-10 m-0">Liked mocks</p>
+                      <% end %>
+                    </li>
                     <li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
-                        <i class="fas fa-envelope col-2 text-center p-0"></i>
+                        <i class="bi-inbox col-2 text-center p-0"></i>
                         <p class="col-10 m-0">Messages</p>
                       <% end %>
                     </li>
+                    <li class="<%= 'active' if current_page?(mocker_path(current_mocker))  %>"><%= link_to mocker_path(current_mocker), class: "_link _sidenav" do %>
+                        <i class="bi-person col-2 text-center p-0"></i>
+                        <p class="col-10 m-0">Account</p>
+                      <% end %>
+                    </li>
                     <li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
-                        <i class="fas fa-cog col-2 text-center p-0"></i>
+                        <i class="bi-wrench col-2 text-center p-0"></i>
                         <p class="col-10 m-0">Settings</p>
                       <% end %>
                     </li>
                     <li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
-                        <i class="fas fa-sign-out-alt col-2 text-center p-0"></i>
+                        <i class="bi-door-open col-2 text-center p-0"></i>
                         <p class="col-10 m-0">Logout</p>
                       <% end %>
                     </li>
                   <% else %>
                     <li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
-                        <i class="fas fa-sign-in-alt col-2 text-center p-0"></i>
+                        <i class="bi-door-open col-2 text-center p-0"></i>
                         <p class="col-10 m-0">Login</p>
+                      <% end %>
+                    </li>
+                    <li><%= link_to new_mocker_registration_path, class: "_link _sidenav" do %>
+                        <i class="bi-person-plus col-2 text-center p-0"></i>
+                        <p class="col-10 m-0">New account</p>
                       <% end %>
                     </li>
                   <% end %>  
@@ -321,8 +330,8 @@
                   <li>
                     <label class="_link _sidenav" for="darkSwitch">
                       <div class="col-2 text-center p-0 custom-control custom-switch">
-                        <i class="fas fa-moon d-none-moon"></i>
-                        <i class="fas fa-sun d-none-sun"></i>
+                        <i class="bi-moon d-none-moon"></i>
+                        <i class="bi-sun d-none-sun"></i>
                         <input type="checkbox" class="custom-control-input" id="darkSwitch">
                       </div>
                       <p class="col-10 m-0 d-none-sun">Sun mode</p>
@@ -368,7 +377,7 @@
     position: fixed !important;
   }
   ._nav._1.active-semi.active{
-    top:15px !important;
+    top:0 !important;
   }
   ._navbar_br{
     position:fixed;
@@ -479,7 +488,7 @@
     }
   }
 
-  <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(popular_path) %>
+  <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(mocker_path(current_mocker)) || current_page?(edit_mocker_registration_path) %>
     @media(min-width: 768px){
       ._content_principal._1{
         padding-left: 0;

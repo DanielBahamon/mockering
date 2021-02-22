@@ -2,7 +2,7 @@ class MocksController < ApplicationController
 	
 	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :like, :dislike]
 	# before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
-	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote]
+	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote, :liked, :mocks]
 	before_action :set_search
   	impressionist :actions => [:show]
   	
@@ -40,7 +40,7 @@ class MocksController < ApplicationController
 
 
 
-	def popular
+	def trends
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
     	@mocks = Mock.joins(:impressions)
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'")
@@ -69,6 +69,19 @@ class MocksController < ApplicationController
     	.paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.all.order('created_at DESC').paginate(page: params[:page], per_page: 20)
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
+	end
+
+	def my_mocks
+		@mocker = current_mocker
+    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 10)
+	end
+
+	def liked
+		@mocker = current_mocker
+    	@mocks_liked = @mocker.get_up_voted Mock
+    	# @mocks_liked = @mocker.votes.up.for_type(Mock)
+    	@mocks = @mocks_liked.paginate(page: params[:mocks_page], per_page: 10)
+
 	end
 
 	def new
