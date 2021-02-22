@@ -56,14 +56,14 @@
   <body>
     <div class="row m-0">
       <div class="col-12 col-md-3 col-xl-2 _sidenav p-0 d-none d-md-block content_sidenav_1 
-        <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(mocker_path(current_mocker)) || current_page?(edit_mocker_registration_path) %>
+        <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
           out 
         <% end %>
       " id="_sidenav">
         <%= render 'shared/navside' %>
       </div>
       <div class="col-12 col-md-9 col-xl-10 _content _content_principal _1  content_big_1
-        <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(mocker_path(current_mocker)) || current_page?(edit_mocker_registration_path) %>
+        <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
           full 
         <% else %>
           offset-md-3 offset-xl-2
