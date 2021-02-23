@@ -1,12 +1,14 @@
 <div class="space_navfooter d-block d-md-none" style="height:52px;"></div>
 <div class="_navfooter d-block d-md-none">
 	<div class="cont_navfooter">
-        <% if mocker_signed_in? %>
-			<div class="_contbtn_add_navfooter">
-				<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
-					<i class="bi-plus"></i>
-				<% end %>
-			</div>
+		<% unless current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
+	        <% if mocker_signed_in? %>
+				<div class="_contbtn_add_navfooter">
+					<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
+						<i class="bi-plus"></i>
+					<% end %>
+				</div>
+			<% end %>
 		<% end %>
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">

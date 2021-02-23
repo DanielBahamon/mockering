@@ -5,7 +5,7 @@
   ">
   <div class="_1">
     <div class="row m-0">
-      <div class="col col-lg-5 p-sm-0 ">
+      <div class="col col-lg-5 col-xl-4 p-sm-0 ">
         <div class="d-table fullscreen ">
           <div class="d-tablecell v-middle">
             <ul class="navbar-nav _navbar _console" style="padding: 0 10px;">
@@ -108,7 +108,7 @@
                               <div class="d-table fullsize">
                                 <div class="d-tablecell v-middle">
                                   <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
-                                    <i class="bi-plus-square-dotted"></i>
+                                    <i class="bi-plus-square"></i>
                                   <% end %>
                                 </div>
                               </div>
@@ -378,9 +378,6 @@
   ._nav._1.active-semi{
     position: fixed !important;
   }
-  ._nav._1.active-semi.active{
-    top:0 !important;
-  }
   ._navbar_br{
     position:fixed;
     height:70px;
@@ -389,6 +386,18 @@
     position:static;
     display:block;
   }
+  .content_big_1{
+    overflow-y: hidden !important;
+  }
+  ._nav._1.active-semi.active{
+    top:15px !important;
+  }
+  ._video_views i::before{
+    line-height: inherit !important;
+  }
+  ._col_btn_action_mock a i::before {
+    line-height: 1.25;
+  }
   @media(max-width: 767px){
     ._logo_navbar{
       display: block !important;
@@ -396,6 +405,13 @@
     ._nav._1._shadow.active-semi.active{
       top:0 !important;
       left: 0 !important;
+      right:0 !important;
+    }
+    ._nav._1.active-semi.active{
+      top:0 !important;
+    }
+    ._nav._1.active-semi{
+      left:0 !important;
       right:0 !important;
     }
   }
