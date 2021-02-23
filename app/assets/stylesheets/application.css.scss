@@ -156,8 +156,7 @@
     @font-face {
       font-family: 'TT Commons';
       src: font-url('TTCommons-DemiBold.eot');
-      src: font-url('TTCommons-DemiBold.eot?#iefix') format("embedded-opentype"), 
-        font-url('TTCommons-DemiBold.ttf') format("truetype"), 
+      src: font-url('TTCommons-DemiBold.eot?#iefix') format("embedded-opentype"),
         font-url('TTCommons-DemiBold.woff') format("woff");
       font-weight: 700;
       font-style: normal;
@@ -747,8 +746,9 @@
     margin-bottom:20px;
   }
   ._title._3 {
-      font-weight: 600;
-      font-size: 18pt;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #94a5aa;
   }
   .m-t-10px{
     margin-top:10px;
@@ -1988,7 +1988,7 @@
     top: auto;
     border-top:1px solid #eaeaea;
     background: white;
-    z-index:13;
+    z-index:30;
     -webkit-transition:all .2s ease;
     transition:all .2s ease;
   }
@@ -2038,9 +2038,6 @@
   }
   ._btn._btnavfoot:hover{
     background: #f4f7f8;
-  }
-  ._btn._btnavfoot i{
-    font-size: 12pt;
   }
   ._span_unread_count._navside_span{
     top: 15px;
@@ -2271,34 +2268,28 @@
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
   }
-
   ._logonav._3{
     position: absolute;
     left:0;
     z-index: 2;
-    width: 25px;
-    top: 11px;
+    width: 28px;
+    top: 9px;
     height: auto;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
   }
-  ._logonav._3:hover{
-    opacity: 0;
-  }
-  ._link_logo:hover ._logonav._4{
-    opacity: 1;
-  }
   ._logonav._4{
     position: absolute;
     left:0;
-    width: 25px;
+    width: 28px;
     top: 11px;
     height: auto;
     position: absolute;
     z-index: 0;
-    opacity:0;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
+    filter: blur(2px);
+    opacity: 0.45;
   }
   ._btn_icon i {
     z-index: 1;
@@ -3488,8 +3479,8 @@
       background: radial-gradient( #4f00cd, #2300fe);
       background-size: 147%;
       border-radius: 369px;
-      height: 60px;
-      width: 60px;
+      height: 50px;
+      width: 50px;
       text-align: center;
       line-height: 2.45;
       margin-left: auto;
@@ -3513,7 +3504,7 @@
     color: white;
     text-decoration: none !important;
     font-size: 2rem;
-    line-height: 1.5;
+    line-height: 1.25;
   }
 /* END NAVFOOTER*/
 
@@ -3808,7 +3799,8 @@
     color: #bb86fc;
   }
   [data-theme="dark"] ._navfooter{
-    border-top: 1px solid #121212 !important;
+    border-top: 0px solid #121212 !important;
+    border-color:transparent !important;
   }
   [data-theme="dark"] .comment::before{
     border-top: 15px solid #121212;

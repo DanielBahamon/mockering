@@ -1,5 +1,5 @@
 <% content_for :title, "#{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (@#{@mocker.slug}) • Mockering" %>
-<div class="_conta _1 mt-5">
+<div class="_conta _1 mt-sm-5">
 	<% @blocked = Block.where(mocker_id: @mocker, blocked_id: current_mocker, status: true).present? %>
 	<% @blocked_loop = Block.where(mocker_id: current_mocker, blocked_id: @mocker, status: true).present? %>
 	

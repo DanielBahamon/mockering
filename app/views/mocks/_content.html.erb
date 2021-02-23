@@ -27,7 +27,7 @@
 			<div class="col-12 col-sm-6" style="margin-bottom: 15px;">
 				<div class="row m-0">
 					<div class="col col-sm-auto p-0 ">
-						<h5 class="m-0 _video_views _fw500"><i class="far fa-eye"></i> <% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: {billion: 'B' }) %></h5> 	
+						<h5 class="m-0 _video_views _fw500"><i class="bi-eye"></i> <% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %> <%= number_to_human(number_views, units: {billion: 'B' }) %></h5> 	
 					</div>
 					<div class=" p-sm-0  text-right-sm">
 						<div class="d-table fullscreen">
@@ -115,7 +115,7 @@
 							<div class="d-table fullscreen">
 								<div class="d-table-cell v-middle">
 									<div class="d-md-grid">
-										<i class="fas fa-share" style="margin-right: 2px;"></i>
+										<i class="bi-share" style="margin-right: 2px;"></i>
 										<span class="d-block d-md-none">Share</span>
 									</div>
 								</div>

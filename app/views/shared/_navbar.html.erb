@@ -45,7 +45,7 @@
               </li>
               <li class="nav-item relative d-block d-xs-none fullwidth text-right _logo_navbar_mini" >
                 <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_black.svg', class: "_logonav _4 d-none-moon", alt: 'Mockering'%>
+                  <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon.svg', class: "_logonav _4 d-none-moon", alt: 'Mockering'%>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
                   <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/icon_dark_mode.svg', class: "_logonav _3 d-none-sun", alt: 'Mockering'%>
@@ -179,20 +179,22 @@
                           </div>
                         </div>
                       </li>
-                      <div class="navbar p-0">
-                        <li class="nav-item dropup <%= 'active' if current_page?(notifications_path)  %>" data-behavior="notifications">
-                          <div class="d-table fullscreen">
-                            <div class="d-tablecell v-middle">
-                              <a class="_btn_icon collapsed dropdown-toggle " data-behavior="notifications-link" href="#" id="navbarNotifications_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi-bell"></i>
-                                <span class="_span_unread_count" data-behavior="unread-count"></span>
-                              </a>
-                              <div class="dropdown-menu _1" aria-labelledby="navbarNotifications_2" data-behavior="notification-items" id="navbarNotificationsItems2">
+                      <% if mocker_signed_in? %>
+                        <div class="navbar p-0">
+                          <li class="nav-item dropup <%= 'active' if current_page?(notifications_path)  %>" data-behavior="notifications">
+                            <div class="d-table fullscreen">
+                              <div class="d-tablecell v-middle">
+                                <a class="_btn_icon collapsed dropdown-toggle " data-behavior="notifications-link" href="#" id="navbarNotifications_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="bi-bell"></i>
+                                  <span class="_span_unread_count" data-behavior="unread-count"></span>
+                                </a>
+                                <div class="dropdown-menu _1" aria-labelledby="navbarNotifications_2" data-behavior="notification-items" id="navbarNotificationsItems2">
+                                </div>
                               </div>
                             </div>
-                          </div>
                           </li>
-                      </div>
+                        </div>
+                      <% end %>
                       <div class="navbar p-0 d-none d-sm-block">
                         <li class="nav-item dropdown">
                           <div class="d-table fullscreen">
@@ -405,7 +407,7 @@
 
   }
   @media(max-width: 575px){
-    .._nav._1._shadow.active-semi.active{
+    ._nav._1._shadow.active-semi.active{
       left: 15px !important;
       padding:0; 
     }
@@ -422,9 +424,16 @@
     }
   }
   @media(max-width: 322px){
-
     ._logo_navbar{
       display: none !important;
+    }
+    ._link_logo ._logonav._2,
+    ._link_logo ._logonav._1{
+      display: none !important;
+      padding: 0 !important;
+    }
+    ._logo_navbar{
+      padding: 0 !important;
     }
   }
   ._col_search_mobile{

@@ -36,8 +36,8 @@
 
 					<li class="col_navfooter col-3 <%= 'active' if current_page?(mocker_path(current_mocker))  %>">
 						<%= link_to mocker_path(current_mocker), class: "_btn _btnavfoot" do %>
-							<i class="bi-person text-center p-0"></i>
-							<p class="text-ellipsis m-0">Account</p>
+							<i><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></i>
+							<p class="text-ellipsis m-0">Me</p>
 						<% end %> 
 					</li>
 				<% else %>
@@ -54,7 +54,7 @@
 </div>
 <style type="text/css">
 	.col_navfooter a i{
-	    font-size: 1.36rem;
+	    font-size: 1.1rem;
 	    line-height: 2.5rem;
 	    vertical-align: middle;
 	}
@@ -65,7 +65,7 @@
 	    left: 0px;
 	}
 	.col_navfooter.active a i{
-	    font-size: 1.5rem;
+	    font-size: 1rem;
 	    top: -6px;
 	    position: absolute;
 	    left: 0;
@@ -74,5 +74,9 @@
 	}
 	.col_navfooter.active a p{
 		display: block;
+	}
+	a._btn._btnavfoot ._avatar_navbar {
+	    height: 30px;
+	    width: 30px;
 	}
 </style>
