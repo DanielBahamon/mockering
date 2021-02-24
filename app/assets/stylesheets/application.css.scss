@@ -2029,6 +2029,16 @@
     -webkit-transition: all 0.2s linear;
     transition: all 0.2s linear;
   }
+  @media(max-width:767px){
+    #multiCollapseSearch{
+      max-width:95vw;
+    }
+  }
+  @media(max-width:575px){
+    #multiCollapseSearch{
+      max-width:100vw;
+    }
+  }
   ._navfooter{
     position: fixed;
     bottom: 0;
