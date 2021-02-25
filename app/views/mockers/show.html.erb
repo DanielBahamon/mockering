@@ -5,126 +5,115 @@
 	
 		<% if @mocker.reported == false %>
 			<div class="row m-0">
-				<div class="col-12 col-md-4 col-lg-3 _col_user">
-					<div class="relative">
-						<div class="row cont_coverpage d-sm-block d-md-none">
-							<div class="col-12 p-0">
-								<div class="gradient _1"></div>
-								<%= image_tag @mocker.coverpage, class: "_coverpage", style: "border-radius:3px;" %>
-							</div>
-						</div>
-						<div class="row cont_user">
-							<div class="col-12 text-right p-0">
-								<% if mocker_signed_in? && current_mocker != @mocker %>
-									<div class="navbar f-right p-0 _navbar_report">
-										<div class="nav-item dropleft m-0-auto">
-										  <button class="text-center btn _btn _btn_report dropdown-toggle" type="button" id="dropdownOptions_alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-										  <div class="dropdown-menu" aria-labelledby="dropdownOptions_alert">
-										    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reportMocker">Report </a>
-										    <% unless @blocked_loop == true %>
-										    	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Block</a>
-										    <% else %>
-										    	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Unlock</a>
-										    <% end %>
-										  </div>
-										</div>
+				<div class="col-12 _col_cont_user">
+					<div class="row m-0">
+						<div class="col-12 _col_user">
+							<div class="relative">
+								<div class="row cont_coverpage">
+									<div class="col-12 p-0">
+										<div class="gradient _1"></div>
+										<%= image_tag @mocker.coverpage, class: "_coverpage" %>
 									</div>
-								<% end %>
-							</div>
-							<div class="col-12 text-center">
-								<br>
-								<% unless @blocked == true || @blocked_loop == true %>
-									<%= image_tag avatar_url(@mocker), class: "_avatar _3" %>
-								<% else %>
-									<%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png', class: "_avatar _3" %>
-								<% end %>
-								<br>
-							</div>
-							<div class="col-12 text-center">
-								<h4 class="_name _fw400 m-0"><%= (@mocker.first_name).capitalize if @mocker.first_name? %> <%= (@mocker.last_name).capitalize if @mocker.last_name? %></h4>
-								<p class="_fw400">@<%= @mocker.slug %> <%= image_tag badge_icon(@mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(@mocker) if @mocker.verification? %></p>
-							</div>
-								<div class="col-12 text-center">
+								</div>
+								<div class="row cont_user">
 									<% if mocker_signed_in? && current_mocker != @mocker %>
-										<% if current_mocker.following?(@mocker) %>
-											<% unless @blocked == true || @blocked_loop == true %>
-												<%= button_to "Unfollow", friendships_path(mocker_id: @mocker.id), method: :delete, class: "btn _btn _action m-0-auto unfollow" %>
-											<% end %>
-										<% else %>
-											<% unless @blocked == true || @blocked_loop == true %>
-												<%= button_to "Follow", friendships_path(mocker_id: @mocker.id), class: "btn _btn _action m-0-auto follow" %>
-											<% end %>
-										<% end %>
-									<% elsif mocker_signed_in? %>
-										<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _3 m-0-auto", style: "width: max-content;" %>
+										<div class="col-12 text-right p-0">
+											<div class="navbar f-right p-0 _navbar_report">
+												<div class="nav-item dropleft m-0-auto">
+												  <button class="text-center btn _btn _btn_report dropdown-toggle" type="button" id="dropdownOptions_alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
+												  <div class="dropdown-menu" aria-labelledby="dropdownOptions_alert">
+												    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reportMocker">Report </a>
+												    <% unless @blocked_loop == true %>
+												    	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Block</a>
+												    <% else %>
+												    	<a class="dropdown-item" href="#" data-toggle="modal" data-target="#blockMocker">Unlock</a>
+												    <% end %>
+												  </div>
+												</div>
+											</div>
+										</div>
 									<% end %>
-									<% unless @blocked == true || @blocked_loop == true %>
-						                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
-						                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
-						                <% end %>
-						            <% end %>
-									<br/>
+									<div class="col-12 text-center">
+										<% unless @blocked == true || @blocked_loop == true %>
+											<%= image_tag avatar_url(@mocker), class: "_avatar _3" %>
+										<% else %>
+											<%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png', class: "_avatar _3" %>
+										<% end %>
+										<br>
+									</div>
+									<div class="col-12 text-center">
+										<h4 class="_name _fw400 m-0"><%= (@mocker.first_name).capitalize if @mocker.first_name? %> <%= (@mocker.last_name).capitalize if @mocker.last_name? %></h4>
+										<p class="_fw400">@<%= @mocker.slug %> <%= image_tag badge_icon(@mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(@mocker) if @mocker.verification? %></p>
+									</div>
+										<div class="col-12 text-center">
+											<% if mocker_signed_in? && current_mocker != @mocker %>
+												<% if current_mocker.following?(@mocker) %>
+													<% unless @blocked == true || @blocked_loop == true %>
+														<%= button_to "Unfollow", friendships_path(mocker_id: @mocker.id), method: :delete, class: "btn _btn _action m-0-auto unfollow" %>
+													<% end %>
+												<% else %>
+													<% unless @blocked == true || @blocked_loop == true %>
+														<%= button_to "Follow", friendships_path(mocker_id: @mocker.id), class: "btn _btn _action m-0-auto follow" %>
+													<% end %>
+												<% end %>
+											<% elsif mocker_signed_in? %>
+												<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _3 m-0-auto", style: "width: max-content;" %>
+											<% end %>
+											<% unless @blocked == true || @blocked_loop == true %>
+								                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
+								                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
+								                <% end %>
+								            <% end %>
+											<br/>
+										</div>
+									<div class="col-4 text-center d-grid">
+										<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.mocks.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
+										<% num_mocks = @mocker.mocks.count %>
+										<p class="_fs9pt text-muted text-ellipsis"><%= 'Mock'.pluralize(num_mocks) %></p>
+									</div>
+									<div class="col-4">
+										<a class="_btn _data" data-toggle="modal" data-target="#followersModal">
+											<div class="text-center d-grid">
+												<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
+												<% num_followers = @mocker.follower_ids.count %>
+												<p class="_fs9pt text-muted text-ellipsis"><%= 'Follower'.pluralize(num_followers) %> </p>
+											</div>
+										</a>
+									</div>
+									<div class="col-4 text-center d-grid">
+										<a class="_btn _data" data-toggle="modal" data-target="#followingModal">
+											<div class="text-center d-grid">
+												<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
+												<% num_followings = @mocker.following_ids.count %>
+												<p class="_fs9pt text-muted text-ellipsis"><%= "Following".pluralize(num_followings) %></p>
+											</div>
+										</a>
+												
+									</div>
 								</div>
-							<div class="col-4 text-center d-grid">
-								<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.mocks.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
-								<% num_mocks = @mocker.mocks.count %>
-								<p class="_fs9pt text-muted text-ellipsis"><%= 'Mock'.pluralize(num_mocks) %></p>
-							</div>
-							<div class="col-4">
-								<a class="_btn _data" data-toggle="modal" data-target="#followersModal">
-									<div class="text-center d-grid">
-										<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
-										<% num_followers = @mocker.follower_ids.count %>
-										<p class="_fs9pt text-muted text-ellipsis"><%= 'Follower'.pluralize(num_followers) %> </p>
-									</div>
-								</a>
-							</div>
-							<div class="col-4 text-center d-grid">
-								<a class="_btn _data" data-toggle="modal" data-target="#followingModal">
-									<div class="text-center d-grid">
-										<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
-										<% num_followings = @mocker.following_ids.count %>
-										<p class="_fs9pt text-muted text-ellipsis"><%= "Following".pluralize(num_followings) %></p>
-									</div>
-								</a>
-										
-							</div>
-						</div>
-						<br>
+								<br>
 
-						<% unless @blocked == true || @blocked_loop == true %>
-						<% end %>
-						<br class="d-none">
-						<div class="row d-none">
-							<div class="col-12 p-0">
-								<div id="_row_sidenav1">
-									<div class="d-table fullscreen ">
-										<div class="d-tablecell v-middle">
-								              <div class="row m-0">
-								                <div class="col">
-								                  <%= render 'pages/links_terms' %>
-								                </div>
-								              </div>
+								<% unless @blocked == true || @blocked_loop == true %>
+								<% end %>
+								<br class="d-none">
+								<div class="row d-none">
+									<div class="col-12 p-0">
+										<div id="_row_sidenav1">
+											<div class="d-table fullscreen ">
+												<div class="d-tablecell v-middle">
+										              <div class="row m-0">
+										                <div class="col">
+										                  <%= render 'pages/links_terms' %>
+										                </div>
+										              </div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>	
 						</div>
 					</div>
-						
-				</div>
-				<div class="col-12 col-md-8 col-lg-9 offset-md-4 offset-lg-3 _col_cont_user">
-					<br class=" d-none d-md-block">
-					<div class="row m-0 d-none d-md-block">
-						<div class="col-12">
-							<% unless @blocked == true || @blocked_loop == true %>
-								<%= image_tag @mocker.coverpage, class: "_coverpage" %>
-							<% else %>
-								<%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/bg_coverpage.jpg', class: '_coverpage' %>
-							<% end %>
-						</div>
-					</div>
-					<br>
 
 					<% unless @blocked == true || @blocked_loop == true %>
 						<% if @mocker.privated == false || @mocker.following?(current_mocker) || current_mocker == @mocker  %>
@@ -132,16 +121,16 @@
 								<div class="col-12">
 									<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
 									  <li class="nav-item" role="presentation">
-									    <a class="nav-link active" id="mocks-tab" data-toggle="tab" href="#mocks" role="tab" aria-controls="mocks" aria-selected="true"><i class="fas fa-video"></i></a>
+									    <a class="nav-link active" id="mocks-tab" data-toggle="tab" href="#mocks-pane" role="tab" aria-controls="mocks" aria-selected="true"><i class="bi-camera-video"></i></a>
 									  </li>
 									  <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 										  <li class="nav-item" role="presentation">
-										    <a class="nav-link" id="privated-tab" data-toggle="tab" href="#privated" role="tab" aria-controls="privated" aria-selected="false"><i class="fas fa-unlock-alt"></i></a>
+										    <a class="nav-link" id="privated-tab" data-toggle="tab" href="#privated" role="tab" aria-controls="privated" aria-selected="false"><i class="bi-lock"></i></a>
 										  </li>
 									  <% end %>
 									  <% if current_mocker == @mocker %>
 									  <li class="nav-item" role="presentation">
-									    <a class="nav-link" id="liked-tab" data-toggle="tab" href="#liked" role="tab" aria-controls="liked" aria-selected="false"><i class="fas fa-heart"></i></a>
+									    <a class="nav-link" id="liked-tab" data-toggle="tab" href="#liked" role="tab" aria-controls="liked" aria-selected="false"><i class="bi-heart"></i></a>
 									  </li>
 									  <% end %>
 									  <% if @mocker.bio? %>
@@ -150,8 +139,8 @@
 										  </li>
 									  <% end %>
 									</ul>
-									<div class="tab-content" id="myTabContent">
-									  <div class="tab-pane fade show active" id="mocks" role="tabpanel" aria-labelledby="mocks-tab">
+									<div class="tab-content">
+									  <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="mocks-tab" id="mocks-pane">
 									  		<% if @mocker.mocks.count > 0 %>
 												<%= render 'mocks' %>
 											<% else %>
@@ -347,6 +336,9 @@
       
   	.bg_white{
   		background:white !important;
+  	}
+  	#mocks{
+  		height: auto !important;
   	}
 </style>
 <script type="text/javascript">

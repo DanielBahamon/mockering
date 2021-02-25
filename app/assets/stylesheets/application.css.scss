@@ -578,6 +578,9 @@
   .list_guidelines li a i{
     font-size: 10pt;
   }
+  .col_navfooter.col-3.active {
+    text-shadow: 0 0 9px #3200ed;
+  }
   @media(max-width: 767px){
     .listsidenav{
       display: flex;
@@ -3039,9 +3042,17 @@
     height: 210px;
     -o-object-fit: cover;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 15px;
     -webkit-filter: brightness(0.85);
     filter: brightness(0.7);
+  }
+  @media(max-width:767px){
+    ._coverpage{
+      border-radius: 0 !important;
+    }
+    ._col_user{
+      border-radius:0 !important;
+    }
   }
   ._avatar._3{
     max-height: 100px;
@@ -3049,17 +3060,21 @@
     min-width: 20px;
     height:150px;
     width: 150px;
+    margin-top: -90px;
     margin: 0 auto;
     display: block;
-    border-radius: 100%;
+    border-radius: 35px;
     object-fit: cover;
     margin-bottom:0;
     -webkit-box-shadow: 0 3px 18px -5px #d0dbe0;
     box-shadow: 0 3px 18px -5px #d0dbe0;
   }
-
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    background:transparent;
+  }
   ._col_user{
     background: white;
+    border-radius:15px;
   }
   ._list._social{
     margin-bottom: 0;
@@ -3101,22 +3116,22 @@
     overflow-wrap: break-word;
   }
   .cont_coverpage{
-    position: absolute;
   }
   .cont_user{
-      z-index: 3;
-      position: inherit;
+    margin-top:-90px;
+    z-index: 3;
+    position: inherit;
   }
   .gradient{
     position: absolute;
     z-index: 2;
   }
   .gradient._1{
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    background:linear-gradient(0deg, white, #ffffffd9, transparent);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:linear-gradient(0deg, white, transparent);
   }
   .readmore + [data-readmore-toggle]{
     color:black !important;
@@ -3129,11 +3144,6 @@
       left: -10px;
   }
   @media(min-width: 768px){
-    ._col_user{
-      position: fixed;
-        overflow-y: auto;
-        height: 88vh;
-    }
 
   }
 /* END PROFILE */
@@ -4077,7 +4087,7 @@
     background: #121212;
   }
   [data-theme="dark"] #multiCollapseNavbar{
-    background: #121212;
+    background: #1b1b1b;
     z-index: 123;
   }
   [data-theme="dark"] .dropdown-item{

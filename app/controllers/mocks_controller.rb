@@ -71,9 +71,9 @@ class MocksController < ApplicationController
 		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
 
-	def my_mocks
+	def your_mocks
 		@mocker = current_mocker
-    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 10)
+    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks], per_page: 10)
 	end
 
 	def liked
