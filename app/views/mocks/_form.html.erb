@@ -1,6 +1,6 @@
 <div class="form-group">
-	<%= form_for @mock, html: { multipart: true } do |f| %>
-        <div class="row" id="_form_register">
+    <%= form_for @mock, html: { multipart: true } do |f| %>
+        <div class="row form_wrapper" id="_form_register">
           <fieldset class="msf_hide">
             <div class="row m-0">
               <div class="col-12">
@@ -26,7 +26,7 @@
                     <div class="fullscreen p-5 _file_upload">
                       <div class="d-table fullscreen">
                         <div class="d-table-cell v-middle text-center">
-                          <img src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
+                          <img class="_img_upload_mock " src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
                           <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your video (MP4)</h6>
                           <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your video is ready to upload</h6>
                         </div>
@@ -62,8 +62,8 @@
             <br>
             <br>
             <div class="row m-0">
-              <div class="col-12 text-right">
-                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              <div class="col-12 col-md-8 offset-md-4 text-right">
+                <button class="btn btn-lg btn-block _btn_form_next" onclick="msf_btn_next()">Next <i class="bi-arrow-right-short"></i></button>  
               </div>
             </div>
           </fieldset>
@@ -77,296 +77,272 @@
                 <div class="d-table fullscreen">
                   <div class="d-table-cell v-middle">
                     <div class="field _tags_form">
-                      <ul class="ks-cboxtags">
+                      <ul class="ks-cboxtags required checkbox-group">
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_animation"}, 'animation', nil %>
-                            <%= f.label 'Animation', class: '_checkbox _1', for: "check_animation" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_art"}, 'art', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_art", required: true}, 'art', nil %>
                             <%= f.label 'Art', class: '_checkbox _1', for: "check_art" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_aliens"}, 'aliens', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_aliens", required: true}, 'aliens', nil %>
                             <%= f.label 'Aliens', class: '_checkbox _1', for: "check_aliens" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_animals"}, 'animals', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_animals", required: true}, 'animals', nil %>
                             <%= f.label 'Animals', class: '_checkbox _1', for: "check_animals" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_ai"}, 'artificial intelligence', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_ai", required: true}, 'artificial intelligence', nil %>
                             <%= f.label 'Artificial Intelligence', class: '_checkbox _1', for: "check_ai" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_beauty"}, 'beauty', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_beauty", required: true}, 'beauty', nil %>
                             <%= f.label 'Beauty', class: '_checkbox _1', for: "check_beauty" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_books"}, 'books', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_books", required: true}, 'books', nil %>
                             <%= f.label 'Books', class: '_checkbox _1', for: "check_books" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_business"}, 'business', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_business", required: true}, 'business', nil %>
                             <%= f.label 'Business', class: '_checkbox _1', for: "check_business" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_cannabis"}, 'cannabis', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_cannabis", required: true}, 'cannabis', nil %>
                             <%= f.label 'Cannabis', class: '_checkbox _1', for: "check_cannabis" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_coronavirus"}, 'coronavirus', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_coronavirus", required: true}, 'coronavirus', nil %>
                             <%= f.label 'Coronavirus', class: '_checkbox _1', for: "check_coronavirus" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_cryptocurrency"}, 'cryptocurrency', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_cryptocurrency", required: true}, 'cryptocurrency', nil %>
                             <%= f.label 'Cryptocurrency', class: '_checkbox _1', for: "check_cryptocurrency" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_cybersecurity"}, 'cybersecurity', nil %>
-                            <%= f.label 'Cybersecurity', class: '_checkbox _1', for: "check_cybersecurity" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_conspiracy"}, 'conspiracy', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_conspiracy", required: true}, 'conspiracy', nil %>
                             <%= f.label 'Conspiracy', class: '_checkbox _1', for: "check_conspiracy" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_culture"}, 'culture', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_culture", required: true}, 'culture', nil %>
                             <%= f.label 'Culture', class: '_checkbox _1', for: "check_culture" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_creativity"}, 'creativity', nil %>
-                            <%= f.label 'Creativity', class: '_checkbox _1', for: "check_creativity" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_design"}, 'design', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_design", required: true}, 'design', nil %>
                             <%= f.label 'Design', class: '_checkbox _1', for: "check_design" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_digitallife"}, 'digital life', nil %>
-                            <%= f.label 'Digital Life', class: '_checkbox _1', for: "check_digitallife" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_economy"}, 'economy', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_economy", required: true}, 'economy', nil %>
                             <%= f.label 'Economy', class: '_checkbox _1', for: "check_economy" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_education"}, 'education', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_education", required: true}, 'education', nil %>
                             <%= f.label 'Education', class: '_checkbox _1', for: "check_education" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_environment"}, 'environment', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_environment", required: true}, 'environment', nil %>
                             <%= f.label 'Environment', class: '_checkbox _1', for: "check_environment" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_equality"}, 'equality', nil %>
-                            <%= f.label 'Equality', class: '_checkbox _1', for: "check_equality" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_family"}, 'family', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_family", required: true}, 'family', nil %>
                             <%= f.label 'Family', class: '_checkbox _1', for: "check_family" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_fiction"}, 'fiction', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_fiction", required: true}, 'fiction', nil %>
                             <%= f.label 'Fiction', class: '_checkbox _1', for: "check_fiction" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_film"}, 'film', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_film", required: true}, 'film', nil %>
                             <%= f.label 'Film', class: '_checkbox _1', for: "check_film" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_fitness"}, 'fitness', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_fitness", required: true}, 'fitness', nil %>
                             <%= f.label 'Fitness', class: '_checkbox _1', for: "check_fitness" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_food"}, 'food', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_food", required: true}, 'food', nil %>
                             <%= f.label 'Food', class: '_checkbox _1', for: "check_food" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_future"}, 'future', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_future", required: true}, 'future', nil %>
                             <%= f.label 'Future', class: '_checkbox _1', for: "check_future" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_gaming"}, 'gaming', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_gaming", required: true}, 'gaming', nil %>
                             <%= f.label 'Gaming', class: '_checkbox _1', for: "check_gaming" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_health"}, 'health', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_health", required: true}, 'health', nil %>
                             <%= f.label 'Health', class: '_checkbox _1', for: "check_health" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_history"}, 'history', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_history", required: true}, 'history', nil %>
                             <%= f.label 'History', class: '_checkbox _1', for: "check_history" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_humans"}, 'humans', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_humans", required: true}, 'humans', nil %>
                             <%= f.label 'Humans', class: '_checkbox _1', for: "check_humans" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_humor"}, 'humor', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_humor", required: true}, 'humor', nil %>
                             <%= f.label 'Humor', class: '_checkbox _1', for: "check_humor" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_illuminati"}, 'illuminati', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_illuminati", required: true}, 'illuminati', nil %>
                             <%= f.label 'Illuminati', class: '_checkbox _1', for: "check_illuminati" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_justice"}, 'justice', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_justice", required: true}, 'justice', nil %>
                             <%= f.label 'Justice', class: '_checkbox _1', for: "check_justice" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_language"}, 'language', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_language", required: true}, 'language', nil %>
                             <%= f.label 'Language', class: '_checkbox _1', for: "check_language" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_lifestyle"}, 'lifestyle', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_lifestyle", required: true}, 'lifestyle', nil %>
                             <%= f.label 'Lifestyle', class: '_checkbox _1', for: "check_lifestyle" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_love"}, 'love', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_love", required: true}, 'love', nil %>
                             <%= f.label 'Love', class: '_checkbox _1', for: "check_love" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_lgbtqia"}, 'lgbtqia', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_lgbtqia", required: true}, 'lgbtqia', nil %>
                             <%= f.label 'Lgbtqia', class: '_checkbox _1', for: "check_lgbtqia" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_music"}, 'music', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_music", required: true}, 'music', nil %>
                             <%= f.label 'Music', class: '_checkbox _1', for: "check_music" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_marketing"}, 'marketing', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_manipulation", required: true}, 'manipulation', nil %>
+                            <%= f.label 'Manipulation', class: '_checkbox _1', for: "check_marketing" %>
+                        </li>
+                        <li>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_marketing", required: true}, 'marketing', nil %>
                             <%= f.label 'Marketing', class: '_checkbox _1', for: "check_marketing" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_mentalhealth"}, 'mental health', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_mentalhealth", required: true}, 'mental health', nil %>
                             <%= f.label 'Mental Health', class: '_checkbox _1', for: "check_mentalhealth" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_mindfulness"}, 'mindfulness', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_mindfulness", required: true}, 'mindfulness', nil %>
                             <%= f.label 'mindfulness', class: '_checkbox _1', for: "check_mindfulness" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_money"}, 'money', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_money", required: true}, 'money', nil %>
                             <%= f.label 'money', class: '_checkbox _1', for: "check_money" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_neuroscience"}, 'neuroscience', nil %>
-                            <%= f.label 'Neuroscience', class: '_checkbox _1', for: "check_neuroscience" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_paranormal"}, 'paranormal', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_paranormal", required: true}, 'paranormal', nil %>
                             <%= f.label 'Paranormal', class: '_checkbox _1', for: "check_paranormal" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_philosophy"}, 'philosophy', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_philosophy", required: true}, 'philosophy', nil %>
                             <%= f.label 'philosophy', class: '_checkbox _1', for: "check_philosophy" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_photography"}, 'photography', nil %>
-                            <%= f.label 'Photography', class: '_checkbox _1', for: "check_photography" %>
-                        </li>
-                        <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_psychology"}, 'psychology', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_psychology", required: true}, 'psychology', nil %>
                             <%= f.label 'psychology', class: '_checkbox _1', for: "check_psychology" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_podcasts"}, 'podcasts', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_podcasts", required: true}, 'podcasts', nil %>
                             <%= f.label 'Podcasts', class: '_checkbox _1', for: "check_podcasts" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_poetry"}, 'poetry', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_poetry", required: true}, 'poetry', nil %>
                             <%= f.label 'Poetry', class: '_checkbox _1', for: "check_poetry" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_politics"}, 'politics', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_politics", required: true}, 'politics', nil %>
                             <%= f.label 'politics', class: '_checkbox _1', for: "check_politics" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_privacy"}, 'privacy', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_privacy", required: true}, 'privacy', nil %>
                             <%= f.label 'privacy', class: '_checkbox _1', for: "check_privacy" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_programming"}, 'programming', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_programming", required: true}, 'programming', nil %>
                             <%= f.label 'Programming', class: '_checkbox _1', for: "check_programming" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_relationships"}, 'relationships', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_relationships", required: true}, 'relationships', nil %>
                             <%= f.label 'relationships', class: '_checkbox _1', for: "check_relationships" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_race"}, 'race', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_race", required: true}, 'race', nil %>
                             <%= f.label 'race', class: '_checkbox _1', for: "check_race" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_reality"}, 'reality', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_reality", required: true}, 'reality', nil %>
                             <%= f.label 'Reality', class: '_checkbox _1', for: "check_reality" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_religion"}, 'religion', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_religion", required: true}, 'religion', nil %>
                             <%= f.label 'religion', class: '_checkbox _1', for: "check_religion" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_science"}, 'science', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_science", required: true}, 'science', nil %>
                             <%= f.label 'Science', class: '_checkbox _1', for: "check_science" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_self"}, 'self', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_self", required: true}, 'self', nil %>
                             <%= f.label 'self', class: '_checkbox _1', for: "check_self" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_socialmedia"}, 'social media', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_socialmedia", required: true}, 'social media', nil %>
                             <%= f.label 'Social Media', class: '_checkbox _1', for: "check_socialmedia" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_society"}, 'society', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_society", required: true}, 'society', nil %>
                             <%= f.label 'society', class: '_checkbox _1', for: "check_society" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_space"}, 'space', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_space", required: true}, 'space', nil %>
                             <%= f.label 'Space', class: '_checkbox _1', for: "check_space" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_spirituality"}, 'spirituality', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_spirituality", required: true}, 'spirituality', nil %>
                             <%= f.label 'spirituality', class: '_checkbox _1', for: "check_spirituality" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_sports"}, 'sports', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_sports", required: true}, 'sports', nil %>
                             <%= f.label 'Sports', class: '_checkbox _1', for: "check_sports" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_style"}, 'style', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_style", required: true}, 'style', nil %>
                             <%= f.label 'Style', class: '_checkbox _1', for: "check_style" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_sexuality"}, 'sexuality', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_sexuality", required: true}, 'sexuality', nil %>
                             <%= f.label 'sexuality', class: '_checkbox _1', for: "check_sexuality" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_technology"}, 'technology', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_technology", required: true}, 'technology', nil %>
                             <%= f.label 'Technology', class: '_checkbox _1', for: "check_technology" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_travel"}, 'travel', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_travel", required: true}, 'travel', nil %>
                             <%= f.label 'travel', class: '_checkbox _1', for: "check_travel" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_tv"}, 'tv', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_tv", required: true}, 'tv', nil %>
                             <%= f.label 'TV', class: '_checkbox _1', for: "check_tv" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_ufo"}, 'ufo', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_ufo", required: true}, 'ufo', nil %>
                             <%= f.label 'UFO', class: '_checkbox _1', for: "check_ufo" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_world"}, 'world', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_world", required: true}, 'world', nil %>
                             <%= f.label 'world', class: '_checkbox _1', for: "check_world" %>
                         </li>
                         <li>
-                            <%= f.check_box :tag_list, { multiple: true, id: "check_work"}, 'work', nil %>
+                            <%= f.check_box :tag_list, { multiple: true, id: "check_work", required: true}, 'work', nil %>
                             <%= f.label 'Work', class: '_checkbox _1', for: "check_work" %>
                         </li>
-                      </ul>   
+                      </ul>
                     </div>                        
                   </div>
                 </div>
@@ -402,9 +378,15 @@
             </div>
             <br>
             <div class="row m-0">
-              <div class="col-12 text-right">
-                  <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
-                  <button class="btn _btnround" onclick="msf_btn_next()"><i class="fas fa-arrow-right"></i></button>
+              <div class="col-12 col-md-8 offset-md-4 text-right">
+                <div class="row m-0">
+                  <div class="col-12 col-md-6">
+                    <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <button class="btn btn-lg btn-block _btn_form_next" onclick="msf_btn_next()">Next <i class="bi-arrow-right-short"></i></button>
+                  </div>
+                </div>
               </div>
             </div>
           </fieldset>
@@ -419,7 +401,7 @@
                   <label>Credits</label>
                   <%= f.text_field :credits, class: 'form-control', required: true %>
                 </div>
-                <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
+                <section class="col-12 _col_inputsaccount p-b-0 _upload_big mt-5">
                     <div class="progress d-none" id="progress-bar">
                       <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
                         <span class="sr-only" id="progress-bar-text"></span>
@@ -428,9 +410,9 @@
                     <div class="fullscreen p-5 _file_upload">
                       <div class="d-table fullscreen">
                         <div class="d-table-cell v-middle text-center">
-                          <img src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
-                          <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your picture (JPG/PNG/GIF)</h6>
-                          <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your picture is ready to upload</h6>
+                          <img class="_img_upload_mock_2" src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
+                          <h6 class="_fw600 _is_not_ready_2 d-block" style="opacity: 0.6">Upload your picture (JPG/PNG/GIF)</h6>
+                          <h6 class="_fw600 _is_ready_2 d-none" style="opacity: 0.6">Your picture is ready to upload</h6>
                         </div>
                       </div>
                     </div>
@@ -440,23 +422,23 @@
             </div>
             <br>
             <div class="row m-0">
-              <div class="col-12 text-right">
-                <button class="btn" onclick="msf_btn_back()" style="margin-right: 5px;"><i class="fas fa-arrow-left"></i></button>
+              <div class="col-12 col-md-8 offset-md-4 text-right">
+                <div class="row m-0">
+                  <div class="col-12 col-md-6">
+                    <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <%= f.submit 'Upload!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Uploading...' } %>
+                  </div>
+                </div>
               </div>
             </div>
             <br>
-            <div class="row m-0">
-              <div class="col-12 ">
-                <%= f.submit 'Ready', class: 'btn _btn _action f-right', id: 'fileUpload', data: { disable_with: 'Uploading...' } %>
-                <br>
-                <br>
-              </div>
-            </div>
           </fieldset>
 
         </div>
 
-	<% end %>
+    <% end %>
 </div>
 <br>
 <br>
@@ -465,41 +447,12 @@
   fieldset{
     width:100%;
   }
-  ._upload_big{
-    border: 2px dashed #bacad6;
-    padding: 0;
-  }
-  ._upload_big:hover{
-    border: 2px dashed #5b6d7b;
-    cursor: pointer;
-    filter: grayscale(0.7);
-  }
-  ._upload_big .file-selector{
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-  }
-  ._upload_big img{
-    filter: grayscale(1);
-    width: 128px;
-    opacity: 0.5;
-    text-align: center;
-    margin: 0 auto;
-  }
-  ._upload_big img._on{
-    filter: grayscale(0.5);
-  }
+
   @media(max-width: 767px){
     ._btn._action{
         width:100%;
       }
   }
-      
-
 </style>
 
 <script type="text/javascript">
@@ -590,6 +543,7 @@
       }
   };
 
+
   // goes one step back
   function msf_btn_back() {
       msf_getFsTag[msf_form_nr].className = "msf_hide";
@@ -600,43 +554,34 @@
   console.log("loaded");
 </script>
 <script type="text/javascript">
-  $(document).ready(function() {
-   var uploadObj = $("#file-selector_1").uploadFile({
-      url: "<%= new_mock_path %>",
-      multiple: false,
-      fileName: "movie[video]",
-      autoSubmit: false,
-      onSuccess:function(files,data,xhr)
-      {
-        window.location.href = data.to;
-      }
-    });
 
-    $("#fileUpload").click(function(e) {
-      e.preventDefault();
-      $.rails.disableFormElements($($.rails.formSubmitSelector));
-      uploadObj.startUpload();
-    });
+  $('#file-selector_1').blur(function(){
+    if( !$(this).val() ) {
+      $("._is_ready").toggleClass('d-block');
+      $("._is_ready").toggleClass('d-none');
+      $("._is_not_ready").toggleClass('d-none');
+      $("._is_not_ready").toggleClass('d-block');
+      $("._img_upload_mock").toggleClass('_on');
+    }
   });
-  /*$(document).ready(function() {
-   var uploadObj = $("#file-selector_1").uploadFile({
-      url: "<%= new_mock_path %>",
-      multiple: false,
-      fileName: "movie[video]",
-      autoSubmit: false,
-      formData: {
-        "movie[title]": $('#movie_title').text(),
-        "movie[description]": $('#movie_description').text()
-      },
-      onSuccess:function(files,data,xhr)
-      {
-        window.location.href = data.to;
-      }
-    });
-    $("#fileUpload").click(function(e) {
-      e.preventDefault();
-      $.rails.disableFormElements($($.rails.formSubmitSelector));
-      uploadObj.startUpload();
-    });
-  });*/
+  $('#file-selector_2').blur(function(){
+    if( !$(this).val() ) {
+      $("._is_ready_2").toggleClass('d-block');
+      $("._is_ready_2").toggleClass('d-none');
+      $("._is_not_ready_2").toggleClass('d-none');
+      $("._is_not_ready_2").toggleClass('d-block');
+      $("._img_upload_mock_2").toggleClass('_on');
+    }
+  });
+
+  $(function(){
+      var requiredCheckboxes = $('.checkbox-group.required :checkbox[required]');
+      requiredCheckboxes.change(function(){
+          if(requiredCheckboxes.is(':checked')) {
+              requiredCheckboxes.removeAttr('required');
+          } else {
+              requiredCheckboxes.attr('required', 'required');
+          }
+      });
+  });
 </script>
