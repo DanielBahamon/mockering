@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require 'masonry/transitions'
+ *= require 'masonry/infinitescroll'
  *= require 'jquery.atwho'
  *= require jquery-ui
  *= require social-share-button
@@ -401,6 +402,10 @@
   ._bg_filter{
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.35));
       border-radius: 20px;
+  }
+
+  ._bggradient._1{
+    background: linear-gradient(0deg, #3a345d91, rgba(47, 32, 89, .36), transparent);
   }
   ._textarea{
       resize: none !important;

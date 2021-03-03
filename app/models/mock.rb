@@ -4,6 +4,8 @@ class Mock < ApplicationRecord
   	acts_as_votable
 	validates :id, presence: true
 
+  	ransack_alias :mocker, :mocker_first_name_or_mocker_last_name_or_mocker_slug
+
 	is_impressionable
 	is_impressionable counter_cache: true, column_name: :impressions_count, :unique => [:session_hash]
     acts_as_taggable_on :tags

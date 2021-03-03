@@ -112,9 +112,6 @@ class Mocker < ApplicationRecord
 	has_attached_file :coverpage, styles: {extralarge: "1200x1200>", large: "999x999>", medium: "600x600>", thumb: "300x300>" }, default_url: "https://mockering.s3-sa-east-1.amazonaws.com/assets/bg_coverpage.jpg"
 	validates_attachment_content_type :coverpage, content_type: /\Aimage\/.*\z/
 
-
-
-
 	  def generate_pin
 	    self.pin = SecureRandom.hex(2)
 	    self.phone_verified = false

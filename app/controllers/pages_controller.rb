@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-	before_action :set_search
 
   	def terms
   	end
@@ -26,10 +25,5 @@ class PagesController < ApplicationController
 
 
 	private
-
-	def set_search
-		@q = Mock.ransack(params[:q])
-		@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
-	end
 
 end
