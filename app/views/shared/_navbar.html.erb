@@ -378,27 +378,27 @@
         <div class="modal-body p-0">
           <div class="list-group" id="followers">
             <% @followers.each do |follower| %>
-          <%= link_to follower, class: "list-group-item list-group-item-action _1" do %>
-            <div class="row m-0">
-              <div class="col-auto">
-                <%= image_tag avatar_url(follower), class: "small_avatar" %>
-              </div>
-              <div class="col">
-                <div class="d-table fullscreen">
-                  <div class="d-table-cell v-middle">
-                    <b class="m-0"><%= follower.first_name %> <%= follower.last_name %> <%= image_tag badge_icon(follower), class: "_badge_verification _tooltip", "data-toggle": "tooltip",  "data-placement": "bottom", title: tooltip_badge(follower) if follower.verification? %></b>
+              <%= link_to follower, class: "list-group-item list-group-item-action _1" do %>
+                <div class="row m-0">
+                  <div class="col-auto">
+                    <%= image_tag avatar_url(follower), class: "small_avatar" %>
+                  </div>
+                  <div class="col">
+                    <div class="d-table fullscreen">
+                      <div class="d-table-cell v-middle">
+                        <b class="m-0"><%= follower.first_name %> <%= follower.last_name %> <%= image_tag badge_icon(follower), class: "_badge_verification _tooltip", "data-toggle": "tooltip",  "data-placement": "bottom", title: tooltip_badge(follower) if follower.verification? %></b>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              <% end %>
+            <% end %>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+                <%= will_paginate @followers, renderer: BootstrapPagination::Rails, param_name: 'followers_page' %>
               </div>
-            </div>
-          <% end %>
-        <% end %>
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-            <%= will_paginate @followers, renderer: BootstrapPagination::Rails, param_name: 'followers_page' %>
+            </div> 
           </div>
-        </div> 
-      </div>
         </div>
       </div>
     </div>
