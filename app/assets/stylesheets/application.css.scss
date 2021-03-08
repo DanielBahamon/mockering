@@ -823,6 +823,15 @@
       border: 0px solid white;
       object-fit:cover;
   }
+  ._avatar._3{
+      height: 60px;
+      width: 60px;
+      display: block;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      -o-object-fit: cover;
+      object-fit: cover;
+  }
   ._numb_follows{
     font-size: 15pt;
     font-weight: 500;
