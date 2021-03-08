@@ -1837,6 +1837,12 @@
         min-width: 200px;
         margin: 0;
       }
+      #mocks a.link_card.card.box._card.masonry-brick{
+        margin:0 !important;
+      }
+      div#mocks{
+        width: 100% !important;
+      }
   }
   ._card._1 .card-img-top._1{
     min-height: 250px;
