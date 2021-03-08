@@ -1843,6 +1843,10 @@
       div#mocks{
         width: 100% !important;
       }
+      ._content_principal .mocks_content #mocks ._card{
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
   }
   ._card._1 .card-img-top._1{
     min-height: 250px;
