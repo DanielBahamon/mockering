@@ -96,6 +96,9 @@ class Mocker < ApplicationRecord
 
   	has_one :setting
   	after_create :add_setting
+
+  	
+  	ransack_alias :mocker, :mocker_first_name_or_mocker_last_name_or_mocker_slug
   	
 
 	  def add_setting

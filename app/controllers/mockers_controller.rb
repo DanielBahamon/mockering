@@ -3,6 +3,7 @@ class MockersController < ApplicationController
 	before_action :authenticate_mocker!, except: [:show, :username_validator]
    	before_action :set_mocker, only: [:show, :edit, :update, :destroy]
 
+
 	def show
     	@mocker = Mocker.friendly.find(params[:id])
     	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 10).where(privated: false)
@@ -150,4 +151,5 @@ class MockersController < ApplicationController
                     :bio, :photo, :tag_list, :coverpage, :facebook, :twitter, :instagram, :pinterest, :youtube,
                     :phone_number, :privated, :show_mocks_privated)
 	end
+
 end

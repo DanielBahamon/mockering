@@ -1,15 +1,15 @@
 <% @mockers.each do |mocker| %>
-	<div class="col-12 col-sm-4 col-lg-3 p-0 p-sm-2">
-		<%= link_to mocker, class: "link_card card _card _3" do %>
-			<div class="_cardbody p-2">
-				<div class="row m-0">
-					<div class="col-12">
-						<%= image_tag avatar_url(mocker), class: "_avatar _1" %>
-						<h4 class="_cardtitle _fs15pt"><%= mocker.first_name if mocker.first_name? %> <%= mocker.first_name if mocker.last_name? %></h4>
+	<div class="col-12 col-md-6 col-lg-4 col-xl-3 p-0 p-sm-2">
+		<%= link_to mocker, class: "link_card card" do %>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-auto">
+						<%= image_tag avatar_url(mocker), class: "_avatar _2" %>
 					</div>
-					<div class="col-12">
+					<div class="col">
 						<div class="row m-0 fullwidth">
 							<div class="col p-0">
+								<h4 class="_cardtitle _fs15pt"><%= mocker.first_name if mocker.first_name? %> <%= mocker.first_name if mocker.last_name? %></h4>
 								<div class="text-ellipsis">
 									<p class="_fs10pt m-0 _fs90per _username">@<%= mocker.slug %> <%= image_tag badge_icon(mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mocker) if mocker.verification? %></p>
 								</div>
@@ -21,3 +21,14 @@
 		<% end %>
 	</div>
 <% end %>
+<style type="text/css">
+	._avatar._2{
+	    height: 100%;
+	    width: 60px;
+	    display: block;
+	    border-radius: 12px;
+	    border: 2px solid #fff;
+	    -o-object-fit: cover;
+	    object-fit: cover;
+	}
+</style>

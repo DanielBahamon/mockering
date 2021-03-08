@@ -6,13 +6,13 @@
 				<div class="row m-0">
 					<div class="col-12 _board">
 						<%= render 'mocks/tags' %>
-						<div class="mocks_content">
-							<div class="row m-0">
-								<div class="col-12 mt-5">
-									<h3 class="_f-900"><i><%= params[:q][:mocker_slug_or_title_or_description_or_credits_cont] if params[:q].present? %></i></h3>
+						<div class="mocks_content mt-4">
+
+							<div id="mockers">
+								<div class="row">
+									<%= render 'mockers/mini_show' %>
 								</div>
 							</div>
-
 							<div id="mocks" class="transitions-enabled">
 								<%= render 'mocks/mock_search' %>
 							</div>
