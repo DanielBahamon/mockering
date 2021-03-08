@@ -364,165 +364,86 @@
 </div>
 <div class="_navbar_br"></div>
 
+<% if mocker_signed_in? %>
+  <!-- Modal Followers -->
+  <div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title _fw700" id="followersModalLabel">Followers</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="list-group" id="followers">
+            <% @followers.each do |follower| %>
+          <%= link_to follower, class: "list-group-item list-group-item-action _1" do %>
+            <div class="row m-0">
+              <div class="col-auto">
+                <%= image_tag avatar_url(follower), class: "small_avatar" %>
+              </div>
+              <div class="col">
+                <div class="d-table fullscreen">
+                  <div class="d-table-cell v-middle">
+                    <b class="m-0"><%= follower.first_name %> <%= follower.last_name %> <%= image_tag badge_icon(follower), class: "_badge_verification _tooltip", "data-toggle": "tooltip",  "data-placement": "bottom", title: tooltip_badge(follower) if follower.verification? %></b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+            <%= will_paginate @followers, renderer: BootstrapPagination::Rails, param_name: 'followers_page' %>
+          </div>
+        </div> 
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Following -->
+  <div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title _fw700" id="followingModalLabel">Following</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="list-group" id="following">
+            <% @following.each do |following| %>
+          <%= link_to following, class: "list-group-item list-group-item-action _1" do %>
+            <div class="row m-0">
+              <div class="col-auto">
+                <%= image_tag avatar_url(following), class: "small_avatar" %>
+              </div>
+              <div class="col">
+                <div class="d-table fullscreen">
+                  <div class="d-table-cell v-middle">
+                    <b class="m-0"><%= following.first_name %> <%= following.last_name %> <%= image_tag badge_icon(following), class: "_badge_verification _tooltip", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(following) if following.verification? %></b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2  m-0-auto" role="group" aria-label="First group">
+            <%= will_paginate @following, renderer: BootstrapPagination::Rails, param_name: 'following_page' %>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <style type="text/css">
-  ._logo_navbar ._link_logo{
-    padding-top: 9px;
-    display: block;
-  }
-  ._logo_navside{
-    margin: 0 auto;
-    padding: 30px 15px;
-  }
-  ._logo_navbar._on{
-    display: block !important;
-  }
-  ._logo_navbar{
-    display: none !important;
-  }
-  ._nav._1.active-semi{
-    position: fixed !important;
-  }
-  ._navbar_br{
-    position:fixed;
-    height:70px;
-  }
-  ._navbar_br.active-semi{
-    position:static;
-    display:block;
-  }
-  .content_big_1{
-    overflow-y: hidden !important;
-  }
-  ._nav._1.active-semi.active{
-    top:15px !important;
-  }
-  ._video_views i::before{
-    line-height: inherit !important;
-  }
-  ._col_btn_action_mock a i::before {
-    line-height: 1.25;
-  }
-  @media(max-width: 767px){
-    ._logo_navbar{
-      display: block !important;
-    }
-    ._nav._1._shadow.active-semi.active{
-      top:0 !important;
-      left: 0 !important;
-      right:0 !important;
-    }
-    ._nav._1.active-semi.active{
-      top:0 !important;
-    }
-    ._nav._1.active-semi{
-      left:0 !important;
-      right:0 !important;
-    }
-  }
-  @media(max-width: 611px){
-    ._content_principal .mocks_content #mocks ._card{
-      width:95vw;
-      margin-bottom: 15px;
-    }
-
-  }
-  @media(max-width: 575px){
-    ._nav._1._shadow.active-semi.active{
-      left: 15px !important;
-      padding:0; 
-    }
-  }
-  @media(max-width: 565px){
-    ._nav._1._shadow.active-semi.active {
-      top: 0;
-      left: 0 !important;
-      right: 0;
-    }
-    ._nav._1.active-semi{
-      left: 0 !important;
-      right: 0 !important;
-    }
-  }
-  @media(max-width: 322px){
-    ._logo_navbar{
-      display: none !important;
-    }
-    ._link_logo ._logonav._2,
-    ._link_logo ._logonav._1{
-      display: none !important;
-      padding: 0 !important;
-    }
-    ._logo_navbar{
-      padding: 0 !important;
-    }
-    .col_navfooter.active a i{
-      top:0 !important;
-      font-size: 1.2rem !important;
-    }
-    .col_navfooter.active a p{
-      display: none !important;
-    }
-  }
-  ._col_search_mobile{
-    border-radius: 15px;
-    padding: 0;
-    background: #f3f3fa;
-    transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-  }
-  ._col_search_mobile:hover{
-    border-radius: 15px;
-    padding: 0;
-    background: #ffffff !important;
-    box-shadow: 0 3px 5px -2px #eaeaea;
-    transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-  }
-  ._col_search_mobile:hover ._searchfield{
-    background: #ffffff !important;
-  }
-  ._searchabsolute ._btn_icon i{
-  }
-  #mocks a.link_card.card.box._card.masonry-brick{
-    margin:5px;
-  }
-
-  .container-lg{
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
-  #paypal-button-container_1{
-    text-align:center;
-  }
-  ._card{
-    -webkit-transition: all .2s ease-in !important;
-    transition: all .2s ease-in !important;
-  }
-  @media(max-width: 575px){
-    ._time{
-      right: 5px !important;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .container, .container-sm, .container-md, .container-lg, .container-xl {
-        max-width: 1300px;
-    }
-  }
-  @media(max-width: 575px){
-    ._content_principal._1{
-      padding:0 !important;
-    }
-    ._nav._1{
-      border-radius:0 !important;
-    }
-    #multiCollapseSearch{
-      top:0 !important;
-      right: 0 !important;
-      left: 0 !important;
-      border-radius: 0 !important;
-    }
-  }
 
   <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
     @media(min-width: 768px){

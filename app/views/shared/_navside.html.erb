@@ -68,6 +68,29 @@
 											<p class="col-10 m-0">Logout</p>
 										<% end %>
 									</li>
+									<hr>
+									<li>
+										<a href="#" data-toggle="modal" data-target="#followingModal"><small class="_title_li">Following</small></a>
+									</li>
+									<% current_mocker.following.first(4).each do |following| %>
+										<li>
+											<%= link_to following do %>
+												<div class="row">
+													<div class="col">
+														<%= image_tag avatar_url(following), class: "_avatar _2" %>
+													</div>
+													<div class="col p-0">
+														<div class="d-table fullscreen">
+															<div class="d-table-cell v-middle text-ellipsis">
+																<p class="m-0"><%= following.slug %> <%= image_tag badge_icon(following), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(following) if following.verification? %></p>
+															</div>
+														</div>
+													</div>
+												</div>
+											<% end %>
+										</li>
+											
+									<% end %>
 								<% else %>
 									<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
 											<i class="bi-door-open col-2 text-center p-0"></i>
@@ -80,6 +103,7 @@
 										<% end %>
 									</li>
 								<% end %>
+
 				                  <hr>
 				                  <li>
 				                    <label class="_link _sidenav" for="darkSwitch">
@@ -108,4 +132,14 @@
 		</div>
 	</div>
 </section>
-	
+
+	<style type="text/css">
+		._title_li{
+		    padding: 0 15px;
+		    text-transform: uppercase;
+		    font-weight: 600;
+		    font-size: 0.6em;
+		    color: grey;
+		    letter-spacing: 2px;
+		}
+	</style>

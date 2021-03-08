@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_devise_params, if: :devise_controller?
   before_action :set_search
+  before_action :friendship
 
   helper_method :is_admin!
 
@@ -11,6 +12,11 @@ class ApplicationController < ActionController::Base
     @search = Mock.ransack(params[:q])
     @q = Mock.ransack(params[:q])
     @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
+  end
+
+  def friendship
+    @followers = current_mocker.followers.order("created_at DESC").paginate(page: params[:followers_page], per_page: 10)
+    @following = current_mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
   end
 
 

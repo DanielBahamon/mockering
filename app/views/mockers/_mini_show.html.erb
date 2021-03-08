@@ -12,7 +12,7 @@
 								<div class="d-table-cell v-middle">
 									<div class="row m-0 fullwidth">
 										<div class="col p-0">
-											<h4 class="_cardtitle _fs15pt"><%= mocker.first_name if mocker.first_name? %> <%= mocker.first_name if mocker.last_name? %></h4>
+											<h4 class="_cardtitle _fs15pt"><%= mocker.first_name if mocker.first_name? %> <%= mocker.last_name if mocker.last_name? %></h4>
 											<div class="text-ellipsis">
 												<p class="_fs10pt m-0 _fs90per _username">@<%= mocker.slug %> <%= image_tag badge_icon(mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mocker) if mocker.verification? %></p>
 											</div>
