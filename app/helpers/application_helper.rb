@@ -58,11 +58,11 @@ module ApplicationHelper
 		if mocker.verification == '0'
 			'Verificated'
 		elsif mocker.verification == '1' 
-			'Contributor Learner'
+			'Contributor'
 		elsif mocker.verification == '2'
-			'Contributor Master'
+			'Master'
 		elsif mocker.verification == '3'
-			'Contributor Legend'
+			'Legend'
 		end
 	end
 
