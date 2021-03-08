@@ -586,6 +586,66 @@
   .col_navfooter.col-3.active {
     text-shadow: 0 0 9px #3200ed;
   }
+  ._col_search_mobile{
+    border-radius: 15px;
+    padding: 0;
+    background: #f3f3fa;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+  }
+  ._col_search_mobile:hover{
+    border-radius: 15px;
+    padding: 0;
+    background: #ffffff !important;
+    box-shadow: 0 3px 5px -2px #eaeaea;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+  }
+  ._col_search_mobile:hover ._searchfield{
+    background: #ffffff !important;
+  }
+  ._searchabsolute ._btn_icon i{
+  }
+  #mocks a.link_card.card.box._card.masonry-brick{
+    margin:5px;
+  }
+
+  .container-lg{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  #paypal-button-container_1{
+    text-align:center;
+  }
+  ._card{
+    -webkit-transition: all .2s ease-in !important;
+    transition: all .2s ease-in !important;
+  }
+  @media(max-width: 575px){
+    ._time{
+      right: 5px !important;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 1300px;
+    }
+  }
+  @media(max-width: 575px){
+    ._content_principal._1{
+      padding:0 !important;
+    }
+    ._nav._1{
+      border-radius:0 !important;
+    }
+    #multiCollapseSearch{
+      top:0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      border-radius: 0 !important;
+    }
+  }
   @media(max-width: 767px){
     .listsidenav{
       display: flex;
@@ -2475,164 +2535,6 @@
     maring-top:5px !important;
   }
 
-  ._logo_navbar ._link_logo{
-    padding-top: 9px;
-    display: block;
-  }
-  ._logo_navside{
-    margin: 0 auto;
-    padding: 30px 15px;
-  }
-  ._logo_navbar._on{
-    display: block !important;
-  }
-  ._logo_navbar{
-    display: none !important;
-  }
-  ._nav._1.active-semi{
-    position: fixed !important;
-  }
-  ._navbar_br{
-    position:fixed;
-    height:70px;
-  }
-  ._navbar_br.active-semi{
-    position:static;
-    display:block;
-  }
-  .content_big_1{
-    overflow-y: hidden !important;
-  }
-  ._nav._1.active-semi.active{
-    top:15px !important;
-  }
-  ._video_views i::before{
-    line-height: inherit !important;
-  }
-  ._col_btn_action_mock a i::before {
-    line-height: 1.25;
-  }
-  @media(max-width: 767px){
-    ._logo_navbar{
-      display: block !important;
-    }
-    ._nav._1._shadow.active-semi.active{
-      top:0 !important;
-      left: 0 !important;
-      right:0 !important;
-    }
-    ._nav._1.active-semi.active{
-      top:0 !important;
-    }
-    ._nav._1.active-semi{
-      left:0 !important;
-      right:0 !important;
-    }
-  }
-  @media(max-width: 611px){
-    ._content_principal .mocks_content #mocks ._card{
-      width:95vw;
-      margin-bottom: 15px;
-    }
-
-  }
-  @media(max-width: 575px){
-    ._nav._1._shadow.active-semi.active{
-      left: 15px !important;
-      padding:0; 
-    }
-  }
-  @media(max-width: 565px){
-    ._nav._1._shadow.active-semi.active {
-      top: 0;
-      left: 0 !important;
-      right: 0;
-    }
-    ._nav._1.active-semi{
-      left: 0 !important;
-      right: 0 !important;
-    }
-  }
-  @media(max-width: 322px){
-    ._logo_navbar{
-      display: none !important;
-    }
-    ._link_logo ._logonav._2,
-    ._link_logo ._logonav._1{
-      display: none !important;
-      padding: 0 !important;
-    }
-    ._logo_navbar{
-      padding: 0 !important;
-    }
-    .col_navfooter.active a i{
-      top:0 !important;
-      font-size: 1.2rem !important;
-    }
-    .col_navfooter.active a p{
-      display: none !important;
-    }
-  }
-  ._col_search_mobile{
-    border-radius: 15px;
-    padding: 0;
-    background: #f3f3fa;
-    transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-  }
-  ._col_search_mobile:hover{
-    border-radius: 15px;
-    padding: 0;
-    background: #ffffff !important;
-    box-shadow: 0 3px 5px -2px #eaeaea;
-    transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-  }
-  ._col_search_mobile:hover ._searchfield{
-    background: #ffffff !important;
-  }
-  ._searchabsolute ._btn_icon i{
-  }
-  #mocks a.link_card.card.box._card.masonry-brick{
-    margin:5px;
-  }
-
-  .container-lg{
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
-  #paypal-button-container_1{
-    text-align:center;
-  }
-  ._card{
-    -webkit-transition: all .2s ease-in !important;
-    transition: all .2s ease-in !important;
-  }
-  @media(max-width: 575px){
-    ._time{
-      right: 5px !important;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .container, .container-sm, .container-md, .container-lg, .container-xl {
-        max-width: 1300px;
-    }
-  }
-  @media(max-width: 575px){
-    ._content_principal._1{
-      padding:0 !important;
-    }
-    ._nav._1{
-      border-radius:0 !important;
-    }
-    #multiCollapseSearch{
-      top:0 !important;
-      right: 0 !important;
-      left: 0 !important;
-      border-radius: 0 !important;
-    }
-  }
 
 
 /* END NAVBAR */
