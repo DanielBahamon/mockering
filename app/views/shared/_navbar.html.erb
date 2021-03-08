@@ -457,6 +457,11 @@
   <% end %>
 </style>
 <script type="text/javascript">
+  $("#followers").html('<%=  escape_javascript(render :partial => 'mockers/followers') %>');
+  $("#following").html('<%=  escape_javascript(render :partial => 'mockers/following') %>');
+  $('.pagination a').attr('data-remote', 'true');
+</script>
+<script type="text/javascript">
   
   $(document).ready(function(){
       $("._btn_out_sidebar").click(function(){

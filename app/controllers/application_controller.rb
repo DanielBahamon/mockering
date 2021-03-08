@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_search
   before_action :authenticate_mocker!, only: [:friendship]
   before_action :friendship
-  helper_method :current_mocker
   helper_method :is_admin!
 
 
@@ -16,16 +15,13 @@ class ApplicationController < ActionController::Base
   end
 
   def friendship
-    if !current_mocker.nil?
-      @followers = current_mocker.followers.order("created_at DESC").paginate(page: params[:followers_page], per_page: 10)
-      @following = current_mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
-    end
+      @mocker = Mocker.find_by(params[:id])
+        @followers = @mocker.followers.order("created_at DESC").paginate(page: params[:followers_page], per_page: 10)
+        @following = @mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
+
+      
   end
 
-
-  def current_mocker    
-    Mocker.find_by(id: session[:mocker_id])  
-  end
 
   protected
 
