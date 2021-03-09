@@ -72,7 +72,7 @@
 									<li>
 										<small class="_title_li">Following</small>
 									</li>
-									<% current_mocker.following.first(4).each do |following| %>
+									<% current_mocker.following.limit(4).each do |following| %>
 										<li>
 											<%= link_to following do %>
 												<div class="row">

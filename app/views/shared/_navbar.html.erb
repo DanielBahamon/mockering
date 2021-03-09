@@ -88,7 +88,7 @@
             <div class="row m-0">
               <div class="col col_search _1 p-0">
                 <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
-                  <%= text_field_tag :q, nil, placeholder: "What are you looking for?", class: "_searchfield col-10 gcse-search", value: "#{params[:q] if params[:q].present?}", required: true %>
+                  <%= text_field_tag :q, nil, placeholder: "What are you looking for?", class: "_searchfield col-10 ", value: "#{params[:q] if params[:q].present?}", required: true %>
                   <div class="col-2 p-0 d-none d-xs-block">
                     <div class="d-table fullscreen ">
                       <div class="d-tablecell v-middle text-center">
@@ -174,6 +174,16 @@
                 <div class="d-table fullscreen ">
                   <div class="d-tablecell v-middle text-center">
                     <ul class="navbar-nav float-right _navbar _console">
+                      
+                      <li class="nav-item btn-mini icon_navbar" style="height: 40px;">
+                        <div class="d-table fullsize">
+                          <div class="d-tablecell v-middle">
+                            <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
+                              <i class="bi-plus-square"></i>
+                            <% end %>
+                          </div>
+                        </div>
+                      </li>
                       <li class="nav-item">
                         <div class="d-table fullscreen">
                           <div class="d-tablecell v-middle">
@@ -246,7 +256,7 @@
             <div class="col _col_search_mobile">
               <%= form_tag search_path, class: "row m-0", method: :get do |f| %>
                 <div class="col-10 ">
-                  <%= text_field_tag :q, nil, placeholder: "What are you looking for?", class: "_searchfield col-10 gcse-search", value: "#{params[:q] if params[:q].present?}", required: true %>
+                  <%= text_field_tag :q, nil, placeholder: "What are you looking for?", class: "_searchfield col-10", value: "#{params[:q] if params[:q].present?}", required: true %>
                 </div>
                 <div class="col-2 p-0">
                   <div class="d-table fullscreen ">

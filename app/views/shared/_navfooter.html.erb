@@ -1,7 +1,7 @@
 <div class="space_navfooter d-block d-md-none" style="height:52px;"></div>
 <div class="_navfooter d-block d-md-none">
 	<div class="cont_navfooter">
-		<% unless current_page?(conversations_path) || current_page?(edit_mocker_registration_path) || current_page?(new_mock_path) %>
+		<!--<% unless current_page?(conversations_path) || current_page?(edit_mocker_registration_path) || current_page?(new_mock_path) %>
 	        <% if mocker_signed_in? %>
 				<div class="_contbtn_add_navfooter">
 					<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
@@ -9,7 +9,7 @@
 					<% end %>
 				</div>
 			<% end %>
-		<% end %>
+		<% end %>-->
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">
 				<li class="col_navfooter col-3 <%= 'active' if current_page?(root_path)  %>">
