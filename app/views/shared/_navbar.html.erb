@@ -174,16 +174,17 @@
                 <div class="d-table fullscreen ">
                   <div class="d-tablecell v-middle text-center">
                     <ul class="navbar-nav float-right _navbar _console">
-                      
-                      <li class="nav-item btn-mini icon_navbar" style="height: 40px;">
-                        <div class="d-table fullsize">
-                          <div class="d-tablecell v-middle">
-                            <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
-                              <i class="bi-plus-square"></i>
-                            <% end %>
+                      <% if mocker_signed_in? %>
+                        <li class="nav-item btn-mini icon_navbar" style="height: 40px;">
+                          <div class="d-table fullsize">
+                            <div class="d-tablecell v-middle">
+                              <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
+                                <i class="bi-plus-square"></i>
+                              <% end %>
+                            </div>
                           </div>
-                        </div>
-                      </li>
+                        </li>
+                      <% end %>
                       <li class="nav-item">
                         <div class="d-table fullscreen">
                           <div class="d-tablecell v-middle">
