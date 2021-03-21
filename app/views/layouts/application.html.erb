@@ -2,7 +2,10 @@
 <html prefix="og: http://ogp.me/ns#">
   <head>
     <title><%= yield(:title) %></title>
-
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@nytimesbits" />
+    <meta name="twitter:creator" content="@mockering" />
     <meta property="og:title" content="<%= yield(:title) %>" />
     <meta property="og:type" content="video.movie" />
     <meta property="og:url" content="<%= request.original_url %>" />
@@ -13,11 +16,6 @@
     <meta property="og:video" content="<%= yield(:movie_path) %>" />
     <meta property="og:description" content="<%= yield(:description_page) %>" />
     <meta property="og:image" content="<%= yield(:image_page) %>" />
-
-    <%= tag(:meta, property: "twitter:site", content: "@exceptiontrap")%>
-    <%= tag(:meta, property: "twitter:card", content: "summary_large_image")%>
-    <%= tag(:meta, property: "twitter:image", content: "#{yield(:image_page)}")%>
-    <%= tag(:meta, property: "twitter:description", content: "#{yield(:description_page)}")%>
 
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
