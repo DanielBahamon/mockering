@@ -1,4 +1,11 @@
 <% content_for :title, "#{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (@#{@mocker.slug}) • Mockering" %>
+
+<% content_for :og_header do %>
+	<%= tag(:meta, property: "og:title", content: "@#{@mocker.slug}")%>
+	<%= tag(:meta, property: "og:description", content: "#{(@mocker.first_name).capitalize} #{(@mocker.last_name).capitalize if @mocker.last_name?}")%>
+	<%= tag(:meta, property: "og:image", content: asset_url("#{avatar_url(@mocker) }"))%>
+	<%= tag(:meta, property: "twitter:card", content: "summary_large_image") %>
+<% end %>
 <div class="_conta _1 mt-sm-4">
 	<% @blocked = Block.where(mocker_id: @mocker, blocked_id: current_mocker, status: true).present? %>
 	<% @blocked_loop = Block.where(mocker_id: current_mocker, blocked_id: @mocker, status: true).present? %>
@@ -167,8 +174,10 @@
 										  <div class="tab-pane fade" id="bio" role="tabpanel" aria-labelledby="bio-tab">
 											<div class="row m-0">
 										  		<div class="col-12">
-													<div class="readmore _1">
-														<p class="keepspaces _bio"><%= @mocker.bio %></p>
+										  			<div class="jumbotron">
+														<div class="readmore _1">
+															<p class="keepspaces _bio p-5"><%= @mocker.bio %></p>
+														</div>
 													</div>
 												</div>
 

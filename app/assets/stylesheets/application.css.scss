@@ -2693,9 +2693,15 @@
 /* END SIDENAV */
 
 /* STEPS */
-
+  a.ssb-icon.ssb-whatsapp_web {
+      display: none;
+  }
   ._btn._data{
     cursor: pointer;
+    color:black !important;
+  }
+  ._btn._data:hover{
+    color:black !important;
   }
   .list-group-item._1:first-child{
     border-radius: 0 !important;
@@ -4441,6 +4447,13 @@
   }
   [data-theme="dark"] .ks-cboxtags li label{
     background: #121212;
+  }
+
+  [data-theme="dark"] ._btn._data{
+    color:white !important;
+  }
+  [data-theme="dark"] ._btn._data:hover{
+    color:white !important;
   }
   [data-theme="dark"] .navbar-nav._navbar .dropdown-menu#navbarNotificationsItems{
     background: #1b1b1b;

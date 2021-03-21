@@ -7,6 +7,8 @@
     <meta name="theme-color" content="#3f0ef6">
     <%= action_cable_meta_tag %>
     <%= render 'application/favicon' %>
+    <%= yield(:og_header) %>
+    <%= tag(:meta, property: "twitter:site", content: "@exceptiontrap") %>
 
     <link href="https://vjs.zencdn.net/7.8.2/video-js.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

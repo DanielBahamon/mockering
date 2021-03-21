@@ -1,4 +1,14 @@
 <% content_for :title, "#{@mock.title} • Mockering" %>
+<% content_for :og_header do %>
+	<%= tag(:meta, property: "og:title", content: "#{@mock.title}")%>
+	<%= tag(:meta, property: "og:description", content: "#{@mock.description if @mock.description? }")%>
+	<% if @mock.picture.present? %>
+		<%= tag(:meta, property: "og:image", content: asset_url("#{@mock.picture.url(:large) }"))%>
+	<% else %>
+		<%= tag(:meta, property: "og:image", content: asset_url("#{@mock.movie.url(:thumb) }"))%>
+	<% end %>
+	<%= tag(:meta, property: "twitter:card", content: "summary_large_image") %>
+<% end %>
 <div class="_conta">
 	<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
 

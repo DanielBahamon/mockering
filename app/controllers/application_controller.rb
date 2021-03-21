@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_devise_params, if: :devise_controller?
   before_action :set_search
   helper_method :is_admin!
+  before_action :is_mock
 
 
 
@@ -35,6 +36,14 @@ class ApplicationController < ActionController::Base
   def is_admin!
     unless current_mocker&.admin
       redirect_to root_path
+    end
+  end
+
+
+  def is_mock
+    
+    if @mock.present?
+      @mock = Mock.find(params[:id])
     end
   end
 
