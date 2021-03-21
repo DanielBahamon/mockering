@@ -1,11 +1,7 @@
 <% content_for :title, "#{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (@#{@mocker.slug}) • Mockering" %>
-
-<% content_for :og_header do %>
-	<%= tag(:meta, property: "og:title", content: "@#{@mocker.slug}")%>
-	<%= tag(:meta, property: "og:description", content: "#{(@mocker.first_name).capitalize} #{(@mocker.last_name).capitalize if @mocker.last_name?}")%>
-	<%= tag(:meta, property: "og:image", content: asset_url("#{avatar_url(@mocker) }"))%>
-	<%= tag(:meta, property: "twitter:card", content: "summary_large_image") %>
-<% end %>
+<% content_for :image_page, "#{avatar_url(@mocker) }" %>
+<% content_for :description_page, "#{@mocker.first_name if @mocker.first_name? } #{@mocker.last_name if @mocker.last_name? }" %>
+<% content_for :autor_page, "@#{@mocker.slug }" %>
 <div class="_conta _1 mt-sm-4">
 	<% @blocked = Block.where(mocker_id: @mocker, blocked_id: current_mocker, status: true).present? %>
 	<% @blocked_loop = Block.where(mocker_id: current_mocker, blocked_id: @mocker, status: true).present? %>
