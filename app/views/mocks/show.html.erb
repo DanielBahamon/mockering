@@ -5,7 +5,8 @@
 	<% content_for :image_page, "#{@mock.movie.url(:thumb) }" %>
 <% end %>
 <% content_for :description_page, "#{@mock.description if @mock.description? }" %>
-<% content_for :autor_page, "@#{@mock.mocker.slug }" %>
+<% content_for :autor_page, "#{@mock.mocker.slug }" %>
+<% content_for :movie_path, "#{video_path(@mock.movie)}" %>
 
 <div class="_conta">
 	<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
