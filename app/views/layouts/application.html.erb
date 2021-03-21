@@ -2,10 +2,17 @@
 <html prefix="og: http://ogp.me/ns#">
   <head>
     <title><%= yield(:title) %></title>
-    
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@nytimesbits" />
-    <meta name="twitter:creator" content="@mockering" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#3f0ef6">
+
+
+    <meta name="title" property="og:title" content="<%= yield(:title) %>">
+    <meta property="og:type" content="website">
+    <meta name="image" property="og:image" content="<%= yield(:image_page) %>">
+    <meta name="description" property="og:description" content="">
+    <meta name="author" content="<%= yield(:autor_page) %>">
+
+
     <meta property="og:title" content="<%= yield(:title) %>" />
     <meta property="og:type" content="video.movie" />
     <meta property="og:url" content="<%= request.original_url %>" />
@@ -16,6 +23,11 @@
     <meta property="og:video" content="<%= yield(:movie_path) %>" />
     <meta property="og:description" content="<%= yield(:description_page) %>" />
     <meta property="og:image" content="<%= yield(:image_page) %>" />
+
+    <%= tag(:meta, property: "twitter:site", content: "@exceptiontrap")%>
+    <%= tag(:meta, property: "twitter:card", content: "summary_large_image")%>
+    <%= tag(:meta, property: "twitter:image", content: "#{yield(:image_page)}")%>
+    <%= tag(:meta, property: "twitter:description", content: "#{yield(:description_page)}")%>
 
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
