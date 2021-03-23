@@ -6,39 +6,14 @@
 	
 	<div class="form-group">
 		<%= form_for @mock, html: { multipart: true } do |f| %>
-		    <div class="accordion _1" id="accordionNewMock">
-		      <div class="card">
-		        <div class="card-header" id="headingTwo">
-		          <h2 class="mb-0">
-		            <button class="btn btn-link btn-block text-left collapsed relative" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		             <i class="far fa-file-image absolute right-0"></i> Picture (JPG/PNG/GIF)
-		            </button>
-		          </h2>
-		        </div>
-		        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionNewMock">
-		          <div class="card-body">
-		            <div class="row">
-		              <div class="col-12">
-		                <div class="field">
-		                  <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
-		                  <p id="output_2"></p>
-		                </div>
-		              </div>  
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		      <div class="card">
-		        <div class="card-header" id="headingThree">
-		          <h2 class="mb-0">
-		            <button class="btn btn-link btn-block text-left collapsed relative" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		             <i class="far fa-file-alt absolute right-0"></i> Information 
-		            </button>
-		          </h2>
-		        </div>
-		        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionNewMock">
-		          <div class="card-body">
-		          	<div class="row">
+
+            <div class="row m-0">
+              <div class="col-12 col-md-4">
+                <h4 class="_fw600">Edit information</h4>
+                <br>
+              </div>
+              <div class="col-12 col-md-8">
+                <div class="row">
 		              <div class="col-12 ">
 		                <div class="field">
 		                  <%= f.label :title %><br/>
@@ -54,10 +29,11 @@
 		              <div class="col-12">
 		                <div class="d-table fullscreen">
 		                    <div class="d-table-cell v-middle">
-		                        <div class="field"  style="padding:15px;">
-		                            <label class="_fw600">
-		                                <%= f.check_box :privated %> Private
-		                            </label>
+		                        <div class="field">
+		                        	<div class="custom-control custom-switch _1 pl-0">
+									  <%= f.check_box :privated, class: "custom-control-input" %>
+									  <label class="custom-control-label" for="mock_privated"><b>Private mock</b></label>
+									</div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -65,10 +41,11 @@
 		              <div class="col-12">
 		                <div class="d-table fullscreen">
 		                    <div class="d-table-cell v-middle">
-		                        <div class="field"  style="padding:15px;">
-		                            <label class="_fw600">
-		                                <%= f.check_box :age_restricted %> Age restriction
-		                            </label>
+		                        <div class="field">
+		                        	<div class="custom-control custom-switch _1 pl-0">
+										<%= f.check_box :age_restricted, class: "custom-control-input"  %>
+										<label class="custom-control-label" for="mock_age_restricted"><b>Age restricted mock</b></label>
+									</div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -76,25 +53,54 @@
 		              <div class="col-12">
 		                <div class="d-table fullscreen">
 		                    <div class="d-table-cell v-middle">
-		                        <div class="field"  style="padding:15px;">
-		                            <label class="_fw600">
-		                                <%= f.check_box :unlist %> Unlist
-		                            </label>
+		                        <div class="field">
+		                        	<div class="custom-control custom-switch _1 pl-0">
+		                        		<%= f.check_box :unlist, class: "custom-control-input" %>
+										<label class="custom-control-label" for="mock_unlist"><b>Unlist mock</b></label>
+									</div>
 		                        </div>
 		                    </div>
 		                </div>
 		              </div>
-		          	</div>
-		          </div>
 		        </div>
-		      </div>
-		    </div>
+              </div>
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 col-md-4">
+                <h4 class="_fw600">Edit thumbnail</h4>
+                <br>
+              </div>
+              <div class="col-12 col-md-8">
+                <section class="col-12 _col_inputsaccount p-b-0 _upload_big mt-5">
+                    <div class="progress d-none" id="progress-bar">
+                      <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                        <span class="sr-only" id="progress-bar-text"></span>
+                      </div>
+                    </div>
+                    <div class="fullscreen p-5 _file_upload">
+                      <div class="d-table fullscreen">
+                        <div class="d-table-cell v-middle text-center">
+                          <img class="_img_upload_mock_2" src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
+                          <h6 class="_fw600 _is_not_ready_2 d-block" style="opacity: 0.6">Update your thumbnail (JPG/PNG/GIF)</h6>
+                          <h6 class="_fw600 _is_ready_2 d-none" style="opacity: 0.6">Your thumbnail is ready to update!</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
+                </section>
+              </div>
+            </div>
 		    <br>
-		    <div class="row">
-		    	<div class="col-12 text-right">
-		    		<%= f.submit 'Add mock', class: 'btn _btn _action f-right' %>
-		    	</div>
-		    </div>
+            <div class="row m-0">
+              <div class="col-12 col-md-8 offset-md-4 text-right">
+                <div class="row m-0">
+                  <div class="col-12 col-md-6 offset-md-3">
+                    <%= f.submit 'Update!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Update, please hold on...' } %>
+                  </div>
+                </div>
+              </div>
+            </div>
 		<% end %>
 	</div>
 
@@ -139,5 +145,17 @@
 	      }
 	    }); 
 	  }
+	</script>
+	<script type="text/javascript">
+		
+	  $('#file-selector_2').blur(function(){
+	    if( !$(this).val() ) {
+	      $("._is_ready_2").toggleClass('d-block');
+	      $("._is_ready_2").toggleClass('d-none');
+	      $("._is_not_ready_2").toggleClass('d-none');
+	      $("._is_not_ready_2").toggleClass('d-block');
+	      $("._img_upload_mock_2").toggleClass('_on');
+	    }
+	  });
 	</script>
 </div>

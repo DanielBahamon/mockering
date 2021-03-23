@@ -70,6 +70,52 @@
           <fieldset class="msf_hide">
             <div class="row m-0">
               <div class="col-12 col-md-4">
+                <h4 class="_fw600">Has your video some restriction?</h4>
+                <br>
+              </div>
+              <div class="col-12 col-md-8">
+                <div class="d-table fullscreen">
+                    <div class="d-table-cell v-middle">
+                        <div class="field">
+	                    	<div class="custom-control custom-switch _1 pl-0">
+								<%= f.check_box :privated, class: "custom-control-input" %>
+								<label class="custom-control-label" for="mock_privated"><b>Private mock</b></label>
+							</div>
+                        </div>
+                        <div class="field">
+                        	<div class="custom-control custom-switch _1 pl-0">
+								<%= f.check_box :age_restricted, class: "custom-control-input"  %>
+								<label class="custom-control-label" for="mock_age_restricted"><b>Age restricted mock</b></label>
+							</div>
+                        </div>
+                        <div class="field">
+                        	<div class="custom-control custom-switch _1 pl-0">
+                        		<%= f.check_box :unlist, class: "custom-control-input" %>
+								<label class="custom-control-label" for="mock_unlist"><b>Unlist mock</b></label>
+							</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-12 col-md-8 offset-md-4 text-right">
+                <div class="row m-0">
+                  <div class="col-12 col-md-6 mt-2">
+                    <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
+                  </div>
+                  <div class="col-12 col-md-6 mt-2">
+                    <button class="btn btn-lg btn-block _btn_form_next" onclick="msf_btn_next()">Next <i class="bi-arrow-right-short"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="msf_hide">
+
+            <div class="row m-0">
+              <div class="col-12 col-md-4">
                 <h4 class="_fw600">Add some tags (max 9)</h4>
                 <br>
               </div>
@@ -351,48 +397,6 @@
             <br>
             <div class="row m-0">
               <div class="col-12 col-md-4">
-                <h4 class="_fw600">Has your video some restriction?</h4>
-                <br>
-              </div>
-              <div class="col-12 col-md-8">
-                <div class="d-table fullscreen">
-                    <div class="d-table-cell v-middle">
-                        <div class="field"  style="padding:15px;">
-                            <label class="_fw600">
-                                <%= f.check_box :privated %> Private
-                            </label>
-                        </div>
-                        <div class="field"  style="padding:15px;">
-                            <label class="_fw600">
-                                <%= f.check_box :age_restricted %> Age restriction
-                            </label>
-                        </div>
-                        <div class="field"  style="padding:15px;">
-                            <label class="_fw600">
-                                <%= f.check_box :unlist %> Unlist
-                            </label>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="row m-0">
-              <div class="col-12 col-md-8 offset-md-4 text-right">
-                <div class="row m-0">
-                  <div class="col-12 col-md-6">
-                    <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <button class="btn btn-lg btn-block _btn_form_next" onclick="msf_btn_next()">Next <i class="bi-arrow-right-short"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="msf_hide">
-            <div class="row m-0">
-              <div class="col-12 col-md-4">
                 <h4 class="_fw600">Whose credits are the video?</h4>
                 <br>
               </div>
@@ -401,34 +405,17 @@
                   <label>Credits</label>
                   <%= f.text_field :credits, class: 'form-control', required: true %>
                 </div>
-                <section class="col-12 _col_inputsaccount p-b-0 _upload_big mt-5">
-                    <div class="progress d-none" id="progress-bar">
-                      <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
-                        <span class="sr-only" id="progress-bar-text"></span>
-                      </div>
-                    </div>
-                    <div class="fullscreen p-5 _file_upload">
-                      <div class="d-table fullscreen">
-                        <div class="d-table-cell v-middle text-center">
-                          <img class="_img_upload_mock_2" src="https://mockering.s3-sa-east-1.amazonaws.com/assets/upload.svg">
-                          <h6 class="_fw600 _is_not_ready_2 d-block" style="opacity: 0.6">Upload your picture (JPG/PNG/GIF)</h6>
-                          <h6 class="_fw600 _is_ready_2 d-none" style="opacity: 0.6">Your picture is ready to upload</h6>
-                        </div>
-                      </div>
-                    </div>
-                    <%= f.file_field :picture, class: "file-selector", id: "file-selector_2" %>
-                </section>
               </div>
             </div>
             <br>
             <div class="row m-0">
               <div class="col-12 col-md-8 offset-md-4 text-right">
                 <div class="row m-0">
-                  <div class="col-12 col-md-6">
+                  <div class="col-12 col-md-6 mt-2">
                     <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
                   </div>
-                  <div class="col-12 col-md-6">
-                    <%= f.submit 'Upload!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Uploading...' } %>
+                  <div class="col-12 col-md-6 mt-2">
+                    <%= f.submit 'Upload!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Uploading, please hold on...' } %>
                   </div>
                 </div>
               </div>
@@ -562,15 +549,6 @@
       $("._is_not_ready").toggleClass('d-none');
       $("._is_not_ready").toggleClass('d-block');
       $("._img_upload_mock").toggleClass('_on');
-    }
-  });
-  $('#file-selector_2').blur(function(){
-    if( !$(this).val() ) {
-      $("._is_ready_2").toggleClass('d-block');
-      $("._is_ready_2").toggleClass('d-none');
-      $("._is_not_ready_2").toggleClass('d-none');
-      $("._is_not_ready_2").toggleClass('d-block');
-      $("._img_upload_mock_2").toggleClass('_on');
     }
   });
 
