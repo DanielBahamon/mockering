@@ -38,14 +38,14 @@
                   <section class="col-12 _col_inputsaccount p-b-0">
                     <%= f.label "Username / Email" %>
                     <%= f.text_field :login,
-                              required: false,
+                              required: true,
                               placeholder: "Username or email", label: false,
                               autocomplete: "email", class: "_input _2 form-control" %>
                   </section>
                   <section class="col-12 _col_inputsaccount p-b-0">
                     <%= f.label "Password" %>
                     <%= f.password_field :password,
-                                required: false, 
+                                required: true, 
                                 placeholder: "Your password", 
                                 label: false,
                                 autocomplete: "current-password", class: "_input _2 form-control" %>

@@ -6,7 +6,8 @@
           <section class="row _session">
             <div class="col-12 text-center">
               <%= link_to root_path, data: { no_turbolink: true } do %>
-                <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering-dark.svg', class: "_logo _1", alt: 'Mockering'%>
+                <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_black.svg', class: "_logo _1 d-none-moon", alt: 'Mockering'%>
+                <%= image_tag 'https://mockering.s3-sa-east-1.amazonaws.com/assets/mockering_dark_mode.svg', class: "_logo _1 d-none-sun", alt: 'Mockering'%>
               <% end %>
               <p class="_text _1 _ttcommons">By human beings for everyone.</p>
             </div>

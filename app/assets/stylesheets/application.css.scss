@@ -3923,6 +3923,7 @@
     width:100% !important;
     max-width:100% !important;
     flex: 0 0 99.9999999% !important;
+    padding: 15px 0;
   }
   #_row_sidenav1{
       min-height: 250px;
@@ -4307,6 +4308,9 @@
   [data-theme="dark"] .no-notification {
     background: #121212;
   }
+  [data-theme="dark"] .flash.alert{
+    color:white !important;
+  }
   [data-theme="dark"] ._btn._action:hover{
     box-shadow: 0 0 0 2px #121212, 0 0 0 3px #4b01ff, 0 0 0 4px rgba(255, 255, 255, 0.5);
   }
@@ -4422,6 +4426,9 @@
     color:#ffffff;
 
   }
+  [data-theme="dark"] ._link._1 {
+    color: #c282f0 !important;
+  }
   [data-theme="dark"] .modal-content{
     background-color: #121212;
   }
@@ -4520,7 +4527,7 @@
     border-color:#2a2643;
   }
   [data-theme="dark"] ._col_inputsaccount ._btn._login{
-    background: linear-gradient(21deg, #2c048e, #4b01ff, #b501ff) !important;
+    background: linear-gradient(21deg, #4e3b7c, #5c4d82, #c25dec) !important;
   }
   [data-theme="dark"] ._btnround{
     background: #121212;

@@ -91,14 +91,14 @@
                                   required: true,
                                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                                   input_html: { autocomplete: "new-password" },
-                                  class: "_input _2 form-control m-bottom1", placeholder: "yourPassword369&" %>
+                                  class: "_input _2 form-control m-bottom1", placeholder: "YourPassword" %>
                       </section>
                       <section class="col-12 _col_inputsaccount p-b-0">
                         <%= f.label "Confirm your new password" %>
                         <%= f.password_field :password_confirmation,
                                   required: true,
                                   input_html: { autocomplete: "new-password" },
-                                  class: "_input _2 form-control m-bottom1", placeholder: "yourPassword369&" %>
+                                  class: "_input _2 form-control m-bottom1", placeholder: "YourPassword" %>
                       </section>
                       <section class="col-12 _col_inputsaccount p-b-0">
                         <%= recaptcha_tags %>

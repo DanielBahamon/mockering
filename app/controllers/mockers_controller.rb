@@ -114,8 +114,8 @@ class MockersController < ApplicationController
 	    	render json: { valid: false }
 	    elsif params[:slug].match(/\s/) || !params[:slug].match(/\A[a-zA-Z0-9]+\Z/)
 	    	render json: { valid: false }
-	    elsif !params[:slug].match(params[:slug].downcase)
-	    	render json: { valid: false }
+	    # elsif !params[:slug].match(params[:slug].downcase)
+	    	# render json: { valid: false }
 	    elsif params[:slug] == 'google' || params[:slug] == 'amazon' || params[:slug] == 'youtube' || 
 	    	  params[:slug] == 'facebook' || params[:slug] == 'twitter' || params[:slug] == 'apple' || 
 	    	  params[:slug] == 'billgates' || params[:slug] == 'stevejobs' || params[:slug] == 'fifa'|| 
