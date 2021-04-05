@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  # root "mocks#index"
-  root "pages#maintenance"
+  root "mocks#index"
+  # root "pages#maintenance"
   # devise_scope :mocker do
 
   #   authenticated  do
