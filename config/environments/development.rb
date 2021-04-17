@@ -87,12 +87,12 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     path: ':class/:attachment/:id/:style/:filename',
-    s3_host_name: 's3-sa-east-1.amazonaws.com',
+    s3_host_name: 'bahamon.amazonaws.com',
     s3_credentials: {
-      bucket: 'airpikachu6',
+      bucket: 'bahamon',
       access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
       secret_access_key: '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',
-      s3_region: 'sa-east-1'
+      s3_region: 'us-east-1'
     }
   }
 
