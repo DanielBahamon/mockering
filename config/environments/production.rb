@@ -131,16 +131,29 @@ Rails.application.configure do
   # })
 
 
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   path: ':class/:attachment/:id/:style/:filename',
+  #   s3_host_name: 's3-sa-east-1.amazonaws.com',
+  #   url: ':s3_domain_url',
+  #   s3_region: 'sa-east-1',
+  #   s3_credentials: {
+  #     bucket: 'mockering',
+  #     access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
+  #     secret_access_key: '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'
+  #   }
+  # }
+
+
   config.paperclip_defaults = {
     storage: :s3,
     path: ':class/:attachment/:id/:style/:filename',
-    s3_host_name: 's3-sa-east-1.amazonaws.com',
-    url: ':s3_domain_url',
-    s3_region: 'sa-east-1',
+    s3_host_name: 's3.amazonaws.com',
     s3_credentials: {
-      bucket: 'mockering',
+      bucket: 'mockertest',
       access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
-      secret_access_key: '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'
+      secret_access_key: 'hCdoShF3iG2MtpyphpTZvt5tR3oieIuDD/0bAymg',
+      s3_region: 'us-east-1'
     }
   }
 end
