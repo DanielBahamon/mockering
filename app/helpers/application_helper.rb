@@ -3,7 +3,7 @@ module ApplicationHelper
 	
 	def avatar_url(mocker)
 		if mocker == nil
-		      "https://mockering.s3-sa-east-1.amazonaws.com/assets/avatar-placeholder.png"
+		      "https://s3.amazonaws.com/mockertest/assets/avatar-placeholder.png"
 		elsif mocker.provider != "facebook" && !mocker.photo?
 		    if mocker.image
 		      mocker.image
@@ -44,13 +44,13 @@ module ApplicationHelper
 
 	def badge_icon(mocker)
 		if mocker.verification == '0'
-			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-verification.svg"
+			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-verification.svg"
 		elsif mocker.verification == '1'
-			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor.svg"
+			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-contribuitor.svg"
 		elsif mocker.verification == '2'
-			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-master.svg"
+			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-contribuitor-master.svg"
 		elsif mocker.verification == '3'
-			"https://mockering.s3-sa-east-1.amazonaws.com/assets/images/badges/badge-contribuitor-legend.svg"
+			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-contribuitor-legend.svg"
 		end
 	end
 
