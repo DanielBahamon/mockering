@@ -232,7 +232,7 @@ Rails.application.routes.draw do
 
   get "/500", :to => "errors#internal_error"
 
-  get 'ads.txt', to: 'pages#ads'
+  get 'ads.txt', :to => "pages#ads.txt"
 
 
   # %w( 404 422 500 ).each do |code|
