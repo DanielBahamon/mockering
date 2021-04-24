@@ -84,10 +84,13 @@ Rails.application.configure do
   #    :enable_starttls_auto => true
   #}
 
+  #config.action_controller.asset_host = "d1pz8ydt35piy1.cloudfront.net"
+
   config.paperclip_defaults = {
     storage: :s3,
     path: ':class/:attachment/:id/:style/:filename',
-    s3_host_name: 's3.amazonaws.com',
+    s3_host_name: 'd1pz8ydt35piy1.cloudfront.net',
+    s3_host_alias: 'd1pz8ydt35piy1.cloudfront.net',
     s3_credentials: {
       bucket: 'bahamon',
       access_key_id: 'AKIAIR3RVUMFAIL2GU2A',

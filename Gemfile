@@ -46,6 +46,7 @@ gem "jquery-fileupload-rails"
 gem 'mail_form', '~> 1.7', '>= 1.7.1'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'ransack'
+gem 'cloudfront-rails'
 gem 'activesupport', '~> 5.1', '>= 5.1.7'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'impressionist', '~>1.6.1'
