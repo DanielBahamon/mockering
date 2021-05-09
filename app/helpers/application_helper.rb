@@ -44,13 +44,13 @@ module ApplicationHelper
 
 	def badge_icon(mocker)
 		if mocker.verification == '0'
-			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-verification.svg"
+			"https://dfqckra2c3mhq.cloudfront.net/assets/images/badges/badge-verification.svg"
 		elsif mocker.verification == '1'
-			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-contribuitor.svg"
+			"https://dfqckra2c3mhq.cloudfront.net/assets/images/badges/badge-contribuitor.svg"
 		elsif mocker.verification == '2'
-			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-contribuitor-master.svg"
+			"https://dfqckra2c3mhq.cloudfront.net/assets/images/badges/badge-contribuitor-master.svg"
 		elsif mocker.verification == '3'
-			"https://s3.amazonaws.com/mockertest/assets/images/badges/badge-contribuitor-legend.svg"
+			"https://dfqckra2c3mhq.cloudfront.net/assets/images/badges/badge-contribuitor-legend.svg"
 		end
 	end
 
