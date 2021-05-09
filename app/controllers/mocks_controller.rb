@@ -112,7 +112,7 @@ class MocksController < ApplicationController
 	    # Display all the host reviews to host (if this user is a guest)
 	    @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
-		@related_mocks = @mock.find_related_tags.where(privated: false, reported: false, unlist: false)
+		@related_mocks = @mock.find_related_tags.where(privated: false, reported: false, unlist: false).paginate(page: params[:page], per_page: 10)
 
 		@reported = MockReport.where(mock_id: @mock.id).count
 		@reported_0 = MockReport.where(mock_id: @mock.id, classification: 0).count
