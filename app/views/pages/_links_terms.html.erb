@@ -10,8 +10,16 @@
 	<%= link_to 'Privacy', privacy_path, class: "_link _2 m-0-auto text-center", target: "_blank" %>
 	<%= link_to 'Terms', terms_path, class: "_link _2 m-0-auto text-center", target: "_blank" %>
 </div>
+<br>
+<div class="cont_social">
+	<ul class="d-flex">
+		<li><a class="_social" href="https://www.tiktok.com/@mockering" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+		<li><a class="_social" href="https://www.instagram.com/mockering" target="_blank"><i class="bi bi-instagram"></i></a></li>
+		<li><a class="_social" href="https://twitter.com/mockering" target="_blank"><i class="bi bi-twitter"></i></a></li>
+	</ul>
+</div>
 <div class="cont_links_terms"><br>
-    <sup style="opacity: 0.6;">by <a href="https://bahamon.io" target="_blank" class="_link _2"><b>Bahamon.io</b></a></sup>
+    <sup style="opacity: 0.4;">by <a href="https://bahamon.io" target="_blank" class="_link _2"><i>Bahamon.io</i></a></sup>
 </div> 
 <style type="text/css">
 	._link._2{
@@ -24,5 +32,17 @@
 	.cont_links_terms a{
 		padding-right: 5px;
 		font-size: 10pt;
+	}
+	.cont_social ul li a:hover{
+		background: transparent !important;
+	}
+	.cont_social ul li a::before{
+		display: none !important;
+	}
+	.cont_social ul {
+	    list-style: none;
+	    padding: 0;
+	    margin: 0 auto;
+	    width: fit-content;
 	}
 </style>
