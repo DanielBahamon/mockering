@@ -4,45 +4,8 @@
 		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
 					<div class="_board">
-
 						<%= render 'tags' %>
 						<% render 'shared/categories' %>
-							<div class="row" id="alert_home">
-								<div class="col-12 p-4">
-									<div class="alert alert-secondary" role="alert">
-										<a href="#" class="close_alert_home"><i class="bi bi-x"></i></a>
-										<h4 class="alert-heading">Hi there! 👋</h4>
-								    <p style="color:#6c757d;">Unfortunately, due to the high cost of the servers we have been forced to add advertisements to the platform. <br/>Sorry for the inconvenience and keep your mind open to new ideas. </p>
-										<figure class="text-end">
-										  <figcaption class="blockquote-footer text-right">
-										    <cite title="Source Title">Daniel Bahamón</cite>
-										  </figcaption>
-										</figure>
-									  <hr>
-									  <small class="m-0" style="color:#6c757d;">If you want to help us grow and earn your legendary contributor badge <img class="_badge_verification" src="https://dfqckra2c3mhq.cloudfront.net/assets/images/badges/badge-contribuitor-legend.svg">, you can <%= link_to 'donate here', contribute_path, class: "_link _2 alert-link" %>. Another way to help us is to click on the ads 🙌</small>
-									</div>
-								</div>
-							</div>
-							<script type="text/javascript">
-							  $(document).ready(function(){
-							      $(".close_alert_home").click(function(){
-							          $("#alert_home").toggleClass("d-none");
-							      });
-
-							  });
-							</script>
-							<style type="text/css">
-								a.close_alert_home{
-									float:right;
-									color:grey;
-									font-size: 18pt;
-								}
-								a.close_alert_home i{
-							    height: auto;
-							    display: block;
-								}
-							</style>
-
 							<% if params[:tag].present? %>
 								<div class="mocks_content">
 									<div class="row m-0 m-sm-2">
@@ -74,11 +37,6 @@
 									</div>
 								<% end %>
 							<% end %>
-							<div class="row">
-								<div class="col-12">
-									<%= render 'ad1' %>
-								</div>
-							</div>
 							<% if @mocks_health.present? %>
 								<div class="mocks_category">
 									<div class="row m-0 _header_subtitle_index">
@@ -424,11 +382,6 @@
 									</div>
 								</div>
 							<% end %>
-							<div class="row">
-								<div class="col-12">
-									<%= render 'ad1' %>
-								</div>
-							</div>
 							<% if @mocks_music.present? %>
 								<div class="mocks_category">
 									<div class="row m-0 _header_subtitle_index">
@@ -449,6 +402,11 @@
 									</div>
 								</div>
 							<% end %>
+							<div class="row">
+								<div class="col-12">
+									<%= render 'ad1' %>
+								</div>
+							</div>
 					</div>
 				</div>
 			</div>
