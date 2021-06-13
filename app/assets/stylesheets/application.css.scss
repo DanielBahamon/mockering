@@ -584,7 +584,7 @@
     font-size: 10pt;
   }
   .col_navfooter.col-3.active {
-    text-shadow: 0 2px 4px #3200ed;
+    text-shadow: 0 2px 4px #3200ed75;
   }
   ._col_search_mobile{
     border-radius: 15px;
@@ -915,6 +915,52 @@
   }
 /* END GENERAL */
 
+/* ADS */
+  ._collapse_ad {
+    background: #edf4f7;
+    border-radius: 9px;
+  }
+  .ad._content{
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  ._link_collapse i{
+    transition: all .3s ease-in-out;
+    display: inline-block;
+    line-height: .7;
+    left: -5px;
+    position: relative;
+  }
+  ._link_collapse.collapsed i {
+    transform: rotate(180deg);
+  }
+  .ad._content section p, 
+  ._link_collapse{
+    width: fit-content;
+    border-radius: 9px 9px 0 0;
+    background: #edf4f7;
+    padding: 5px 15px;
+    color: #c2c7ca !important;
+    font-size: 0.7em;
+    font-weight: 100;
+    text-decoration:none;
+    margin-bottom: 0;
+  }
+  ._link_collapse:hover{
+    text-decoration:none !important;
+  }
+  ._ad_body{
+    height: 300px;
+  }
+  [data-theme="dark"] .ad._content div {
+    background: #1b1b1b;
+  }
+  [data-theme="dark"] .ad._content section p,
+  [data-theme="dark"] ._link_collapse{
+    background: #1a1a1a;
+  }
+/* END ADS */
+
 /* FONT-FAMILY */
   ._sofia{
     font-family:'Sofia Pro', 'TT Commons', 'Josefin Sans', sans-serif;
@@ -927,43 +973,7 @@
     font-family: 'Josefin Sans', 'TT Commons', 'Sofia Pro',  sans-serif;
   }
 /* END FONT-FAMILY */
-/* ADS */
 
-  .ad._content{
-    height: 300px;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-  .ad._content div{
-    width:100%;
-    height:100%;
-    display: block;
-    border-radius: 0 9px 9px 9px;
-    background: #edf4f7;
-  }
-  .ad._content section{
-    width:100%;
-    position: relative;
-    text-align:right;
-  }
-  .ad._content section p{
-    width: fit-content;
-    border-radius: 9px 9px 0 0;
-    background: #edf4f7;
-    padding: 5px 15px;
-    color: #c2c7ca;
-    font-size: 0.7em;
-    font-weight: 100;
-    margin-bottom: 0;
-  }
-
-  [data-theme="dark"] .ad._content div {
-    background: #1b1b1b;
-  }
-  [data-theme="dark"] .ad._content section p{
-    background: #1a1a1a;
-  }
-/* END ADS */
 /* BUTTONS */
   ._btn{
     color: black;

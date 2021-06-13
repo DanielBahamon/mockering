@@ -1,11 +1,5 @@
 <% content_for :title, "Trends • Mockering" %>
 <div id="_big_row_index">
-
-	<div class="row m-0">
-		<div class="col-12 p-0">
-			<%= render 'ad1' %>
-		</div>
-	</div>
 	<div class="row m-0">
 		<div class="col-12 p-0 _content _content_principal full">
 			<div class="on_content" id="on_content">
@@ -21,6 +15,21 @@
 							</div>
 							<%= will_paginate @mocks %>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row m-0">
+		<div class="col-12 p-0">
+			<div class="ad _content">
+				<section>
+					<a data-toggle="collapse" href="#collapseAd1" role="button" aria-expanded="false" aria-controls="collapseAd1" class="_link_collapse"><i class="bi bi-chevron-up"></i> Ad</a>
+				</section>
+				<div class="collapse _collapse_ad show" id="collapseAd1">
+					<div class="card-body p-0 _ad_body">
+			  		<%= render 'ad1' %>
 					</div>
 				</div>
 			</div>

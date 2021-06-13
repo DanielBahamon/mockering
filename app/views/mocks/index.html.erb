@@ -362,26 +362,6 @@
 									</div>
 								</div>
 							<% end %>
-							<% if @mocks_training.present? %>
-								<div class="mocks_category">
-									<div class="row m-0 _header_subtitle_index">
-										<div class="col-auto">
-											<div class="_cont_subtitle_index">
-												<%= link_to training_path do %>
-													<h4 class=" pt-3"><i class="fas fa-dumbbell"></i> <i classbi-arrow-right=""></Physical training</h4>
-												<% end %>
-											</div>
-										</div>
-									</div>
-									<div class="row m-0 relative">
-										<div class="row m-0 p-md-2 fullwidth scrollbar_none" id="mocks_training">
-											<% @mocks_training.each do |mock| %>
-												<%= render 'mock_category', mock: mock %>
-											<% end %>
-										</div>
-									</div>
-								</div>
-							<% end %>
 							<% if @mocks_music.present? %>
 								<div class="mocks_category">
 									<div class="row m-0 _header_subtitle_index">
@@ -402,9 +382,18 @@
 									</div>
 								</div>
 							<% end %>
-							<div class="row">
-								<div class="col-12">
-									<%= render 'ad1' %>
+							<div class="row m-0">
+								<div class="col">
+									<div class="ad _content">
+										<section>
+											<a data-toggle="collapse" href="#collapseAd1" role="button" aria-expanded="false" aria-controls="collapseAd1" class="_link_collapse"><i class="bi bi-chevron-up"></i> Ad</a>
+										</section>
+										<div class="collapse _collapse_ad show" id="collapseAd1">
+											<div class="card-body p-0 _ad_body">
+									  		<%= render 'ad1' %>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 					</div>
