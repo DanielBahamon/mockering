@@ -148,10 +148,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     path: ':class/:attachment/:id/:style/:filename',
-    s3_host_name: 'dfqckra2c3mhq.cloudfront.net',
-    s3_host_alias: 'dfqckra2c3mhq.cloudfront.net',
+    s3_host_name: 'd8mn60sm70fqt.cloudfront.net',
+    s3_host_alias: 'd8mn60sm70fqt.cloudfront.net',
     s3_credentials: {
-      bucket: 'mockertest',
+      bucket: 'mockering',
       access_key_id: 'AKIAIR3RVUMFAIL2GU2A',
       secret_access_key: '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',
       s3_region: 'us-east-1'
