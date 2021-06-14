@@ -11,6 +11,7 @@
 			  		<% end %>" autoplay >
 				    <source src="<%= video_path(@mock.movie) %>" type="video/mp4" />
 				  </video>
+				  <div id="ad-container"></div>
 				<% end %>
 				<% if @mock.music.present? %>
 					<% audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
