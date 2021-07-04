@@ -1,9 +1,7 @@
-module ApplicationHelper
-
-	
+module ApplicationHelper	
 	def avatar_url(mocker)
 		if mocker == nil
-		      "https://s3.amazonaws.com/mockertest/assets/avatar-placeholder.png"
+		      "https://dfqckra2c3mhq.cloudfront.net/assets/avatar-placeholder.png"
 		elsif mocker.provider != "facebook" && !mocker.photo?
 		    if mocker.image
 		      mocker.image

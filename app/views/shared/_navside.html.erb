@@ -34,7 +34,7 @@
 			</div>   
 			<div class="col-12 p-0">
 				<div id="_row_sidenav1">
-					<div class="d-table fullscreen ">
+					<div class="d-table fullsize ">
 						<div class="d-tablecell v-middle">
 							<ul class="_listsidenav">
 	    						<% if mocker_signed_in? %>
@@ -80,7 +80,7 @@
 														<%= image_tag avatar_url(following), class: "_avatar _2" %>
 													</div>
 													<div class="col p-0">
-														<div class="d-table fullscreen">
+														<div class="d-table fullsize">
 															<div class="d-table-cell v-middle text-ellipsis">
 																<p class="m-0"><%= following.slug %> <%= image_tag badge_icon(following), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(following) if following.verification? %></p>
 															</div>

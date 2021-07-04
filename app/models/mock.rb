@@ -14,7 +14,6 @@ class Mock < ApplicationRecord
 	has_many :mock_reports
 	has_many :mock_appeals
 
-  	
 	enum category: {
 		Whatever: 0,
 		Knowledge: 1,

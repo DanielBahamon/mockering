@@ -5,7 +5,7 @@
 				<%= image_tag avatar_url(mocker), class: "small_avatar" %>
 			</div>
 			<div class="col">
-				<div class="d-table fullscreen">
+				<div class="d-table fullsize">
 					<div class="d-table-cell v-middle">
 						<b class="m-0"><%= mocker.first_name %> <%= mocker.last_name %> <%= image_tag badge_icon(mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(mocker) if mocker.verification? %></b>
 					</div>

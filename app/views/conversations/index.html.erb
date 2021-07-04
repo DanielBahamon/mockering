@@ -1,7 +1,7 @@
 <% content_for :title, "Inbox • Mockering" %>
 <div class="container">
 	<% if @conversations.count == 0 %>
-		<div class="d-table fullscreen" style="height: 100vh; text-align: center;">
+		<div class="d-table fullsize" style="height: 100vh; text-align: center;">
 			<div class="d-table-cell v-middle">
 				<div class="row">
 					<div class="col-md-12">
@@ -78,7 +78,7 @@
 												<% end %>
 											</div>
 											<div class="col-4 col-sm text-ellipsis">
-												<div class="d-table fullscreen">
+												<div class="d-table fullsize">
 													<div class="d-table-cell v-middle">
 														<%= link_to conversation_messages_path(conversation) do %>
 															<h2 class="_slug m-0"><%= other.slug %></h2>
@@ -88,7 +88,7 @@
 												
 											</div>
 											<div class="col text-ellipsis _message">
-												<div class="d-table fullscreen">
+												<div class="d-table fullsize">
 													<div class="d-table-cell v-middle">
 														<%= link_to conversation_messages_path(conversation) do %>
 															<p class=" m-0 text-ellipsis"><%= conversation.messages.last.body %></p>
@@ -97,7 +97,7 @@
 												</div>
 											</div>
 											<div class="col text-ellipsis">
-												<div class="d-table fullscreen">
+												<div class="d-table fullsize">
 													<div class="d-table-cell v-middle">
 														<%= link_to conversation_messages_path(conversation) do %>
 														<p class="_date m-0 text-right"><%= conversation.messages.last.created_at.strftime("%I:%M %p") %></p>
@@ -106,7 +106,7 @@
 												</div>
 											</div>
 											<div class="col-auto text-center">
-												<div class="d-table fullscreen">
+												<div class="d-table fullsize">
 													<div class="d-table-cell v-middle">
 														<div class="navbar p-0">
 															<div class="nav-item dropleft">

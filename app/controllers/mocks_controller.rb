@@ -9,7 +9,7 @@ class MocksController < ApplicationController
   	autocomplete :tag, :name, :full => true
 
 	def index
-    	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
+   @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		if params[:tag].present?
 			@mocks = Mock.tagged_with(params[:tag])
 			.paginate(page: params[:page], per_page: 4)
@@ -108,9 +108,9 @@ class MocksController < ApplicationController
 	end
 
 	def show
-	   	# impressionist(@mock, "message...") # 2nd argument is optional
-	    # Display all the host reviews to host (if this user is a guest)
-	    @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
+ 	# impressionist(@mock, "message...") # 2nd argument is optional
+  # Display all the host reviews to host (if this user is a guest)
+  @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
 		@related_mocks = @mock.find_related_tags.where(privated: false, reported: false, unlist: false).paginate(page: params[:page], per_page: 10)
 

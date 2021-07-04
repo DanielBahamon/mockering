@@ -10,7 +10,7 @@
           <% end %>
           <div class="row m-0" style="margin-bottom: 15px !important;">
             <div class="col-4 p-0">
-                <div class="d-table fullscreen">
+                <div class="d-table fullsize">
                     <div class="d-table-cell v-middle ">
                         <%= link_to mocker_path(current_mocker) do %>
                             <%= image_tag avatar_url(current_mocker), class: "_avatarchange d-block" %>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-8">
-                <div class="d-table fullscreen">
+                <div class="d-table fullsize">
                     <div class="d-table-cell v-middle p-1">
                         <%= link_to mocker_path(current_mocker), class: "text-black" do %>
                             <b><%= current_mocker.first_name.capitalize if @mocker.first_name? %> <%= current_mocker.last_name.capitalize if @mocker.last_name? %></b>
