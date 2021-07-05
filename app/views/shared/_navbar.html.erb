@@ -409,6 +409,42 @@
     position:fixed;
     height:70px;
   }
+  
+  .col_navfooter a i{
+      font-size: 1.1rem;
+      line-height: 2;
+      vertical-align: middle;
+      height: 40px;
+      display: block;
+  }
+  .col_navfooter a p{
+    display: none;
+      position: absolute;
+      bottom: 9px;
+      left: 0px;
+  }
+  .col_navfooter.active a i{
+      font-size: 1rem;
+      top: -6px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+  }
+  .col_navfooter.active a p{
+    display: block !important;
+  }
+  a._btn._btnavfoot ._avatar_navbar {
+      height: 25px;
+      width: 25px;
+      margin-top: -3px;
+  }
+  @media(max-width:575px){
+    ._navbar_br{
+      position:fixed;
+      height:50px;
+    }
+  }
   .content_big_1{
     overflow-y: hidden !important;
   }

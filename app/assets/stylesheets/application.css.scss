@@ -230,6 +230,10 @@
     max-width:1700px;
     margin:0 auto;
   }
+  .container{
+    padding-left:0;
+    padding-right:0;
+  }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
   }
@@ -1369,6 +1373,7 @@
   ._upload_big{
     border: 2px dashed #bacad6;
     padding: 0;
+    border-radius:7px;
   }
   ._upload_big:hover{
     border: 2px dashed #5b6d7b;
@@ -1435,6 +1440,7 @@
       padding:0;
   }
   ul.ks-cboxtags li{
+    padding:5px;
     display: inline;
   }
   ul.ks-cboxtags li label{
@@ -1444,7 +1450,7 @@
       color: #adadad;
       border-radius: 25px;
       white-space: nowrap;
-      margin: 3px 0px;
+      margin:0;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -1461,30 +1467,29 @@
   }
 
   ul.ks-cboxtags li label::before {
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      text-rendering: auto;
-      -webkit-font-smoothing: antialiased;
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      font-size: 12px;
-      padding: 2px 6px 2px 2px;
-      content: "\f067";
-      transition: transform .3s ease-in-out;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
   }
 
   ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
-      content: "\f00c";
-      transform: rotate(-360deg);
-      transition: transform .3s ease-in-out;
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
   }
 
-  ul.ks-cboxtags li input[type="checkbox"]:checked + label {
-      border: 1px solid #261afe;
-      background: linear-gradient(45deg, #736de5, #6fb9f4);
-      color: #fff;
-      transition: all .2s;
+  ul.ks-cboxtags li input[type="checkbox"]:checked + label { 
+    background: linear-gradient(45deg, #3631a1, #265173);
+    color: #fff;
+    transition: all .2s;
   }
   .cont_img img{
     height: 100%;
@@ -4359,6 +4364,10 @@
   [data-theme="dark"] .dropdown-item{
     color: white !important;
   }
+  [data-theme="dark"] .custom-switch._1 label{
+    border-bottom: 1px solid #2e2e2e;
+  }
+
   [data-theme="dark"] ._input_group._1{
     border-color:transparent !important;
     box-shadow: 0 2px 6px -3px black !important;
@@ -4621,9 +4630,11 @@
   [data-theme="dark"] .form-control{
     background-color: #121212;
     color:white !important;
+    border-color: #3a3643 !important;
   }
   [data-theme="dark"] .form-control::placeholder{
     color:white;
+    opacity:0.6;
   }
   [data-theme="dark"] .input-group-text{
     backgroudn-color:#121212;
