@@ -1388,6 +1388,7 @@
     left: 0;
     top: 0;
     opacity: 0;
+    cursor:pointer;
   }
   ._img_upload_mock{
     filter: grayscale(1);
@@ -2815,6 +2816,31 @@
     
   }
   .msf_bullet_active{
+    background-color: darkgrey !important;
+  }
+  .msf_hide_1{
+    display: none;
+  }
+  .msf_show_1{
+    display: block;
+  }
+  .msf_bullet_o_1{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .msf_bullet_o_1 > div{
+    height: 15px;
+    width: 15px;
+    margin: 20px 10px;
+    border-radius: 100px;
+    z-index: 2;
+  }
+  .msf_bullet_1{
+    background-color: lightgrey;
+    
+  }
+  .msf_bullet_active_1{
     background-color: darkgrey !important;
   }
 /* END STEPS */
