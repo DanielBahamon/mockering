@@ -15,7 +15,7 @@
 								<div class="row cont_coverpage">
 									<div class="col-12 p-0">
 										<div class="gradient _1"></div>
-										<%= image_tag @mocker.coverpage, class: "_coverpage" %>
+										<%= image_tag(@mocker.coverpage.url, class: "_coverpage") %>
 									</div>
 								</div>
 								<div class="row cont_user">
@@ -303,31 +303,31 @@
 		    </div>
 		  </div>
 		</div>
-			<!-- Modal -->
-			<div class="modal fade" id="blockMocker" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-			    <div class="modal-content">
-			      <div class="modal-header">
+		<!-- Modal -->
+		<div class="modal fade" id="blockMocker" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
 
-					<% unless @blocked_loop == true %>
-			        	<h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
-			        <% else %>
-			        	<h5 class="modal-title _fw600" id="reportModalLabel">Unlock mocker</h5>
-			        <% end %>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-					<% if @blocked_loop == false %>
-			        	<%= render 'blocks/form', blocked: @mocker %>
-					<% else %>
-			        	<%= render 'blocks/unlock', blocked: @mocker %>
-					<% end %>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+				<% unless @blocked_loop == true %>
+		        	<h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
+		        <% else %>
+		        	<h5 class="modal-title _fw600" id="reportModalLabel">Unlock mocker</h5>
+		        <% end %>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+				<% if @blocked_loop == false %>
+		        	<%= render 'blocks/form', blocked: @mocker %>
+				<% else %>
+		        	<%= render 'blocks/unlock', blocked: @mocker %>
+				<% end %>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	<% end %>
 </div>
 
