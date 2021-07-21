@@ -52,7 +52,7 @@ class Mock < ApplicationRecord
 
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
 	# validates_presence_of :movie
-	before_post_process do
+	before_post_process :movie do
 		# video_attributes = RVideo::Inspector.new(:file => self.movie.path, :ffmpeg_binary => "C:/FFMPEG")
 		# file = RVideo::Inspector.new(:file => self.movie.queued_for_write[:original].path)
 		# self.duration = video_attributes.duration
