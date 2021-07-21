@@ -1530,6 +1530,7 @@ DEPENDENCIES
   social-share-button (~> 1.2, >= 1.2.3)
   sqlite3 (~> 1.4)
   streamio-ffmpeg (~> 3.0, >= 3.0.2)
+  terrapin (~> 0.6.0)
   toastr-rails (~> 1.0)
   turbolinks (~> 5)
   twilio-ruby (~> 5.40)
