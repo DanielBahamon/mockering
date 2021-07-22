@@ -58,8 +58,8 @@ class Mock < ApplicationRecord
 		# self.duration = video_attributes.duration
 
 		if self.duration == nil && self.picture_file_name == nil
-	        file = self.movie.queued_for_write[:original].path
-			self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
+	        # file = self.movie.queued_for_write[:original].path
+			# self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
 			# time = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f	
 		end
 	end
