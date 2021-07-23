@@ -52,17 +52,17 @@ class Mock < ApplicationRecord
 
 	validates_attachment_content_type :movie, :content_type => /\Avideo\/.*\Z/
 	# validates_presence_of :movie
-	#before_post_process :movie do
+	before_post_process :movie do
 		# video_attributes = RVideo::Inspector.new(:file => self.movie.path, :ffmpeg_binary => "C:/FFMPEG")
 		# file = RVideo::Inspector.new(:file => self.movie.queued_for_write[:original].path)
 		# self.duration = video_attributes.duration
 
-	#	if self.duration == nil && self.picture_file_name == nil
-	#        file = self.movie.queued_for_write[:original].path
-	#		self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
+		if self.duration == nil && self.picture_file_name == nil
+	        file = self.movie.queued_for_write[:original].path
+			self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
 			# time = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f	
 		end
-	#end
+	end
 		
 	# before_post_process :skip_for_picture
 
