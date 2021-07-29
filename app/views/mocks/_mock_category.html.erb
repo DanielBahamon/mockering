@@ -19,9 +19,15 @@
 		</div>
 		<div class="_cardbody p-0">
 			<div class="row m-0">
-				<div class="col-12">
-					<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
-					<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+				<div class="col-12 pt-3">
+					<div class="row">
+						<div class="col-auto">
+							<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
+						</div>
+						<div class="col p-0">
+							<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+						</div>
+					</div>
 				</div>
 				<div class="col-12">
 					<div class="row m-0 fullwidth">

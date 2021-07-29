@@ -503,11 +503,11 @@
   .link_card{
     text-decoration: none !important;
     color:inherit !important;
-    border:1px solid #ffffff;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
+    /*border:1px solid #ffffff;
     -webkit-box-shadow:0px 6px 15px 0px rgba(158, 180, 182, 0.37);
-    box-shadow:0px 6px 15px 0px rgba(158, 180, 182, 0.37);
+    box-shadow:0px 6px 15px 0px rgba(158, 180, 182, 0.37);*/
   }
   .link_card:hover{
     -webkit-transform:translateY(-1px);
@@ -892,7 +892,6 @@
     border: 2px solid #fff;
     -o-object-fit: cover;
     object-fit: cover;
-    margin-top: -20px;
     margin-left: -5px;
     margin-bottom: 5px;
   }
@@ -1787,7 +1786,8 @@
   ._card{
     min-height: 77px;
     position: relative;
-    border: 1px solid #eaeaea;
+    border-color: transparent;
+    background:transparent;
   }
 
   ._tagsmock ._chip{
@@ -1830,12 +1830,10 @@
   }
   @media(min-width: 576px){
     ._card{
-      border-radius:30px;
     }
     .cont_img{
     }
     ._card .cont_img img {
-      border-radius: 20px 20px 0 0;
     }
   }
   .cont_img{
@@ -1908,7 +1906,7 @@
     border-radius: 15px;
   }
   ._col_mock_related .link_card{
-    background: white;
+    background: transparent;
     margin-bottom:5px !important;
   }
   ._col_mock_related .cont_img{
@@ -1918,8 +1916,7 @@
     border-radius: 20px 20px 0 0;
   }
   ._card ._cardbody{
-    background: white;
-    border-radius: 0 0 20px 20px;
+    background: transparent;
     bottom: 0;
     display: block;
     width: 100%;
