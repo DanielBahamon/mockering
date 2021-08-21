@@ -17,7 +17,7 @@ class MocksController < ApplicationController
 		else
 			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)
 		end
-		@new_mocks = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false).limit(8).where("mocks.created_at >= '#{1.week.ago}'")
+		@new_mocks = Mock.all.order("RANDOM()").limit(8).where("mocks.created_at >= '#{1.year.ago}'", privated: false, reported: false, unlist: false)
 		@mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 0).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
 		@mocks_knowledge = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 1).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
 		@mocks_paranormal = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 2).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 

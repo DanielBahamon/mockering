@@ -31,9 +31,9 @@
 		                    <div class="d-table-cell v-middle">
 		                        <div class="field">
 		                        	<div class="custom-control custom-switch _1 pl-0">
-									  <%= f.check_box :privated, class: "custom-control-input" %>
-									  <label class="custom-control-label" for="mock_privated"><b>Private mock</b></label>
-									</div>
+															  <%= f.check_box :privated, {class: "custom-control-input",  type:"checkbox"}, "true", "false" %>
+															  <label class="custom-control-label" for="mock_privated"><b>Private mock</b></label>
+															</div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -43,9 +43,9 @@
 		                    <div class="d-table-cell v-middle">
 		                        <div class="field">
 		                        	<div class="custom-control custom-switch _1 pl-0">
-										<%= f.check_box :age_restricted, class: "custom-control-input"  %>
-										<label class="custom-control-label" for="mock_age_restricted"><b>Age restricted mock</b></label>
-									</div>
+																<%= f.check_box :age_restricted, {class: "custom-control-input",  type:"checkbox"}, "true", "false"   %>
+																<label class="custom-control-label" for="mock_age_restricted"><b>Age restricted mock</b></label>
+															</div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -55,7 +55,7 @@
 		                    <div class="d-table-cell v-middle">
 		                        <div class="field">
 		                        	<div class="custom-control custom-switch _1 pl-0">
-		                        		<%= f.check_box :unlist, class: "custom-control-input" %>
+		                        		<%= f.check_box :unlist, {class: "custom-control-input", type:"checkbox"}, "true", "false" %>
 										<label class="custom-control-label" for="mock_unlist"><b>Unlist mock</b></label>
 									</div>
 		                        </div>

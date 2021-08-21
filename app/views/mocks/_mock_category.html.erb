@@ -2,9 +2,9 @@
 	<%= link_to mock, class: "link_card card _card _3" do %>
 		<div class="cont_img">
 			<% if mock.movie.present? %>
-				<!--<div class="icon_play">
+				<div class="icon_play">
 					<i class="bi bi-camera-video-fill"></i>
-				</div>-->
+				</div>
 				<div class="_time">
 					<section class="cont_time_mock">
 						<%= mock_time(mock) %>
@@ -12,10 +12,10 @@
 				</div>
 			<% end %>
 			<% if mock.picture.present? %>
-	  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-  	<% else %> 
-  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-	  <% end %>
+			  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
+		  	<% else %> 
+		  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+			  <% end %>
 		</div>
 		<div class="_cardbody p-0">
 			<div class="row m-0">
@@ -26,12 +26,6 @@
 						</div>
 						<div class="col p-0">
 							<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-12">
-					<div class="row m-0 fullwidth">
-						<div class="col p-0">
 							<div class="text-ellipsis">
 								<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
 								<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>

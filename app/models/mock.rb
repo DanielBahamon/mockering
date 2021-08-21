@@ -1,4 +1,6 @@
 class Mock < ApplicationRecord
+
+
 	before_validation :set_uuid, on: :create
 	belongs_to :mocker
   	acts_as_votable
@@ -13,6 +15,8 @@ class Mock < ApplicationRecord
 	has_many :answers
 	has_many :mock_reports
 	has_many :mock_appeals
+
+
 
 	enum category: {
 		Whatever: 0,

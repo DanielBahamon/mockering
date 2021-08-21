@@ -132,8 +132,6 @@ ActiveRecord::Schema.define(version: 2020_12_24_165850) do
     t.string "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["mocker_id"], name: "index_messages_on_mocker_id"
   end
 
   create_table "mock_appeals", force: :cascade do |t|
