@@ -18,24 +18,7 @@ class MocksController < ApplicationController
 			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)
 		end
 		@new_mocks = Mock.all.order("RANDOM()").limit(8).where("mocks.created_at >= '#{1.year.ago}'", privated: false, reported: false, unlist: false)
-		@mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 0).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_knowledge = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 1).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_paranormal = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 2).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_short = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 3).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_aliens = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 4).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_animation = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 5).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_videoclip = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 6).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_podcast = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 7).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_reaction = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 8).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_protest = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 9).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_health = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 10).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_history = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 11).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_tutorial = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 12).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_training = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 13).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_tribute = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 14).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_report = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 15).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_music = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 16).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids) 
-		@mocks_nature = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 17).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids)
+		# @mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 0).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids)
 	end
 
 

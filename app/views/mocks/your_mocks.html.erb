@@ -10,8 +10,10 @@
 					</div>
 					<div class="col-12 _board">
 						<div class="mocks_content">
-							<div class="row">
-								<%= render 'mock' %>
+							<div class="masonry_1">
+								<% @mocks.each do |mock| %>
+									<%= render 'mock_plural', mock: mock %>
+								<% end %>
 							</div>
 							<%= will_paginate @mocks %>
 						</div>
