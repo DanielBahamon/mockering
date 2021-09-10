@@ -335,11 +335,11 @@
 			</div>
 			<div class="masonry_2">
 			<% @related_mocks.each do |mock| %>
-				<div class="_card masonryitem_1 span<%= rand(3..5) %>">
+				<div class="_card masonryitem_1 span<%= rand(2..3) %>">
 					<% if mock.movie.present? %>
 						<div class="_time">
 							<section class="cont_time_mock">
-								<%= mock_time(mock) %> | <i class="bi bi-camera-video-fill"></i>
+								<%= mock_time(mock) %>
 							</section>
 						</div>
 					<% end %>

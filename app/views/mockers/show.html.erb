@@ -1,7 +1,7 @@
-<% content_for :title, "#{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (@#{@mocker.slug}) • Mockering" %>
+<% content_for :title, "#{(@mocker.first_name).capitalize if @mocker.first_name?} #{(@mocker.last_name).capitalize if @mocker.last_name?}  (#{@mocker.slug}) • Mockering" %>
 <% content_for :image_page, "#{avatar_url(@mocker) }" %>
 <% content_for :description_page, "#{@mocker.first_name if @mocker.first_name? } #{@mocker.last_name if @mocker.last_name? }" %>
-<% content_for :autor_page, "@#{@mocker.slug }" %>
+<% content_for :autor_page, "#{@mocker.slug }" %>
 <div class="_conta _1 mt-sm-4">
 	<% @blocked = Block.where(mocker_id: @mocker, blocked_id: current_mocker, status: true).present? %>
 	<% @blocked_loop = Block.where(mocker_id: current_mocker, blocked_id: @mocker, status: true).present? %>
@@ -46,7 +46,7 @@
 									</div>
 									<div class="col-12 text-center">
 										<h4 class="_name _fw400 m-0"><%= (@mocker.first_name).capitalize if @mocker.first_name? %> <%= (@mocker.last_name).capitalize if @mocker.last_name? %></h4>
-										<p class="_fw400">@<%= @mocker.slug %> <%= image_tag badge_icon(@mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(@mocker) if @mocker.verification? %></p>
+										<p class="_fw400"><%= @mocker.slug %> <%= image_tag badge_icon(@mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(@mocker) if @mocker.verification? %></p>
 									</div>
 										<div class="col-12 text-center">
 											<% if mocker_signed_in? && current_mocker != @mocker %>
@@ -176,7 +176,7 @@
 																		<div class="col p-0">
 																			<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
 																			<div class="text-ellipsis">
-																				<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
+																				<p class="_fs10pt m-0 _fs90per _username"><%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
 																				<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
 																			</div>
 																		</div>
