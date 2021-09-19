@@ -12,7 +12,7 @@
 						<div class="mocks_content">
 							<div class="masonry_1">
 								<% @mocks.each do |mock| %>
-									<%= render 'mock_plural', mock: mock %>
+									<%= render 'mock', mock: mock %>
 								<% end %>
 							</div>
 							<%= will_paginate @mocks %>

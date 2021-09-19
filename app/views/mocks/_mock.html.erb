@@ -1,4 +1,32 @@
-<div class="_card masonryitem_1 span<%= rand(3..5) %>">
+<div class="_card masonryitem_1 span<%= rand(4..6) %>">
+	<div class="_cardhead">
+		<div class="d-table fullsize">
+			<div class="d-table-cell v-middle">
+				<div class="row m-0">
+					<div class="col-auto _avatar_mock p-0">
+						<div class="d-table fullsize">
+							<%= link_to mock.mocker, class: "d-table-cell v-middle" do %>
+								<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
+							<% end %>
+						</div>
+					</div>
+					<div class="col">
+						<div class="d-table fullsize">
+							<div class="d-table-cell v-middle">
+								<div class="text-ellipsis">
+									<p class="_fs10pt m-0 _fs90per _username">
+										<%= link_to mock.mocker do %>
+											<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %>
+										<% end %>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<% if mock.movie.present? %>
 		<div class="_time">
 			<section class="cont_time_mock">
@@ -19,23 +47,22 @@
 			<div class="d-table-cell v-bottom">
 				<div class="row m-0 ">
 					<div class="col-12 p-0 pb-2">
-						<%= link_to mock, class: "_link_mocke_title" do %><h4 class="_cardtitle _fs15pt"><%= mock.title %></h4><% end %>
+						<%= link_to mock, class: "_link_mocke_title" do %>
+							<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+						<% end %>
 					</div>
-					<div class="col _avatar_mock">
-						<div class="d-table fullsize">
-							<%= link_to mock.mocker, class: "d-table-cell v-middle" do %>
-								<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
-							<% end %>
-						</div>
-					</div>
-					<div class="col">
-						<div class="text-ellipsis">
-							<p class="_fs10pt m-0 _fs90per _username">
-								<%= link_to mock.mocker do %>
-									<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %>
-								<% end %>
-							</p>
-							<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
+					<div class="col-12 p-0">
+						<div class="row m-0">
+							<div class="col-auto p-0">
+								<div class="text-ellipsis">
+									<p class="_fs9pt"><%= render 'mocks/likesimple', mock: mock %></p>
+								</div>
+							</div>
+							<div class="col-auto">
+								<div class="text-ellipsis">
+									<p class="_fs9pt m-0"><%= render 'mocks/dislikesimple', mock: mock %></p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
