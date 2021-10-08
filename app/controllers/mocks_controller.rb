@@ -20,9 +20,6 @@ class MocksController < ApplicationController
 		@new_mocks = Mock.all.order("RANDOM()").limit(8).where("mocks.created_at >= '#{1.month.ago}'", privated: false, reported: false, unlist: false).paginate(page: params[:page], per_page: 8)
 		# @mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 0).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids)
 	end
-
-
-
 	def trends
     	@tags = ActsAsTaggableOn::Tag.all.order('name ASC')
     	@mocks = Mock.joins(:impressions)

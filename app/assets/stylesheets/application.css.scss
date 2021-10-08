@@ -2054,7 +2054,24 @@
     padding-right: 4px;
     margin: 8px;
   }
+  ._column_shuffle._2 {
+    position: relative;
+    float: left;
+    min-height: 1px;
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin: 8px;
+  }
   @media(max-width:991px){
+    ._column_shuffle {
+      width: 45%;
+    }
+    ._column_shuffle._2 {
+      width: 95%;
+    }
+  }
+  @media(max-width:767px){
     ._column_shuffle {
       width: 45%;
     }

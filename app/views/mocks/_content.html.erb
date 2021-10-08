@@ -333,53 +333,97 @@
 				<div class="col-12 p-0 mb-2">
 				</div>
 			</div>
-			<div class="masonry_2">
+			<div class="_shuffle_container">
 			<% @related_mocks.each do |mock| %>
-				<div class="_card masonryitem_1 span<%= rand(2..3) %>">
-					<% if mock.movie.present? %>
-						<div class="_time">
-							<section class="cont_time_mock">
-								<%= mock_time(mock) %>
-							</section>
-						</div>
-					<% end %>
-					<div class="cont_img">
-						<%= link_to mock, class: "_link_mock" do %><% end %>
-							<% if mock.picture.present? %>
-						  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-					  	<% else %> 
-					  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-					    <% end %>
-					</div>
-					<div class="_cardbody">
-						<div class="d-table fullsize _content_mock">
-							<div class="d-table-cell v-bottom">
-								<div class="row m-0 ">
-									<div class="col-12 p-0 pb-2">
-										<%= link_to mock, class: "_link_mocke_title" do %><h4 class="_cardtitle _fs15pt"><%= mock.title %></h4><% end %>
-									</div>
-									<div class="col _avatar_mock">
-										<div class="d-table fullsize">
-											<%= link_to mock.mocker, class: "d-table-cell v-middle" do %>
-												<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
-											<% end %>
+				<figure class="_item_shuffle _column_shuffle _2">
+					<div class="_card masonryitem_1">
+						<div class="_cardhead">
+							<div class="d-table fullsize">
+								<div class="d-table-cell v-middle">
+									<div class="row m-0">
+										<div class="col-auto _avatar_mock p-0">
+											<div class="d-table fullsize">
+												<%= link_to mock.mocker, class: "d-table-cell v-middle" do %>
+													<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
+												<% end %>
+											</div>
+										</div>
+										<div class="col">
+											<div class="d-table fullsize">
+												<div class="d-table-cell v-middle">
+													<div class="text-ellipsis">
+														<p class="_fs10pt m-0 _fs90per _username">
+															<%= link_to mock.mocker do %>
+																<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %>
+															<% end %>
+														</p>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="col">
-										<div class="text-ellipsis">
-											<p class="_fs10pt m-0 _fs90per _username">
-												<%= link_to mock.mocker do %>
-													<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %>
-												<% end %>
-											</p>
-											<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
+								</div>
+							</div>
+						</div>
+						<% if mock.movie.present? %>
+							<div class="_time">
+								<section class="cont_time_mock">
+									<%= mock_time(mock) %>
+								</section>
+							</div>
+						<% end %>
+							<% if mock.picture.present? || mock.movie.present? %>
+								<div class="cont_img">
+									<%= link_to mock, class: "_link_mock" do %>
+									<% end %>
+									<% if mock.movie.present? %>
+										<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+									<% elsif mock.picture.present? %>
+										<%= image_tag mock.picture.url(:thumb), class: "card-img-top" %>
+									<% end %>
+								</div>
+				    	<% end %>
+						<div class="_cardbody <% unless mock.picture.present? %>_static<% end %>">
+							<div class="d-table fullsize _content_mock">
+								<div class="d-table-cell v-bottom">
+									<div class="row m-0 ">
+										<div class="col-12 p-0 pb-2">
+											<%= link_to mock, class: "_link_mocke_title" do %>
+												<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+											<% end %>
+										</div>
+										<div class="col-12 p-0">
+											<div class="row m-0">
+												<div class="col-auto p-0">
+													<div class="text-ellipsis">
+														<p class="_fs9pt">
+															<% if mocker_signed_in? %> 
+																<%= render 'mocks/likesimple', mock: mock %>
+															<% else %> 
+															<i class="bi bi-heart" style="margin-left: 2px;line-height: 1;"></i> <%= number_to_human(mock.get_upvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+															<% end %> 
+														</p>
+													</div>
+												</div>
+												<div class="col-auto">
+													<div class="text-ellipsis text-center">
+														<p class="_fs9pt m-0">
+															<% if mocker_signed_in? %> 
+																<%= render 'mocks/dislikesimple', mock: mock %>
+															<% else %>
+																<i class="bi bi-heart" style="margin-left: 2px; transform:rotate(180deg); display:inline-block;    line-height: 1;"></i> <%= number_to_human(mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+															<% end %>
+														</p>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</figure>
 			<% end %>
 			</div>
 		</div>
