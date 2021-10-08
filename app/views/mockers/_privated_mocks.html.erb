@@ -1,51 +1,10 @@
 <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 	<div class="_mocks_mocker row m-0">
 		<div class="col-12 p-0">
-			<div class="row m-0">
-
+			<div class="_shuffle_container">
 				<% if @privated_mocks.count > 0 %>
 					<% @privated_mocks.each do |mock| %>
-						<div class="col-12 col-sm-4 col-lg-3 p-0 p-sm-2">
-							<%= link_to mock, class: "link_card card _card _3" do %>
-								<div class="cont_img">
-									<div class="icon_play">
-										<div class="d-table fullscreen">
-											<div class="d-table-cell v-middle text-center">
-												<i class="fas fa-play"></i>
-											</div>		
-										</div>
-									</div>
-									<div class="_time">
-										<section class="cont_time_mock">
-											<%= mock_time(mock) %>
-										</section>
-									</div>
-									<% if mock.picture.present? %>
-								  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-							  	<% else %> 
-							  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-							  	<% end %>
-								</div>
-								<div class="_cardbody p-2">
-									<div class="row m-0">
-										<div class="col-12">
-											<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
-											<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
-										</div>
-										<div class="col-12">
-											<div class="row m-0 fullwidth">
-												<div class="col p-0">
-													<div class="text-ellipsis">
-														<p class="_fs10pt m-0 _fs90per _username">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
-														<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							<% end %>
-						</div>
+						<%= render 'mocks/mock', mock: mock %>
 					<% end %>
 				<% else %>
 					<div class="col-12">

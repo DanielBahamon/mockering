@@ -63,10 +63,10 @@
 												<%= link_to "Edit profile", edit_mocker_registration_path, class: "btn _btn _3 m-0-auto", style: "width: max-content;" %>
 											<% end %>
 											<% unless @blocked == true || @blocked_loop == true %>
-								                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
-								                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
-								                <% end %>
-								            <% end %>
+					                <% if current_mocker && current_mocker != @mocker && @mocker.following?(current_mocker) %>
+					                  <%= link_to(conversations_path(sender_id: current_mocker.id, recipient_id: @mocker.id), method: :post, class: "_btn _btn_sendmessage") do %> <i class="far fa-envelope"></i> <% end %> 
+					                <% end %>
+					            <% end %>
 											<br/>
 										</div>
 									<div class="col-4 text-center d-grid">
@@ -144,59 +144,23 @@
 									</ul>
 									<div class="tab-content">
 									  <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="mocks-tab" id="mocks-pane">
-									  		<% if @mocker.mocks.count > 0 %>
-												<% @mocker.mocks.each do |mock| %>
-												<% if mock.privated = false %>
-													<div class="col-12 col-sm-4 col-lg-3 p-0 p-sm-2">	
-													<%= link_to mock, class: "link_card card _card _3" do %>
-														<div class="cont_img">
-															<% if mock.movie.present? %>
-																<div class="icon_play">
-																	<i class="bi bi-camera-video-fill"></i>
-																</div>
-																<div class="_time">
-																	<section class="cont_time_mock">
-																		<%= mock_time(mock) %>
-																	</section>
-																</div>
+											<div class="_shuffle_container">
+										  		<% if @mocker.mocks.count > 0 %>
+														<% @mocker.mocks.each do |mock| %>
+															<% if mock.privated == false %>
+																<%= render 'mocks/mock', mock: mock %>
 															<% end %>
-															<% if mock.picture.present? %>
-															  	<%= image_tag mock.picture.url(:large), class: "card-img-top" %>
-														  	<% else %> 
-														  		<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-															  <% end %>
-														</div>
-														<div class="_cardbody p-0">
-															<div class="row m-0">
-																<div class="col-12 pt-3">
-																	<div class="row">
-																		<div class="col-auto">
-																			<%= image_tag avatar_url(mock.mocker), class: "_avatar _1" %>
-																		</div>
-																		<div class="col p-0">
-																			<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
-																			<div class="text-ellipsis">
-																				<p class="_fs10pt m-0 _fs90per _username"><%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></p>
-																				<p class="_fs9pt m-0"><%= render 'mocks/impressions', mock: mock %></p>
-																			</div>
-																		</div>
-																	</div>
-																</div>
+														<% end %>
+												<% else %>
+													<div class="row m-0">
+														<div class="col">
+															<div class="jumbotron text-center bg_white">
+																<h3 class="_fw600">There is no mocks yet.</h3>
 															</div>
 														</div>
-													<% end %>
 													</div>
 												<% end %>
-												<% end %>
-											<% else %>
-												<div class="row m-0">
-													<div class="col">
-														<div class="jumbotron text-center bg_white">
-															<h3 class="_fw600">There is no mocks yet.</h3>
-														</div>
-													</div>
-												</div>
-											<% end %>
+										  </div>
 									  </div>
 									  	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 										  <div class="tab-pane fade" id="privated" role="tabpanel" aria-labelledby="privated-tab">

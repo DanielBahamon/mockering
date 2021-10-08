@@ -17,7 +17,7 @@ class MocksController < ApplicationController
 		else
 			@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)
 		end
-		@new_mocks = Mock.all.order("RANDOM()").limit(8).where("mocks.created_at >= '#{1.month.ago}'", privated: false, reported: false, unlist: false)
+		@new_mocks = Mock.all.order("RANDOM()").limit(8).where("mocks.created_at >= '#{1.month.ago}'", privated: false, reported: false, unlist: false).paginate(page: params[:page], per_page: 8)
 		# @mocks_whatever = Mock.all.order("RANDOM()").where(privated: false, reported: false, unlist: false, category: 0).limit(8).where("mocks.created_at >= '#{1.month.ago}'").where.not(id: @new_mocks.ids)
 	end
 
