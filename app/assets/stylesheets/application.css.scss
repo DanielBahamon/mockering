@@ -2073,6 +2073,9 @@
   }
   @media(max-width:767px){
     ._column_shuffle {
+      width: 100%;
+    }
+    ._column_shuffle._2 {
       width: 45%;
     }
   }
