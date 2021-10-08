@@ -1285,8 +1285,6 @@ GEM
       actionmailer (>= 5.2)
       activemodel (>= 5.2)
     marcel (1.0.1)
-    masonry-rails (0.2.4)
-      railties
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -1413,6 +1411,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shufflejs-rails (0.1.1)
+      railties (> 3.1)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -1506,7 +1506,6 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails (~> 5.0, >= 5.0.5)
   mail_form (~> 1.7, >= 1.7.1)
-  masonry-rails (~> 0.2.4)
   mimemagic!
   mysql-binuuid-rails
   omniauth (~> 1.6)
@@ -1530,6 +1529,7 @@ DEPENDENCIES
   sassc (~> 2.4)
   sassc-rails (>= 2.1.0)
   selenium-webdriver
+  shufflejs-rails
   simple_form (~> 5.0, >= 5.0.2)
   social-share-button (~> 1.2, >= 1.2.3)
   sqlite3 (~> 1.4)

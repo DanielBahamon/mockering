@@ -52,6 +52,9 @@
       <script type="text/javascript" src="https://s3.amazonaws.com/apposent/assets/libraries/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
     <!-- End ScrollMagic -->
 
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+      <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
     <!--Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-8M87JK8XXC"></script>
       <script>
@@ -70,11 +73,6 @@
 
         gtag('config', 'UA-115799642-7');
       </script>
-    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-      <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-
-    
-    <!-- Hotjar Tracking Code for https://www.mockering.com -->
     <!-- Hotjar Tracking Code for https://www.mockering.com -->
     <script>
       (function(h,o,t,j,a,r){
@@ -121,13 +119,12 @@
     <div class="trigger" id="trigger2"></div>
     <script type="text/javascript">
       /* BUTTON MENU */
-          $('._btnmenu').click(function(){
-            $('._iconav').toggleClass('open');
-          });
+        $('._btnmenu').click(function(){
+          $('._iconav').toggleClass('open');
+        });
       /* END BUTTON MENU */
     </script>
     <script type="text/javascript">
-      
       (function() {
         var darkSwitch = document.getElementById("darkSwitch");
         if (darkSwitch) {
@@ -161,25 +158,25 @@
       var controller = new ScrollMagic.Controller();
       // build tween
       // var scene_1 = new ScrollMagic.Scene({triggerElement: "#trigger1"})
-            //.setClassToggle("._nav._1", "_shadow")
-            // .addIndicators()
-            //.addTo(controller);
+        //.setClassToggle("._nav._1", "_shadow")
+        // .addIndicators()
+        //.addTo(controller);
       var scene_2 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-            .setClassToggle("._nav._1", "active-semi")
-            //.addIndicators()
-            .addTo(controller);
+        .setClassToggle("._nav._1", "active-semi")
+        //.addIndicators()
+        .addTo(controller);
       var scene_3 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-            .setClassToggle("._navbar_br", "active-semi")
-            //.addIndicators()
-            .addTo(controller);
+        .setClassToggle("._navbar_br", "active-semi")
+        //.addIndicators()
+        .addTo(controller);
       var scene_4 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-            .setClassToggle("._navfooter", "active-semi")
-            //.addIndicators()
-            .addTo(controller);
+        .setClassToggle("._navfooter", "active-semi")
+        //.addIndicators()
+        .addTo(controller);
       var scene_5 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-            .setClassToggle("._contbtn_add_navfooter", "active-semi")
-            //.addIndicators()
-            .addTo(controller);
+        .setClassToggle("._contbtn_add_navfooter", "active-semi")
+        //.addIndicators()
+        .addTo(controller);
 
       var position = $(window).scrollTop(); 
 
@@ -188,14 +185,14 @@
       $(window).scroll(function() {
           var scroll = $(window).scrollTop();
           if(scroll > position) {
-              // console.log('scrollDown');
-              $('._nav._1').removeClass('active');
-              $('._navfooter').removeClass('active');
-              $('._contbtn_add_navfooter').removeClass('active');
+            // console.log('scrollDown');
+            $('._nav._1').removeClass('active');
+            $('._navfooter').removeClass('active');
+            $('._contbtn_add_navfooter').removeClass('active');
           } else {
-              $('._nav._1').addClass('active');
-              $('._navfooter').addClass('active');
-              $('._contbtn_add_navfooter').addClass('active');
+            $('._nav._1').addClass('active');
+            $('._navfooter').addClass('active');
+            $('._contbtn_add_navfooter').addClass('active');
           }
           position = scroll;
       });
@@ -204,6 +201,7 @@
       //========================================
     </script>
     <!-- JQUERY -->
+
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <script src="https://kit.fontawesome.com/3838a3343b.js" crossorigin="anonymous"></script>
     

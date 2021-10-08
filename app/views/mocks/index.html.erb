@@ -4,15 +4,15 @@
 		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
 					<div class="_board">
-						<%= render 'tags' %>
 						<% render 'shared/categories' %>
 							<% if params[:tag].present? %>
 								<div class="mocks_content">
-									<div class="masonry_1">
+									<div class="_shuffle_container">
 										<% @mocks.each do |mock| %>
 											<%= render 'mock', mock: mock %>
 										<% end %>
 									</div>
+									<div class="my-sizer-element"></div>
 								  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 								    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
 								      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
@@ -22,11 +22,12 @@
 							<% else %>
 								<% if @new_mocks.present? %>
 									<div class="mocks_content">
-										<div class="masonry_1">
+										<div class="_shuffle_container">
 											<% @new_mocks.each do |mock| %>
 												<%= render 'mock', mock: mock %>
 											<% end %>
 										</div>
+										<div class="my-sizer-element"></div>
 									</div>
 								<% end %>
 							<% end %>

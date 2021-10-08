@@ -13,7 +13,7 @@
 				  </video>
 				<% end %>
 				<% if @mock.music.present? %>
-					<% audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
+					<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
 				<% end %>
 				<% if @mock.picture.present? && !@mock.movie.present? %>
 					<%= image_tag @mock.picture.url %>

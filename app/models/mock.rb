@@ -43,7 +43,7 @@ class Mock < ApplicationRecord
 	validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 
 	# For music
-	has_attached_file :music
+	has_attached_file :music, proccessors: [:transcoder]
 	validates_attachment :music, 
 	:content_type => {:content_type => ["audio/mpeg", "audio/mp3"]},
 	:file_type => {:matches => [/mp3\Z/]}
@@ -61,7 +61,7 @@ class Mock < ApplicationRecord
 		# file = RVideo::Inspector.new(:file => self.movie.queued_for_write[:original].path)
 		# self.duration = video_attributes.duration
 
-		if self.duration == nil && self.picture_file_name == nil
+		if self.duration == nil && self.picture_file_name == nil && self.music_file_name == nil
 	        file = self.movie.queued_for_write[:original].path
 			self.duration = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f
 			# time = Paperclip.run("ffprobe", '-i %s -show_entries format=duration -v quiet -of csv="p=0"' % file).to_f	

@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require toastr
-//= require masonry/jquery.masonry
 //= require counterPlugin.min
 //= require bootstrap
 //= require readmore
@@ -23,12 +22,23 @@
 //= require jquery.atwho
 //= require social-share-button
 //= require clipboard
+//= require shuffle
 //= require_tree .
 
 
 $(document).ready(function(){  
-  
   var clipboard = new Clipboard('.clipboard-btn');
   console.log(clipboard);
-	
+
+  var Shuffle = window.Shuffle;
+
+  var myShuffle = new Shuffle(document.querySelector('._shuffle_container'), {
+    itemSelector: '._item_shuffle',
+    sizer: '.my-sizer-element',
+    buffer: 1,
+  });
+
 });
+
+
+
