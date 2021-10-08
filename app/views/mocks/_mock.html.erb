@@ -36,15 +36,15 @@
 			</div>
 		<% end %>
 			<% if mock.picture.present? || mock.movie.present? %>
-			<div class="cont_img">
-				<%= link_to mock, class: "_link_mock" do %>
-				<% end %>
-				<% if mock.movie.present? %>
-					<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
-				<% else %>
-					<%= image_tag mock.picture.url(:thumb), class: "card-img-top" %>
-				<% end %>
-			</div>
+				<div class="cont_img">
+					<%= link_to mock, class: "_link_mock" do %>
+					<% end %>
+					<% if mock.movie.present? %>
+						<%= image_tag mock.movie.url(:thumb), class: "card-img-top" %>
+					<% elsif mock.picture.present? %>
+						<%= image_tag mock.picture.url(:thumb), class: "card-img-top" %>
+					<% end %>
+				</div>
     	<% end %>
 		<div class="_cardbody <% unless mock.picture.present? %>_static<% end %>">
 			<div class="d-table fullsize _content_mock">
