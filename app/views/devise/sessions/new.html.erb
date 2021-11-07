@@ -4,7 +4,7 @@
     <div class="d-table fullsize">
       <div class="d-tablecell v-middle">
         <div class="container">
-          <section class="row _session">
+          <section class="_session _1">
             <div class="col-12 text-center">
               <%= link_to root_path, data: { no_turbolink: true } do %>
                 <%= image_tag 'https://s3.amazonaws.com/mockertest/assets/mockering_black.svg', class: "_logo _1 d-none-moon", alt: 'Mockering'%>
@@ -21,7 +21,7 @@
               <% end %>
             </div>
             <div class="col-12">
-              <p class="or"><span>Or</span></p>
+              <p class="or text-center"><span>Or</span></p>
             </div>
             <div class="col-12 text-center">
                 <%= devise_error_messages! %>
