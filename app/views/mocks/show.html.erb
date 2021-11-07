@@ -8,7 +8,7 @@
 <% content_for :autor_page, "#{@mock.mocker.slug }" %>
 <% content_for :movie_path, "#{video_path(@mock.movie)}" %>
 
-<div class="_conta">
+<div class="_conta pt-5 _mock">
 	<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
 
 	<% if @mock.age_restricted == true %>
@@ -17,7 +17,11 @@
 			<% if @age > 17 %>
 				<% unless @blocked == true %>
 					<% if @mock.reported == false %>
-						<%= render 'content' %>
+						<% if @mock.movie_file_size?  %>
+							<%= render 'content' %>
+						<% else %>
+							<%= render 'contentalt' %>
+						<% end %>
 					<% else %>
 						<!-- Modal -->
 						<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -55,12 +59,15 @@
 				<h3 class="_fw600 ">You need to confirm your age.</h3>
 				<p>Please tell us <%= link_to 'how old are you?', edit_mocker_registration_path %>.</p>
 			</div>
-
 		<% end %>
 	<% else %>
 		<% unless @blocked == true %>
 			<% if @mock.reported == false %>
-				<%= render 'content' %>
+				<% if @mock.movie_file_size?  %>
+					<%= render 'content' %>
+				<% else %>
+					<%= render 'contentalt' %>
+				<% end %>
 			<% else %>
 				<!-- Modal -->
 				<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

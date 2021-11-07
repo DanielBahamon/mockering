@@ -1,5 +1,5 @@
 <% if current_mocker.voted_up_on? mock %>
-	<i class="bi-hand-thumbs-up-fill _color_current" style="margin-right: 2px;"></i>
+	<i class="bi bi-heart-fill _color_current" style="margin-right: 2px;"></i>
 <% else %>
-	<i class="bi-hand-thumbs-up" style="margin-right: 2px;"></i>
+	<i class="bi bi-heart-fill" style="margin-right: 2px;"></i>
 <% end %> <%= number_to_human(mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
