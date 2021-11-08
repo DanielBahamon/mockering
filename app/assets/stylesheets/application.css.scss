@@ -1275,7 +1275,7 @@
     width: 38px;
     height: 38px;
     max-height: 38px;
-    background: #f3f3fa;
+    background: #f3f3fa75;
     position: absolute;
     border-radius: 15px;
     top: 0;
@@ -2055,6 +2055,10 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
+  ._conta._mock._picture {
+    width: 800px;
+    max-width: 100vw;
+  }
 /* END CARDS */
 /* MASONRY */
   ._shuffle_container{
@@ -2225,8 +2229,9 @@
     }
   }
   ._nav._1{
-    background: #ffffffe6;
-    backdrop-filter: blur(133px);
+    background: #ffffff80;
+    -webkit-backdrop-filter: blur(33px);
+    backdrop-filter: blur(33px);
     padding: 9px 0;
     right:0;
     left:0;
@@ -2481,7 +2486,7 @@
     right: 0;
     top: auto;
     border-top:1px solid #eaeaea;
-    background: #ffffffb8;
+    background: #ffffff80;
     -webkit-backdrop-filter: blur(33px);
     backdrop-filter: blur(33px);
     z-index:30;
@@ -3092,8 +3097,13 @@
 
   ._mock._conta{
     width: 100%;
-    padding: 30px;
     padding-top: 0 !important;
+  }
+  @media(min-width: 992px){
+    ._mock._conta{
+      padding:30px;
+      padding-top: 15px !important;
+    }
   }
   ._mock._conta ._picture{
     width: 100%;
@@ -4395,6 +4405,7 @@
   [data-theme="dark"] ._btn._btnavfoot:hover, 
   [data-theme="dark"] ._listnavfooter li.active ._btn._btnavfoot{
     color:white;
+    background: transparent;
   }
   [data-theme="dark"] ._listnavfooter{
     box-shadow: 0 0 12px -8px #000000;
@@ -4420,7 +4431,7 @@
     border-color:transparent;
   }
   [data-theme="dark"] ._btnmenu:before{
-    background: #3c3c3c;
+    background: #3c3c3c87;
   }
   [data-theme="dark"] ._col_search_mobile ._searchfield{
     background: transparent !important;
@@ -4435,8 +4446,8 @@
   background:transparent !important;
   }
   [data-theme="dark"] ._btn_icon:before{
-    background: #3c3c3c !important;
-    border: 1px solid #3c3c3c !important;
+    background: #3c3c3c87 !important;
+    border: 0 solid #3c3c3c !important;
   }
   [data-theme="dark"] .pagination li a{
     color:white !important;

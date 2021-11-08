@@ -8,7 +8,7 @@
 <% content_for :autor_page, "#{@mock.mocker.slug }" %>
 <% content_for :movie_path, "#{video_path(@mock.movie)}" %>
 
-<div class="_conta pt-5 _mock">
+<div class="_conta pt-5 _mock <% if @mock.movie_file_size? %>_movie<% else %>_picture<% end %>">
 	<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
 
 	<% if @mock.age_restricted == true %>

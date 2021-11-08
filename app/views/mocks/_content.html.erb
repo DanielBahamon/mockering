@@ -277,7 +277,7 @@
 						<h4 class="_fw500 m-0 text-capitalize"><%= link_to @mock.mocker, class: "_color_black deco-none" do %><%= @mock.mocker.first_name if @mock.mocker.first_name? %> <%= @mock.mocker.last_name if @mock.mocker.first_name? %><% end %></h4>
 						<p class="text-muted _username_video _fw500 m-0">
 							<%= link_to @mock.mocker, class: "_color_black deco-none" do %>
-								@<%= @mock.mocker.slug %> <%= image_tag badge_icon(@mock.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(@mock.mocker) if @mock.mocker.verification? %>
+								<%= @mock.mocker.slug %> <%= image_tag badge_icon(@mock.mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(@mock.mocker) if @mock.mocker.verification? %>
 							<% end %></p>
 					</div>
 				</div>
