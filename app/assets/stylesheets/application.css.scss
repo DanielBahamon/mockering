@@ -4397,7 +4397,7 @@
   [data-theme="dark"] ._navfooter{
     border-top: 0px solid #121212 !important;
     border-color:transparent !important;
-    background:#000000d9;
+    background:#00000057;
   }
   [data-theme="dark"] .comment::before{
     border-top: 15px solid #121212;
@@ -5021,6 +5021,9 @@
     .files .toggle,
     .files .btn span {
       display: none;
+    }
+    ._content_principal._1 > div > ._nav > ._1>.row {
+      padding-bottom: 20px;
     }
     .files .name {
       width: 80px;
