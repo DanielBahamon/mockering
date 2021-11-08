@@ -52,6 +52,38 @@
 				<h3 class="card-title _fw500 text-black"><%= @mock.title %></h3>
 			</div>
 		</div>
+		<div class="row m-0">
+			<div class="col-12 readmore">
+				<p class="video_description keepspaces"><%= auto_link(@mock.description, html: { target: '_blank' }).html_safe  %></p>
+			</div>
+			<div class="col-10">
+				<% if @mock.credits? %>
+					<b>Credits:</b>
+					<p><%= auto_link(@mock.credits, html: { target: '_blank' }) %></p>
+				<% end %>
+			</div>
+			<% if mocker_signed_in? && current_mocker != @mock.mocker %>
+				<div class="col-2">
+					<button type="button" class="btn _btn _btn_report" data-toggle="modal" data-target="#reportMock"><i class="fas fa-exclamation-triangle"></i></button>
+					<!-- Modal -->
+					<div class="modal fade" id="reportMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title _fw600" id="exampleModalLabel">Report content</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        <%= render 'mock_reports/form', mock: @mock %>
+					      </div>
+					    </div>
+					  </div>
+					</div>	
+				</div>
+			<% end %>
+		</div>
 		<div class="row m-0" >
 			<div class="col-12 col-sm-6" style="margin-top: 15px;">
 				<div class="row m-0">
@@ -236,38 +268,6 @@
 			</div>
 		</div>
 		<br>
-		<div class="row m-0">
-			<div class="col-12 readmore">
-				<p class="video_description keepspaces"><%= auto_link(@mock.description, html: { target: '_blank' }).html_safe  %></p>
-			</div>
-			<div class="col-10">
-				<% if @mock.credits? %>
-					<b>Credits:</b>
-					<p><%= auto_link(@mock.credits, html: { target: '_blank' }) %></p>
-				<% end %>
-			</div>
-			<% if mocker_signed_in? && current_mocker != @mock.mocker %>
-				<div class="col-2">
-					<button type="button" class="btn _btn _btn_report" data-toggle="modal" data-target="#reportMock"><i class="fas fa-exclamation-triangle"></i></button>
-					<!-- Modal -->
-					<div class="modal fade" id="reportMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title _fw600" id="exampleModalLabel">Report content</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        <%= render 'mock_reports/form', mock: @mock %>
-					      </div>
-					    </div>
-					  </div>
-					</div>	
-				</div>
-			<% end %>
-		</div>
 		<div class="row m-0">
 			<div class="col-12 text-right">
 				<% if current_mocker == @mock.mocker %>

@@ -6,14 +6,14 @@
 				<div class="row m-0">
 					<div class="col-12 _board p-0">
 						<%= render 'mocks/tags' %>
-						<div class="mocks_content mt-4">
+						<div class="mocks_content">
 
 							<div id="mockers">
 								<div class="row">
 									<%= render 'mockers/mini_show' %>
 								</div>
 							</div>
-							<div class="masonry_1 mt-4">
+							<div class="_shuffle_container">
 								<%= render 'mocks/mock_search' %>
 							</div>
 							<%= will_paginate @mocks %>
@@ -24,3 +24,16 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	
+	var clipboard = new Clipboard('.clipboard-btn');
+	console.log(clipboard);
+
+	var Shuffle = window.Shuffle;
+
+	var myShuffle = new Shuffle(document.querySelector('._shuffle_container'), {
+	itemSelector: '._item_shuffle',
+	sizer: '.my-sizer-element',
+	buffer: 1,
+	});
+</script>

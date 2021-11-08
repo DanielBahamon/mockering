@@ -77,4 +77,15 @@
 		}).scroll();
 
 	}); */
+	
+	var clipboard = new Clipboard('.clipboard-btn');
+	console.log(clipboard);
+
+	var Shuffle = window.Shuffle;
+
+	var myShuffle = new Shuffle(document.querySelector('._shuffle_container'), {
+	itemSelector: '._item_shuffle',
+	sizer: '.my-sizer-element',
+	buffer: 1,
+	});
 </script> 

@@ -27,18 +27,24 @@
 
 
 $(document).ready(function(){  
-  var clipboard = new Clipboard('.clipboard-btn');
-  console.log(clipboard);
 
-  var Shuffle = window.Shuffle;
 
-  var myShuffle = new Shuffle(document.querySelector('._shuffle_container'), {
-    itemSelector: '._item_shuffle',
-    sizer: '.my-sizer-element',
-    buffer: 1,
+  $("._btn_out_sidebar").click(function(){
+      $("#_sidenav").toggleClass("out");
+      // $("#_sidenav_2").toggleClass("out");
+      $("._nav._1").toggleClass("_on");
+      $("._logo_navbar").toggleClass("_on");
+      $("._content_principal").toggleClass("_p_off");
+      $(".content_big_1").toggleClass("offset-md-3");
+      $(".content_big_1").toggleClass("offset-xl-2");
   });
+  $("._btn_out_sidebar").click(function(){
+      $("._content_principal").toggleClass("full");
+  });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 
 });
-
-
+  
 

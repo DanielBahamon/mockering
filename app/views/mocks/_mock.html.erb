@@ -52,7 +52,11 @@
 					<div class="row m-0 ">
 						<div class="col-12 p-0 pb-2">
 							<%= link_to mock, class: "_link_mocke_title" do %>
-								<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+								<% if mock.movie_file_size?  %>
+									<h4 class="_cardtitle _fs15pt"><%= mock.title %></h4>
+								<% else %>
+									<p class="_cardtext"><%= mock.description %></p>
+								<% end %>
 							<% end %>
 						</div>
 						<div class="col-12 p-0">

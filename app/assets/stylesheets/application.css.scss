@@ -1887,6 +1887,7 @@
       filter: brightness(1);
   }
   ._card ._cardtitle{
+    max-height:200px;
     font-size: 13pt;
     line-height: 1.5;
     font-weight: 600;
@@ -1896,6 +1897,18 @@
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+  }
+  ._card ._cardtext{
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 100;
+    margin-bottom: 0;
+    text-decoration: none !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
       -webkit-box-orient: vertical;
   }
   ._card ._carddescription{
@@ -4184,6 +4197,7 @@
   #on_content{
     height: 100%;
     padding: 30px;
+    padding-top:15px;
   }
   #trigger1{
     top:51vh;
