@@ -129,7 +129,7 @@
 								<div class="d-table fullsize">
 									<div class="d-table-cell v-middle">
 										<div class="d-md-grid" id="like-count">
-											<i class="bi-hand-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+											<i class="bi bi-heart" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
 										</div>
 									</div>
 								</div>
@@ -164,7 +164,7 @@
 								<div class="d-table fullsize">
 									<div class="d-table-cell v-middle">
 										<div class="d-md-grid" id="dislike-count">
-											<i class="bi-hand-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+											<i class="bi bi-heart" style="transform:rotate(180deg); display:inline-block; line-height: 1;"></i> <%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
 										</div>
 									</div>
 								</div>
