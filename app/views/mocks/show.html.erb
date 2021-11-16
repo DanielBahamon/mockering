@@ -8,13 +8,61 @@
 <% content_for :autor_page, "#{@mock.mocker.slug }" %>
 <% content_for :movie_path, "#{video_path(@mock.movie)}" %>
 
-<div class="_conta pt-5 _mock <% if @mock.movie_file_size? %>_movie<% else %>_picture<% end %>">
-	<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
+<div class="d-table fullsize minh-100">
+	<div class="d-table-cell v-middle">
+		<div class="_conta pt-5 _mock <% if @mock.movie_file_size? %>_movie<% else %>_picture<% end %>">
+			<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
 
-	<% if @mock.age_restricted == true %>
-		<% if mocker_signed_in? && current_mocker.birthday.present? %>
-			<% @age = Time.zone.now.year - current_mocker.birthday.year %>
-			<% if @age > 17 %>
+			<% if @mock.age_restricted == true %>
+				<% if mocker_signed_in? && current_mocker.birthday.present? %>
+					<% @age = Time.zone.now.year - current_mocker.birthday.year %>
+					<% if @age > 17 %>
+						<% unless @blocked == true %>
+							<% if @mock.reported == false %>
+								<% if @mock.movie_file_size?  %>
+									<%= render 'content' %>
+								<% else %>
+									<%= render 'contentalt' %>
+								<% end %>
+							<% else %>
+								<!-- Modal -->
+								<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title _fw600" id="exampleModalLabel">Appeal content</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								        <%= render 'mock_appeals/form', mock: @mock %>
+								      </div>
+								    </div>
+								  </div>
+								</div>	
+								<div class="jumbotron text-center">
+									<h1 class="_fw600 ">This video is reported.</h1>
+									<p>If you want to appeal to this report. Please <a href="#" data-toggle="modal" data-target="#appealMock">contact us</a>.</p>
+								</div>
+							<% end %>
+						<% else %>
+							<div class="jumbotron text-center">
+								<h3 class="_fw600 ">This mocker has blocked you :(</h3>
+							</div>
+						<% end %>
+					<% else %>
+						<div class="jumbotron text-center">
+							<h3 class="_fw600 ">You are not old enough to view this content :(</h3>
+						</div>
+					<% end %>
+				<% else %>
+					<div class="jumbotron text-center">
+						<h3 class="_fw600 ">You need to confirm your age.</h3>
+						<p>Please tell us <%= link_to 'how old are you?', edit_mocker_registration_path %>.</p>
+					</div>
+				<% end %>
+			<% else %>
 				<% unless @blocked == true %>
 					<% if @mock.reported == false %>
 						<% if @mock.movie_file_size?  %>
@@ -49,54 +97,11 @@
 						<h3 class="_fw600 ">This mocker has blocked you :(</h3>
 					</div>
 				<% end %>
-			<% else %>
-				<div class="jumbotron text-center">
-					<h3 class="_fw600 ">You are not old enough to view this content :(</h3>
-				</div>
 			<% end %>
-		<% else %>
-			<div class="jumbotron text-center">
-				<h3 class="_fw600 ">You need to confirm your age.</h3>
-				<p>Please tell us <%= link_to 'how old are you?', edit_mocker_registration_path %>.</p>
-			</div>
-		<% end %>
-	<% else %>
-		<% unless @blocked == true %>
-			<% if @mock.reported == false %>
-				<% if @mock.movie_file_size?  %>
-					<%= render 'content' %>
-				<% else %>
-					<%= render 'contentalt' %>
-				<% end %>
-			<% else %>
-				<!-- Modal -->
-				<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title _fw600" id="exampleModalLabel">Appeal content</h5>
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				        <%= render 'mock_appeals/form', mock: @mock %>
-				      </div>
-				    </div>
-				  </div>
-				</div>	
-				<div class="jumbotron text-center">
-					<h1 class="_fw600 ">This video is reported.</h1>
-					<p>If you want to appeal to this report. Please <a href="#" data-toggle="modal" data-target="#appealMock">contact us</a>.</p>
-				</div>
-			<% end %>
-		<% else %>
-			<div class="jumbotron text-center">
-				<h3 class="_fw600 ">This mocker has blocked you :(</h3>
-			</div>
-		<% end %>
-	<% end %>
+		</div>
+	</div>
 </div>
+		
 
 <style type="text/css">
 	._card._2{

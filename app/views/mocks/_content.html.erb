@@ -246,8 +246,12 @@
 			<div class="col-12 text-right">
 				<% if current_mocker == @mock.mocker %>
 					<div class="btn-group" role="group" aria-label="Basic example">
-					  <%= link_to 'Edit', edit_mock_path, class: 'btn btn-outline-dark' %>
-				      <%= link_to 'Delete', mock_path, method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-outline-secondary' %>
+					  <%= link_to edit_mock_path, class: 'btn btn-outline-dark' do %>
+					  	<i class="bi bi-pencil"></i>
+					  <% end %>
+				      <%= link_to mock_path, method: :delete, data: {confirm: "Are you sure?"},class: '_btn' do %>
+				      	<i class="bi bi-trash"></i>
+				      <% end %>
 					</div>
 				<% end %>
 			</div>
