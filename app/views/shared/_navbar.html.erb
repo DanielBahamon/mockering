@@ -1,5 +1,5 @@
 <div class="_nav _1 
-    <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
+    <% if current_page?(root_path) || current_page?(mockets_path) || current_page?(mocks_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
       _on
     <% end %>
   ">
@@ -21,7 +21,7 @@
                 </div>
               </li>
               <li class="nav-item relative d-none d-xs-block _logo_navbar pr-3 
-                  <% unless current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
+                  <% unless current_page?(root_path) || current_page?(mockets_path) || current_page?(plays_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
                    _on
                   <% end %>
                   ">
@@ -44,7 +44,7 @@
                 <div class="d-table fullsize">
                   <div class="d-tablecell v-middle">
                     <%= link_to root_path, class: "_btn_icon #{'active' if current_page?(root_path)}" do %>
-                      <i class="bi-house-door"></i>
+                      <i class="bi-tornado"></i>
                     <% end %>
                   </div>
                 </div>
@@ -52,8 +52,8 @@
               <li class="nav-item btn-mini icon_navbar d-none d-md-block">
                 <div class="d-table fullsize">
                   <div class="d-tablecell v-middle">
-                    <%= link_to random_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
-                      <i class="bi-shuffle"></i>
+                    <%= link_to plays_path, class: "_btn_icon #{'active' if current_page?(plays_path)}" do %>
+                      <i class="bi-camera-reels"></i>
                     <% end %>
                   </div>
                 </div>
@@ -61,8 +61,8 @@
               <li class="nav-item btn-mini icon_navbar d-none d-md-block">
                 <div class="d-table fullsize">
                   <div class="d-tablecell v-middle">
-                    <%= link_to trends_path, class: "_btn_icon #{'active' if current_page?(trends_path)}" do %>
-                      <i class="bi-thermometer-half"></i>
+                    <%= link_to mockets_path, class: "_btn_icon #{'active' if current_page?(mockets_path)}" do %>
+                      <i class="bi-easel2"></i>
                     <% end %>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
                             <li class="nav-item btn-mini icon_navbar" style="height: 40px;">
                               <div class="d-table fullsize">
                                 <div class="d-tablecell v-middle">
-                                  <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
+                                  <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(plays_path)}" do %>
                                     <i class="bi-plus-square"></i>
                                   <% end %>
                                 </div>
@@ -126,7 +126,7 @@
                               <div class="d-table fullsize">
                                 <div class="d-tablecell v-middle">
                                   <% if mocker_signed_in? # && current_mocker.admin %>
-                                    <a class="_btn_icon_avatar nav-link dropdown-toggle" href="#" id="navbarDropdownAccount2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></a>
+                                    <a class="_btn_icon_avatar nav-link dropdown-toggle d-grid p-0" href="#" id="navbarDropdownAccount2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2" id="navbarDropdown2">
                                     
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
@@ -135,8 +135,8 @@
                                       <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
                                     </div>
                                   <% else %>
-                                    <%= link_to new_mocker_session_path, class: "_btn_icon_avatar nav-link" do %>
-                                      <%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %>
+                                    <%= link_to new_mocker_session_path, class: "_btn_icon" do %>
+                                      <i class="bi-person"></i>
                                     <% end %>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2" id="navbarDropdown2">
                                         <%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
@@ -167,7 +167,7 @@
                         <li class="nav-item btn-mini icon_navbar">
                           <div class="d-table fullsize">
                             <div class="d-tablecell v-middle">
-                              <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(random_path)}" do %>
+                              <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(plays_path)}" do %>
                                 <i class="bi-plus-square"></i>
                               <% end %>
                             </div>
@@ -202,7 +202,9 @@
                           <div class="d-table fullsize">
                             <div class="d-tablecell v-middle">
                                   <% if mocker_signed_in? # && current_mocker.admin %>
-                                    <a class="_btn_icon_avatar nav-link dropdown-toggle" href="#" id="navbarDropdownAccount2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></a>
+                                    <a class="_btn_icon_avatar nav-link dropdown-toggle" href="#" id="navbarDropdownAccount2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %>
+                                      </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2" id="navbarDropdown2">
                                     
                                       <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
@@ -212,7 +214,7 @@
                                     </div>
                                   <% else %>
                                     <%= link_to new_mocker_session_path, class: "_btn_icon_avatar nav-link" do %>
-                                      <%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %>
+                                        <i class="bi-person"></i>
                                     <% end %>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2" id="navbarDropdown2">
                                         <%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
@@ -451,7 +453,7 @@
   .col_navfooter.active a i{
       font-size: 1rem;
       top: -6px;
-      position: absolute;
+      position: relative;
       left: 0;
       right: 0;
       width: 100%;
@@ -543,7 +545,7 @@
   }
   
 
-  <% if current_page?(root_path) || current_page?(latest_path) || current_page?(random_path) || current_page?(trends_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
+  <% if current_page?(root_path) || current_page?(plays_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
     @media(min-width: 768px){
       ._content_principal._1{
         padding-left: 0;

@@ -1,4 +1,44 @@
 <% content_for :title, "Your mocks • Mockering" %>
+<div id="_big_row_index" class="container-lg">
+	<div class="row m-0">
+		<div class="col-12 p-0 _content _content_principal _1">
+			<div class="on_content" id="on_content">
+					<div class="_board">
+						<section class="_title_page">
+							<div class="d-table fullsize">
+								<div class="d-table-cell v-middle">
+									<div class="_title">
+										<i class="bi bi-collection"></i>
+										<span>Your mocks</span>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="_mocks _2">
+							<div class="mocks_content _1">
+							<div class="_shuffle_container _1">
+								<% @mocks.each do |mock| %>
+									<%= render 'mock', mock: mock %>
+								<% end %>
+							</div>
+							<div class="my-sizer-element"></div>
+							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
+							    </div>
+							  </div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
 <div id="_big_row_index">
 	<div class="row m-0">
 		<div class="col-12 p-0 _content _content_principal full">

@@ -1,9 +1,19 @@
-<% content_for :title, "Mockering - Real or fake... We just post it!" %>
+<% content_for :title, "Mockets • Mockering" %>
 <div id="_big_row_index" class="container-lg">
 	<div class="row m-0">
 		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
 					<div class="_board">
+						<section class="_title_page">
+							<div class="d-table fullsize">
+								<div class="d-table-cell v-middle">
+									<div class="_title">
+										<i class="bi-easel2"></i>
+										<span>Mockets</span>
+									</div>
+								</div>
+							</div>
+						</section>
 						<section class="_mocks _2">
 							<% if @new_mocks.present? %>
 								<div class="mocks_content _1">
@@ -72,26 +82,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-	/*
-	$(document).ready(function(){
-
-	    $(".arrow-left-navigation_2").click(function(){
-	        $("#mocks_whatever").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_2").click(function(){
-	        $("#mocks_whatever").animate({scrollLeft: "+="+351});
-	    });
-
-		$('#mocks_whatever').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_1').hide();
-		    }
-		    else if($('.arrow-left-navigation_2').css('display') != 'block') {
-		        $('.arrow-left-navigation_2').show();
-		    }
-		}).scroll();
-
-	}); */
 	
 	var clipboard = new Clipboard('.clipboard-btn');
 	console.log(clipboard);

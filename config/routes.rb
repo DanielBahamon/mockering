@@ -178,49 +178,9 @@ Rails.application.routes.draw do
 
   get 'mentions', to: 'mockers#mentions'
 
-  get 'trends', to: 'mocks#trends'
+  get 'mockets', to: 'mocks#mockets'
 
-  get 'whatever', to: 'mocks#whatever'
-
-  get 'knowledge', to: 'mocks#knowledge'
-
-  get 'paranormal', to: 'mocks#paranormal'
-
-  get 'shorts', to: 'mocks#shorts'
-
-  get 'events', to: 'mocks#events'
-
-  get 'aliens', to: 'mocks#aliens'
-
-  get 'animation', to: 'mocks#animation'
-  
-  get 'videoclips', to: 'mocks#videoclips'
-  
-  get 'podcasts', to: 'mocks#podcasts'
-  
-  get 'reactions', to: 'mocks#reactions'
-
-  get 'protests', to: 'mocks#protests'
-
-  get 'health', to: 'mocks#health'
-
-  get 'history', to: 'mocks#history'
-
-  get 'tutorials', to: 'mocks#tutorials'
-
-  get 'training', to: 'mocks#training'
-
-  get 'tributes', to: 'mocks#tributes'
-
-  get 'reports', to: 'mocks#reports'
-
-  get 'music', to: 'mocks#music'
-
-  get 'nature', to: 'mocks#nature'
-  
-  get 'latest', to: 'mocks#latest'
-
-  get 'random', to: 'mocks#random'
+  get 'plays', to: 'mocks#plays'
 
   get 'liked', to: 'mocks#liked'
 
