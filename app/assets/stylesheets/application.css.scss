@@ -31,43 +31,43 @@
   /* M */
     @font-face {
      font-family: 'M Black';
-      src:  url('fonts/m/MSansDark-Black.woff2') format('woff2'),
-            url('fonts/m/MSansDark-Black.woff') format('woff');
+      src:  url('MSansDark-Black.woff2') format('woff2'),
+            url('MSansDark-Black.woff') format('woff');
     }
     @font-face {
       font-family: 'M';
-      src: font-url('fonts/m/MSansDark-ExtraBold.woff') format("woff"), 
-        font-url('fonts/m/MSansDark-ExtraBold.woff2') format("woff2");
+      src: font-url('MSansDark-ExtraBold.woff') format("woff"), 
+        font-url('MSansDark-ExtraBold.woff2') format("woff2");
       font-weight: 800;
     }
     @font-face {
       font-family: 'M';
       src: font-url('fonts/m/MSansDark-Bold.woff') format("woff"), 
-        font-url('fonts/m/MSansDark-Bold.woff2') format("woff2");
+        font-url('MSansDark-Bold.woff2') format("woff2");
       font-weight: 700;
     }
     @font-face {
       font-family: 'M';
-      src: font-url('fonts/m/MSansDark-SemiBold.woff') format("woff"), 
-        font-url('fonts/m/MSansDark-SemiBold.woff2') format("woff2");
+      src: font-url('MSansDark-SemiBold.woff') format("woff"), 
+        font-url('MSansDark-SemiBold.woff2') format("woff2");
       font-weight: 600;
     }
     @font-face {
       font-family: 'M';
-      src: font-url('fonts/m/MSansDark-Medium.woff') format("woff"), 
-        font-url('fonts/m/MSansDark-Medium.woff2') format("woff2");
+      src: font-url('MSansDark-Medium.woff') format("woff"), 
+        font-url('MSansDark-Medium.woff2') format("woff2");
       font-weight: 500;
     }
     @font-face {
       font-family: 'M';
-      src: font-url('fonts/m/MSansDark-Regular.woff') format("woff"), 
-        font-url('fonts/m/MSansDark-Regular.woff2') format("woff2");
+      src: font-url('MSansDark-Regular.woff') format("woff"), 
+        font-url('MSansDark-Regular.woff2') format("woff2");
       font-weight: 400;
     }
     @font-face {
       font-family: 'M';
-      src: font-url('fonts/m/MSansDark-Light.woff') format("woff"), 
-        font-url('fonts/m/MSansDark-Light.woff2') format("woff2");
+      src: font-url('MSansDark-Light.woff') format("woff"), 
+        font-url('MSansDark-Light.woff2') format("woff2");
       font-weight: 100;
     }
 
