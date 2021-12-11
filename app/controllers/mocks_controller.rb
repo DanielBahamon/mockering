@@ -34,7 +34,6 @@ class MocksController < ApplicationController
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
     	.where(privated: false, reported: false, unlist: false)
-    	.where.not("mocks.id == '#{@new_mocks.ids}'")
 	end
 	def mockets
     	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
