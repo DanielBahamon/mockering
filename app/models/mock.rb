@@ -18,6 +18,14 @@ class Mock < ApplicationRecord
 
 
 
+	enum mocktype: {
+		plays: 0,
+		mockets: 1,
+		pictures: 2,
+		tracks: 3
+	}
+
+
 	enum category: {
 		Whatever: 0,
 		Knowledge: 1,

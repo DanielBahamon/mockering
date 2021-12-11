@@ -27,14 +27,14 @@ class MocksController < ApplicationController
     	.order("created_at DESC")
     	.paginate(page: params[:page], per_page: 20)
     	.where(privated: false, reported: false, unlist: false)
-    	.where("mocks.id != '#{@new_mocks.ids}'")
+    	.where.not("mocks.id == '#{@new_mocks.ids}'")
 
 		@trends = Mock.joins(:impressions)
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
     	.where(privated: false, reported: false, unlist: false)
-    	.where("mocks.id != '#{@new_mocks.ids}'")
+    	.where.not("mocks.id == '#{@new_mocks.ids}'")
 	end
 	def mockets
     	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -239,7 +239,7 @@ class MocksController < ApplicationController
 		end
 
 		def mock_params
-			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist, :duration)
+			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist, :duration, :mocktype)
 		end
 
 		def set_search
