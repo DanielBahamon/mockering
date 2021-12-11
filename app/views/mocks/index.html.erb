@@ -12,12 +12,12 @@
 											<%= render 'mock', mock: mock %>
 										<% end %>
 									</div>
-									<div class="my-sizer-element"></div>
-									  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-									    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-									      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-									    </div>
-									  </div>
+								<div class="my-sizer-element"></div>
+							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
+							    </div>
+							  </div>
 								</div>
 							<% end %>
 						</section>
@@ -26,6 +26,21 @@
 								<div class="col-12 p-0">
 									<h3>Trends</h3>
 								</div>
+							</div>
+						</section>
+						<section class="_mocks _2">
+							<div class="mocks_content _2">
+								<div class="_shuffle_container _2">
+									<% @trends.each do |mock| %>
+										<%= render 'mock', mock: mock %>
+									<% end %>
+								</div>
+								<div class="my-sizer-element"></div>
+							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
+							    </div>
+							  </div>
 							</div>
 						</section>
 						<section class="sec_title">
