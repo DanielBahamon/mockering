@@ -89,6 +89,7 @@
                        <label>Category</label>
                        <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, class: "form-control _select", required: true %>
                       </div>
+                      <%= f.hidden_field :mocktype, value: 'plays' %>
                       <div class="field">
                        <br>
                        <label>Description</label>
@@ -232,6 +233,7 @@
                     </div>
                   </div>
                   <br>
+                  <%= f.hidden_field :mocktype, value: 'pictures' %>
                   <div class="row m-0">
                     <div class="col-12 mt-2">
                       <%= f.submit 'Upload!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Uploading, please hold on...' } %>

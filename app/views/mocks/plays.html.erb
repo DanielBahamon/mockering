@@ -3,7 +3,7 @@
 	<div class="row m-0">
 		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
-					<div class="_board">
+					<div class="_board _plays">
 						<section class="_title_page">
 							<div class="d-table fullsize">
 								<div class="d-table-cell v-middle">
@@ -34,6 +34,28 @@
 						<section class="sec_title">
 							<div class="row m-0">
 								<div class="col-12 p-0">
+									<h3>These weeks</h3>
+								</div>
+							</div>
+						</section>
+						<section class="_mocks _2">
+							<div class="mocks_content _2">
+								<div class="_shuffle_container _3">
+									<% @month.each do |mock| %>
+										<%= render 'mock', mock: mock %>
+									<% end %>
+								</div>
+								<div class="my-sizer-element"></div>
+							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
+							      <%= will_paginate @month, renderer: BootstrapPagination::Rails, param_name: 'page' %>
+							    </div>
+							  </div>
+							</div>
+						</section>
+						<section class="sec_title">
+							<div class="row m-0">
+								<div class="col-12 p-0">
 									<h3>Trends</h3>
 								</div>
 							</div>
@@ -49,28 +71,6 @@
 							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
 							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-							    </div>
-							  </div>
-							</div>
-						</section>
-						<section class="sec_title">
-							<div class="row m-0">
-								<div class="col-12 p-0">
-									<h3>This month</h3>
-								</div>
-							</div>
-						</section>
-						<section class="_mocks _2">
-							<div class="mocks_content _2">
-								<div class="_shuffle_container _3">
-									<% @month.each do |mock| %>
-										<%= render 'mock', mock: mock %>
-									<% end %>
-								</div>
-								<div class="my-sizer-element"></div>
-							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-							      <%= will_paginate @month, renderer: BootstrapPagination::Rails, param_name: 'page' %>
 							    </div>
 							  </div>
 							</div>

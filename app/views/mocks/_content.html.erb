@@ -5,7 +5,7 @@
 				<% if @mock.movie.present? %>
 				  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{'loop': true}" style="width:100%; height:auto;" poster="
 				  	<% if @mock.picture.present? %>
-				  		<%= @mock.picture.url(:large) %>
+				  		<%= @mock.picture.url(:extralarge) %>
 			  		<% else %> 
 			  			<%= @mock.movie.url(:thumb) %>
 			  		<% end %>" autoplay >

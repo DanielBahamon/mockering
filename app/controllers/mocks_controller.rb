@@ -20,7 +20,7 @@ class MocksController < ApplicationController
 
 		@new_mocks = Mock.all.order("RANDOM()")
 		.limit(8)
-		.where("mocks.created_at >= '#{12.month.ago}'", privated: false, reported: false, unlist: false)
+		.where("mocks.created_at >= '#{1.week.ago}'", privated: false, reported: false, unlist: false)
 		.paginate(page: params[:page], per_page: 8)
 
     	@month = Mock.all.where("mocks.created_at >= '#{1.month.ago}'")
@@ -59,11 +59,6 @@ class MocksController < ApplicationController
     	.paginate(page: params[:page], per_page: 20)
     	.where(privated: false, reported: false, unlist: false)
     	.where("mocks.id != '#{@new_mocks.ids}'")
-
-
-    	# @mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}  '").group("impressions.impressionable_id").order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
-		# @mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
-		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
 	end
 	def plays
     	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -117,6 +112,16 @@ class MocksController < ApplicationController
 		@mocker = current_mocker
 		@mock = current_mocker.mocks.build(mock_params)
 		
+		if @mock.picture.present? && @mock.movie.present?
+			@mock.mocktype = 0
+		elsif @mock.movie.present? && @mock.movie.nil?
+			@mock.mocktype = 1
+		elsif @mock.picture.present? && @mock.picture.nil?
+			@mock.mocktype = 2
+		else 
+			@mock.mocktype = 3
+		end
+
 		# file = @mock.movie.queued_for_write[:original].path
 		# @mock.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
 

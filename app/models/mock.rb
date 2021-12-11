@@ -22,7 +22,7 @@ class Mock < ApplicationRecord
 		plays: 0,
 		mockets: 1,
 		pictures: 2,
-		tracks: 3
+		tracks: 3 
 	}
 
 
