@@ -27,15 +27,15 @@
     	.order("created_at DESC")
     	.paginate(page: params[:page], per_page: 20)
     	.where(privated: false, reported: false, unlist: false)
-    	.where("mocks.id IS NOT '#{@new_mocks.ids}'")
+    	.where.not("mocks.id = '#{@new_mocks.ids}'")
 
 		@trends = Mock.joins(:impressions) 
     	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
     	.group(:id).order(impressions_count: :desc)
     	.paginate(page: params[:page], per_page: 20)
     	.where(privated: false, reported: false, unlist: false)
-    	.where("mocks.id IS NOT '#{@new_mocks.ids}'")
-    	.where("mocks.id IS NOT '#{@month.ids}'")
+    	.where.not("mocks.id = '#{@new_mocks.ids}'")
+    	.where.not("mocks.id = '#{@month.ids}'")
 	end
 	def mockets
     	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
