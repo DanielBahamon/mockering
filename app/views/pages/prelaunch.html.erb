@@ -1,241 +1,327 @@
-<div class="container subs">
-	<div class="row">
-		<div class="col-12 col-md-7">
-			<div class="prelaunch">
+<% content_for :title, "Mockering - Free content to enjoy" %>
+<section class="_prelaunch _1">
+	<div class="_content">
+		<div class="row m-0">
+			<div class="col-lg-5 _1 offset-lg-1">
 				<div class="d-table fullsize">
-					<div class="d-table-cell verticalmiddle">
-						<div class="d-block">
-							<div class="cont_csmt_1 ">
-			                    <br/>
-			                    <br/>
-			                    <a id="icondefault_2" href="/">
-			                      <div class="display-initial">
-			                        <img border="0" class="icon icon35-sm" src="//d8mn60sm70fqt.cloudfront.net/assets/images/brand/apposento-icon.svg"> <img border="0" class="logo hide-less-200px" src="//d8mn60sm70fqt.cloudfront.net/assets/images/brand/apposento.svg" alt="Apposento">
-			                      </div>
-			                    </a>
-			                    <br/>
-			                    <br/>
-								<h3 class="fontweight-3" id="pre_title"><%= t :pre_title %></h3>
-								<h1 class="title_1 m-0 fontweight-7" id="title_subs"><%= t :title_subs %></h1>
-								<hr>
-								<h4 class="fontweight-2" id="info_subs"><%= t :cont_subs %></h4>
-		                  		<%= form_for @subscriber do |f| %>
-									<%= f.email_field :email, class: "form-group", id: "subs_email", placeholder: 'yourname@email.com' %>
-									<%= f.submit "Join", class: "submit-subs",required: true %>
-								<% end %>
+					<div class="d-table-cell v-middle">
+						<div class="_info">
+							<h1>Descubre el nuevo contenido</h1>
+							<h1 class="_stylus _1">polémico y alternativo.</h1>
+							<p>Visibiliza y visualiza sin baneos tus creaciones junto al contenido alternativo que otras plataformas bloquean.</p>
+							<div class="_action">
+								<div class="row m-0">
+									<div class="col-auto pl-0 pt-4">
+										<a class="_btn _light_1" href="../login">Acceder</a>
+									</div>
+									<div class="col-auto pl-0 pt-4">
+										<a class="_btn _light_2" href="../registration">Primera vez</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-12 col-md-5 hide-less-md">
-	        <div id="carousel_subs" class="carousel slide carousel_home_slider" data-ride="carousel" data-pause="false" data-touch="true" data-interval="9000">
-	          <div class="carousel-inner">
-	            <div class="item active">
-	              <div class="home_slider_bg" data-slide-to="0" id="item_subs_1-2">
-	              </div>
-	            </div>
-	            <div class="item ">
-	              <div class="home_slider_bg" data-slide-to="4" id="item_subs_1-1">
-	              </div>
-	            </div>
-	            <div class="item ">
-	              <div class="home_slider_bg" data-slide-to="4" id="item_home_1-5">
-	              </div>
-	            </div>
-	          </div>
-	        </div>
+			<div class="col-lg-6 _2"></div>
 		</div>
 	</div>
-	<ul class="links_i18n p-0">
-		<li>
-			<i class="fas fa-globe"></i>
-		</li>
-		<%= content_tag :li do %>
-			<%= link_to 'ES', locale: :es %>
-		<% end unless current_page?(locale: :es) %>
-		<%= content_tag :li do %>
-			<%= link_to 'EN', locale: :en %>
-		<% end unless current_page?(locale: :en) %>
-	</ul>
-</div>
+</section>
+<section class="_prelaunch _2">
+	<div class="_content">
+		<div class="row m-0">
+			<div class="col-12 col-sm-6 col-xl-3 _1">
+				<div class="_item">
+					<div class="_icon _1">
+						<img src="//d8mn60sm70fqt.cloudfront.net/assets/svg/home/show-light.svg">
+					</div>
+					<h4>Visibilidad Instantánea</h4>
+					<p>En Mockering promovemos el contenido alternativo que en otras plataformas no tienen lugar.</p>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-xl-3 _1">
+				<div class="_item">
+					<div class="_icon _2">
+						<img src="//d8mn60sm70fqt.cloudfront.net/assets/svg/home/wallet-light.svg">
+					</div>
+					<h4>Contenido Monetizado</h4>
+					<p>Da valor a las creaciones que ofreces a cambio de contenido exclusivo.</p>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-xl-3 _1">
+				<div class="_item">
+					<div class="_icon _3">
+						<img src="//d8mn60sm70fqt.cloudfront.net/assets/svg/home/voice-light.svg">
+					</div>
+					<h4>Libre Expresión</h4>
+					<p>Mockering no censura contenido polémico siempre y cuando no afecte la suceptibilidad de la comunidad.</p>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-xl-3 _1">
+				<div class="_item">
+					<div class="_icon _4">
+						<img src="//d8mn60sm70fqt.cloudfront.net/assets/svg/home/activity-light.svg">
+					</div>
+					<h4>Sin Publicidad Invasiva</h4>
+					<p>Disfruta del contenido que la comunidad brinda sin molestas publicidades, tu decides como apoyar a tu creador favorito.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="_prelaunch _3">
+	<div class="_content">
+		<div class="row m-0">
+			<div class="col-lg-6 _1">
+				<div class="d-table fullsize">
+					<div class="d-table-cell v-middle">
+						<div class="_cont">
+							<h1>Crítica sin censura</h1>
+							<p>Publica y descubre información polemica sin baneos.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 _2">
+				<article class="_masonry_prelaunch _1" >
+					<figure class="_item_shuffle _column_shuffle">
+						<div class="masonryitem_1 ">
+							<img class="my-sizer-element" src="//d8mn60sm70fqt.cloudfront.net/assets/images/prelaunch_2.jpg">
+						</div>
+					</figure>
+					<figure class="_item_shuffle _column_shuffle">
+						<div class="masonryitem_1 ">
+							<img class="my-sizer-element" src="//d8mn60sm70fqt.cloudfront.net/assets/images/prelaunch_3.jpg">
+						</div>
+					</figure>
+					<figure class="_item_shuffle _column_shuffle">
+						<div class="masonryitem_1 ">
+							<img class="my-sizer-element" src="//d8mn60sm70fqt.cloudfront.net/assets/images/prelaunch_1.jpg">
+						</div>
+					</figure>
+					<figure class="_item_shuffle _column_shuffle">
+						<div class="masonryitem_1 ">
+							<img class="my-sizer-element" src="//d8mn60sm70fqt.cloudfront.net/assets/images/prelaunch_4.jpg">
+						</div>
+					</figure>
+				</article>
+			</div>
+		</div>
+	</div>
 		
-<style type="text/css">
-	.navbar.dashhide,
-	#navbar_cstm1,
-	#heightnavbar.active{
-		display:none !important;
+</section>
+
+<style>
+	section._prelaunch._3 {
+	  padding-top: 100px;
+	  padding-bottom: 100px;
 	}
-	
-	#navbar_cstm2{
-		display: none !important;
+	section._prelaunch._3>._content {
+	  width: 1500px;
+	  margin: 0 auto;
+	  max-width: 90%;
 	}
-	body{
-		background:white !important;
+	section._prelaunch._3>._content>div>._1 ._cont {
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 30px;
 	}
-	.prelaunch{
-		height:100vh;
-		width:100%;
+	section._prelaunch._3>._content>div>._1 ._cont>h1 {
+	  font-family: 'Sofia Pro', sans-serif;
+	  font-weight: 900;
+	  letter-spacing: -1px;
 	}
-	.links_i18n{
-		position: absolute;
-		display: flex;
-		top: 15px;
-		list-style: none;
+	section._prelaunch._3>._content>div>._1 ._cont>p{
+    font-family: 'Sofia Pro', sans-serif;
+    font-size: 1.01rem;
+    font-weight: 300;
 	}
-	.links_i18n li a{
-		opacity: 0.5;
-		padding:9px;
-		padding-right:0;
-	    font-family: 'Rubik','SofiaPro','TT Commons', 'Lato', 'Circe', 'Open Sans', 'Montserrat', 'Helvetica', 'Raleway',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Open Sans","Helvetica Neue",Arial,sans-serif;
-	    font-weight: 200;
-	    letter-spacing: 2px;
-	    border-radius: 6px;
-	    -webkit-transition: all .2s ease-in;
-	    transition: all .2s ease-in;
+	section._prelaunch._3 .masonryitem_1 img{
+    width: 100%;
+    border-radius: 9px;
 	}
-	.links_i18n li a:hover,
-	.links_i18n li a:focus{
-		color:#5dcbdc;
+	section._prelaunch._2>._content>div>._1>._item>._icon {
+    background: black;
+    border-radius: 25px;
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-content: center;
+    margin-bottom: 30px;
+	}
+	section._prelaunch._2>._content>div>._1>._item>._icon>img {
+	  width: 35px;
+	  height: 35px;
+	}
+	section._prelaunch._2>._content>div>._1>._item>._icon._1 {
+    background: linear-gradient(45deg, #c8e3fa, #e62490);
+    box-shadow: 0 0 50px -10px #db3a94;
+	}
+	section._prelaunch._2>._content>div>._1>._item>._icon._2 {
+    background: linear-gradient(45deg, #f43b86, #fda099);
+    box-shadow: 0 0 50px -10px #f43b86;
+	}
+	section._prelaunch._2>._content>div>._1>._item>._icon._3 {
+    background: linear-gradient(45deg, #52d0e2, #fdea96);
+    box-shadow: 0 0 50px -10px #52d0e2;
+	}
+	section._prelaunch._2>._content>div>._1>._item>._icon._4 {
+	  background: linear-gradient(45deg, #f43b86, #fedc45);
+    box-shadow: 0 0 50px -10px #f6537d;
+	}
+	section._prelaunch._1 {
+	  width: 1500px;
+	  margin: 40px auto;
+	  max-width: 90%;
+	}
+	section._prelaunch._1>._content>.row{
+		background: #000000;
+    border-radius: 20px;
+    padding: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+	}
+	section._prelaunch._2>._content {
+	  width: 1200px;
+	  margin: 50px auto;
+	  max-width: 90%;
+	}
+	section._prelaunch ._item{
+		margin-top:35px;
+		margin-bottom:35px;
+	}
+	section._prelaunch ._item>h4{
+		font-size: 1.2rem;
+    font-family: 'Sofia Pro black', sans-serif;
+	} 
+	section._prelaunch ._item>p{
+		font-size: 1rem;
+    font-family: 'Sofia Pro', sans-serif;
+	} 
+	section._prelaunch ._item>img {
+    width: 45px;
+    margin-bottom: 20px;
+	}
+	section._prelaunch._1>._content>.row>._2{
+		background: url(//d8mn60sm70fqt.cloudfront.net/assets/bgs/bg_prelaunch.jpg);
+    background-size: contain;
+    background-position: center;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+	}
+	section._prelaunch._1>._content>.row>._1 ._info h1 {
+    font-family: 'Sofia Pro black', sans-serif;
+    margin-bottom: 0;
+	}
+	section._prelaunch._1>._content>.row>._1 ._info{
+		color: white;
+	}
+	section._prelaunch._1>._content>.row>._1 ._info h1:last-of-type {
+    margin-bottom: 20px;
+	}
+	section._prelaunch._1>._content>.row>._1 ._info ._stylus._1{ 
+    background: linear-gradient(45deg, #f43b86,#f43b86, #7026c6, #7026c6);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	section._prelaunch._1>._content>.row>._1 ._info p{
+    font-family: 'Sofia Pro', sans-serif;
+		line-height: 2;		
+	}
+	a._btn._light_1 {
+		opacity: 0.9;
+	  background: white;
+	  line-height: 1;
+	  padding: 30px 60px;
+	  padding-top: 26px;
+	  border-radius: 15px;
+	  text-align: center;
+	  border: 0;
+	  cursor: pointer;
+	  font-family: 'Sofia Pro', sans-serif;
+	  transition: all .3s ease;
+	}
+	a._btn._light_1:hover {
+		border: 0;
 		opacity: 1;
+		color: #000000;
+		transform: translateY(-5px);
+    box-shadow: 0 0 20px 4px #ffffff8a;
 	}
-	#info_subs{
-		background: white;
+	a._btn._light_2 {
+		opacity: 0.9;
+	  background: #2c2c2c;
+	  line-height: 1;
+	  padding: 30px 60px;
+	  padding-top: 26px;
+	  border-radius: 15px;
+	  text-align: center;
+	  border: 1px solid white;
+	  color: white;
+	  display: block;
+	  cursor: pointer;
+	  font-family: 'Sofia Pro', sans-serif;
+	  transition: all .3s ease;
 	}
-	#icondefault_2 .icon{
-	    width: auto;
-	    height: 60px;
-    	margin-left: -9px;
+	a._btn._light_2:hover {
+		opacity: 1;
+		color: #ffffff;
+		background: #4a4a4a;
+		transform: translateY(-5px);
+    box-shadow: 0 0 20px 4px #ffffff8a;
 	}
-	#new_subscriber{
-	    width: max-content;
-	    border: 1px solid #cecece;
-	    border-radius: 9px;
-	    padding: 0 15px;
-	    margin-top: 30px;
-    	display: flex;
-	}
-	#subs_email{
-		border:0;
-	    background: transparent;
-	    margin: 0;
-	    margin-right: 50px;
-    	line-height: 3.5;
-    	outline: none !important;
-    	font-weight: 700;
-	}
-	#subs_email::placeholder{
-		color:grey;
-		opacity: 0.6;
-		font-weight: 200;
-	}
-	.submit-subs{
-	    background: linear-gradient(45deg, #5dcbdc, #82f7e2);
-	    border: 1px solid transparent;
-	    border-radius: 9px;
-	    padding: 10px 15px;
-	    font-family: 'Raleway';
-	    font-weight: 800;
-	    color: white;
-	    margin-bottom: 9px;
-	    margin-top: 9px;
-	    outline: none !important;
-	    -webkit-transition: all .2s ease-in;
-	    transition: all .2s ease-in;
-	}
-	.submit-subs:hover{
-		-webkit-transform: translateY(-2px);
-		transform: translateY(-2px);
-	}
-	.submit-subs:focus,
-	.submit-subs:active{
-	    background: linear-gradient(45deg, #5dcbdc, #5dcbdc);
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-	}
-	#item_subs_1-1{
-		background: url(//d8mn60sm70fqt.cloudfront.net/assets/images/bg/austin-neill.jpg);
-	}
-	#item_subs_1-2{
-		background: url(//d8mn60sm70fqt.cloudfront.net/assets/images/bg/gades-photography.jpg);
-	}
-	#item_home_1-1{
-		background-position-x:25% !important;
-	}
-	.container.subs .col-md-5{
-		position:absolute;
-		top:0;
-		right: 0;
-		bottom:0;
-		padding: 0;
-	}
-	.carousel-inner{
-		border-radius: 0 0 0 15px;
-	}
-	#carousel_subs .home_slider_bg{
-		height:100vh;
-		width: 100%;
-    	background-size: cover;
-    	background-position-x: center;
-	}
-	#icondefault_2 .logo{
-		width:auto;
-		height: 50px;
-		margin-top:8px;
-		margin-left: 6px;
-	}
-	.cont_csmt_1{
-    	background: white;
-	    /*-webkit-box-shadow: 0 7px 20px 0px rgba(213, 229, 241, 0.8);
-	    box-shadow:0 7px 20px 0px rgba(213, 229, 241, 0.8);*/
-	}
-	.card_cont{
-		padding:30px;
-	}
-	@media(max-height: 700px){
-		.prelaunch{
-		    height: auto;
-		    min-height: 602px;
+	@media(min-width: 992px){
+		section._prelaunch._1>._content>.row>._1{
+	    height: 50vh;
+	    min-height: 550px;
 		}
-		.cont_csmt_1 {
-			margin-top: 50px;
+		section._prelaunch._1 {
+		  margin: 60px auto;
 		}
-		footer{
-			display: none;
+		section._prelaunch._2>._content {
+			width: 1400px;
+			margin: 50px auto;
+			max-width: 85%;
+		}
+		section._prelaunch._3>._content>div>._1 ._cont {
+		  width: 500px;
+		  max-width: 100%;
+	    margin: 0 auto;
+	    text-align: left;
+		}
+	}
+	@media(max-width: 991px){
+		article._masonry_prelaunch{
+		  column-width: 40vw !important;
 		}
 	}
 	@media(max-width: 575px){
-		#icondefault_2 .logo{
-			height:30px;
-    		margin-top: 7px;
-		}
-		#icondefault_2 .icon{
-			height:auto;
-    		width: 24px;
-		}
-		#new_subscriber{
-			margin-bottom: 25vh;
-		}
-		.links_i18n{
-			right: 15px;
-		}
-		.prelaunch{
-			height:110vh;
-		}
-	}
-	@media(max-width: 400px){
-		#subs_email{
-			margin:0;
+		._action>.row>div {
+			width: 100%;
 		}
 	}
 
-	@media(max-width: 300px){
-		#new_subscriber{
-    		display: grid;
-		}
-		#icondefault_2 .logo{
-			width: 150px;
-		}
+
+
+
+
+	article._masonry_prelaunch {
+	  column-width: 16vw;
+	  column-gap: 0;
+	}
+	article._masonry_prelaunch>figure {
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+	}
+	article._masonry_prelaunch>figure {
+	  position: relative;
+	}
+	article._masonry_prelaunch>figure:last-of-type:before {
+	  content: '';
+	  position: absolute;
+	  background: linear-gradient(0, white, rgb(255, 255, 255, 0.56), rgba(255, 0, 0, 0));
+    inset: 0 0 0 0;
 	}
 </style>

@@ -2,17 +2,16 @@ Rails.application.routes.draw do
 
   # root "mocks#index"
   # root "pages#maintenance"
-  devise_scope :mocker do
-
-   authenticated  do
-     root to: 'mocks#index'
-   end
-
-   unauthenticated do
-     root to: 'devise/sessions#new', as: 'unauthenticated_root'
-   end
-
-  end
+  root "pages#prelaunch"
+  
+  # devise_scope :mocker do
+  #  authenticated  do
+  #    root to: 'mocks#index'
+  #  end
+  #  unauthenticated do
+  #    root to: 'devise/sessions#new', as: 'unauthenticated_root'
+  #  end
+  # end
 
   resources :mockers do
     member do
@@ -183,6 +182,8 @@ Rails.application.routes.draw do
   get 'plays', to: 'mocks#plays'
 
   get 'liked', to: 'mocks#liked'
+
+  get 'all', to: 'mocks#index'
 
   get 'your_mocks', to: 'mocks#your_mocks'
 

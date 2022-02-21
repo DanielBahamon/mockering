@@ -30,6 +30,42 @@
 
   /* M */
 
+  /* NOW */
+    @font-face {
+      font-family: 'Now';
+      src: font-url('Now-Black.woff') format("woff"), 
+        font-url('Now-Black.woff2') format("woff2");
+      font-weight: 900;
+    }
+    @font-face {
+      font-family: 'Now';
+      src: font-url('Now-Bold.woff') format("woff"), 
+        font-url('Now-Bold.woff2') format("woff2");
+      font-weight: 800;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Now';
+      src: font-url('Now-Medium.woff') format("woff"), 
+        font-url('Now-Medium.woff2') format("woff2");
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Now';
+      src: font-url('Now-Regular.woff') format("woff"), 
+        font-url('Now-Regular.woff2') format("woff2");
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Now';
+      src: font-url('Now-Light.woff') format("woff"), 
+        font-url('Now-Light.woff2') format("woff2");
+      font-weight: 100;
+      font-style: normal;
+    }
+  /* END NOW */
   /* SOFIA PRO */
     @font-face {
       font-family: 'SofiaPro';
@@ -133,6 +169,8 @@
     }ccc
   /* END TT COMMONS */
 /* END FONTS */
+
+
 
 /* GENERAL */
   *{
@@ -3121,7 +3159,7 @@
   }
   ._colcategory:hover{
     transform: translateY(-2px);
-  }
+  } 
   ._colcategory#originals{
     background: url(//d8mn60sm70fqt.cloudfront.net/assets/images/original.jpg);
     background-position-x: center; 
@@ -4081,18 +4119,6 @@
   #_row_sidenav2{ 
       position: absolute;
       bottom: 40px;
-  }
-  #_ad_1{
-    background: url(//d8mn60sm70fqt.cloudfront.net/assets/ashwin-vaswani-JqZ7q_S3xOE-unsplash.jpg);
-    background-size: cover;
-  }
-  #_ad_2{
-    background: url(//d8mn60sm70fqt.cloudfront.net/assets/austin-neill-403340-unsplash.jpg);
-    background-size: cover;
-  }
-  #_ad_3{
-    background: url(//d8mn60sm70fqt.cloudfront.net/assets/austin-distel-599272-unsplash.jpg);
-    background-size: cover;
   }
 /* END #IDS */
 
