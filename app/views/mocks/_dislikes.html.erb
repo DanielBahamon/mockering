@@ -1,6 +1,6 @@
 <% if current_mocker.voted_down_on? mock %>
-	<i class="bi bi-heart-fill" style="transform:rotate(180deg); display:inline-block; line-height: 1;"></i> 
+	<i class="fas fa-hand-middle-finger"></i>
 <% else %>
-	<i class="bi bi-heart" style="transform:rotate(180deg); display:inline-block; line-height: 1;"></i>
+	<i class="fas fa-hand-middle-finger"></i>
 <% end %><%= number_to_human(mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
  

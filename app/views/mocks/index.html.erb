@@ -1,94 +1,181 @@
 <% content_for :title, "Mockering - Free content to enjoy" %>
-<div id="_big_row_index" class="container-lg">
+<% content_for :name, "home" %>
+<div id="_big_row_index">
 	<div class="row m-0">
 		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
-					<div class="_board _feed">
-						<section class="sec_title">
-							<div class="row m-0">
-								<div class="col-12 p-0">
-									<h3>These weeks</h3>
-								</div>
-							</div>
-						</section>
-						<section class="_mocks _2">
-							<div class="mocks_content _2">
-								<div class="_shuffle_container _3">
-									<% @month.each do |mock| %>
-										<%= render 'mock', mock: mock %>
+				<div class="_board _feed">
+
+
+					<section class="_onemocks">
+			      <div id="splide_onemocks" class="splide splide_onemocks">
+			      	<div class="_title">
+			      		<h3></h3>
+			      	</div>
+			        <div class="splide__arrows">
+			          <button class="splide__arrow splide__arrow--prev">
+			            <i class="bi bi-arrow-left"></i>
+			          </button>
+			          <button class="splide__arrow splide__arrow--next">
+			            <i class="bi bi-arrow-right"></i>
+			          </button>
+			        </div>
+			        <div class="splide__track">
+			          <ul class="splide__list">
+									<% @onemocks.each do |mock| %>
+				            <li class="splide__slide">
+				              <div class="splide__slide__container ">
+												<%= render 'mock', mock: mock %>
+				              </div>
+				            </li>
 									<% end %>
-								</div>
-								<div class="my-sizer-element"></div>
-							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-							      <%= will_paginate @month, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-							    </div>
-							  </div>
-							</div>
-						</section>
-						<section class="sec_title">
-							<div class="row m-0">
-								<div class="col-12 p-0">
-									<h3>Trends</h3>
-								</div>
-							</div>
-						</section>
-						<section class="_mocks _2">
-							<div class="mocks_content _2">
-								<div class="_shuffle_container _2">
-									<% @trends.each do |mock| %>
-										<%= render 'mock', mock: mock %>
+			          </ul>
+			        </div>
+			      </div>
+					</section>
+
+					<section class="_twomocks">
+			      <div id="splide_twomocks" class="splide splide_onemocks">
+			        <div class="splide__arrows">
+			          <button class="splide__arrow splide__arrow--prev">
+			            <i class="bi bi-arrow-left"></i>
+			          </button>
+			          <button class="splide__arrow splide__arrow--next">
+			            <i class="bi bi-arrow-right"></i>
+			          </button>
+			        </div>
+			        <div class="splide__track">
+			          <ul class="splide__list">
+									<% @twomocks.each do |mock| %>
+				            <li class="splide__slide">
+				              <div class="splide__slide__container ">
+												<%= render 'mock', mock: mock %>
+				              </div>
+				            </li>
 									<% end %>
-								</div>
-								<div class="my-sizer-element"></div>
-							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-							    </div>
-							  </div>
-							</div>
-						</section>
-					</div>
+			          </ul>
+			        </div>
+			      </div>
+					</section>
+
+					<section class="_threemocks">
+			      <div id="splide_threemocks" class="splide splide_onemocks">
+			        <div class="splide__arrows">
+			          <button class="splide__arrow splide__arrow--prev">
+			            <i class="bi bi-arrow-left"></i>
+			          </button>
+			          <button class="splide__arrow splide__arrow--next">
+			            <i class="bi bi-arrow-right"></i>
+			          </button>
+			        </div>
+			        <div class="splide__track">
+			          <ul class="splide__list">
+									<% @threemocks.each do |mock| %>
+				            <li class="splide__slide">
+				              <div class="splide__slide__container ">
+												<%= render 'mock', mock: mock %>
+				              </div>
+				            </li>
+									<% end %>
+			          </ul>
+			        </div>
+			      </div>
+					</section>
+
+					<section class="_fourmocks">
+			      <div id="splide_fourmocks" class="splide splide_onemocks">
+			        <div class="splide__arrows">
+			          <button class="splide__arrow splide__arrow--prev">
+			            <i class="bi bi-arrow-left"></i>
+			          </button>
+			          <button class="splide__arrow splide__arrow--next">
+			            <i class="bi bi-arrow-right"></i>
+			          </button>
+			        </div>
+			        <div class="splide__track">
+			          <ul class="splide__list">
+									<% @fourmocks.each do |mock| %>
+				            <li class="splide__slide">
+				              <div class="splide__slide__container ">
+												<%= render 'mock', mock: mock %>
+				              </div>
+				            </li>
+									<% end %>
+			          </ul>
+			        </div>
+			      </div>
+					</section>
+
+					
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
-	/*
-	$(document).ready(function(){
+  $(document).ready(function() {
+    var splide1 = new Splide('#splide_onemocks', {
+      type: 'loop',
+      perPage: 4,
+      perMove: 1,
+      breakpoints: {
+        991: {
+          perPage: 2,
+        },
+        575: {
+          perPage: 1,
+        },
+      }
+    }).mount();
 
-	    $(".arrow-left-navigation_2").click(function(){
-	        $("#mocks_whatever").animate({scrollLeft: "-="+351});
-	    });
-	    $(".arrow-right-navigation_2").click(function(){
-	        $("#mocks_whatever").animate({scrollLeft: "+="+351});
-	    });
+  });
+  $(document).ready(function() {
+    var splide2 = new Splide('#splide_twomocks', {
+      type: 'loop',
+      perPage: 4,
+      perMove: 1,
+      breakpoints: {
+        991: {
+          perPage: 2,
+        },
+        575: {
+          perPage: 1,
+        },
+      }
+    }).mount();
 
-		$('#mocks_whatever').scroll(function() {
-		    if($(this).scrollLeft() == 0) {
-		        $('.arrow-left-navigation_1').hide();
-		    }
-		    else if($('.arrow-left-navigation_2').css('display') != 'block') {
-		        $('.arrow-left-navigation_2').show();
-		    }
-		}).scroll();
+  });
+  $(document).ready(function() {
+    var splide3 = new Splide('#splide_threemocks', {
+      type: 'loop',
+      perPage: 4,
+      perMove: 1,
+      breakpoints: {
+        991: {
+          perPage: 2,
+        },
+        575: {
+          perPage: 1,
+        },
+      }
+    }).mount();
 
-	}); */
-	
-	var clipboard = new Clipboard('.clipboard-btn');
-	console.log(clipboard);
+  });
+  $(document).ready(function() {
+    var splide4 = new Splide('#splide_fourmocks', {
+      type: 'loop',
+      perPage: 4,
+      perMove: 1,
+      breakpoints: {
+        991: {
+          perPage: 2,
+        },
+        575: {
+          perPage: 1,
+        },
+      }
+    }).mount();
 
-	var Shuffle = window.Shuffle;
-
-	var myShuffle2 = new Shuffle(document.querySelector('._shuffle_container._2'), {
-	itemSelector: '._item_shuffle',
-	sizer: '.my-sizer-element',
-	buffer: 1,
-	});
-	var myShuffle3 = new Shuffle(document.querySelector('._shuffle_container._3'), {
-	itemSelector: '._item_shuffle',
-	sizer: '.my-sizer-element',
-	buffer: 1,
-	});
-</script> 
+  });
+</script>

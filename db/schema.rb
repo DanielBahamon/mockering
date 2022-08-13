@@ -243,7 +243,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_215216) do
     t.boolean "age_restricted", default: false
     t.boolean "unlist", default: false
     t.string "duration"
-    t.string "mocktype"
+    t.integer "mocktype", default: 0
     t.index ["mocker_id"], name: "index_mocks_on_mocker_id"
   end
 

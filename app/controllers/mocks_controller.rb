@@ -9,6 +9,52 @@
   	autocomplete :tag, :name, :full => true
 
 	def index
+
+		@onemocks = Mock.joins(:impressions)
+						.where(mocktype: [0...9], privated: false, reported: false, unlist: false)
+						.group(:id)
+						.order(impressions: :asc, impressions: :asc)
+						.limit(12)
+
+		@twomocks = Mock.joins(:impressions)
+						.where(mocktype: 0, privated: false, reported: false, unlist: false)
+						.group(:id)
+						.order(impressions: :asc)
+    					.where("mocks.id != '#{@onemocks.ids}' and impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{7.month.ago}'")
+						.limit(12)
+
+		@threemocks = Mock.joins(:impressions)
+						.where(mocktype: 1, privated: false, reported: false, unlist: false)
+						.group(:id)
+						.order(impressions: :asc)
+    					.where("mocks.id != '#{@onemocks.ids}'")
+						.limit(12)
+		
+		@fourmocks = Mock.joins(:impressions)
+				    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'")
+				    	.where("mocks.movie_file_size IS ?", nil)
+				    	.group(:id).order(impressions_count: :desc)
+				    	.paginate(page: params[:page], per_page: 20)
+				    	.where(privated: false, reported: false, unlist: false)
+				    	.where("mocks.id != '#{@onemocks.ids}? '")
+
+
+		@plays =  Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
+    	.group(:id).order("RANDOM()")
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(mocktype: 0, privated: false, reported: false, unlist: false)
+
+		@mocket =  Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
+    	.group(:id).order("RANDOM()")
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(mocktype: 1, privated: false, reported: false, unlist: false)
+    	
+		@mocks =  Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
+    	.group(:id).order("RANDOM()")
+    	.paginate(page: params[:page], per_page: 20)
+    	.where(privated: false, reported: false, unlist: false)
+
+
    		# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
 		# if params[:tag].present?
 		# 	@mocks = Mock.tagged_with(params[:tag])
@@ -18,24 +64,24 @@
 		# 	@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)
 		# end
 
-		@new_mocks = Mock.all.order("RANDOM()")
-		.limit(8)
-		.where("mocks.created_at >= '#{1.week.ago}'", privated: false, reported: false, unlist: false)
-		.paginate(page: params[:page], per_page: 8)
+		# @new_mocks = Mock.all.order("RANDOM()")
+		# .limit(8)
+		# .where("mocks.created_at >= '#{1.week.ago}'", privated: false, reported: false, unlist: false)
+		# .paginate(page: params[:page], per_page: 8)
 
-    	@month = Mock.all.where("mocks.created_at >= '#{1.month.ago}'")
-    	.order("created_at DESC")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, unlist: false)
-    	.where.not("mocks.id = '#{@new_mocks.ids}'")
+  		#@month = Mock.all.where("mocks.created_at >= '#{1.month.ago}'")
+  		#.order("created_at DESC")
+  		#.paginate(page: params[:page], per_page: 20)
+  		#.where(privated: false, reported: false, unlist: false)
+  		#.where.not("mocks.id = '#{@new_mocks.ids}'")
 
-		@trends = Mock.joins(:impressions) 
-    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
-    	.group(:id).order(impressions_count: :desc)
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, unlist: false)
-    	.where.not("mocks.id = '#{@new_mocks.ids}'")
-    	.where.not("mocks.id = '#{@month.ids}'")
+		# @trends = Mock.joins(:impressions) 
+  		#.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
+  		#.group(:id).order(impressions_count: :desc)
+  		#.paginate(page: params[:page], per_page: 20)
+  		#.where(privated: false, reported: false, unlist: false)
+  		#.where.not("mocks.id = '#{@new_mocks.ids}'")
+  		#.where.not("mocks.id = '#{@month.ids}'")
 	end
 	def mockets
     	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
@@ -138,12 +184,18 @@
 	end
 
 	def show
- 	  # impressionist(@mock, "message...") # 2nd argument is optional
-	  # Display all the host reviews to host (if this user is a guest)
-	  @reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
-		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
-		@related_mocks = Mock.all.where(category: @mock.category, privated: false, reported: false, unlist: false).paginate(page: params[:page], per_page: 10)
+		@mock = Mock.find(params[:id])
+		respond_to do |format|
+			format.html { @mock }
+			format.js
+		end
 
+		## impressionist(@mock, "message...") # 2nd argument is optional
+		## Display all the host reviews to host (if this user is a guest)
+
+		@reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
+		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
+		@related_mocks = Mock.all.where(category: @mock.category, privated: false, reported: false, unlist: false).limit(4)
 		@reported = MockReport.where(mock_id: @mock.id).count
 		@reported_0 = MockReport.where(mock_id: @mock.id, classification: 0).count
 		@reported_1 = MockReport.where(mock_id: @mock.id, classification: 1).count
@@ -152,7 +204,6 @@
 		@reported_4 = MockReport.where(mock_id: @mock.id, classification: 4).count
 		@reported_5 = MockReport.where(mock_id: @mock.id, classification: 5).count
 		@reported_6 = MockReport.where(mock_id: @mock.id, classification: 6).count
-
 		@appealed_reason_0 = MockAppeal.where(mock_id: @mock.id, reason: 0).count
 		@appealed_reason_1 = MockAppeal.where(mock_id: @mock.id, reason: 1).count
 		@appealed_reason_2 = MockAppeal.where(mock_id: @mock.id, reason: 2).count
@@ -178,6 +229,7 @@
 				@mock.update(reported: false)
 			end
 		end
+
 	end
 
 	def like
@@ -245,7 +297,7 @@
 		end
 
 		def mock_params
-			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist, :duration, :mocktype)
+			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist, :duration, :mocktype, :type)
 		end
 
 		def set_search

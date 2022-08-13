@@ -28,9 +28,3 @@
 # jQuery ->
 #   Mock.add_atwho()
 
-
-# $ ->
-# 	$('#mocks').imagesLoaded ->
-# 		$('#mocks').masonry
-# 		 itemSelector: '.box'
-# 		 isFitWidth: true

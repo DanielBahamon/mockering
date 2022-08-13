@@ -1,0 +1,2 @@
+$(".follow-count_<% @mocker.id %>").html("<%= j render 'friendships/follows', mocker: @mocker.id %>")
+$(".follow-link_<% @mocker.id %>").html("<%= j render 'friendships/follow_link', mocker: @mocker.id %>")

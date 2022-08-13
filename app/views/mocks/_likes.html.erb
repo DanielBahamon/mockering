@@ -1,5 +1,6 @@
 <% if current_mocker.voted_up_on? mock %>
-	<i class="bi bi-heart-fill _color_current" style="margin-right: 2px;"></i>
+	<i class="fas fa-heart _like_color"></i>
 <% else %>
-	<i class="bi bi-heart" style="margin-right: 2px;"></i>
-<% end %> <%= number_to_human(mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %> 
+	<i class="fas fa-heart"></i>
+<% end %> 
+<%= number_to_human(mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %> 

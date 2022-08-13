@@ -1,125 +1,119 @@
 <% if @reviews.count == 0 %>
   <div class="row m-0">
     <div class="col-12 text-center">
-      <p class="m-0">There are no reviews yet</p>
+      <i class="bi bi-chat-right-heart-fill"></i>
+      <p class="m-0"><%= @mock.mocker.first_name %> is looking for feedback</p>
+      <p class="m-0">Be the first to let them know your thoughts!</p>
+      <a class="_btn _simple">
+        <span>Leave feedback</span>
+      </a>
     </div>
   </div>
 <% else %>
   <% @reviews.order(created_at: :desc).each do |r| %>
-    <div class="row m-0 _rowreview">
-      <div class="col text-center">
-        <div class="p-t-15px">
-            <div class="d-grid text-center">
-              <%= link_to(r.mocker) do  %>
-                <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
-              <% end %>
-            </div>
+    <div class="_rowreview">
+      <aside class="_1">
+        <div class="_cont _1">
+          <%= link_to(r.mocker) do  %>
+            <%= image_tag avatar_url(r.mocker), class: "img-circle _avatar_comment" %>
+          <% end %>
         </div>
-      </div>
-      <div class="col-10 col-sm-11  ">
-        <div class="row m-0" style="margin-bottom: 10px;">
-          <div class="col offset text-right p-0">
-            <% if current_mocker && current_mocker == r.mocker %>
-              <div class="navbar d-block p-0">
-                <div class="nav-item dropdown text-right">
-                  <a class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" href="#" id="dropdownReview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                  <div class="dropdown-menu right-0" aria-labelledby="dropdownReview">
-                    <% if mocker_signed_in? # && current_mocker.admin %>
-                      <%= link_to r, class:"_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
-                      <!--<div class="dropdown-divider"></div>
-                      <a href="#" class="_itemdropdown">Report</a>-->
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            <% end %>  
-          </div>    
-        </div>
-        <div class="col-12 readmore p-0">
-          <div class="comment d-grid" id="comment">
-            <small class="text-ellipsis" style="margin-bottom: 5px; color:black;">@<%= r.mocker.slug %> <%= image_tag badge_icon(r.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(r.mocker) if r.mocker.verification? %> • <%= r.created_at.strftime("%d %b %y").downcase  %></small>
-            <small class="_fw400 m-0 keepspaces" style="color:#444444;"><%= auto_link(r.comment, html: { target: '_blank' }) %></small>
-          </div>
-        </div>
-        <div class="row col-12 m-0 p-0">
-          <div class="col-auto">
-            <% if mocker_signed_in? %>
-              <%= link_to like_review_path(r), method: :put, remote: :true, class: "like-review" do %>
-                <div id="like-count-review">
-                  <%= render 'reviews/likes', review: r %>
-                </div>
-              <% end %>
-            <% else %>
-              <%= link_to new_mocker_session_path, class: "like-review" do %>
-                <div id="like-count-review">
-                <i class="far fa-thumbs-up" style="margin-right: 2px;"></i> <%= number_to_human(r.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="col-auto"  style="padding-left: 0;">
-            <% if mocker_signed_in? %>
-              <%= link_to dislike_review_path(r), method: :put, remote: :true, class: "like-review" do %>
-                <div id="dislike-count-review">
-                  <%= render 'reviews/dislikes', review: r %>
-                </div>
-              <% end %>
-            <% else %>
-                <%= link_to new_mocker_session_path, class: "like-review" do %>
-                  <div id="dislike-count-review">
-                  <i class="far fa-thumbs-down" style="margin-right: 2px;"></i> <%= number_to_human(r.get_downvotes.size, units: { million: 'm', billion: 'b' }) %>
+        <div class="_cont _2">
+          <aside class="_comment _1">
+            <p class="_user"><%= r.mocker.first_name %> <%= r.mocker.last_name %> <%= image_tag badge_icon(r.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip", "data-placement": "bottom", title: tooltip_badge(r.mocker) if r.mocker.verification? %>
+            </p>
+            <p class="_text keepspaces readmore">
+              <%= auto_link(r.comment, html: { target: '_blank' }) %>
+            </p>
+            <div class="_date">
+              <p><%= r.created_at.strftime("%B %d, %Y").downcase  %> </p>
+              <% if mocker_signed_in? %>
+                <%= link_to like_review_path(r), method: :put, remote: :true, class: "like-review" do %>
+                  <div id="like-count-review">
+                    <%= render 'reviews/likes', review: r %>
                   </div>
                 <% end %>
-            <% end %>
-          </div>
-        </div>
-        <div class="row m-0">
-            <div class="col-12 col-sm-6 text-center">
+              <% else %>
+                <%= link_to new_mocker_session_path, class: "like-review" do %>
+                  <div id="like-count-review">
+                    <i class="fas fa-heart"></i> <%= number_to_human(r.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+                  </div>
+                <% end %>
+              <% end %>
+              <% if mocker_signed_in? %>
+                <%= link_to dislike_review_path(r), method: :put, remote: :true, class: "like-review" do %>
+                  <div id="dislike-count-review">
+                    <%= render 'reviews/dislikes', review: r %>
+                  </div>
+                <% end %>
+              <% else %>
+                <%= link_to new_mocker_session_path, class: "like-review" do %>
+                  <div id="dislike-count-review">
+                  <i class="fas fa-hand-middle-finger"></i> <%= number_to_human(r.get_downvotes.size, units: { million: 'm', billion: 'b' }) %>
+                  </div>
+                <% end %>
+              <% end %>
               <%= render 'answers/link_collapse', review: r %>
+              <% if mocker_signed_in? %>
+                <%= render 'answers/form', review: r %>
+              <% else %>
+                <%= link_to new_mocker_session_path, class: "_link _1" do %>Reply<% end %>
+              <% end %>
             </div>
-            <% if mocker_signed_in? %>
-              <%= render 'answers/form', review: r %>
-            <% else %>
-              <div class="col-12 col-sm-6 text-center">
-                <%= link_to new_mocker_session_path, class: "display-block btn _btn _btnanswer" do %>Answer<% end %>
-              </div>
-              <br>
-            <% end %>      
+            
+          </aside>
         </div>
-      </div>
-      <div class="row m-0 answers_row">
-        <div class="col-12">
-          <div class="collapse show" id="collapse_<%= r.id %>">
-            <div class="card-body p-0">
-              <%= render 'answers/list', review: r %>
+        <% if current_mocker && current_mocker == r.mocker %>
+          <div class="navbar d-block p-0 _actions">
+            <div class="nav-item dropdown text-right">
+              <a  class="linkdropdown_reviews dropdown-toggle _color_black deco-none f-right" 
+                  href="#" 
+                  id="dropdownReview"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                <i class="fas fa-ellipsis-h"></i>
+              </a>
+              <div class="dropdown-menu right-0" aria-labelledby="dropdownReview">
+                <% if mocker_signed_in? # && current_mocker.admin %>
+                  <%= link_to r, class:"_itemdropdown", method: :delete, data: {confirm: "Are you sure?"} do %>Remove<% end %>
+                  <!--<div class="dropdown-divider"></div>
+                  <a href="#" class="_itemdropdown">Report</a>-->
+                <% end %>
+              </div>
             </div>
+          </div>
+        <% end %>
+      </aside>
+
+      <div class="_rowanswers">
+        <div class="collapse" id="collapse_<%= r.id %>">
+          <div class="card-body p-0">
+            <%= render 'answers/list', review: r %>
           </div>
         </div>
       </div>
     </div>
-    <hr>  
   <% end %>
-
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
       <%= will_paginate @reviews, renderer: BootstrapPagination::Rails, param_name: 'reviews_page' %>
     </div>
   </div>
 <% end %>
-<br>
-<style type="text/css">
-  .dropdown-menu.right-0{
-    left:inherit;
-    right: 0 !important;
-  }
-</style>
+
 <script type="text/javascript">
   $('.readmore').readmore({
       speed: 75,
-      collapsedHeight: 85,
-      moreLink: '<a href="#" class="link-2">Show more</a>',
-      lessLink: '<a href="#" class="link-2">Show less</a>'
+      collapsedHeight: 100,
+      moreLink: '<a href="#" class="_link _1">Show more</a>',
+      lessLink: '<a href="#" class="_link _1">Show less</a>'
     }
   );
 $('.pagination a').attr('data-remote', 'true');
 </script>
+
+
+
+

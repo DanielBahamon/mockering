@@ -1,0 +1,17 @@
+<% if current_mocker.following?(mocker) %>
+	<span>Following</span>
+<% else %>
+	<span>Follow</span>
+<% end %>
+<script type="text/javascript">
+	$('.follow-count_<%= mocker.id %>>span').click(function() {
+	  $(this).text(function(_, text) {
+	    return text === "Follow" ? "Following" : "Follow";
+	  });
+	  if($(this).text() == "Follow") {
+	    $(this).removeClass('following');
+	  } else if($(this).text() == "Following") {
+	    $(this).addClass('following');
+	  }
+	});
+</script>

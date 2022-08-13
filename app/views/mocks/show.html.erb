@@ -1,4 +1,5 @@
 <% content_for :title, "#{@mock.title} • Mockering" %>
+<% content_for :name, "mock" %>
 <% if @mock.picture.present? %>
 	<% content_for :image_page, "#{@mock.picture.url(:large) }" %>
 <% else %>

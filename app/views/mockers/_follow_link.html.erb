@@ -1,0 +1,6 @@
+<% if current_mocker %>
+	<% follow_text = current_mocker.following?(mocker) ? "Following" : "Follow" %>
+	<%= button_to follow_text, friendships_path(mocker_id: mocker.id), remote: :true, class: "_link_follow" %>
+<% else %>
+	<%= button_to "Follow", friendships_path(mocker_id: mocker.id), remote: :true, class: "_link_follow" %>
+<% end %>

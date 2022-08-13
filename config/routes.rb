@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  # root "mocks#index"
+  root "mocks#index"
   # root "pages#maintenance"
-  root "pages#prelaunch"
+  # root "pages#prelaunch"
   
   # devise_scope :mocker do
   #  authenticated  do
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     member do
       post '/verify_phone_number' => 'mockers#verify_phone_number'
       patch 'update_phone_number' => 'mockers#update_phone_number'
+      put 'follow' => 'mockers#follow'
+      put 'unfollow' => 'mocks#unfollow'
     end
   end
 
@@ -34,12 +36,14 @@ Rails.application.routes.draw do
             }
 
   resources :mocks do
-  	member do
-  		put 'like' => 'mocks#like'
-  		put 'dislike' => 'mocks#dislike'
-  		put 'vote' => 'mocks#upvote'
+    member do
+      put 'like' => 'mocks#like'
+      put 'dislike' => 'mocks#dislike'
+      put 'vote' => 'mocks#upvote'
       put 'unvote' => 'mocks#downvote'
-  	end
+      put 'follow' => 'mocks#follow'
+      put 'unfollow' => 'mocks#unfollow'
+    end
     get '/tagged', to: "mocks#tagged", as: :tagged, only: [:index, :show]
   end
 

@@ -1,10 +1,4 @@
-<!-- Trigger the modal with a button -->
-<div class="col-12 <%= 'col-sm-6' if review.answers.count != 0 %> text-center">
-  <a class="display-block btn _btn _btnanswer" data-toggle="modal" data-target="#review_of_<%= review.id %>">Answer</a>
-</div> 
-<br>
-
-<!-- Modal -->
+<a class="_link _1" data-toggle="modal" data-target="#review_of_<%= review.id %>">Reply</a>
 <div id="review_of_<%= review.id %>" class="modal fade" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
 
@@ -18,18 +12,14 @@
       </div>
       <div class="modal-body">
         <%= form_for review.answers.new do |f| %>
-          
           <div class="display-grid fullwidth">
-            <%= f.text_area :comment, rows: 3, class: "form-control",required: true %>
+            <%= f.text_area :comment, rows: 3, class: "_textarea_comment form-control",required: true %>
           </div>
-
           <%= f.hidden_field :mock_id, value: @mock.id %>
           <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
           <%= f.hidden_field :review_id, value: review.id %>
-
           <div class="text-center">
-            <br/>
-            <%= f.submit "Add review", class: "btn _btn _login" %>
+            <%= f.submit "Add review", class: "btn _btn _1" %>
           </div>
         <% end %>
       </div>

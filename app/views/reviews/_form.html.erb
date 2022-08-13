@@ -1,40 +1,34 @@
-<!-- Trigger the modal with a button -->
-<div class="d-table fullsize">
-  <div class="d-table-cell v-middle">
-    <a class="display-block btn _btn _1 _btncomment" data-toggle="modal" data-target="#myModal_<%= @mock.id %>">Comment</a>
-  </div> 
-</div>
-<br>
+<a class="_btn_comment _action_review_<%= @mock.id %>">
+  <span><%= number_to_human(@mock.reviews.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></span>
+  <i class="bi bi-chat-fill"></i>
+</a>
 
 <!-- Modal -->
-<div id="myModal_<%= @mock.id %>" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title _fw600 text-left">What do you think about it?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div id="myModal_<%= @mock.id %>" class="_modalreview">
+  <div class="modal-header">
+    <h5 class="modal-title _fw600 text-left">Feedback</h5>
+    <button type="button" class="_close_review close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <%= form_for @mock.reviews.new, class: '_form_comment' do |f| %>
+      
+      <div class="display-grid fullwidth">
+        <%= f.text_area :comment, rows: 3, class: "_textarea_comment form-control",required: true %>
       </div>
-      <div class="modal-body">
-        <%= form_for @mock.reviews.new do |f| %>
-          
-          <div class="display-grid fullwidth">
-            <%= f.text_area :comment, rows: 3, class: "form-control",required: true %>
-          </div>
 
-          <%= f.hidden_field :mock_id, value: @mock.id %>
-          <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
+      <%= f.hidden_field :mock_id, value: @mock.id %>
+      <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
 
-          <div class="text-center">
-            <br/>
-            <%= f.submit "Add review", class: "btn _btn _login" %>
-          </div>
-        <% end %>
+      <div class="text-center">
+        <%= f.submit "Add review", class: "btn _btn _1" %>
       </div>
+    <% end %>
+  </div>
+  <div class="_reviews">
+    <div class="reviews" id="reviews">
+      <%= render 'reviews/list' %>
     </div>
-
   </div>
 </div>

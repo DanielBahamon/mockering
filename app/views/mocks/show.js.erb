@@ -1,2 +1,4 @@
 $("#reviews").html('<%=  escape_javascript(render :partial => 'reviews/list') %>');
 $('.pagination a').attr('data-remote', 'true');
+$('#post-content').html("<%= j render 'mock_modal', mock: @mock %>");
+$('#post-modal').modal('show');

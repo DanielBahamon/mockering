@@ -26,25 +26,72 @@
 //= require_tree .
 
 
-$(document).ready(function(){  
-
+$(document).ready(function(){
 
   $("._btn_out_sidebar").click(function(){
       $("#_sidenav").toggleClass("out");
       // $("#_sidenav_2").toggleClass("out");
-      $("._nav._1").toggleClass("_on");
+      $("._header._1").toggleClass("_on");
       $("._logo_navbar").toggleClass("_on");
       $("._content_principal").toggleClass("_p_off");
       $(".content_big_1").toggleClass("offset-md-3");
       $(".content_big_1").toggleClass("offset-xl-2");
   });
+
   $("._btn_out_sidebar").click(function(){
       $("._content_principal").toggleClass("full");
   });
+
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
+  $("._btn_comment").click(function(){
+      $("._modalreview").addClass("show");
+      $(".modal-mock aside._container_mock._1 > ._mock").addClass("_on");
+  });
 
+  $("._close_review").click(function(){
+      $("._modalreview").removeClass("show");
+      $(".modal-mock aside._container_mock._1 > ._mock").removeClass("_on");
+  });
+  // REVIEWS
+    $( "textarea#review_comment" ).focusin(function() {
+      $( this ).addClass("_focus");
+      $( "form.new_review input._btn._1" ).addClass("_focus");
+    });
+    $( "textarea#review_comment" ).focusout(function() {
+      $( this ).removeClass("_focus");
+      $( "form.new_review input._btn._1" ).removeClass("_focus");
+    });
+    // ------------------------
+    $( "form.new_review input.btn._btn._1" ).hover(function() {
+      $( this ).addClass("_focus");
+      $( "textarea#review_comment" ).addClass("_focus");
+    });
+    $( ".reviews ._btn._simple" ).click(function() {
+      $( "form.new_review input.btn._btn._1" ).addClass("_focus");
+      $( "textarea#review_comment" ).addClass("_focus");
+    });
+    // -------------
+
+    $( "textarea#answer_comment" ).focusin(function() {
+      $( this ).addClass("_focus");
+      $( "form.new_answer input._btn._1" ).addClass("_focus");
+    });
+    $( "textarea#answer_comment" ).focusout(function() {
+      $( this ).removeClass("_focus");
+      $( "form.new_answer input._btn._1" ).removeClass("_focus");
+    });
+    // ------------------------
+    $( "form.new_answer input.btn._btn._1" ).hover(function() {
+      $( this ).addClass("_focus");
+      $( "textarea#review_comment" ).addClass("_focus");
+    });
+    $( ".reviews ._btn._simple" ).click(function() {
+      $( "form.new_answer input.btn._btn._1" ).addClass("_focus");
+      $( "textarea#review_comment" ).addClass("_focus");
+    });
+  // END REVIEWS
 });
   
 
