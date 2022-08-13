@@ -1907,7 +1907,7 @@
   ._rowanswer > aside._1 {
     display: flex;
   }
-  ._rowanswers>div{
+  ._rowanswers{
     padding: 15px;
     padding-top: 30px;
     padding-left: 30px;
@@ -2495,16 +2495,8 @@
     margin: 0 auto;
     max-width: 650px;
   }
-<<<<<<< HEAD
   header._header._1{
     background: rgba(255, 255, 255, 0.96);
-=======
-  ._nav._1{
-    background: #ffffffe3;
-    -webkit-backdrop-filter: blur(9px);
-    backdrop-filter: blur(9px);
-    padding: 9px 0;
->>>>>>> 28cb6e2e2a4d8c0771bef8b9782ca24bf1314c99
     right:0;
     left:0;
     z-index: 13;

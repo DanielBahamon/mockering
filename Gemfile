@@ -26,9 +26,6 @@ gem 'aws-sdk-s3', '~> 1.96', '>= 1.96.1'
 gem 'friendly_id', '~> 5.2.4'
 gem 'cocaine', '~> 0.5.3'
 gem 'paperclip', '~> 6.1'
-gem 'net-smtp', require: false
-gem 'net-pop', require: false
-gem 'net-imap', require: false
 # gem 'paperclip', '~> 5.1.0'
 gem 'paperclip-av-transcoder', '~> 0.6.4'
 gem 'av', '~> 0.9.0'
