@@ -96,7 +96,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
-  #config.action_cable.url = "https://mockering.herokuapp.com/cable"
+  config.action_cable.url = "https://mockering.com/cable"
   config.action_mailer.default_url_options = { host: 'https://mockering.com' }
 
   config.action_mailer.smtp_settings = {
