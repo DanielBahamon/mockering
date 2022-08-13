@@ -6,6 +6,6 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:6508f870fe6192f5f161560b158408dd@pearlfish.redistogo.com:10291/
+  url: redis://f9bef4281f4a4293a0f5c02f69b9d063@us1-sterling-snail-38027.upstash.io:38027
   channel_prefix: Mockering_production
 
