@@ -6,6 +6,7 @@ test:
 
 production:
   adapter: redis
-  url: redis://f9bef4281f4a4293a0f5c02f69b9d063@us1-sterling-snail-38027.upstash.io:38027
-  channel_prefix: Mockering_production
-
+  url: <%= ENV.fetch("REDIS_URL") { "redis://f9bef4281f4a4293a0f5c02f69b9d063@us1-sterling-snail-38027.upstash.io:38027" } %>
+  channel_prefix: mockering_2_0_production
+  ssl_params:
+    verify_mode: <%= OpenSSL::SSL::VERIFY_NONE %>
