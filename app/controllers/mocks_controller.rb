@@ -14,7 +14,7 @@ class MocksController < ApplicationController
 		@onemocks = Mock.joins(:impressions)
 		.where(mocktype: [0...9], privated: false, reported: false, unlist: false)
 		.group(:id)
-		.order(impressions: :asc, impressions: :asc)
+		.order(impressions: :asc)
 		.limit(12)
 		@twomocks = Mock.joins(:impressions)
 		.where(mocktype: 0, privated: false, reported: false, unlist: false)
