@@ -5,12 +5,10 @@ class ApplicationController < ActionController::Base
   helper_method :is_admin!
   before_action :is_mock
 
-
-
   def set_search
     @search = Mock.ransack(params[:q])
     @q = Mock.ransack(params[:q])
-    @mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
+    @searchmocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30).where(privated: false)
   end
 
 

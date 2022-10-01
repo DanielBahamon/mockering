@@ -1,11 +1,50 @@
 <% content_for :title, "Mockering - Free content to enjoy" %>
-<% content_for :name, "home" %>
-<div id="_big_row_index">
+<% content_for :name, "Home" %>
+ 
+<div class="_navy">
+	<b>Home</b>
+</div>
+<div class="_cont _1">
+  <% if mocker_signed_in? # && current_mocker.admin %>
+	  <%= form_for @mock, html: { multipart: true } do |f| %>
+	    <%= f.hidden_field :mocktype, value: 'mockets' %>
+	    <section class="_head">
+	      <%= f.text_area :title, class: '_textarea _2 form-control _textarea_post', rows: "2", placeholder: "What are you thinking?" %>
+	    	<%= f.submit 'Mock',  class: 'btn _btn _1', id: 'fileUpload2', data: { disable_with: 'Uploading...' } %>
+	    </section>
+	    <section class="_upload_big _1">
+	     <div class="fullsize p-5 _file_upload">
+	       <i class="bi bi-card-image"></i>
+	     </div>
+	     <%= f.file_field :picture, class: "file-selector absolute file_multi_picture", id: "upload_picture_1", onchange: "msf_btn_next2()" %>
+	    </section>
+	    <section class="_preview">
+	      <img id="picture_here">
+	      <script type="text/javascript">
+	        $(document).on("change", ".file_multi_picture", function(evt) {
+	          var $source2 = $('#picture_here');
+	          $source2[0].src = URL.createObjectURL(this.files[0]);
+	          $source2.parent()[0].load();
+	        });
+	      </script>
+	    </section>
+	  <% end %>
+  <% end %>
+</div>
+<div class="_cont _2">
+  <% @onemocks.each do |mock| %>
+    <article>
+      <%= render 'mock', mock: mock %>
+    </article>
+  <% end %>
+</div>
+
+
+<div class="d-none" id="_big_row_index">
 	<div class="row m-0">
 		<div class="col-12 p-0 _content _content_principal _1">
 			<div class="on_content" id="on_content">
 				<div class="_board _feed">
-
 
 					<section class="_onemocks">
 			      <div id="splide_onemocks" class="splide splide_onemocks">
@@ -33,7 +72,6 @@
 			        </div>
 			      </div>
 					</section>
-
 					<section class="_twomocks">
 			      <div id="splide_twomocks" class="splide splide_onemocks">
 			        <div class="splide__arrows">
@@ -57,7 +95,6 @@
 			        </div>
 			      </div>
 					</section>
-
 					<section class="_threemocks">
 			      <div id="splide_threemocks" class="splide splide_onemocks">
 			        <div class="splide__arrows">
@@ -81,7 +118,6 @@
 			        </div>
 			      </div>
 					</section>
-
 					<section class="_fourmocks">
 			      <div id="splide_fourmocks" class="splide splide_onemocks">
 			        <div class="splide__arrows">
@@ -105,7 +141,6 @@
 			        </div>
 			      </div>
 					</section>
-
 					
 				</div>
 			</div>
@@ -179,3 +214,5 @@
 
   });
 </script>
+<style type="text/css">
+</style>

@@ -3,14 +3,14 @@ class MockersController < ApplicationController
 	before_action :authenticate_mocker!, except: [:show, :username_validator]
    	before_action :set_mocker, only: [:show, :edit, :update, :destroy]
 
-
 	def show
+		
+		@minimockers = Mocker.all.order("RANDOM()").limit(3)
     	@mocker = Mocker.friendly.find(params[:id])
     	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 10).where(privated: false)
     	@followers = @mocker.followers.order("created_at DESC").paginate(page: params[:followers_page], per_page: 10)
 		@following = @mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
 		@privated_mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:privated_mocks_page], per_page: 10).where(privated: true)
-		# @fav_mocks = @mocker.find_up_voted_items
 		@fav_mocks = @mocker.get_up_voted Mock
 
 		@reported = MockerReport.where(reported_id: @mocker.id).count
@@ -47,12 +47,10 @@ class MockersController < ApplicationController
 				@mocker.update(reported: false)
 			end
 		end
-
 	end
 
 	def create
 	end
-
 
 	def update
 		@mocker.update(new_params)
@@ -75,9 +73,7 @@ class MockersController < ApplicationController
 		#  end
 		#  redirect_to mock_path(@mock)
 		#  redirect_back(fallback_location: request.referer)
-
 	end
-
 
 	def update_phone_number
 		current_mocker.update_attributes(mocker_params)
@@ -88,8 +84,6 @@ class MockersController < ApplicationController
 		rescue Exception => e
 		redirect_to edit_mocker_registration_path, alert: "#{e.message}"
 	end
-
-
 
 	def verify_phone_number
 		current_mocker.verify_pin(params[:mocker][:pin])
@@ -105,7 +99,6 @@ class MockersController < ApplicationController
 		rescue Exception => e
 		redirect_to edit_mocker_registration_path, alert: "#{e.message}"
 	end
-
 
 	def username_validator
 	    if params[:slug].size <= 2

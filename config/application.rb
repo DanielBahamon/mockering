@@ -30,5 +30,8 @@ module Mockering
     #TimeZone
     config.time_zone = "America/Bogota"
     config.active_record.default_timezone = :utc
+
+    config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess]
+
   end
 end

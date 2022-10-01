@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
 	before_action :authenticate_mocker!
-		before_action :set_report, only: [:show, :edit, :update, :destroy]
+	before_action :set_report, only: [:show, :edit, :update, :destroy]
 	skip_before_action :verify_authenticity_token
 
 	def index
@@ -18,7 +18,6 @@ class BlocksController < ApplicationController
 			redirect_back fallback_location: root_path, alert: "Ops! Something goes wrong"
 		end
 	end
-
 
 	def edit
 	end

@@ -3,6 +3,7 @@ class AnswersController < ApplicationController
   # before_action :set_mock, only: [:show]
   # before_action :set_review
   
+
   def show
     @answer = Answer.find(params[:id])
     @mock = @answer.mock

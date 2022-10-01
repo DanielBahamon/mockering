@@ -54,6 +54,7 @@ $(document).ready(function(){
       $("._modalreview").removeClass("show");
       $(".modal-mock aside._container_mock._1 > ._mock").removeClass("_on");
   });
+
   // REVIEWS
     $( "textarea#review_comment" ).focusin(function() {
       $( this ).addClass("_focus");
@@ -74,24 +75,36 @@ $(document).ready(function(){
     });
     // -------------
 
-    $( "textarea#answer_comment" ).focusin(function() {
+    $( "textarea._textarea_comment_answer" ).focusin(function() {
       $( this ).addClass("_focus");
       $( "form.new_answer input._btn._1" ).addClass("_focus");
     });
-    $( "textarea#answer_comment" ).focusout(function() {
+    $( "textarea._textarea_comment_answer" ).focusout(function() {
       $( this ).removeClass("_focus");
       $( "form.new_answer input._btn._1" ).removeClass("_focus");
     });
     // ------------------------
     $( "form.new_answer input.btn._btn._1" ).hover(function() {
       $( this ).addClass("_focus");
-      $( "textarea#review_comment" ).addClass("_focus");
+      $( "textarea._textarea_comment_answer" ).addClass("_focus"); 
     });
     $( ".reviews ._btn._simple" ).click(function() {
       $( "form.new_answer input.btn._btn._1" ).addClass("_focus");
-      $( "textarea#review_comment" ).addClass("_focus");
+      $( "textarea._textarea_comment_answer" ).addClass("_focus");
     });
   // END REVIEWS
+
+
+
+
+  $( "form>._head" ).focusin(function() {
+    $( this ).addClass("_focus");
+    $( "form>._head>._btn._1" ).addClass("_focus");
+  });
+  $( "form>._head" ).focusout(function() {
+    $( this ).removeClass("_focus");
+    $( "form>._head>._btn._1" ).removeClass("_focus");
+  });
 });
   
 

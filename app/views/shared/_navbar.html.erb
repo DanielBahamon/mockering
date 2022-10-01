@@ -3,20 +3,12 @@
     <div class="_cont _1">
       <nav class="_nav _1">
         <div class="_brand">
-          <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _1 d-xs-block" do %>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
-          <% end %>
-          <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2 d-xs-none" do %>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _4 d-none-moon", alt: 'Mockering'%>
+          <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
             <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
             <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _3 d-none-sun", alt: 'Mockering'%>
           <% end %>
         </div>
-        <ul>
+        <ul class="d-none">
           <li class="_action">
             <%= link_to all_path, class: "_btn_menu #{'active' if current_page?(all_path)}" do %>
               <span>Mocks</span>
@@ -37,20 +29,24 @@
           </li>
         </ul>
       </nav>
-      <ul class="_nav_actions">
+      <ul class="_nav_actions _hidden">
         <li class="_search">
-          <%= form_tag search_path, class: "_form", method: :get do |f| %>
+          <%= form_tag search_path, class: "_form d-none d-lg-block", method: :get do |f| %>
             <%= text_field_tag :q, nil, 
                 placeholder: "Search",
                 class: "_searchfield",
                 value: "#{params[:q] if params[:q].present?}",
                 required: true %>
           <% end %>
+        </li>
+      </ul>
+      <ul class="_nav_actions">
+        <li class="_icon">
           <aside class="_action _search d-lg-none">
             <i class="far fa-search"></i>
           </aside>
         </li>
-        <li class="_icon">
+        <li class="_icon d-none">
           <aside class="_action _chats-action">
             <i class="far fa-comments-alt"></i>
           </aside>
@@ -58,19 +54,19 @@
             <div class="_in"></div>
           </div>
         </li>
-        <li class="_icon">
+        <li class="_icon d-none">
           <aside class="_action _activity-action" id="navbarNotifications">
-              <i class="far fa-chart-network"></i>
-              <span class="_span_unread_count" data-behavior="unread-count"></span>
+            <i class="far fa-bells"></i>
+            <span class="_span_unread_count" data-behavior="unread-count"></span>
           </aside>
           <div class="_cont _1 _activity">
             <div class="_in"></div>
           </div>
         </li>
         <li class="_icon">
-          <aside class="_action _avatar">
-              <%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %>
-          </aside>
+          <%= link_to mocker_path(current_mocker), class: "_action _avatar" do %>
+            <%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %>
+          <% end %>
           <div class="_cont _1 _user">
             <div class="_in">
               <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
@@ -80,77 +76,53 @@
             </div>
           </div>
         </li>
-        <li class="_post">
-          <aside class="_btn _1">
-            <span>Upload</span>
-          </aside>
-          <div class="_cont _1"></div>
-        </li>
+        
       </ul> 
     </div>
   <% else %>
-    <div class="_cont _2">
+    <div class="_cont _1">
       <nav class="_nav _1">
         <div class="_brand">
-          <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _1 d-xs-block" do %>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
-          <% end %>
-          <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2 d-xs-none" do %>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _4 d-none-moon", alt: 'Mockering'%>
+          <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
             <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
             <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _3 d-none-sun", alt: 'Mockering'%>
           <% end %>
         </div>
-        <ul>
-          <li class="_action">
-            <%= link_to all_path, class: "_btn_menu #{'active' if current_page?(all_path)}" do %>
-              <span>Mocks</span>
-              <!--i class="bi-tornado"></i-->
-            <% end %>
-          </li>
-          <li class="_action">
-            <%= link_to mockets_path, class: "_btn_menu #{'active' if current_page?(mockets_path)}" do %>
-              <span>Mockets</span>
-              <!--i class="bi-easel2"></i-->
-            <% end %>
-          </li>
-          <li class="_action">
-            <%= link_to plays_path, class: "_btn_menu #{'active' if current_page?(plays_path)}" do %>
-              <span>Plays</span>
-              <!--i class="bi-camera-reels"></i-->
-            <% end %>
-          </li>
-        </ul>
       </nav>
-      <ul class="_nav_actions">
+      <ul class="_nav_actions _hidden">
         <li class="_search">
-          <%= form_tag search_path, class: "_form", method: :get do |f| %>
+          <%= form_tag search_path, class: "_form d-none d-lg-block", method: :get do |f| %>
             <%= text_field_tag :q, nil, 
                 placeholder: "Search",
                 class: "_searchfield",
                 value: "#{params[:q] if params[:q].present?}",
                 required: true %>
           <% end %>
-          <a class="_action_search _icon">
-            <i class="far fa-search"></i>
-          </a>
         </li>
-        <%= link_to new_mocker_session_path, class: "_btn_icon" do %>
-          <i class="far fa-user-alien"></i>
-        <% end %>
+      </ul>
+      <ul class="_nav_actions">
+        <li class="_icon">
+          <aside class="_action _search d-lg-none">
+            <i class="far fa-search"></i>
+          </aside>
+        </li>
+        <li class="_icon">
+          <%= link_to new_mocker_session_path, class: "_action _avatar" do %>
+            <i class="bi bi-person-circle"></i>
+          <% end %>
+          <div class="_cont _1 _user">
+            <div class="_in">
+              <%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
+              <%= link_to "Sign Up", new_mocker_registration_path, class: "nav-link" %>
+            </div>
+          </div>
+        </li>
+        
       </ul> 
-    </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownAccount2" id="navbarDropdown2">
-      <%= link_to "Login", new_mocker_session_path, class: "nav-link" %>
-      <%= link_to "Sign Up", new_mocker_registration_path, class: "nav-link" %>
     </div>
   <% end %>
 </header>
-<header class="_header _2"></header>
+<header class="_space_header"></header>
 
 <div class="_nav _1 d-none
     <% if  current_page?(mockets_path) || current_page?(mocks_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
@@ -519,121 +491,3 @@
     
   </div>    
 </div>
-
-<style type="text/css">
-
-  .masonry_h {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 14vh;
-    grid-auto-flow: dense;
-  }
-  .masonry_item {
-    overflow: hidden;
-    writing-mode: horizontal-tb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .span2 { grid-row-end: span 2; }
-  .span3 { grid-row-end: span 3; }
-  .span4 { grid-row-end: span 4; }
-  .span5 { grid-row-end: span 5; }
-  .span6 { grid-row-end: span 6; }
-
-  .width2 { grid-column-end: span 2; }
-
-
-  ._logo_navbar._on{
-    display: block !important;
-  }
-  ._logo_navbar{
-    display: none !important;
-  }
-  ._logo_navbar ._link_logo{
-    display: block;
-  }
-  ._logo_navside{
-    margin: 0 auto;
-    padding: 30px 15px;
-  }
-  
-  .col_navfooter a i{
-      font-size: 1.1rem;
-      line-height: 2;
-      vertical-align: middle;
-      height: 40px;
-      display: block;
-  }
-  .col_navfooter a p{
-    display: none;
-      position: absolute;
-      bottom: 9px;
-      left: 0px;
-  }
-  .col_navfooter.active a i{
-      font-size: 1rem;
-      top: -6px;
-      position: relative;
-      left: 0;
-      right: 0;
-      width: 100%;
-  }
-  .col_navfooter.active a p{
-    display: block !important;
-  }
-  a._btn._btnavfoot ._avatar_navbar {
-      height: 25px;
-      width: 25px;
-      margin-top: -3px;
-  }
-  ._video_views i::before{
-    line-height: inherit !important;
-  }
-  ._col_btn_action_mock a i::before {
-    line-height: 1.25;
-  }
-  @media(max-width: 767px){
-    ._logo_navbar{
-      display: block !important;
-    }
-  }
-  @media(max-width: 611px){
-    ._content_principal .mocks_content #mocks ._card{
-      width:95vw;
-      margin-bottom: 15px;
-    }
-
-  }
-  @media(max-width: 362px){
-    ._logo_navbar{
-      display: none !important;
-    }
-    header ._link_logo ._logonav._2,
-    header ._link_logo ._logonav._1{
-      display: none !important;
-      padding: 0 !important;
-    }
-    ._logo_navbar{
-      padding: 0 !important;
-    }
-    .col_navfooter.active a i{
-      top:0 !important;
-      font-size: 1.2rem !important;
-    }
-    .col_navfooter.active a p{
-      display: none !important;
-    }
-  }
-  
-
-  <% if current_page?(root_path) || current_page?(plays_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(edit_mocker_registration_path) %>
-    @media(min-width: 768px){
-      ._content_principal._1{
-        padding-left: 0;
-      }
-    }
-  <% end %>
-</style>

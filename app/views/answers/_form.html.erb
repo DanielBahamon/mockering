@@ -11,9 +11,10 @@
         </button>
       </div>
       <div class="modal-body">
+        <p class="d-none " id="_username_answer_<%= review.mocker.slug %>">@<%= review.mocker.slug %> </p>
         <%= form_for review.answers.new do |f| %>
           <div class="display-grid fullwidth">
-            <%= f.text_area :comment, rows: 3, class: "_textarea_comment form-control",required: true %>
+            <%= f.text_area :comment, rows: 3, id: "_answer_texarea_#{review.mocker.slug}", class: "_textarea_comment_answer form-control",required: true %>
           </div>
           <%= f.hidden_field :mock_id, value: @mock.id %>
           <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
@@ -21,6 +22,9 @@
           <div class="text-center">
             <%= f.submit "Add review", class: "btn _btn _1" %>
           </div>
+          <script type="text/javascript">
+            $('#_answer_texarea_<%= review.mocker.slug %>').val($('#_username_answer_<%= review.mocker.slug %>').text());
+          </script>
         <% end %>
       </div>
     </div>

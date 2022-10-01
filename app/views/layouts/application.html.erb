@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html >
   <head prefix="og: http://ogp.me/ns#">
-
     <title><%= yield(:title) %></title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#3d087b">
     <meta name="twitter:card" content="summary_large_image" />
@@ -27,13 +25,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'application/favicon' %>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.5.8/dist/css/splide-core.min.css">
@@ -60,20 +56,91 @@
   </head>
   <body  data-barba="wrapper" class="_<%= yield(:name) %>">
     <main data-barba="container" data-barba-namespace="<%= yield(:name) %>">
-      <div class="row m-0">
-        <div class="col-12  _content _content_principal _1  content_big_1">
-          <%= render 'shared/navbar' %>
-          <div>
-            <%= yield %>
-          </div>
-        </div>
-      </div>
-      <%= toastr_flash %>
-      <%= render 'shared/footer' %>
+      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(plays_path) %>
+        <section class="_full">
+          <section class="_layout">
+            <aside class="_1">
+              <div class="_cont">
+                <nav class="_navside">
+                  <div class="_cont _1">
+                    <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
+                      <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
+                      <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+                    <% end %>
+                    <%= link_to root_path, class: "_item #{'active' if current_page?(all_path)}" do %>
+                      <i class="far fa-globe-americas"></i>
+                      <span>Feed</span>
+                    <% end %>
+                    <%= link_to mockets_path, class: "_item d-none #{'active' if current_page?(mockets_path)}" do %>
+                      <i class="fas fa-skiing"></i>
+                      <span>Explore</span>
+                    <% end %>
+                    <%= link_to mockets_path, class: "_item #{'active' if current_page?(mockets_path)}" do %>
+                      <i class="fas fa-image"></i>
+                      <span>Mockets</span>
+                    <% end %>
+                    <%= link_to plays_path, class: "_item d-none #{'active' if current_page?(plays_path)}" do %>
+                      <i class="fas fa-video"></i>
+                      <span>Plays</span>
+                    <% end %>
+                    <a class="_item d-none">
+                      <i class="fas fa-compact-disc"></i>
+                      <span>Tracks</span>
+                    </a>
+                    <% if mocker_signed_in? # && current_mocker.admin %>
+                      <%= link_to new_mock_path, class: "_btn _1" do %>
+                        <span>Upload</span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="_cont _2">
+                    <% if mocker_signed_in? # && current_mocker.admin %>
+                    <div class="_icon_action _userlink">
+                      <%= link_to mocker_path(current_mocker), class: "_action _avatar" do %>
+                        <%= image_tag avatar_url(current_mocker), class: "_avatar_sidenav" %>
+                      <% end %>
+                      <div class="_cont _1 _user">
+                        <div class="_in">
+                          <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
+                          <%= link_to "Settings", edit_mocker_registration_path, class: "nav-link" %>
+                          <div class="dropdown-divider"></div>
+                          <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
+                        </div>
+                      </div>
+                    </div>
+                    <% end %>
+                  </div>
+                </nav>
+              </div>
+            </aside>
+            <aside class="_2">
+              <%= yield %>
+            </aside>
+            <aside class="_3">
+              <div class="_cont _1">
+                <div class="_search">
+                  <%= form_tag search_path, class: "_form d-none d-lg-block", method: :get do |f| %>
+                    <%= text_field_tag :q, nil, 
+                        placeholder: "Search",
+                        class: "_searchfield",
+                        value: "#{params[:q] if params[:q].present?}",
+                        required: true %>
+                  <% end %>
+                </div>
+                <div class="_mockers">
+                  <%= render 'mockers/cards' %>
+                </div>
+              </div>
+            </aside>
+          </section>
+        </section>
+      <% else %>
+        <%= render 'shared/navbar' %>
+        <%= yield %>
+      <% end %>
       <%= render 'shared/navfooter' %>
-      <div class="trigger" id="trigger1"></div>
-      <div class="trigger" id="trigger2"></div>
-
+      <%= render 'shared/footer' %>
+      <%= toastr_flash %>
     </main>
     <script type="text/javascript">
       /* BUTTON MENU */
@@ -111,149 +178,10 @@
         }
       })();
     </script>
-    <script type="text/javascript">
-      // barba.init({
-
-      //   transitions: [{
-      //       name: 'home',
-      //       leave(data) {
-      //           return gsap.to(data.current.container, {
-      //               opacity: 0
-      //           });
-      //       },
-
-      //       beforeEnter: ({ next }) => {
-      //           window.scrollTo(0, 0);
-
-      //           $(next.container).find('script').each(function (i, script) {
-                    
-      //               var splide1 = new Splide('#splide_onemocks', {
-      //                 type: 'loop',
-      //                 perPage: 4,
-      //                 perMove: 1,
-      //                 breakpoints: {
-      //                   991: {
-      //                     perPage: 2,
-      //                   },
-      //                   575: {
-      //                     perPage: 1,
-      //                   },
-      //                 }
-      //               }).mount();
-
-
-
-      //               var splide2 = new Splide('#splide_twomocks', {
-      //                 type: 'loop',
-      //                 perPage: 4,
-      //                 perMove: 1,
-      //                 breakpoints: {
-      //                   991: {
-      //                     perPage: 2,
-      //                   },
-      //                   575: {
-      //                     perPage: 1,
-      //                   },
-      //                 }
-      //               }).mount();
-
-
-
-      //               var splide3 = new Splide('#splide_threemocks', {
-      //                 type: 'loop',
-      //                 perPage: 4,
-      //                 perMove: 1,
-      //                 breakpoints: {
-      //                   991: {
-      //                     perPage: 2,
-      //                   },
-      //                   575: {
-      //                     perPage: 1,
-      //                   },
-      //                 }
-      //               }).mount();
-
-
-      //               var splide4 = new Splide('#splide_fourmocks', {
-      //                 type: 'loop',
-      //                 perPage: 4,
-      //                 perMove: 1,
-      //                 breakpoints: {
-      //                   991: {
-      //                     perPage: 2,
-      //                   },
-      //                   575: {
-      //                     perPage: 1,
-      //                   },
-      //                 }
-      //               }).mount();
-
-      //           })
-
-
-
-
-
-
-
-      //       },
-
-      //       enter(data) {
-      //           return gsap.from(data.next.container, {
-      //               opacity: 0
-      //           });
-      //       }
-      //   }]
-      // });
-      // init controller
-      var controller = new ScrollMagic.Controller();
-      // build tween
-      // var scene_1 = new ScrollMagic.Scene({triggerElement: "#trigger1"})
-        //.setClassToggle("._nav._1", "_shadow")
-        // .addIndicators()
-        //.addTo(controller);
-      var scene_2 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-        .setClassToggle("._header._1", "active-semi")
-        //.addIndicators()
-        .addTo(controller);
-      var scene_3 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-        .setClassToggle("._navbar_br", "active-semi")
-        //.addIndicators()
-        .addTo(controller);
-      var scene_4 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-        .setClassToggle("._navfooter", "active-semi")
-        //.addIndicators()
-        .addTo(controller);
-      var scene_5 = new ScrollMagic.Scene({triggerElement: "#trigger2"})
-        .setClassToggle("._contbtn_add_navfooter", "active-semi")
-        //.addIndicators()
-        .addTo(controller);
-
-      var position = $(window).scrollTop();
-
-      // should start at 0
-
-      $(window).scroll(function() {
-          var scroll = $(window).scrollTop();
-          if(scroll > position) {
-            // console.log('scrollDown');
-            $('._header._1').removeClass('active');
-            $('._navfooter').removeClass('active');
-            $('._contbtn_add_navfooter').removeClass('active');
-          } else {
-            $('._header._1').addClass('active');
-            $('._navfooter').addClass('active');
-            $('._contbtn_add_navfooter').addClass('active');
-          }
-          position = scroll;
-      });
-      //========================================
-      // END SCROLL UP
-      //========================================
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.5.8/dist/js/splide.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
   </body>
 </html>

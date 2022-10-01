@@ -1,39 +1,12 @@
 <% content_for :title, "Searching • Mockering" %>
-<div id="_big_row_index" class="container-lg">
-	<div class="row m-0">
-		<div class="col-12 p-0 _content _content_principal full">
-			<div class="on_content" id="on_content">
-				<div class="row m-0">
-					<div class="col-12 _board p-0">
-						<%= render 'mocks/tags' %>
-						<div class="mocks_content">
-
-							<div id="mockers">
-								<div class="row">
-									<%= render 'mockers/mini_show' %>
-								</div>
-							</div>
-							<div class="_shuffle_container">
-								<%= render 'mocks/mock' %>
-							</div>
-							<%= will_paginate @mocks %>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<div id="mockers">
+	<div class="row">
+		<%= render 'mockers/mini_show' %>
 	</div>
 </div>
-<script type="text/javascript">
-	
-	var clipboard = new Clipboard('.clipboard-btn');
-	console.log(clipboard);
-
-	var Shuffle = window.Shuffle;
-
-	var myShuffle = new Shuffle(document.querySelector('._shuffle_container'), {
-	itemSelector: '._item_shuffle',
-	sizer: '.my-sizer-element',
-	buffer: 1,
-	});
-</script>
+<div class="_mocks">
+	  <% @searchmocks.each do |mock| %>
+	      <%= render 'mocks/mock', mock: mock %>
+	  <% end %>
+</div> 
+<%= will_paginate @searchmocks %>

@@ -1,119 +1,103 @@
-<div class="_fullscreen_absolute">
-  <div class="d-table fullsize">
-    <div class="d-table-cell v-middle">
-      <div class="row">
-        <style type="text/css">
-          ._filters_update.row {
-            margin: 0;
-          }
-        </style>
-        <div class="col-12">
-          <div class="form-group">
-            <ul class="nav nav-tabs" id="formTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="mock-tab" data-toggle="tab" href="#mock" role="tab" aria-controls="mock" aria-selected="true">Mock</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link" id="mocket-tab" data-toggle="tab" href="#mocket" role="tab" aria-controls="mocket" aria-selected="false">Mocket</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="formTabContent">
-              <div class="tab-pane fade show active" id="mock" role="tabpanel" aria-labelledby="mock-tab">
-                <%= form_for @mock, html: { multipart: true } do |f| %>
-                 <div class="row form_wrapper" id="_form_register">
-                  <fieldset class="fieldset_1 msf_hide">
-                    <div class="row m-0">
-                     <div class="col-12 col-md-4">
-                      <h4 class="_fw600">Upload video</h4>
-                      <br>
+<div class="_form_post">
+  <div class="_cont">
+    <aside class="_1">
+      <h1>What do you want to show?</h1>
+      <p>Upload your content.</p>
+      <div class="_navy">
+        <ul class="nav nav-tabs" id="formTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="mock-tab" data-toggle="tab" href="#mock" role="tab" aria-controls="mock" aria-selected="true">
+              <i class="bi bi-camera-reels-fill"></i> <span>Mock</span>
+            </a>  
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="mocket-tab" data-toggle="tab" href="#mocket" role="tab" aria-controls="mocket" aria-selected="false">
+              <i class="bi bi-card-image"></i> <span>Mocket</span>
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link _active" id="mocket-tab" data-toggle="tab" href="#track" role="tab" aria-controls="track" aria-selected="false">
+              <i class="bi bi-soundwave"></i> <span>Track</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <aside class="_2">
+      <div class="tab-content" id="formTabContent">
+        <div class="tab-pane fade show active" id="mock" role="tabpanel" aria-labelledby="mock-tab">
+          <%= form_for @mock, html: { multipart: true } do |f| %>
+            <%= f.hidden_field :mocktype, value: 'plays' %>
+            <div class="form_wrapper" id="_form_register">
+              <fieldset class="_fieldset_form _1 msf_hide">
+                <section class="_upload_big _1">
+                 <div class="progress d-none" id="progress-bar">
+                   <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                     <span class="sr-only" id="progress-bar-text"></span>
+                   </div>
+                 </div>
+                 <div class="fullsize p-5 _file_upload">
+                   <div class="d-table fullsize">
+                     <div class="d-table-cell v-middle text-center">
+                       <img class="_img_upload_mock"  src="//d8mn60sm70fqt.cloudfront.net/assets/svg/media_1.svg">
+                       <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your video (MP4)</h6>
+                       <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your video is ready to upload</h6>
                      </div>
-                     <div class="col-12 col-md-8">
-                       <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
-                           <div class="progress d-none" id="progress-bar">
-                             <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
-                               <span class="sr-only" id="progress-bar-text"></span>
-                             </div>
-                           </div>
-                           <div class="fullsize p-5 _file_upload">
-                             <div class="d-table fullsize">
-                               <div class="d-table-cell v-middle text-center">
-                                 <img class="_img_upload_mock"  src="//d8mn60sm70fqt.cloudfront.net/assets/svg/media_1.svg">
-                                 <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your video (MP4)</h6>
-                                 <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your video is ready to upload</h6>
-                               </div>
-                             </div>
-                           </div>
-                           <%= f.file_field :movie, class: "file-selector absolute", id: "file-selector_1" %>
-                       </section>
-                     </div>
+                   </div>
+                 </div>
+                 <%= f.file_field :movie, class: "file-selector absolute file_multi_video", id: "upload_video_1", onchange: "msf_btn_next()" %>
+                </section>
+              </fieldset>
+              <fieldset class="_fieldset_form _2 msf_hide">
+                <section class="_actions">
+                  <a class="_btn _outline" onclick="msf_btn_back()">
+                    <span>Back</span>
+                  </a> 
+                  <a class="_btn _1 d-none" id="_continue_mock" data-bs-toggle="modal" data-bs-target="#touchesModal">
+                    <span>Continue</span>
+                  </a>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $('input._name_mock').on('keyup', function() {
+                        let empty = false;
+                        $('input._name_mock').each(function() {
+                          empty = $(this).val().length == 0;
+                        });
+                        if (empty)
+                          $('a#_continue_mock').toggleClass('d-none');
+                        else
+                          $('a#_continue_mock').removeClass('d-none');
+                      });
+                    });
+                  </script>
+                </section>
+                <section class="_head">
+                  <%= f.text_field :title, class: 'form-control _required _name_mock', required: true, placeholder: "Give me a name" %>
+                </section>
+                <section class="_preview">
+                  <video controls="false"><source id="video_here"></video>
+                  <script>
+                    $(document).on("change", ".file_multi_video", function(evt) {
+                      var $source = $('#video_here');
+                      $source[0].src = URL.createObjectURL(this.files[0]);
+                      $source.parent()[0].load();
+                    });
+                  </script>
+                </section>
+                <section class="_description">
+                  <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4", placeholder: "Write what went into this mock, and anything else you’d like to mention" %>
+                </section>
+              </fieldset>
+              <div class="modal fade" id="touchesModal" tabindex="-1" aria-labelledby="touchesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Final touches</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                      </button>
                     </div>
-                    <br>
-                    <div class="row m-0">
-                     <div class="col-12 col-md-4">
-                      <h4 class="_fw600">Upload image</h4>
-                      <br>
-                     </div>
-                     <div class="col-12 col-md-8">
-                       <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
-                           <div class="progress d-none" id="progress-bar">
-                             <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
-                               <span class="sr-only" id="progress-bar-text"></span>
-                             </div>
-                           </div>
-                           <div class="fullsize p-5 _file_upload">
-                             <div class="d-table fullsize">
-                               <div class="d-table-cell v-middle text-center">
-                                <img class="_img_upload_mock" src="//d8mn60sm70fqt.cloudfront.net/assets/svg/photo_1.svg">
-                                 <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your image (JPG/PNG/GIF)</h6>
-                                 <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your image is ready to upload</h6>
-                               </div>
-                             </div>
-                           </div>
-                           <%= f.file_field :picture, class: "file-selector absolute", id: "file-selector_1" %>
-                       </section>
-                     </div>
-                    </div>
-                    <br>
-                    <div class="row m-0 ">
-                     <div class="col-12 col-md-4">
-                      <h4 class="_fw600">About</h4>
-                      <br>
-                     </div>
-                     <div class="col-12 col-md-8">
-                      <div class="field">
-                       <label>Title</label>
-                       <%= f.text_field :title, class: 'form-control _required', required: true, placeholder: "Some title for your video" %>
-                      </div>
-                      <div class="field">
-                       <br>
-                       <label>Category</label>
-                       <%= f.select :category, Mock.categories.map {|key, value| [key.humanize, key]}, class: "form-control _select", required: true %>
-                      </div>
-                      <%= f.hidden_field :mocktype, value: 'plays' %>
-                      <div class="field">
-                       <br>
-                       <label>Description</label>
-                       <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4" %>
-                      </div>
-                     </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="row m-0">
-                     <div class="col-12 col-md-4 offset-md-8 text-right">
-                      <button class="btn btn-lg btn-block _btn_form_next" onclick="msf_btn_next()">Next <i class="bi-arrow-right-short"></i></button>  
-                     </div>
-                    </div>
-                  </fieldset>
-                  <fieldset class="fieldset_1 msf_hide">
-                   <div class="row m-0">
-                    <div class="col-12 col-md-4">
-                     <h4 class="_fw600">Has your video some restriction?</h4>
-                     <br>
-                    </div>
-                    <div class="col-12 col-md-8">
-                     <div class="d-table fullsize">
-                      <div class="d-table-cell v-middle">
+                    <div class="modal-body">
                        <div class="field">
                          <div class="custom-control custom-switch _1 pl-0">
                          <%= f.check_box :privated, class: "custom-control-input" %>
@@ -132,244 +116,254 @@
                          <label class="custom-control-label" for="mock_unlist"><b>Unlist mock</b></label>
                         </div>
                        </div>
-                      </div>
-                     </div>
-                    </div>
-                   </div>
-                   <br>
-                   <div class="row m-0">
-                    <div class="col-12 col-md-8 offset-md-4 text-right">
-                     <div class="row m-0">
-                      <div class="col-6 mt-2">
-                       <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
-                      </div>
-                      <div class="col-6 mt-2">
-                       <button class="btn btn-lg btn-block _btn_form_next" onclick="msf_btn_next()">Next <i class="bi-arrow-right-short"></i></button>
-                      </div>
-                     </div>
-                    </div>
-                   </div>
-                  </fieldset>
-                  <fieldset class="fieldset_1 msf_hide">
-                    <div class="row m-0">
-                      <div class="col-12 col-md-4">
-                        <h4 class="_fw600">Whose credits are the video?</h4>
-                        <br>
-                      </div>
-                      <div class="col-12 col-md-8">
-                        <div class="field">
-                          <label>Credits</label>
-                          <%= f.text_field :credits, class: 'form-control', required: true %>
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="row m-0">
-                      <div class="col-12 col-md-8 offset-md-4 text-right">
-                        <div class="row m-0">
-                          <div class="col-6 mt-2">
-                            <button class="btn btn-lg btn-block _btn_form_back" onclick="msf_btn_back()"><i class="bi-arrow-left-short"></i> Back</button> 
-                          </div>
-                          <div class="col-6 mt-2">
-                            <%= f.submit 'Upload!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Uploading, please hold on...' } %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                  </fieldset>
-                 </div>
-                <% end %>
-              </div>
-              <div class="tab-pane fade" id="mocket" role="tabpanel" aria-labelledby="mocket-tab">
-                <%= form_for @mock, html: { multipart: true } do |f| %>
-                  <br>
-                  <div class="row m-0 ">
-                   <div class="col-12">
-                    <h4 class="_fw600">Mocket</h4>
-                   </div>
-                   <div class="col-12">
-                    <div class="field">
-                     <br>
-                     <%= f.text_area :description, class: '_textarea _2 form-control _required', rows: "5",  required: true %>
-                    </div>
-                   </div>
-                  </div>
-                  <br>
-                  <div class="row m-0">
-                   <div class="col-12">
-                     <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
-                         <div class="progress d-none" id="progress-bar">
-                           <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
-                             <span class="sr-only" id="progress-bar-text"></span>
-                           </div>
-                         </div>
-                         <div class="fullsize p-5 _file_upload">
-                           <div class="d-table fullsize">
-                             <div class="d-table-cell v-middle text-center">
-                              <img class="_img_upload_mock" src="//d8mn60sm70fqt.cloudfront.net/assets/svg/photo_1.svg">
-                               <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your image (JPG/PNG/GIF)</h6>
-                               <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your image is ready to upload</h6>
+                       <%= f.text_field :credits, class: 'form-control _1', placeholder: 'Credits' %>
+
+                       <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
+                           <div class="progress d-none" id="progress-bar">
+                             <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                               <span class="sr-only" id="progress-bar-text"></span>
                              </div>
                            </div>
-                         </div>
-                         <%= f.file_field :picture, class: "file-selector absolute", id: "file-selector_1" %>
-                     </section>
-                   </div>
-                  </div>
-                  <br>
-                  <div class="row m-0">
-                    <div class="col-12">
-                     <div class="d-table fullsize">
-                      <div class="d-table-cell v-middle">
-                       <div class="field">
-                        <div class="custom-control custom-switch _1 pl-0">
-                         <%= f.check_box :age_restricted, class: "custom-control-input"  %>
-                         <label class="custom-control-label" for="mock_age_restricted"><b>Age restricted mock</b></label>
-                        </div>
-                       </div>
-                      </div>
-                     </div>
+                           <div class="fullsize p-5 _file_upload">
+                             <div class="d-table fullsize">
+                               <div class="d-table-cell v-middle text-center">
+                                <img class="_img_upload_mock" src="//d8mn60sm70fqt.cloudfront.net/assets/svg/photo_1.svg">
+                                 <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your image (JPG/PNG/GIF)</h6>
+                                 <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your image is ready to upload</h6>
+                               </div>
+                             </div>
+                           </div>
+                           <%= f.file_field :picture, class: "file-selector absolute", id: "file-selector_1" %>
+                       </section>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit 'Upload',  class: '_btn _1', id: 'fileUpload', data: { disable_with: 'Uploading...' } %>
                     </div>
                   </div>
-                  <br>
-                  <%= f.hidden_field :mocktype, value: 'pictures' %>
-                  <div class="row m-0">
-                    <div class="col-12 mt-2">
-                      <%= f.submit 'Upload!', class: 'btn btn-lg btn-block _btn_form_next', id: 'fileUpload', data: { disable_with: 'Uploading, please hold on...' } %>
-                    </div>
-                  </div>
-                <% end %>
+                </div>
               </div>
             </div>
-
-          </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="mocket" role="tabpanel" aria-labelledby="mocket-tab">
+          <%= form_for @mock, html: { multipart: true } do |f| %>
+            <%= f.hidden_field :mocktype, value: 'pictures' %>
+            <div class="form_wrapper" id="_form_register">
+              <article class="_fieldset_form _1 msf_hide">
+                <section class="_upload_big _1">
+                 <div class="progress d-none" id="progress-bar">
+                   <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                     <span class="sr-only" id="progress-bar-text"></span>
+                   </div>
+                 </div>
+                 <div class="fullsize p-5 _file_upload">
+                   <div class="d-table fullsize">
+                     <div class="d-table-cell v-middle text-center">
+                       <img class="_img_upload_mock"  src="//d8mn60sm70fqt.cloudfront.net/assets/svg/photo_1.svg">
+                       <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your picture (JPG/PNG/GIF)</h6>
+                       <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your picture is ready to upload</h6>
+                     </div>
+                   </div>
+                 </div>
+                 <%= f.file_field :picture, class: "file-selector absolute file_multi_picture", id: "upload_picture_1", onchange: "msf_btn_next2()" %>
+                </section>
+              </article>
+              <article class="_fieldset_form _2 msf_hide">
+                <section class="_actions">
+                  <a class="_btn _outline" onclick="msf_btn_back2()">
+                    <span>Back</span>
+                  </a> 
+                  <a class="_btn _1 d-none" id="_continue_mocket" data-bs-toggle="modal" data-bs-target="#picturesModal">
+                    <span>Continue</span>
+                  </a>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $('input._name_mocket').on('keyup', function() {
+                        let empty = false;
+                        $('input._name_mocket').each(function() {
+                          empty = $(this).val().length == 0;
+                        });
+                        if (empty)
+                          $('a#_continue_mocket').toggleClass('d-none');
+                        else
+                          $('a#_continue_mocket').removeClass('d-none');
+                      });
+                    });
+                  </script>
+                </section>
+                <section class="_head">
+                  <%= f.text_field :title, class: 'form-control _required _name_mocket', required: true, placeholder: "Give me a name" %>
+                </section>
+                <section class="_preview">
+                  <img id="picture_here">
+                  <script type="text/javascript">
+                    $(document).on("change", ".file_multi_picture", function(evt) {
+                      var $source2 = $('#picture_here');
+                      $source2[0].src = URL.createObjectURL(this.files[0]);
+                      $source2.parent()[0].load();
+                    });
+                  </script>
+                </section>
+                <section class="_description">
+                  <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4", placeholder: "Write what went into this mocket, and anything else you’d like to mention" %>
+                </section>
+              </article>
+              <div class="modal fade" id="picturesModal" tabindex="-1" aria-labelledby="picturesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Final touches</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <div class="field">
+                       <div class="custom-control custom-switch _1 pl-0">
+                       <%= f.check_box :privated, class: "custom-control-input", id: "_picture_privated" %>
+                       <label class="custom-control-label" for="_picture_privated">
+                          <b>Private mock</b>
+                        </label>
+                      </div>
+                     </div>
+                     <div class="field">
+                      <div class="custom-control custom-switch _1 pl-0">
+                       <%= f.check_box :age_restricted, class: "custom-control-input", id: "_picture_age_restricted"  %>
+                       <label class="custom-control-label" for="_picture_age_restricted">
+                          <b>Age restricted mock</b>
+                        </label>
+                      </div>
+                     </div>
+                     <div class="field">
+                      <div class="custom-control custom-switch _1 pl-0">
+                        <%= f.check_box :unlist, class: "custom-control-input", id: "_picture_unlist" %>
+                       <label class="custom-control-label" for="_picture_unlist"><b>Unlist mock</b></label>
+                      </div>
+                     </div>
+                     <%= f.text_field :credits, class: 'form-control _1', placeholder: 'Credits' %>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit 'Upload',  class: '_btn _1', id: 'fileUpload2', data: { disable_with: 'Uploading...' } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="track" role="tabpanel" aria-labelledby="track-tab">
+          <%= form_for @mock, html: { multipart: true } do |f| %>
+            <%= f.hidden_field :mocktype, value: 'tracks' %>
+            <div class="form_wrapper" id="_form_register">
+              <blockquote class="_fieldset_form _1 msf_hide">
+                <section class="_upload_big _1">
+                 <div class="progress d-none" id="progress-bar">
+                   <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                     <span class="sr-only" id="progress-bar-text"></span>
+                   </div>
+                 </div>
+                 <div class="fullsize p-5 _file_upload">
+                   <div class="d-table fullsize">
+                     <div class="d-table-cell v-middle text-center">
+                       <img class="_img_upload_mock"  src="//d8mn60sm70fqt.cloudfront.net/assets/svg/podcast.svg">
+                       <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your track (MP3)</h6>
+                       <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your trcak is ready to upload</h6>
+                     </div>
+                   </div>
+                 </div>
+                 <%= f.file_field :music, class: "file-selector absolute file_multi_track", id: "upload_track_1", onchange: "msf_btn_next3()" %>
+                </section>
+              </blockquote>
+              <blockquote class="_fieldset_form _2 msf_hide">
+                <section class="_actions">
+                  <a class="_btn _outline" onclick="msf_btn_back3()">
+                    <span>Back</span>
+                  </a> 
+                  <a class="_btn _1 d-none" id="_continue_track" data-bs-toggle="modal" data-bs-target="#tracksModal">
+                    <span>Continue</span>
+                  </a>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $('input._name_track').on('keyup', function() {
+                        let empty = false;
+                        $('input._name_track').each(function() {
+                          empty = $(this).val().length == 0;
+                        });
+                        if (empty)
+                          $('a#_continue_track').toggleClass('d-none');
+                        else
+                          $('a#_continue_track').removeClass('d-none');
+                      });
+                    });
+                  </script>
+                </section>
+                <section class="_head">
+                  <%= f.text_field :title, class: 'form-control _required _name_track', required: true, placeholder: "Give me a name" %>
+                </section>
+                <section class="_preview">
+                  <img id="picture_here">
+                  <audio controls="controls" id="audioPreview">
+                        <source id="track_here" src="" type="audio/mp4" />
+                  </audio>
+                  <script type="text/javascript">
+                    $(document).on("change", ".file_multi_track", function(evt) {
+                      var $source3 = $('#track_here');
+                      $source3[0].src = URL.createObjectURL(this.files[0]);
+                      $source3.parent()[0].load();
+                    });
+                  </script>
+                </section>
+                <section class="_description">
+                  <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4", placeholder: "Write what went into this track, and anything else you’d like to mention" %>
+                </section>
+              </blockquote>
+              <div class="modal fade" id="tracksModal" tabindex="-1" aria-labelledby="tracksModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Final touches</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <div class="field">
+                       <div class="custom-control custom-switch _1 pl-0">
+                       <%= f.check_box :privated, class: "custom-control-input", id: "_picture_privated" %>
+                       <label class="custom-control-label" for="_picture_privated">
+                          <b>Private mock</b>
+                        </label>
+                      </div>
+                     </div>
+                     <div class="field">
+                      <div class="custom-control custom-switch _1 pl-0">
+                       <%= f.check_box :age_restricted, class: "custom-control-input", id: "_picture_age_restricted"  %>
+                       <label class="custom-control-label" for="_picture_age_restricted">
+                          <b>Age restricted mock</b>
+                        </label>
+                      </div>
+                     </div>
+                     <div class="field">
+                      <div class="custom-control custom-switch _1 pl-0">
+                        <%= f.check_box :unlist, class: "custom-control-input", id: "_picture_unlist" %>
+                       <label class="custom-control-label" for="_picture_unlist"><b>Unlist mock</b></label>
+                      </div>
+                     </div>
+                     <%= f.text_field :credits, class: 'form-control _1', placeholder: 'Credits' %>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit 'Upload',  class: '_btn _1', id: 'fileUpload3', data: { disable_with: 'Uploading...' } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
 </div>
-<br>
-<br>
-
-<style type="text/css">
-  fieldset{
-    width:100%;
-  }
-  form#new_mock {
-   background: white;
-   padding: 30px;
-   border-radius: 15px;
-   box-shadow: 0 6px 15px -6px #8f8e9996;
-  }
-  ._fullscreen_absolute.hide {
-    height: auto;
-  }
-  ._fullscreen_absolute.hide h3{
-    display: none;
-  }
-  a._close_accordion{
-    cursor: pointer;
-  }
-  a._close_accordion i {
-    line-height: 0;
-    display: block;
-    font-size: 23pt;
-    color: #212121;
-    margin-bottom: 20px;
-  }
-  ._btn_form_kind {
-    background: #fff;
-    border: 0;
-    padding: 20px;
-    height: 33vh;
-    width: 100%;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    height: 27vh;
-    transition: all .2s ease;
-  }
-  @media(min-width: 992px){
-    ._btn_form_kind{
-      height: calc(100vh - 150px);
-      min-height: 400px;
-    }
-  }
-  ._btn_form_kind
-  ._btn_form_kind:hover,
-  ._btn_form_kind.active{
-    background: white;
-    height: 32.5vh;
-    transform: translateY(-4px);
-    box-shadow: 0 3px 17px -13px #11111194;
-  }
-  ._btn_form_kind.active img{
-    filter: grayscale(0);
-  }
-  ._btn_form_kind img {
-    width: 350px;
-    margin: 0 auto;
-    display: block;
-  }
-  ._btn_form_kind ._content {
-    position: relative;
-    z-index: 2;
-  }
-  ._btn_form_kind ._content b{
-    font-size: 3em;
-    font-family: 'Sofia Pro';
-    font-weight: 800;
-    letter-spacing: -3px;
-  }
-  [data-theme="dark"] form#new_mock {
-   background: #1b1b1b;
-   box-shadow: 0 6px 15px -6px #00000096;
-  }
-  [data-theme="dark"] select {
-   background: #121212;
-   color: white;
-   border-color: #3a3643 !important;
-  }
-  [data-theme="dark"] ._upload_big{
-   border-color: #3a3643 !important;
-  }
-  @media(max-width: 767px){
-   ._btn._action{
-    width:100%;
-   }
-   ._btn_form_kind{
-    height: 88.7vh;
-    width:100vw;
-   }
-
-  }
-  @media(max-width: 575px){
-   form#new_mock {
-    border-radius: 0;
-   }
-  }
-</style>
-
-<script type="text/javascript">
-  var mvp = 9;
-  $(document).ready(function () {
-   $("._tags_form._1 input:checkbox").each(function (index) {
-       /*this.checked = (index < mvp);*/
-   }).click(function () {
-    en_dis= $("._tags_form._1 input:checkbox:checked").length < mvp
-    //$('#button-id').prop('disabled', en_dis);
-    // to disable other checkboxes
-    $('._tags_form._1 input:checkbox:checked').length >= mvp &&
-     $("._tags_form._1 input:checkbox:not(:checked)").prop('disabled',true);
-    $('._tags_form._1 input:checkbox:checked').length < mvp &&
-     $("._tags_form._1 input:checkbox:not(:checked)").prop('disabled',false);
-   }).change(function () {
-    if ($(this).siblings(':checked').length >= mvp) {
-     this.checked = false;
-    }
-   });
-  });
-</script>
 
 <script type="text/javascript">
   console.log("Reloaded");
@@ -426,6 +420,7 @@
               }
           };
       };
+
       if (msf_val === true) {
           // goes to the next step
           var selection = msf_getFsTag[msf_form_nr];
@@ -439,7 +434,6 @@
       }
   };
 
-
   // goes one step back
   function msf_btn_back() {
       msf_getFsTag[msf_form_nr].className = "msf_hide";
@@ -449,7 +443,160 @@
 
   console.log("loaded");
 </script>
+<script type="text/javascript">
+  console.log("Reloaded2");
 
+  // dom variables
+  var msf_getFsTag2 = document.getElementsByTagName("article");
+
+  // declaring the active fieldset & the total fieldset count
+  var msf_form_nr2 = 0;
+  var fieldset2 = msf_getFsTag2[msf_form_nr2];
+  fieldset2.className = "msf_show";
+
+  // creates and stores a number of bullets
+  var msf_bullet_nr2 = "<div class='msf_bullet'></div>";
+  var msf_length2 = msf_getFsTag2.length;
+  for (var i = 1; i < msf_length2; ++i) {
+      msf_bullet_nr2 += "<div class='msf_bullet'></div>";
+  };
+  // injects bullets
+  var msf_bullet_o2 = document.getElementsByClassName("msf_bullet_o");
+  for (var i = 0; i < msf_bullet_o2.length; ++i) {
+      var msf_b_item2 = msf_bullet_o2[i];
+      msf_b_item2.innerHTML = msf_bullet_nr2;
+  };
+
+  // removes the first back button & the last next button
+  document.getElementsByName("back2")[0].className = "msf_hide";
+  document.getElementsByName("next2")[msf_bullet_o2.length - 1].className = "msf_hide";
+
+  // Makes the first dot active
+  var msf_bullets2 = document.getElementsByClassName("msf_bullet");
+  msf_bullets2[msf_form_nr2].className += " msf_bullet_active";
+
+  // Validation loop & goes to the next step
+  function msf_btn_next2() {
+      var msf_val2 = true;
+
+      var msf_fs2 = document.querySelectorAll("fieldset")[msf_form_nr2];
+      var msf_fs_i_count2 = msf_fs2.querySelectorAll("input._required").length;
+
+      for (i = 0; i < msf_fs_i_count2; ++i) {
+          var msf_input_s2 = msf_fs2.querySelectorAll("input._required")[i];
+          if (msf_input_s2.getAttribute("type") === "button") {
+              // nothing happens
+          } else {
+              if (msf_input_s2.value === "") {
+                  msf_input_s2.style.borderColor = "#ea4747";
+                  msf_val2 = false;
+              } else {
+                  if (msf_val2 === false) {} else {
+                      msf_val2 = true;
+                      msf_input_s2.style.backgroundColor = "#4c31ee";
+                  }
+              }
+          };
+      };
+      if (msf_val2 === true) {
+          // goes to the next step
+          var selection2 = msf_getFsTag2[msf_form_nr2];
+          selection2.className = "msf_hide";
+          msf_form_nr2 = msf_form_nr2 + 1;
+          var selection2 = msf_getFsTag2[msf_form_nr2];
+          selection2.className = "msf_show";
+          // refreshes the bullet
+          var msf_bullets_a2 = msf_form_nr2 * msf_length2 + msf_form_nr2;
+          msf_bullets2[msf_bullets_a2].className += " msf_bullet_active";
+      }
+  };
+
+  // goes one step back
+  function msf_btn_back2() {
+      msf_getFsTag2[msf_form_nr2].className = "msf_hide";
+      msf_form_nr2 = msf_form_nr2 - 1;
+      msf_getFsTag2[msf_form_nr2].className = "msf_showhide";
+  };
+
+  console.log("loaded");
+</script>
+<script type="text/javascript">
+  console.log("Reloaded3");
+
+  // dom variables
+  var msf_getFsTag3 = document.getElementsByTagName("blockquote");
+
+  // declaring the active fieldset & the total fieldset count
+  var msf_form_nr3 = 0;
+  var fieldset3 = msf_getFsTag3[msf_form_nr3];
+  fieldset3.className = "msf_show";
+
+  // creates and stores a number of bullets
+  var msf_bullet_nr3 = "<div class='msf_bullet'></div>";
+  var msf_length3 = msf_getFsTag3.length;
+  for (var i = 1; i < msf_length3; ++i) {
+      msf_bullet_nr3 += "<div class='msf_bullet'></div>";
+  };
+  // injects bullets
+  var msf_bullet_o3 = document.getElementsByClassName("msf_bullet_o");
+  for (var i = 0; i < msf_bullet_o3.length; ++i) {
+      var msf_b_item3 = msf_bullet_o3[i];
+      msf_b_item3.innerHTML = msf_bullet_nr3;
+  };
+
+  // removes the first back button & the last next button
+  document.getElementsByName("back2")[0].className = "msf_hide";
+  document.getElementsByName("next2")[msf_bullet_o3.length - 1].className = "msf_hide";
+
+  // Makes the first dot active
+  var msf_bullets3 = document.getElementsByClassName("msf_bullet");
+  msf_bullets2[msf_form_nr3].className += " msf_bullet_active";
+
+  // Validation loop & goes to the next step
+  function msf_btn_next3() {
+      var msf_val3 = true;
+
+      var msf_fs3 = document.querySelectorAll("fieldset")[msf_form_nr3];
+      var msf_fs_i_count3 = msf_fs3.querySelectorAll("input._required").length;
+
+      for (i = 0; i < msf_fs_i_count3; ++i) {
+          var msf_input_s3 = msf_fs3.querySelectorAll("input._required")[i];
+          if (msf_input_s3.getAttribute("type") === "button") {
+              // nothing happens
+          } else {
+              if (msf_input_s3.value === "") {
+                  msf_input_s3.style.borderColor = "#ea4747";
+                  msf_val2 = false;
+              } else {
+                  if (msf_val3 === false) {} else {
+                      msf_val3 = true;
+                      msf_input_s3.style.backgroundColor = "#4c31ee";
+                  }
+              }
+          };
+      };
+      if (msf_val3 === true) {
+          // goes to the next step
+          var selection3 = msf_getFsTag3[msf_form_nr3];
+          selection3.className = "msf_hide";
+          msf_form_nr3 = msf_form_nr3 + 1;
+          var selection3 = msf_getFsTag3[msf_form_nr3];
+          selection3.className = "msf_show";
+          // refreshes the bullet
+          var msf_bullets_a3 = msf_form_nr3 * msf_length3 + msf_form_nr3;
+          msf_bullets3[msf_bullets_a3].className += " msf_bullet_active";
+      }
+  };
+
+  // goes one step back
+  function msf_btn_back3() {
+      msf_getFsTag3[msf_form_nr3].className = "msf_hide";
+      msf_form_nr3 = msf_form_nr3 - 1;
+      msf_getFsTag3[msf_form_nr3].className = "msf_showhide";
+  };
+
+  console.log("loaded");
+</script>
 <script type="text/javascript">
 
   $('#file-selector_1').change(function(){

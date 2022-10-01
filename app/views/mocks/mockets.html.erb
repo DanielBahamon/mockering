@@ -1,106 +1,40 @@
-<% content_for :title, "Mockets • Mockering" %>
-<div id="_big_row_index" class="container-lg">
-	<div class="row m-0">
-		<div class="col-12 p-0 _content _content_principal _1">
-			<div class="on_content" id="on_content">
-					<div class="_board _mockets">
-						<section class="_title_page">
-							<div class="d-table fullsize">
-								<div class="d-table-cell v-middle">
-									<div class="_title">
-										<i class="bi-easel2"></i>
-										<span>Mockets</span>
-									</div>
-								</div>
-							</div>
-						</section>
-						<section class="_mocks _2">
-							<% if @new_mocks.present? %>
-								<div class="mocks_content _1">
-									<div class="_shuffle_container _1">
-										<% @new_mocks.each do |mock| %>
-											<%= render 'mock', mock: mock %>
-										<% end %>
-									</div>
-								<div class="my-sizer-element"></div>
-							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-							    </div>
-							  </div>
-								</div>
-							<% end %>
-						</section>
-						<section class="sec_title">
-							<div class="row m-0">
-								<div class="col-12 p-0">
-									<h3>These weeks</h3>
-								</div>
-							</div>
-						</section>
-						<section class="_mocks _2">
-							<div class="mocks_content _2">
-								<div class="_shuffle_container _3">
-									<% @month.each do |mock| %>
-										<%= render 'mock', mock: mock %>
-									<% end %>
-								</div>
-								<div class="my-sizer-element"></div>
-							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-							      <%= will_paginate @month, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-							    </div>
-							  </div>
-							</div>
-						</section>
-						<section class="sec_title">
-							<div class="row m-0">
-								<div class="col-12 p-0">
-									<h3>Trends</h3>
-								</div>
-							</div>
-						</section>
-						<section class="_mocks _2">
-							<div class="mocks_content _2">
-								<div class="_shuffle_container _2">
-									<% @trends.each do |mock| %>
-										<%= render 'mock', mock: mock %>
-									<% end %>
-								</div>
-								<div class="my-sizer-element"></div>
-							  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							    <div class="btn-group mr-2 m-0-auto" role="group" aria-label="First group">
-							      <%= will_paginate @mocks, renderer: BootstrapPagination::Rails, param_name: 'page' %>
-							    </div>
-							  </div>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<% content_for :title, "Mockering - Free content to enjoy" %>
+<% content_for :name, "Mockets" %>
+ 
+<div class="_navy">
+	<b>Mockets</b>
 </div>
-<script type="text/javascript">
-	
-	var clipboard = new Clipboard('.clipboard-btn');
-	console.log(clipboard);
-
-	var Shuffle = window.Shuffle;
-
-	var myShuffle = new Shuffle(document.querySelector('._shuffle_container._1'), {
-	itemSelector: '._item_shuffle',
-	sizer: '.my-sizer-element',
-	buffer: 1,
-	});
-	var myShuffle2 = new Shuffle(document.querySelector('._shuffle_container._2'), {
-	itemSelector: '._item_shuffle',
-	sizer: '.my-sizer-element',
-	buffer: 1,
-	});
-	var myShuffle3 = new Shuffle(document.querySelector('._shuffle_container._3'), {
-	itemSelector: '._item_shuffle',
-	sizer: '.my-sizer-element',
-	buffer: 1,
-	});
-</script> 
+<div class="_cont _1">
+  <% if mocker_signed_in? # && current_mocker.admin %>
+	  <%= form_for @mock, html: { multipart: true } do |f| %>
+	    <%= f.hidden_field :mocktype, value: 'mockets' %>
+	    <section class="_head">
+	      <%= f.text_area :title, class: '_textarea _2 form-control _textarea_post', rows: "2", placeholder: "What are you thinking?" %>
+	    	<%= f.submit 'Mock',  class: 'btn _btn _1', id: 'fileUpload2', data: { disable_with: 'Uploading...' } %>
+	    </section>
+	    <section class="_upload_big _1">
+	     <div class="fullsize p-5 _file_upload">
+	       <i class="bi bi-card-image"></i>
+	     </div>
+	     <%= f.file_field :picture, class: "file-selector absolute file_multi_picture", id: "upload_picture_1", onchange: "msf_btn_next2()" %>
+	    </section>
+	    <section class="_preview">
+	      <img id="picture_here">
+	      <script type="text/javascript">
+	        $(document).on("change", ".file_multi_picture", function(evt) {
+	          var $source2 = $('#picture_here');
+	          $source2[0].src = URL.createObjectURL(this.files[0]);
+	          $source2.parent()[0].load();
+	        });
+	      </script>
+	    </section>
+	  <% end %>
+  <% end %>
+</div>
+<div class="_cont _2">
+  <% @onemocks.each do |mock| %>
+    <article>
+      <%= render 'mock', mock: mock %>
+    </article>
+  <% end %>
+</div>

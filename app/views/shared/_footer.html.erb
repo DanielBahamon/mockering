@@ -4,8 +4,6 @@
       <%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo _brand" do %>
         <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
         <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-        <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-        <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
       <% end %>
 			<p>By human beings for everyone.</p>
 			<div class="cont_social">
@@ -32,7 +30,7 @@
 				</div>
 				<div class="col-sm-4 p-0">
 					<b>Utilidad</b>
-          <%= link_to all_path, class: "_link" do %>
+          <%= link_to root_path, class: "_link" do %>
           	Feed
           <% end %>
           <%= link_to plays_path, class: "_link" do %>

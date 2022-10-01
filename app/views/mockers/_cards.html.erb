@@ -1,0 +1,37 @@
+<% @minimockers = Mocker.all.order("RANDOM()").limit(3) %>
+<% @minimockers.each do |mocker| %>
+	<figure class="_mocker">
+		<div class="_1">
+	  	<%= link_to mocker, class: "_link _1" do %>
+	    	<%= image_tag avatar_url(mocker), class: "_avatar _1" %>
+	  	<% end %>
+		</div>
+		<div class="_2">
+	  	<%= link_to mocker, class: "_link _2" do %>
+				<b><%= mocker.first_name %> <%= mocker.last_name %></b>
+				<p><%= mocker.slug %></p>
+	  	<% end %>
+		</div>
+		<div class="_3">
+			<% if mocker_signed_in?  %>
+				<% if current_mocker.following?(mocker) %>
+					<%= button_to friendships_path(mocker_id: mocker.id), method: :delete, remote: :true, class: "_link_follow" do %>
+						<div class="follow-count_<%= mocker.id %>">
+							<%= render 'friendships/follows', mocker: mocker %>
+						</div>
+					<% end %>
+				<% else %>
+					<% if mocker_signed_in? %>
+						<%= button_to friendships_path(mocker_id: mocker.id), remote: :true, class: "_link_follow" do %>
+							<div class="follow-count_<%= mocker.id %>">
+								<%= render 'friendships/follows', mocker: mocker %>
+							</div>
+						<% end %>
+					<% else %>
+						<%= button_to new_mocker_session_path, class: "_link_follow" do %>Follow<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	</figure>
+<% end %>

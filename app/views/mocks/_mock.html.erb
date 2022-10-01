@@ -1,16 +1,15 @@
 <figure class="_mock" id="_mock_<%= mock.id %>">
 	<div class="_body">
-
-		<% if !mock.picture.present? && !mock.movie.present?  %>
-			<aside class="_content_mocket">
-				<div class="_data">
-					<span>
-						<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
-						<%= mock.description %>		
-					</span>
+	<% if !mock.picture.present? && !mock.movie.present?  %>
+		<aside class="_content_mocket">
+			<div class="_data">
+				<span>
 					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
-				</div>
-			</aside>
+					<%= mock.description %>		
+				</span>
+				<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+			</div>
+		</aside>
   	<% end %>
 		<aside class="_media">
 			<% if mock.picture.present? || mock.movie.present? %>

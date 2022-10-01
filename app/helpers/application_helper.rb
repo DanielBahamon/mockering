@@ -16,6 +16,10 @@ module ApplicationHelper
 		end
 	end
 
+	def minimockers
+		@minimockers = Mocker.all.order("created_at DESC").limit(3)
+	end
+
 	def markdown(text)
 	  renderer = Redcarpet::Render::SmartyHTML.new(filter_html: true, 
 	                                               hard_wrap: true, 
@@ -73,7 +77,6 @@ module ApplicationHelper
 			end
 		end
 	end
-
 
 	def paginate(collection, params= {})
 		will_paginate collection, params.merge(:renderer => RemoteLinkPaginationHelper::LinkRenderer)

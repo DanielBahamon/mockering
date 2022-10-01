@@ -10,7 +10,7 @@
 <% content_for :movie_path, "#{video_path(@mock.movie)}" %>
 
 <div class="d-table fullsize minh-100">
-	<div class="d-table-cell v-middle">
+	<div class="d-table-cell v-middle"> 
 		<div class="_conta pt-5 _mock <% if @mock.movie_file_size? %>_movie<% else %>_picture<% end %>">
 			<% @blocked = Block.where(mocker_id: @mock.mocker, blocked_id: current_mocker, status: true).present? %>
 
@@ -20,11 +20,7 @@
 					<% if @age > 17 %>
 						<% unless @blocked == true %>
 							<% if @mock.reported == false %>
-								<% if @mock.movie_file_size?  %>
 									<%= render 'content' %>
-								<% else %>
-									<%= render 'contentalt' %>
-								<% end %>
 							<% else %>
 								<!-- Modal -->
 								<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -66,13 +62,8 @@
 			<% else %>
 				<% unless @blocked == true %>
 					<% if @mock.reported == false %>
-						<% if @mock.movie_file_size?  %>
 							<%= render 'content' %>
-						<% else %>
-							<%= render 'contentalt' %>
-						<% end %>
 					<% else %>
-						<!-- Modal -->
 						<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 						    <div class="modal-content">
@@ -102,37 +93,8 @@
 		</div>
 	</div>
 </div>
-		
 
-<style type="text/css">
-	._card._2{
-		width:100% !important;
-    	margin: 0;
-    	margin-bottom: 15px;
-    	height:auto;
-	}
-	._col_mock_related{
-		padding-top: 15px;
-	}
-	@media(max-width: 767px){
-		._content_principal._1{
-			padding: 0 !important;
-		}
-		._nav._1{
-			border-radius: 0 !important;
-		}
-	}
-	@media(max-width: 991px){
-		#_col_1_show_mock{
-		    margin-top: 10px;
-		    margin-bottom: 40px;
-		}
-	}
-	#_col_1_show_mock{
-	    margin-bottom: 0;
-	}
-</style>
-
+<script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
 <script type="text/javascript">
 	$('.readmore').readmore({
 			speed: 75,
@@ -141,14 +103,87 @@
 	  		lessLink: '<a href="#" class="link-2">Show less</a>'
 		}
 	);
-</script>
-<script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
-<script type="text/javascript">
 	videojs('my-video').ready(function() {
 	  this.hotkeys({
 	    volumeStep: 0.1,
 	    seekStep: 5,
 	    enableModifiersForNumbers: false
 	  });
+	});
+  $(document).ready(function() {
+	<% if @related_mocks.count >= 4  %>
+	  var spliderelated1 = new Splide('#splide_related_1', {
+	    type: 'slide',
+	    perPage: 4,
+	    perMove: 1,
+	    breakpoints: {
+	      991: {
+	        perPage: 3,
+	      },
+	      767: {
+	        perPage: 2,
+	      },
+	      575: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 3 %>
+	  var spliderelated2 = new Splide('#splide_related_2', {
+	    type: 'slide',
+	    perPage: 4,
+	    perMove: 1,
+	    breakpoints: {
+	      991: {
+	        perPage: 3,
+	      },
+	      767: {
+	        perPage: 2,
+	      },
+	      575: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 2 %>
+	  var spliderelated3 = new Splide('#splide_related_3', {
+	    type: 'slide',
+	    perPage: 4,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 2,
+	      },
+	      575: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 1 %>
+	  var spliderelated3 = new Splide('#splide_related_4', {
+	    type: 'slide',
+	    perPage: 3,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 2,
+	      },
+	      575: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 0 %>
+	  var spliderelated4 = new Splide('#splide_related_4', {
+	    type: 'slide',
+	    perPage: 2,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 2,
+	      },
+	    }
+	  }).mount();
+	<% end %>
 	});
 </script>

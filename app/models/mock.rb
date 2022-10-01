@@ -17,14 +17,12 @@ class Mock < ApplicationRecord
 	has_many :mock_appeals
 
 
-
 	enum mocktype: {
 		plays: 0,
 		mockets: 1,
 		pictures: 2,
 		tracks: 3 
 	}
-
 
 	enum category: {
 		Whatever: 0,
@@ -91,11 +89,11 @@ class Mock < ApplicationRecord
 	end
 
 
-	after_create :add_mentions
+	# after_create :add_mentions
 
-	def add_mentions
-		Mention.create_from_text(self)
-	end
+	# def add_mentions
+	# 	Mention.create_from_text(self)
+	# end
 
 end
  
