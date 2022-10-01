@@ -4073,6 +4073,11 @@
       }
     }
     @media(max-width: 991px){
+
+      figure._mock > ._body > ._content_mocket > ._data{
+        align-items:start !important; 
+        overflow: hidden !important;
+      }
       figure._mock{
         margin-bottom: 20px;
       }
@@ -4241,6 +4246,9 @@
       }
     }
     @media(min-width: 992px){
+      figure._mock>._body>._content_mocket {
+        background: #f3f3f4;
+      }
       ._grid_posts>._cont>figure {
         float: left;
         width: calc(25% - 20px);
@@ -4250,10 +4258,6 @@
           width: 560px;
           margin: 0 auto;
           max-width: 100%;
-      }
-      figure._mock > ._body > ._content_mocket > ._data{
-        align-items:start !important; 
-        overflow: hidden !important;
       }
       div#v-pills-tabContent {
         padding: 0 2rem;

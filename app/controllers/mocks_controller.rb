@@ -43,7 +43,7 @@ class MocksController < ApplicationController
     	.group(:id).order("RANDOM()")
     	.paginate(page: params[:page], per_page: 20)
     	.where(mocktype: 1, privated: false, reported: false, unlist: false)
-		@mocks =  Mock.joins(:impressions).where("	|mocks.created_at >= '#{12.month.ago}'")
+		@mocks =  Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'")
 		.group(:id).order("RANDOM()")
 		.paginate(page: params[:page], per_page: 20)
 		.where(privated: false, reported: false, unlist: false)
