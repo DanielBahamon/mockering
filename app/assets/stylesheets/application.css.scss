@@ -108,6 +108,7 @@
     text-decoration:none !important;
     display:block;
     font-size:14pt;
+    cursor:pointer;
   }
   ._col_btn_action_mock a .d-table-cell::before{
     content: '';
@@ -3030,6 +3031,8 @@
   figure._mocky>._body>aside._media>aside._data>._cont {
     display: flex;
     width: 100%;
+    justify-content: space-between;
+    grid-gap: 5px;
   }
   figure._mocky>._body>._content_mocket>._data>span {
     font-size: 16px;
@@ -3063,6 +3066,7 @@
     z-index: 2;
     position: relative;
   }
+
   figure._mocky>._body>aside._media>aside._data>._cont>._in._1 {
     max-height: 175px;
     min-height: 50px;
@@ -3349,10 +3353,6 @@
   figure._mocky> ._body > ._content_mocket > ._data:before {
     content: '';
   }
-  ._container_mock>._mock ._data {
-    display: flex;
-    align-items: center;
-  }
   input._link_follow {
     background: transparent;
     border: 0;
@@ -3478,7 +3478,6 @@
     width: 450px;
     max-width: calc(100vw - 15px);
     z-index: 1;
-    right: 0;
     height: 100vh;
     border-left: 1px solid #e7e7e9;
     display:block !important;
@@ -3876,6 +3875,7 @@ a:hover{
         min-height: 40px;
         align-items: center;
         display: flex;
+        justify-content: space-between;
         width: 100%;
         -webkit-position: sticky;
         position: sticky;
@@ -3887,7 +3887,32 @@ a:hover{
         backdrop-filter: blur(9px);
         padding: 5px 10px;
       }
-      section._layout > aside._2 > ._navy > b {
+      section._layout > aside._2 > ._navy > ._cont._1{
+        display: flex;
+        align-items: center;
+        grid-gap:10px;
+      }
+      section._layout > aside._2 > ._navy > ._cont > ._back {
+        position: relative;
+      }
+      section._layout > aside._2 > ._navy > ._cont > ._back > ._1 {
+        position: relative;
+        z-index: 1;
+      }
+      section._layout > aside._2 > ._navy > ._cont > ._back ._ocult {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: 2;
+        padding: 0;
+        color: transparent;
+        background: transparent;
+        border: 0;
+        opacity: 0;
+      }
+      section._layout > aside._2 > ._navy > ._cont > b {
         font-family: 'Rubik', sans-serif;
         text-transform: uppercase;
         font-weight: 100;
@@ -3996,6 +4021,12 @@ a:hover{
       figure._mocky > ._avatar > ._avatar {
         position: -webkit-sticky;
         position: sticky;
+        display:block;
+      }
+      figure._mock > ._body > ._content_mocket > ._data, figure._mock > ._body > div > ._preview{
+        height: 200px;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
       figure._mocky > ._body > ._username{
         text-decoration:none;
@@ -4021,6 +4052,9 @@ a:hover{
         display: flex;
         width: 100%;
         justify-content: space-between;
+      }
+      figure._mocky > ._body > ._tails > ._in._2 > ._actions > *{
+        cursor:pointer;
       }
       figure._mocky > ._body > ._tails{
         padding: 15px 0;
@@ -4362,14 +4396,11 @@ a:hover{
       #multiCollapseSearch{
         max-width:95vw;
       }
-      figure._mocky>._body>aside._media>aside._data>._cont>._in._1{
-        width: 65%;
-      }
-      figure._mocky>._body>aside._media>aside._data>._cont>._in._2 {
-        width: 35%;
-      }
     }
     @media(max-width: 575px){
+      ._session._cont section._session._1 > div > ._logo{
+        width: 200px;
+      }
       #multiCollapseSearch{
         max-width:100vw;
       }
@@ -4545,12 +4576,6 @@ a:hover{
       .splide_twomocks li.splide__slide {
         padding: 0 15px;
         max-width:310px;
-      }
-      figure._mocky>._body>aside._media>aside._data>._cont>._in._1{
-        width: 80%;
-      }
-      figure._mocky>._body>aside._media>aside._data>._cont>._in._2 {
-        width: 20%;
       }
     }
     @media(min-width:576px){
