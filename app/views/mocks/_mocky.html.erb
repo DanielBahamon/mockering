@@ -6,30 +6,30 @@
 	</div>
 	<div class="_body">
 
-	<%= link_to mock.mocker, class: "_username" do %>
-		<span class="_1"><%= mock.mocker.first_name %> <%= mock.mocker.last_name %></span>
-		<span class="_2">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
-	<% end %>
-	<% if !mock.picture.present? && !mock.movie.present?  %>
-		<aside class="_content_mocket">
-			<div class="_data">
-				<span>
+		<%= link_to mock.mocker, class: "_username" do %>
+			<span class="_1"><%= mock.mocker.first_name %> <%= mock.mocker.last_name %></span>
+			<span class="_2">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
+		<% end %>
+		<% if !mock.picture.present? && !mock.movie.present?  %>
+			<aside class="_content_mocket">
+				<div class="_data">
+					<span>
+						<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+						<%= mock.description %>		
+					</span>
 					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
-					<%= mock.description %>		
-				</span>
-				<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
-			</div>
-		</aside>
-	<% else %>
-		<aside class="_content_mocky">
-			<div class="_data">
-				<span>
-					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
-					<%= mock.description %>		
-				</span>
-			</div>
-		</aside>
-  	<% end %>
+				</div>
+			</aside>
+		<% else %>
+			<aside class="_content_mocky">
+				<div class="_data">
+					<span>
+						<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+						<%= mock.description %>		
+					</span>
+				</div>
+			</aside>
+	  	<% end %>
 		<aside class="_media">
 			<% if mock.picture.present? || mock.movie.present? %>
 				<div class="_preview">
