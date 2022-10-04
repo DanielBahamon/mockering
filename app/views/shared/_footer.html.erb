@@ -66,7 +66,7 @@
 			<p><span>Todos los Derechos Reservados</span></p>
 		</div>
 		<div class="col-lg-6 _2">
-			<p><span>by</span> <a class="_link" href="https://bahamon.io" target="_blank">Bahamon.io</a>  </p>
+			<p class="_powered"><span>Powered by</span> <a class="_link" href="https://bahamon.io" target="_blank">Bahamon.io</a></p>
 		</div>
 	</div>
 </footer>
@@ -74,14 +74,12 @@
 
 <style>
 	footer._footer._1 {
-    padding: 90px 0 15px;
     width: 1240px;
     margin: 0 auto;
     max-width: 100vw;
 	}
 	footer._footer._2 {
 	  background: #ffffff;
-    padding: 15px 0;
     width: 1240px;
     margin: 0 auto;
     max-width: 100vw;
@@ -117,6 +115,13 @@
 	  font-weight: 300;
 	  font-size: 0.8rem;
 	  margin-bottom:0 ;
+	}
+	footer._footer._2>div p._powered {
+	  opacity: 0.1;
+	  transition: all 1.2s ease;
+	}
+	footer._footer._2>div p._powered:hover {
+	  opacity: 1;
 	}
 	footer._footer._2>div p a:hover{
     color: #464248;
@@ -378,9 +383,6 @@
 		}
 	}
 	@media(max-width: 767px){
-		footer._footer{
-  		padding: 50px 15px 30px;
-		}
 		footer._footer._1>div {
 			display: grid;
 		}
@@ -404,7 +406,21 @@
 			margin: 0 auto;
 		}
 	}
+	@media(min-width: 576px){
+		footer._footer._1{
+    	padding: 90px 15px 15px;
+		}
+		footer._footer._2{
+    	padding: 15px;
+		}
+	}
 	@media(max-width: 575px){
+		footer._footer._1{
+    	padding: 60px 15px 15px;
+		}
+		footer._footer._2{
+    	padding: 15px 15px 60px;
+		}
 		._action>.row>div {
 			width: 100%;
 			padding-right: 0 !important;
