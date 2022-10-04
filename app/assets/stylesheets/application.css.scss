@@ -3994,6 +3994,7 @@ a:hover{
         position: relative;
       }
       figure._mocky > ._avatar > ._avatar {
+        position: -webkit-sticky;
         position: sticky;
       }
       figure._mocky > ._body > ._username{
