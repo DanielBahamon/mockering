@@ -2,12 +2,12 @@
 <% @minimockers.each do |mocker| %>
 	<figure class="_mocker">
 		<div class="_1">
-	  	<%= link_to mocker, class: "_link _1" do %>
+	  	<%= link_to mocker, class: "_1" do %>
 	    	<%= image_tag avatar_url(mocker), class: "_avatar _1" %>
 	  	<% end %>
 		</div>
 		<div class="_2">
-	  	<%= link_to mocker, class: "_link _2" do %>
+	  	<%= link_to mocker, class: "_2" do %>
 				<b><%= mocker.first_name %> <%= mocker.last_name %></b>
 				<p><%= mocker.slug %></p>
 	  	<% end %>
@@ -27,10 +27,10 @@
 								<%= render 'friendships/follows', mocker: mocker %>
 							</div>
 						<% end %>
-					<% else %>
-						<%= button_to new_mocker_session_path, class: "_link_follow" do %>Follow<% end %>
 					<% end %>
 				<% end %>
+			<% else %>
+				<%= button_to new_mocker_session_path, class: "_link_follow" do %>Follow<% end %>
 			<% end %>
 		</div>
 	</figure>

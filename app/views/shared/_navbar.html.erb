@@ -1,33 +1,13 @@
-<header class="_header _1">
+<header class="_header _1 d-none d-xl-block">
   <% if mocker_signed_in? # && current_mocker.admin %>
     <div class="_cont _1">
       <nav class="_nav _1">
         <div class="_brand">
           <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 _sun-mode", alt: 'Mockering'%>
+            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 _moon-mode", alt: 'Mockering'%>
           <% end %>
         </div>
-        <ul class="d-none">
-          <li class="_action">
-            <%= link_to all_path, class: "_btn_menu #{'active' if current_page?(all_path)}" do %>
-              <span>Mocks</span>
-              <!--i class="bi-tornado"></i-->
-            <% end %>
-          </li>
-          <li class="_action">
-            <%= link_to mockets_path, class: "_btn_menu #{'active' if current_page?(mockets_path)}" do %>
-              <span>Mockets</span>
-              <!--i class="bi-easel2"></i-->
-            <% end %>
-          </li>
-          <li class="_action">
-            <%= link_to plays_path, class: "_btn_menu #{'active' if current_page?(plays_path)}" do %>
-              <span>Plays</span>
-              <!--i class="bi-camera-reels"></i-->
-            <% end %>
-          </li>
-        </ul>
       </nav>
       <ul class="_nav_actions _hidden">
         <li class="_search">
@@ -76,7 +56,6 @@
             </div>
           </div>
         </li>
-        
       </ul> 
     </div>
   <% else %>
@@ -84,8 +63,8 @@
       <nav class="_nav _1">
         <div class="_brand">
           <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
-            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 _sun-mode", alt: 'Mockering'%>
+            <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 _moon-mode", alt: 'Mockering'%>
           <% end %>
         </div>
       </nav>
@@ -117,11 +96,33 @@
             </div>
           </div>
         </li>
-        
       </ul> 
     </div>
   <% end %>
 </header>
+<nav class="_navbar d-xl-none">
+  <div class="_container _1">
+    <div class="_cont _1">
+      <a class="_action _1 _theme">
+        <div class="_in">
+          <i class="bi bi-moon-stars _sun-mode"></i>
+          <i class="bi bi-sun  _moon-mode"></i>
+        </div>
+      </a>
+      <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
+        <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
+        <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+      <% end %>
+      <a class="_action _2 _menu">
+        <div class="_in">
+          <span class="_1"></span>
+          <span class="_2"></span>
+          <span class="_3"></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</nav>
 <header class="_space_header"></header>
 
 <div class="_nav _1 d-none
@@ -146,8 +147,7 @@
           </li>
           <li class="nav-item relative d-xs-flex _logo_navbar 
               <% unless current_page?(mockets_path) || 
-                        current_page?(plays_path) || 
-                        current_page?(mockets_path) || 
+                        current_page?(mockies_path) || 
                         current_page?(your_mocks_path) || 
                         current_page?(liked_path) || 
                         current_page?(conversations_path) || 
@@ -171,7 +171,7 @@
             <% end %>
           </li>
           <li class="nav-item btn-mini icon_navbar d-md-flex">
-            <%= link_to all_path, class: "_btn_menu #{'active' if current_page?(all_path)}" do %>
+            <%= link_to root_path, class: "_btn_menu #{'active' if current_page?(root_path)}" do %>
               <span>Mocks</span>
               <!--i class="bi-tornado"></i-->
             <% end %>
@@ -183,7 +183,7 @@
             <% end %>
           </li>
           <li class="nav-item btn-mini icon_navbar d-none d-md-flex">
-            <%= link_to plays_path, class: "_btn_menu #{'active' if current_page?(plays_path)}" do %>
+            <%= link_to mockies_path, class: "_btn_menu #{'active' if current_page?(mockies_path)}" do %>
               <span>Plays</span>
               <!--i class="bi-camera-reels"></i-->
             <% end %>
@@ -215,7 +215,7 @@
                         <li class="nav-item btn-mini icon_navbar" style="height: 40px;">
                           <div class="d-table fullsize">
                             <div class="d-tablecell v-middle">
-                              <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(plays_path)}" do %>
+                              <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(mockies_path)}" do %>
                                 <i class="bi-plus-square"></i>
                               <% end %>
                             </div>
@@ -280,7 +280,7 @@
                     <li class="nav-item btn-mini icon_navbar">
                       <div class="d-table fullsize">
                         <div class="d-tablecell v-middle">
-                          <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(plays_path)}" do %>
+                          <%= link_to new_mock_path, class: "_btn_icon #{'active' if current_page?(mockies_path)}" do %>
                             <i class="bi-plus-square"></i>
                           <% end %>
                         </div>

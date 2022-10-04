@@ -34,76 +34,7 @@
 <div class="_cont _2">
   <% @mocks.each do |mock| %>
     <article>
-      <%= render 'mock', mock: mock %>
+      <%= render 'mocky', mock: mock %>
     </article>
   <% end %>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    var splide1 = new Splide('#splide_onemocks', {
-      type: 'loop',
-      perPage: 4,
-      perMove: 1,
-      breakpoints: {
-        991: {
-          perPage: 2,
-        },
-        575: {
-          perPage: 1,
-        },
-      }
-    }).mount();
-
-  });
-  $(document).ready(function() {
-    var splide2 = new Splide('#splide_twomocks', {
-      type: 'loop',
-      perPage: 4,
-      perMove: 1,
-      breakpoints: {
-        991: {
-          perPage: 2,
-        },
-        575: {
-          perPage: 1,
-        },
-      }
-    }).mount();
-
-  });
-  $(document).ready(function() {
-    var splide3 = new Splide('#splide_threemocks', {
-      type: 'loop',
-      perPage: 4,
-      perMove: 1,
-      breakpoints: {
-        991: {
-          perPage: 2,
-        },
-        575: {
-          perPage: 1,
-        },
-      }
-    }).mount();
-
-  });
-  $(document).ready(function() {
-    var splide4 = new Splide('#splide_fourmocks', {
-      type: 'loop',
-      perPage: 4,
-      perMove: 1,
-      breakpoints: {
-        991: {
-          perPage: 2,
-        },
-        575: {
-          perPage: 1,
-        },
-      }
-    }).mount();
-
-  });
-</script>
-<style type="text/css">
-</style>

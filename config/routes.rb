@@ -156,19 +156,12 @@ Rails.application.routes.draw do
 
   # resources :groups
 
-
   get 'subscriptions' => 'subscriptions#index'
-
   get 'suscripciones' => 'subscriptions#es'
-
   get 'terms' => 'pages#terms'
-
   get 'privacy' => 'pages#privacy'
-
   get 'copyright' => 'pages#copyright'
-
   get 'search' => 'pages#search'
-
   get 'contribute' => 'pages#contribute'
 
 
@@ -178,25 +171,15 @@ Rails.application.routes.draw do
 
   # This is for username validation
   get 'username_validator/:slug', to: 'mockers#username_validator'
-
   get 'mentions', to: 'mockers#mentions'
-
   get 'mockets', to: 'mocks#mockets'
-
-  get 'plays', to: 'mocks#plays'
-
+  get 'mockies', to: 'mocks#mockies'
+  get 'tracks', to: 'mocks#tracks'
   get 'liked', to: 'mocks#liked'
-
-  get 'all', to: 'mocks#index'
-
   get 'your_mocks', to: 'mocks#your_mocks'
-
   get "/404", :to => "errors#not_found"
-
   get "/422", :to => "errors#unacceptable"
-
   get "/500", :to => "errors#internal_error"
-
   get 'ads.txt', :to => "pages#ads.txt"
 
 

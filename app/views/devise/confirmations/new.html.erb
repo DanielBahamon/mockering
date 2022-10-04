@@ -32,6 +32,10 @@
               <% end %>
               <br>
               <%= render "devise/shared/links" %>
+              <div class="col-12 text-center">
+                <br>
+                <%= link_to 'Go to Mockering', root_path, class: "_link _1" %>
+              </div>
             </div>
           </section>
         </div>
@@ -43,17 +47,8 @@
   
 
 <style type="text/css">
-  body{
-    background:white;
-  }
-  ._nav._1,
-  ._navbar_br{
-    display: none;
-    visibility: hidden;
-  }
-
-  ._navfooter,
-  .space_navfooter{
+  header._header._1,
+  nav._navbar{
     display: none !important;
   }
 </style>

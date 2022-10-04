@@ -1,12 +1,14 @@
 <% if @reviews.count == 0 %>
   <div class="row m-0">
     <div class="col-12 text-center">
-      <i class="bi bi-chat-right-heart-fill"></i>
-      <p class="m-0"><%= @mock.mocker.first_name %> is looking for feedback</p>
-      <p class="m-0">Be the first to let them know your thoughts!</p>
-      <a class="_btn _simple">
-        <span>Leave feedback</span>
-      </a>
+      <div class="_info">
+        <i class="bi bi-chat-right-heart-fill"></i>
+        <p class="m-0"><%= @mock.mocker.first_name %> is looking for feedback</p>
+        <p class="m-0">Be the first to let them know your thoughts!</p>
+        <a class="_btn _simple">
+          <span>Leave feedback</span>
+        </a>
+      </div>
     </div>
   </div>
 <% else %>

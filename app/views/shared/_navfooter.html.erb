@@ -1,5 +1,5 @@
 <div class="space_navfooter d-none" style="height:52px;"></div>
-<div class="_navfooter d-block d-md-none">
+<div class="_navfooter d-block d-sm-none">
 	<div class="cont_navfooter">
 		<!--<% unless current_page?(conversations_path) || current_page?(edit_mocker_registration_path) || current_page?(new_mock_path) %>
 	        <% if mocker_signed_in? %>
@@ -12,26 +12,23 @@
 		<% end %>-->
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">
-				<li class="col_navfooter col-3 <%= 'active' if current_page?(all_path)  %>">
-					<%= link_to all_path, class: "_btn _btnavfoot " do %>
+				<li class="col_navfooter col-3 <%= 'active' if current_page?(root_path)  %>">
+					<%= link_to root_path, class: "_btn _btnavfoot " do %>
 						<div class="d-table fullheight fullwidth">
 							<div class="d-tablecell v-middle">
-								<i class="bi-tornado text-center p-0"></i>
-								<p class="text-ellipsis m-0">Feed</p>
+								<i class="fal fa-globe-americas text-center p-0"></i>
 							</div>
 						</div>
 					<% end %>
 				</li>
-				<li class="col_navfooter col-3 <%= 'active' if current_page?(plays_path)  %>">
-					<%= link_to plays_path, class: "_btn _btnavfoot " do %>
-						<i class="bi-camera-reels text-center p-0"></i>
-						<p class="text-ellipsis m-0">Plays</p>
+				<li class="col_navfooter col-3 <%= 'active' if current_page?(mockies_path)  %>">
+					<%= link_to mockies_path, class: "_btn _btnavfoot " do %>
+						<i class="fal fa-video text-center p-0"></i>
 					<% end %>
 				</li>
 				<li class="col_navfooter col-3 <%= 'active' if current_page?(mockets_path)  %>">
 					<%= link_to mockets_path, class: "_btn _btnavfoot " do %>
-						<i class="bi-easel2 text-center p-0"></i>
-						<p class="text-ellipsis m-0">Mockets</p>
+						<i class="fal fa-newspaper text-center p-0"></i>
 					<% end %>
 				</li>
                 <% if mocker_signed_in? %>
@@ -39,14 +36,13 @@
 					<li class="col_navfooter col-3 <%= 'active' if current_page?(mocker_path(current_mocker))  %>">
 						<%= link_to mocker_path(current_mocker), class: "_btn _btnavfoot" do %>
 							<i><%= image_tag avatar_url(current_mocker), class: "_avatar_navbar" %></i>
-							<p class="text-ellipsis m-0">Me</p>
 						<% end %> 
 					</li>
 				<% else %>
 					<li class="col_navfooter col-3 <%= 'active' if current_page?(new_mocker_session_path)  %>">
 						<%= link_to new_mocker_session_path, class: "_btn _btnavfoot" do %>
-							<i class="bi-person text-center p-0"></i>
-							<p class="text-ellipsis m-0">Account</p>
+							<i class="fal fa-user-astronaut text-center p-0"></i>
+
 						<% end %>
 					</li>
 				<% end %>

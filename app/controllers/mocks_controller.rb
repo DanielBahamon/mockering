@@ -11,141 +11,27 @@ class MocksController < ApplicationController
 	    if mocker_signed_in?
 			@mock = current_mocker.mocks.build
 	    end
-		@onemocks = Mock.joins(:impressions)
-		.where(mocktype: [0...9], privated: false, reported: false, unlist: false)
-		.group(:id)
-		.order("RANDOM()")
-		.limit(12)
-		@twomocks = Mock.joins(:impressions)
-		.where(mocktype: 0, privated: false, reported: false, unlist: false)
-		.group(:id)
-		.order(impressions: :asc)
-		.where("mocks.id != '#{@onemocks.ids}' and mocks.created_at >= '#{7.month.ago}'")
-		.limit(12)
-		@threemocks = Mock.joins(:impressions)
-		.where(mocktype: 1, privated: false, reported: false, unlist: false)
-		.group(:id)
-		.order(impressions: :asc)
-		.where("mocks.id != '#{@onemocks.ids}'")
-		.limit(12)
-		@fourmocks = Mock.joins(:impressions)
-    	.where("mocks.created_at >= '#{1.month.ago}'")
-    	.where("mocks.movie_file_size IS ?", nil)
-    	.group(:id).order(impressions_count: :desc)
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, unlist: false)
-    	.where("mocks.id != '#{@onemocks.ids}? '")
-		@plays =  Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'")
-    	.group(:id).order("RANDOM()")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(mocktype: 0, privated: false, reported: false, unlist: false)
-		@mocket =  Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'")
-    	.group(:id).order("RANDOM()")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(mocktype: 1, privated: false, reported: false, unlist: false)
-		@mocks =  Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'")
-		.group(:id).order("RANDOM()")
-		.paginate(page: params[:page], per_page: 20)
-		.where(privated: false, reported: false, unlist: false)
+		@mocks = Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'").where(mocktype: [0...9], privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@mockies =  Mock.joins(:impressions).where(mocktype: 0, privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@mockets =  Mock.joins(:impressions).where(mocktype: 1, privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
-
-   		# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-		# if params[:tag].present?
-		# 	@mocks = Mock.tagged_with(params[:tag])
-		# 	.paginate(page: params[:page], per_page: 4)
-		# 	.where(privated: false)
-		# else
-		# 	@mocks = Mock.all.order("RANDOM()").paginate(page: params[:page], per_page: 4).where(privated: false, reported: false)
-		# end
-
-		# @new_mocks = Mock.all.order("RANDOM()")
-		# .limit(8)
-		# .where("mocks.created_at >= '#{1.week.ago}'", privated: false, reported: false, unlist: false)
-		# .paginate(page: params[:page], per_page: 8)
-
-  		#@month = Mock.all.where("mocks.created_at >= '#{1.month.ago}'")
-  		#.order("created_at DESC")
-  		#.paginate(page: params[:page], per_page: 20)
-  		#.where(privated: false, reported: false, unlist: false)
-  		#.where.not("mocks.id = '#{@new_mocks.ids}'")
-
-		# @trends = Mock.joins(:impressions) 
-  		#.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
-  		#.group(:id).order(impressions_count: :desc)
-  		#.paginate(page: params[:page], per_page: 20)
-  		#.where(privated: false, reported: false, unlist: false)
-  		#.where.not("mocks.id = '#{@new_mocks.ids}'")
-  		#.where.not("mocks.id = '#{@month.ids}'")
 	end
 
 	def mockets
-    	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-
-
-		@onemocks = Mock.joins(:impressions)
-						.where(mocktype: [1,2], privated: false, reported: false, unlist: false)
-						.group(:id)
-						.order("RANDOM()", impressions: :asc)
-						.limit(12)
-
-		@twomocks = Mock.joins(:impressions)
-						.where(mocktype: [1,2], privated: false, reported: false, unlist: false)
-						.group(:id)
-						.order("RANDOM()")
-    					.where("mocks.id != '#{@onemocks.ids}' and mocks.created_at >= '#{7.month.ago}'")
-						.limit(12)
-
-		@threemocks = Mock.joins(:impressions)
-						.where(mocktype: [1,2], privated: false, reported: false, unlist: false)
-						.group(:id)
-						.order("RANDOM()", impressions: :asc)
-    					.where("mocks.id != '#{@onemocks.ids}'")
-						.limit(12)
-		
-
-		@plays =  Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'")
-    	.group(:id).order("RANDOM()")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(mocktype: 0, privated: false, reported: false, unlist: false)
-
-		@mocket =  Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'")
-    	.group(:id).order("RANDOM()")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(mocktype: 1, privated: false, reported: false, unlist: false)
-    	
-		@mocks =  Mock.joins(:impressions).where("	|mocks.created_at >= '#{12.month.ago}'")
-    	.group(:id).order("RANDOM()")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, unlist: false)
+	    if mocker_signed_in?
+			@mock = current_mocker.mocks.build
+	    end
+		@mocks = Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'").where(mocktype: [1,2], privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@mockies =  Mock.joins(:impressions).where(mocktype: 0, privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@mockets =  Mock.joins(:impressions).where(mocktype: 1, privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
 
-	def plays
-    	# @tags = ActsAsTaggableOn::Tag.all.order('name ASC')
-
-		@new_mocks = Mock.all.order("RANDOM()")
-		.limit(8)
-		.where("mocks.created_at >= '#{12.month.ago}'", privated: false, reported: false, unlist: false)
-		.where.not("mocks.duration IS ?", nil)
-		.paginate(page: params[:page], per_page: 8)
-
-    	@month = Mock.all.where("mocks.created_at >= '#{1.month.ago}'")
-    	.order("created_at DESC")
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, unlist: false)
-		.where.not("mocks.duration IS ?", nil)
-    	.where("mocks.id != '#{@new_mocks.ids}'")
-
-		@trends = Mock.joins(:impressions)
-    	.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.month.ago}'")
-		.where.not("mocks.duration IS ?", nil)	
-    	.group(:id).order(impressions_count: :desc)
-    	.paginate(page: params[:page], per_page: 20)
-    	.where(privated: false, reported: false, unlist: false)
-    	.where("mocks.id != '#{@new_mocks.ids}'")
-
-    	# @mocks = Mock.joins(:impressions).where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{1.week.ago}  '").group("impressions.impressionable_id").order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
-		# @mocks = Mock.order(impressions_count: :desc).paginate(page: params[:page], per_page: 20)
-		# @mocks = Mock.joins(:impressions).group("impressions.impressionable_id").order("count(impression‌​s.id) DESC").paginate(page: params[:page], per_page: 30)
+	def mockies
+		@mocks = Mock.joins(:impressions).where("mocks.created_at >= '#{12.month.ago}'").where(mocktype: [0], privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@mockies =  Mock.joins(:impressions).where(mocktype: 0, privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@mockets =  Mock.joins(:impressions).where(mocktype: 1, privated: false, reported: false, unlist: false).group(:id).order("RANDOM()").paginate(page: params[:page], per_page: 20)
+		@minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
 
 	def your_mocks
@@ -156,7 +42,6 @@ class MocksController < ApplicationController
 	def liked
 		@mocker = current_mocker
     	@mocks_liked = @mocker.get_up_voted Mock
-    	# @mocks_liked = @mocker.votes.up.for_type(Mock)
     	@mocks = @mocks_liked.paginate(page: params[:mocks_page], per_page: 10)
 	end
 
@@ -165,7 +50,6 @@ class MocksController < ApplicationController
 	end
 
 	def create
-		# params[:mock][:tag_list] = params[:mock][:tag_list].join(',')
 		@mocker = current_mocker
 		@mock = current_mocker.mocks.build(mock_params)
 		
@@ -178,12 +62,7 @@ class MocksController < ApplicationController
 		else 
 			@mock.mocktype = 3
 		end
-
-		# file = @mock.movie.queued_for_write[:original].path
-		# @mock.duration = file[1].to_i * 3600 + file[2].to_i * 60 + file[3].to_i
-
 		if @mock.save
-			# create notification
 			@mocker.followers.each do |mocker|
 				Notification.create(recipient: mocker, actor: current_mocker, action: "mocked", notifiable: @mock)
 			end

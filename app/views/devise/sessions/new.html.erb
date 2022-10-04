@@ -6,11 +6,12 @@
         <div class="container">
           <section class="_session _1">
             <div class="col-12 text-center">
-              <%= link_to root_path, data: { no_turbolink: true } do %>
-                <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_black.svg', class: "_logo _1 d-none-moon", alt: 'Mockering'%>
-                <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logo _1 d-none-sun", alt: 'Mockering'%>
+              <%= link_to root_path, class: "_logo", data: { no_turbolink: true } do %>
+                <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_black.svg', class: "_logo _1 _sun-mode" %>
+                <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logo _1 _moon-mode" %>
               <% end %>
-              <p class="_text _1 _ttcommons">By human beings for everyone.</p>
+              <p class="_text _1">By human beings for everyone</p>
+              <br>
             </div>
             <div class="col-12">
               <%= link_to mocker_facebook_omniauth_authorize_path, class: "_btn _session _facebook" do %>
@@ -78,20 +79,9 @@
   </div>
   <%= render "shared/minifooter" %>
 </div>
-  
-
 <style type="text/css">
-  body{
-    background:white;
-  }
-  ._nav._1,
-  ._navbar_br{
-    display: none;
-    visibility: hidden;
-  }
-
-  ._navfooter,
-  .space_navfooter{
+  header._header._1,
+  nav._navbar{
     display: none !important;
   }
 </style>

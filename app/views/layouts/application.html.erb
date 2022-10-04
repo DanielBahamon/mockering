@@ -56,7 +56,30 @@
   </head>
   <body  data-barba="wrapper" class="_<%= yield(:name) %>">
     <main data-barba="container" data-barba-namespace="<%= yield(:name) %>">
-      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(plays_path) %>
+      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path)  %>
+        <nav class="_navbar d-sm-none">
+          <div class="_container _1">
+            <div class="_cont _1">
+              <a class="_action _1 _theme">
+                <div class="_in">
+                  <i class="bi bi-moon-stars _sun-mode"></i>
+                  <i class="bi bi-sun  _moon-mode"></i>
+                </div>
+              </a>
+              <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
+                <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
+                <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+              <% end %>
+              <a class="_action _2 _menu">
+                <div class="_in">
+                  <span class="_1"></span>
+                  <span class="_2"></span>
+                  <span class="_3"></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </nav>
         <section class="_full">
           <section class="_layout">
             <aside class="_1">
@@ -67,29 +90,35 @@
                       <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
                       <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
                     <% end %>
-                    <%= link_to root_path, class: "_item #{'active' if current_page?(all_path)}" do %>
-                      <i class="far fa-globe-americas"></i>
-                      <span>Feed</span>
-                    <% end %>
-                    <%= link_to mockets_path, class: "_item d-none #{'active' if current_page?(mockets_path)}" do %>
-                      <i class="fas fa-skiing"></i>
-                      <span>Explore</span>
+                    <%= link_to root_path, class: "_item #{'active' if current_page?(root_path)}" do %>
+                      <i class="fal fa-globe-americas"></i>
+                      <span class="_1">Feed</span>
                     <% end %>
                     <%= link_to mockets_path, class: "_item #{'active' if current_page?(mockets_path)}" do %>
-                      <i class="fas fa-image"></i>
-                      <span>Mockets</span>
+                      <i class="fal fa-hiking"></i>
+                      <span class="_1">Explore</span>
                     <% end %>
-                    <%= link_to plays_path, class: "_item d-none #{'active' if current_page?(plays_path)}" do %>
-                      <i class="fas fa-video"></i>
-                      <span>Plays</span>
+                    <%= link_to mockies_path, class: "_item #{'active' if current_page?(mockies_path)}" do %>
+                      <i class="fal fa-film-alt"></i>
+                      <span class="_1">Mockies</span>
+                    <% end %>
+                    <%= link_to mockets_path, class: "_item #{'active' if current_page?(mockets_path)}" do %>
+                      <i class="fal fa-images"></i>
+                      <span class="_1">Mockets</span>
                     <% end %>
                     <a class="_item d-none">
-                      <i class="fas fa-compact-disc"></i>
-                      <span>Tracks</span>
+                      <i class="fal fa-compact-disc"></i>
+                      <span class="_1">Tracks</span>
                     </a>
-                    <% if mocker_signed_in? # && current_mocker.admin %>
+                    <% if mocker_signed_in? %>
                       <%= link_to new_mock_path, class: "_btn _1" do %>
-                        <span>Upload</span>
+                        <i class="fal fa-plus"></i>
+                        <span class="_1">Mock it</span>
+                      <% end %>
+                    <% else %>
+                      <%= link_to new_mocker_session_path, class: "_btn _1" do %>
+                        <i class="fal fa-plus"></i>
+                        <span class="_1">Login</span>
                       <% end %>
                     <% end %>
                   </div>
@@ -138,8 +167,11 @@
         <%= render 'shared/navbar' %>
         <%= yield %>
       <% end %>
-      <%= render 'shared/navfooter' %>
-      <%= render 'shared/footer' %>
+
+      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(mocks_path) %>
+        <%= render 'shared/navfooter' %>
+        <%= render 'shared/footer' %>
+      <% end %>
       <%= toastr_flash %>
     </main>
     <script type="text/javascript">

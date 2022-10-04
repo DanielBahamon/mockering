@@ -12,19 +12,20 @@
     </button>
   </div>
   <div class="modal-body">
-    <%= form_for @mock.reviews.new, class: '_form_comment' do |f| %>
-      
-      <div class="display-grid fullwidth">
-        <%= f.text_area :comment, rows: 3, class: "_textarea_comment form-control", required: true %>
-      </div>
+    <% if mocker_signed_in? %>
+      <%= form_for @mock.reviews.new, class: '_form_comment' do |f| %>
+        <div class="display-grid fullwidth">
+          <%= f.text_area :comment, rows: 3, class: "_textarea_comment form-control", required: true %>
+        </div>
+        <%= f.hidden_field :mock_id, value: @mock.id %>
+        <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
 
-      <%= f.hidden_field :mock_id, value: @mock.id %>
-      <%= f.hidden_field :mocker_id, value: @mock.mocker.id %>
-
-      <div class="text-center">
-        <%= f.submit "Add review", class: "btn _btn _1" %>
-      </div>
+        <div class="text-center">
+          <%= f.submit "Add review", class: "btn _btn _1" %>
+        </div>
+      <% end %>
     <% end %>
+      
   </div>
   <div class="_reviews">
     <div class="reviews" id="reviews">
