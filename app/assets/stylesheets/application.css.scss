@@ -3892,6 +3892,13 @@ a:hover{
         position: relative;
         z-index: 1;
       }
+      ._ocult{
+        transition:all 1.3s ease;
+        opacity: 0;
+      }
+      ._ocult:hover{
+        opacity: 1;
+      }
       section._layout > aside._2 > ._navy > ._cont > ._back ._ocult {
         position: absolute;
         inset: 0;
@@ -3900,7 +3907,7 @@ a:hover{
         display: block;
         z-index: 2;
         padding: 0;
-        color: transparent;
+        color: initial;
         background: transparent;
         border: 0;
         opacity: 0;
@@ -4280,7 +4287,6 @@ a:hover{
       }
     }
     @media(max-width:1399px){
-
       section._layout > aside._1 > div > nav > ._cont > a._logo {
         margin-bottom: 20px;
         min-height: 40px;
