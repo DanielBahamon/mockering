@@ -11,7 +11,7 @@
 	    <%= f.hidden_field :mocktype, value: 'mockets' %>
 	    <section class="_head">
 	      <%= f.text_area :title, class: '_textarea _2 form-control _textarea_post', rows: "2", placeholder: "What are you thinking?" %>
-	    	<%= f.submit 'Mock',  class: 'btn _btn _1', id: 'fileUpload2', data: { disable_with: 'Uploading...' } %>
+	    	<%= f.submit 'Mock it',  class: 'btn _btn _1', id: 'fileUpload2' %>
 	    </section>
 	    <section class="_upload_big _1">
 	     <div class="fullsize p-5 _file_upload">
@@ -38,4 +38,7 @@
       <%= render 'mocky', mock: mock %>
     </article>
   <% end %>
+</div>
+<div class="_cont _3">
+  <%= will_paginate @mocks %>
 </div>

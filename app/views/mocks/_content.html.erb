@@ -1,461 +1,530 @@
-<div class="modal-mock">
-	<aside class="_container_mock _1">
-		<aside class="_actions_mock d-none d-xl-block">
-			<div class="_cont">
-				<%= link_to @mock.mocker, class: '_btn_avatar' do %>
-					<%= image_tag avatar_url(@mock.mocker), class: "_avatar _6" %>
-				<% end %> 
-
-				<%= render 'reviews/form' %>
-				<a class="_btn_share" data-toggle="modal" data-target="#shareModal">
-					<i class="bi bi-reply-fill"></i>
-				</a>
-				<a class="_btn_info" data-toggle="modal" data-target="#infoModal">
-					<i class="bi bi-info-circle-fill"></i>
-				</a>
-				<% if mocker_signed_in? && current_mocker != @mock.mocker %>
-					<a class="_btn_report" data-toggle="modal" data-target="#reportMock">
-						<i class="bi bi-flag-fill"></i>
-					</a>
-				<% end %>
-				<% if current_mocker == @mock.mocker %>
-				  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
-					  	<i class="bi bi-pencil-fill"></i>
+<%= render 'shared/navsm' %>
+<section class="_full">
+  <section class="_layout">
+    <aside class="_1">
+      <div class="_cont">
+      	<%= render 'shared/navside' %>
+      </div>
+    </aside>
+    <aside class="_2">
+			<div class="_navy">
+			  <div class="_cont _1">
+			    <div class="_back">
+			      <i class="bi bi-arrow-left _1"></i>
+			      <input class="_ocult _2" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Cancel" />
+			    </div>
+					<% if @mock.mocktype == 0 %>
+						<b>Mocky</b>
+					<% elsif @mock.mocktype == 1  %>
+						<b>Mocket</b>
+					<% elsif @mock.mocktype == 2  %>
+						<b>Mocket</b>
+					<% else %>
+						<b>Track</b>
 					<% end %>
-				<% end %>
+			  </div>
 			</div>
-		</aside>
-		<section class="_mock _1">
-			<div class="row m-0">
-  			<div class="col col-md-9 _1">
-  				<div class="_cont">
-  					<aside class="_avatar">
-						<%= link_to @mock.mocker, class: "_color_black deco-none" do %>
-							<%= image_tag avatar_url(@mock.mocker), class: "_avatar _4" %>
-						<% end %>
-  					</aside>
-  					<aside class="_info">
-  						<b class="_title"><%= @mock.title %></b>
-  						<div class="_data">
-  							<%= link_to @mock.mocker, class: "_name" do %>
-	    						<%= @mock.mocker.first_name if @mock.mocker.first_name? %> 
-    							<%= @mock.mocker.last_name if @mock.mocker.first_name? %>
-    						<% end %>
-    						<% if mocker_signed_in? && current_mocker != @mock.mocker %>
-									<% if current_mocker.following?(@mock.mocker) %>
+			<div class="modal-mock">
+				<aside class="_container_mock _1">
+					<aside class="_actions_mock d-none d-xl-block">
+						<div class="_cont">
+							<%= link_to @mock.mocker, class: '_btn_avatar' do %>
+								<%= image_tag avatar_url(@mock.mocker), class: "_avatar _6" %>
+							<% end %> 
 
-    								<i class="bi bi-dot"></i>
-										<%= button_to friendships_path(mocker_id: @mock.mocker.id), method: :delete, remote: :true, class: "_link_follow" do %>
-											<div class="follow-count_<%= @mock.mocker.id %>">
-												<%= render 'friendships/follows', mocker: @mock.mocker %>
-											</div>
-										<% end %>
+							<%= render 'reviews/form' %>
+							<a class="_btn_share" data-toggle="modal" data-target="#shareModal">
+								<i class="bi bi-reply-fill"></i>
+							</a>
+							<a class="_btn_info" data-toggle="modal" data-target="#infoModal">
+								<i class="bi bi-info-circle-fill"></i>
+							</a>
+							<% if mocker_signed_in? && current_mocker != @mock.mocker %>
+								<a class="_btn_report" data-toggle="modal" data-target="#reportMock">
+									<i class="bi bi-flag-fill"></i>
+								</a>
+							<% end %>
+							<% if current_mocker == @mock.mocker %>
+							  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
+								  	<i class="bi bi-pencil-fill"></i>
+								<% end %>
+							<% end %>
+						</div>
+					</aside>
+					<section class="_mock _1">
+						<div class="row m-0">
+			  			<div class="col-auto _1">
+			  				<div class="_cont">
+			  					<aside class="_avatar">
+									<%= link_to @mock.mocker, class: "_color_black deco-none" do %>
+										<%= image_tag avatar_url(@mock.mocker), class: "_avatar _4" %>
+									<% end %>
+			  					</aside>
+			  					<aside class="_info">
+			  						<b class="_title"><%= @mock.title %></b>
+			  						<div class="_data">
+			  							<%= link_to @mock.mocker, class: "_name" do %>
+				    						<%= @mock.mocker.first_name if @mock.mocker.first_name? %> 
+			    							<%= @mock.mocker.last_name if @mock.mocker.first_name? %>
+			    						<% end %>
+			    						<% if mocker_signed_in? && current_mocker != @mock.mocker %>
+												<% if current_mocker.following?(@mock.mocker) %>
 
-									<% else %>
+			    								<i class="bi bi-dot"></i>
+													<%= button_to friendships_path(mocker_id: @mock.mocker.id), method: :delete, remote: :true, class: "_link_follow" do %>
+														<div class="follow-count_<%= @mock.mocker.id %>">
+															<%= render 'friendships/follows', mocker: @mock.mocker %>
+														</div>
+													<% end %>
 
-										<% if mocker_signed_in? %>
+												<% else %>
 
-    									<i class="bi bi-dot"></i>
-											<%= button_to friendships_path(mocker_id: @mock.mocker.id), remote: :true, class: "_link_follow" do %>
-												<div class="follow-count_<%= @mock.mocker.id %>">
-													<%= render 'friendships/follows', mocker: @mock.mocker %>
+													<% if mocker_signed_in? %>
+
+			    									<i class="bi bi-dot"></i>
+														<%= button_to friendships_path(mocker_id: @mock.mocker.id), remote: :true, class: "_link_follow" do %>
+															<div class="follow-count_<%= @mock.mocker.id %>">
+																<%= render 'friendships/follows', mocker: @mock.mocker %>
+															</div>
+														<% end %>
+
+													<% else %>
+
+			    									<i class="bi bi-dot"></i>
+														<%= button_to new_mocker_session_path, class: "_link_follow" do %>Follow<% end %>
+
+													<% end %>
+
+												<% end %>
+											<% end %>
+			  						</div>
+			  					</aside>
+			  				</div>
+			  			</div>
+			  			<div class="col-auto _2">
+			  				<div class="_cont">
+									<% if mocker_signed_in? %>
+										<% if current_mocker %>
+											<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "_likemock like-count_2_#{ @mock.id } #{ '_btnlike_color' if current_mocker.voted_up_on? @mock }" do %>
+												<div class="_like_mock like-count_<%= @mock.id %>">
+													<%= render 'mocks/likes', mock: @mock %>
 												</div>
 											<% end %>
-
 										<% else %>
-
-    									<i class="bi bi-dot"></i>
-											<%= button_to new_mocker_session_path, class: "_link_follow" do %>Follow<% end %>
-
-										<% end %>
-
-									<% end %>
-								<% end %>
-  						</div>
-  					</aside>
-  				</div>
-  			</div>
-  			<div class="col-auto col-md-3 _2">
-  				<div class="_cont">
-						<% if mocker_signed_in? %>
-							<% if current_mocker %>
-								<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "_likemock like-count_2_#{ @mock.id } #{ '_btnlike_color' if current_mocker.voted_up_on? @mock }" do %>
-									<div class="_like_mock like-count_<%= @mock.id %>">
-										<%= render 'mocks/likes', mock: @mock %>
-									</div>
-								<% end %>
-							<% else %>
-								<%= link_to new_mocker_session_path, class: 'like-post' do %>
-									<div class="d-md-grid like-count_<%= @mock.id %>" id="like-count">
-										<%= render 'mocks/likes', mock: @mock %>
-									</div>
-								<% end %>
-							<% end %>
-						<% else %>
-							<a class="like-post" data-toggle="modal" data-target="#loginModal">
-								<div class="d-md-grid like-count_<%= @mock.id %>" id="like-count">
-									<i class="bi bi-heart" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
-								</div>
-							</a>
-						<% end %>
-  				</div>
-  			</div>
-  		</div>
-  		<aside class="_action_mock_rs d-xl-none">
-				<%= render 'reviews/form' %>
-				<a class="_btn_share" data-toggle="modal" data-target="#shareModal">
-					<i class="bi bi-reply-fill"></i>
-				</a>
-				<a class="_btn_info" data-toggle="modal" data-target="#infoModal">
-					<i class="bi bi-info-circle-fill"></i>
-				</a>
-				<% if mocker_signed_in? && current_mocker != @mock.mocker %>
-					<a class="_btn_report" data-toggle="modal" data-target="#reportMock">
-						<i class="bi bi-flag-fill"></i>
-					</a>
-				<% end %>
-				<% if current_mocker == @mock.mocker %>
-				  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
-					  	<i class="bi bi-pencil-fill"></i>
-					<% end %>
-				<% end %>
-  		</aside>
-		</section>
-		<section class="_mock _2">
-			<div>
-  			<div class="col-12 _1">
-  				<div class="_cont">
-  					<% if @mock.movie.present? %>
-						  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{'loop': true}" style="width:100%; height:auto;" poster="
-						  	<% if @mock.picture.present? %>
-						  		<%= @mock.picture.url(:extralarge) %>
-					  		<% else %> 
-					  			<%= @mock.movie.url(:thumb) %>
-					  		<% end %>" autoplay >
-						    <source src="<%= video_path(@mock.movie) %>" type="video/mp4" />
-						  </video>
-						<% end %>
-						<% if @mock.music.present? %>
-							<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
-						<% end %>
-						<% if @mock.picture.present? && !@mock.movie.present? %>
-							<%= image_tag @mock.picture.url %>
-						<% end %>
-  				</div>
-  			</div>
-  		</div>
-		</section>
-		<section class="_mock _3">
-			<div class="row m-0 _1">
-				<div class="col-12 _1">
-					<p class="_description keepspaces"><%= auto_link(@mock.description, html: { target: '_blank' }).html_safe  %></p>
-				</div>
-				<% if current_mocker == @mock.mocker %>
-					<div class="col-12 _2">
-						<aside class="_cont">
-						  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
-							  	Edit
-								<% end %>
-								<%= link_to mock_path, method: :delete, data: {confirm: "Are you sure?"},class: '_btn_remove' do %>
-									Delete
-								<% end %>
-						</aside>
-					</div>
-				<% end %>
-			</div>
-			<div class="row m-0 _2">
-				<div class="col _1">
-					<hr>
-				</div>
-				<div class="col-auto _2">
-  					<aside class="_avatar">
-							<%= link_to @mock.mocker, class: "_link_avatar" do %>
-								<%= image_tag avatar_url(@mock.mocker), class: "_avatar _5 " %>
-							<% end %>
-  					</aside>
-				</div>
-				<div class="col _3">
-					<hr>
-				</div>
-			</div>
-			<div class="row m-0 _3">
-				<div class="col-lg-3 _1">
-				</div>
-				<div class="col-lg-6 _2">
-  					<aside class="_info">
-  						<h2 class="_name"><%= @mock.mocker.first_name if @mock.mocker.first_name? %> <%= @mock.mocker.last_name if @mock.mocker.first_name? %></h2>
-  						<p class="_bio"><%= @mock.mocker.bio if @mock.mocker.bio? %></p>
-
-  					</aside>
-				</div>
-				<div class="col-lg-3 _3">
-				</div>
-			</div>
-		</section>
-		<section class="_mock _4">
-			<div class="d-xl-none">
-				<% if @related_mocks.count >= 4  %>
-					<section class="_related">
-					    <div id="splide_related_1" class="splide splide_related">
-					        <div class="splide__arrows">
-					          <button class="splide__arrow splide__arrow--prev">
-					            <i class="bi bi-arrow-left"></i>
-					          </button>
-					          <button class="splide__arrow splide__arrow--next">
-					            <i class="bi bi-arrow-right"></i>
-					          </button>
-					        </div>
-					        <div class="splide__track">
-					          <ul class="splide__list">
-											<% @related_mocks.each do |mock| %>
-											  <li class="splide__slide">
-											    <div class="splide__slide__container ">
-														<%= render 'mock', mock: mock %>
-											    </div>
-											  </li>
+											<%= link_to new_mocker_session_path, class: '_likemock like-post' do %>
+												<div class="d-md-grid like-count_<%= @mock.id %>" id="like-count">
+													<%= render 'mocks/likes', mock: @mock %>
+												</div>
 											<% end %>
-					          </ul>
-					        </div>
-					    </div>
-					</section>
-				<% elsif @related_mocks.count == 3  %>
-					<section class="_related">
-					    <div id="splide_related_2" class="splide splide_related">
-					      	<div class="_title">
-					      		<h3></h3>
-					      	</div>
-					        <div class="splide__arrows">
-					          <button class="splide__arrow splide__arrow--prev">
-					            <i class="bi bi-arrow-left"></i>
-					          </button>
-					          <button class="splide__arrow splide__arrow--next">
-					            <i class="bi bi-arrow-right"></i>
-					          </button>
-					        </div>
-					        <div class="splide__track">
-					          <ul class="splide__list">
-
-								<% @related_mocks.each do |mock| %>
-						            <li class="splide__slide">
-						              <div class="splide__slide__container ">
-											<%= render 'mock', mock: mock %>
-						              </div>
-						            </li>
+										<% end %>
+									<% else %>
+										<a class="_likemock _2" data-toggle="modal" data-target="#loginModal">
+											<div class="d-md-grid like-count_<%= @mock.id %>" id="like-count">
+												<i class="bi bi-heart" style="margin-right: 2px;"></i> <%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %>
+											</div>
+										</a>
+									<% end %>
+			  				</div>
+			  			</div>
+			  		</div>
+			  		<aside class="_action_mock_rs d-xl-none">
+							<%= render 'reviews/form' %>
+							<a class="_btn_share" data-toggle="modal" data-target="#shareModal">
+								<i class="bi bi-reply-fill"></i>
+							</a>
+							<a class="_btn_info" data-toggle="modal" data-target="#infoModal">
+								<i class="bi bi-info-circle-fill"></i>
+							</a>
+							<% if mocker_signed_in? && current_mocker != @mock.mocker %>
+								<a class="_btn_report" data-toggle="modal" data-target="#reportMock">
+									<i class="bi bi-flag-fill"></i>
+								</a>
+							<% end %>
+							<% if current_mocker == @mock.mocker %>
+							  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
+								  	<i class="bi bi-pencil-fill"></i>
 								<% end %>
-					          </ul>
-					        </div>
-					    </div>
-					</section>
-				<% elsif @related_mocks.count == 2  %>
-					<section class="_related">
-				      <div id="splide_related_3" class="splide splide_related">
-				      	<div class="_title">
-				      		<h3></h3>
-				      	</div>
-				        <div class="splide__arrows">
-				          <button class="splide__arrow splide__arrow--prev">
-				            <i class="bi bi-arrow-left"></i>
-				          </button>
-				          <button class="splide__arrow splide__arrow--next">
-				            <i class="bi bi-arrow-right"></i>
-				          </button>
-				        </div>
-				        <div class="splide__track">
-				          <ul class="splide__list">
-
-							<% @related_mocks.each do |mock| %>
-					            <li class="splide__slide">
-					              <div class="splide__slide__container ">
-										<%= render 'mock', mock: mock %>
-					              </div>
-					            </li>
 							<% end %>
-				          </ul>
-				        </div>
-				      </div>
+			  		</aside>
 					</section>
-				<% elsif @related_mocks.count == 1  %>
-					<section class="_related">
-				      <div id="splide_related_4" class="splide splide_related">
-				      	<div class="_title">
-				      		<h3></h3>
-				      	</div>
-				        <div class="splide__arrows">
-				          <button class="splide__arrow splide__arrow--prev">
-				            <i class="bi bi-arrow-left"></i>
-				          </button>
-				          <button class="splide__arrow splide__arrow--next">
-				            <i class="bi bi-arrow-right"></i>
-				          </button>
-				        </div>
-				        <div class="splide__track">
-				          <ul class="splide__list">
-
-							<% @related_mocks.each do |mock| %>
-					            <li class="splide__slide">
-					              <div class="splide__slide__container ">
-										<%= render 'mock', mock: mock %>
-					              </div>
-					            </li>
-							<% end %>
-				          </ul>
-				        </div>
-				      </div>
+					<section class="_mock _2">
+						<div>
+			  			<div class="col-12 _1">
+			  				<div class="_cont">
+			  					<% if @mock.movie.present? %>
+									  <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{'loop': true}" style="width:100%; height:auto;" poster="
+									  	<% if @mock.picture.present? %>
+									  		<%= @mock.picture.url(:extralarge) %>
+								  		<% else %> 
+								  			<%= @mock.movie.url(:thumb) %>
+								  		<% end %>" autoplay >
+									    <source src="<%= video_path(@mock.movie) %>" type="video/mp4" />
+									  </video>
+									<% end %>
+									<% if @mock.picture.present? && !@mock.movie.present? %>
+										<%= image_tag @mock.picture.url %>
+									<% end %>
+									<% if @mock.music.present? %>
+										<%= audio_tag(@mock.music, controls: true, styles: "width:100%;") %>
+									<% end %>
+			  				</div>
+			  			</div>
+			  		</div>
 					</section>
-				<% end %>
-			</div>
-			<div class="row d-none d-xl-flex">	
-				<% if @related_mocks.count >= 4  %>
-					<% @related_mocks.each do |mock| %>
-						<div class="col-md-6 col-lg-3 _mock_related">
-							<%= render 'mock', mock: mock %>
-						</div>
-					<% end %>
-				<% elsif @related_mocks.count == 3 %>
-					<% @related_mocks.each do |mock| %>
-						<div class="col-md-6 col-lg-3 _mock_related">
-							<%= render 'mock', mock: mock %>
-						</div>
-					<% end %>
-					<div class="col-md-6 col-lg-3 _mock_related _empty"></div>
-				<% elsif @related_mocks.count == 2 %>
-					<% @related_mocks.each do |mock| %>
-						<div class="col-md-6 col-lg-3 _mock_related">
-							<%= render 'mock', mock: mock %>
-						</div>
-					<% end %>
-					<div class="col-md-6 col-lg-3 _mock_related _empty"></div>
-					<div class="col-md-6 col-lg-3 _mock_related _empty"></div>
-				<% elsif @related_mocks.count == 1 %>
-					<% @related_mocks.each do |mock| %>
-						<div class="col-md-6 col-lg-3 _mock_related">
-							<%= render 'mock', mock: mock %>
-						</div>
-					<% end %>
-					<div class="col-md-6 col-lg-3 _mock_related _empty"></div>
-					<div class="col-md-6 col-lg-3 _mock_related _empty"></div>
-					<div class="col-md-6 col-lg-3 _mock_related _empty"></div>
-				<% end %>
-			</div>
-		</section>
-	</aside>
-
-	<!-- Modal Info-->
-	<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-	    <div class="modal-content _modalcontent">
-	      <div class="modal-body">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	        <h3>Content details</h3>
-	        <p class="_date">Posted <%= @mock.created_at.strftime("%b %d %Y").downcase  %></p>
-	        <div class="row">
-	        	<div class="col-3 p-0">
-	        		<div class="_item">
-	        			<p>Views</p>
-	        			<h3>
-	        				<% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %>
-	        				<span>
-										<%= number_to_human(number_views, units: {billion: 'B' }) %>
-									</span> 
-	        			</h3>
-	        		</div>
-	        	</div>
-	        	<div class="col-3 p-0">
-	        		<div class="_item">
-	        			<p>Love</p>
-	        			<h3>
-	        				<span>
-										<%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %> 
-									</span> 
-	        			</h3>
-	        		</div>
-	        	</div>
-	        	<div class="col-3 p-0">
-	        		<div class="_item">
-	        			<p>Hate</p>
-	        			<h3>
-	        				<span>
-										<%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
-									</span> 
-	        			</h3>
-	        		</div>
-	        	</div>
-	        	<div class="col-3 p-0">
-	        		<div class="_item">
-	        			<p>Reviews</p>
-	        			<h3>
-	        				<span>
-										<%= number_to_human(@mock.reviews.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
-									</span> 
-	        			</h3>
-	        		</div>
-	        	</div>
-	        </div>
-	        <div class="row">
-	        	<div class="col p-0">
-							<% if @mock.credits? %>
-								<p>Credits:</p>
-								<p><%= auto_link(@mock.credits, html: { target: '_blank' }) %></p>
+					<section class="_mock _3">
+						<div class="row m-0 _1">
+							<div class="col-12 _1">
+								<p class="_description keepspaces"><%= auto_link(@mock.description, html: { target: '_blank' }).html_safe  %></p>
+							</div>
+							<% if current_mocker == @mock.mocker %>
+								<div class="col-12 _2">
+									<aside class="_cont">
+									  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
+										  	Edit
+											<% end %>
+											<%= link_to mock_path, method: :delete, data: {confirm: "Are you sure?"},class: '_btn_remove' do %>
+												Delete
+											<% end %>
+									</aside>
+								</div>
 							<% end %>
-	        	</div>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	<% if mocker_signed_in? && current_mocker != @mock.mocker %>
-		<!-- Modal Report -->
-		<div class="modal fade" id="reportMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-		    <div class="modal-content _modalcontent">
-		      <div class="modal-body">
-		        <h5 class="modal-title _fw600" id="exampleModalLabel">Report this</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		        <%= render 'mock_reports/form', mock: @mock %>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	<% end %>
-	<% unless mocker_signed_in? %>
-		<!-- Modal Login -->
-		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-		    <div class="modal-content _modalcontent">
-		      <div class="modal-body">
-		        <h5 class="modal-title" id="exampleModalLabel">You will need login to react</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		        
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	<% end %>
-	<!-- Modal Share -->
-	<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-	    <div class="modal-content _modalcontent">
-	      <div class="modal-body">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-					<div class="input-group mb-2 mr-sm-2">
-						<input type="text" class="form-control" id="share_link_mock" placeholder="Username" value="<%= request.original_url %>" readonly>
-						<div class="input-group-prepend">
-						  <button class="input-group-text clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#share_link_mock">Copy</button>
 						</div>
+						<div class="row m-0 _2">
+							<div class="col _1">
+								<hr>
+							</div>
+							<div class="col-auto _2">
+			  					<aside class="_avatar">
+										<%= link_to @mock.mocker, class: "_link_avatar" do %>
+											<%= image_tag avatar_url(@mock.mocker), class: "_avatar _5 " %>
+										<% end %>
+			  					</aside>
+							</div>
+							<div class="col _3">
+								<hr>
+							</div>
+						</div>
+						<div class="row m-0 _3">
+							<div class="col-lg-3 _1">
+							</div>
+							<div class="col-lg-6 _2">
+			  					<aside class="_info">
+			  						<h2 class="_name"><%= @mock.mocker.first_name if @mock.mocker.first_name? %> <%= @mock.mocker.last_name if @mock.mocker.first_name? %></h2>
+			  						<p class="_bio"><%= @mock.mocker.bio if @mock.mocker.bio? %></p>
+
+			  					</aside>
+							</div>
+							<div class="col-lg-3 _3">
+							</div>
+						</div>
+					</section>
+				</aside>
+				<section class="_mock _4">
+					<div>
+						<% if @related_mocks.count >= 4  %>
+							<section class="_related">
+							    <div id="splide_related_1" class="splide splide_related">
+							        <div class="splide__arrows">
+							          <button class="splide__arrow splide__arrow--prev">
+							            <i class="bi bi-arrow-left"></i>
+							          </button>
+							          <button class="splide__arrow splide__arrow--next">
+							            <i class="bi bi-arrow-right"></i>
+							          </button>
+							        </div>
+							        <div class="splide__track">
+							          <ul class="splide__list">
+													<% @related_mocks.each do |mock| %>
+													  <li class="splide__slide">
+													    <div class="splide__slide__container ">
+																<%= render 'mock', mock: mock %>
+													    </div>
+													  </li>
+													<% end %>
+							          </ul>
+							        </div>
+							    </div>
+							</section>
+						<% elsif @related_mocks.count == 3  %>
+							<section class="_related">
+							    <div id="splide_related_2" class="splide splide_related">
+							      	<div class="_title">
+							      		<h3></h3>
+							      	</div>
+							        <div class="splide__arrows">
+							          <button class="splide__arrow splide__arrow--prev">
+							            <i class="bi bi-arrow-left"></i>
+							          </button>
+							          <button class="splide__arrow splide__arrow--next">
+							            <i class="bi bi-arrow-right"></i>
+							          </button>
+							        </div>
+							        <div class="splide__track">
+							          <ul class="splide__list">
+
+										<% @related_mocks.each do |mock| %>
+								            <li class="splide__slide">
+								              <div class="splide__slide__container ">
+													<%= render 'mock', mock: mock %>
+								              </div>
+								            </li>
+										<% end %>
+							          </ul>
+							        </div>
+							    </div>
+							</section>
+						<% elsif @related_mocks.count == 2  %>
+							<section class="_related">
+						      <div id="splide_related_3" class="splide splide_related">
+						      	<div class="_title">
+						      		<h3></h3>
+						      	</div>
+						        <div class="splide__arrows">
+						          <button class="splide__arrow splide__arrow--prev">
+						            <i class="bi bi-arrow-left"></i>
+						          </button>
+						          <button class="splide__arrow splide__arrow--next">
+						            <i class="bi bi-arrow-right"></i>
+						          </button>
+						        </div>
+						        <div class="splide__track">
+						          <ul class="splide__list">
+
+									<% @related_mocks.each do |mock| %>
+							            <li class="splide__slide">
+							              <div class="splide__slide__container ">
+												<%= render 'mock', mock: mock %>
+							              </div>
+							            </li>
+									<% end %>
+						          </ul>
+						        </div>
+						      </div>
+							</section>
+						<% elsif @related_mocks.count == 1  %>
+							<section class="_related">
+						      <div id="splide_related_4" class="splide splide_related">
+						      	<div class="_title">
+						      		<h3></h3>
+						      	</div>
+						        <div class="splide__arrows">
+						          <button class="splide__arrow splide__arrow--prev">
+						            <i class="bi bi-arrow-left"></i>
+						          </button>
+						          <button class="splide__arrow splide__arrow--next">
+						            <i class="bi bi-arrow-right"></i>
+						          </button>
+						        </div>
+						        <div class="splide__track">
+						          <ul class="splide__list">
+												<% @related_mocks.each do |mock| %>
+							            <li class="splide__slide">
+							              <div class="splide__slide__container ">
+															<%= render 'mock', mock: mock %>
+							              </div>
+							            </li>
+												<% end %>
+						          </ul>
+						        </div>
+						      </div>
+							</section>
+						<% end %>
 					</div>
-	      	<h2><%= social_share_button_tag(@mock.title, url: request.original_url, image: @mock.picture.url(:large)) %></h2>
-	      </div>
-	    </div>
-	  </div>
-	</div>	
+				</section>
+				<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				    <div class="modal-content _modalcontent">
+				      <div class="modal-body">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				        <h3>Content details</h3>
+				        <p class="_date">Posted <%= @mock.created_at.strftime("%b %d %Y").downcase  %></p>
+				        <div class="row">
+				        	<div class="col-3 p-0">
+				        		<div class="_item">
+				        			<p>Views</p>
+				        			<h3>
+				        				<% number_views = @mock.impressionist_count(:filter=>:ip_address, :filter=>:session_hash) %>
+				        				<span>
+													<%= number_to_human(number_views, units: {billion: 'B' }) %>
+												</span> 
+				        			</h3>
+				        		</div>
+				        	</div>
+				        	<div class="col-3 p-0">
+				        		<div class="_item">
+				        			<p>Love</p>
+				        			<h3>
+				        				<span>
+													<%= number_to_human(@mock.get_upvotes.size, units: { million: 'm', billion: 'b' }) %> 
+												</span> 
+				        			</h3>
+				        		</div>
+				        	</div>
+				        	<div class="col-3 p-0">
+				        		<div class="_item">
+				        			<p>Hate</p>
+				        			<h3>
+				        				<span>
+													<%= number_to_human(@mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+												</span> 
+				        			</h3>
+				        		</div>
+				        	</div>
+				        	<div class="col-3 p-0">
+				        		<div class="_item">
+				        			<p>Reviews</p>
+				        			<h3>
+				        				<span>
+													<%= number_to_human(@mock.reviews.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+												</span> 
+				        			</h3>
+				        		</div>
+				        	</div>
+				        </div>
+				        <div class="row">
+				        	<div class="col p-0">
+										<% if @mock.credits? %>
+											<p>Credits:</p>
+											<p><%= auto_link(@mock.credits, html: { target: '_blank' }) %></p>
+										<% end %>
+				        	</div>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<% if mocker_signed_in? && current_mocker != @mock.mocker %>
+					<!-- Modal Report -->
+					<div class="modal fade" id="reportMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					    <div class="modal-content _modalcontent">
+					      <div class="modal-body">
+					        <h5 class="modal-title _fw600" id="exampleModalLabel">Report this</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        <%= render 'mock_reports/form', mock: @mock %>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<% end %>
+				<% unless mocker_signed_in? %>
+					<!-- Modal Login -->
+					<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					    <div class="modal-content _modalcontent">
+					      <div class="modal-body">
+					        <h5 class="modal-title" id="exampleModalLabel">You will need login to react</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<% end %>
+				<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				    <div class="modal-content _modalcontent">
+				      <div class="modal-body">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+								<div class="input-group mb-2 mr-sm-2">
+									<input type="text" class="form-control" id="share_link_mock" placeholder="Username" value="<%= request.original_url %>" readonly>
+									<div class="input-group-prepend">
+									  <button class="input-group-text clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#share_link_mock">Copy</button>
+									</div>
+								</div>
+				      	<h2><%= social_share_button_tag(@mock.title, url: request.original_url, image: @mock.picture.url(:large)) %></h2>
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+			</div>
 
-</div>
+    </aside>
+    <aside class="_3">
+      <div class="_cont _1">
+        <div class="_search">
+          <%= render 'shared/search_form' %>
+        </div>
+        <div class="_mockers">
+          <%= render 'mockers/cards' %>
+        </div>
+      </div>
+    </aside>
+  </section>
+</section>
+
+
+<style type="text/css">
+	header._header._1{
+		display: none !important;
+	}
+</style>
+<script type="text/javascript">
+	
+  $(document).ready(function() {
+	<% if @related_mocks.count >= 4  %>
+	  var spliderelated1 = new Splide('#splide_related_1', {
+	    type: 'slide',
+	    perPage: 2,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 3 %>
+	  var spliderelated2 = new Splide('#splide_related_2', {
+	    type: 'slide',
+	    perPage: 2,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 2 %>
+	  var spliderelated3 = new Splide('#splide_related_3', {
+	    type: 'slide',
+	    perPage: 2,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 1 %>
+	  var spliderelated3 = new Splide('#splide_related_4', {
+	    type: 'slide',
+	    perPage: 2,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% elsif @related_mocks.count == 0 %>
+	  var spliderelated4 = new Splide('#splide_related_4', {
+	    type: 'slide',
+	    perPage: 2,
+	    perMove: 1,
+	    breakpoints: {
+	      767: {
+	        perPage: 1,
+	      },
+	    }
+	  }).mount();
+	<% end %>
+	});
+</script>

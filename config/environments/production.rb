@@ -41,8 +41,8 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   config.action_cable.mount_path = "/cable"
-  config.web_socket_server_url = 'wss://mockering.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = ['https://mockering.herokuapp.com', 'http://mockering.herokuapp.com']
+  config.web_socket_server_url = 'https://mockering.com/cable'
+  config.action_cable.allowed_request_origins = ['https://mockering.com', 'http://mockering.com']
 
 
   Recaptcha.configure do |config|
@@ -106,7 +106,7 @@ Rails.application.configure do
     authentication: 'login',
     domain: 'mockering.com',
     user_name: 'mr.sublimen@gmail.com',
-    password: 'sHI3avA16LVyCfNY'
+    password: 'xSKRTPC2I57B1ZUc'
   }
 
   # ActionMailer::Base.smtp_settings = {

@@ -1,0 +1,7 @@
+<%= form_tag search_path, class: "_form d-none d-lg-block", method: :get do |f| %>
+  <%= text_field_tag :q, nil, 
+      placeholder: "Search",
+      class: "_searchfield",
+      value: "#{params[:q] if params[:q].present?}",
+      required: true %>
+<% end %>

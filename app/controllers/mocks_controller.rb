@@ -11,16 +11,15 @@ class MocksController < ApplicationController
 	    if mocker_signed_in?
 			@mock = current_mocker.mocks.build
 	    end
-		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [0..9], privated: false, reported: false, unlist: false).limit(10)
+		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [0..9], privated: false, reported: false, unlist: false).paginate(page: params[:mocks], per_page: 10)
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
-		
 	end
 
 	def mockets
 	    if mocker_signed_in?
 			@mock = current_mocker.mocks.build
 	    end
-		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: 1, privated: false, reported: false, unlist: false).limit(10)
+		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [1,2], privated: false, reported: false, unlist: false).limit(10).paginate(page: params[:mocks], per_page: 10)
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
 
@@ -28,7 +27,15 @@ class MocksController < ApplicationController
 	    if mocker_signed_in?
 			@mock = current_mocker.mocks.build
 	    end
-		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: 0, privated: false, reported: false, unlist: false).limit(10)
+		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: 0, privated: false, reported: false, unlist: false).limit(10).paginate(page: params[:mocks], per_page: 10)
+		@minimockers = Mocker.all.order("RANDOM()").limit(3)
+	end
+
+	def tracks
+	    if mocker_signed_in?
+			@mock = current_mocker.mocks.build
+	    end
+		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: 3, privated: false, reported: false, unlist: false).limit(10).paginate(page: params[:mocks], per_page: 10)
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
 
