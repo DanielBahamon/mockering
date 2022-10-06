@@ -1,0 +1,136 @@
+<nav class="_navbar d-sm-none">
+  <div class="_container _1">
+    <div class="_cont _1">
+      <div class="_search_modern">
+        <a class="_close _search">
+          <i class="fal fa-times"></i>
+        </a>
+        <%= render 'shared/search_form' %>
+      </div>
+      <a class="_action _1 _search">
+        <div class="_in">
+          <i class="fal fa-search"></i>
+        </div>
+      </a>
+      <a class="_action _1 _theme d-none">
+        <div class="_in">
+          <i class="bi bi-moon-stars _sun-mode"></i>
+          <i class="bi bi-sun  _moon-mode"></i>
+        </div>
+      </a>
+      <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
+        <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 _sun-mode", alt: 'Mockering'%>
+        <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _3 _moon-mode", alt: 'Mockering'%>
+      <% end %>
+      <a class="_action _2 _menu">
+        <div class="_in">
+          <span class="_1"></span>
+          <span class="_2"></span>
+          <span class="_3"></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</nav>
+<aside class="_fullnav">
+  <div class="_in">
+    <% if mocker_signed_in? %>
+      <div class="_cont _1">
+        <div class="_1">
+          <%= link_to current_mocker do %>
+            <%= image_tag avatar_url(current_mocker), class: "_avatar _5" %>
+          <% end %>
+        </div>
+        <div class="_2">
+          <%= link_to current_mocker, class: "_name" do %>
+            <%= current_mocker.first_name.capitalize if current_mocker.first_name? %> 
+            <%= current_mocker.last_name.capitalize if current_mocker.last_name? %>
+          <% end %>
+          <%= link_to current_mocker, class: "_username" do %>
+            @<%= current_mocker.slug %>
+          <% end %>
+        </div>
+        <div class="_3">
+          <div class="_items">
+            <a class="_item _data" data-toggle="modal">
+              <span class="_in">
+                <span class="_1"><%= number_to_human(current_mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></span>
+                <span class="_2"><% num_followers = current_mocker.follower_ids.count %> <%= 'Follower'.pluralize(num_followers) %></span>
+              </span>
+            </a>
+            <a class="_item _data" data-toggle="modal">
+              <span class="_in">
+                <span class="_1"><%= number_to_human(current_mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></span>
+                <span class="_2"><% num_followings = current_mocker.following_ids.count %> <%= "Following".pluralize(num_followings) %></span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="_cont _2">
+        <nav class="_navbarsm">
+          <div class="_cont _1">
+            <%= link_to root_path, class: "_item #{'active' if current_page?(root_path)}" do %>
+              <i class="fal fa-globe-americas"></i>
+              <span class="_1">Feed</span>
+            <% end %>
+            <%= link_to mockets_path, class: "_item d-none #{'active' if current_page?(mockets_path)}" do %>
+              <i class="fal fa-hiking"></i>
+              <span class="_1">Explore</span>
+            <% end %>
+            <%= link_to mockies_path, class: "_item #{'active' if current_page?(mockies_path)}" do %>
+              <i class="fal fa-film-alt"></i>
+              <span class="_1">Mockies</span>
+            <% end %>
+            <%= link_to mockets_path, class: "_item #{'active' if current_page?(mockets_path)}" do %>
+              <i class="fal fa-images"></i>
+              <span class="_1">Mockets</span>
+            <% end %>
+            <%= link_to tracks_path, class: "_item #{'active' if current_page?(tracks_path)}" do %>
+              <i class="fal fa-compact-disc"></i>
+              <span class="_1">Tracks</span>
+            <% end %>
+            <% if mocker_signed_in? %>
+              <%= link_to liked_path, class: "_item #{'active' if current_page?(liked_path)}" do %>
+                <i class="fal fa-box-heart"></i>
+                    <span class="_1">Loved</span>
+              <% end %>
+              <%= link_to your_mocks_path, class: "_item #{'active' if current_page?(your_mocks_path)}" do %>
+                <i class="fal fa-box-full"></i>
+                    <span class="_1">Library</span>
+              <% end %>
+              <%= link_to conversations_path, class: "_item #{'active' if current_page?(conversations_path)}" do %>
+                <i class="fal fa-comments-alt"></i>
+                    <span class="_1">Messages</span>
+              <% end %>
+              <%= link_to edit_mocker_registration_path, class: "_item #{'active' if current_page?(edit_mocker_registration_path)}" do %>
+                <i class="fal fa-toolbox"></i>
+                    <span class="_1">Settings</span>
+              <% end %>
+              <%= link_to mocker_path(current_mocker), class: "_item #{'active' if current_page?(mocker_path(current_mocker))}" do %>
+                <i class="fal fa-user-astronaut"></i>
+                    <span class="_1">Me</span>
+              <% end %>
+              <%= link_to destroy_mocker_session_path, method: :delete, class: "_item _soft" do %>
+                <i class="fal fa-sign-out-alt"></i>
+                    <span class="_1">Logout</span>
+              <% end %>
+            <% else %>
+              <%= link_to new_mocker_session_path, class: "_btn _1" do %>
+                <i class="fal fa-plus"></i>
+                <span class="_1">Login</span>
+              <% end %>
+              <%= link_to new_mocker_registration_path, class: "_btn _1" do %>
+                <i class="fal fa-plus"></i>
+                <span class="_1">Sign up</span>
+              <% end %>
+            <% end %>
+          </div>
+        </nav>
+      </div>
+    <% else %>
+      <div class="_cont _1"></div>
+      <div class="_cont _2"></div>
+    <% end %>
+  </div>
+</aside>

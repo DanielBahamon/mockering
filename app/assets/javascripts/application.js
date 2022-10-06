@@ -49,11 +49,26 @@ $(document).ready(function(){
       $("._modalreview").addClass("show");
       $(".modal-mock aside._container_mock._1 > ._mock").addClass("_on");
   });
-
   $("._close_review").click(function(){
       $("._modalreview").removeClass("show");
       $(".modal-mock aside._container_mock._1 > ._mock").removeClass("_on");
   });
+  $("._action._menu").click(function(){
+      $("._fullnav").toggleClass("_on");
+      $(this).toggleClass("_on");
+  });
+  $("._action._search").click(function(){
+      $("._search_modern").addClass("_on");
+      $(this).addClass("_on");
+  });
+  $("._close._search").click(function(){
+      $("._search_modern").removeClass("_on");
+      $(this).removeClass("_on");
+  });
+
+
+
+
 
   // REVIEWS
     $( "textarea#review_comment" ).focusin(function() {

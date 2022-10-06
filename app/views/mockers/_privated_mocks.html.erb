@@ -4,7 +4,7 @@
 			<div class="_shuffle_container">
 				<% if @privated_mocks.count > 0 %>
 					<% @privated_mocks.each do |mock| %>
-						<%= render 'mocks/mock', mock: mock %>
+						<%= render 'mocks/mocky', mock: mock %>
 					<% end %>
 				<% else %>
 					<div class="col-12">

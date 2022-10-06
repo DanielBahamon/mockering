@@ -57,7 +57,7 @@
   <body  data-barba="wrapper" class="_<%= yield(:name) %>">
     <main data-barba="container" data-barba-namespace="<%= yield(:name) %>">
       <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(your_mocks_path) || current_page?(liked_path) || current_page?(conversations_path) || current_page?(tracks_path)  %>
-        <%= render 'shared/navsm' %>
+        <%= render 'shared/navbarsm' %>
         <section class="_full">
           <section class="_layout">
             <aside class="_1">

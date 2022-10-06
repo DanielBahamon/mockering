@@ -1,8 +1,8 @@
 <nav class="_navside">
   <div class="_cont _1">
     <%= link_to root_path, data: { no_turbolink: true }, class: "_logo _2" do %>
-      <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 d-none-moon", alt: 'Mockering'%>
-      <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 d-none-sun", alt: 'Mockering'%>
+      <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 _sun-mode", alt: 'Mockering'%>
+      <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _4 _moon-mode", alt: 'Mockering'%>
     <% end %>
     <%= link_to root_path, class: "_item #{'active' if current_page?(root_path)}" do %>
       <i class="fal fa-globe-americas"></i>
@@ -61,148 +61,7 @@
         <span class="_1">Login</span>
       <% end %>
     <% end %>
-
   </div>
   <div class="_cont _2">
   </div>
 </nav>
-
-
-<section class="d-none">
-	<div class="_css-1db _overflow-y _h-100vh _cont_sidenav">
-	  <% if mocker_signed_in? %>
-			<div class="row m-0">
-				<!--<div class="relative fullwidth">
-				  <div class="row cont_user m-0">
-				    <div class="col-12 text-center">
-				      <br>
-				      <%= link_to current_mocker do %>
-				      	<%= image_tag avatar_url(current_mocker), class: "_avatar _3" %>
-				      <% end %>
-				    </div>
-				    <div class="col-12 text-center">
-				      <h4 class="_name _fw400 m-0">
-				      <%= link_to current_mocker, class: "_color_black deco-none" do %><%= current_mocker.first_name.capitalize if current_mocker.first_name? %> <%= current_mocker.last_name.capitalize if current_mocker.last_name? %><% end %></h4>
-				      
-				      <%= link_to current_mocker, class: "text-muted _fw400 deco-none" do %>@<%= current_mocker.slug %> <%= image_tag badge_icon(current_mocker), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(current_mocker) if current_mocker.verification? %>
-				      <% end %>
-				    </div>
-				  </div>
-				  <br>
-				</div>-->
-			</div>
-		<% end %>
-		<div class="row m-0">
-			<div class="_logo_navside">
-				<%= link_to root_path, data: { no_turbolink: true }, class: "_link_logo" do %>
-				  <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _2 d-none-moon", alt: 'Mockering'%>
-				  <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_1.svg', class: "_logonav _1 d-none-moon", alt: 'Mockering'%>
-				  <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _2 d-none-sun", alt: 'Mockering'%>
-				  <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/mockering_dark_mode.svg', class: "_logonav _1 d-none-sun", alt: 'Mockering'%>
-				<% end %>
-			</div>   
-			<div class="col-12 p-0">
-				<div id="_row_sidenav1">
-					<div class="d-table fullsize ">
-						<div class="d-tablecell v-middle">
-							<ul class="_listsidenav">
-	    						<% if mocker_signed_in? %>
-									<li class="<%= 'active' if current_page?(your_mocks_path)  %>"><%= link_to your_mocks_path, class: "_link _sidenav" do %>
-											<i class="bi-collection col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Your mocks</p>
-										<% end %>
-									</li>
-									<li class="<%= 'active' if current_page?(liked_path)  %>"><%= link_to liked_path, class: "_link _sidenav" do %>
-											<i class="bi-heart col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Liked mocks</p>
-										<% end %>
-									</li>
-									<li class="<%= 'active' if current_page?(conversations_path)  %>"><%= link_to conversations_path, class: "_link _sidenav" do %>
-											<i class="bi-inbox col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Messages</p>
-										<% end %>
-									</li>
-									<li class="<%= 'active' if current_page?(mocker_path(current_mocker))  %>"><%= link_to mocker_path(current_mocker), class: "_link _sidenav" do %>
-											<i class="bi-person col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Account</p>
-										<% end %>
-									</li>
-									<li class="<%= 'active' if current_page?(edit_mocker_registration_path)  %>"><%= link_to edit_mocker_registration_path, class: "_link _sidenav" do %>
-											<i class="bi-wrench col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Settings</p>
-										<% end %>
-									</li>
-									<li><%= link_to destroy_mocker_session_path, method: :delete, class: "_link _sidenav" do %>
-											<i class="bi-door-open col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Logout</p>
-										<% end %>
-									</li>
-									<hr>
-									<li>
-										<small class="_title_li">Following</small>
-									</li>
-									<% current_mocker.following.limit(4).each do |following| %>
-										<li>
-											<%= link_to following do %>
-												<div class="row">
-													<div class="col">
-														<%= image_tag avatar_url(following), class: "_avatar _2" %>
-													</div>
-													<div class="col p-0">
-														<div class="d-table fullsize">
-															<div class="d-table-cell v-middle text-ellipsis">
-																<p class="m-0"><%= following.slug %> <%= image_tag badge_icon(following), class: "_badge_verification _tooltip", "data-toggle": "tooltip",	"data-placement": "bottom", title: tooltip_badge(following) if following.verification? %></p>
-															</div>
-														</div>
-													</div>
-												</div>
-											<% end %>
-										</li>
-											
-									<% end %>
-								<% else %>
-									<li><%= link_to new_mocker_session_path, class: "_link _sidenav" do %>
-											<i class="bi-door-open col-2 text-center p-0"></i>
-											<p class="col-10 m-0">Login</p>
-										<% end %>
-									</li>
-									<li><%= link_to new_mocker_registration_path, class: "_link _sidenav" do %>
-											<i class="bi-person-plus col-2 text-center p-0"></i>
-											<p class="col-10 m-0">New account</p>
-										<% end %>
-									</li>
-								<% end %>
-
-				                  <hr>
-				                  <li>
-				                    <label class="_link _sidenav" for="darkSwitch">
-				                      <div class="col-2 text-center p-0 custom-control custom-switch">
-				                        <i class="bi-moon d-none-moon"></i>
-				                        <i class="bi-sun d-none-sun"></i>
-				                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
-				                      </div>
-				                      <p class="col-10 m-0 d-none-sun">Sun mode</p>
-				                      <p class="col-10 m-0 d-none-moon">Moon mode</p>
-				                    </label>
-				                  </li>
-				                  <li>
-				                    <a class="_link _sidenav" href="https://www.buymeacoffee.com/mockering" target="_blank">
-				                    	<i class="col-2 text-center p-0 fas fa-beer"></i>
-				                    	<p class="col-10 m-0">Buy us a beer</p>
-				                    </a>
-				                  </li>
-								<div class="row m-0">
-									<div class="col">
-										<%= render 'pages/links_terms' %>
-									</div>
-								</div>
-							</ul>
-								
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</section>

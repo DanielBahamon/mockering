@@ -1,5 +1,4 @@
 class MocksController < ApplicationController
-	
 	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :like, :dislike]
 	# before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote, :liked, :mocks]
@@ -178,6 +177,7 @@ class MocksController < ApplicationController
 		@mock.destroy
 		redirect_to root_path
 	end
+
 
 	private
 

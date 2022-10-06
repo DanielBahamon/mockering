@@ -3,7 +3,7 @@
 		<div class="_shuffle_container">
 			<% if @fav_mocks.count > 0 %>
 				<% @fav_mocks.each do |mock| %>
-					<%= render 'mocks/mock', mock: mock %>
+					<%= render 'mocks/mocky', mock: mock %>
 				<% end %>
 			<% else %>
 				<div class="col-12">

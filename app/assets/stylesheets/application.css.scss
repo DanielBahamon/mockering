@@ -2213,17 +2213,6 @@
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
   }
-  ._logonav._4{
-    position: absolute;
-    left: 0;
-    width: 28px;
-    top: 3px;
-    height: auto;
-    z-index: 0;
-    transition: all .1s ease;
-    filter: blur(2px);
-    opacity: 0.45;
-  }
   ._btn_icon i {
     z-index: 1;
     position: relative;
@@ -3362,6 +3351,13 @@
   figure._mocky> ._body > ._content_mocket > ._data:before {
     content: '';
   }
+
+  figure._mocker {
+    display: flex;
+    align-items: center;
+    place-content: space-between;
+    margin-top:15px;
+  }
   input._link_follow {
     background: transparent;
     border: 0;
@@ -3877,7 +3873,110 @@ a:hover{
   color: #0f1419;
 }
  /* VERSION 2 */
+    /* FULLNAV */
+      aside._fullnav {
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        background: white;
+        z-index: 4;
+        padding-top:60px;
+        padding-bottom:60px;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      aside._fullnav > ._in {
+        width: 575px;
+        display: block;
+        margin: 0 auto;
+        max-width: 100vw;
+      }
+      aside._fullnav > ._in > ._cont._1 > ._1 > a,
+      aside._fullnav > ._in > ._cont._1 > ._2 > a {
+        display: block;
+        text-align: left;
+        width: fit-content;
+        text-decoration:none;
+      }
+      aside._fullnav > ._in > ._cont._1 > ._3 > ._items {
+        display: flex;
+        justify-content: flex-start;
+        grid-gap: 10px;
+      }
+      nav._navbarsm > ._cont._1{
+        padding-top: 16px;
+      }
+      nav._navbarsm > ._cont._1 > a {
+        display: flex;
+        padding: 16px 30px;
+        color: #0f1419;
+        grid-gap: 15px;
+        text-decoration:none;
+      }
+      nav._navbarsm > ._cont._1 > a:hover{
+        text-decoration:none;
+      }
 
+      figure._mocker > ._1 {
+        width: 15%;
+        place-content: center;
+        align-items: center;
+        display: flex;
+      }
+      figure._mocker > ._2 {
+        width: 60%;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      figure._mocker > ._3 {
+        width: 25%;
+        text-align: center;
+        font-family: 'Overpass', sans-serif;
+      }
+      ._fullnav > ._in > ._cont._1 ._2 > a._name {
+        font-size: 20px;
+        font-weight: 600;
+        color:rgb(15, 20, 25);
+        line-height: 1;
+        text-decoration:none;
+      }
+      ._fullnav > ._in > ._cont._1 ._2 > a._username {
+        font-size: 16px;
+        font-weight: 600;
+        color:rgb(15, 20, 25);
+        text-decoration:none;
+      }
+      ._fullnav > ._in > ._cont._1 ._2 {
+        margin-bottom: 10px;
+      } 
+      ._fullnav > ._in > ._cont._1 > ._1 > a {
+        margin-bottom: 20px;
+      }
+      ._fullnav > ._in > ._cont._1 {
+        padding: 15px 30px;
+      }
+      nav._navbarsm ._item > span {
+        font-size: 20px;
+      }
+      nav._navbarsm ._item > i {
+        font-size: 25px;
+        width: 35px;
+        display: inline-block;
+      }
+      ._fullnav {
+        -webkit-transform:translateX(-110vw);
+                transform:translateX(-110vw);
+        -webkit-transition:all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+                transition:all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      ._fullnav._on {
+        -webkit-transform:translateX(0);
+                transform:translateX(0);
+      }
+    /* END FULLNAV */
     /* LAYOUT */
       section._layout > aside._1 > div > nav > ._cont > ._item:first-of-type{
         padding-top: 0;
@@ -3987,11 +4086,13 @@ a:hover{
         box-shadow: 0 0 0 0 !important;
       }
       section._preview>img {
-        padding-bottom: 30px;
         width: 100%;
       }
       ._icon_action._userlink ._cont._1 a{
         color: #8d8595;
+      }
+      .new_mock>section._preview {
+        height: 0;
       }
       /* NAVBAR */
       nav._navbar {
@@ -4001,7 +4102,6 @@ a:hover{
         background: #ffffffed;
         -webkit-backdrop-filter: blur(9px);
         backdrop-filter: blur(9px);
-        margin-bottom: 15px;
       }
       nav._navbar>._container._1 {
         width: 1024px;
@@ -4039,6 +4139,9 @@ a:hover{
         justify-content: space-between;
         align-items: center;
       }
+      nav._navbar > div > ._cont._1{
+        position: relative;
+      }
       ._navbar>div>._cont>._logo {
         display: flex;
         align-items: center;
@@ -4046,6 +4149,47 @@ a:hover{
       }
       nav._navbar > div > ._cont._1 > ._action._1 > ._in{
         color: #8d8595;
+      }
+      nav._navbar > div > ._cont._1 > ._search_modern {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        z-index: 3;
+        background: #FFFFFF; 
+        transform: translateY(-90px);
+        transition: all 0.35s ease;
+      }
+      nav._navbar > div > ._cont._1 > ._search_modern._on{
+        transform: translateY(0);
+      }
+      nav._navbar > div > ._cont._1 > ._search_modern > ._form {
+        width: 100%;
+      }
+      nav._navbar > div > ._cont._1 > ._search_modern > ._close {
+        width: 35px;
+        text-align: center;
+      }
+      ._search_modern input{
+        font-size: 16px;
+        font-weight: 200;
+        line-height: 28px;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        height: 40px;
+        padding: 10px 16px;
+        transition: background-color 200ms ease, outline 200ms ease, color 200ms ease, box-shadow 200ms ease, border, 200ms ease;
+        border-radius: 8px;
+        outline: none;
+        background-color: #f3f3f4;
+        color: #0d0c22;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid transparent;
       }
       /* END NAVBAR */
       /* MOCKY */
@@ -4117,6 +4261,12 @@ a:hover{
       }
       figure._mocky > ._body > ._tails{
         padding: 15px 0;
+      }
+      section._layout > aside._2 > ._cont._1 > form {
+        padding: 10px 20px;
+      }
+      section._layout > aside._2 > ._cont._1 ._head textarea{
+        padding-bottom: 10px;
       }
       figure._mocky> ._body > ._username > span {
         color: rgb(15, 20, 25);
@@ -4204,7 +4354,6 @@ a:hover{
         width: 80%;
       }
       form > ._head > ._btn {
-        width: 20%;
         opacity: 0;
         visibility: hidden;
         display: none;
@@ -4350,11 +4499,11 @@ a:hover{
         font-size: 0.8rem;
         margin-bottom:0 ;
       }
-      footer._footer._2>div p._powered {
+      footer._footer._2>div p._powered a {
         opacity: 0.1;
         transition: all 1.2s ease;
       }
-      footer._footer._2>div p._powered:hover {
+      footer._footer._2>div p._powered:hover a {
         opacity: 1;
       }
       footer._footer._2>div p a:hover{
@@ -4364,6 +4513,7 @@ a:hover{
       footer._footer._2>div p a{
         color: #9e9ea7;
         font-style: italic;
+        line-height:1.3;
         transition: all .3s ease;
       }
       footer._footer>div>._1 ._brand {
@@ -4723,21 +4873,6 @@ a:hover{
       section._layout > aside._3 {
         width: 30%;
       }
-      figure._mocker > ._1 {
-        width: 15%;
-      }
-      figure._mocker > ._2 {
-        width: 60%;
-        max-width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      figure._mocker > ._3 {
-        width: 25%;
-        text-align: center;
-        font-family: 'Overpass', sans-serif;
-      }
       section._layout > ._1 > div > nav._navside > ._cont > a > span,
       section._layout > ._1 > div > nav._navside > ._cont > ._item > span{
         display:none;
@@ -4910,26 +5045,6 @@ a:hover{
         min-height: 40px;
         display: flex;
         align-items: center;
-      }
-      figure._mocker {
-        display: flex;
-        align-items: center;
-        place-content: space-between;
-        margin-top:15px;
-      }
-      figure._mocker > ._1 {
-        width: 15%;
-      }
-      figure._mocker > ._2 {
-        width: 60%;
-        max-width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      figure._mocker > ._3 {
-        width: 25%;
-        text-align: center;
       }
       section._layout {
         display: flex;
