@@ -42,7 +42,7 @@
 			</aside>
 	  	<% end %>
 		<aside class="_media">
-			<% if mock.mocktype == 0 || mock.mocktype == 1 || mock.mocktype == 3 %>
+			<% if mock.picture.present? || mock.movie.present? %>
 				<div class="_preview">
 					<%= link_to mock_path(mock), mock: mock, class: "_link_mock" do %><% end %>
 					<% if mock.movie.present? %>
