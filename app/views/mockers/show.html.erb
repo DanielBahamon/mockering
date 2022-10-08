@@ -153,49 +153,32 @@
 																    <a class="nav-link" id="privated-tab" data-toggle="tab" href="#privated" role="tab" aria-controls="privated" aria-selected="false"><i class="bi-lock"></i></a>
 																  </li>
 															  <% end %>
-															  <% if current_mocker == @mocker %>
-															  <li class="nav-item" role="presentation">
-															    <a class="nav-link" id="liked-tab" data-toggle="tab" href="#liked" role="tab" aria-controls="liked" aria-selected="false"><i class="bi-heart"></i></a>
-															  </li>
-															  <% end %>
 															  <% if @mocker.bio? %>
-																  <li class="nav-item" role="presentation">
-																    <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false"><i class="fas fa-user-tie"></i></a>
+																  <li class="nav-item d-none" role="presentation">
+																    <a class="nav-link " id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false"><i class="fas fa-user-tie"></i></a>
 																  </li>
 															  <% end %>
 															</ul>
 															<div class="tab-content">
 															  <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="mocks-tab" id="mocks-pane">
-																	<div class="_shuffle_container">
-																  		<% if @mocker.mocks.count > 0 %>
-																				<% @mocker.mocks.each do |mock| %>
+																	<div class="_shuffle_container"> 
+																  	<% if @mocks.count > 0 %>
+																				<% @mocks.each do |mock| %>
 																					<% if mock.privated == false %>
 																						<%= render 'mocks/mocky', mock: mock %>
 																					<% end %>
 																				<% end %>
 																		<% else %>
-																			<div class="row m-0">
-																				<div class="col">
-																					<div class="jumbotron text-center bg_white">
-																						<h3 class="_fw600">There is no mocks yet.</h3>
-																					</div>
-																				</div>
-																			</div>
 																		<% end %>
 																  </div>
 															  </div>
-															  	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
+															 	<% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 																  <div class="tab-pane fade" id="privated" role="tabpanel" aria-labelledby="privated-tab">
 																  		<%= render 'privated_mocks' %>
 																  </div>
 																<% end %>
-																<% if current_mocker == @mocker %>
-																  <div class="tab-pane fade" id="liked" role="tabpanel" aria-labelledby="liked-tab">
-																  		<%= render 'liked_mocks' %>
-																  </div>
-															  	<% end %>
 																<% if @mocker.bio? %>
-																  <div class="tab-pane fade" id="bio" role="tabpanel" aria-labelledby="bio-tab">
+																  <div class="tab-pane fade d-none" id="bio" role="tabpanel" aria-labelledby="bio-tab">
 																	<div class="row m-0">
 																  		<div class="col-12">
 																  			<div class="jumbotron">

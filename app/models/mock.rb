@@ -89,11 +89,11 @@ class Mock < ApplicationRecord
 	end
 
 
-	# after_create :add_mentions
+	after_create :add_mentions
 
-	# def add_mentions
-	# 	Mention.create_from_text(self)
-	# end
+	def add_mentions
+		Mention.create_from_text(self)
+	end
 
 end
  

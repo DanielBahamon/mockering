@@ -7,10 +7,18 @@ class MockersController < ApplicationController
 		
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
     	@mocker = Mocker.friendly.find(params[:id])
-    	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks_page], per_page: 10).where(privated: false)
-    	@followers = @mocker.followers.order("created_at DESC").paginate(page: params[:followers_page], per_page: 10)
-		@following = @mocker.following.order("created_at DESC").paginate(page: params[:following_page], per_page: 10)
-		@privated_mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:privated_mocks_page], per_page: 10).where(privated: true)
+    	@mocks = @mocker.mocks
+    				.where(privated: false, unlist: false)
+    				.where("mocks.created_at >= '#{12.month.ago}'")
+					.order('created_at DESC')
+    				.paginate(page: params[:mocks], per_page: 10)
+    	@followers = @mocker.followers.order("created_at ASC").paginate(page: params[:followers_page], per_page: 10)
+		@following = @mocker.following.order("created_at ASC").paginate(page: params[:following_page], per_page: 10)
+		@privated_mocks = @mocker.mocks
+		    				.where(privated: true, unlist: true)
+		    				.where("mocks.created_at >= '#{12.month.ago}'")
+							.order('created_at DESC')
+		    				.paginate(page: params[:mocks], per_page: 10)
 		@fav_mocks = @mocker.get_up_voted Mock
 
 		@reported = MockerReport.where(reported_id: @mocker.id).count

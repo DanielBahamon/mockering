@@ -10,6 +10,10 @@ class MocksController < ApplicationController
 	    if mocker_signed_in?
 			@mock = current_mocker.mocks.build
 	    end
+	    @recents = Mock.all.where(privated: false, unlist: false)
+	    				.where("mocks.created_at >= '#{5.hour.ago}'")
+						.order('created_at DESC')
+	    				.limit(10)
 		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [0..9], privated: false, reported: false, unlist: false).paginate(page: params[:mocks], per_page: 10)
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
