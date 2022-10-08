@@ -1521,6 +1521,7 @@
     min-height:800px;
     max-width: 100vw;
     height:calc(100vh - 30px);
+    z-index:0;
   }
   ._session._cont section._session._1 {
     width: 450px;
@@ -2996,7 +2997,7 @@
     color: #f43b86;
   }
   section._layout figure._mocky > ._body > ._media > ._preview > img{
-    height: 250px;
+    height: 300px;
   }
   figure._mocky > ._body > ._media > ._preview > img {
     width: 100%;
@@ -4113,26 +4114,55 @@ a:hover{
         position: relative;
         width: 20px;
       }
-      nav._navbar>div>._cont._1>._action._2>._in {
+      ._action._menu>._in {
         position: relative;
         width: 20px;
         height: 10px;
       }
-      nav._navbar>div>._cont._1>._action>._in>span {
+      ._action._menu>._in>span {
         position: absolute;
         height: 1px;
         width: 100%;
         background: #8d8595;
         border-radius: 999px;
+        -webkit-transition: .3s all ease;
+        -moz-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease; 
       }
-      nav._navbar>div>._cont._1>._action>._in>span._1{
+      ._action._menu>._in>span._1{
         top:0;
       }
-      nav._navbar>div>._cont._1>._action>._in>span._2{
+      ._action._menu>._in>span._2{
         top:50%;
       }
-      nav._navbar>div>._cont._1>._action>._in>span._3{
+      ._action._menu>._in>span._3{
+        top:50%;
+      }
+      ._action._menu>._in>span._4{
         top:100%;
+      }
+      ._action._menu._on>._in>span._1,
+      ._action._menu._on>._in>span._4{
+        -webkit-transform: scaleX(0);
+        -moz-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+        -o-transform: scaleX(0);
+        transform: scaleX(0);
+      }
+      ._action._menu._on>._in>span._2{
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      ._action._menu._on>._in>span._3{
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
       }
       nav._navbar>div>._cont {
         display: flex;
@@ -4230,6 +4260,7 @@ a:hover{
         overflow: hidden;
         white-space: nowrap;
         margin-right: 5px;
+        font-weight:600;
       }
       figure._mocky > ._body > ._username > span._2{
         max-width: 30vw;
@@ -4594,7 +4625,7 @@ a:hover{
       ._link:before {
         content: '';
         position: absolute;
-        bottom:-2px;
+        bottom:2px;
         width: 0;
         right: 0;
         left: 0;
@@ -4820,6 +4851,52 @@ a:hover{
       }
     /* END FOOTER */
 
+
+    ._subfooter {
+      padding: 30px 15px 60px;
+    }
+    ._session ._back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 20px;
+      z-index:9;
+    }
+    ._back>._in{
+      position: relative;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      place-content: center;
+      line-height: 0;
+    }
+    ._back>._in>i{
+      z-index: 0;
+    }
+    ._back>._in>input{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index:2;
+      opacity:0;
+    }
+
+    ._nothinghere>lottie-player {
+      margin: 0 auto;
+    }
+    ._nothinghere>h1,
+    ._nothinghere>h2,
+    ._nothinghere>h3,
+    ._nothinghere>h4 {
+      font-family: 'Rubik', sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 200;
+      letter-spacing: 2px;
+      font-size: 20px;
+    }
  /* END VERSION 2 */
 
 

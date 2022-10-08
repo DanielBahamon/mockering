@@ -1,15 +1,12 @@
 <nav class="_navbar d-sm-none">
   <div class="_container _1">
     <div class="_cont _1">
-      <div class="_search_modern">
-        <a class="_close _search">
-          <i class="fal fa-times"></i>
-        </a>
-        <%= render 'shared/search_form' %>
-      </div>
-      <a class="_action _1 _search">
+      <a class="_action _2 _menu">
         <div class="_in">
-          <i class="fal fa-search"></i>
+          <span class="_1"></span>
+          <span class="_2"></span>
+          <span class="_3"></span>
+          <span class="_4"></span>
         </div>
       </a>
       <a class="_action _1 _theme d-none">
@@ -22,11 +19,15 @@
         <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_1.svg', class: "_logonav _3 _sun-mode", alt: 'Mockering'%>
         <%= image_tag '//d8mn60sm70fqt.cloudfront.net/assets/brand/v2/icon_dark_mode.svg', class: "_logonav _3 _moon-mode", alt: 'Mockering'%>
       <% end %>
-      <a class="_action _2 _menu">
+      <div class="_search_modern">
+        <%= render 'shared/search_form' %>
+        <a class="_close _search">
+          <i class="fal fa-times"></i>
+        </a>
+      </div>
+      <a class="_action _1 _search">
         <div class="_in">
-          <span class="_1"></span>
-          <span class="_2"></span>
-          <span class="_3"></span>
+          <i class="fal fa-search"></i>
         </div>
       </a>
     </div>
@@ -129,8 +130,42 @@
         </nav>
       </div>
     <% else %>
-      <div class="_cont _1"></div>
-      <div class="_cont _2"></div>
+      <div class="_cont _1">
+      </div>
+      <div class="_cont _2">
+        <nav class="_navbarsm">
+          <div class="_cont _1">
+            <%= link_to root_path, class: "_item #{'active' if current_page?(root_path)}" do %>
+              <i class="fal fa-globe-americas"></i>
+              <span class="_1">Feed</span>
+            <% end %>
+            <%= link_to mockets_path, class: "_item d-none #{'active' if current_page?(mockets_path)}" do %>
+              <i class="fal fa-hiking"></i>
+              <span class="_1">Explore</span>
+            <% end %>
+            <%= link_to mockies_path, class: "_item #{'active' if current_page?(mockies_path)}" do %>
+              <i class="fal fa-film-alt"></i>
+              <span class="_1">Mockies</span>
+            <% end %>
+            <%= link_to mockets_path, class: "_item #{'active' if current_page?(mockets_path)}" do %>
+              <i class="fal fa-images"></i>
+              <span class="_1">Mockets</span>
+            <% end %>
+            <%= link_to tracks_path, class: "_item #{'active' if current_page?(tracks_path)}" do %>
+              <i class="fal fa-compact-disc"></i>
+              <span class="_1">Tracks</span>
+            <% end %>
+            <%= link_to new_mocker_session_path, class: "_item" do %>
+              <i class="fal fa-user-astronaut"></i>
+              <span class="_1">Login</span>
+            <% end %>
+            <%= link_to new_mocker_registration_path, class: "_item" do %>
+              <i class="fal fa-user-tie"></i>
+              <span class="_1">Sign up</span>
+            <% end %>
+          </div>
+        </nav>
+      </div>
     <% end %>
   </div>
 </aside>

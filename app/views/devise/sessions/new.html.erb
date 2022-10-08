@@ -1,5 +1,11 @@
 <% content_for :title, "Mockering: Login" %>
-<div class="d-grid"> 
+<div class="d-grid _session"> 
+  <div class="_back">
+    <div class="_in">
+      <i class="bi bi-arrow-left _1"></i>
+      <input class="_2" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Cancel" />
+    </div>
+  </div>
   <div class="_cont _session relative">
     <div class="d-table fullsize">
       <div class="d-tablecell v-middle">
@@ -77,7 +83,10 @@
       </div>
     </div>
   </div>
-  <%= render "shared/minifooter" %>
+  <div class="_subfooter">
+    <%= render "shared/minifooter" %>
+  </div>
+  <%= render "shared/navfooter" %>
 </div>
 <style type="text/css">
   header._header._1,
