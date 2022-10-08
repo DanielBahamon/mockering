@@ -3987,6 +3987,18 @@ a:hover{
         font-size: 1rem;
         text-decoration: none !important;
       }
+      section._layout > aside._1 > div > nav > ._cont > ._item ._bold{
+        display: none;
+        visibility: hidden;
+      }
+      section._layout > aside._1 > div > nav > ._cont > ._item.active ._bold{
+        display: block;
+        visibility: visible;
+      }
+      section._layout > aside._1 > div > nav > ._cont > ._item.active ._light{
+        display: none;
+        visibility: hidden;
+      }
       section._layout > aside._1 > div > nav > ._cont > a._btn {
         margin-top: 15px;
       }

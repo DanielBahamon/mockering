@@ -43,6 +43,18 @@ class MocksController < ApplicationController
     	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks], per_page: 10)
 	end
 
+	def discover
+    	@mocks = Mock.all
+    				.joins(:impressions)
+    				.where(mocktype: [0..9], privated: false, reported: false, unlist: false)
+    				.where("impressions.created_at <= '#{Time.now}' and mocks.created_at >= '#{12.month.ago}'")
+					.group(:id)
+					.order('mocks.created_at ASC')
+    				.paginate(page: params[:mocks], per_page: 10)
+		@minimockers = Mocker.all.order("RANDOM()").limit(3)
+
+	end
+
 	def loved
 		@mocker = current_mocker
     	@mocks = @mocker.get_up_voted Mock.paginate(page: params[:mocks_page], per_page: 10)

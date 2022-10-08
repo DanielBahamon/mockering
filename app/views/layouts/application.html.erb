@@ -56,7 +56,7 @@
   </head>
   <body  data-barba="wrapper" class="_<%= yield(:name) %>">
     <main data-barba="container" data-barba-namespace="<%= yield(:name) %>">
-      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(library_path) || current_page?(loved_path) || current_page?(conversations_path) || current_page?(tracks_path)  %>
+      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(library_path) || current_page?(loved_path) || current_page?(conversations_path) || current_page?(tracks_path) || current_page?(discover_path) || current_page?(new_mock_path)  %>
         <%= render 'shared/navbarsm' %>
         <section class="_full">
           <section class="_layout">
@@ -84,7 +84,7 @@
         <%= yield %>
       <% end %>
 
-      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(library_path) || current_page?(loved_path) || current_page?(conversations_path) || current_page?(mocks_path)  %>
+      <% if current_page?(root_path) || current_page?(search_path) || current_page?(mockets_path) || current_page?(mockies_path) || current_page?(mockets_path) || current_page?(library_path) || current_page?(loved_path) || current_page?(conversations_path) || current_page?(mocks_path) || current_page?(discover_path) || current_page?(new_mock_path) %>
         <%= render 'shared/navfooter' %>
         <%= render 'shared/footer' %>
       <% end %>

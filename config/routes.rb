@@ -177,6 +177,7 @@ Rails.application.routes.draw do
   get 'tracks', to: 'mocks#tracks'
   get 'loved', to: 'mocks#loved'
   get 'library', to: 'mocks#library'
+  get 'discover', to: 'mocks#discover'
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"
