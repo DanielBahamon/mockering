@@ -92,11 +92,11 @@
               <span class="_1">Tracks</span>
             <% end %>
             <% if mocker_signed_in? %>
-              <%= link_to liked_path, class: "_item #{'active' if current_page?(liked_path)}" do %>
+              <%= link_to loved_path, class: "_item #{'active' if current_page?(loved_path)}" do %>
                 <i class="fal fa-box-heart"></i>
                     <span class="_1">Loved</span>
               <% end %>
-              <%= link_to your_mocks_path, class: "_item #{'active' if current_page?(your_mocks_path)}" do %>
+              <%= link_to library_path, class: "_item #{'active' if current_page?(library_path)}" do %>
                 <i class="fal fa-box-full"></i>
                     <span class="_1">Library</span>
               <% end %>

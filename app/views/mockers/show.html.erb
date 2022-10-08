@@ -91,13 +91,13 @@
 											            <% end %>
 																	<br/>
 																</div>
-															<div class="col-4 text-center d-grid">
+															<div class="col-4 text-center">
 																<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.mocks.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
 																<% num_mocks = @mocker.mocks.count %>
 																<p class="_fs9pt text-muted text-ellipsis"><%= 'Mock'.pluralize(num_mocks) %></p>
 															</div>
 															<div class="col-4">
-																<a class="_btn _data" data-toggle="modal" data-target="#followersModal">
+																<a data-toggle="modal" data-target="#followersModal">
 																	<div class="text-center d-grid">
 																		<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
 																		<% num_followers = @mocker.follower_ids.count %>
@@ -106,7 +106,7 @@
 																</a>
 															</div>
 															<div class="col-4 text-center d-grid">
-																<a class="_btn _data" data-toggle="modal" data-target="#followingModal">
+																<a data-toggle="modal" data-target="#followingModal">
 																	<div class="text-center d-grid">
 																		<h5 class="_fw600 text-ellipsis m-0"><%= number_to_human(@mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></h5>
 																		<% num_followings = @mocker.following_ids.count %>
@@ -126,11 +126,11 @@
 																<div id="_row_sidenav1">
 																	<div class="d-table fullscreen ">
 																		<div class="d-tablecell v-middle">
-																              <div class="row m-0">
-																                <div class="col">
-																                  <%= render 'pages/links_terms' %>
-																                </div>
-																              </div>
+												              <div class="row m-0">
+												                <div class="col">
+												                  <%= render 'pages/links_terms' %>
+												                </div>
+												              </div>
 																		</div>
 																	</div>
 																</div>
@@ -253,7 +253,7 @@
 															      <div class="modal-body p-0">
 															      	<div class="list-group" id="followers">
 															      		<%= render 'followers' %> 
-																	</div>
+																			</div>
 															      </div>
 															    </div>
 															  </div>
@@ -271,7 +271,7 @@
 															      <div class="modal-body p-0">
 															      	<div class="list-group" id="following">
 															      		<%= render 'following' %> 
-																	</div>
+																			</div>
 															      </div>
 															    </div>
 															  </div>
@@ -337,7 +337,7 @@
 								    <div class="modal-content">
 								      <div class="modal-header">
 
-										<% unless @blocked_loop == true %>
+												<% unless @blocked_loop == true %>
 								        	<h5 class="modal-title _fw600" id="reportModalLabel">Block mocker</h5>
 								        <% else %>
 								        	<h5 class="modal-title _fw600" id="reportModalLabel">Unlock mocker</h5>
@@ -347,11 +347,11 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
-										<% if @blocked_loop == false %>
+												<% if @blocked_loop == false %>
 								        	<%= render 'blocks/form', blocked: @mocker %>
-										<% else %>
+												<% else %>
 								        	<%= render 'blocks/unlock', blocked: @mocker %>
-										<% end %>
+												<% end %>
 								      </div>
 								    </div>
 								  </div>

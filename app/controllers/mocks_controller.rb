@@ -38,16 +38,16 @@ class MocksController < ApplicationController
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
 
-	def your_mocks
+	def library
 		@mocker = current_mocker
     	@mocks = @mocker.mocks.order("created_at DESC").paginate(page: params[:mocks], per_page: 10)
 	end
 
-	def liked
+	def loved
 		@mocker = current_mocker
-    	@mocks_liked = @mocker.get_up_voted Mock
-    	@mocks = @mocks_liked.paginate(page: params[:mocks_page], per_page: 10)
+    	@mocks = @mocker.get_up_voted Mock.paginate(page: params[:mocks_page], per_page: 10)
 	end
+
 
 	def new
 		@mock = current_mocker.mocks.build

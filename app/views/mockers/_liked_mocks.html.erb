@@ -1,17 +1,10 @@
-<div class="_mocks_mocker row m-0">
-	<div class="col-12 p-0">
-		<div class="_shuffle_container">
-			<% if @fav_mocks.count > 0 %>
-				<% @fav_mocks.each do |mock| %>
-					<%= render 'mocks/mocky', mock: mock %>
-				<% end %>
-			<% else %>
-				<div class="col-12">
-					<div class="jumbotron text-center bg_white">
-						<h3 class="_fw600">Nothing here.</h3>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
-</div>
+<% if @fav_mocks.count > 0 %>
+	<% @fav_mocks.each do |mock| %>
+		<%= render 'mocks/mocky', mock: mock %>
+	<% end %>
+<% else %>
+  <div class="_nothinghere">
+    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_IwKi9V.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+      <h3>Nothing yet!</h3>
+  </div>
+<% end %>

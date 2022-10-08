@@ -25,11 +25,11 @@
       <span class="_1">Tracks</span>
     <% end %>
 	<% if mocker_signed_in? %>
-		<%= link_to liked_path, class: "_item #{'active' if current_page?(liked_path)}" do %>
+		<%= link_to loved_path, class: "_item #{'active' if current_page?(loved_path)}" do %>
 			<i class="fal fa-box-heart"></i>
       		<span class="_1">Loved</span>
 		<% end %>
-		<%= link_to your_mocks_path, class: "_item #{'active' if current_page?(your_mocks_path)}" do %>
+		<%= link_to library_path, class: "_item #{'active' if current_page?(library_path)}" do %>
 			<i class="fal fa-box-full"></i>
       		<span class="_1">Library</span>
 		<% end %>
@@ -40,14 +40,44 @@
 		<div class="_item _icon_action _userlink">
 			<i class="fal fa-user-astronaut"></i>
 	  		<span class="_1">Me</span>
-	      <div class="_cont _1 _user">
-	        <div class="_in">
-	          <%= link_to "Profile", mocker_path(current_mocker), class: "nav-link"%>
-	          <%= link_to "Settings", edit_mocker_registration_path, class: "nav-link" %>
-	          <div class="dropdown-divider"></div>
-	          <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete, class: "nav-link" %>
-	        </div>
-	      </div>
+        <div class="_cont _1 _user">
+          <div class="_1">
+            <%= link_to current_mocker do %>
+              <%= image_tag avatar_url(current_mocker), class: "_avatar _4" %>
+            <% end %>
+          </div>
+          <div class="_2">
+            <%= link_to current_mocker, class: "_name" do %>
+              <%= current_mocker.first_name.capitalize if current_mocker.first_name? %> 
+              <%= current_mocker.last_name.capitalize if current_mocker.last_name? %>
+            <% end %>
+            <%= link_to current_mocker, class: "_username" do %>
+              @<%= current_mocker.slug %>
+            <% end %>
+          </div>
+          <div class="_3">
+            <div class="_items">
+              <a class="_item _data" data-toggle="modal">
+                <span class="_in">
+                  <span class="_1"><%= number_to_human(current_mocker.follower_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></span>
+                  <span class="_2"><% num_followers = current_mocker.follower_ids.count %> <%= 'Follower'.pluralize(num_followers) %></span>
+                </span>
+              </a>
+              <a class="_item _data" data-toggle="modal">
+                <span class="_in">
+                  <span class="_1"><%= number_to_human(current_mocker.following_ids.count, units: { thousand: 'k', million: 'm', billion: 'b' }) %></span>
+                  <span class="_2"><% num_followings = current_mocker.following_ids.count %> <%= "Following".pluralize(num_followings) %></span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="_4">
+            <%= link_to "Profile", mocker_path(current_mocker) %>
+            <%= link_to "Settings", edit_mocker_registration_path  %>
+            <div class="dropdown-divider p-0 m-0"></div>
+            <%= link_to 'Sign Out', destroy_mocker_session_path, method: :delete  %>
+          </div>
+        </div>
 	    </div>
 	<% end %>
     <% if mocker_signed_in? %>
