@@ -146,22 +146,31 @@
 														<div class="col-12">
 															<ul class="nav nav-tabs _1" id="tab_mocks" role="tablist">
 															  <li class="nav-item" role="presentation">
-															    <a class="nav-link active" id="mocks-tab" data-toggle="tab" href="#mocks-pane" role="tab" aria-controls="mocks" aria-selected="true"><i class="bi-camera-video"></i></a>
+															    <a class="nav-link active" id="mocks-tab" data-toggle="tab" href="#mocks-pane" role="tab" aria-controls="mocks" aria-selected="true">
+															    	<i class="fal fa-layer-group"></i>
+																    <span>Mocks</span>
+															    </a>
 															  </li>
 															  <% if @mocker.show_mocks_privated == true && @mocker.following?(current_mocker) || current_mocker == @mocker %>
 																  <li class="nav-item" role="presentation">
-																    <a class="nav-link" id="privated-tab" data-toggle="tab" href="#privated" role="tab" aria-controls="privated" aria-selected="false"><i class="bi-lock"></i></a>
+																    <a class="nav-link" id="privated-tab" data-toggle="tab" href="#privated" role="tab" aria-controls="privated" aria-selected="false">
+																    	<i class="fal fa-crown"></i>
+																    	<span>Exclusive</span>
+																  	</a>
 																  </li>
 															  <% end %>
 															  <% if @mocker.bio? %>
 																  <li class="nav-item d-none" role="presentation">
-																    <a class="nav-link " id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false"><i class="fas fa-user-tie"></i></a>
+																    <a class="nav-link " id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false">
+																    	<i class="fal fa-user-astronaut"></i>
+																    	<span>About me</span>
+																    </a>
 																  </li>
 															  <% end %>
 															</ul>
 															<div class="tab-content">
 															  <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="mocks-tab" id="mocks-pane">
-																	<div class="_shuffle_container"> 
+																	<div class="_cont"> 
 																  	<% if @mocks.count > 0 %>
 																				<% @mocks.each do |mock| %>
 																					<% if mock.privated == false %>
@@ -169,6 +178,7 @@
 																					<% end %>
 																				<% end %>
 																		<% else %>
+																			<%= render 'shared/nothinghere' %>
 																		<% end %>
 																  </div>
 															  </div>

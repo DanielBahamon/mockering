@@ -16,19 +16,32 @@
 		</div>
 		<div class="col-md-8 _2">
 			<div class="row m-0">
-				<div class="col-sm-4 p-0">
+				<div class="col-6 col-sm-4 p-0">
 					<b>Access</b>
-          <%= link_to new_mocker_session_path, class: "_link" do %>
-          	Login
-          <% end %>
-          <%= link_to new_mocker_registration_path, class: "_link" do %>
-          	Sign in
-          <% end %>
-          <%= link_to new_mocker_password_path, class: "_link" do %>
-          	Password
+
+    			<% if mocker_signed_in? %>
+	          <%= link_to mocker_path(current_mocker), class: "_link" do %>
+	          	Profile
+	          <% end %>
+	          <%= link_to loved_path, class: "_link" do %>
+	          	Loved
+	          <% end %>
+	          <%= link_to library_path, class: "_link" do %>
+	          	Library
+	          <% end %>
+          <% else %>
+	          <%= link_to new_mocker_session_path, class: "_link" do %>
+	          	Login
+	          <% end %>
+	          <%= link_to new_mocker_registration_path, class: "_link" do %>
+	          	Sign in
+	          <% end %>
+	          <%= link_to new_mocker_password_path, class: "_link" do %>
+	          	Password
+	          <% end %>
           <% end %>
 				</div>
-				<div class="col-sm-4 p-0">
+				<div class="col-6 col-sm-4 p-0">
 					<b>Formats</b>
           <%= link_to root_path, class: "_link" do %>
           	Feed

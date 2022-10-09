@@ -2,13 +2,18 @@
   <div class="_container _1">
     <div class="_cont _1">
       <a class="_action _2 _menu">
-        <div class="_in">
-          <span class="_1"></span>
-          <span class="_2"></span>
-          <span class="_3"></span>
-          <span class="_4"></span>
-        </div>
+        <% if mocker_signed_in? %>
+          <%= image_tag avatar_url(current_mocker), class: "_avatar _1" %>
+        <% else %>
+          <div class="_in">
+            <span class="_1"></span>
+            <span class="_2"></span>
+            <span class="_3"></span>
+            <span class="_4"></span>
+          </div>
+        <% end %>
       </a>
+
       <a class="_action _1 _theme d-none">
         <div class="_in">
           <i class="bi bi-moon-stars _sun-mode"></i>
