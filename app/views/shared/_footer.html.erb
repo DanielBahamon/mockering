@@ -17,19 +17,19 @@
 		<div class="col-md-8 _2">
 			<div class="row m-0">
 				<div class="col-sm-4 p-0">
-					<b>Acceso</b>
+					<b>Access</b>
           <%= link_to new_mocker_session_path, class: "_link" do %>
-          	Iniciar sesión
+          	Login
           <% end %>
           <%= link_to new_mocker_registration_path, class: "_link" do %>
-          	Primera vez
+          	Sign in
           <% end %>
           <%= link_to new_mocker_password_path, class: "_link" do %>
-          	Olvide mi acceso
+          	Password
           <% end %>
 				</div>
 				<div class="col-sm-4 p-0">
-					<b>Utilidad</b>
+					<b>Formats</b>
           <%= link_to root_path, class: "_link" do %>
           	Feed
           <% end %>
@@ -39,6 +39,9 @@
           <%= link_to mockets_path, class: "_link" do %>
           	Mockets
           <% end %>
+          <%= link_to mockets_path, class: "_link" do %>
+          	Tracks
+          <% end %>
 				</div>
 				<div class="col-sm-4 p-0">
 					<b>Info</b>
@@ -46,13 +49,13 @@
           	Copyright
           <% end %>
           <%= link_to howmockeringworks_path, class: "_link" do %>
-          	Políticas
+          	Policy
           <% end %>
           <%= link_to privacy_path, class: "_link" do %>
-          	Privacidad
+          	Privacy
           <% end %>
           <%= link_to terms_path, class: "_link" do %>
-          	Terminos
+          	Terms
           <% end %>
 				</div>
 			</div>

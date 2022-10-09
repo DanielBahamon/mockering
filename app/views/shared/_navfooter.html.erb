@@ -1,24 +1,21 @@
 <div class="space_navfooter d-none" style="height:52px;"></div>
 <div class="_navfooter d-block d-sm-none">
 	<div class="cont_navfooter">
-		<!--<% unless current_page?(conversations_path) || current_page?(edit_mocker_registration_path) || current_page?(new_mock_path) %>
-	        <% if mocker_signed_in? %>
-				<div class="_contbtn_add_navfooter">
-					<%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
-						<i class="bi-plus"></i>
-					<% end %>
-				</div>
-			<% end %>
-		<% end %>-->
+
+	    <% if mocker_signed_in? %>
+	      <%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
+			<i class="fas fa-sparkles"></i>	
+	      <% end %>
+	    <% else %>
+	      <%= link_to new_mocker_session_path, class: "_btn_add_mock_navfooter" do %>
+			<i class="fas fa-sparkles"></i>	
+	      <% end %>
+	    <% end %>
 		<ul class="_listnavfooter">
 			<div class="row m-0 fullwidth">
 				<li class="col_navfooter col-3 <%= 'active' if current_page?(root_path)  %>">
 					<%= link_to root_path, class: "_btn _btnavfoot " do %>
-						<div class="d-table fullheight fullwidth">
-							<div class="d-tablecell v-middle">
-								<i class="fal fa-globe-americas text-center p-0"></i>
-							</div>
-						</div>
+						<i class="fal fa-globe-americas text-center p-0"></i>
 					<% end %>
 				</li>
 				<li class="col_navfooter col-3 <%= 'active' if current_page?(mockies_path)  %>">

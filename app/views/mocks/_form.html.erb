@@ -267,7 +267,7 @@
                      <div class="d-table-cell v-middle text-center">
                        <img class="_img_upload_mock"  src="//d8mn60sm70fqt.cloudfront.net/assets/svg/podcast.svg">
                        <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your track (MP3)</h6>
-                       <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your trcak is ready to upload</h6>
+                       <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your track is ready to upload</h6>
                      </div>
                    </div>
                  </div>
@@ -299,19 +299,6 @@
                 </section>
                 <section class="_head">
                   <%= f.text_field :title, class: 'form-control _required _name_track', required: true, placeholder: "Give me a name" %>
-                </section>
-                <section class="_preview">
-                  <img id="picture_here">
-                  <audio controls="controls" id="audioPreview">
-                        <source id="track_here" src="" type="audio/mp4" />
-                  </audio>
-                  <script type="text/javascript">
-                    $(document).on("change", ".file_multi_track", function(evt) {
-                      var $source3 = $('#track_here');
-                      $source3[0].src = URL.createObjectURL(this.files[0]);
-                      $source3.parent()[0].load();
-                    });
-                  </script>
                 </section>
                 <section class="_description">
                   <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4", placeholder: "Write what went into this track, and anything else you’d like to mention" %>
@@ -598,7 +585,6 @@
   console.log("loaded");
 </script>
 <script type="text/javascript">
-
   $('#file-selector_1').change(function(){
    $("._is_ready").toggleClass('d-block');
    $("._is_ready").toggleClass('d-none');
