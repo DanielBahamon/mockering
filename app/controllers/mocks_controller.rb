@@ -1,8 +1,10 @@
 class MocksController < ApplicationController
+	before_action :is_authorised, only: [:edit]
 	before_action :find_mock, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :like, :dislike]
 	# before_action :is_admin!, except: [:index, :like, :dislike, :show, :upvote, :downvote, :destroy, :create, :edit, :new, :update]
 	before_action :authenticate_mocker!, only: [:like, :dislike, :upvote, :downvote, :liked, :mocks]
 	before_action :set_search
+
   	impressionist :actions => [:show]
   	autocomplete :tag, :name, :full => true
 
@@ -11,7 +13,7 @@ class MocksController < ApplicationController
 			@mock = current_mocker.mocks.build
 	    end
 	    @recents = Mock.all.where(privated: false, unlist: false)
-	    				.where("mocks.created_at >= '#{24.hour.ago}'")
+	    				.where("mocks.created_at >= '#{2.weeks.ago}'")
 						.order('created_at DESC')
 	    				.limit(10)
 		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [0..9], privated: false, reported: false, unlist: false).paginate(page: params[:mocks], per_page: 10)
@@ -212,6 +214,10 @@ class MocksController < ApplicationController
 		def set_search
 			@q = Mock.ransack(params[:q])
 			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
+		end
+
+		def is_authorised
+			redirect_to root_path, alert: "You don't have permission"
 		end
 	
 end
