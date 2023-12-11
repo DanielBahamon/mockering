@@ -10,7 +10,7 @@
 			<span class="_2">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
 		<% end %>
 
-		<% if mock.mocktype == 1 || mock.mocktype == 2 %>
+		<% if mock.mocktype == 'mockets' %>
 		  <aside class="_content_mocket">
 		    <div class="_data">
 		      <span>
@@ -21,7 +21,7 @@
 		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
 		    </div>
 		  </aside>
-		<% elsif mock.mocktype == 0 %>
+		<% elsif mock.mocktype == 'mockies' %>
 		  <aside class="_content_mocky">
 		    <div class="_data">
 		      <span>
@@ -31,7 +31,7 @@
 		      </span>
 		    </div>
 		  </aside>
-		<% elsif mock.mocktype == 3 %>
+		<% elsif mock.mocktype == 'tracks' %>
 		  <aside class="_content_mocky">
 		    <div class="_data">
 		      <span>
@@ -43,7 +43,7 @@
 		  </aside>
 		<% end %>
 
-		<% unless mock.mocktype == 3 %>
+		<% unless mock.mocktype == 'tracks' %>
 			<aside class="_media">
 				<% if mock.picture.present? || mock.movie.present? %>
 					<div class="_preview">
