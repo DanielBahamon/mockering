@@ -42,7 +42,8 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   config.action_cable.mount_path = "/cable"
   config.web_socket_server_url = 'https://mockering.com/cable'
-  config.action_cable.allowed_request_origins = ['https://mockering.com', 'http://mockering.com']
+  config.action_cable.allowed_request_origins = ['https://mockering.com', 'http://mockering.com', 'https://www.mockering.com', 'http://www.mockering.com']
+
 
 
   Recaptcha.configure do |config|
