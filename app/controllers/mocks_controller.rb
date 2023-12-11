@@ -21,14 +21,14 @@ class MocksController < ApplicationController
 	  @mocks = Mock.joins(:impressions)
 	                 .group(:id)
 	                 .order("RANDOM()")
-             			 .where.not(id: @recents.pluck(:id))
+	                 .where.not(id: @recents.pluck(:id))
 	                 .where(mocktype: [0..9], privated: false, reported: false, unlist: false)
-	                 .paginate(page: params[:mocks], per_page: 10)
+	                 .paginate(page: params[:page], per_page: 10)
 
 	  @minimockers = Mocker.order("RANDOM()").limit(3)
 
-	  # Combinar @recents y @mocks en @allmocks y ordenar por created_at descendente
-	  @allmocks = (@recents + @mocks).sort_by(&:created_at).reverse.paginate(page: params[:mocks], per_page: 10)
+	  # Obteniendo todos los registros paginados y combinándolos en @allmocks
+	  @allmocks = (@recents + @mocks.to_a).sort_by(&:created_at).reverse
 	end
 
 	def mockets

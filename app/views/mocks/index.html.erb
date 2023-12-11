@@ -35,16 +35,16 @@
 <div class="_cont _2">
   <% @allmocks.each do |mock| %>
     <article> 
-    	<% if mock.mocktype == 'tracks' %>
-      	<%= render 'mocks/shared/track', mock: mock %>
-    	<% elsif mock.mocktype == 'mockets' %>
-      	<%= render 'mocks/shared/mocket', mock: mock %>
-    	<% elsif mock.mocktype == 'mockies' %>
-      	<%= render 'mocks/shared/mocky', mock: mock %>
-  		<% end %>
+      <% if mock.mocktype == 'tracks' %>
+        <%= render 'mocks/shared/track', mock: mock %>
+      <% elsif mock.mocktype == 'mockets' %>
+        <%= render 'mocks/shared/mocket', mock: mock %>
+      <% elsif mock.mocktype == 'mockies' %>
+        <%= render 'mocks/shared/mocky', mock: mock %>
+      <% end %>
     </article>
   <% end %>
 </div>
 <div class="_cont _3">
-  <%= will_paginate @allmocks %>
+  <%= will_paginate @mocks %>
 </div>
