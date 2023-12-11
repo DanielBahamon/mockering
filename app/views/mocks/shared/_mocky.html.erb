@@ -31,7 +31,7 @@
 		      </span>
 		    </div>
 		  </aside>
-		<% elsif mock.mocktype == 'mockets' %>
+		<% elsif mock.mocktype == 'tracks' %>
 		  <aside class="_content_mocky">
 		    <div class="_data">
 		      <span>
@@ -43,7 +43,7 @@
 		  </aside>
 		<% end %>
 
-		<% unless mock.mocktype == 'mockets' %>
+		<% unless mock.mocktype == 'tracks' %>
 			<aside class="_media">
 				<% if mock.picture.present? || mock.movie.present? %>
 					<div class="_preview">
