@@ -2,13 +2,9 @@
 <div class="_navfooter d-block d-sm-none">
 	<div class="cont_navfooter">
 
-	    <% if mocker_signed_in? %>
+	    <% if mocker_signed_in? && !current_page?(new_mock_path) %>
 	      <%= link_to new_mock_path, class: "_btn_add_mock_navfooter" do %>
-			<i class="fas fa-sparkles"></i>	
-	      <% end %>
-	    <% else %>
-	      <%= link_to new_mocker_session_path, class: "_btn_add_mock_navfooter" do %>
-			<i class="fas fa-sparkles"></i>	
+					<i class="fal fa-plus"></i>
 	      <% end %>
 	    <% end %>
 		<ul class="_listnavfooter">
@@ -28,8 +24,7 @@
 						<i class="fal fa-newspaper text-center p-0"></i>
 					<% end %>
 				</li>
-                <% if mocker_signed_in? %>
-
+        <% if mocker_signed_in? %>
 					<li class="col_navfooter col-3 <%= 'active' if current_page?(mocker_path(current_mocker))  %>">
 						<%= link_to mocker_path(current_mocker), class: "_btn _btnavfoot" do %>
 							<i class="fal fa-user-astronaut text-center p-0"></i>

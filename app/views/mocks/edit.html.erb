@@ -1,6 +1,7 @@
 <% content_for :title, "Edit your post • Mockering" %>
 <div class="container">
 	<br>
+	<h5><%= link_to mock_path(@mock) do %><i class="bi bi-chevron-left"></i> Back<% end %></h5>
 	<h1 class="_title _1">Edit mock</h1>
 	<br>
 	<div class="form-group">
@@ -16,6 +17,12 @@
               <div class="field">
                 <%= f.label :title %><br/>
                 <%= f.text_field :title, class: 'form-control', required: true %>
+              </div>
+            </div>
+            <div class="col-12 ">
+              <div class="field">
+                <%= f.label :description %><br/>
+                <%= f.text_field :description, class: 'form-control' %>
               </div>
             </div>
             <div class="col-12 ">

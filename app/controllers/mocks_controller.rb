@@ -9,15 +9,17 @@ class MocksController < ApplicationController
   	autocomplete :tag, :name, :full => true
 
 	def index
-	    if mocker_signed_in?
+    if mocker_signed_in?
 			@mock = current_mocker.mocks.build
-	    end
-	    @recents = Mock.all.where(privated: false, unlist: false)
-	    				.where("mocks.created_at >= '#{2.weeks.ago}'")
-						.order('created_at DESC')
-	    				.limit(10)
-		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [0..9], privated: false, reported: false, unlist: false).paginate(page: params[:mocks], per_page: 10)
+    end
+    @recents = Mock.all.where(privated: false, unlist: false)
+    				.where("mocks.created_at >= '#{2.weeks.ago}'")
+					.order('created_at DESC')
+    				.limit(10)
+		@mockies = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: [0..9], privated: false, reported: false, unlist: false).paginate(page: params[:mocks], per_page: 10)
 		@minimockers = Mocker.all.order("RANDOM()").limit(3)
+
+		@mocks = @mockies.where.not(id: @recents.pluck(:id))
 	end
 
 	def mockets
@@ -37,11 +39,23 @@ class MocksController < ApplicationController
 	end
 
 	def tracks
-	    if mocker_signed_in?
-			@mock = current_mocker.mocks.build
-	    end
-		@mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: 3, privated: false, reported: false, unlist: false).limit(10).paginate(page: params[:mocks], per_page: 10)
-		@minimockers = Mocker.all.order("RANDOM()").limit(3)
+	  if mocker_signed_in?
+	    @mock = current_mocker.mocks.build
+	  end
+
+	  @mocks = Mock.where(mocktype: 3, privated: false, reported: false, unlist: false)
+	               .where("music_file_name IS NOT NULL") # Asegura que haya un archivo adjunto de música
+	               .where("movie_file_name IS NULL")     # Asegura que no haya un archivo adjunto de película
+	               .limit(10)
+	               .paginate(page: params[:mocks], per_page: 10)
+
+	  @minimockers = Mocker.all.order("RANDOM()").limit(3)
+
+	  #   if mocker_signed_in?
+		# 	@mock = current_mocker.mocks.build
+	  #   end
+		# @mocks = Mock.all.joins(:impressions).group(:id).order("RANDOM()").where(mocktype: 3, privated: false, reported: false, unlist: false).limit(10).paginate(page: params[:mocks], per_page: 10)
+		# @minimockers = Mocker.all.order("RANDOM()").limit(3)
 	end
 
 	def library
@@ -72,26 +86,17 @@ class MocksController < ApplicationController
 	end
 
 	def create
-		@mocker = current_mocker
-		@mock = current_mocker.mocks.build(mock_params)
-		
-		if @mock.picture.present? && @mock.movie.present?
-			@mock.mocktype = 0
-		elsif @mock.movie.present? && @mock.movie.nil?
-			@mock.mocktype = 1
-		elsif @mock.picture.present? && @mock.picture.nil?
-			@mock.mocktype = 2
-		else 
-			@mock.mocktype = 3
-		end
-		if @mock.save
-			@mocker.followers.each do |mocker|
-				Notification.create(recipient: mocker, actor: current_mocker, action: "mocked", notifiable: @mock)
-			end
-			redirect_to @mock, notice: "Successfully created new Mock"
-		else
-			render 'new'
-		end
+	  @mocker = current_mocker
+	  @mock = current_mocker.mocks.build(mock_params)
+
+	  @mock.mocktype = determine_mocktype(@mock)
+
+	  if @mock.save
+	    # notify_followers(@mocker, @mock)
+	    redirect_to @mock, notice: "Successfully created new Mock"
+	  else
+	    render 'new'
+	  end
 	end
 
 	def show
@@ -211,13 +216,28 @@ class MocksController < ApplicationController
 			params.require(:mock).permit(:title, :description, :picture, :music, :movie, :category, :credits, :tag_list, :privated, :age_restricted, :unlist, :duration, :mocktype, :type)
 		end
 
+		def determine_mocktype(mock)
+		  if mock.movie.present?
+    		mock.mocktype = 0
+		  elsif mock.music.present?
+    		mock.mocktype = 3
+		  elsif mock.picture.present? && mock.description.present?
+    		mock.mocktype = 1
+		  elsif mock.picture.present? || mock.description.present?
+		    :mockets
+		  end
+		end
+
 		def set_search
 			@q = Mock.ransack(params[:q])
 			@mocks = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 30)
 		end
 
 		def is_authorised
-			redirect_to root_path, alert: "You don't have permission"
+			@mock = Mock.find(params[:id])
+		  unless @mock.mocker_id == current_mocker.id
+		    redirect_to root_path, alert: "You don't have permission to edit this mock."
+		  end
 		end
 	
 end

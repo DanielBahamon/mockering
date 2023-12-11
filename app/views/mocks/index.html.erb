@@ -35,7 +35,13 @@
 <div class="_cont _2">
   <% @recents .each do |mock| %>
     <article> 
-      <%= render 'mocky', mock: mock %>
+    	<% if mock.mocktype == 'tracks' %>
+      	<%= render 'mocks/shared/track', mock: mock %>
+    	<% elsif mock.mocktype == 'mockets' %>
+      	<%= render 'mocks/shared/mocket', mock: mock %>
+  		<% else %>
+      	<%= render 'mocky', mock: mock %>
+  		<% end %>
     </article>
   <% end %>
   <% @mocks.each do |mock| %>

@@ -3,6 +3,17 @@
     <aside class="_1">
       <h1>What do you want to show?</h1>
       <p>Upload your content.</p>
+      <% if @mock.errors.any? %>
+        <div id="error_explanation">
+          <h6><%= pluralize(@mock.errors.count, "error") %> prohibited this mock from being saved:</h6>
+          <ul>
+            <% @mock.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="_navy">
         <ul class="nav nav-tabs" id="formTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -27,7 +38,6 @@
       <div class="tab-content" id="formTabContent">
         <div class="tab-pane fade show active" id="mock" role="tabpanel" aria-labelledby="mock-tab">
           <%= form_for @mock, html: { multipart: true } do |f| %>
-            <%= f.hidden_field :mocktype, value: 'mockies' %>
             <div class="form_wrapper" id="_form_register">
               <fieldset class="_fieldset_form _1 msf_hide">
                 <section class="_upload_big _1">
@@ -72,7 +82,7 @@
                   </script>
                 </section>
                 <section class="_head">
-                  <%= f.text_field :title, class: 'form-control _required _name_mock', required: true, placeholder: "Give me a name" %>
+                  <%= f.text_field :title, class: 'form-control _required _name_mock', required: true, placeholder: "Give me a name", max: 100 %>
                 </section>
                 <section class="_preview">
                   <video controls="false"><source id="video_here"></video>
@@ -85,7 +95,7 @@
                   </script>
                 </section>
                 <section class="_description">
-                  <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4", placeholder: "Write what went into this mock, and anything else you’d like to mention" %>
+                  <%= f.text_area :description, class: '_textarea _2 form-control', max: 888, rows: "4", placeholder: "Write what went into this mock, and anything else you’d like to mention" %>
                 </section>
               </fieldset>
               <div class="modal fade" id="touchesModal" tabindex="-1" aria-labelledby="touchesModalLabel" aria-hidden="true">
@@ -147,25 +157,33 @@
         </div>
         <div class="tab-pane fade" id="mocket" role="tabpanel" aria-labelledby="mocket-tab">
           <%= form_for @mock, html: { multipart: true } do |f| %>
-            <%= f.hidden_field :mocktype, value: 'pictures' %>
             <div class="form_wrapper" id="_form_register">
               <article class="_fieldset_form _1 msf_hide">
-                <section class="_upload_big _1">
-                 <div class="progress d-none" id="progress-bar">
-                   <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
-                     <span class="sr-only" id="progress-bar-text"></span>
-                   </div>
-                 </div>
-                 <div class="fullsize p-5 _file_upload">
-                   <div class="d-table fullsize">
-                     <div class="d-table-cell v-middle text-center">
-                       <img class="_img_upload_mock"  src="//d8mn60sm70fqt.cloudfront.net/assets/svg/photo_1.svg">
-                       <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your picture (JPG/PNG/GIF)</h6>
-                       <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your picture is ready to upload</h6>
-                     </div>
-                   </div>
-                 </div>
-                 <%= f.file_field :picture, class: "file-selector absolute file_multi_picture", id: "upload_picture_1", onchange: "msf_btn_next2()" %>
+                <section class="_actions">
+                  <a class="_btn _outline" onclick="msf_btn_back2()" style="opacity:0;">
+                    <span>Back</span>
+                  </a> 
+                  <a class="_btn _1 d-none" id="_continue_mocket_1" onclick="msf_btn_next2()">
+                    <span>Continue</span>
+                  </a>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $('input._name_mocket').on('keyup', function() {
+                        let empty = false;
+                        $('input._name_mocket').each(function() {
+                          empty = $(this).val().length == 0;
+                        });
+                        if (empty)
+                          $('a#_continue_mocket_1').toggleClass('d-none');
+                        else
+                          $('a#_continue_mocket_1').removeClass('d-none');
+                      });
+                    });
+                  </script>
+                </section>
+                <br>
+                <section class="_description">
+                  <%= f.text_field :title, class: 'form-control _required _name_mocket', required: true, placeholder: "Give me a name" %>
                 </section>
               </article>
               <article class="_fieldset_form _2 msf_hide">
@@ -178,9 +196,9 @@
                   </a>
                   <script type="text/javascript">
                     $(document).ready(function() {
-                      $('input._name_mocket').on('keyup', function() {
+                      $('._textmocket').on('keyup', function() {
                         let empty = false;
-                        $('input._name_mocket').each(function() {
+                        $('._textmocket').each(function() {
                           empty = $(this).val().length == 0;
                         });
                         if (empty)
@@ -191,21 +209,8 @@
                     });
                   </script>
                 </section>
-                <section class="_head">
-                  <%= f.text_field :title, class: 'form-control _required _name_mocket', required: true, placeholder: "Give me a name" %>
-                </section>
-                <section class="_preview">
-                  <img id="picture_here">
-                  <script type="text/javascript">
-                    $(document).on("change", ".file_multi_picture", function(evt) {
-                      var $source2 = $('#picture_here');
-                      $source2[0].src = URL.createObjectURL(this.files[0]);
-                      $source2.parent()[0].load();
-                    });
-                  </script>
-                </section>
                 <section class="_description">
-                  <%= f.text_area :description, class: '_textarea _2 form-control', rows: "4", placeholder: "Write what went into this mocket, and anything else you’d like to mention" %>
+                  <%= f.text_area :description, class: '_textarea _textmocket _2 form-control', rows: "4", placeholder: "Write what went into this mocket, and anything else you’d like to mention" %>
                 </section>
               </article>
               <div class="modal fade" id="picturesModal" tabindex="-1" aria-labelledby="picturesModalLabel" aria-hidden="true">
@@ -241,6 +246,23 @@
                       </div>
                      </div>
                      <%= f.text_field :credits, class: 'form-control _1', placeholder: 'Credits' %>
+                     <section class="col-12 _col_inputsaccount p-b-0 _upload_big">
+                         <div class="progress d-none" id="progress-bar">
+                           <div class="progress-bar progress-bar-stripped active" role="progressbar" style="width: 0%;">
+                             <span class="sr-only" id="progress-bar-text"></span>
+                           </div>
+                         </div>
+                         <div class="fullsize p-5 _file_upload">
+                           <div class="d-table fullsize">
+                             <div class="d-table-cell v-middle text-center">
+                              <img class="_img_upload_mock" src="//d8mn60sm70fqt.cloudfront.net/assets/svg/photo_1.svg">
+                               <h6 class="_fw600 _is_not_ready d-block" style="opacity: 0.6">Upload your image (JPG/PNG/GIF)</h6>
+                               <h6 class="_fw600 _is_ready d-none" style="opacity: 0.6">Your image is ready to upload</h6>
+                             </div>
+                           </div>
+                         </div>
+                         <%= f.file_field :picture, class: "file-selector absolute", id: "file-selector_1" %>
+                     </section>
                     </div>
                     <div class="modal-footer">
                       <%= f.submit 'Upload',  class: '_btn _1', id: 'fileUpload2', data: { disable_with: 'Uploading...' } %>
@@ -253,7 +275,6 @@
         </div>
         <div class="tab-pane fade" id="track" role="tabpanel" aria-labelledby="track-tab">
           <%= form_for @mock, html: { multipart: true } do |f| %>
-            <%= f.hidden_field :mocktype, value: 'tracks' %>
             <div class="form_wrapper" id="_form_register">
               <blockquote class="_fieldset_form _1 msf_hide">
                 <section class="_upload_big _1">

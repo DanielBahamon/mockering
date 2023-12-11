@@ -1,0 +1,61 @@
+<figure class="_mocky " id="_mocky_<%= mock.id %>" >
+	<div class="_avatar">
+		<%= link_to mock.mocker, class: "_avatar" do %>
+			<%= image_tag avatar_url(mock.mocker), class: "_avatar _4" %>
+		<% end %>
+	</div>
+	<div class="_body">
+
+		<%= link_to mock.mocker, class: "_username" do %>
+			<span class="_1"><%= mock.mocker.first_name %> <%= mock.mocker.last_name %></span>
+			<span class="_2">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
+		<% end %>
+		<aside class="_content_mocket">
+			<div class="_data">
+				<h5 class="m-0">
+					<span><%= mock.title %></span>
+					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+				</h5>
+				<span>
+					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+					<%= mock.description %>		
+				</span>
+				<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+			</div>
+		</aside>
+		<aside class="_tails">
+			<div class="_in _2">
+				<div class="_actions">
+					<p>
+						<% if mocker_signed_in? %>
+							<%= link_to like_mock_path(mock), method: :put, remote: :true, class: "like-post" do %>
+										<span class="d-md-grid like-count_<%= mock.id %>" id="like-count">
+											<%= render 'mocks/likes', mock: mock %>
+										</span>
+							<% end %>
+						<% else %>
+							<span>
+								<i class="fas fa-heart"></i>
+								<%= number_to_human(mock.get_upvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+							</span>
+						<% end %>
+					</p>
+					<p>
+						<% if mocker_signed_in? %>
+							<%= link_to dislike_mock_path(mock), method: :put, remote: :true, class: "like-post" do %>
+								<span class="d-md-grid dislike-count_<%= mock.id %>" id="dislike-count">
+									<%= render 'mocks/dislikes', mock: mock %>
+								</span>
+							<% end %>
+						<% else %>
+							<span>
+								<i class="fas fa-hand-middle-finger"></i>
+								<%= number_to_human(mock.get_downvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
+							</span>
+						<% end %>
+					</p>
+				</div>
+			</div>
+		</aside>
+	</div>
+</figure>

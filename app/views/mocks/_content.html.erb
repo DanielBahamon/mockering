@@ -9,15 +9,12 @@
     <aside class="_2">
 			<div class="_navy">
 			  <div class="_cont _1">
-			    <div class="_back">
-			      <i class="bi bi-arrow-left _1"></i>
-			      <input class="_ocult _2" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Cancel" />
-			    </div>
-					<% if @mock.mocktype == 0 %>
+			    	<%= link_to root_path, class: "_back" do %>
+			      	<i class="bi bi-arrow-left _1"></i>
+			      <% end %>
+					<% if @mock.mocktype == 'mockies' %>
 						<b>Mocky</b>
-					<% elsif @mock.mocktype == 1  %>
-						<b>Mocket</b>
-					<% elsif @mock.mocktype == 2  %>
+					<% elsif @mock.mocktype == 'mockets' || @mock.mocktype == 'pictures'  %>
 						<b>Mocket</b>
 					<% else %>
 						<b>Track</b>
@@ -141,7 +138,7 @@
 								</a>
 							<% end %>
 							<% if current_mocker == @mock.mocker %>
-							  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
+							  	<%= link_to edit_mock_path(@mock), class: '_btn_edit' do %>
 								  	<i class="bi bi-pencil-fill"></i>
 								<% end %>
 							<% end %>
@@ -179,7 +176,7 @@
 							<% if current_mocker == @mock.mocker %>
 								<div class="col-12 _2">
 									<aside class="_cont">
-									  	<%= link_to edit_mock_path, class: '_btn_edit' do %>
+									  	<%= link_to edit_mock_path(@mock), class: '_btn_edit' do %>
 										  	Edit
 											<% end %>
 											<%= link_to mock_path, method: :delete, data: {confirm: "Are you sure?"},class: '_btn_remove' do %>

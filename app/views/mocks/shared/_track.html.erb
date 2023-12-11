@@ -1,4 +1,4 @@
-<figure class="_mocky" id="_mocky_<%= mock.id %>">
+<figure class="_mocky " id="_mocky_<%= mock.id %>" >
 	<div class="_avatar">
 		<%= link_to mock.mocker, class: "_avatar" do %>
 			<%= image_tag avatar_url(mock.mocker), class: "_avatar _4" %>
@@ -10,55 +10,26 @@
 			<span class="_1"><%= mock.mocker.first_name %> <%= mock.mocker.last_name %></span>
 			<span class="_2">@<%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
 		<% end %>
-		<% if mock.mocktype == 'mockets' %>
-		  <aside class="_content_mocket">
-		    <div class="_data">
-		      <span>
-		        <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		          <%= mock.description %>
-		        <% end %>
-		      </span>
-		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		        [Link Text]
-		      <% end %>
-		    </div>
-		  </aside>
-		<% elsif mock.mocktype == 'mockies' %>
-		  <aside class="_content_mocky">
-		    <div class="_data">
-		      <span>
-		        <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		          <%= mock.title %>
-		        <% end %>
-		      </span>
-		    </div>
-		  </aside>
-		<% elsif mock.mocktype == 'mockets' %>
-		  <aside class="_content_mocky">
-		    <div class="_data">
-		      <span>
-		        <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		          <%= mock.title %>
-		        <% end %>
-		      </span>
-		    </div>
-		  </aside>
-		<% else %>
-		  <aside class="_content_mocky">
-		    <div class="_data">
-		      <span>
-		        <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		          <%= mock.title %>
-		        <% end %>
-		      </span>
-		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		        [Link Text]
-		      <% end %>
-		    </div>
-		  </aside>
-		<% end %>
-
+		<aside class="_content_mocket">
+			<div class="_data">
+				<h5>
+					<span><%= mock.title %></span>
+					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+				</h5>
+				<span>
+					<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+					<%= mock.description %>		
+				</span>
+				<%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
+			</div>
+		</aside>
 		<aside class="_media">
+			<aside class="_media audio-item" data-audio-src="<%= mock.music.url %>">
+			  <audio controls style="width:100%">
+			    <source src="<%= mock.music.url %>" type="audio/mp3">
+			  </audio>
+			</aside>
+
 			<% if mock.picture.present? || mock.movie.present? %>
 				<div class="_preview">
 					<%= link_to mock_path(mock), mock: mock, class: "_link_mock" do %><% end %>
@@ -74,30 +45,7 @@
 						<% end %>
 					<% end %> 
 				</div>
-	  		<% end %>
-			<aside class="_data">
-				<div class="_cont _1">
-					<div class="_in _1">
-						<span><%= link_to mock do %><%= mock.title %><% end %></span>
-					</div>
-					<div class="_in _2">
-						<div class="_actions">
-							<% if mocker_signed_in? %>
-								<%= link_to like_mock_path(mock), method: :put, remote: :true, class: "like-post" do %>
-									<span class="d-md-grid like-count_<%= mock.id %>" id="like-count">
-										<%= render 'mocks/likes', mock: mock %>
-									</span>
-								<% end %>
-							<% else %>
-								<span>
-									<i class="fas fa-heart"></i>
-									<%= number_to_human(mock.get_upvotes.size, units: { thousand: 'k', million: 'm', billion: 'b' }) %>
-								</span>
-							<% end %>
-						</div>
-					</div>
-				</div>
-			</aside>
+			<% end %>
 			<% if mock.movie.present? %>
 				<div class="_time">
 					<div class="_cont">

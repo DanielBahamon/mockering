@@ -6,7 +6,7 @@
 			<div class="_data">
 				<span>
 					<%= link_to mock_path(mock), mock: mock, remote: true, class: "_link_mocket" do %><% end %>
-					<%= mock.description %>		
+					<%= mock.title %>		
 				</span>
 				<%= link_to mock_path(mock), mock: mock, remote: true, class: "_link_mocket" do %><% end %>
 			</div>
@@ -32,7 +32,7 @@
 			<aside class="_data">
 				<div class="_cont _1">
 					<div class="_in _1">
-						<span><%= link_to mock do %><%= mock.title %><% end %></span>
+						<span><%= link_to mock do %><%= mock.description %><% end %></span>
 					</div>
 					<div class="_in _2">
 						<div class="_actions">
