@@ -28,7 +28,7 @@ class MocksController < ApplicationController
 	  @minimockers = Mocker.order("RANDOM()").limit(3)
 
 	  # Combinar @recents y @mocks en @allmocks y ordenar por created_at descendente
-	  @allmocks = (@recents + @mocks).sort_by(&:created_at).reverse
+	  @allmocks = (@recents + @mocks).sort_by(&:created_at).reverse.paginate(page: params[:mocks], per_page: 10)
 	end
 
 	def mockets
