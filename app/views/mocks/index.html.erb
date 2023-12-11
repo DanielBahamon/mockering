@@ -40,13 +40,13 @@
     	<% elsif mock.mocktype == 'mockets' %>
       	<%= render 'mocks/shared/mocket', mock: mock %>
   		<% else %>
-      	<%= render 'mocky', mock: mock %>
+      	<%= render 'mocks/shared/mocky', mock: mock %>
   		<% end %>
     </article>
   <% end %>
   <% @mocks.each do |mock| %>
     <article> 
-      <%= render 'mocky', mock: mock %>
+      <%= render 'mocks/shared/mocky', mock: mock %>
     </article>
   <% end %>
 </div>
