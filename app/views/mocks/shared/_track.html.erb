@@ -8,7 +8,7 @@
 
 		<%= link_to mock.mocker, class: "_username" do %>
 			<span class="_1"><%= mock.mocker.first_name %> <%= mock.mocker.last_name %></span>
-			<span class="_2"><%= mock.mocker.slug %> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
+			<span class="_2"> <%= image_tag badge_icon(mock.mocker), class: "_badge_verification _tooltip _2", "data-toggle": "tooltip","data-placement": "bottom", title: tooltip_badge(mock.mocker) if mock.mocker.verification? %></span>
 		<% end %>
 		<aside class="_content_mocket">
 			<div class="_data">
