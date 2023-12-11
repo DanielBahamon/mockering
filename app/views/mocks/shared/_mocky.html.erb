@@ -1,4 +1,4 @@
-<figure class="_mocky" id="_mocky_<%= mock.id %>">
+<figure class="_mocky _standard" id="_mocky_<%= mock.id %>">
 	<div class="_avatar">
 		<%= link_to mock.mocker, class: "_avatar" do %>
 			<%= image_tag avatar_url(mock.mocker), class: "_avatar _4" %>
@@ -49,9 +49,7 @@
 		          <%= mock.title %>
 		        <% end %>
 		      </span>
-		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		        [Link Text]
-		      <% end %>
+		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
 		    </div>
 		  </aside>
 		<% end %>

@@ -1,4 +1,4 @@
-<figure class="_mocky " id="_mocky_<%= mock.id %>" >
+<figure class="_mocky _track" id="_mocky_<%= mock.id %>" >
 	<div class="_avatar">
 		<%= link_to mock.mocker, class: "_avatar" do %>
 			<%= image_tag avatar_url(mock.mocker), class: "_avatar _4" %>
@@ -24,12 +24,6 @@
 			</div>
 		</aside>
 		<aside class="_media">
-			<aside class="_media audio-item" data-audio-src="<%= mock.music.url %>">
-			  <audio controls style="width:100%">
-			    <source src="<%= mock.music.url %>" type="audio/mp3">
-			  </audio>
-			</aside>
-
 			<% if mock.picture.present? || mock.movie.present? %>
 				<div class="_preview">
 					<%= link_to mock_path(mock), mock: mock, class: "_link_mock" do %><% end %>
@@ -46,18 +40,11 @@
 					<% end %> 
 				</div>
 			<% end %>
-			<% if mock.movie.present? %>
-				<div class="_time">
-					<div class="_cont">
-						<div class="_icon">
-							<i class="bi bi-film"></i>
-						</div>
-						<div class="_number">
-							<%= mock_time(mock) %>
-						</div>						
-					</div>
-				</div>
-			<% end %>
+			<aside class="_media audio-item" data-audio-src="<%= mock.music.url %>">
+			  <audio controls style="width:100%">
+			    <source src="<%= mock.music.url %>" type="audio/mp3">
+			  </audio>
+			</aside>
 		</aside>
 		<aside class="_tails">
 			<div class="_in _2">
