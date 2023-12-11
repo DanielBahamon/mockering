@@ -39,7 +39,7 @@
       	<%= render 'mocks/shared/track', mock: mock %>
     	<% elsif mock.mocktype == 'mockets' %>
       	<%= render 'mocks/shared/mocket', mock: mock %>
-    	<% elsif mock.mocktype == 'mockies' %>
+    	<% else %>
       	<%= render 'mocks/shared/mocky', mock: mock %>
   		<% end %>
     </article>
