@@ -18,9 +18,7 @@
 		          <%= mock.description %>
 		        <% end %>
 		      </span>
-		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %>
-		        [Link Text]
-		      <% end %>
+		      <%= link_to mock_path(mock), mock: mock, class: "_link_mocket" do %><% end %>
 		    </div>
 		  </aside>
 		<% elsif mock.mocktype == 'mockies' %>
