@@ -33,14 +33,13 @@
   <% end %>
 </div>
 <div class="_cont _2">
-	<p class="bahamon"></p>
   <% @allmocks.each do |mock| %>
     <article> 
     	<% if mock.mocktype == 'tracks' %>
       	<%= render 'mocks/shared/track', mock: mock %>
     	<% elsif mock.mocktype == 'mockets' %>
       	<%= render 'mocks/shared/mocket', mock: mock %>
-  		<% else %>
+    	<% elsif mock.mocktype == 'mockies' %>
       	<%= render 'mocks/shared/mocky', mock: mock %>
   		<% end %>
     </article>
