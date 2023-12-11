@@ -27,6 +27,14 @@ module Mockering
     config.i18n.default_locale = :en
 
 
+    # CORS
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'https://www.mockering.com' # Reemplaza con tu dominio
+        resource '/cable', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+      end
+    end
+
     #TimeZone
     config.time_zone = "America/Bogota"
     config.active_record.default_timezone = :utc
