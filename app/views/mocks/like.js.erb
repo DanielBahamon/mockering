@@ -1,3 +1,3 @@
-$(".like-count_<%= @mock.id %>").html("<%= j render 'mocks/likes', mock: @mock %>")
+$(".like-count_<%= @mock.id %>").html("<%= j render 'mocks/actions/likes', mock: @mock %>")
 $(".like-count_2_<%= @mock.id %>").toggleClass("_btnlike_color")
-$(".like-link_<%= @mock.id %>").html("<%= j render 'mocks/like_link', mock: @mock %>")
+$(".like-link_<%= @mock.id %>").html("<%= j render 'mocks/actions/like_link', mock: @mock %>")

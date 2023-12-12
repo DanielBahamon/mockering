@@ -1,2 +1,2 @@
-$(".dislike-count_<%= @mock.id %>").html("<%= j render 'mocks/dislikes', mock: @mock %>")
-$(".dislike-link_<%= @mock.id %>").html("<%= j render 'mocks/dislike_link', mock: @mock %>")
+$(".dislike-count_<%= @mock.id %>").html("<%= j render 'mocks/actions/dislikes', mock: @mock %>")
+$(".dislike-link_<%= @mock.id %>").html("<%= j render 'mocks/actions/dislike_link', mock: @mock %>")
