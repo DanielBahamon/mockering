@@ -15,7 +15,13 @@
   <% if @mocks.present? %>
     <% @mocks.each do |mock| %>
       <article>
-        <%= render 'mocks/cards/mocky', mock: mock %>
+        <% if mock.mocktype == 'tracks' %>
+          <%= render 'mocks/cards/track', mock: mock %>
+        <% elsif mock.mocktype == 'mockets' %>
+          <%= render 'mocks/cards/mocket', mock: mock %>
+        <% elsif mock.mocktype == 'mockies' %>
+          <%= render 'mocks/cards/mocky', mock: mock %>
+        <% end %>
       </article>
     <% end %>
   <% else %>
