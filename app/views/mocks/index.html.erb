@@ -36,11 +36,11 @@
   <% @allmocks.each do |mock| %>
     <article> 
       <% if mock.mocktype == 'tracks' %>
-        <%= render 'mocks/shared/track', mock: mock %>
+        <%= render 'mocks/cards/track', mock: mock %>
       <% elsif mock.mocktype == 'mockets' %>
-        <%= render 'mocks/shared/mocket', mock: mock %>
+        <%= render 'mocks/cards/mocket', mock: mock %>
       <% elsif mock.mocktype == 'mockies' %>
-        <%= render 'mocks/shared/mocky', mock: mock %>
+        <%= render 'mocks/cards/mocky', mock: mock %>
       <% end %>
     </article>
   <% end %>

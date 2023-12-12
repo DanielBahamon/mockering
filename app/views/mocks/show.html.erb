@@ -18,7 +18,7 @@
 			<% if @age > 17 %>
 				<% unless @blocked == true %>
 					<% if @mock.reported == false %>
-						<%= render 'content' %>
+						<%= render 'mocks/layout/content' %>
 					<% else %>
 						<!-- Modal -->
 						<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,7 +60,7 @@
 	<% else %>
 		<% unless @blocked == true %>
 			<% if @mock.reported == false %>
-				<%= render 'content' %>
+				<%= render 'mocks/layout/content' %>
 			<% else %>
 				<div class="modal fade" id="appealMock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

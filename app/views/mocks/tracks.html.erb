@@ -15,8 +15,8 @@
 <div class="_cont _2">
   <% if @mocks.present? %>
     <% @mocks.each do |mock| %>
-      <article >
-        <%= render 'mocks/shared/track', mock: mock %>
+      <article> 
+        <%= render 'mocks/cards/track', mock: mock %>
       </article>
     <% end %>
   <% else %>

@@ -1,0 +1,33 @@
+<div class="d-flex overflowx_auto pt-2 taglist" id="taglist">
+  <% @tags.each do |tag| %>
+    <%= link_to tag.name, mocks_path(tag: tag.name), class: "_chip _1" %>
+  <% end %>
+  <div class="div_arrow _left arrow-left-navigation_1">
+    <a class="arrow_ " ><i class="fas fa-chevron-left"></i></a>
+  </div>
+  <div class="div_arrow _right arrow-right-navigation_1">
+    <a class="arrow_  pull-right"><i class="fas fa-chevron-right"></i></a>
+  </div>
+</div>
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+      $(".arrow-left-navigation_1").click(function(){
+          $("#taglist").animate({scrollLeft: "-="+351});
+      });
+      $(".arrow-right-navigation_1").click(function(){
+          $("#taglist").animate({scrollLeft: "+="+351});
+      });
+
+    $('#taglist').scroll(function() {
+        if($(this).scrollLeft() == 0) {
+            $('.arrow-left-navigation_1').hide();
+        }
+        else if($('.arrow-left-navigation_1').css('display') != 'block') {
+            $('.arrow-left-navigation_1').show();
+        }
+    }).scroll();
+
+  });
+
+</script>

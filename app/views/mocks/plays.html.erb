@@ -42,7 +42,13 @@
 							<div class="mocks_content _2">
 								<div class="_shuffle_container _3">
 									<% @month.each do |mock| %>
-										<%= render 'mock', mock: mock %>
+							      <% if mock.mocktype == 'tracks' %>
+							        <%= render 'mocks/cards/track', mock: mock %>
+							      <% elsif mock.mocktype == 'mockets' %>
+							        <%= render 'mocks/cards/mocket', mock: mock %>
+							      <% elsif mock.mocktype == 'mockies' %>
+							        <%= render 'mocks/cards/mocky', mock: mock %>
+							      <% end %>
 									<% end %>
 								</div>
 								<div class="my-sizer-element"></div>
@@ -64,7 +70,13 @@
 							<div class="mocks_content _2">
 								<div class="_shuffle_container _2">
 									<% @trends.each do |mock| %>
-										<%= render 'mock', mock: mock %>
+							      <% if mock.mocktype == 'tracks' %>
+							        <%= render 'mocks/cards/track', mock: mock %>
+							      <% elsif mock.mocktype == 'mockets' %>
+							        <%= render 'mocks/cards/mocket', mock: mock %>
+							      <% elsif mock.mocktype == 'mockies' %>
+							        <%= render 'mocks/cards/mocky', mock: mock %>
+							      <% end %>
 									<% end %>
 								</div>
 								<div class="my-sizer-element"></div>

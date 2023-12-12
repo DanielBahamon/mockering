@@ -104,13 +104,13 @@
 										<% if current_mocker %>
 											<%= link_to like_mock_path(@mock), method: :put, remote: :true, class: "_likemock like-count_2_#{ @mock.id } #{ '_btnlike_color' if current_mocker.voted_up_on? @mock }" do %>
 												<div class="_like_mock like-count_<%= @mock.id %>">
-													<%= render 'mocks/likes', mock: @mock %>
+													<%= render 'mocks/actions/likes', mock: @mock %>
 												</div>
 											<% end %>
 										<% else %>
 											<%= link_to new_mocker_session_path, class: '_likemock like-post' do %>
 												<div class="d-md-grid like-count_<%= @mock.id %>" id="like-count">
-													<%= render 'mocks/likes', mock: @mock %>
+													<%= render 'mocks/actions/likes', mock: @mock %>
 												</div>
 											<% end %>
 										<% end %>
@@ -234,7 +234,13 @@
 													<% @related_mocks.each do |mock| %>
 													  <li class="splide__slide">
 													    <div class="splide__slide__container ">
-																<%= render 'mock', mock: mock %>
+													      <% if mock.mocktype == 'tracks' %>
+													        <%= render 'mocks/cards/track', mock: mock %>
+													      <% elsif mock.mocktype == 'mockets' %>
+													        <%= render 'mocks/cards/mocket', mock: mock %>
+													      <% elsif mock.mocktype == 'mockies' %>
+													        <%= render 'mocks/cards/mocky', mock: mock %>
+													      <% end %>
 													    </div>
 													  </li>
 													<% end %>
@@ -258,14 +264,19 @@
 							        </div>
 							        <div class="splide__track">
 							          <ul class="splide__list">
-
-										<% @related_mocks.each do |mock| %>
+													<% @related_mocks.each do |mock| %>
 								            <li class="splide__slide">
 								              <div class="splide__slide__container ">
-													<%= render 'mock', mock: mock %>
+													      <% if mock.mocktype == 'tracks' %>
+													        <%= render 'mocks/cards/track', mock: mock %>
+													      <% elsif mock.mocktype == 'mockets' %>
+													        <%= render 'mocks/cards/mocket', mock: mock %>
+													      <% elsif mock.mocktype == 'mockies' %>
+													        <%= render 'mocks/cards/mocky', mock: mock %>
+													      <% end %>
 								              </div>
 								            </li>
-										<% end %>
+													<% end %>
 							          </ul>
 							        </div>
 							    </div>
@@ -286,14 +297,19 @@
 						        </div>
 						        <div class="splide__track">
 						          <ul class="splide__list">
-
-									<% @related_mocks.each do |mock| %>
+												<% @related_mocks.each do |mock| %>
 							            <li class="splide__slide">
 							              <div class="splide__slide__container ">
-												<%= render 'mock', mock: mock %>
+												      <% if mock.mocktype == 'tracks' %>
+												        <%= render 'mocks/cards/track', mock: mock %>
+												      <% elsif mock.mocktype == 'mockets' %>
+												        <%= render 'mocks/cards/mocket', mock: mock %>
+												      <% elsif mock.mocktype == 'mockies' %>
+												        <%= render 'mocks/cards/mocky', mock: mock %>
+												      <% end %>
 							              </div>
 							            </li>
-									<% end %>
+												<% end %>
 						          </ul>
 						        </div>
 						      </div>
@@ -317,7 +333,13 @@
 												<% @related_mocks.each do |mock| %>
 							            <li class="splide__slide">
 							              <div class="splide__slide__container ">
-															<%= render 'mock', mock: mock %>
+												      <% if mock.mocktype == 'tracks' %>
+												        <%= render 'mocks/cards/track', mock: mock %>
+												      <% elsif mock.mocktype == 'mockets' %>
+												        <%= render 'mocks/cards/mocket', mock: mock %>
+												      <% elsif mock.mocktype == 'mockies' %>
+												        <%= render 'mocks/cards/mocky', mock: mock %>
+												      <% end %>
 							              </div>
 							            </li>
 												<% end %>

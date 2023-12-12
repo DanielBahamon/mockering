@@ -14,7 +14,15 @@
 <div class="_cont _2">
 	<% if @mocks.count > 0 %>
 		<% @mocks.each do |mock| %>
-			<%= render 'mocks/mocky', mock: mock %>
+		<article>
+      <% if mock.mocktype == 'tracks' %>
+        <%= render 'mocks/cards/track', mock: mock %>
+      <% elsif mock.mocktype == 'mockets' %>
+        <%= render 'mocks/cards/mocket', mock: mock %>
+      <% elsif mock.mocktype == 'mockies' %>
+        <%= render 'mocks/cards/mocky', mock: mock %>
+      <% end %>
+		</article>
 		<% end %>
 	<% else %>
 	  <div class="_nothinghere">

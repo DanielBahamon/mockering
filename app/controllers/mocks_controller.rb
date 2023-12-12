@@ -120,7 +120,10 @@ class MocksController < ApplicationController
 
 		@reviews = @mock.reviews.paginate(page: params[:reviews_page], per_page: 2)
 		@mocks_tags = ActsAsTaggableOn::Tag.most_used(10)
-		@related_mocks = Mock.all.where(category: @mock.category, privated: false, reported: false, unlist: false).limit(4)
+		@related_mocks = current_mocker.mocks
+                            .where.not(id: @mock.id) # Excluir el mock actual
+                            .where(category: @mock.category, privated: false, reported: false, unlist: false)
+                            .limit(4)
 		@reported = MockReport.where(mock_id: @mock.id).count
 		@reported_0 = MockReport.where(mock_id: @mock.id, classification: 0).count
 		@reported_1 = MockReport.where(mock_id: @mock.id, classification: 1).count

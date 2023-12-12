@@ -59,19 +59,30 @@
 								<%= image_tag mock.picture.url(:extralarge), class: "card-img-top" %>
 							<% end %>
 						<% end %> 
+						<% if mock.movie.present? %>
+							<div class="_time">
+								<div class="_cont">
+									<div class="_icon">
+										<i class="bi bi-play-circle"></i>
+									</div>
+									<div class="_number">
+									</div>
+								</div>
+							</div>
+						<% end %>
 					</div>
-		  		<% end %>
+		  	<% end %>
 				<aside class="_data">
 					<div class="_cont _1">
 						<div class="_in _1">
-							<span><%= link_to mock do %><%= mock.title %><% end %></span>
+							<span><%= link_to mock do %><%= mock.title %><% end %> - <%= mock_time(mock) %></span>
 						</div>
 						<div class="_in _2">
 							<div class="_actions">
 								<% if mocker_signed_in? %>
 									<%= link_to like_mock_path(mock), method: :put, remote: :true, class: "like-post" do %>
 										<span class="d-md-grid like-count_<%= mock.id %>" id="like-count">
-											<%= render 'mocks/likes', mock: mock %>
+											<%= render 'mocks/actions/likes', mock: mock %>
 										</span>
 									<% end %>
 								<% else %>
@@ -84,18 +95,6 @@
 						</div>
 					</div>
 				</aside>
-				<% if mock.movie.present? %>
-					<div class="_time">
-						<div class="_cont">
-							<div class="_icon">
-								<i class="bi bi-film"></i>
-							</div>
-							<div class="_number">
-								<%= mock_time(mock) %>
-							</div>						
-						</div>
-					</div>
-				<% end %>
 			</aside>
 		<% else %>
 			<aside class="_media">
@@ -129,7 +128,7 @@
 						<% if mocker_signed_in? %>
 							<%= link_to like_mock_path(mock), method: :put, remote: :true, class: "like-post" do %>
 										<span class="d-md-grid like-count_<%= mock.id %>" id="like-count">
-											<%= render 'mocks/likes', mock: mock %>
+											<%= render 'mocks/actions/likes', mock: mock %>
 										</span>
 							<% end %>
 						<% else %>
@@ -143,7 +142,7 @@
 						<% if mocker_signed_in? %>
 							<%= link_to dislike_mock_path(mock), method: :put, remote: :true, class: "like-post" do %>
 								<span class="d-md-grid dislike-count_<%= mock.id %>" id="dislike-count">
-									<%= render 'mocks/dislikes', mock: mock %>
+									<%= render 'mocks/actions/dislikes', mock: mock %>
 								</span>
 							<% end %>
 						<% else %>

@@ -15,7 +15,7 @@
   <% if @mocks.present? %>
     <% @mocks.each do |mock| %>
       <article>
-        <%= render 'mocky', mock: mock %>
+        <%= render 'mocks/cards/mocky', mock: mock %>
       </article>
     <% end %>
   <% else %>
