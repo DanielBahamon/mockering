@@ -4,6 +4,10 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+
+  config.hosts << "mockering-production.up.railway.app"
+
+  
   config.cache_classes = false
   config.action_cable.mount_path = "/cable"
   # Do not eager load code on boot.
