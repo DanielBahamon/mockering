@@ -85,7 +85,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'bundler', '2.4.13'
+gem install bundler -v '2.3.25'
 gem 'rack-cors'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0', group: :production
