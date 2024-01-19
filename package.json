@@ -1,6 +1,9 @@
 {
   "name": "Mockering",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "videojs-analytics": "^1.0.0"
   }
